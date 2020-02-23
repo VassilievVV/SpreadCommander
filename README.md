@@ -8,6 +8,8 @@ Combination of *PowerShell* script and advanced *data visualization* controls ma
 
 Building solutions requires Ultimate license of DevExpress (https://www.devexpress.com) controls.
 
+Program site - https://www.spreadcommander.net , https://www.spreadcommander.com .
+
 
 PRIVACY STATEMENT
 
