@@ -1,0 +1,319 @@
+//Console output Grammar
+<%@TinyPG Namespace="SpreadCommander.Common.Parsers.ConsoleScript" Language="C#" TemplatePath="SpreadCommander Templates\Common\"%>
+
+EOF 				-> @"(?-m)$";
+
+[Skip]
+WHITESPACE 			-> @"\s+";
+[Skip]
+COMMENTLINE			-> @"--[^\n]*\n?";
+[Skip]
+COMMENTBLOCK			-> @"/\*[^*]*\*+(?:[^/*][^*]*\*+)*/";
+
+NUMBER 			-> @"-?[0-9]+"; 
+PLUSMINUS 			-> @"\+|-"; 
+MULTDIV 			-> @"\*|/"; 
+BR_OPEN 			-> @"\("; 
+BR_CLOSE 			-> @"\)"; 
+COMMA				-> @",";
+SEMICOLON			-> @";";
+DEFICE				-> @"-";
+
+IDENT				-> @"[\w\._]+";
+IDENT_BRACED			-> @"\[(?:[^\]]|\]\])*\]";
+IDENT_QUOTED			-> @"\""(?:[^\""]|\""\"")*\""";
+IDENT_STRING			-> @"\'(?:[^\']|\'\')*\'";
+IDENT_STRING2			-> @"`(?:[^`]|``)*`";
+
+COMPARE_EQUAL			-> @"=";
+COMPARE_NOT_EQUAL		-> @"<>";
+COMPARE_LESS			-> @"<";
+COMPARE_GREATER		-> @">";
+COMPARE_LESS_OR_EQUAL	-> @"<=";
+COMPARE_GREATER_OR_EQUAL	-> @">=";
+COMPARE_BETWEEN		-> @"(?i)BETWEEN";
+COMPARE_CONTAINS		-> @"(?i)CONTAINS";
+COMPARE_STARTS		-> @"(?i)STARTS";
+COMPARE_ENDS			-> @"(?i)ENDS";
+COMPARE_MATCHES		-> @"(?i)MATCHES";
+
+STRING 			-> @"(?i)(?:STRING|VARCHAR|CHAR|TEXT)";
+INTEGER 			-> @"(?i)(?:INTEGER|INT)";
+DECIMAL 			-> @"(?i)(?:DECIMAL|NUMERIC|DOUBLE|FLOAT)";
+DATETIME 			-> @"(?i)(?:DATETIME|DATE)";
+BOOLEAN 			-> @"(?i)(?:BOOLEAN|BOOL|BIT)";
+
+INSERT				-> @"(?i)INSERT";
+FILE				-> @"(?i)FILE";
+OUTPUT_TYPE 			-> @"(?i)(?:TEXT|HTML|CSV|JSON|ADO.NET|XML|SQL|POWERSHELL|FLUSH|CLEAR)";
+FORMAT				-> @"(?i)FORMAT";
+CONDITION			-> @"(?i)CONDITION";
+WITH				-> @"(?i)WITH";
+FOR				-> @"(?i)FOR";
+COLUMN				-> @"(?i)COLUMN";
+VIEW				-> @"(?i)VIEW";
+TABLE				-> @"(?i)TABLE";
+RELATION			-> @"(?i)RELATION";
+CONNECTION			-> @"(?i)CONNECTION";
+PARAMETER 			-> @"(?i)PARAMETER";
+COMPUTED			-> @"(?i)COMPUTED";
+IN				-> @"(?i)IN";
+
+
+Start			-> Command+ EOF
+{
+	var result = new List<BaseCommand>();
+
+	int i = 0;
+	while (true)
+	{
+		var command = (BaseCommand)$Command[i++];
+		if (command == null)
+			break;
+
+		result.Add(command);
+	}
+	
+	return result;
+};
+
+COMPUTED_RETURNTYPE 		-> STRING | INTEGER | DECIMAL | DATETIME | BOOLEAN
+{
+	return $STRING ?? $INTEGER ?? $DECIMAL ?? $DATETIME ?? $BOOLEAN;
+};
+
+Command 		-> (InsertFile | ViewFile | FormatCondition | ComputedColumn | Table | Relation | Connection | Parameter) SEMICOLON?
+{
+	return $InsertFile ?? $ViewFile ?? $FormatCondition ?? $ComputedColumn ?? $Table ?? $Relation ?? $Connection ?? $Parameter;
+};
+
+InsertFile 		-> INSERT FILE ObjectName (WITH Property+)?
+{
+	var result = new InsertFile();
+	result.FileName = (string)$ObjectName;
+
+	int i = 0;
+	while (true)
+	{
+		var prop = (Property)$Property[i++];
+		if (prop == null)
+			break;
+
+		if (!string.IsNullOrEmpty(prop.Name))
+			result.AddProperty(prop.Name, prop.Value);
+	}
+	
+	return result;
+};
+
+ViewFile 		-> VIEW FILE ObjectName (WITH Property+)?
+{
+	var result = new ViewFile();
+	result.FileName = (string)$ObjectName;
+
+	int i = 0;
+	while (true)
+	{
+		var prop = (Property)$Property[i++];
+		if (prop == null)
+			break;
+
+		if (!string.IsNullOrEmpty(prop.Name))
+			result.AddProperty(prop.Name, prop.Value);
+	}
+	
+	return result;
+};
+
+FormatCondition	-> FORMAT (TABLE TableName)? (COLUMN ColumnName)? (FOR FormatFilter)? WITH Property+
+{
+	var result = new FormatCondition();
+	result.ColumnName   = (string)$ColumnName;
+	result.TableName    = (string)$TableName;
+	result.FormatFilter = (string)$FormatFilter;
+	
+	int i = 0;
+	while (true)
+	{
+		var prop = (Property)$Property[i++];
+		if (prop == null)
+			break;
+
+		if (!string.IsNullOrEmpty(prop.Name))
+			result.AddProperty(prop.Name, prop.Value);
+	}
+	
+	return result;
+};
+
+ComputedColumn	-> COMPUTED COLUMN ColumnName COMPUTED_RETURNTYPE? (IN TableName)? COMPARE_EQUAL PropertyValue
+{
+	var result = new ComputedColumn();
+	result.ColumnName   = (string)$ColumnName;
+	result.TableName    = (string)$TableName;
+	result.ReturnType   = ComputedColumn.StringToReturnType((string)$COMPUTED_RETURNTYPE);
+	result.Expression   = (string)$PropertyValue;
+	
+	return result;
+};
+
+Table			-> TABLE TableName (WITH Property+)?
+{
+	var result = new Table();
+	result.TableName = (string)$TableName;
+
+	int i = 0;
+	while (true)
+	{
+		var prop = (Property)$Property[i++];
+		if (prop == null)
+			break;
+
+		if (!string.IsNullOrEmpty(prop.Name))
+			result.AddProperty(prop.Name, prop.Value);
+	}
+	
+	return result;
+};
+
+Relation		-> RELATION RelationName TableWithColumns DEFICE TableWithColumns
+{
+	var result = new Relation();
+	result.RelationName = (string)$RelationName;
+
+	var table1 = (TableWithColumns)$TableWithColumns[0];
+	var table2 = (TableWithColumns)$TableWithColumns[1];
+
+	result.ParentTableName = table1.TableName;
+	result.ParentColumnNames.AddRange(table1.ColumnNames);
+
+	result.ChildTableName = table2.TableName;
+	result.ChildColumnNames.AddRange(table2.ColumnNames);
+
+	return result;
+};
+
+Connection		-> CONNECTION ConnectionName (WITH Property+)?
+{
+	var result = new SpreadCommander.Common.ScriptEngines.ConsoleCommands.Connection();
+	result.Name = (string)$ConnectionName;
+
+	int i = 0;
+	while (true)
+	{
+		var prop = (Property)$Property[i++];
+		if (prop == null)
+			break;
+
+		if (!string.IsNullOrEmpty(prop.Name))
+			result.AddProperty(prop.Name, prop.Value);
+	}
+	
+	return result;
+};
+
+Parameter		-> PARAMETER ParameterName (WITH Property+)?
+{
+	var result = new SpreadCommander.Common.ScriptEngines.ConsoleCommands.Parameter();
+	result.Name = (string)$ParameterName;
+
+	int i = 0;
+	while (true)
+	{
+		var prop = (Property)$Property[i++];
+		if (prop == null)
+			break;
+
+		if (!string.IsNullOrEmpty(prop.Name))
+			result.AddProperty(prop.Name, prop.Value);
+	}
+	
+	return result;
+};
+
+ObjectName   		-> IDENT | IDENT_BRACED | IDENT_QUOTED | IDENT_STRING | IDENT_STRING2
+{
+	string result = nodes.Count > 0 ? (string)nodes[0].Eval(tree) : null;
+	if (result != null)
+		result = Utils.UnquoteString(result);
+	return result;
+};
+
+ColumnName		-> ObjectName
+{
+	return $ObjectName;
+};
+
+TableName		-> ObjectName
+{
+	return $ObjectName;
+};
+
+TableWithColumns 	-> TableName BR_OPEN (ColumnName COMMA?)+ BR_CLOSE
+{
+	var result = new TableWithColumns();
+	result.TableName = (string)$TableName;
+
+	int i = 0;
+	while (true)
+	{
+		var columnName = (string)$ColumnName[i++];
+		if (columnName == null)
+			break;
+
+		if (!string.IsNullOrWhiteSpace(columnName))
+			result.ColumnNames.Add(columnName);
+	}
+	
+	return result;
+};
+
+RelationName		-> ObjectName
+{
+	return $ObjectName;
+};
+
+ConnectionName	-> ObjectName
+{
+	return $ObjectName;
+};
+
+ParameterName		-> ObjectName
+{
+	return $ObjectName;
+};
+
+FormatFilter		-> IDENT_STRING | IDENT_QUOTED | IDENT_STRING2
+{
+	var value = (string)$IDENT_STRING ?? (string)$IDENT_QUOTED ?? (string)$IDENT_STRING2;
+
+	var result = Utils.UnquoteString(value);
+	return result;
+};
+
+PropertyName		-> IDENT
+{
+	return (string)$IDENT;
+};
+
+PropertyValue		-> IDENT | IDENT_STRING | IDENT_QUOTED | IDENT_STRING2
+{
+	string value = nodes.Count > 0 ? (string)nodes[0].Eval(tree) : null;
+	value = Utils.UnquoteString(value);
+	return value;
+};
+
+Property		-> PropertyName COMPARE_EQUAL PropertyValue COMMA?
+{
+	string name = (string)$PropertyName;
+	if (name == null)
+		return new Property();
+
+	string value = (string)$PropertyValue;
+
+	var result = new Property();
+	result.Name  = name;
+	result.Value = Utils.UnquoteString(value);
+
+	return result;
+};

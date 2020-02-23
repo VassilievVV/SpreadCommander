@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>Puzzle.SyntaxBox.NET</AssemblyName>
+    <RootNamespace>Alsing.Windows.Forms</RootNamespace>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>AnyCPU;x64</Platforms>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>..\bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>..\bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SyntaxFiles\6502.syn" />
+    <EmbeddedResource Include="SyntaxFiles\ASP.Syn" />
+    <EmbeddedResource Include="SyntaxFiles\C#.syn" />
+    <EmbeddedResource Include="SyntaxFiles\C++.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Cobol.syn" />
+    <EmbeddedResource Include="SyntaxFiles\CSharp.syn" />
+    <EmbeddedResource Include="SyntaxFiles\CSS.Syn" />
+    <EmbeddedResource Include="SyntaxFiles\DataFlex.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Delphi.syn" />
+    <EmbeddedResource Include="SyntaxFiles\DOSBatch.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Fortran90.syn" />
+    <EmbeddedResource Include="SyntaxFiles\FoxPro.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Java.syn" />
+    <EmbeddedResource Include="SyntaxFiles\JavaScript.syn" />
+    <EmbeddedResource Include="SyntaxFiles\JSP.syn" />
+    <EmbeddedResource Include="SyntaxFiles\LotusScript.syn" />
+    <EmbeddedResource Include="SyntaxFiles\MSIL.syn" />
+    <EmbeddedResource Include="SyntaxFiles\MySQL_SQL.syn" />
+    <EmbeddedResource Include="SyntaxFiles\npath.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Oracle_SQL.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Perl.syn" />
+    <EmbeddedResource Include="SyntaxFiles\PHP.Syn" />
+    <EmbeddedResource Include="SyntaxFiles\Povray.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Python.syn" />
+    <EmbeddedResource Include="SyntaxFiles\rtf.syn" />
+    <EmbeddedResource Include="SyntaxFiles\SmallTalk.syn" />
+    <EmbeddedResource Include="SyntaxFiles\SQLServer2K_SQL.syn" />
+    <EmbeddedResource Include="SyntaxFiles\SQLServer7_SQL.syn" />
+    <EmbeddedResource Include="SyntaxFiles\SystemPolicies.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Template.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Text.syn" />
+    <EmbeddedResource Include="SyntaxFiles\TurboPascal.syn" />
+    <EmbeddedResource Include="SyntaxFiles\VB.NET.syn" />
+    <EmbeddedResource Include="SyntaxFiles\VB.syn" />
+    <EmbeddedResource Include="SyntaxFiles\VBScript.syn" />
+    <EmbeddedResource Include="SyntaxFiles\VRML97.syn" />
+    <EmbeddedResource Include="SyntaxFiles\XML.syn" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Controls\IntelliMouse\IntelliMouseControl.resx">
+      <CustomToolNamespace></CustomToolNamespace>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

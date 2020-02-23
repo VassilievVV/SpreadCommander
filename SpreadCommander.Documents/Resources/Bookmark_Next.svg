@@ -1,0 +1,13 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-8 -4 32 32" xmlns="http://www.w3.org/2000/svg">
+  <g id="Layer_1" transform="translate(-8, -4)">
+    <g id="Bookmark">
+      <path d="M23, 4L9, 4C8.5, 4 8, 4.5 8, 5L8, 28L16, 20L24, 28L24, 5C24, 4.5 23.5, 4 23, 4z" fill="#D11C1C" class="Red" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(8, 12)">
+    <g id="Arrow1Right">
+      <polygon points="0,6 0,10 8,10 8,16 16,8 8,0 8,6  " fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+</svg>

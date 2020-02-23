@@ -1,0 +1,20 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-6 -4 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Layer_1" transform="translate(-6, -4)" style="enable-background:new 0 0 32 32">
+    <g id="Book">
+      <path d="M9, 6L26, 6L26, 5C26, 4.4 25.6, 4 25, 4L9, 4C7.3, 4 6, 5.3 6, 7L6, 25C6, 26.7 7.3, 28 9, 28L25, 28C25.6, 28 26, 27.6 26, 27L26, 8L9, 8C8.4, 8 8, 7.6 8, 7C8, 6.4 8.4, 6 9, 6z" fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(10, 12)" style="enable-background:new 0 0 16 16">
+    <g id="FolderOpen_2_">
+      <g class="st0">
+        <path d="M4.6, 6.4C4.8, 6.2 5.1, 6 5.5, 6L12, 6L12, 5C12, 4.4 11.5, 4 11, 4L6, 4L6, 3C6, 2.4 5.5, 2 5, 2L1, 2C0.5, 2 0, 2.4 0, 3L0, 13C0, 13.1 0, 13.2 0.1, 13.3L4.6, 6.4z" fill="#FFB115" class="Yellow" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(10, 12)" style="enable-background:new 0 0 16 16">
+    <g id="FolderOpen_2_">
+      <path d="M2, 14L6, 8L15, 8C15.8, 8 16.3, 8.9 15.8, 9.6L13.1, 13.6C13, 13.8 12.7, 14 12.3, 14L2, 14z" fill="#FFB115" class="Yellow" />
+    </g>
+  </g>
+</svg>

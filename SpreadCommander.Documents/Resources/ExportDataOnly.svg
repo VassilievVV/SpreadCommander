@@ -1,0 +1,70 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2 -4 32 32" xmlns="http://www.w3.org/2000/svg">
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="12" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="2" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="2" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="22" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="22" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="12" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <rect x="2" y="4" width="28" height="8" rx="0" ry="0" fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(16, 12)">
+    <g id="List_1_">
+      <path d="M13, 16L3, 16C2.5, 16 2, 15.6 2, 15L2, 1C2, 0.4 2.5, 0 3, 0L13, 0C13.6, 0 14, 0.4 14, 1L14, 15C14, 15.6 13.6, 16 13, 16z" fill="#727272" class="Black" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(16, 12)">
+    <g id="List_1_">
+      <rect x="4" y="2" width="8" height="12" rx="0" ry="0" fill="#FFFFFF" class="White" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(16, 12)">
+    <g id="List_1_">
+      <rect x="6" y="4" width="4" height="2" rx="0" ry="0" fill="#727272" class="Black" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(16, 12)">
+    <g id="List_1_">
+      <rect x="6" y="8" width="4" height="2" rx="0" ry="0" fill="#727272" class="Black" />
+    </g>
+  </g>
+</svg>

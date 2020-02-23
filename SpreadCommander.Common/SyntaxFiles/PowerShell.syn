@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Language Name="PowerShell" Startblock="PS Code">
+	<FileTypes>
+		<FileType Extension=".ps1" Name="PowerShell code file"/>
+	</FileTypes>
+
+	<Block Name="PS Code" Style="PS Code" EscapeChar="" IsMultiline="true">
+		<Scope Start="{" End="}" Style="PS Scope" Text="{...}" CauseIndent="true" />
+		<Scope Start="#if" End="#endif" Style="PS Region" Text="#if...endif"  />
+		<Scope Start="#region" End="#endregion" Style="PS Region" Text="" DefaultExpanded="false" />
+		<Bracket Start="(" End=")" Style="PS Code" />
+		<Bracket Start="[" End="]" Style="PS Code" />
+		<!-- Keywords that can exist inside this block -->
+		<Keywords>
+			<PatternGroup Name="Keywords" Style="PS Keyword" CaseSensitive="false">
+				<Patterns>
+					Begin
+					Break
+					Catch
+					Class
+					Continue
+					Data
+					Define
+					Do
+					DynamicParam
+					Else
+					Elseif
+					End
+					Enum
+					Exit
+					Filter
+					Finally
+					For
+					ForEach
+					From
+					Function
+					Hidden
+					If
+					In
+					Namespace
+					Module
+					Param
+					Process
+					Return
+					Static
+					Switch
+					Throw
+					Trap
+					Try
+					Until
+					Using
+					Var
+					While
+				</Patterns>
+			</PatternGroup>
+			<PatternGroup Name="Numbers" Style="PS Number">
+				<Pattern Text="(-?0x[0-9a-fA-F]+)" IsComplex="true" />
+				<Pattern Text="(-?\d+(\.\d+)?)" IsComplex="true" />
+			</PatternGroup>
+				
+			<!-- Datatypes for PowerShell -->
+			<PatternGroup Name="DataTypes" Style="PS Datatype" CaseSensitive="false">
+				<Patterns>
+	string exfloat float int long sbyte short uint ulong void double decimal bool char ushort
+				</Patterns>
+			</PatternGroup>
+
+			<PatternGroup Name="Variables" Style="PS Variable">
+				<Pattern Text="\$[a-zA-Z0-9_]*" IsComplex="true" />
+			</PatternGroup>
+			<PatternGroup Name="Properties" Style="PS Property">
+				<Pattern Text="\-\w+" IsComplex="true" />
+			</PatternGroup>
+			<PatternGroup Name="Cmdlets" Style="PS Cmdlet">
+				<Pattern Text="\w+\-\w+" IsComplex="true" />
+			</PatternGroup>
+			<PatternGroup Name="Type" Style="PS Type">
+				<Pattern Text="\[[\w\.]+\]" IsComplex="true" />
+			</PatternGroup>
+		</Keywords>
+		<!-- Operators that can exist inside this block -->
+		<Operators>
+			<PatternGroup name="Operators" Style="PS Operator">
+				<Pattern Text="." />
+				<Pattern Text="!" />
+				<Pattern Text=":" />
+				<Pattern Text="^" />
+				<Pattern Text="*" />
+				<Pattern Text="/" />
+				<Pattern Text="+" />
+				<Pattern Text="-" />
+				<Pattern Text="=" />
+				<Pattern Text="|" />
+				<Pattern Text="&gt;" />
+				<Pattern Text="&lt;" />
+				<Pattern Text="&amp;" />
+				<Pattern Text="%" />
+				<Pattern Text="$" />
+				<Pattern Text="@" />
+				<Pattern Text="-eq" />
+				<Pattern Text="-ne" />
+				<Pattern Text="-ge" />
+				<Pattern Text="-gt" />
+				<Pattern Text="-lt" />
+				<Pattern Text="-le" />
+				<Pattern Text="-match" />
+				<Pattern Text="-notmatch" />
+				<Pattern Text="-replace" />
+				<Pattern Text="-like" />
+				<Pattern Text="-notlike" />
+				<Pattern Text="-in" />
+				<Pattern Text="-notin" />
+				<Pattern Text="-contains" />
+				<Pattern Text="-notcontains" />
+				<Pattern Text="-bAND" />
+				<Pattern Text="-bOR" />
+				<Pattern Text="-bXOR" />
+				<Pattern Text="-bNOT" />
+				<Pattern Text="-and" />
+				<Pattern Text="-or" />
+				<Pattern Text="-xor" />
+				<Pattern Text="-not" />
+				<Pattern Text="-split" />
+				<Pattern Text="-join" />
+				<Pattern Text="-is" />
+				<Pattern Text="-isnot" />
+				<Pattern Text="-as" />
+				<Pattern Text="-f" />
+			</PatternGroup>
+		</Operators>
+		<!-- Blocks that can exist inside this block -->
+		<ChildBlocks>
+			<Child Name="PS Multiline Comment" />
+			<Child Name="PS Singleline Comment" />
+			<Child Name="PS String" />
+			<Child Name="PS String 2" />
+			<Child Name="PS Char" />
+			<Child Name="PS Literal String" />
+			<Child Name="PS Literal Char" />
+			<Child Name="PS Cmdlet" />
+			<Child Name="PS Code" />
+			<Child Name="PS Type" />
+		</ChildBlocks>
+	</Block>
+	<Block Name="PS Multiline Comment" Style="PS Comment" EscapeChar="" IsMultiline="true">
+		<Scope Start="&lt;#" End="#&gt;" Style="PS Comment" Text="&lt;#...#&gt;"/>
+		<Operators>
+			<PatternGroup name="URL" Style="PS URL">
+				<Pattern Text="http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?" IsComplex="true" />
+			</PatternGroup>
+		</Operators>
+	</Block>
+	<Block Name="PS Singleline Comment" Style="PS Comment" EscapeChar="" IsMultiline="false">
+		<Scope Start="#" End="" Style="PS Comment" />
+	</Block>
+	<Block Name="PS String" Style="PS String" EscapeChar="`" IsMultiline="true">
+		<Scope Start="&quot;" End="&quot;" EscapeChar="`" Style="PS String" />
+		<Operators>
+			<PatternGroup name="URL" Style="PS URL">
+				<Pattern Text="http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?" IsComplex="true" />
+			</PatternGroup>
+		</Operators>
+	</Block>
+	<Block Name="PS String 2" Style="PS String" EscapeChar="" IsMultiline="true">
+		<Scope Start="'" End="'" EscapeChar="`" Style="PS String" />
+		<Operators>
+			<PatternGroup name="URL" Style="PS URL">
+				<Pattern Text="http://([\w-]+\.)+[\w-]+(/[\w- ./?%&amp;=]*)?" IsComplex="true" />
+			</PatternGroup>
+		</Operators>
+	</Block>
+	<Block Name="PS Literal String" Style="PS String" EscapeChar="" IsMultiline="true" >
+		<Scope Start="@&quot;" End="&quot;@" Style="PS String" Text="@'...'" />
+	</Block>
+	<Block Name="PS Literal Char" Style="PS String" EscapeChar="" IsMultiline="true">
+		<Scope Start="@'" End="'@" Style="PS String" />
+	</Block>
+	
+	<Style Name="PS Code" ForeColor="" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS Scope" ForeColor="" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS Region" ForeColor="Blue" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Comment" ForeColor="Gray" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS Attrib" ForeColor="Gray" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS String" ForeColor="SteelBlue" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS Number" ForeColor="Teal" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Operator" ForeColor="Red" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS Keyword" ForeColor="Magenta" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Datatype" ForeColor="DarkSkyBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Variable" ForeColor="DodgerBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Property" ForeColor="RoyalBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Cmdlet" ForeColor="DarkOrchid" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS URL" ForeColor="Fuschia" BackColor="" Bold="false" Italic="false" Underline="true" />
+	<Style Name="PS Type" ForeColor="DarkSkyBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
+</Language>

@@ -1,0 +1,23 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-4 -2 32 32" xmlns="http://www.w3.org/2000/svg">
+  <g id="Layer_1" transform="translate(-4, -2)">
+    <g id="Map">
+      <path d="M20, 10L12, 2L4, 10L4, 30L12, 22L20, 30L28, 22L28, 2L20, 10zM20, 27.2L12, 19.2L12, 4.8L20, 12.8L20, 27.2z" fill="#FFB115" class="Yellow" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(12, 14)">
+    <g id="Info_2_">
+      <circle cx="9" cy="9" r="7" fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(12, 14)">
+    <g id="Info_2_">
+      <rect x="8" y="8" width="2" height="6" rx="0" ry="0" fill="#FFFFFF" class="White" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(12, 14)">
+    <g id="Info_2_">
+      <rect x="8" y="4" width="2" height="2" rx="0" ry="0" fill="#FFFFFF" class="White" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,55 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2 0 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="12" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="2" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="2" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="22" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="22" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="12" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, 0)">
+    <g id="Table_2_">
+      <rect x="2" y="4" width="28" height="8" rx="0" ry="0" fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(14, 0)">
+    <g id="Arrow1Right">
+      <polygon points="0,6 0,10 8,10 8,16 16,8 8,0 8,6  " fill="#FFB115" class="Yellow" />
+    </g>
+  </g>
+</svg>

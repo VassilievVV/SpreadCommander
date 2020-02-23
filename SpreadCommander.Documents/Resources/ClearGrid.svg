@@ -1,0 +1,65 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2 -4 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="12" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="2" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="2" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="22" y="22" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="22" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <g opacity="0.5" class="st1">
+        <rect x="12" y="14" width="8" height="6" rx="0" ry="0" fill="#727272" opacity="0.5" class="Black" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Table_2_">
+      <rect x="2" y="4" width="28" height="8" rx="0" ry="0" fill="#039C23" class="Green" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(14, 12)">
+    <g id="Clear_1_">
+      <path d="M15.7, 4.4L11.7, 0.4C11.3, 0 10.5, 0 10.1, 0.4L4.1, 6.4L9.7, 12L15.7, 6C16.1, 5.5 16.1, 4.8 15.7, 4.4z" fill="#D11C1C" class="Red" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(14, 12)">
+    <g id="Clear_1_">
+      <path d="M2.9, 7.5L0.3, 10C-0.1, 10.4 -0.1, 11.2 0.3, 11.6L4.3, 15.6C4.7, 16 5.5, 16 5.9, 15.6L8.5, 13L2.9, 7.5z" fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(14, 12)">
+    <g id="Clear_1_">
+      <rect x="5.5" y="5.7" width="1.6" height="8" rx="0" ry="0" fill="#FFFFFF" class="White" transform="matrix(0.7071, -0.7071, 0.7071, 0.7071, -5.0285, 7.2907)" />
+    </g>
+  </g>
+</svg>

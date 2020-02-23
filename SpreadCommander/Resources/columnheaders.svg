@@ -1,0 +1,10 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg x="0px" y="0px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" id="Layer_1">
+  <g />
+  <g id="ColumnHeaders">
+    <path d="M12,4h8v6h-8V4z M22,4h8v6h-8V4z M2,4h8v6H2V4z" fill="#FFB115" class="Yellow" />
+    <g opacity="0.5" class="st1">
+      <path d="M12,12h8v16h-8V12z M2,12h8v16H2V12z M22,28h8V12h-8V28z" fill="#727272" opacity="0.5" class="Black" />
+    </g>
+  </g>
+</svg>

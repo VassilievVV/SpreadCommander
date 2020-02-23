@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2 -6 32 32" xmlns="http://www.w3.org/2000/svg">
+  <g id="Layer_1" transform="translate(-2, -6)">
+    <g id="FolderOpen">
+      <g opacity="0.75" class="st0">
+        <path d="M2.2, 25.2L7.7, 15.2C8, 14.5 8.7, 14 9.5, 14L24, 14L24, 11C24, 10.4 23.6, 10 23, 10L12, 10L12, 7C12, 6.4 11.6, 6 11, 6L3, 6C2.4, 6 2, 6.5 2, 7L2, 25C2, 25.2 2, 25.3 2.1, 25.4C2.1, 25.4 2.2, 25.3 2.2, 25.2z" fill="#1177D7" opacity="0.75" class="Blue" />
+      </g>
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -6)">
+    <g id="FolderOpen">
+      <path d="M29.3, 16L9.6, 16L4, 26L23.8, 26C24.3, 26 24.9, 25.8 25.1, 25.4L30, 16.5C30.1, 16.2 29.8, 16 29.3, 16z" fill="#1177D7" class="Blue" />
+    </g>
+  </g>
+</svg>

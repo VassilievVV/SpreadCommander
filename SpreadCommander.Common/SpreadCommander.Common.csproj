@@ -1,0 +1,85 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>AnyCPU;x64</Platforms>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>SpreadCommander.snk</AssemblyOriginatorKeyFile>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\bin\Debug</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutputPath>..\bin\Debug</OutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\bin\Release</OutputPath>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutputPath>..\bin\Release</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="PowerShell\CmdLets\Book\OutBookTemplateCmdlet.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="SyntaxFiles\C#.syn" />
+    <EmbeddedResource Include="SyntaxFiles\C++.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Delphi.syn" />
+    <EmbeddedResource Include="SyntaxFiles\DOSBatch.syn" />
+    <EmbeddedResource Include="SyntaxFiles\F#.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Fortran90.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Java.syn" />
+    <EmbeddedResource Include="SyntaxFiles\JavaScript.syn" />
+    <EmbeddedResource Include="SyntaxFiles\LotusScript.syn" />
+    <EmbeddedResource Include="SyntaxFiles\MSIL.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Perl.syn" />
+    <EmbeddedResource Include="SyntaxFiles\PHP.Syn" />
+    <EmbeddedResource Include="SyntaxFiles\PowerShell.syn" />
+    <EmbeddedResource Include="SyntaxFiles\Python.syn" />
+    <EmbeddedResource Include="SyntaxFiles\R.syn" />
+    <EmbeddedResource Include="SyntaxFiles\SqlScript.syn" />
+    <EmbeddedResource Include="SyntaxFiles\VB.NET.syn" />
+    <EmbeddedResource Include="SyntaxFiles\XML.syn" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AvalonStudio.winpty.NET" Version="0.4.6" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.6" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="19.2.6" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.6-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="19.2.6-ctp" />
+    <PackageReference Include="Fizzler" Version="1.2.0" />
+    <PackageReference Include="Markdig.Signed" Version="0.18.1" />
+    <PackageReference Include="MathNet.Numerics" Version="4.9.0" />
+    <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.3.0" />
+    <PackageReference Include="MathNet.Symbolics" Version="0.20.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.0-rc.3" />
+    <PackageReference Include="MySqlConnector" Version="0.61.0" />
+    <PackageReference Include="Svg" Version="3.0.102" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="WpfMath" Version="0.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Alsing.SyntaxBox\Alsing.SyntaxBox.csproj" />
+  </ItemGroup>
+
+</Project>
