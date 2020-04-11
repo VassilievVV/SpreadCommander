@@ -441,7 +441,7 @@ namespace SpreadCommander.Documents.Dialogs
             connection.Provider    = SelectedFactoryInvariantName;
 
             var connStr                 = SelectedConnectionString;
-            connection.ConnectionString = Utils.Encrypt(connStr);
+            connection.ConnectionString = connStr;
 
             _ModifyingConnection = null;
             //_Modified            = true;

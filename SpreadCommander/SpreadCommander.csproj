@@ -34,10 +34,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="19.2.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.6-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.BonusSkins" Version="19.2.6-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.7" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="19.2.7" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.7-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.BonusSkins" Version="19.2.7-ctp" />
   </ItemGroup>
 
   <ItemGroup>

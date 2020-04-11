@@ -55,6 +55,7 @@ namespace SpreadCommander.Documents.Views
             mvvmContext.RegisterService(new SpreadCommander.Documents.Services.SQLiteExecutionPlanViewer(this));
             mvvmContext.RegisterService(new SpreadCommander.Documents.Services.MySqlExecutionPlanViewer(this));
 
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
             fluent.SetBinding(this, frm => frm.Connection, m => m.Connection);
             fluent.SetBinding(this, frm => frm.DataSet, m => m.DataSet);
             fluent.BindCommand(barChangeConnection, m => m.ChangeConnection());
@@ -67,6 +68,7 @@ namespace SpreadCommander.Documents.Views
             fluent.BindCommand(barClearBook, m => m.ClearBook());
             fluent.BindCommand(barClearSpreadsheet, m => m.ClearSpreadsheet());
             fluent.BindCommand(barClearGrid, m => m.ClearGrid());
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed
         }
 
         private void UpdateModelDocuments()

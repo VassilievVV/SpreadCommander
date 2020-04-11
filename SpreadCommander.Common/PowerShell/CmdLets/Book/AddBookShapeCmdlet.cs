@@ -10,7 +10,6 @@ using System.Drawing;
 
 namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 {
-    //TODO: BookContext - allow to load document into shape
     [Cmdlet(VerbsCommon.Add, "BookShape")]
     public class AddBookShapeCmdlet: BaseBookWithCommentsCmdlet
     {

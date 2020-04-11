@@ -5,8 +5,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//TODO: templates for spreadsheets and books
-
 namespace SpreadCommander.Common
 {
     public class Project

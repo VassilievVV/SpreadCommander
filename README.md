@@ -6,13 +6,18 @@
 
 Combination of *PowerShell* script and advanced *data visualization* controls makes work with data very comfortable.
 
-Building solutions requires Ultimate license of DevExpress (https://www.devexpress.com) controls.
+Building solutions requires Ultimate license of [DevExpress](https://www.devexpress.com) controls.
 
-Program site - https://www.spreadcommander.net , https://www.spreadcommander.com .
+Program site - <https://www.spreadcommander.net>, <https://www.spreadcommander.com>.
 
-
-PRIVACY STATEMENT
+## PRIVACY STATEMENT
 
 SpreadCommander does not collect private data. However MicrosoftTM does collect telemetry from executing PowerShell scripts.
 
 Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web services.
+
+## UPDATES
+
+### Version 0.7.1
+- SQL document: processing tag #connection is fixed;
+- Third-party components (*PowerShell*, *DevExpress*) are updated to new versions.

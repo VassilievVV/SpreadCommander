@@ -10,9 +10,6 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 {
-    //TODO: Cmdlets Evaluate-SpreadFormula, Evaluate-SpreadFormulas - copy data source to spreadsheet table and evaluate formula(s), placing results into named properties or sending them as output
-    //TODO: Unit conversion cmdlet
-
     public class BaseSpreadsheetCmdlet : SCCmdlet
     {
         [Parameter(HelpMessage = "Target spreadsheet. By default - write into host's spreadsheet")]

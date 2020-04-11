@@ -12,8 +12,6 @@ namespace SpreadCommander.Common.ScriptEngines
 {
 	public class PythonScriptEngine: ProcessScriptEngine
 	{
-		//TODO: set PYTHONIOENCODING to UTF-8?
-
 		public const string ScriptEngineName = "Python";
 
 		public override string EngineName => ScriptEngineName;

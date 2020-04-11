@@ -20,13 +20,6 @@ using DevExpress.Utils.DPI;
 
 namespace SpreadCommander
 {
-    //TODO: Implement ML.Net IDataView for DataTable and list of PSObject, and for any data reader supported in SpreadCommander
-    //TODO: Add break points and variables viewer (for simple variables - string, int etc)
-    //TODO: PreScript and PostScript in cmdlet that exports data to SQL database
-    //TODO: Encrypt Bing map key
-    //TODO: Cmdlet to Export column to double vector
-    //TODO: NuGet client?
-
     static class Program
     {
         /// <summary>

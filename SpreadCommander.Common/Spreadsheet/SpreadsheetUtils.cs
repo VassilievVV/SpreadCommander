@@ -53,8 +53,6 @@ namespace SpreadCommander.Common.Spreadsheet
         }
         #endregion
 
-        //TODO: Export from Grid (including grid in console) into any spreadsheet loaded in project, including export from console's grid into console's spreadsheet
-
         static SpreadsheetUtils()
         {
             RegisterCustomSpreadsheetFunctions();

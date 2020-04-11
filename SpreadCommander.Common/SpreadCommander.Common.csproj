@@ -55,19 +55,19 @@
 
   <ItemGroup>
     <PackageReference Include="AvalonStudio.winpty.NET" Version="0.4.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="19.2.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.6-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="19.2.6-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.7" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="19.2.7" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.7-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="19.2.7-ctp" />
     <PackageReference Include="Fizzler" Version="1.2.0" />
-    <PackageReference Include="Markdig.Signed" Version="0.18.1" />
+    <PackageReference Include="Markdig.Signed" Version="0.18.3" />
     <PackageReference Include="MathNet.Numerics" Version="4.9.0" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.3.0" />
     <PackageReference Include="MathNet.Symbolics" Version="0.20.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="1.1.0" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.0-rc.3" />
-    <PackageReference Include="MySqlConnector" Version="0.61.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.0" />
+    <PackageReference Include="MySqlConnector" Version="0.63.0" />
     <PackageReference Include="Svg" Version="3.0.102" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />

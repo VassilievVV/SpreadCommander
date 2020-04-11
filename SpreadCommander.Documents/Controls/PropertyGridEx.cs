@@ -222,5 +222,37 @@ namespace SpreadCommander.Documents.Controls
                 }
             }
         }
+
+        private void PropertyGridControl_CustomRecordCellEdit(object sender, GetCustomRowCellEditEventArgs e)
+        {
+            var rowType = e.Row.Properties.RowType;
+
+            if (rowType == typeof(bool?))
+                e.RepositoryItem = editorCheck;
+            else if (rowType == typeof(Color?))
+                e.RepositoryItem = editorColor;
+            else if (rowType == typeof(DateTime?))
+                e.RepositoryItem = editorDate;
+            else if (rowType == typeof(int?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(long?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(byte?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(short?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(decimal?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(float?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(double?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(ushort?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(uint?))
+                e.RepositoryItem = editorCalc;
+            else if (rowType == typeof(ulong?))
+                e.RepositoryItem = editorCalc;
+        }
     }
 }

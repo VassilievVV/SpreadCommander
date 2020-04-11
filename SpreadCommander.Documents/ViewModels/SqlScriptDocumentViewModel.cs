@@ -122,7 +122,7 @@ namespace SpreadCommander.Documents.ViewModels
         private SelectedDbConnection _SelectedDbConnection;
 
         public bool CanChangeConnection() => Connection == null || (Connection?.State == ConnectionState.Open || Connection?.State == ConnectionState.Closed);
-        public void ChangeConnection()
+        public async Task ChangeConnection()
         {
             var newConnection = DbConnectionEditor.SelectConnection();
             if (newConnection != null)
@@ -134,7 +134,7 @@ namespace SpreadCommander.Documents.ViewModels
 
                 try
                 {
-                    if (CheckConnection() == null)
+                    if (await CheckConnection() == null)
                     {
                         ConnectionName = null;
                         Connection     = null;
@@ -164,9 +164,9 @@ namespace SpreadCommander.Documents.ViewModels
         }
 
         public bool CanExecute() => _CancelScriptTokenSource == null;
-        public void Execute()
+        public async Task Execute()
         {
-            var connection = CheckConnection();
+            var connection = await CheckConnection();
             if (connection == null)
                 return;
 
@@ -217,11 +217,11 @@ namespace SpreadCommander.Documents.ViewModels
         */
         public bool CanShowQueryInfo() => true;
         
-        public async void ShowQueryInfo()
+        public async Task ShowQueryInfo()
         {
             await LoadInitialConnection(Callback?.ScriptText);
 
-            var connection = CheckConnection();
+            var connection = await CheckConnection();
             if (connection == null)
                 return;
 
@@ -427,14 +427,14 @@ namespace SpreadCommander.Documents.ViewModels
             RaiseCanExecuteChanged(() => Cancel());
         }
 
-        private DbConnection CheckConnection(bool silent = false)
+        private async Task<DbConnection> CheckConnection(bool silent = false)
         {
             if (Connection == null)
             {
-                if (!silent)
-                    ChangeConnection();
+                await LoadInitialConnection(Callback?.ScriptText);
 
-                return null;
+                if (!silent && Connection == null)
+                    await ChangeConnection();
             }
 
             var connection = Connection;
