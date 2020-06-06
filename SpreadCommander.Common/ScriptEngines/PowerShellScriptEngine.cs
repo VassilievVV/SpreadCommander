@@ -105,7 +105,7 @@ cd {Utils.QuoteString(Project.Current.ProjectPath, "\'")};";
                 {
                     //Write error
                     var cmdlet          = error.InvocationInfo?.InvocationName;
-                    var message         = error.Exception?.Message;
+                    var message         = GetExceptionMesage(error.Exception);
                     var positionMessage = error.InvocationInfo?.PositionMessage;
                     var categoryInfo    = error.CategoryInfo?.ToString();
                     var errorId         = error.FullyQualifiedErrorId?.ToString();
@@ -134,6 +134,22 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
 {e.InvocationInfo?.PositionMessage}";
 
                 _Host.UI.WriteErrorLine(errorMessage);
+            }
+
+            static string GetExceptionMesage(Exception ex)
+            {
+                var output = new StringBuilder();
+
+                while (ex != null)
+                {
+                    if (output.Length > 0)
+                        output.AppendLine();
+                    output.Append(ex.Message);
+
+                    ex = ex.InnerException;
+                }
+
+                return output.ToString();
             }
         }
 

@@ -14,6 +14,7 @@ using System.Windows.Forms;
 using DevExpress.XtraSpreadsheet.Model;
 using DevExpress.Utils;
 using DevExpress.Services;
+using DevExpress.Portable.Input;
 
 namespace SpreadCommander.Documents.Extensions
 {
@@ -88,7 +89,7 @@ namespace SpreadCommander.Documents.Extensions
             this.provider = provider;
         }
 
-        public override void OnMouseWheel(MouseEventArgs e)
+        public override void OnMouseWheel(PortableMouseEventArgs e)
         {
             if (Control.ModifierKeys.HasFlag(Keys.Shift))
             {

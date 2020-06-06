@@ -309,7 +309,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         protected virtual void LoadScriptFile(string fileName)
         {
-            Callback.LoadFromFile(fileName);
+            Callback?.LoadFromFile(fileName);
         }
 
         //If fileName == null - clear custom controls

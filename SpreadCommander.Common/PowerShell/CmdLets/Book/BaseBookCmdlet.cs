@@ -82,6 +82,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
                     if (code.StartsWith("#"))   //Fields starting with # - #FILE, #IMAGE, #LATEX etc. - calculate field and insert its content instead of field itself
                     {
+                        var codeName = Regex.Match(code, @"(?<=^#)[\w_\-]+").Value;
+
                         using var book        = new SCBook() 
                         { 
                             DefaultSpreadsheet                = this.HostSpreadsheet, 
@@ -101,7 +103,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                         if (helperRangeBytes != null && helperRangeBytes.Length > 0)
                         {
                             using var stream = new MemoryStream(helperRangeBytes);
-                            doc.InsertDocumentContent(fieldRange.Start, stream, DocumentFormat.OpenXml);
+                            var insRange = doc.InsertDocumentContent(fieldRange.Start, stream, DocumentFormat.OpenXml);
+                            
+                            //For FOOTNOTE and ENDNOTE - delete final line-break
+                            if (string.Compare(codeName, "footnote", true) == 0 || string.Compare(codeName, "endnote", true) == 0)
+                                doc.Delete(doc.CreateRange(insRange.End.ToInt() - 1, 1));
                         }
                     }
                     else

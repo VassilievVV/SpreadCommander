@@ -15,6 +15,7 @@ using System.Management.Automation;
 using System.Management.Automation.Runspaces;
 using System.Text;
 using System.Threading.Tasks;
+using SpreadCommander.Common.PowerShell.CmdLets.ImportExport;
 
 namespace SpreadCommander.Common.ScriptEngines
 {
@@ -137,7 +138,15 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(ConvertToObjectListCmdlet),
                 typeof(ConvertToVectorCmdlet),
                 typeof(ConvertToPivotCmdlet),
-                typeof(ConvertToUnPivotCmdlet)
+                typeof(ConvertToUnPivotCmdlet),
+
+                //ImportExport
+                typeof(ImportDelimitedText),
+                typeof(ImportFixedLengthText),
+                typeof(ExportDelimitedText),
+                typeof(ExportFixedLengthText),
+                typeof(ImportDbf),
+                typeof(ExportDbf)
 
 #if DEBUG
                 , typeof(TestCmdlet)

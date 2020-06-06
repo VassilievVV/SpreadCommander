@@ -79,17 +79,19 @@ namespace SpreadCommander.Common.Code.Exporters
         private static readonly Dictionary<SqlBulkCopy, BulkData> _BulkData = new Dictionary<SqlBulkCopy, BulkData>();
 
         public override void ExportDataTable(DbConnection connection, DbDataReader table,
-            string tableSchema, string tableName, CancellationToken cancellationToken)
+            string tableSchema, string tableName, bool needCreateTable,
+            CancellationToken cancellationToken)
         {
             if (cancellationToken.IsCancellationRequested)
                 return;
 
-            CreateTable(connection, table, tableSchema, tableName);
+            if (needCreateTable)
+                CreateTable(connection, table, tableSchema, tableName);
 
             if (cancellationToken.IsCancellationRequested)
                 return;
 
-            var count = table is IList ? ((IList)table).Count : -1;
+            var count = table is IList listTable ? listTable.Count : -1;
             if (count < 0 && table is IListSource listSource)
             {
                 var list = listSource.GetList();

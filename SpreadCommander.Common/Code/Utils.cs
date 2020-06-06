@@ -390,7 +390,6 @@ namespace SpreadCommander.Common.Code
             char Quote;
             char CloseQuote    = '\0';
             bool inQuotes      = false;
-            bool firstPartChar = true;
 
             Start = 0;
 
@@ -410,7 +409,7 @@ namespace SpreadCommander.Common.Code
                     case '`':
                     case '[':
                     case ']':
-                        if (firstPartChar && (options & SplitStringOptions.EnableQuotes) > 0)
+                        if (/*firstPartChar &&*/ (options & SplitStringOptions.EnableQuotes) > 0)
                         {
                             if (inQuotes)
                             {
@@ -423,17 +422,15 @@ namespace SpreadCommander.Common.Code
                             {
                                 if (str[i] != ']')
                                 {
-                                    Quote = str[i];
+                                    Quote      = str[i];
                                     CloseQuote = Quote != '[' ? Quote : ']';
-                                    inQuotes = true;
+                                    inQuotes   = true;
                                 }
                                 break;
                             }
                         }
                         break;
                 }
-
-                firstPartChar = false;
 
                 if (i < str.Length && str[i] == Delimiter)
                 {
@@ -444,9 +441,9 @@ namespace SpreadCommander.Common.Code
                         if ((options & SplitStringOptions.EnableQuotes) > 0 && CloseQuote != '\0')
                             value = value.Replace(string.Concat(CloseQuote, CloseQuote), CloseQuote.ToString());
                         value = ProcessSplitStringOptions(value, options);
+                        value = UnquoteString(value);
                         result.Add(value);
                         Start = i + 1;
-                        firstPartChar = true;
                     }
                 }
 
@@ -461,6 +458,7 @@ namespace SpreadCommander.Common.Code
                 if ((options & SplitStringOptions.EnableQuotes) > 0 && CloseQuote != '\0')
                     value = value.Replace(string.Concat(CloseQuote, CloseQuote), CloseQuote.ToString());
                 value = ProcessSplitStringOptions(value, options);
+                value = UnquoteString(value);
                 result.Add(value);
             }
 
@@ -696,8 +694,8 @@ namespace SpreadCommander.Common.Code
             XmlNode result = elRoot.FirstChild;
             while (result != null)
             {
-                if (result is XmlElement && result.Name == nodeName)
-                    return (XmlElement)result;
+                if (result is XmlElement element && result.Name == nodeName)
+                    return element;
 
                 result = result.NextSibling;
             }
@@ -731,8 +729,8 @@ namespace SpreadCommander.Common.Code
             XmlNode elResult = elProperties.FirstChild;
             while (elResult != null)
             {
-                if (elResult is XmlElement && elResult.Name == propName)
-                    return ((XmlElement)elResult).InnerText;
+                if (elResult is XmlElement element && elResult.Name == propName)
+                    return element.InnerText;
 
                 elResult = elResult.NextSibling;
             }
@@ -1303,7 +1301,7 @@ namespace SpreadCommander.Common.Code
 
             foreach (object k in hash.Keys)
             {
-                if (k != null && k is string && string.Compare((string)k, key, true) == 0)
+                if (k != null && k is string str && string.Compare(str, key, true) == 0)
                     return true;
             }
 
@@ -1582,8 +1580,8 @@ namespace SpreadCommander.Common.Code
             Control parent = control.Parent;
             while (parent != null)
             {
-                if (parent is T)
-                    return (T)parent;
+                if (parent is T t)
+                    return t;
 
                 parent = parent.Parent;
             }
@@ -1727,37 +1725,42 @@ namespace SpreadCommander.Common.Code
                 if (value == null || value == DBNull.Value)
                     return defaultValue;
 
-                if (typeof(T) == value.GetType())
+                var valueType = value.GetType();
+                var nullableType = Nullable.GetUnderlyingType(valueType);
+                if (nullableType != null)
+                    valueType = nullableType;
+
+                if (valueType == value.GetType())
                     return (T)value;
 
-                if (typeof(T).IsEnum)
+                if (valueType.IsEnum)
                 {
                     if (value is string)
-                        return (T)Enum.Parse(typeof(T), value as string);
+                        return (T)Enum.Parse(valueType, value as string);
                     else
-                        return (T)Enum.ToObject(typeof(T), value);
+                        return (T)Enum.ToObject(valueType, value);
                 }
 
-                if (!typeof(T).IsInterface && typeof(T).IsGenericType)
+                if (!valueType.IsInterface && valueType.IsGenericType)
                 {
-                    Type innerType    = typeof(T).GetGenericArguments()[0];
+                    Type innerType    = valueType.GetGenericArguments()[0];
                     object innerValue = ChangeType(value, innerType);
-                    return (T)Activator.CreateInstance(typeof(T), new object[] { innerValue });
+                    return (T)Activator.CreateInstance(valueType, new object[] { innerValue });
                 }
 
-                if (value is string && typeof(T) == typeof(Guid))
+                if (value is string && valueType == typeof(Guid))
                     return (T)(object)new Guid(value as string);
 
-                if (value is string && typeof(T) == typeof(Version))
+                if (value is string && valueType == typeof(Version))
                     return (T)(object)new Version(value as string);
 
-                if (value is string && typeof(T) == typeof(Color))
+                if (value is string && valueType == typeof(Color))
                     return (T)(object)ColorExtensions.FromHtmlColor(value as string);
 
                 if (!(value is IConvertible))
                     return (T)value;
 
-                return (T)Convert.ChangeType(value, typeof(T), CultureInfo.InvariantCulture);
+                return (T)Convert.ChangeType(value, valueType, CultureInfo.InvariantCulture);
             }
             catch (Exception)
             {
@@ -1771,6 +1774,10 @@ namespace SpreadCommander.Common.Code
             {
                 if (value == null || value == DBNull.Value)
                     return defaultValue;
+
+                var nullableType = Nullable.GetUnderlyingType(type);
+                if (nullableType != null)
+                    type = nullableType;
 
                 if (type == value.GetType())
                     return value;
@@ -1799,9 +1806,9 @@ namespace SpreadCommander.Common.Code
                 if (!(value is IConvertible))
                     return value;
 
-                if (value is string && type == typeof(Color))
+                if (value is string str && type == typeof(Color))
                 {
-                    if (Enum.TryParse<KnownColor>((string)value, out KnownColor knownColor))
+                    if (Enum.TryParse<KnownColor>(str, out KnownColor knownColor))
                         return (object)Color.FromKnownColor(knownColor);
                     else
                         return defaultValue;
@@ -2036,8 +2043,8 @@ namespace SpreadCommander.Common.Code
             else
             {
                 ITypedList list = null;
-                if (dataSource.BaseObject is ITypedList)
-                    list = (ITypedList)dataSource.BaseObject;
+                if (dataSource.BaseObject is ITypedList typedList)
+                    list = typedList;
                 else if (dataSource.BaseObject is IListSource listSource)
                     list = listSource.GetList() as ITypedList;
 

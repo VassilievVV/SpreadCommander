@@ -101,6 +101,7 @@ namespace SpreadCommander.Common.Book
                     switch (ext)
                     {
 #pragma warning disable CRRSP01 // A misspelled word has been found
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "markdown":
                         case "mdown":
                         case "md":
@@ -111,6 +112,7 @@ namespace SpreadCommander.Common.Book
                         default:
                             server.LoadDocument(fileName);
                             break;
+#pragma warning restore CRRSP06 // A misspelled word has been found
 #pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }

@@ -119,6 +119,7 @@ namespace SpreadCommander.Documents.Controls
 			this.syntaxEditor.SplitviewV = -4;
 			this.syntaxEditor.TabGuideColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(233)))), ((int)(((byte)(233)))));
 			this.syntaxEditor.TabIndex = 0;
+			this.syntaxEditor.TabsToSpaces = true;
 			this.syntaxEditor.WhitespaceColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
 			// 
 			// popupMenu

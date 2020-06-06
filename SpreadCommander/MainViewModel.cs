@@ -69,6 +69,7 @@ namespace SpreadCommander
         {
             Messenger.Default.Unregister<ConnectionListChangedMessage>(this);
             Messenger.Default.Unregister<PSCmdletListChangedMessage>(this);
+            Messenger.Default.Unregister<ControlModifiedMessage>(this);
         }
 
         [Command(false)]

@@ -73,7 +73,7 @@ namespace SpreadCommander.Documents.Dialogs
 ");
             output.Append($@"OS version: 
 -----------
-{Environment.OSVersion.ToString()}
+{Environment.OSVersion}
 
 ");
             output.Append($@"User domain name: 
@@ -83,7 +83,7 @@ namespace SpreadCommander.Documents.Dialogs
 ");
             output.Append($@"Working set: 
 ------------
-{Environment.WorkingSet.ToString()}
+{Environment.WorkingSet}
 
 ");
 

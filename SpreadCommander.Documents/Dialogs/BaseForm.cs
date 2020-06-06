@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DevExpress.XtraEditors;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Documents.Extensions;
 
@@ -25,6 +26,8 @@ namespace SpreadCommander.Documents.Dialogs
 
             base.OnLoad(e);
         }
+
+    protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
     }
 
     public class BaseRibbonForm : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -39,5 +42,7 @@ namespace SpreadCommander.Documents.Dialogs
 
             base.OnLoad(e);
         }
+
+    protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
     }
 }

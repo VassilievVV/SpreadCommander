@@ -50,6 +50,7 @@ namespace SpreadCommander.Documents.Viewers
             Utils.StartProfile("GridViewer");
 
             InitializeComponent();
+            
             GridUtils.InitializeGridView(viewTable);
 
             //Allow show editors
@@ -149,7 +150,7 @@ namespace SpreadCommander.Documents.Viewers
             var formatConditions = new List<ConsoleCommands.BaseCommand>();
             foreach (var propKey in dataTable.ExtendedProperties.Keys)
             {
-                if (propKey is string && ((string)propKey).StartsWith("Format", StringComparison.InvariantCultureIgnoreCase))
+                if (propKey is string str && str.StartsWith("Format", StringComparison.InvariantCultureIgnoreCase))
                 {
                     var propValue = dataTable.ExtendedProperties[propKey];
                     if (propValue != null)
@@ -164,7 +165,7 @@ namespace SpreadCommander.Documents.Viewers
             var computedColumns = new List<ConsoleCommands.ComputedColumn>();
             foreach (var propKey in dataTable.ExtendedProperties.Keys)
             {
-                if (propKey is string && ((string)propKey).StartsWith("ComputedColumn", StringComparison.InvariantCultureIgnoreCase))
+                if (propKey is string str && str.StartsWith("ComputedColumn", StringComparison.InvariantCultureIgnoreCase))
                 {
                     var propValue = dataTable.ExtendedProperties[propKey];
                     if (propValue != null)
@@ -541,10 +542,10 @@ namespace SpreadCommander.Documents.Viewers
                 e.Appearance.ForeColor = AreColorsNear(viewTable.Appearance.Row.ForeColor, Color.Gray) ? Color.LightGray : Color.Gray;
                 e.DisplayText = "<NULL>";
             }
-            else if (e.CellValue is byte[])
+            else if (e.CellValue is byte[] v)
             {
                 e.Appearance.ForeColor = AreColorsNear(viewTable.Appearance.Row.ForeColor, Color.Gray) ? Color.LightGray : Color.Gray;
-                e.DisplayText = GetBlobDisplayText((byte[])e.CellValue);
+                e.DisplayText = GetBlobDisplayText(v);
             }
 
 
@@ -586,25 +587,25 @@ namespace SpreadCommander.Documents.Viewers
                 return;
 
             object data = ((ButtonEdit)sender).EditValue;
-            if (data != null && data != DBNull.Value && data is byte[])
+            if (data != null && data != DBNull.Value && data is byte[] v)
             {
-                using var editor = new BlobEditor((byte[])data);
+                using var editor = new BlobEditor(v);
                 editor.ShowDialog(this);
             }
         }
 
         private void RepositoryItemBlobEditor_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
-            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[])
-                e.DisplayText = GetBlobDisplayText((byte[])e.Value);
+            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[] v)
+                e.DisplayText = GetBlobDisplayText(v);
             else
                 e.DisplayText = GetBlobDisplayText(null);
         }
 
         private void RepositoryItemBlobEditor_FormatEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
         {
-            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[])
-                e.Value = GetBlobDisplayText((byte[])e.Value);
+            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[] v)
+                e.Value = GetBlobDisplayText(v);
             else
                 e.Value = GetBlobDisplayText(null);
         }

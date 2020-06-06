@@ -21,6 +21,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map.MapImageLayerContext
             if (Kind.HasValue)
                 provider.Kind = Kind.Value;
 
+            provider.WebRequest += (s, e) =>
+            {
+                e.UserAgent = "SpreadCommander";
+            };
+
             return provider;
         }
     }

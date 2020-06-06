@@ -195,14 +195,15 @@ namespace SpreadCommander.Common.Code.Exporters
         }
 
         public virtual void ExportDataTable(DbConnection connection, DbDataReader table,
-            string tableSchema, string tableName, CancellationToken cancellationToken)
+            string tableSchema, string tableName, bool needCreateTable, CancellationToken cancellationToken)
         {
             if (cancellationToken.IsCancellationRequested)
                 return;
 
             int progressInterval = BatchSize ?? 100;
 
-            CreateTable(connection, table, tableSchema, tableName);
+            if (needCreateTable)
+                CreateTable(connection, table, tableSchema, tableName);
 
             if (cancellationToken.IsCancellationRequested)
                 return;

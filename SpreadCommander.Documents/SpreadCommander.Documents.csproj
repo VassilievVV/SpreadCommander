@@ -38,11 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="19.2.7" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="19.2.7" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="19.2.7-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="19.2.7-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.Dashboard" Version="19.2.7" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="20.1.4" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="20.1.4" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="20.1.4-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="20.1.4-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Dashboard" Version="20.1.4" />
   </ItemGroup>
 
   <ItemGroup>

@@ -307,7 +307,7 @@ namespace SpreadCommander.Documents.Dialogs
                             {
                                 var dataTable = _ExportSource.GetDataTable(table.TableName);
                                 if (dataTable != null)
-                                    exporter.ExportDataTable(conn, dataTable, null, prefix + table.NewTableName, _CancelScriptTokenSource.Token);
+                                    exporter.ExportDataTable(conn, dataTable, null, prefix + table.NewTableName, true, _CancelScriptTokenSource.Token);
                                 else
                                     throw new Exception("Cannot load source table");
 

@@ -151,6 +151,12 @@ namespace SpreadCommander.Common.Book
                 case "spreadpivot":
                     result = AddSpreadPivot(arguments);
                     break;
+                case "footnote":
+                    result = AddFootNote(arguments);
+                    break;
+                case "endnote":
+                    result = AddEndNote(arguments);
+                    break;
                 //Do not allow yet to execute scripts from Book for security reasons
                 /*
                 case "script":

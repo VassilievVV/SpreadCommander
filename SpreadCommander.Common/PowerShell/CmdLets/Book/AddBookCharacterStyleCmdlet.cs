@@ -26,6 +26,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         [Parameter(HelpMessage = "Style form which the current style inherits")]
         public string Parent { get; set; }
 
+        [Parameter(HelpMessage = "Whether the style is primary for the document.")]
+        public SwitchParameter Primary { get; set; }
+
 
         protected override void DoProcessRecord(Document book)
         {
@@ -60,6 +63,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     var parent = book.CharacterStyles[Parent] ?? throw new Exception($"Character style '{Parent}' does not exist.");
                     style.Parent = parent;
                 }
+
+                style.Primary = Primary;
 
                 base.SetCharacterProperties(style);
 

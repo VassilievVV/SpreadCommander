@@ -280,6 +280,7 @@ namespace SpreadCommander.Common.Book
                     switch (prop.Key.ToLower())
                     {
 #pragma warning disable CRRSP01 // A misspelled word has been found
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "rebuild":
                         case "recalculate":
                         case "recalc":
@@ -300,6 +301,7 @@ namespace SpreadCommander.Common.Book
                         case "scaley":
                             scaleY = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                             break;
+#pragma warning restore CRRSP06 // A misspelled word has been found
 #pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
@@ -457,6 +459,7 @@ namespace SpreadCommander.Common.Book
                     switch (prop.Key.ToLower())
                     {
 #pragma warning disable CRRSP01 // A misspelled word has been found
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "rebuild":
                         case "recalculate":
                         case "recalc":
@@ -471,6 +474,7 @@ namespace SpreadCommander.Common.Book
                                 valueRecalc = bool.TrueString;
                             dataOnly = bool.Parse(valueDataOnly);
                             break;
+#pragma warning restore CRRSP06 // A misspelled word has been found
 #pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }

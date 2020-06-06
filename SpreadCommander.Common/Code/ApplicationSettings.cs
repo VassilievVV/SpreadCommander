@@ -240,5 +240,11 @@ namespace SpreadCommander.Common.Code
                 _MySqlServerSettings = value;
             }
         }
+
+        [DataMember()]
+        [Category("Optimization")]
+        [DisplayName("Optimize AMD math")]
+        [Description("Whether to optimize MKL for AMD CPUs")]
+        public bool OptimizeAmdMath { get; set; }
     }
 }

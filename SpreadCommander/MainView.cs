@@ -108,6 +108,8 @@ namespace SpreadCommander
             get => Ribbon.Visible;
             set { }	//Do nothing, do not allow make ribbon invisible
         }
+        
+        protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
 
         private void InitializeBindings()
         {
@@ -229,14 +231,11 @@ namespace SpreadCommander
             GridFunctionFactory.UnregisterFunctions();
         }
 
-        //This even can be removed and program will continue to work. 
-        //But this way "Please wait" dialog is shown automatically.
-        private void ViewDocuments_QueryControl(object sender, DevExpress.XtraBars.Docking2010.Views.QueryControlEventArgs e)
+        private void ViewDocuments_DocumentAdded(object sender, DocumentEventArgs e)
         {
-            e.Control = ViewLocator.DefaultLocator.Resolve(e.Document.ControlName) as Control;
-            if (e.Control is IImageHolder imageHolder)
+            if (e.Document.Control is IImageHolder imageHolder)
             {
-                e.Document.ImageOptions.SvgImage     = imageHolder.GetControlImage();
+                e.Document.ImageOptions.SvgImage = imageHolder.GetControlImage();
                 e.Document.ImageOptions.SvgImageSize = new Size(16, 16);
             }
         }

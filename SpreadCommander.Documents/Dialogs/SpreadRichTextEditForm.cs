@@ -8,7 +8,7 @@ using SpreadCommander.Common.Code;
 
 namespace SpreadCommander.Documents.Dialogs
 {
-    public partial class SpreadRichTextEditForm : DevExpress.XtraEditors.XtraForm
+    public partial class SpreadRichTextEditForm : BaseRibbonForm
     {
         private readonly Cell cell;
 

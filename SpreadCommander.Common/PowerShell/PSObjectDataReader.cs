@@ -432,8 +432,8 @@ namespace SpreadCommander.Common.Code
         public override Guid GetGuid(int ordinal)
         {
             object value = this[ordinal];
-            if (value is Guid)
-                return (Guid)value;
+            if (value is Guid guid)
+                return guid;
 
             var strValue = Convert.ToString(value);
             var result = Guid.Parse(strValue);

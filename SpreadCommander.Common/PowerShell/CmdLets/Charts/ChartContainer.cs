@@ -82,11 +82,21 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         {
             return null;
         }
+
+        void IChartContainer.ShowErrorMessage(string message, string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        Point IChartContainer.PointToScreen(Point point)
+        {
+            throw new NotImplementedException();
+        }
         #endregion
-        
+
         #region ICommandAwareControl
-        event EventHandler ICommandAwareControl<ChartCommandId>.BeforeDispose { add { } remove { } }
-        event EventHandler ICommandAwareControl<ChartCommandId>.UpdateUI { add { UpdateUI += value; } remove { UpdateUI -= value; } }
+        //event EventHandler ICommandAwareControl<ChartCommandId>.BeforeDispose { add { } remove { } }
+        //event EventHandler ICommandAwareControl<ChartCommandId>.UpdateUI { add { UpdateUI += value; } remove { UpdateUI -= value; } }
         #endregion
         
         #region IRangeControlClient
@@ -115,7 +125,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         object IRangeControlClient.RulerDelta           => RangeControlClient.RulerDelta;
         double IRangeControlClient.NormalizedRulerDelta => RangeControlClient.NormalizedRulerDelta;
 
-        bool IRangeControlClient.SupportOrientation(Orientation orientation) =>
+        bool IRangeControlClient.SupportOrientation(RangeControlClientOrientation orientation) =>
             RangeControlClient.SupportOrientation(orientation);
 
         object IRangeControlClient.GetValue(double normalizedValue) =>
@@ -207,11 +217,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         {
         }
 
-        public void ShowErrorMessage(string message, string title)
-        {
-            throw new NotImplementedException();
-        }
-
         public void RaiseRangeControlRangeChanged(object minValue, object maxValue, bool invalidate)
         {
             rangeControlClient.RaiseRangeControlRangeChanged(minValue, maxValue, invalidate);
@@ -222,25 +227,25 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
             UpdateUI?.Invoke(this, new EventArgs());
         }
 
-        public object GetService(Type serviceType)
-        {
-            return null;
-        }
+#pragma warning disable IDE0060 // Remove unused parameter
+        public object GetService(Type serviceType) => null;
+#pragma warning restore IDE0060 // Remove unused parameter
 
         public void CommitImeContent()
         {
         }
 
-        public Command CreateCommand(ChartCommandId id)
-        {
-            return null;
-        }
+#pragma warning disable IDE0060 // Remove unused parameter
+        public Command CreateCommand(ChartCommandId id) => null;
+#pragma warning restore IDE0060 // Remove unused parameter
 
         public void Focus()
         {
         }
 
-        public bool HandleException(Exception e) { return false; }
+#pragma warning disable IDE0060 // Remove unused parameter
+        public bool HandleException(Exception e) => false;
+#pragma warning restore IDE0060 // Remove unused parameter
 
         #region IChartDataProvider 
         object IChartDataProvider.ParentDataSource      => null;
@@ -266,10 +271,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         void IChartDataProvider.OnPivotGridSeriesPointsExcluded(PivotGridSeriesPointsExcludedEventArgs e)
         {
         }
+
         #endregion
 
         #region IChartRenderProvider 
-        IPrintable IChartRenderProvider.Printable => null;
         object IChartRenderProvider.LookAndFeel   => UserLookAndFeel.Default; 
 
         public object DataAdapter { get => null; set { } }
@@ -281,6 +286,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         public SizeF DpiScaleFactor { get; set; } = new SizeF(1f, 1f);
 
+        public IBasePrintable Printable => throw new NotImplementedException();
+
         void IChartRenderProvider.Invalidate()
         {
         }
@@ -289,15 +296,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         {
         }
 
-        Bitmap IChartRenderProvider.LoadBitmap(string url)
-        {
-            return null;
-        }
+        Bitmap IChartRenderProvider.LoadBitmap(string url) => null;
 
-        ComponentExporter IChartRenderProvider.CreateComponentPrinter(IPrintable iPrintable)
-        {
-            return null;
-        }
+        ComponentExporter IChartRenderProvider.CreateComponentPrinter(IBasePrintable iPrintable) => null;
         #endregion
 
 

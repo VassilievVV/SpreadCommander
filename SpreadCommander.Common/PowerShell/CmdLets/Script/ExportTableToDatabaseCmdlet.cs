@@ -63,6 +63,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "SQL Script to execute after exporting data.")]
         public string PostScript { get; set; }
 
+        [Parameter(HelpMessage = "SQL Script to create table. Optional, use when need to have specific table schema.")]
+        public string SqlCreateTable { get; set; }
+
+        [Parameter(HelpMessage = "If set - do not create new table to export data into.")]
+        public SwitchParameter UseExistingTable { get; set; }
+
 
         private readonly List<PSObject> _Output = new List<PSObject>();
 
@@ -111,8 +117,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 conn.Open();
 
             try
-            {
-               
+            {               
                 int activityID = 0;
 
                 if (ReportProgress)
@@ -128,7 +133,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                     WriteProgress(progress);
                 }
 
-                if (!String.IsNullOrWhiteSpace(PreScript))
+                if (!string.IsNullOrWhiteSpace(PreScript))
                     ExecuteScript(conn, PreScript);
 
                 var exporter = DbExporter.GetDbExporter(conn.FactoryInvariantName);
@@ -137,6 +142,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
                 if (Replace)
                     exporter.DropTable(conn.DbConnection, TableSchema, TableName);
+
+                if (!string.IsNullOrWhiteSpace(SqlCreateTable))
+                    ExecuteScript(conn, SqlCreateTable);
 
                 if (BatchSize.HasValue)
                     exporter.BatchSize = BatchSize.Value;
@@ -159,7 +167,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
                 try
                 {
-                    exporter.ExportDataTable(conn.DbConnection, dataReader, TableSchema, TableName, CancellationToken.None);
+                    bool needCreateTable = !UseExistingTable && string.IsNullOrWhiteSpace(SqlCreateTable);
+                    exporter.ExportDataTable(conn.DbConnection, dataReader, 
+                        TableSchema, TableName, needCreateTable, CancellationToken.None);
                 }
                 finally
                 {

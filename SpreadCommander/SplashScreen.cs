@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.LookAndFeel;
 using DevExpress.Skins;
+using DevExpress.Utils.Frames;
 using DevExpress.XtraSplashScreen;
 using SpreadCommander.Common.Extensions;
 
@@ -36,11 +37,7 @@ namespace SpreadCommander
 
         private void UpdateColors()
         {
-            var skin      = CommonSkins.GetSkin(UserLookAndFeel.Default);
-            var backColor = skin.TranslateColor(SystemColors.Window);
-
-            bool isSkinDark = backColor.IsDark();
-
+            bool isSkinDark = FrameHelper.IsDarkSkin(UserLookAndFeel.Default);
             labelSpreadCommander.ForeColor = isSkinDark ? Color.MidnightBlue : Color.Ivory;
         }
     }

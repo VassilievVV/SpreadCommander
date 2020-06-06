@@ -23,20 +23,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 {
     public class BaseChartCmdlet: BaseBookCmdlet
     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-        /*
-        XY-Diagram 
-        XY-Diagram 3D 
-        Swift Plot Diagram 
-        Simple Diagram 
-        Simple Diagram 3D 
-        Funnel Diagram 3D 
-        Radar and Polar Diagrams 
-        Gantt Diagram
-        Template diagram (load template from .scchart file)
-        */
-#pragma warning restore CRRSP01 // A misspelled word has been found
-
         protected virtual Bitmap PaintChart(Chart chart, int width = 2000, int height = 1200, int? dpi = null)
         {
             if (dpi == null || dpi == 0)

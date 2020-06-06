@@ -17,6 +17,7 @@ using Alsing.Windows.Forms.Controls.EditView;
 using Alsing.Windows.Forms.Controls.SyntaxBox;
 using Alsing.Windows.Forms.Controls.SplitView;
 using Alsing.Windows.Forms.Classes;
+using DevExpress.Utils.Frames;
 
 namespace SpreadCommander.Documents.Controls
 {
@@ -156,7 +157,7 @@ namespace SpreadCommander.Documents.Controls
             BackColor = backColor;
             ForeColor = foreColor;
 
-            bool isSkinDark = backColor.IsDark();
+            bool isSkinDark = FrameHelper.IsDarkSkin(UserLookAndFeel.Default);
 
             if (syntaxDefinition != null)
             {

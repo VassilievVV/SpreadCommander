@@ -204,7 +204,7 @@
             this.viewTable.OptionsClipboard.PasteMode = DevExpress.Export.PasteMode.None;
             this.viewTable.OptionsDetail.AllowExpandEmptyDetails = true;
             this.viewTable.OptionsDetail.AllowOnlyOneMasterRowExpanded = true;
-            this.viewTable.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Embedded;
+            this.viewTable.OptionsDetail.DetailMode = DevExpress.XtraGrid.Views.Grid.DetailMode.Classic;
             this.viewTable.OptionsFilter.ColumnFilterPopupMode = DevExpress.XtraGrid.Columns.ColumnFilterPopupMode.Excel;
             this.viewTable.OptionsFilter.DefaultFilterEditorView = DevExpress.XtraEditors.FilterEditorViewMode.VisualAndText;
             this.viewTable.OptionsFilter.UseNewCustomFilterDialog = true;

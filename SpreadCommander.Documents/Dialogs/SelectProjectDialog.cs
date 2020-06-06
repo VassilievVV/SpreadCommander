@@ -19,7 +19,7 @@ using System.Diagnostics;
 
 namespace SpreadCommander.Documents.Dialogs
 {
-    public partial class SelectProjectDialog : DevExpress.XtraEditors.XtraForm
+    public partial class SelectProjectDialog : BaseForm
     {
         private enum LibraryKind { Favorites, Recent, Library, Examples }
 

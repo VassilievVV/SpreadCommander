@@ -18,6 +18,12 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
-### Version 0.7.1
+### Version 0.8-beta
+- Third-party components (*DevExpress*, *SQLite* etc) are updated to new versions.
+- Added import-export to-from text files, both delimited and fixed-length, and DBF files. New cmdlets are *Import-DelimitedText*, *Export-DelimitedText*, *Import-FixedLengthText*, *Export-FixedLengthText*, *Import-DBF*, *Export-DBF*. Look sample *SQL* for examples.
+- Added *foonotes* and *endnotes* to output into **Book**.
+- Minor fixes and enhancements.
+
+### Version 0.7.1-beta
 - SQL document: processing tag #connection is fixed;
 - Third-party components (*PowerShell*, *DevExpress*) are updated to new versions.

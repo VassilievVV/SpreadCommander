@@ -29,6 +29,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         [Parameter(HelpMessage = "Style form which the current style inherits")]
         public string Parent { get; set; }
 
+        [Parameter(HelpMessage = "Whether the style is primary for the document.")]
+        public SwitchParameter Primary { get; set; }
+
 
         protected override void DoProcessRecord(Document book)
         {
@@ -69,6 +72,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     var nextStyle = book.ParagraphStyles[NextStyle] ?? throw new Exception($"Paragraph style '{NextStyle}' does not exist.");
                     style.NextStyle = nextStyle;
                 }
+
+                style.Primary = Primary;
 
                 base.SetParagraphProperties(style);
 

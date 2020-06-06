@@ -315,23 +315,22 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                     if (!(ChartContext.Chart.Diagram is XYDiagram diagramXY))
                         throw new Exception("Panes are available only in 2D XY charts.");
 
-                    using (var anchor = new PaneAnchorPoint())
+                    var anchor = new PaneAnchorPoint();
+
+                    if (!string.IsNullOrWhiteSpace(AnchorDockPane))
                     {
-                        if (!string.IsNullOrWhiteSpace(AnchorDockPane))
-                        {
-                            var pane = diagramXY.Panes[AnchorDockPane];
-                            anchor.Pane = pane ?? throw new Exception($"Cannot find pane '{AnchorDockPane}'.");
-                        }
-
-                        var axisX = !string.IsNullOrWhiteSpace(AxisX) ? diagramXY.FindAxisXByName(AxisX) : diagramXY.AxisX;
-                        var axisY = !string.IsNullOrWhiteSpace(AxisY) ? diagramXY.FindAxisYByName(AxisY) : diagramXY.AxisY;
-
-                        anchor.AxisXCoordinate.Axis = axisX;
-                        anchor.AxisXCoordinate.AxisValue = ValueX;
-
-                        anchor.AxisYCoordinate.Axis = axisY;
-                        anchor.AxisYCoordinate.AxisValue = ValueY;
+                        var pane = diagramXY.Panes[AnchorDockPane];
+                        anchor.Pane = pane ?? throw new Exception($"Cannot find pane '{AnchorDockPane}'.");
                     }
+
+                    var axisX = !string.IsNullOrWhiteSpace(AxisX) ? diagramXY.FindAxisXByName(AxisX) : diagramXY.AxisX;
+                    var axisY = !string.IsNullOrWhiteSpace(AxisY) ? diagramXY.FindAxisYByName(AxisY) : diagramXY.AxisY;
+
+                    anchor.AxisXCoordinate.Axis = axisX;
+                    anchor.AxisXCoordinate.AxisValue = ValueX;
+
+                    anchor.AxisYCoordinate.Axis = axisY;
+                    anchor.AxisYCoordinate.AxisValue = ValueY;
                     break;
             }
         }

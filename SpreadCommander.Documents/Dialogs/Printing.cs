@@ -11,6 +11,7 @@ using DevExpress.XtraPrinting.Native;
 using System.Drawing;
 using DevExpress.XtraEditors;
 using SpreadCommander.Common.Code;
+using DevExpress.Utils.Extensions;
 
 namespace SpreadCommander.Documents.Dialogs
 {
@@ -88,7 +89,7 @@ namespace SpreadCommander.Documents.Dialogs
         public static void PrintText(IWin32Window owner, string text)
         {
             using RichTextBox box = new RichTextBox() { Visible = false };
-            PSNativeMethods.ForceCreateHandle(box);
+            box.CreateControl();
             box.Text = text;
 
             Printing.PrintControl(owner, box);
@@ -97,7 +98,7 @@ namespace SpreadCommander.Documents.Dialogs
         public static void PrintRtfText(IWin32Window owner, string rtf)
         {
             using RichTextBox box = new RichTextBox() { Visible = false };
-            PSNativeMethods.ForceCreateHandle(box);
+            box.CreateControl();
             box.Rtf = rtf;
 
             Printing.PrintControl(owner, box);
@@ -138,7 +139,7 @@ namespace SpreadCommander.Documents.Dialogs
         public static void ExecutePrintCommandForText(string text, PrintingSystemCommand command)
         {
             using RichTextBox box = new RichTextBox() { Visible = false };
-            PSNativeMethods.ForceCreateHandle(box);
+            box.CreateControl();
             box.Text = text;
 
             ExecutePrintCommand(box, command);
@@ -147,7 +148,7 @@ namespace SpreadCommander.Documents.Dialogs
         public static void ExecutePrintCommandForRtf(string rtf, PrintingSystemCommand command)
         {
             using RichTextBox box = new RichTextBox() { Visible = false };
-            PSNativeMethods.ForceCreateHandle(box);
+            box.CreateControl();
             box.Rtf = rtf;
 
             ExecutePrintCommand(box, command);
