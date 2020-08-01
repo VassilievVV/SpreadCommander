@@ -1,6 +1,6 @@
 ﻿#pragma warning disable CRR0047
 
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -26,7 +26,8 @@ namespace SpreadCommander.Common.Code
         public const string OracleFactoryName         = "System.Data.OracleClient";
         public const string OleDbFactoryName          = "System.Data.OleDb";
         public const string OdbcFactoryName           = "System.Data.Odbc";
-        public const string MySqlFactoryName          = "MySql.Data.MySqlClient";
+        public const string MySqlFactoryName          = "MySqlConnector";
+        public const string MySqlFactoryName_Old      = "MySql.Data.MySqlClient";
         public const string SQLiteFactoryName         = "System.Data.SQLite";
 
 
@@ -55,9 +56,10 @@ namespace SpreadCommander.Common.Code
             else if (string.Compare(InvariantName, OdbcFactoryName, true) == 0)
                 return new ConnectionFactory("ODBC", OdbcFactoryName, "ODBC connection",
                     typeof(System.Data.Odbc.OdbcConnection), typeof(System.Data.Odbc.OdbcConnectionStringBuilder));
-            else if (string.Compare(InvariantName, MySqlFactoryName, true) == 0)
+            else if (string.Compare(InvariantName, MySqlFactoryName, true) == 0 ||
+                string.Compare(InvariantName, MySqlFactoryName_Old, true) == 0)
                 return new ConnectionFactory("MySQL", MySqlFactoryName, "MySQL database",
-                    typeof(MySql.Data.MySqlClient.MySqlConnection), typeof(MySql.Data.MySqlClient.MySqlConnectionStringBuilder));
+                    typeof(MySqlConnector.MySqlConnection), typeof(MySqlConnector.MySqlConnectionStringBuilder));
             else if (string.Compare(InvariantName, SQLiteFactoryName, true) == 0)
                 return new ConnectionFactory("SQLite", SQLiteFactoryName, "SQLite database",
                     typeof(SQLiteConnection), typeof(SQLiteConnectionStringBuilder));
@@ -84,9 +86,9 @@ namespace SpreadCommander.Common.Code
             else if (connection is System.Data.Odbc.OdbcConnection)
                 return new ConnectionFactory("ODBC", OdbcFactoryName, "ODBC connection",
                     typeof(System.Data.Odbc.OdbcConnection), typeof(System.Data.Odbc.OdbcConnectionStringBuilder));
-            else if (connection is MySql.Data.MySqlClient.MySqlConnection)
+            else if (connection is MySqlConnector.MySqlConnection)
                 return new ConnectionFactory("MySQL", MySqlFactoryName, "MySQL database",
-                    typeof(MySql.Data.MySqlClient.MySqlConnection), typeof(MySql.Data.MySqlClient.MySqlConnectionStringBuilder));
+                    typeof(MySqlConnector.MySqlConnection), typeof(MySqlConnector.MySqlConnectionStringBuilder));
             else if (connection is SQLiteConnection)
                 return new ConnectionFactory("SQLite", SQLiteFactoryName, "SQLite database",
                     typeof(SQLiteConnection), typeof(SQLiteConnectionStringBuilder));

@@ -36,6 +36,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(Mandatory = true, Position = 1, HelpMessage = "Name of the table to export data into")]
         public string TableName { get; set; }
 
+        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
+        public string[] SelectColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -99,7 +102,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             if (string.IsNullOrWhiteSpace(ConnectionName))
                 throw new Exception("ConnectionName cannot be empty.");
 
-            using var dataReader = GetDataSourceReader(_Output, DataSource, IgnoreErrors);
+            using var dataReader = GetDataSourceReader(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
 
             Connection conn = null;
             bool closeConnection = false;

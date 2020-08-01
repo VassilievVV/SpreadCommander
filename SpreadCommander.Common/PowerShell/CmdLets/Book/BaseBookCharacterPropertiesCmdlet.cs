@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using SpreadCommander.Common.Code;
 using System.Drawing;
 using System.Globalization;
+using MathNet.Symbolics;
 
 namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 {
@@ -98,6 +99,54 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         [Parameter(HelpMessage = "Underline color for the specified character(s)")]
         public string UnderlineColor { get; set; }
 
+        [Parameter(HelpMessage = "Font's scaling percentage (from 1 to 600)")]
+        public int? Scale { get; set; }
+
+        [Parameter(HelpMessage = "Spacing (in twips) between characters (from -31680 to 31680)")]
+        public int? Spacing { get; set; }
+
+        [Parameter(HelpMessage = "Position of characters (in points) relative to the base line (from -3168 to 3168)")]
+        public float? Position { get; set; }
+
+        [Parameter(HelpMessage = "Whether to snap East-Asian characters to a grid when the grid is defined")]
+        public SwitchParameter SnapToGrid { get; set; }
+
+        [Parameter(HelpMessage = "Reset SnapToGrid from parent style")]
+        public SwitchParameter ResetSnapToGrid { get; set; }
+
+        [Parameter(HelpMessage = "Minimum font size for which the kerning is adjusted automatically")]
+        public float? KerningThreshold { get; set; }
+
+        [Parameter(HelpMessage = "Whether all characters are small capital letters")]
+        public SwitchParameter SmallCaps { get; set; }
+
+        [Parameter(HelpMessage = "Reset SmallCaps from parent style")]
+        public SwitchParameter ResetSmallCaps { get; set; }
+
+        [Parameter(HelpMessage = "Theme font for East Asian characters")]
+        public ThemeFont? ThemeFontEastAsia { get; set; }
+
+        [Parameter(HelpMessage = "Theme font for the Complex Script characters (right-to-left languages)")]
+        public ThemeFont? ThemeFontComplexScript { get; set; }
+
+        [Parameter(HelpMessage = "Theme font for High ANSI characters")]
+        public ThemeFont? ThemeFontHighAnsi { get; set; }
+
+        [Parameter(HelpMessage = "Theme font for Unicode (U+0000–U+007F) characters")]
+        public ThemeFont? ThemeFontAscii { get; set; }
+
+        [Parameter(HelpMessage = "Font name for East Asian characters")]
+        public string FontNameEastAsia { get; set; }
+
+        [Parameter(HelpMessage = "Font name for the Complex Script characters (right-to-left languages)")]
+        public string FontNameComplexScript { get; set; }
+
+        [Parameter(HelpMessage = "Font name for High ANSI characters")]
+        public string FontNameHighAnsi { get; set; }
+
+        [Parameter(HelpMessage = "Font name for Unicode (U+0000–U+007F) characters")]
+        public string FontNameAscii { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -172,6 +221,42 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             var underlineColor = Utils.ColorFromString(UnderlineColor);
             if (underlineColor != Color.Empty)
                 style.UnderlineColor = underlineColor;
+
+            if (Scale.HasValue)
+                style.Scale = Scale;
+
+            if (Spacing.HasValue)
+                style.Spacing = Spacing;
+
+            if (Position.HasValue)
+                style.Position = Position;
+
+            if (SnapToGrid) style.SnapToGrid = true;
+            if (ResetSnapToGrid) style.SnapToGrid = false;
+
+            if (KerningThreshold.HasValue)
+                style.KerningThreshold = KerningThreshold;
+
+            if (SmallCaps) style.SmallCaps = true;
+            if (ResetSmallCaps) style.SmallCaps = false;
+
+            if (ThemeFontEastAsia.HasValue)
+                style.ThemeFontEastAsia = ThemeFontEastAsia;
+            if (ThemeFontComplexScript.HasValue)
+                style.ThemeFontComplexScript = ThemeFontComplexScript;
+            if (ThemeFontHighAnsi.HasValue)
+                style.ThemeFontHighAnsi = ThemeFontHighAnsi;
+            if (ThemeFontAscii.HasValue)
+                style.ThemeFontAscii = ThemeFontAscii;
+
+            if (!string.IsNullOrWhiteSpace(FontNameEastAsia))
+                style.FontNameEastAsia = FontNameEastAsia;
+            if (!string.IsNullOrWhiteSpace(FontNameComplexScript))
+                style.FontNameComplexScript = FontNameComplexScript;
+            if (!string.IsNullOrWhiteSpace(FontNameHighAnsi))
+                style.FontNameHighAnsi = FontNameHighAnsi;
+            if (!string.IsNullOrWhiteSpace(FontNameAscii))
+                style.FontNameAscii = FontNameAscii;
         }
     }
 }

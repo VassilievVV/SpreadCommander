@@ -1,4 +1,6 @@
-﻿using SpreadCommander.Common.SqlScript;
+﻿using DevExpress.XtraRichEdit.Commands.Internal;
+using Fizzler;
+using SpreadCommander.Common.SqlScript;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,37 +16,74 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.Code
 {
-    public class DataViewReader : DbDataReader, IListSource
+    public class DataReaderWrapper : DbDataReader, IListSource
     {
-        private readonly DataView _DataSource;
-        private IEnumerator _Enumerator;
+        #region DataReaderWrapperParameters
+        public class DataReaderWrapperParameters
+        {
+            public string[] Columns { get; set; }
+
+            public Action CloseAction { get; set; }
+        }
+        #endregion
+
         private int _RowCounter;
+        private readonly IDataReader _Reader;
+        private readonly Action _CloseAction;
         private readonly CancellationToken _CancelToken;
 
-        public DataViewReader(DataView dataSource): this(dataSource, CancellationToken.None)
+        private Dictionary<int, int> ColumnMap        { get; } = new Dictionary<int, int>();
+        private Dictionary<int, int> ColumnMapReverse { get; } = new Dictionary<int, int>();
+
+        public DataReaderWrapper(IDataReader reader):
+            this (reader, null, CancellationToken.None)
         {
         }
 
-        public DataViewReader(DataView dataSource, CancellationToken cancelToken)
+        public DataReaderWrapper(IDataReader reader, DataReaderWrapperParameters parameters) : 
+            this(reader, parameters, CancellationToken.None)
         {
-            _DataSource  = dataSource ?? throw new ArgumentNullException(nameof(dataSource));
-            _Enumerator  = _DataSource.GetEnumerator();
+        }
+
+        public DataReaderWrapper(IDataReader reader, DataReaderWrapperParameters parameters, CancellationToken cancelToken)
+        {
+            _Reader = reader ?? throw new ArgumentNullException(nameof(reader));
             _CancelToken = cancelToken;
+
+            InitializeColumnMap(parameters);
+            _CloseAction = parameters?.CloseAction;
         }
 
         protected override void Dispose(bool disposing)
         {
-            base.Dispose(disposing);
+            Close();
+            _Reader?.Dispose();
 
-            if (_Enumerator != null)
+            base.Dispose(disposing);
+        }
+
+        protected void InitializeColumnMap(DataReaderWrapperParameters parameters)
+        {
+            string[] columns = parameters?.Columns;
+            if ((columns?.Length ?? 0) <= 0)
             {
-                if (_Enumerator is IDisposable dispEnumerator)
-                    dispEnumerator.Dispose();
-                _Enumerator = null;
+                columns = new string[_Reader.FieldCount];
+                for (int i = 0; i < columns.Length; i++)
+                    columns[i] = _Reader.GetName(i);
+            }
+
+            for (int i = 0; i < columns.Length; i++)
+            {
+                string columnName = columns[i];
+                int ordinal = _Reader.GetOrdinal(columnName);
+                if (ordinal < 0)
+                    throw new Exception($"Cannot find column '{columnName}'");
+                ColumnMap.Add(i, ordinal);
+                ColumnMapReverse.Add(ordinal, i);
             }
         }
 
-        public IList GetList() => _DataSource;
+        public IList GetList() => (_Reader as IListSource)?.GetList();
 
         public DbDataReaderResult Result { get; private set; }
 
@@ -66,82 +105,39 @@ namespace SpreadCommander.Common.Code
         //DbDataReader properties and methods.
         public override int Depth => 0;
 
-        public override int FieldCount => _DataSource.Table.Columns.Count;
+        public override int FieldCount => ColumnMap.Count;
 
-        public override bool HasRows => (_DataSource?.Count ?? 0) > 0;
+        public override bool HasRows => (_Reader as DbDataReader)?.HasRows ?? true;
 
-        public override bool IsClosed => _Enumerator == null;
+        public override bool IsClosed => _Reader.IsClosed;
 
-        public override int RecordsAffected => -1;
+        public override int RecordsAffected => _Reader.RecordsAffected;
 
         public override int VisibleFieldCount => FieldCount;
 
         public bool ContainsListCollection => false;
 
-        public int RowCount => _DataSource?.Count ?? 0;
         public int ProcessedRowCount => _RowCounter;
 
         public override object this[int ordinal]
         {
             get
             {
-                if (_Enumerator.Current == null)
-                    return null;
-
-                if (ordinal < 0 || ordinal >= FieldCount)
-                    return null;
-
-                object result;
-                try
-                {
-                    result = (_Enumerator.Current as DataRowView)[ordinal];
-                }
-                catch (Exception)
-                {
-                    if (IgnoreErrors)
-                        result = null;
-                    else
-                        throw;
-                }
+                var columnOrdinal = ColumnMap[ordinal];
+                var result        = _Reader[columnOrdinal];
                 return result;
             }
         }
 
         public override object this[string name]
         {
-            get
-            {
-                if (_Enumerator.Current == null)
-                    return null;
-
-                object result;
-                try
-                {
-                    var ordinal = GetOrdinal(name);
-                    if (ordinal < 0)
-                        result = null;
-                    else
-                        result = (_Enumerator.Current as DataRowView)[ordinal];
-                }
-                catch (Exception)
-                {
-                    if (IgnoreErrors)
-                        result = null;
-                    else
-                        throw;
-                }
-                return result;
-            }
+            get => _Reader[name];
         }
 
         public override void Close()
         {
-            if (_Enumerator != null)
-            {
-                if (_Enumerator is IDisposable dispEnumerator)
-                    dispEnumerator.Dispose();
-                _Enumerator = null;
-            }
+            _Reader?.Close();
+            _CloseAction?.Invoke();
         }
 
         public override bool GetBoolean(int ordinal) => Convert.ToBoolean(this[ordinal]);
@@ -158,10 +154,8 @@ namespace SpreadCommander.Common.Code
 
         public override string GetDataTypeName(int ordinal)
         {
-            if (ordinal < 0 || ordinal >= FieldCount)
-                return null;
-
-            var result = SpreadCommander.Common.SqlScript.SqlScript.GetColumnDataType(_DataSource.Table.Columns[ordinal].DataType, int.MaxValue);
+            var columnOrdinal = ColumnMap[ordinal];
+            var result        = _Reader.GetDataTypeName(columnOrdinal);
             return result;
         }
 
@@ -179,10 +173,9 @@ namespace SpreadCommander.Common.Code
 
         public override Type GetFieldType(int ordinal)
         {
-            if (ordinal < 0 || ordinal >= FieldCount)
-                return null;
-
-            return _DataSource.Table.Columns[ordinal].DataType;
+            var columnOrdinal = ColumnMap[ordinal];
+            var result        = _Reader.GetFieldType(columnOrdinal);
+            return result;
         }
 
         public override float GetFloat(int ordinal) => (float)Convert.ToDouble(this[ordinal]);
@@ -194,7 +187,7 @@ namespace SpreadCommander.Common.Code
                 return guid;
 
             var strValue = Convert.ToString(value);
-            var result = Guid.Parse(strValue);
+            var result   = Guid.Parse(strValue);
             return result;
         }
 
@@ -206,19 +199,25 @@ namespace SpreadCommander.Common.Code
 
         public override string GetName(int ordinal)
         {
-            if (ordinal < 0 || ordinal >= FieldCount)
-                return null;
-
-            return _DataSource.Table.Columns[ordinal].ColumnName;
+            var columnOrdinal = ColumnMap[ordinal];
+            var result        = _Reader.GetName(columnOrdinal);
+            return result;
         }
 
         public override int GetOrdinal(string name)
         {
-            return _DataSource.Table.Columns[name]?.Ordinal ?? -1;
+            var ordinal = _Reader.GetOrdinal(name);
+            var result  = ColumnMapReverse[ordinal];
+            return result;
         }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override Type GetProviderSpecificFieldType(int ordinal) => GetFieldType(ordinal);
+        public override Type GetProviderSpecificFieldType(int ordinal)
+        {
+            var columnOrdinal = ColumnMap[ordinal];
+            var result        = GetFieldType(columnOrdinal);
+            return result;
+        }
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override object GetProviderSpecificValue(int ordinal) => this[ordinal];
@@ -228,36 +227,74 @@ namespace SpreadCommander.Common.Code
 
         public override DataTable GetSchemaTable()
         {
-            var result = new DataTable("Schema");
-
-            result.Columns.Add("ColumnName", typeof(string));
-            result.Columns.Add("ColumnOrdinal", typeof(int));
-            result.Columns.Add("ColumnSize", typeof(int));
-            result.Columns.Add("DataType", typeof(Type));
-            result.Columns.Add("IsUnique", typeof(bool));
-            result.Columns.Add("IsKey", typeof(bool));
-
-            for (int i = 0; i < _DataSource.Table.Columns.Count; i++)
+            var initSchema = _Reader.GetSchemaTable();
+            if (initSchema == null || !initSchema.Columns.Contains("ColumnName"))
             {
-                var property = _DataSource.Table.Columns[i];
+                var customSchema = GenerateCustomSchema();
+                return customSchema;
+            }
 
-                var row              = result.NewRow();
-                row["ColumnName"]    = property.ColumnName;
-                row["ColumnOrdinal"] = i;
-                row["ColumnSize"]    = CalcColumnSize(property);
-                row["DataType"]      = property.DataType;
-                row["IsUnique"]      = false;
-                row["IsKey"]         = false;
+            var columnNames = new List<string>();
+            for (int i = 0; i < FieldCount; i++)
+                columnNames.Add(GetName(i));
 
-                result.Rows.Add(row);
+            var colColumnName = initSchema.Columns["ColumnName"];
+
+            initSchema.PrimaryKey = new DataColumn[] { colColumnName };
+
+            var rows = new List<DataRow>();
+            foreach (var columnName in columnNames)
+            {
+                var row = initSchema.Rows.Find(columnName);
+                if (row == null)
+                    throw new Exception($"Cannot find column '{columnName}'.");
+
+                rows.Add(row);
+            }
+
+            bool hasColumnOrdinal = initSchema.Columns.Contains("ColumnOrdinal");
+
+            var result = initSchema.Clone();
+            for (int i = 0; i < rows.Count; i++)
+            {
+                var row = result.Rows.Add(rows[i].ItemArray);
+                if (hasColumnOrdinal)
+                    row["ColumnOrdinal"] = i;
             }
 
             return result;
 
 
-            int CalcColumnSize(DataColumn propInfo)
+            DataTable GenerateCustomSchema()
             {
-                switch (Type.GetTypeCode(propInfo.DataType))
+                var result = new DataTable("Schema");
+
+                result.Columns.Add("ColumnName", typeof(string));
+                result.Columns.Add("ColumnOrdinal", typeof(int));
+                result.Columns.Add("ColumnSize", typeof(int));
+                result.Columns.Add("DataType", typeof(Type));
+                result.Columns.Add("IsUnique", typeof(bool));
+                result.Columns.Add("IsKey", typeof(bool));
+
+                for (int i = 0; i < FieldCount; i++)
+                {
+                    var row              = result.NewRow();
+                    row["ColumnName"]    = GetName(i);
+                    row["ColumnOrdinal"] = i;
+                    row["ColumnSize"]    = CalcColumnSize(i);
+                    row["DataType"]      = GetFieldType(i);
+                    row["IsUnique"]      = false;
+                    row["IsKey"]         = false;
+
+                    result.Rows.Add(row);
+                }
+
+                return result;
+            }
+
+            int CalcColumnSize(int ordinal)
+            {
+                switch (Type.GetTypeCode(GetFieldType(ordinal)))
                 {
                     case TypeCode.Empty:
                         return 0;
@@ -293,14 +330,7 @@ namespace SpreadCommander.Common.Code
                         return 8;
                     case TypeCode.String:
                     case TypeCode.Char:
-                        int colSize = 0;
-                        foreach (DataRowView row in _DataSource)
-                        {
-                            var strValue = Convert.ToString(row[propInfo.ColumnName]);
-                            if (strValue != null && strValue.Length > colSize)
-                                colSize = strValue.Length;
-                        }
-                        return Math.Max(colSize, 1);
+                        return int.MaxValue;
                     default:
                         return 0;
                 }
@@ -343,7 +373,7 @@ namespace SpreadCommander.Common.Code
                 return false;
             }
 
-            bool result = _Enumerator.MoveNext();
+            bool result = _Reader.Read();
             if (!result)
                 Result = DbDataReaderResult.FinishedTable;
 

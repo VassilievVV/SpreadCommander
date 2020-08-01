@@ -46,12 +46,17 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Parameter(HelpMessage = "Data source")]
         public object DataSource { get; set; }
 
+        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
+        public string[] SelectColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
 
 #pragma warning disable CRRSP01 // A misspelled word has been found
+#pragma warning disable CRRSP06 // A misspelled word has been found
         [Parameter(HelpMessage = "Template file - .scchart file created in Chart document")]
+#pragma warning restore CRRSP06 // A misspelled word has been found
 #pragma warning restore CRRSP01 // A misspelled word has been found
         public string TemplateFile { get; set; }
 
@@ -246,7 +251,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         protected override void EndProcessing()
         {
-            var dataSource = GetDataSource(_Output, DataSource, IgnoreErrors);
+            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
 
             var chart = CreateChart();
             chart.DataContainer.DataSource = dataSource;

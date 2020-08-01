@@ -146,6 +146,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 }
 
                 sqlScript.ExecuteScript();
+
+                if (closeConnection)
+                    conn?.Close();
             }
             /*
             catch (DbException ex)

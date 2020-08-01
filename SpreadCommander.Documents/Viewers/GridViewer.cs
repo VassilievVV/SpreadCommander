@@ -617,7 +617,7 @@ namespace SpreadCommander.Documents.Viewers
 
             using var memo = new MemoEditor()
             {
-                Caption = "String value",
+                Caption  = "String value",
                 MemoText = str
             };
             memo.ShowDialog(this);
@@ -625,7 +625,13 @@ namespace SpreadCommander.Documents.Viewers
 
         private void RepositoryItemStringEditor_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
-            e.DisplayText = e.Value != null ? e.Value.ToString() : string.Empty;
+            const int maxDisplayLength = 10_000;
+
+            var text = e.Value != null ? e.Value.ToString() : string.Empty;
+            if (text != null && text.Length > maxDisplayLength)
+                text = text.Substring(0, maxDisplayLength) + " ...";
+
+            e.DisplayText = text;
         }
 
         private void ViewTable_KeyDown(object sender, KeyEventArgs e)

@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 using DevExpress.Mvvm;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using Newtonsoft.Json;
 using SpreadCommander.Common;
 using SpreadCommander.Common.Messages;

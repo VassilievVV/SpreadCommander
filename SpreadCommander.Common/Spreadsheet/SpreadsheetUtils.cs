@@ -342,6 +342,11 @@ namespace SpreadCommander.Common.Spreadsheet
         public static Table AppendDataTable(Worksheet worksheet, DataTable dataTable, bool createTable = true,
             int firstRowIndex = 0, int firstColumnIndex = 0)
         {
+            if (dataTable == null)
+                throw new ArgumentNullException(nameof(dataTable));
+            if (dataTable.Columns.Count <= 0)
+                throw new Exception("DataTable shall contain at least one column.");
+
             var tableName = GetUniqueTableName(worksheet.Workbook, "Table");
             var options = new DataSourceImportOptions()
             {

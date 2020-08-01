@@ -22,6 +22,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         [Parameter(HelpMessage = "Data source")]
         public object DataSource { get; set; }
 
+        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
+        public string[] SelectColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -71,7 +74,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 File.Delete(fileName);
 
             using var stream = new FileStream(fileName, FileMode.CreateNew, FileAccess.Write);
-            using var dataReader = GetDataSourceReader(_Output, DataSource, IgnoreErrors);
+            using var dataReader = GetDataSourceReader(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns }) ;
 
             var writer      = new DBFWriter(stream);
             var dbFields    = new List<DBFField>();

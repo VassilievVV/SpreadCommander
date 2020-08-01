@@ -20,9 +20,9 @@ namespace SpreadCommander.Documents.ViewModels
         {
             intellisense.UsePeriodInIntellisense = true;
 
-            var script = new SqlScript(text);
+            var script                = new SqlScript(text);
             string lastConnectionName = null;
-            SqlScriptCommand command = null;
+            SqlScriptCommand command  = null;
             for (int i = 0; i < script.Commands.Count; i++)
             {
                 if (script.Commands[i].StartLineNumber - 1 > caretPosition.Y)
@@ -34,6 +34,8 @@ namespace SpreadCommander.Documents.ViewModels
 
             if (string.IsNullOrWhiteSpace(lastConnectionName) && _SelectedDbConnection == null)
                 return;
+
+            var itemCaptions = new Dictionary<(ScriptIntellisenseItem.IntellisenseItemType, string), int>();
 
             Connection conn = null;
             try
@@ -88,7 +90,8 @@ namespace SpreadCommander.Documents.ViewModels
                             if (string.IsNullOrWhiteSpace(alias) || string.Compare(alias, "where", true) == 0 ||
                                 string.Compare(alias, "order", true) == 0 || string.Compare(alias, "join", true) == 0 ||
                                 string.Compare(alias, "left", true) == 0 || string.Compare(alias, "right", true) == 0 ||
-                                string.Compare(alias, "inner", true) == 0 || string.Compare(alias, "full", true) == 0)
+                                string.Compare(alias, "inner", true) == 0 || string.Compare(alias, "outer", true) == 0 ||
+                                string.Compare(alias, "full", true) == 0)
                                 continue;
 
                             if (!string.IsNullOrWhiteSpace(aliasTable) && !aliases.ContainsKey(alias))
@@ -113,40 +116,40 @@ namespace SpreadCommander.Documents.ViewModels
                 }
 
                 if (parts.Count == 0)
-                    AddTablesAndProcedures(conn.DbConnection, null, null);
+                    AddTablesAndProcedures(intellisense, itemCaptions, conn.DbConnection, null, null);
                 else if (parts.Count == 1 && !string.IsNullOrWhiteSpace(parts[0]))
                 {
                     var part0 = Utils.UnquoteString(parts[0]);
                     if (!string.IsNullOrWhiteSpace(part0))
                     {
-                        AddTablesAndProcedures(conn.DbConnection, dbName, part0);
-                        AddTablesAndProcedures(conn.DbConnection, part0, null);
+                        AddTablesAndProcedures(intellisense, itemCaptions, conn.DbConnection, dbName, part0);
+                        AddTablesAndProcedures(intellisense, itemCaptions, conn.DbConnection, part0, null);
 
-                        AddTableColumns(conn.DbConnection, dbName, null, part0);
+                        AddTableColumns(intellisense, itemCaptions, conn.DbConnection, dbName, null, part0);
 
                         if (aliases.ContainsKey(part0))
                         {
                             var tableAlias = aliases[part0];
-                            AddTableColumns(conn.DbConnection, tableAlias.Database ?? dbName, tableAlias.Schema, tableAlias.Table);
+                            AddTableColumns(intellisense, itemCaptions, conn.DbConnection, tableAlias.Database ?? dbName, tableAlias.Schema, tableAlias.Table);
                         }
                     }
                 }
                 else if (parts.Count == 2 && !string.IsNullOrWhiteSpace(parts[0]))
-                    AddTablesAndProcedures(conn.DbConnection, Utils.UnquoteString(parts[0]), Utils.UnquoteString(parts[1]));
+                    AddTablesAndProcedures(intellisense, itemCaptions, conn.DbConnection, Utils.UnquoteString(parts[0]), Utils.UnquoteString(parts[1]));
                 else
-                    AddTablesAndProcedures(conn.DbConnection, null, null);
+                    AddTablesAndProcedures(intellisense, itemCaptions, conn.DbConnection, null, null);
             }
             finally
             {
                 if (conn != null)
                 {
                     conn.Close();
-                    conn = null;
                 }
             }
 
 
-            void AddTablesAndProcedures(DbConnection connection, string databaseName, string schemaName)
+            static void AddTablesAndProcedures(ScriptIntellisense intellisense, Dictionary<(ScriptIntellisenseItem.IntellisenseItemType, string), int> itemCaptions,
+                DbConnection connection, string databaseName, string schemaName)
             {
                 try
                 {
@@ -156,7 +159,7 @@ namespace SpreadCommander.Documents.ViewModels
                     if (string.IsNullOrWhiteSpace(schemaName))
                         schemaName = null;
 
-                    var dbConnectionType = conn.GetType();
+                    var dbConnectionType = connection.GetType();
 
                     var schemaTables = connection.GetSchema("Tables");
                     if (schemaTables != null)
@@ -164,7 +167,7 @@ namespace SpreadCommander.Documents.ViewModels
                         foreach (DataRow rowTable in schemaTables.Rows)
                         {
                             var tableSchema = Convert.ToString(rowTable["TABLE_SCHEMA"]);
-                            var tableName = Convert.ToString(rowTable["TABLE_NAME"]);
+                            var tableName   = Convert.ToString(rowTable["TABLE_NAME"]);
 
                             if (!string.IsNullOrWhiteSpace(schemaName) && string.Compare(tableSchema, schemaName, true) != 0)
                                 continue;
@@ -180,11 +183,15 @@ namespace SpreadCommander.Documents.ViewModels
                                 ItemType    = ScriptIntellisenseItem.IntellisenseItemType.Table,
                                 Value       = caption
                             };
-                            intellisense.Items.Add(item);
+                            if (!itemCaptions.ContainsKey((ScriptIntellisenseItem.IntellisenseItemType.Table, caption)))
+                            {
+                                intellisense.Items.Add(item);
+                                itemCaptions.Add((ScriptIntellisenseItem.IntellisenseItemType.Table, caption), 1);
+                            }
                         }
                     }
 
-                    var schemaProcedures = connection.GetSchema("Procedures");
+                    var schemaProcedures          = connection.GetSchema("Procedures");
                     var schemaProcedureParameters = connection.GetSchema("ProcedureParameters");
                     if (schemaProcedures != null)
                     {
@@ -192,8 +199,8 @@ namespace SpreadCommander.Documents.ViewModels
 
                         foreach (DataRow rowProcedure in schemaProcedures.Rows)
                         {
-                            string procType = hasType ? Convert.ToString(rowProcedure["ROUTINE_TYPE"]) : null;
-                            string procName = Convert.ToString(rowProcedure["SPECIFIC_NAME"]);
+                            string procType   = hasType ? Convert.ToString(rowProcedure["ROUTINE_TYPE"]) : null;
+                            string procName   = Convert.ToString(rowProcedure["SPECIFIC_NAME"]);
                             string procSchema = Convert.ToString(rowProcedure["SPECIFIC_SCHEMA"]);
 
                             if (!string.IsNullOrWhiteSpace(schemaName) && string.Compare(procSchema, schemaName, true) != 0)
@@ -218,9 +225,9 @@ namespace SpreadCommander.Documents.ViewModels
 
                                     foreach (DataRowView rowParameter in viewProcedureParameters)
                                     {
-                                        int position = Convert.ToInt32(rowParameter["ORDINAL_POSITION"]);
-                                        string paramName = Convert.ToString(rowParameter["PARAMETER_NAME"]);
-                                        string paramMode = Convert.ToString(rowParameter["PARAMETER_MODE"])?.ToLower();
+                                        int position         = Convert.ToInt32(rowParameter["ORDINAL_POSITION"]);
+                                        string paramName     = Convert.ToString(rowParameter["PARAMETER_NAME"]);
+                                        string paramMode     = Convert.ToString(rowParameter["PARAMETER_MODE"])?.ToLower();
                                         string paramDataType = Convert.ToString(rowParameter["DATA_TYPE"]);
 
                                         int? paramMaxLength = null;
@@ -263,7 +270,11 @@ namespace SpreadCommander.Documents.ViewModels
                                     ItemType    = ScriptIntellisenseItem.IntellisenseItemType.Procedure,
                                     Value       = caption
                                 };
-                                intellisense.Items.Add(item);
+                                if (!itemCaptions.ContainsKey((ScriptIntellisenseItem.IntellisenseItemType.Procedure, caption)))
+                                {
+                                    intellisense.Items.Add(item);
+                                    itemCaptions.Add((ScriptIntellisenseItem.IntellisenseItemType.Procedure, caption), 1);
+                                }
                             }
                             else if (!string.IsNullOrEmpty(procName) && (!hasType || (string.Compare(procType, "FUNCTION") == 0)))
                             {
@@ -274,7 +285,11 @@ namespace SpreadCommander.Documents.ViewModels
                                     ItemType    = ScriptIntellisenseItem.IntellisenseItemType.Function,
                                     Value       = caption
                                 };
-                                intellisense.Items.Add(item);
+                                if (!itemCaptions.ContainsKey((ScriptIntellisenseItem.IntellisenseItemType.Function, caption)))
+                                {
+                                    intellisense.Items.Add(item);
+                                    itemCaptions.Add((ScriptIntellisenseItem.IntellisenseItemType.Function, caption), 1);
+                                }
                             }
                         }
                     }
@@ -285,7 +300,8 @@ namespace SpreadCommander.Documents.ViewModels
                 }
             }
 
-            void AddTableColumns(DbConnection connection, string databaseName, string schemaName, string tableName)
+            static void AddTableColumns(ScriptIntellisense intellisense, Dictionary<(ScriptIntellisenseItem.IntellisenseItemType, string), int> itemCaptions,
+                DbConnection connection, string databaseName, string schemaName, string tableName)
             {
                 try
                 {
@@ -295,7 +311,7 @@ namespace SpreadCommander.Documents.ViewModels
                     if (string.IsNullOrWhiteSpace(schemaName))
                         schemaName = null;
 
-                    var dbConnectionType = conn.GetType();
+                    var dbConnectionType = connection.GetType();
 
                     var schemaColumns = connection.GetSchema("Columns", new string[] { null, schemaName, tableName });
                     if (schemaColumns != null)
@@ -315,12 +331,16 @@ namespace SpreadCommander.Documents.ViewModels
 
                             var node = new ScriptIntellisenseItem()
                             {
-                                Caption = columnName,
+                                Caption     = columnName,
                                 Description = HtmlEncode($"{columnName} {dataType}"),
-                                ItemType = ScriptIntellisenseItem.IntellisenseItemType.Property,
-                                Value = DbSchemaBaseNode.QuoteDatabaseObjectName(dbConnectionType, columnName)
+                                ItemType    = ScriptIntellisenseItem.IntellisenseItemType.Property,
+                                Value       = DbSchemaBaseNode.QuoteDatabaseObjectName(dbConnectionType, columnName)
                             };
-                            intellisense.Items.Add(node);
+                            if (!itemCaptions.ContainsKey((ScriptIntellisenseItem.IntellisenseItemType.Property, columnName)))
+                            {
+                                intellisense.Items.Add(node);
+                                itemCaptions.Add((ScriptIntellisenseItem.IntellisenseItemType.Property, columnName), 1);
+                            }
                         }
                     }
                 }

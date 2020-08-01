@@ -1,5 +1,5 @@
 ﻿using DevExpress.Mvvm;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.ScriptEngines.ConsoleCommands;
 using System;
@@ -255,8 +255,8 @@ namespace SpreadCommander.Common.SqlScript
             result.SourceVersion = parameter.SourceVersion;
             result.Value         = parameter.Value;
 
-            if (result is SqlParameter)
-                ((SqlParameter)result).IsNullable = ((SqlParameter)parameter).IsNullable;
+            if (result is SqlParameter sqlParam)
+                sqlParam.IsNullable = ((SqlParameter)parameter).IsNullable;
 
             return result;
         }
@@ -266,10 +266,10 @@ namespace SpreadCommander.Common.SqlScript
             var result = dbCommand.CreateParameter();
 
             int maxLen = 0;
-            if (value is string)
-                maxLen = value != null ? ((string)value).Length : 0;
-            else if (value is byte[])
-                maxLen = value != null ? ((byte[])value).Length : 0;
+            if (value is string str)
+                maxLen = value != null ? str.Length : 0;
+            else if (value is byte[] bValue)
+                maxLen = value != null ? bValue.Length : 0;
 
             (var dbType, var len) = GetColumnDbType(type, maxLen);
 
@@ -279,8 +279,8 @@ namespace SpreadCommander.Common.SqlScript
             result.Size          = len;
             result.Value         = value ?? DBNull.Value;
 
-            if (result is SqlParameter)
-                ((SqlParameter)result).IsNullable = true;
+            if (result is SqlParameter sqlParam)
+                sqlParam.IsNullable = true;
 
             return result;
         }
@@ -311,10 +311,10 @@ namespace SpreadCommander.Common.SqlScript
             var result = dbCommand.CreateParameter();
 
             int maxLen = 0;
-            if (parameter.Value is string)
-                maxLen = parameter.Value != null ? ((string)parameter.Value).Length : 0;
-            else if (parameter.Value is byte[])
-                maxLen = parameter.Value != null ? ((byte[])parameter.Value).Length : 0;
+            if (parameter.Value is string str)
+                maxLen = parameter.Value != null ? str.Length : 0;
+            else if (parameter.Value is byte[] bValue)
+                maxLen = parameter.Value != null ? bValue.Length : 0;
 
             var parameterName = UpdateDbParameterName(parameter.Name);
             if (dbCommand is SqlCommand && !string.IsNullOrWhiteSpace(parameterName) &&
@@ -328,8 +328,8 @@ namespace SpreadCommander.Common.SqlScript
             if (maxLen > 0)
                 result.Size      = maxLen;
 
-            if (result is SqlParameter)
-                ((SqlParameter)result).IsNullable = true;
+            if (result is SqlParameter sqlParam)
+                sqlParam.IsNullable = true;
 
             return result;
         }

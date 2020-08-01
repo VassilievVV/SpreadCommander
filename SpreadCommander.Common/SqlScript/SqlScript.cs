@@ -1,5 +1,5 @@
 ﻿using DevExpress.Mvvm;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.ScriptEngines.ConsoleCommands;
 using System;

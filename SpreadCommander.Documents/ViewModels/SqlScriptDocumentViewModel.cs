@@ -31,7 +31,7 @@ using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 using System.Data.SQLite;
 using SpreadCommander.Common.DBMS.SQLite;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 
 namespace SpreadCommander.Documents.ViewModels
 {

@@ -2,18 +2,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Windows.Forms;
 using FlatFiles;
 using FlatFiles.TypeMapping;
+using SpreadCommander.Common.Code;
 
 namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 {
     [Cmdlet(VerbsData.Import, "DelimitedText")]
     [OutputType(typeof(DataTable))]
+    [OutputType(typeof(DbDataReader))]
     public class ImportDelimitedText: BaseTextImportExportCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Name of the file containing delimited data.")]
@@ -39,6 +43,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 
         [Parameter(HelpMessage = "Culture as format provider.")]
         public string Culture { get; set; }
+
+        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
+        public string[] SelectColumns { get; set; }
+
+        [Parameter(HelpMessage = "Return DbDataReader instead of DataTable. Can be used to export data into database.")]
+        public SwitchParameter AsDataReader { get; set; }
 
 
         protected override void ProcessRecord()
@@ -85,14 +95,25 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 IsNullStringAllowed = true
             };
 
-            using var reader = new StreamReader(File.OpenRead(fileName));
-            var csvReader    = Columns != null ? new SeparatedValueReader(reader, schema, options) : new SeparatedValueReader(reader, options);
-            var dataReader   = new FlatFileDataReader(csvReader, readerOptions);
+            var reader     = new StreamReader(File.OpenRead(fileName));
+            var csvReader  = Columns != null ? new SeparatedValueReader(reader, schema, options) : new SeparatedValueReader(reader, options);
+            var dataReader = new FlatFileDataReader(csvReader, readerOptions);
 
-            var table = new DataTable("TextData");
-            table.Load(dataReader);
+            var resultReader = new DataReaderWrapper(dataReader, new DataReaderWrapper.DataReaderWrapperParameters() { Columns = SelectColumns, 
+                CloseAction = () =>
+                {
+                    reader.Dispose();
+                } });
 
-            return table;
+            if (AsDataReader)
+                return resultReader;
+            else
+            {
+                var table = new DataTable("TextData");
+                table.Load(resultReader);
+
+                return table;
+            }
         }
     }
 }

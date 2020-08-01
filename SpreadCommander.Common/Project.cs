@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpreadCommander.Common.Code;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -19,11 +20,15 @@ namespace SpreadCommander.Common
 
         private static void Initialize()
         {
-            //TODO: use default project path from parameters
+            var dirDefault = ApplicationSettings.Default.DefaultProjectLocation;
 
-            var dirDefault = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),
-                Parameters.ApplicationName, "DefaultProject");
-            Directory.CreateDirectory(dirDefault);
+            if (string.IsNullOrWhiteSpace(dirDefault) || !Directory.Exists(dirDefault))
+            {
+                dirDefault = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                    Parameters.ApplicationName, "DefaultProject");
+
+                Directory.CreateDirectory(dirDefault);
+            }
 
             var project = new Project();
             project.Load(dirDefault);

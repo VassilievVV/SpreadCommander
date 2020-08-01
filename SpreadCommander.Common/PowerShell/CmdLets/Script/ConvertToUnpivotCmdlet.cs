@@ -35,6 +35,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "Data source.")]
         public object DataSource { get; set; }
 
+        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
+        public string[] SelectColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values.")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -73,7 +76,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             if (UnPivotValueType == null)
                 throw new ArgumentNullException(nameof(UnPivotValueType));
 
-            using var reader = GetDataSourceReader(_Input, DataSource, IgnoreErrors);
+            using var reader = GetDataSourceReader(_Input, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
             if (reader == null)
                 throw new Exception("Input data are not provided.");
 
@@ -127,7 +130,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                     var value = row[column.ColumnName];
                     try
                     {
-                        if (value is string && string.IsNullOrWhiteSpace((string)value) && unPivotValueType != typeof(string))
+                        if (value is string str && string.IsNullOrWhiteSpace(str) && unPivotValueType != typeof(string))
                             value = DBNull.Value;
 
                         if (value != null && value != DBNull.Value)

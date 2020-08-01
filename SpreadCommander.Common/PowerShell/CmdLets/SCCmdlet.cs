@@ -22,6 +22,17 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
 {
     public class SCCmdlet: PSCmdlet
     {
+        #region DataSourceParameters
+        public class DataSourceParameters
+        {
+            public bool IgnoreErrors    { get; set; }
+
+            public string[] Columns     { get; set; }
+
+            public Action DisposeAction { get; set; }
+        }
+        #endregion
+
         public enum ImageFormat { Png, Tiff, Bmp, Gif, Jpeg }
 
         public const ImageFormat DefaultImageFormat = ImageFormat.Png;
@@ -117,35 +128,20 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
         }
 
         //IgnoreErrors - for list of PSObject
-        protected virtual object GetDataSource(IList<PSObject> dataRecords, object dataSource, bool ignoreErrors = false)
+        protected virtual object GetDataSource(IList<PSObject> dataRecords, object dataSource, DataSourceParameters parameters)
         {
-            if (dataSource != null)
-            {
-                if (dataSource is PSObject psDataSource)
-                    dataSource = psDataSource.BaseObject;
-                return dataSource;
-            }
-            else if (dataRecords != null && dataRecords.Count == 1 && (dataRecords[0].BaseObject is IList || dataRecords[0].BaseObject is IListSource))
-            {
-                return dataRecords[0].BaseObject;
-            }
-            else
-            {
-                var reader = new PSObjectDataReader(dataRecords)
-                {
-                    IgnoreErrors = ignoreErrors
-                };
-                var table = new DataTable("Table");
-                table.Load(reader);
-
-                return table;
-            }
+            var reader = GetDataSourceReader(dataRecords, dataSource, parameters);
+            var table  = new DataTable("Table");
+            table.Load(reader);
+            return table;
         }
 
-        protected virtual DbDataReader GetDataSourceReader(IList<PSObject> dataRecords, object dataSource, bool ignoreErrors = false)
+        protected virtual DbDataReader GetDataSourceReader(IList<PSObject> dataRecords, object dataSource, DataSourceParameters parameters)
         {
             if (dataSource == null && dataRecords != null && dataRecords.Count == 1 && (dataRecords[0].BaseObject is IList || dataRecords[0].BaseObject is IListSource))
                 dataSource = dataRecords[0].BaseObject;
+
+            DbDataReader result = null;
 
             if (dataSource != null)
             {
@@ -153,31 +149,34 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
                     dataSource = psDataSource.BaseObject;
 
                 if (dataSource is DbDataReader dbReader)
-                    return dbReader;
-
-                if (dataSource is DataTable dataTable)
-                    return dataTable.CreateDataReader();
+                    result = dbReader;
+                else if (dataSource is DataTable dataTable)
+                    result = dataTable.CreateDataReader();
                 else if (dataSource is DataView dataView)
-                    return new DataViewReader(dataView);
+                    result = new DataViewReader(dataView);
+                else
+                {
+                    if (dataSource is IListSource listSource)
+                        dataSource = listSource.GetList();
 
-                if (dataSource is IListSource listSource)
-                    dataSource = listSource.GetList();
-
-                if (dataSource is ITypedList typedList)
-                    return new TypedListDataReader(typedList);
-
-                if (dataSource is System.Collections.IList list && list.Count > 0 && list[0] != null)
-                    return new ObjectDataReader(list, list[0].GetType());
+                    if (dataSource is ITypedList typedList)
+                        result = new TypedListDataReader(typedList);
+                    else if (dataSource is System.Collections.IList list && list.Count > 0 && list[0] != null)
+                        result = new ObjectDataReader(list, list[0].GetType());
+                }
             }
             else
             {
                 var reader = new PSObjectDataReader(dataRecords)
                 {
-                    IgnoreErrors = ignoreErrors
+                    IgnoreErrors = parameters?.IgnoreErrors ?? false
                 };
 
-                return reader;
+                result = reader;
             }
+
+            if (result != null)
+                return new DataReaderWrapper(result, new DataReaderWrapper.DataReaderWrapperParameters() { Columns = parameters?.Columns, CloseAction = parameters?.DisposeAction });
 
             throw new Exception("Cannot generate DataReader for provided data source.");
         }

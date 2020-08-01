@@ -12,7 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DevExpress.XtraTreeList;
-using MySql.Data.MySqlClient;
+using MySqlConnector;
 using SpreadCommander.Common;
 using SpreadCommander.Common.Code;
 
@@ -66,8 +66,8 @@ namespace SpreadCommander.Documents.Code
 
             while (result != null)
             {
-                if (result is T)
-                    return (T)result;
+                if (result is T t)
+                    return t;
 
                 result = result.ParentNode;
             }
@@ -83,10 +83,10 @@ namespace SpreadCommander.Documents.Code
 
             while (node != null)
             {
-                if (dbNode == null && node is DatabaseSchemaNode)
-                    dbNode = (DatabaseSchemaNode)node;
-                else if (dbListNode == null && node is DatabaseListSchemaNode)
-                    dbListNode = (DatabaseListSchemaNode)node;
+                if (dbNode == null && node is DatabaseSchemaNode dbSchemaNode)
+                    dbNode = dbSchemaNode;
+                else if (dbListNode == null && node is DatabaseListSchemaNode dbListSchemaNode)
+                    dbListNode = dbListSchemaNode;
 
                 node = node.ParentNode;
             }
@@ -106,8 +106,8 @@ namespace SpreadCommander.Documents.Code
 
                 while (node != null)
                 {
-                    if (dbListNode == null && node is DatabaseListSchemaNode)
-                        dbListNode = (DatabaseListSchemaNode)node;
+                    if (dbListNode == null && node is DatabaseListSchemaNode dbListSchemaNode)
+                        dbListNode = dbListSchemaNode;
 
                     node = node.ParentNode;
                 }

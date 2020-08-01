@@ -32,6 +32,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(HelpMessage = "Replace existing sheet if it exists")]
         public SwitchParameter Replace { get; set; }
 
+        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
+        public string[] SelectColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -77,7 +80,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 
         protected void WriteTable(IWorkbook spreadsheet)
         {
-            var dataSource = GetDataSource(_Output, DataSource, IgnoreErrors);
+            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
 
             if (string.IsNullOrWhiteSpace(TemplateFile))
                 throw new Exception("Template file is not specified.");

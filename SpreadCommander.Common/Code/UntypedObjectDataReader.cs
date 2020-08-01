@@ -89,7 +89,7 @@ namespace SpreadCommander.Common.Code
 
         public override int FieldCount => _Properties.Count;
 
-        public override bool HasRows => (GetList()?.Count ?? 0) > 0;
+        public override bool HasRows => (GetList()?.Count ?? 1) > 0;
 
         public override bool IsClosed => _Enumerator == null;
 
@@ -205,7 +205,7 @@ namespace SpreadCommander.Common.Code
         public override double GetDouble(int ordinal) => Convert.ToDouble(this[ordinal]);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
-        public override IEnumerator GetEnumerator() => _Enumerator;
+        public override IEnumerator GetEnumerator() => new DbEnumerator(this);
 
         public override Type GetFieldType(int ordinal)
         {
@@ -220,8 +220,8 @@ namespace SpreadCommander.Common.Code
         public override Guid GetGuid(int ordinal)
         {
             object value = this[ordinal];
-            if (value is Guid)
-                return (Guid)value;
+            if (value is Guid guid)
+                return guid;
 
             var strValue = Convert.ToString(value);
             var result = Guid.Parse(strValue);
@@ -350,7 +350,12 @@ namespace SpreadCommander.Common.Code
 
         public override string GetString(int ordinal) => Convert.ToString(this[ordinal]);
 
-        public override object GetValue(int ordinal) => this[ordinal];
+        public override object GetValue(int ordinal)
+        {
+            var value  = this[ordinal];
+            var result = (value == null) || (value == DBNull.Value);
+            return result;
+        }
 
         public override int GetValues(object[] values)
         {

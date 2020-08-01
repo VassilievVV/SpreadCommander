@@ -133,6 +133,7 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(GetDbConnectionCmdlet),
                 typeof(SetDbConnectionCmdlet),
                 typeof(InvokeSqlScriptCmdlet),
+                typeof(InvokeSqlQueryCmdlet),
                 typeof(ExportTableToDatabaseCmdlet),
                 typeof(GetSCHostCmdlet),
                 typeof(ConvertToObjectListCmdlet),

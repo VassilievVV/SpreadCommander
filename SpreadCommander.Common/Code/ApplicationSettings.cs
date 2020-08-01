@@ -96,7 +96,7 @@ namespace SpreadCommander.Common.Code
             [Category("MySQL Server")]
             [DisplayName("Default SSL mode")]
             [Description("Default SSL mode. This value will be used when server is not specified in SpreadCommander cmdlets and when DefaultServer is used.")]
-            public MySql.Data.MySqlClient.MySqlSslMode? DefaultSslMode { get; set; }
+            public MySqlConnector.MySqlSslMode? DefaultSslMode { get; set; }
 
             [DataMember()]
             [Category("SQL Server")]
@@ -246,5 +246,11 @@ namespace SpreadCommander.Common.Code
         [DisplayName("Optimize AMD math")]
         [Description("Whether to optimize MKL for AMD CPUs")]
         public bool OptimizeAmdMath { get; set; }
+
+        [DataMember()]
+        [Category("Projects")]
+        [DisplayName("Default location")]
+        [Description("Location of the default project.")]
+        public string DefaultProjectLocation { get; set; }
     }
 }
