@@ -53,6 +53,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values.")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -89,7 +92,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             if (string.IsNullOrWhiteSpace(PivotValueColumn))
                 throw new ArgumentException(nameof(PivotValueColumn));
 
-            using var reader = GetDataSourceReader(_Input, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            using var reader = GetDataSourceReader(_Input, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
             if (reader == null)
                 throw new Exception("Input data are not provided.");
 

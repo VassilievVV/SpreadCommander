@@ -37,7 +37,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesColorizerContex
 			{
 				foreach (var key in Keys)
 				{
-					object objKey = key is PSObject ? ((PSObject)key).BaseObject : key;
+					object objKey = key is PSObject obj ? obj.BaseObject : key;
 					keyColorizer.Keys.Add(objKey);
 				}
 			}

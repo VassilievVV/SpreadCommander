@@ -83,8 +83,7 @@ namespace SpreadCommander.Documents.Dialogs
                         break;
                     case LibraryKind.Examples:
                         layoutControlGroupProjects.Text = "Examples";
-                        var folderExamples = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments),
-                            Parameters.ApplicationName, "Examples");
+                        var folderExamples = Project.FolderExamples;
                         if (Directory.Exists(folderExamples))
                             LoadProjectsFromDirectory(folderExamples);
                         break;
@@ -275,7 +274,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void RepositoryItemIsFavorite_CheckedChanged(object sender, EventArgs e)
         {
-            if (!(bindingProjects.Current is SavedProject project))
+            if (bindingProjects.Current is not SavedProject project)
                 return;
 
             project.IsFavorite = !project.IsFavorite;

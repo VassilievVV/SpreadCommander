@@ -23,6 +23,7 @@ using ConsoleCommands = SpreadCommander.Common.ScriptEngines.ConsoleCommands;
 using System.Data.Common;
 using System.IO;
 using System.Reflection;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander
 {
@@ -54,6 +55,8 @@ namespace SpreadCommander
             Messenger.Default.Register<ConnectionListChangedMessage>(this, OnConnectionListChangedMessage);
             Messenger.Default.Register<PSCmdletListChangedMessage>(this, OnPSCmdletListChangedMessage);
             Messenger.Default.Register<ControlModifiedMessage>(this, OnControlModifiedMessage);
+            Messenger.Default.Register<DocumentStartAddingMessage>(this, OnDocumentStartAdding);
+            Messenger.Default.Register<DocumentEndAddingMessage>(this, OnDocumentEndAdding);
         }
 
         public static MainViewModel Create() =>
@@ -72,11 +75,13 @@ namespace SpreadCommander
             Messenger.Default.Unregister<ControlModifiedMessage>(this);
         }
 
+#pragma warning disable CA1822 // Mark members as static
         [Command(false)]
         public void InitializeBindings()
         {
             //Do nothing. This function is called to ensure that model is created.
         }
+#pragma warning restore CA1822 // Mark members as static
 
         [Command(false)]
         public void InitializeServices()
@@ -136,9 +141,11 @@ namespace SpreadCommander
             UpdateCommands();
         }
 
+#pragma warning disable CA1822 // Mark members as static
         protected void UpdateCommands()
         {
         }
+#pragma warning restore CA1822 // Mark members as static
 
         public IEnumerable<BaseDocumentViewModel> OpenDocuments
         {
@@ -162,8 +169,6 @@ namespace SpreadCommander
 
             var projectPath = BrowseFolderService.ResultPath;
             Project.CreateNewProject(projectPath, true);
-
-            Callback?.ProjectChanged();
         }
 
         public void OpenProject()
@@ -180,10 +185,6 @@ namespace SpreadCommander
                 projectPath = currentProject;
 
             Project.LoadProjectFromDirectory(projectPath);
-
-            Callback?.ProjectChanged();
-
-            //RestoreRecentLayout();
         }
 
         public void OpenExistingProject(string directory)
@@ -192,10 +193,6 @@ namespace SpreadCommander
                 return;
 
             Project.LoadProjectFromDirectory(directory);
-
-            Callback?.ProjectChanged();
-
-            //RestoreRecentLayout();
         }
 
         public void SelectProject()
@@ -207,10 +204,6 @@ namespace SpreadCommander
 
             var projectPath = SelectProjectService.SelectProject() ?? currentProject;
             Project.LoadProjectFromDirectory(projectPath);
-
-            Callback?.ProjectChanged();
-
-            //RestoreRecentLayout();
         }
 
         //Must execute from UI thread
@@ -223,6 +216,10 @@ namespace SpreadCommander
 
             return true;
         }
+
+        //Need this function to bind to UI button, 
+        //SaveAllDocuments() has return type "bool" and does not work.
+        public void SaveAllFiles() => SaveAllDocuments();
 
         //Must execute from UI thread
         public bool SaveAllDocuments()
@@ -312,11 +309,10 @@ namespace SpreadCommander
         public void OpenFile()
         {
             var filter = new StringBuilder();
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
             filter
+                .Append("SpreadCommander files|*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub;*.xlsx;*.xls;*.csv;*.scchart;*.scpivot;*.scdash;*.ps1;*.sql|")
                 .Append("Book files (*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub)|*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub|")
-                .Append("Spreadsheet files (*.xlsx;*.xls)|*.xlsx;*.xls|")
+                .Append("Spreadsheet files (*.xlsx;*.xls;*.csv)|*.xlsx;*.xls;*.csv|")
                 .Append("Chart files (*.scchart)|*.scchart|")
                 .Append("Pivot files (*.scpivot)|*.scpivot|")
                 .Append("Dashboard files (*.scdash)|*.scdash|")
@@ -327,8 +323,6 @@ namespace SpreadCommander
                 //.Append("C# script files (*.csx)|*.csx|")
                 //.Append("F# script files (*.fsx)|*.fsx|")
                 .Append("Picture (*.png;*.jpg;*.gif;*.tif;*.bmp)|*.png;*.jpg;*.gif;*.tif;*.bmp");
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
             OpenFileService.Filter = filter.ToString();
             if (OpenFileService.ShowDialog())
@@ -348,7 +342,6 @@ namespace SpreadCommander
             }
 
             var ext = Path.GetExtension(fileName)?.ToLower();
-#pragma warning disable CRRSP01 // A misspelled word has been found
             switch (ext)
             {
                 case ".xlsx":
@@ -408,7 +401,6 @@ namespace SpreadCommander
                     viewModel = AddNewPivotDocument();
                     break;
             }
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
             if (viewModel == null)
                 return null;
@@ -452,6 +444,19 @@ namespace SpreadCommander
             Callback?.EndAddingDocument();
         }
 
+#pragma warning disable CA1822 // Mark members as static
+        public void OnDocumentStartAdding(DocumentStartAddingMessage message)
+        {
+            //Callback?.StartAddingDocument();
+        }
+
+        public void OnDocumentEndAdding(DocumentEndAddingMessage message)
+        {
+            //Callback?.EndAddingDocument();
+        }
+#pragma warning restore CA1822 // Mark members as static
+
+
         public IDocument AddNewDocument(BaseDocumentViewModel viewModel, string modelName)
         {
             viewModel.SetParentViewModel(this);
@@ -467,37 +472,26 @@ namespace SpreadCommander
 
         public BaseDocumentViewModel AddNewDocument(string documentType, string documentSubType)
         {
-#pragma warning disable IDE0066 // Convert switch statement to expression
-            switch (documentType)
+            return documentType switch
             {
-                case SpreadsheetDocumentViewModel.ViewName:
-                    return AddNewSpreadsheetDocument();
-                case DashboardDocumentViewModel.ViewName:
-                    return AddNewDashboardDocument();
-                case BookDocumentViewModel.ViewName:
-                    return AddNewBookDocument();
-                case SqlScriptDocumentViewModel.ViewName:
-                    return AddNewSqlScriptDocument();
-                case ConsoleDocumentViewModel.ViewName:
-                    return documentSubType switch
-                    {
-                        RScriptEngine.ScriptEngineName          => AddNewRScriptDocument(),
-                        PythonScriptEngine.ScriptEngineName     => AddNewPyScriptDocument(),
-                        PowerShellScriptEngine.ScriptEngineName => AddNewPSScriptDocument(),
-                        //CSharpScriptEngine.ScriptEngineName     => AddNewCSharpScriptDocument(),
-                        //FSharpScriptEngine.ScriptEngineName     => AddNewFSharpScriptDocument(),
-                        _                                       => null,
-                    };
-                case ChartDocumentViewModel.ViewName:
-                    return AddNewChartDocument();
-                case PictureDocumentViewModel.ViewName:
-                    return AddNewPictureDocument();
-                case PdfDocumentViewModel.ViewName:
-                    return AddNewPdfDocument();
-            }
-#pragma warning restore IDE0066 // Convert switch statement to expression
-
-            return null;
+                SpreadsheetDocumentViewModel.ViewName => AddNewSpreadsheetDocument(),
+                DashboardDocumentViewModel.ViewName   => AddNewDashboardDocument(),
+                BookDocumentViewModel.ViewName        => AddNewBookDocument(),
+                SqlScriptDocumentViewModel.ViewName   => AddNewSqlScriptDocument(),
+                ConsoleDocumentViewModel.ViewName     => documentSubType switch
+                {
+                    RScriptEngine.ScriptEngineName => AddNewRScriptDocument(),
+                    PythonScriptEngine.ScriptEngineName => AddNewPyScriptDocument(),
+                    PowerShellScriptEngine.ScriptEngineName => AddNewPSScriptDocument(),
+                    //CSharpScriptEngine.ScriptEngineName     => AddNewCSharpScriptDocument(),
+                    //FSharpScriptEngine.ScriptEngineName     => AddNewFSharpScriptDocument(),
+                    _ => null,
+                },
+                ChartDocumentViewModel.ViewName   => AddNewChartDocument(),
+                PictureDocumentViewModel.ViewName => AddNewPictureDocument(),
+                PdfDocumentViewModel.ViewName     => AddNewPdfDocument(),
+                _                                 => null
+            };
         }
 
         public void AddNewSpreadsheet() => AddNewSpreadsheetDocument();

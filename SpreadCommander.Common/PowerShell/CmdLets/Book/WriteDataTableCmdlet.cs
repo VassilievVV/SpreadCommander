@@ -31,6 +31,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -114,7 +117,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 
         protected void WriteTable(Document book)
         {
-            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            var dataSource = GetDataSource(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
             string htmlTable;
 
@@ -183,7 +187,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
                             }
 
                             var columnName = calculatedColumn.Substring(0, p - 1).Trim();
-                            var columnFormula = calculatedColumn.Substring(p + 1).Trim();
+                            var columnFormula = calculatedColumn[(p + 1)..].Trim();
 
                             var column = table.Columns.Add();
                             column.Name = columnName;

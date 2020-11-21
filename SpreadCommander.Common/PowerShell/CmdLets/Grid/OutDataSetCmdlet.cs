@@ -65,7 +65,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
             if (!string.IsNullOrWhiteSpace(Formatting))
             {
                 var scanner = new Scanner();
-                var parser = new Parser(scanner);
+                var parser  = new Parser(scanner);
 
                 var tree = parser.Parse(Formatting);
                 if (tree.Errors.Count > 0)
@@ -193,7 +193,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
             }
         }
 
-        private void RemoveTableFromDataSet(DataTable tbl)
+        private static void RemoveTableFromDataSet(DataTable tbl)
         {
             if (tbl == null)
                 return;

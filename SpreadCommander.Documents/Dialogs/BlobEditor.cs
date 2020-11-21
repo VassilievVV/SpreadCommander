@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,9 +40,7 @@ namespace SpreadCommander.Documents.Dialogs
         #endregion
 
         private readonly VirtualList	_DataList;
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private Font					_CellFont;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
         private Encoding				_Encoding;
         private string					_MimeType;
 

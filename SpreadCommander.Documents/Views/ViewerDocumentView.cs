@@ -14,18 +14,19 @@ using SpreadCommander.Documents.ViewModels;
 using SpreadCommander.Documents.Code;
 using DevExpress.Utils.Svg;
 using SpreadCommander.Common.Code;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
     public partial class ViewerDocumentView : DevExpress.XtraBars.Ribbon.RibbonForm,
         ViewerDocumentViewModel.ICallback, IImageHolder
     {
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private BaseViewer _Viewer;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
 
         public ViewerDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
             UIUtils.ConfigureRibbonBar(Ribbon);
         }

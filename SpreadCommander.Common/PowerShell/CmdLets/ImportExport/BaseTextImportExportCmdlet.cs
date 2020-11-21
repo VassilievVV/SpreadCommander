@@ -48,7 +48,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         }
         #endregion
 
-        protected IColumnDefinition CreateColumnDefinition(TextColumnDefinition definition)
+        protected static IColumnDefinition CreateColumnDefinition(TextColumnDefinition definition)
         {
             if (definition == null)
                 throw new ArgumentNullException("Column definition is not provided.");

@@ -208,7 +208,7 @@ namespace SpreadCommander.Documents.Console
 
         private void ViewErrors_DoubleClick(object sender, EventArgs e)
         {
-            if (!(e is DXMouseEventArgs ea) || !(sender is GridView view))
+            if (e is not DXMouseEventArgs ea || sender is not GridView view)
                 return;
 
             var info = view.CalcHitInfo(ea.Location);

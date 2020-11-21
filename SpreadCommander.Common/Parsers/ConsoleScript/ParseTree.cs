@@ -3,8 +3,6 @@
 #pragma warning disable IDE0017 // Simplify object initialization
 #pragma warning disable IDE0044 // Add readonly modifier
 #pragma warning disable IDE0066
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRR0047
 
 using System;
 using System.Collections.Generic;

@@ -26,6 +26,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values.")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -48,7 +51,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         }
         #endregion
 
-        private readonly List<PSObject> _Input = new List<PSObject>();
+        private readonly List<PSObject> _Input = new();
 
         protected override void BeginProcessing()
         {
@@ -72,7 +75,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             var resultType = typeof(List<>).MakeGenericType(ItemType);
             var result     = Activator.CreateInstance(resultType) as IList;
 
-            using var reader = GetDataSourceReader(_Input, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            using var reader = GetDataSourceReader(_Input, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
             if (reader == null)
                 return result;
 

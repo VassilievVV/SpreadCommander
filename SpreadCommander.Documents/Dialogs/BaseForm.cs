@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,7 +12,9 @@ namespace SpreadCommander.Documents.Dialogs
 {
     public class BaseForm : DevExpress.XtraEditors.XtraForm
     {
+#pragma warning disable CA2211 // Non-constant fields should not be visible
         public static Icon ApplicationIcon;
+#pragma warning restore CA2211 // Non-constant fields should not be visible
 
         protected override void OnLoad(EventArgs e)
         {

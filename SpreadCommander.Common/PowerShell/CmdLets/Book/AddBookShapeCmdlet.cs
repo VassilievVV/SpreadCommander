@@ -109,10 +109,16 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             if (Text != null)
             {
                 if (Html)
-                    shape.ShapeFormat.TextBox.Document.AppendHtmlText(Text,
+                {
+                    var range = shape.ShapeFormat.TextBox.Document.AppendHtmlText(Text,
                         UseDestinationStyles ? InsertOptions.UseDestinationStyles : InsertOptions.KeepSourceFormatting);
+                    WriteRangeToConsole(book, range);
+                }
                 else
+                {
                     shape.ShapeFormat.TextBox.Document.AppendText(Text);
+                    WriteTextToConsole(Text);
+                }
             }
 
             if (!string.IsNullOrWhiteSpace(Name))

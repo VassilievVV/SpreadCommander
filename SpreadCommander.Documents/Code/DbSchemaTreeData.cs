@@ -1,8 +1,4 @@
-﻿#pragma warning disable CRR0047
-#pragma warning disable CRR0048
-#pragma warning disable CRR0050
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;

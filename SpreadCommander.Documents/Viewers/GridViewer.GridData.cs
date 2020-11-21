@@ -167,8 +167,6 @@ namespace SpreadCommander.Documents.Viewers
 
 
                         var formatRule = Utils.NonNullString(formatCondition.FormatRule).ToLower();
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         switch (formatRule)
                         {
                             case "expression":
@@ -531,8 +529,6 @@ namespace SpreadCommander.Documents.Viewers
                                 }
                                 break;
                         }
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
                 

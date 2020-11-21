@@ -51,7 +51,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
         {
             base.SetupDiagram(diagram);
 
-            if (!(diagram is XYDiagram3D diagram3D))
+            if (diagram is not XYDiagram3D diagram3D)
                 return;
 
             diagram3D.PlaneDepthFixed = PlaneDepthFixed;

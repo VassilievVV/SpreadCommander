@@ -74,7 +74,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                     throw new Exception("Cannot find primary axis.");
             }
 
-            if (!(axis is Axis2D axis2D))
+            if (axis is not Axis2D axis2D)
                 throw new Exception("Only 2D axis support custom labels.");
 
             var label = new CustomAxisLabel();

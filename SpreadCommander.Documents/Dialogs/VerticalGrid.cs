@@ -1,7 +1,5 @@
 //Based on http://cs.rthand.com/blogs/blog_with_righthand/archive/2007/08/24/Make-XtraVerticalGrid-fast-as-a-bullet.aspx
 
-#pragma warning disable CRR0047
-
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -105,6 +103,8 @@ namespace SpreadCommander.Documents.Viewers
 
         public override void AttachDataSource(object dataSource)
         {
+            using var _ = new UsingProcessor(() => GridControl.SuspendDrawing(), () => GridControl.ResumeDrawing());
+
             GridControl.DataSource = null;
             viewTable.Columns.Clear();
             viewTable.FormatConditions.Clear();
@@ -137,6 +137,8 @@ namespace SpreadCommander.Documents.Viewers
 
         public void RefreshDataSource()
         {
+            using var _ = new UsingProcessor(() => GridControl.SuspendDrawing(), () => GridControl.ResumeDrawing());
+
             GridControl.DataSource = null;
             GridControl.DataSource = DataSource;
             GridControl.RefreshDataSource();
@@ -146,7 +148,7 @@ namespace SpreadCommander.Documents.Viewers
         {
             if (dataTable == null)
                 return;
-            
+
             var formatConditions = new List<ConsoleCommands.BaseCommand>();
             foreach (var propKey in dataTable.ExtendedProperties.Keys)
             {
@@ -297,6 +299,8 @@ namespace SpreadCommander.Documents.Viewers
 
         public override async void LoadFile(string fileName, Dictionary<string, string> parameters, List<BaseCommand> commands)
         {
+            using var _ = new UsingProcessor(() => GridControl.SuspendDrawing(), () => GridControl.ResumeDrawing());
+
             DataSource             = null;
             GridControl.DataSource = null;
             viewTable.Columns.Clear();
@@ -334,9 +338,9 @@ namespace SpreadCommander.Documents.Viewers
                     viewTable.UpdateViewColumns();
                 }).ConfigureAwait(true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
             AttachDataSource(dataSource);
@@ -345,13 +349,8 @@ namespace SpreadCommander.Documents.Viewers
                 ApplyGridFormatRules(viewTable, commands);
             else
             {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP05 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
+
                 var fileFormat = $"{fileName}.scgrid";  //Add .scgrid extension to existing one, i.e. produce .csv.scgrid
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP05 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                 if (File.Exists(fileFormat))
                     LoadGridData(fileFormat);
             }
@@ -360,13 +359,7 @@ namespace SpreadCommander.Documents.Viewers
         //Save only formatting, do not change data file (.csv or .txt)
         public void SaveFile(string fileName)
         {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP05 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
             var fileFormat = $"{fileName}.scgrid";	//Add .scgrid extension to existing one, i.e. produce .csv.scgrid
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP05 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
             SaveGridData(fileFormat);
         }
 
@@ -570,7 +563,7 @@ namespace SpreadCommander.Documents.Viewers
 
         private void ViewTable_ShowingEditor(object sender, CancelEventArgs e)
         {
-            if (!(sender is GridView view))
+            if (sender is not GridView view)
                 return;
 
             Type columnType = view.FocusedColumn?.ColumnType;

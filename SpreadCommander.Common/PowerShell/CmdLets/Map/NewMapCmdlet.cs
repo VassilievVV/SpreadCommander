@@ -30,6 +30,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
         [Parameter(HelpMessage = "Background color of the map.")]
         public string BackColor { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         protected override void EndProcessing()
         {
@@ -101,11 +104,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
 
             if (ImageList != null && ImageList.Length > 0)
             {
-                lock (LockObject)
+                ExecuteLocked(() =>
                 {
-#pragma warning disable IDE0068 // Use recommended dispose pattern
                     var images = new ImageCollection();
-#pragma warning restore IDE0068 // Use recommended dispose pattern
                     if (ImageSize != null)
                         images.ImageSize = ImageSize.Value;
                     foreach (var imageFile in ImageList)
@@ -117,7 +118,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
                         images.AddImage(bmp);
                     }
                     map.ImageList = images;
-                }
+                }, LockFiles ? LockObject : null);
             }
 
             var backColor = Utils.ColorFromString(BackColor);

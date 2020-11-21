@@ -13,6 +13,7 @@ using DevExpress.XtraEditors.Controls;
 using SpreadCommander.Documents.Dialogs;
 using SpreadCommander.Documents.Code;
 using DevExpress.Utils.Svg;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
@@ -20,6 +21,8 @@ namespace SpreadCommander.Documents.Views
     {
         public PictureDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
             UIUtils.ConfigureRibbonBar(Ribbon);
         }

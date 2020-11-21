@@ -20,6 +20,7 @@ using System.IO;
 using DevExpress.XtraBars.Docking2010.Views;
 using DevExpress.Mvvm;
 using SpreadCommander.Common.Messages;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
@@ -28,16 +29,16 @@ namespace SpreadCommander.Documents.Views
         private const int ParseScriptTimerID  = 1;
         private const int ParseScriptInterval = 1000;   //1 sec.
 
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private ScriptEditorControl _ScriptEditor;
         private ConsoleOutputControl _ConsoleOutputControl;
         private ConsoleInputControl _ConsoleInputControl;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
 
         private ulong _LastParseScriptTicks = 0;
 
         public ConsoleDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
             UIUtils.ConfigureRibbonBar(Ribbon);
 
@@ -62,7 +63,7 @@ namespace SpreadCommander.Documents.Views
             {
                 case WinAPI.WM_TIMER:
                     var ticks = WinAPI.GetTickCount64();
-                    if (ticks - _LastParseScriptTicks > 1000)
+                    if (ticks - _LastParseScriptTicks > ParseScriptInterval)
                     {
                         _LastParseScriptTicks = 0;
                         WinAPI.KillTimer(this, ParseScriptTimerID);
@@ -435,23 +436,6 @@ namespace SpreadCommander.Documents.Views
         {
             var model = mvvmContext.GetViewModel<ConsoleDocumentViewModel>();
             model.Save();
-
-            /*
-            //var editor = _ScriptEditor?.ActiveEditor;
-            var editor = _ScriptEditor;
-            if (editor != null && string.IsNullOrWhiteSpace(editor.FileName))
-            {
-                var fileName       = model.FileName;
-                var scriptFileName = model.GetScriptFileName(fileName);
-                editor.FileName    = scriptFileName;
-            }
-            editor?.SaveDocument();
-            if (!model.HasCustomControls && string.IsNullOrWhiteSpace(editor.FileName))
-                model.FileName = editor.FileName;
-            else
-                model.UpdateTitle();
-            model.Modified = false;
-            */
         }
 
         public string CommandText => _ScriptEditor?.CommandText;

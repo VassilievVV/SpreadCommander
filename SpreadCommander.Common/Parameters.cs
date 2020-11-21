@@ -38,7 +38,7 @@ namespace SpreadCommander.Common
                     return null;
 
                 if (bingKey.StartsWith("ENC:", StringComparison.InvariantCultureIgnoreCase))
-                    bingKey = Utils.Decrypt(bingKey.Substring("ENC:".Length));
+                    bingKey = Utils.Decrypt(bingKey["ENC:".Length..]);
 
                 return bingKey;
             }

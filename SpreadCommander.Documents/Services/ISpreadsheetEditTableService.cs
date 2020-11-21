@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using SpreadCommander.Documents.ViewModels;
+﻿using SpreadCommander.Documents.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data;

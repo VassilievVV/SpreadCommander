@@ -75,7 +75,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void BarSelectTable_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
@@ -84,7 +84,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void BarSelectTableData_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
@@ -93,7 +93,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void BarExpandSelectionRows_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection.ExpandToTableRows();
@@ -102,7 +102,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void BarExpandSelectionColumns_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection.ExpandToTableColumn();
@@ -111,7 +111,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void BarCopySelectionToRows_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection;
@@ -120,7 +120,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void BarCopySelectionToColumns_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection;

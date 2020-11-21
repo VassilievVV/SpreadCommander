@@ -204,7 +204,7 @@ namespace SpreadCommander.Documents.Controls
 
         private void DataGridSplitContainer_SplitViewCreated(object sender, EventArgs e)
         {
-            if (!(sender is GridSplitContainer container))
+            if (sender is not GridSplitContainer container)
                 return;
 
             container.SplitChildGrid.UseEmbeddedNavigator = gridTable.UseEmbeddedNavigator;
@@ -304,7 +304,7 @@ namespace SpreadCommander.Documents.Controls
 
                         foreach (var propKey in dataTable.ExtendedProperties.Keys)
                         {
-                            if (propKey is string && ((string)propKey).StartsWith("Format", StringComparison.InvariantCultureIgnoreCase))
+                            if (propKey is string str && str.StartsWith("Format", StringComparison.InvariantCultureIgnoreCase))
                             {
                                 var propValue = dataTable.ExtendedProperties[propKey];
                                 if (propValue != null)
@@ -325,7 +325,7 @@ namespace SpreadCommander.Documents.Controls
                     {
                         foreach (var propKey in dataTable.ExtendedProperties.Keys)
                         {
-                            if (propKey is string && ((string)propKey).StartsWith("ComputedColumn", StringComparison.InvariantCultureIgnoreCase))
+                            if (propKey is string str && str.StartsWith("ComputedColumn", StringComparison.InvariantCultureIgnoreCase))
                             {
                                 var propValue = dataTable.ExtendedProperties[propKey];
                                 if (propValue != null)
@@ -388,10 +388,10 @@ namespace SpreadCommander.Documents.Controls
                 e.Appearance.ForeColor = AreColorsNear(viewTable.Appearance.Row.ForeColor, Color.Gray) ? Color.LightGray : Color.Gray;
                 e.DisplayText          = "<NULL>";
             }
-            else if (e.CellValue is byte[])
+            else if (e.CellValue is byte[] b)
             {
                 e.Appearance.ForeColor = AreColorsNear(viewTable.Appearance.Row.ForeColor, Color.Gray) ? Color.LightGray : Color.Gray;
-                e.DisplayText          = GetBlobDisplayText((byte[])e.CellValue);
+                e.DisplayText          = GetBlobDisplayText(b);
             }
 
 
@@ -416,7 +416,7 @@ namespace SpreadCommander.Documents.Controls
 
         private void ViewTable_ShowingEditor(object sender, CancelEventArgs e)
         {
-            if (!(sender is GridView view))
+            if (sender is not GridView view)
                 return;
 
             Type columnType = view.FocusedColumn?.ColumnType;
@@ -433,25 +433,25 @@ namespace SpreadCommander.Documents.Controls
                 return;
 
             object data = ((ButtonEdit)sender).EditValue;
-            if (data != null && data != DBNull.Value && data is byte[])
+            if (data != null && data != DBNull.Value && data is byte[] b)
             {
-                using var editor = new BlobEditor((byte[])data);
+                using var editor = new BlobEditor(b);
                 editor.ShowDialog(this);
             }
         }
 
         private void RepositoryItemBlobEditor_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
         {
-            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[])
-                e.DisplayText = GetBlobDisplayText((byte[])e.Value);
+            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[] b)
+                e.DisplayText = GetBlobDisplayText(b);
             else
                 e.DisplayText = GetBlobDisplayText(null);
         }
 
         private void RepositoryItemBlobEditor_FormatEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
         {
-            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[])
-                e.Value = GetBlobDisplayText((byte[])e.Value);
+            if (e.Value != null && e.Value != DBNull.Value && e.Value is byte[] b)
+                e.Value = GetBlobDisplayText(b);
             else
                 e.Value = GetBlobDisplayText(null);
         }

@@ -21,7 +21,7 @@ namespace SpreadCommander.Common.ScriptEngines
         public override bool LfInSendCommand => true;
 
 
-        protected virtual string GetProcessPath(bool isScript)
+        protected static string GetProcessPath(bool isScript)
         {
             var rKey = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\R-core\R64");
             if (rKey == null)
@@ -62,9 +62,25 @@ namespace SpreadCommander.Common.ScriptEngines
         public override string ProcessPath       => GetProcessPath(false);
         public override string ProcessScriptPath => GetProcessPath(true);
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
         //public override string ProcessArguments       => "--slave --vanilla –-no-Rconsole ";
-#pragma warning restore CRRSP01 // A misspelled word has been found
         //public override string ProcessScriptArguments => "--vanilla";
+
+        public static bool IsInstalled
+        {
+            get
+            {
+                try
+                {
+                    var processPath = GetProcessPath(false);
+                    var result = !string.IsNullOrWhiteSpace(processPath) &&
+                        File.Exists(processPath);
+                    return result;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
     }
 }

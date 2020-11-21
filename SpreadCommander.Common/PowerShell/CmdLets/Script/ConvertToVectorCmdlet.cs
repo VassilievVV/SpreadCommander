@@ -27,9 +27,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Alias("Column")]
         public string ColumnName { get; set; }
 
-        [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
-        public string[] SelectColumns { get; set; }
-
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values.")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -69,7 +66,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             var resultType = typeof(List<>).MakeGenericType(ItemType);
             var result = Activator.CreateInstance(resultType) as IList;
 
-            using var reader = GetDataSourceReader(_Input, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            using var reader = GetDataSourceReader(_Input, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors });
             if (reader == null)
                 return result;
 

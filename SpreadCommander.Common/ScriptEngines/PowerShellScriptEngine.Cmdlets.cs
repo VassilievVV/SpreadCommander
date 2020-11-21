@@ -16,6 +16,8 @@ using System.Management.Automation.Runspaces;
 using System.Text;
 using System.Threading.Tasks;
 using SpreadCommander.Common.PowerShell.CmdLets.ImportExport;
+using SpreadCommander.Common.PowerShell.CmdLets.Common;
+using SpreadCommander.Common.PowerShell.CmdLets.Async;
 
 namespace SpreadCommander.Common.ScriptEngines
 {
@@ -30,6 +32,9 @@ namespace SpreadCommander.Common.ScriptEngines
 
             AddCmdletConfigurationEntries(new List<Type>()
             {
+                //Common
+                typeof(ConvertSCPathCmdlet),
+
                 //Book
                 typeof(WriteTextCmdlet),
                 typeof(WriteHtmlCmdlet),
@@ -71,6 +76,8 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(GetSpreadTableCmdlet),
                 typeof(SaveSpreadChartCmdlet),
                 typeof(ClearSpreadsheetCmdlet),
+                typeof(GetSpreadTableNamesCmdlet),
+                typeof(GetSpreadSheetNamesCmdlet),
 
                 //Chart
                 typeof(NewChartCmdlet),
@@ -142,12 +149,17 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(ConvertToUnPivotCmdlet),
 
                 //ImportExport
-                typeof(ImportDelimitedText),
-                typeof(ImportFixedLengthText),
-                typeof(ExportDelimitedText),
-                typeof(ExportFixedLengthText),
-                typeof(ImportDbf),
-                typeof(ExportDbf)
+                typeof(ImportDelimitedTextCmdlet),
+                typeof(ImportFixedLengthTextCmdlet),
+                typeof(ExportDelimitedTextCmdlet),
+                typeof(ExportFixedLengthTextCmdlet),
+                typeof(ImportDbfCmdlet),
+                typeof(ExportDbfCmdlet),
+
+                //Async
+                typeof(InvokeAsyncCommandsCmdlet),
+                typeof(NewSCRunspaceCmdlet),
+                typeof(NewSCRunspacePoolCmdlet)
 
 #if DEBUG
                 , typeof(TestCmdlet)

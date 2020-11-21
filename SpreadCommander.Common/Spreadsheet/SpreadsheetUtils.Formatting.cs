@@ -23,7 +23,6 @@ namespace SpreadCommander.Common.Spreadsheet
             var conditionalFormattings = worksheet.ConditionalFormattings;
 
             var formatRule = Utils.NonNullString(formatCondition.FormatRule).ToLower();
-#pragma warning disable CRRSP01 // A misspelled word has been found
             switch (formatRule)
             {
                 case "expression":
@@ -240,7 +239,6 @@ namespace SpreadCommander.Common.Spreadsheet
                     ApplyOptionalFormatting();
                     break;
             }
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
 
             static string AdjustFormatExpression(DevExpress.Export.Xl.CriteriaOperatorToXlExpressionConverter converter, string expression)

@@ -26,9 +26,7 @@ namespace SpreadCommander.Documents.Console
 {
     public partial class ConsoleBookControl : ConsoleBaseControl, IRibbonHolder
     {
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private SCBook SCBook;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
 
         private int _SilentUpdateCounter;
 

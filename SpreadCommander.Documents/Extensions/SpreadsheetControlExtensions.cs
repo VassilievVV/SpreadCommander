@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.XtraSpreadsheet;
+﻿using DevExpress.XtraSpreadsheet;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.Spreadsheet;
 using System;
@@ -95,7 +93,7 @@ namespace SpreadCommander.Documents.Extensions
             {
                 if (e.Delta == 0)
                     return;
-                
+
                 var spreadsheet = provider as SpreadsheetControl ?? throw new ArgumentException("MouseWheel provider is not Spreadsheet", nameof(provider));
 
                 var cellsToMove = e.Delta / 100;

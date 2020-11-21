@@ -36,7 +36,7 @@ namespace SpreadCommander.Documents.Dialogs
             }
         }
 
-        private RichTextRunFont CreateRichTextRun(ReadOnlyTextProperties tp)
+        private static RichTextRunFont CreateRichTextRun(ReadOnlyTextProperties tp)
         {
             var runFont = new RichTextRunFont(tp.FontName, tp.DoubleFontSize / 2, tp.ForeColor)
             {

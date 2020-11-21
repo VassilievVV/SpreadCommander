@@ -1,4 +1,7 @@
-﻿using SpreadCommander.Common.PowerShell.Host;
+﻿#pragma warning disable CA1822 // Mark members as static
+
+using SpreadCommander.Common.PowerShell.Host;
+using SpreadCommander.Common.ScriptEngines;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +26,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             set => _ExternalHost.Silent = value;
         }
 
-        public string ProjectPath => Project.Current.ProjectPath;
+        public string ProjectPath    => Project.Current.ProjectPath;
+        public string StartupCommand => PowerShellScriptEngine.StartupCommand;
 
         public string MapPath(string fileName) => Project.Current.MapPath(fileName);
 

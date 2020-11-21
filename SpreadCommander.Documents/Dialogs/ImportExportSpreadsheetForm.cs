@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -189,7 +187,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void ComboSpreadsheetName_Properties_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!(comboSpreadsheetName.SelectedItem is SpreadComboItem comboItem) || comboItem.Workbook == null)
+            if (comboSpreadsheetName.SelectedItem is not SpreadComboItem comboItem || comboItem.Workbook == null)
                 return;
 
             if (_Mode == ImportExportSpreadsheetMode.Import)

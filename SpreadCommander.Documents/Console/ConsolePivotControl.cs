@@ -39,7 +39,7 @@ namespace SpreadCommander.Documents.Console
 
         private void GalleryDataSources_ItemClick(object sender, GalleryItemClickEventArgs e)
         {
-            if (!(e.Item.Tag is DataTable table))
+            if (e.Item.Tag is not DataTable table)
                 return;
 
             ActiveTable = table;

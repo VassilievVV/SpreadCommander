@@ -40,17 +40,7 @@ namespace SpreadCommander.Documents.Code
 
         [XmlIgnore()]
         [JsonIgnore()]
-        public string ProjectName
-        {
-            get
-            {
-                var path = Directory;
-                if (string.IsNullOrWhiteSpace(path))
-                    return null;
-
-                return Path.GetFileName(path);
-            }
-        }
+        public string ProjectName => Project.GetProjectNameFromPath(Directory);
 
         [XmlIgnore()]
         [JsonIgnore()]
@@ -79,9 +69,9 @@ namespace SpreadCommander.Documents.Code
             if (x?.LastAccess == null && y?.LastAccess == null)
                 return 0;
             if (x?.LastAccess == null)
-                return -1;
-            if (y?.LastAccess == null)
                 return 1;
+            if (y?.LastAccess == null)
+                return -1;
 
             return -DateTime.Compare(x.LastAccess.Value, y.LastAccess.Value);
         }

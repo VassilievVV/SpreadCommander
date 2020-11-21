@@ -58,7 +58,9 @@ namespace SpreadCommander.Common.Spreadsheet.Functions
                 if (input == null || pattern == null)
                     return new CellValue[,] { };
 
+#pragma warning disable IDE0075 // Simplify conditional expression
                 bool horizontal = parameters.Count > 2 ? parameters[2].BooleanValue : false;
+#pragma warning restore IDE0075 // Simplify conditional expression
 
                 var split = Regex.Split(input, pattern);
 

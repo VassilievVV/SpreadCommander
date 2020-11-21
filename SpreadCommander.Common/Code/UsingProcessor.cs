@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.Code
 {
-	public class UsingProcessor : IDisposable
-	{
-		private readonly Action OnWaitFinished;
+    public class UsingProcessor : IDisposable
+    {
+        private readonly Action OnWaitFinished;
 
-		public UsingProcessor(Action onWaitStarted, Action onWaitFinished)
-		{
-			OnWaitFinished = onWaitFinished;
-			onWaitStarted?.Invoke();
-		}
+        public UsingProcessor(Action onWaitStarted, Action onWaitFinished)
+        {
+            OnWaitFinished = onWaitFinished;
+            onWaitStarted?.Invoke();
+        }
 
-		public void Dispose()
-		{
-			OnWaitFinished?.Invoke();
-		}
-	}
+        public void Dispose()
+        {
+            OnWaitFinished?.Invoke();
+        }
+    }
 }

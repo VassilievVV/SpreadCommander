@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Common;
@@ -36,7 +34,7 @@ namespace SpreadCommander.Common.Code
             int posColon         = scConnectionString.IndexOf(':');
 
             var prefix           = scConnectionString.Substring(0, posColon).Trim().ToLowerInvariant();
-            var connectionString = scConnectionString.Substring(posColon + 1).Trim();
+            var connectionString = scConnectionString[(posColon + 1)..].Trim();
 
             switch (prefix)
             {
@@ -45,15 +43,11 @@ namespace SpreadCommander.Common.Code
                     connectionString = AdjustMSSQLConnectionString(connectionString);
                     resultMSSQL.ConnectionString = connectionString;
                     return resultMSSQL;
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                 case "mysql":
                     var resultMySQL = new DBConnection() { Provider = ConnectionFactory.MySqlFactoryName };
                     connectionString = AdjustMySQLConnectionString(connectionString);
                     resultMySQL.ConnectionString = connectionString;
                     return resultMySQL;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                 case "sqlite":
                     var resultSQLite = new DBConnection() { Provider = ConnectionFactory.SQLiteFactoryName };
                     connectionString = AdjustSQLiteConnectionString(connectionString);
@@ -82,7 +76,7 @@ namespace SpreadCommander.Common.Code
                 {
                     result = $"{firstPartName}={firstPart};";
                     if (posSemicolon < value.Length)
-                        result += value.Substring(posSemicolon + 1);
+                        result += value[(posSemicolon + 1)..];
                 }
 
                 return result;
@@ -210,11 +204,15 @@ namespace SpreadCommander.Common.Code
         [PasswordPropertyText(true)]
         public string EncConnectionString { get; set; }
 
+#pragma warning disable CA1822 // Mark members as static
         public bool ShouldSerializeConnectionString() => false;
+#pragma warning restore CA1822 // Mark members as static
 
         [XmlIgnore()]
         [JsonIgnore()]
+#pragma warning disable CA1822 // Mark members as static
         public int ImageIndex => 0;
+#pragma warning restore CA1822 // Mark members as static
 
 
 

@@ -19,6 +19,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(HelpMessage = "If set and file already exists - it will be overwritten")]
         public SwitchParameter Replace { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -80,13 +83,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
                 };
                 link.CreateDocument();
 
-                lock (LockObject)
-                    ps.ExportToPdf(fileName, pdfOptions);
+                ExecuteLocked(() => ps.ExportToPdf(fileName, pdfOptions), LockFiles ? LockObject : null);
             }
             else
             {
-                lock (LockObject)
-                    workbook.SaveDocument(fileName, format);
+                ExecuteLocked(() => workbook.SaveDocument(fileName, format), LockFiles ? LockObject : null);
             }
         }
     }

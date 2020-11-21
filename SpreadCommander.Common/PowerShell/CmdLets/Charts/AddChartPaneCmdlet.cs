@@ -17,7 +17,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         protected override XYDiagramPaneBase GetPane()
         {
-            if (!(ChartContext.Chart.Diagram is XYDiagram diagram))
+            if (ChartContext.Chart.Diagram is not XYDiagram diagram)
                 return null;
 
             var pane = new XYDiagramPane(Name);

@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 using SpreadCommander.Documents.ViewModels;
 using SpreadCommander.Documents.Code;
 using DevExpress.Utils.Svg;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
@@ -18,6 +19,8 @@ namespace SpreadCommander.Documents.Views
     {
         public PdfDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
             UIUtils.ConfigureRibbonBar(Ribbon);
         }

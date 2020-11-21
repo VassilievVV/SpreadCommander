@@ -46,8 +46,6 @@ namespace SpreadCommander.Common.Book
 
                         switch (prop.Key.ToLower())
                         {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                             case "dpi":
                                 dpi = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                                 break;
@@ -63,8 +61,6 @@ namespace SpreadCommander.Common.Book
                             case "size":
                                 size = ParseSize(prop.Value);
                                 break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                         }
                     }
                 }
@@ -113,8 +109,6 @@ namespace SpreadCommander.Common.Book
 
                     switch (prop.Key.ToLower())
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "dpi":
                             dpi = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                             break;
@@ -130,8 +124,6 @@ namespace SpreadCommander.Common.Book
                         case "fontsize":
                             fontSize = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                             break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
             }

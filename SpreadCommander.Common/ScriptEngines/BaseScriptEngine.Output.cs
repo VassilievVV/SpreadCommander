@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using DevExpress.Data.Filtering;
+﻿using DevExpress.Data.Filtering;
 using DevExpress.Printing.ExportHelpers;
 using DevExpress.Spreadsheet;
 using DevExpress.XtraRichEdit.API.Native;
@@ -22,6 +20,7 @@ using SpreadCommander.Common.Extensions;
 using System.Globalization;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.Spreadsheet;
+using SpreadCommander.Common.PowerShell.CmdLets;
 
 namespace SpreadCommander.Common.ScriptEngines
 {
@@ -30,7 +29,7 @@ namespace SpreadCommander.Common.ScriptEngines
         protected virtual void ExecuteMethodSync(ISynchronizeInvoke sync, Action function)
         {
             if (sync?.InvokeRequired ?? false)
-                sync.Invoke(function, new object[] { });
+                sync.Invoke(function, Array.Empty<object>());
             else
                 function();
         }
@@ -44,6 +43,13 @@ namespace SpreadCommander.Common.ScriptEngines
                     var para = doc.Paragraphs[doc.Paragraphs.Count - 1];
                     doc.Delete(para.Range);
                     doc.Paragraphs.Append();
+                }
+
+                if (ApplicationType == ScriptApplicationType.Console)
+                {
+                    System.Console.CursorLeft = 0;
+                    if (System.Console.CursorTop > 0)
+                        System.Console.CursorTop--;
                 }
             }
         }
@@ -76,6 +82,8 @@ namespace SpreadCommander.Common.ScriptEngines
             {
                 doc.EndUpdateCharacters(cp);
             }
+
+            SCCmdlet.WriteErrorToConsole(errorMessage);
         }
 
         protected void FlushTextBufferSynchronized(Document doc, ISynchronizeInvoke sync, ScriptOutputMessage output, StringBuilder buffer)
@@ -133,6 +141,8 @@ namespace SpreadCommander.Common.ScriptEngines
                 }
 
                 buffer.Clear();
+
+                SCCmdlet.WriteErrorToConsole(text);
             }
             catch (Exception ex)
             {

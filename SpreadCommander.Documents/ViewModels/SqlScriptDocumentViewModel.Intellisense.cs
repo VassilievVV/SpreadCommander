@@ -248,7 +248,7 @@ namespace SpreadCommander.Documents.ViewModels
                                         }
                                     }
 
-                                    strParameters.Append(")");
+                                    strParameters.Append(')');
 
                                     if (!string.IsNullOrWhiteSpace(returnParameter))
                                         strParameters.Append(" returns ").Append(returnParameter);

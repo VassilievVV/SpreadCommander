@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using Alsing.Windows.Forms.Document;
+﻿using Alsing.Windows.Forms.Document;
 using Alsing.Windows.Forms.Document.DocumentStructure.Structs;
 using Alsing.Windows.Forms.Document.DocumentStructure.Word;
 using System;
@@ -220,19 +218,17 @@ namespace SpreadCommander.Documents.Controls
             if (startPos.Y < 0 || startPos.Y >= Document.Count)
                 return;
 
-            if (!(Editor.ActiveViewControl is EditViewControl ctrlEdit) || ctrlEdit.Painter == null)
+            if (Editor.ActiveViewControl is not EditViewControl ctrlEdit || ctrlEdit.Painter == null)
                 return;
 
             Point popupLocation = Editor.PointToScreen(ctrlEdit.Painter.GetCaretPixelPos());
             popupLocation.X += ctrlEdit.View.CharWidth;
             popupLocation.Y += ctrlEdit.View.RowHeight;
 
-#pragma warning disable IDE0067 // Dispose objects before losing scope
             var popup = new ScriptEditorPopupForm(Editor, intellisense)
             {
                 Location = popupLocation
             };
-#pragma warning restore IDE0067 // Dispose objects before losing scope
             popup.Show(Editor);
 
             popup.FormClosed += (s, e) =>
@@ -287,7 +283,7 @@ namespace SpreadCommander.Documents.Controls
 
         public void ShowGotoLineDialog()
         {
-            if (!(syntaxEditor.ActiveViewControl is EditViewControl ctrlEdit))
+            if (syntaxEditor.ActiveViewControl is not EditViewControl ctrlEdit)
                 return;
 
             using var dlg = new EditorGotoLineForm(ctrlEdit);
@@ -314,9 +310,7 @@ namespace SpreadCommander.Documents.Controls
             }
 
             var EditorTopLeft = syntaxEditor.PointToScreen(new Point(0, 0));
-#pragma warning disable IDE0067 // Dispose objects before losing scope
             var dlg           = new EditorFindReplaceForm(edit, strFind, replace);
-#pragma warning restore IDE0067 // Dispose objects before losing scope
             dlg.Left          = topForm.Left + EditorTopLeft.X + Math.Max((syntaxEditor.ClientWidth - dlg.Width) / 2, 0);
             dlg.Top           = topForm.Top + EditorTopLeft.Y + Math.Max((syntaxEditor.ClientHeight - dlg.Height) / 2, 0);
 

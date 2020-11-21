@@ -65,7 +65,6 @@ namespace SpreadCommander.Common.Book
 
                     switch (prop.Key.ToLower())
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
                         case "rebuild":
                         case "recalculate":
                         case "recalc":
@@ -74,7 +73,6 @@ namespace SpreadCommander.Common.Book
                                 valueRebuild = bool.TrueString;
                             rebuild = bool.Parse(valueRebuild);
                             break;
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
             }
@@ -129,8 +127,8 @@ namespace SpreadCommander.Common.Book
                 int p = tableName.IndexOf('!');
                 if (p >= 0)
                 {
-                    var worksheetName = tableName.Substring(0, p);
-                    var worksheetTableName = tableName.Substring(p + 1);
+                    var worksheetName      = tableName.Substring(0, p);
+                    var worksheetTableName = tableName[(p + 1)..];
 
                     var worksheet = workbook.Worksheets[worksheetName];
                     if (worksheet == null)
@@ -279,8 +277,6 @@ namespace SpreadCommander.Common.Book
 
                     switch (prop.Key.ToLower())
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "rebuild":
                         case "recalculate":
                         case "recalc":
@@ -301,8 +297,6 @@ namespace SpreadCommander.Common.Book
                         case "scaley":
                             scaleY = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                             break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
             }
@@ -327,9 +321,7 @@ namespace SpreadCommander.Common.Book
                 }
                 else
                 {
-#pragma warning disable IDE0068 // Use recommended dispose pattern
                     workbook = SpreadsheetUtils.CreateWorkbook();
-#pragma warning restore IDE0068 // Use recommended dispose pattern
                     workbook.LoadDocument(fileName);
                 }
 
@@ -361,7 +353,7 @@ namespace SpreadCommander.Common.Book
                 if (p >= 0)
                 {
                     var worksheetName      = chartName.Substring(0, p);
-                    var worksheetChartName = chartName.Substring(p + 1);
+                    var worksheetChartName = chartName[(p + 1)..];
 
                     var worksheet = workbook.Worksheets[worksheetName];
                     if (worksheet == null)
@@ -458,8 +450,6 @@ namespace SpreadCommander.Common.Book
 
                     switch (prop.Key.ToLower())
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "rebuild":
                         case "recalculate":
                         case "recalc":
@@ -474,8 +464,6 @@ namespace SpreadCommander.Common.Book
                                 valueRecalc = bool.TrueString;
                             dataOnly = bool.Parse(valueDataOnly);
                             break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
             }
@@ -531,7 +519,7 @@ namespace SpreadCommander.Common.Book
                 if (p >= 0)
                 {
                     var worksheetName      = pivotName.Substring(0, p);
-                    var worksheetPivotName = pivotName.Substring(p + 1);
+                    var worksheetPivotName = pivotName[(p + 1)..];
 
                     var worksheet = workbook.Worksheets[worksheetName];
                     if (worksheet == null)

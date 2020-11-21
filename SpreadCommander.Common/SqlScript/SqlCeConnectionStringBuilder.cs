@@ -220,14 +220,14 @@ namespace SpreadCommander.Common.SqlScript
             return result;
         }
 
-        private string ValueToString(object value, string defaultValue)
+        private static string ValueToString(object value, string defaultValue)
         {
             if (value == null || value.Equals(string.Empty))
                 return defaultValue;
             return Convert.ToString(value, CultureInfo.InvariantCulture);
         }
 
-        private int ValueToInt(object value, int defaultValue)
+        private static int ValueToInt(object value, int defaultValue)
         {
             if (value == null)
                 return defaultValue;
@@ -242,7 +242,7 @@ namespace SpreadCommander.Common.SqlScript
             }
         }
 
-        private bool ValueToBool(object value, bool defaultValue)
+        private static bool ValueToBool(object value, bool defaultValue)
         {
             if (value == null)
                 return defaultValue;
@@ -301,8 +301,8 @@ namespace SpreadCommander.Common.SqlScript
                     PersistSecurityInfo = ValueToBool(value, false);
                     break;
                 case keyLocaleIdentifier:
-                    if (value is CultureInfo)
-                        LocaleIdentifier = (CultureInfo)value;
+                    if (value is CultureInfo info)
+                        LocaleIdentifier = info;
                     else
                         LocaleIdentifierString = ValueToString(value, null);
                     break;
@@ -377,44 +377,22 @@ namespace SpreadCommander.Common.SqlScript
             keyword = keyword.Trim();
             string keywordUpper = keyword.ToUpper();
 
-            switch (keywordUpper)
+            return keywordUpper switch
             {
-                case "DATASOURCE":
-                case "DATA SOURCE":
-                case "PASSWORD":
-                case "PWD":
-                case "DATABASE PASSWORD":
-                case "SSCE:DATABASE PASSWORD":
-                case "ENCRYPT":
-                case "ENCRYPT DATABASE":
-                case "SSCE: ENCRYPT DATABASE":
-                case "MAX BUFFER SIZE":
-                case "SSCE:MAX BUFFER SIZE":
-                case "MAX DATABASE SIZE":
-                case "SSCE:MAX DATABASE SIZE":
-                case "MODE":
-                case "FILE MODE":
-                case "SSCE:MODE":
-                case "DEFAULT LOCK TIMEOUT":
-                case "SSCE:DEFAULT LOCK TIMEOUT":
-                case "DEFAULT LOCK ESCALATION":
-                case "SSCE:DEFAULT LOCK ESCALATION":
-                case "FLUSH INTERVAL":
-                case "SSCE:FLUSH INTERVAL":
-                case "AutoShrink THRESHOLD":
-                case "SSCE:AutoShrink THRESHOLD":
-                case "TEMP PATH":
-                case "TEMP FILE DIRECTORY":
-                case "SSCE:TEMP FILE DIRECTORY":
-                case "TEMP FILE MAX SIZE":
-                case "PERSIST SECURITY INFO":
-                case "LOCALE IDENTIFIER":
-                case "LCID":
-                case "INITIAL LCID":
-                    return true;
-            }
-
-            return false;
+                "DATASOURCE" or "DATA SOURCE" or "PASSWORD" or "PWD" or 
+                "DATABASE PASSWORD" or "SSCE:DATABASE PASSWORD" or 
+                "ENCRYPT" or "ENCRYPT DATABASE" or "SSCE: ENCRYPT DATABASE" or 
+                "MAX BUFFER SIZE" or "SSCE:MAX BUFFER SIZE" or "MAX DATABASE SIZE" or 
+                "SSCE:MAX DATABASE SIZE" or "MODE" or "FILE MODE" or "SSCE:MODE" or 
+                "DEFAULT LOCK TIMEOUT" or "SSCE:DEFAULT LOCK TIMEOUT" or 
+                "DEFAULT LOCK ESCALATION" or "SSCE:DEFAULT LOCK ESCALATION" or 
+                "FLUSH INTERVAL" or "SSCE:FLUSH INTERVAL" or "AutoShrink THRESHOLD" or 
+                "SSCE:AutoShrink THRESHOLD" or "TEMP PATH" or "TEMP FILE DIRECTORY" or 
+                "SSCE:TEMP FILE DIRECTORY" or "TEMP FILE MAX SIZE" or 
+                "PERSIST SECURITY INFO" or "LOCALE IDENTIFIER" or "LCID" or 
+                "INITIAL LCID" => true,
+                _ => false,
+            };
         }
 
         public override bool TryGetValue(string keyword, out object value)

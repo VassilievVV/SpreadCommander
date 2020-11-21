@@ -28,6 +28,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -86,15 +89,14 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
                 return;
 
            
-            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            var dataSource = GetDataSource(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
             if (dataSource is DataView dataView)
                 dataSource = dataView.ToTable();
             if (!(dataSource is DataTable))
             {
                 using var reader = new TypedListDataReader(dataSource);
-#pragma warning disable IDE0068 // Use recommended dispose pattern
                 var table = new DataTable();
-#pragma warning restore IDE0068 // Use recommended dispose pattern
                 table.Load(reader);
 
                 dataSource = table;

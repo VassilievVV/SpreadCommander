@@ -1,5 +1,3 @@
-#pragma warning disable CRR0050
-
 #define PropertyGridEx
 
 using System;
@@ -455,7 +453,7 @@ namespace SpreadCommander.Documents.Dialogs
             comboDataSource.SelectedIndex = 0;
             PropertyGrid.SelectedObject   = null;
 
-            if (!(bindingConnections.Current is DBConnection connection))
+            if (bindingConnections.Current is not DBConnection connection)
                 return;
 
             //Fill with new connection
@@ -559,14 +557,14 @@ namespace SpreadCommander.Documents.Dialogs
         {
             dxErrorProvider.ClearErrors();
 
-            if (!(bindingConnections.Current is DBConnection connection))
+            if (bindingConnections.Current is not DBConnection connection)
                 return;
 
             var connectionName = edName.EditValue as string;
             if (string.IsNullOrWhiteSpace(connectionName))
                 return;
 
-            if (connectionName.IndexOf(':') >= 0)
+            if (connectionName.Contains(':'))
             {
                 dxErrorProvider.SetError(edName, "Name cannot contain color (':') character", DevExpress.XtraEditors.DXErrorProvider.ErrorType.Warning);
             }

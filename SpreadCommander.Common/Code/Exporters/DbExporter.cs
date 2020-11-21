@@ -57,7 +57,7 @@ namespace SpreadCommander.Common.Code.Exporters
             return null;
         }
 
-        protected string GetUniqueColumnName(DbDataReader table, string columnName)
+        protected static string GetUniqueColumnName(DbDataReader table, string columnName)
         {
             var columnNames = new List<string>();
             for (int i = 0; i < table.FieldCount; i++)
@@ -145,7 +145,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
             //Remove last ", "
             result.Length -= (2 + Environment.NewLine.Length);
-            result.AppendLine().Append(")");
+            result.AppendLine().Append(')');
 
             return result.ToString();
         }
@@ -174,7 +174,7 @@ namespace SpreadCommander.Common.Code.Exporters
             //Remove last ", "
             result.Length -= 2;
 
-            result.Append(")");
+            result.Append(')');
 
             return result.ToString();
         }

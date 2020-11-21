@@ -93,7 +93,7 @@ namespace SpreadCommander.Common.PowerShell.Host
         public ISpreadCommanderHostOwner HostOwner => program;
         public ExternalHost ExternalHost           => _ExternalHost;
 
-        public override PSObject PrivateData => new PSObject(_ExternalHost);
+        public override PSObject PrivateData       => new PSObject(_ExternalHost);
 
         /// <summary>
         /// Return the culture information to use. This implementation
@@ -160,7 +160,7 @@ namespace SpreadCommander.Common.PowerShell.Host
         public override void EnterNestedPrompt()
         {
             throw new NotImplementedException(
-                "The method or operation is not implemented.");
+                "SC: The method or operation is not implemented.");
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace SpreadCommander.Common.PowerShell.Host
         /// </summary>
         public override void ExitNestedPrompt()
         {
-            throw new NotImplementedException("The method or operation is not implemented.");
+            throw new NotImplementedException("SC: The method or operation is not implemented.");
         }
 
         /// <summary>
@@ -212,7 +212,7 @@ namespace SpreadCommander.Common.PowerShell.Host
             var sync = HostOwner?.SynchronizeInvoke;
 
             if (sync?.InvokeRequired ?? false)
-                sync.Invoke(function, new object[] { });
+                sync.Invoke(function, Array.Empty<object>());
             else
                 function();
         }

@@ -225,7 +225,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void SelectTable()
         {
-            if (!(Workbook?.Sheets.ActiveSheet is Worksheet sheet))
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
@@ -234,7 +234,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void SelectTableData()
         {
-            if (!(Workbook?.Sheets.ActiveSheet is Worksheet sheet))
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
@@ -243,7 +243,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void ExpandSelectionToRows()
         {
-            if (!(Workbook?.Sheets.ActiveSheet is Worksheet sheet))
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection   = sheet.Selection.ExpandToTableRows();
@@ -252,7 +252,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void ExpandSelectionToColumns()
         {
-            if (!(Workbook?.Sheets.ActiveSheet is Worksheet sheet))
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection   = sheet.Selection.ExpandToTableColumn();
@@ -261,7 +261,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void CopySelectionToRows()
         {
-            if (!(Workbook?.Sheets.ActiveSheet is Worksheet sheet))
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection;
@@ -270,7 +270,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void CopySelectionToColumns()
         {
-            if (!(Workbook?.Sheets.ActiveSheet is Worksheet sheet))
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection;

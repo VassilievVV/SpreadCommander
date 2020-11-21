@@ -26,6 +26,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         [Parameter(HelpMessage = "If set - fields in document will be recalculated. This may take some time.")]
         public SwitchParameter UpdateFields { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         protected override void ProcessRecord()
         {
@@ -105,13 +108,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                 };
                 link.CreateDocument();
 
-                lock (LockObject)
-                    ps.ExportToPdf(fileName, pdfOptions);
+                ExecuteLocked(() => ps.ExportToPdf(fileName, pdfOptions), LockFiles ? LockObject : null);
             }
             else
             {
-                lock (LockObject)
-                    bookServer.Document.SaveDocument(fileName, format);
+                ExecuteLocked(() => bookServer.Document.SaveDocument(fileName, format), LockFiles ? LockObject : null);
             }
         }
     }

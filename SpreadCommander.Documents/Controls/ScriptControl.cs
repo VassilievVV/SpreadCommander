@@ -207,7 +207,7 @@ namespace SpreadCommander.Documents.Controls
 
         public void SaveToFile(string fileName, object tag)
         {
-            if (!(tag is Guid gTag))
+            if (tag is not Guid gTag)
                 throw new ArgumentException("Invalid document identifier", nameof(tag));
 
             var editor = FindEditor(gTag);

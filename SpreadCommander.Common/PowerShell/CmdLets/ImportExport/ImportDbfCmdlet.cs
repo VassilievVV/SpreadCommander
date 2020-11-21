@@ -13,7 +13,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 {
     [Cmdlet(VerbsData.Import, "Dbf")]
     [OutputType(typeof(DataTable))]
-    public class ImportDbf: SCCmdlet
+    public class ImportDbfCmdlet: SCCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Name of the file containing delimited data.")]
         public string FileName { get; set; }

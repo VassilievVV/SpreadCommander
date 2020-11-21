@@ -14,7 +14,9 @@ namespace SpreadCommander.Common.Book
         protected enum FootEndNoteType { FootNote, EndNote }
         private enum FootEndNoteFormat { Text, Html }
 
+#pragma warning disable CA1822 // Mark members as static
         protected IRichEditDocumentServer AddFootEndNote(FootEndNoteType noteType, ArgumentCollection arguments)
+#pragma warning restore CA1822 // Mark members as static
         {
             if (arguments.Count <= 0)
                 throw new Exception("'DOCVARIABLE FOOTNOTE' requires at least one argument.");
@@ -36,8 +38,6 @@ namespace SpreadCommander.Common.Book
 
                     switch (prop.Key.ToLower())
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "format":
                             if (string.Compare(prop.Value, "HTML", true) == 0)
                                 format = FootEndNoteFormat.Html;
@@ -48,8 +48,6 @@ namespace SpreadCommander.Common.Book
                         case "mark":
                             mark = prop.Value;
                             break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
             }

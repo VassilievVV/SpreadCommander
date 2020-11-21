@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using SpreadCommander.Common.SqlScript;
+﻿using SpreadCommander.Common.SqlScript;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,7 +27,7 @@ namespace SpreadCommander.Common.Code
             if (dataSource == null)
                 throw new ArgumentNullException(nameof(dataSource));
 
-            if (!(dataSource is IList list))
+            if (dataSource is not IList list)
                 throw new ArgumentException("Data source must support IList", nameof(dataSource));
 
             _DataSource  = list;
@@ -55,7 +53,7 @@ namespace SpreadCommander.Common.Code
             if (list == null)
                 throw new ArgumentException("Data source must support IList", nameof(dataSource));
 
-            if (!(list is ITypedList typedList))
+            if (list is not ITypedList typedList)
                 throw new ArgumentException("Data source must support ITypedList", nameof(dataSource));
 
             _DataSource  = list;
@@ -140,31 +138,16 @@ namespace SpreadCommander.Common.Code
                 if (propInfo.PropertyType == typeof(TimeSpan))
                     return true;
 
-                switch (Type.GetTypeCode(propInfo.PropertyType))
+                return (Type.GetTypeCode(propInfo.PropertyType)) switch
                 {
-                    case TypeCode.Empty:
-                    case TypeCode.Object:
-                    case TypeCode.DBNull:
-                        return false;
-                    case TypeCode.Boolean:
-                    case TypeCode.SByte:
-                    case TypeCode.Byte:
-                    case TypeCode.Int16:
-                    case TypeCode.UInt16:
-                    case TypeCode.Int32:
-                    case TypeCode.UInt32:
-                    case TypeCode.Int64:
-                    case TypeCode.UInt64:
-                    case TypeCode.Single:
-                    case TypeCode.Double:
-                    case TypeCode.Decimal:
-                    case TypeCode.DateTime:
-                    case TypeCode.String:
-                    case TypeCode.Char:
-                        return true;
-                    default:
-                        return false;
-                }
+                    TypeCode.Empty or TypeCode.Object or TypeCode.DBNull  => false,
+                    TypeCode.Boolean or TypeCode.SByte or TypeCode.Byte or 
+                    TypeCode.Int16 or TypeCode.UInt16 or TypeCode.Int32 or 
+                    TypeCode.UInt32 or TypeCode.Int64 or TypeCode.UInt64 or 
+                    TypeCode.Single or TypeCode.Double or TypeCode.Decimal or 
+                    TypeCode.DateTime or TypeCode.String or TypeCode.Char => true,
+                    _                                                     => false,
+                };
             }
         }
 

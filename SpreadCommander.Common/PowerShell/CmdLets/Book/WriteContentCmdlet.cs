@@ -86,7 +86,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     var ext = Path.GetExtension(fileName)?.ToLower();
                     switch (ext)
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
                         case "markdown":
                         case "mdown":
                         case "md":
@@ -97,7 +96,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                         default:
                             range = book.AppendDocumentContent(fileName);
                             break;
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
 
                     if (rangeStart == null)
@@ -113,6 +111,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                 {
                     var range = book.CreateRange(rangeStart, rangeEnd.ToInt() - rangeStart.ToInt());
                     AddComments(book, range);
+                    WriteRangeToConsole(book, range);
                 }
 
                 if (rangeEnd != null)

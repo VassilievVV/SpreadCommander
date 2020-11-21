@@ -66,9 +66,9 @@ namespace SpreadCommander.Documents.Controls
                     }
                 }).ConfigureAwait(true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
             using (new UsingProcessor(() => gridTables.BeginUpdate(), () => gridTables.EndUpdate()))

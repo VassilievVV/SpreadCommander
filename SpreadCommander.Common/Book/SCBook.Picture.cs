@@ -57,8 +57,6 @@ namespace SpreadCommander.Common.Book
 
                         switch (prop.Key.ToLower())
                         {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                             case "dpi":
                                 var dpi = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                                 if (image is Bitmap bmp)
@@ -73,8 +71,6 @@ namespace SpreadCommander.Common.Book
                             case "scaley":
                                 scaleY = float.Parse(prop.Value, CultureInfo.InvariantCulture);
                                 break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                         }
                     }
                 }

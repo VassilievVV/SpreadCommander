@@ -80,7 +80,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     _Output.AppendLine();
 
                 if (Stream)
+                {
                     WriteBuffer(false);
+                    _Output.Clear();
+                }
             }
         }
 
@@ -210,7 +213,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                 }
 
                 if (lastBlock)
+                {
                     AddComments(book, range);
+                    WriteRangeToConsole(book, range);
+                }
 
                 if (range?.End != null)
                 {

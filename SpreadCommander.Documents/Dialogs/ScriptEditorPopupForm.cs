@@ -326,7 +326,7 @@ namespace SpreadCommander.Documents.Dialogs
                 return;
 
             if (str.StartsWith("-"))	//'-' is prefix of property in command
-                str = str.Substring(1);
+                str = str[1..];
 
             if (Grid.DataSource is List<ScriptIntellisenseItem>)
                 GridView.ApplyFindFilter(str);

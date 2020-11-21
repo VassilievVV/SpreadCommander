@@ -1,33 +1,33 @@
 ﻿namespace SpreadCommander
 {
-    partial class MainView
-    {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
-        private System.ComponentModel.IContainer components = null;
+	partial class MainView
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
 
-        #region Windows Form Designer generated code
+		#region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-        private void InitializeComponent()
-        {
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SpreadCommander.SplashScreen), true, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
@@ -81,6 +81,7 @@
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.popupControlContainerAppMenu = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.layoutControlAppMenu = new DevExpress.XtraLayout.LayoutControl();
+            this.btnAppMenuRestart = new DevExpress.XtraEditors.SimpleButton();
             this.btnAppMenuExit = new DevExpress.XtraEditors.SimpleButton();
             this.gridApplicationItems = new DevExpress.XtraGrid.GridControl();
             this.bindingAppMenuProjectItems = new System.Windows.Forms.BindingSource(this.components);
@@ -101,6 +102,7 @@
             this.layoutAppMenuGrid = new DevExpress.XtraLayout.LayoutControlItem();
             this.sepAppMenu = new DevExpress.XtraLayout.SimpleSeparator();
             this.layoutAppMenuExit = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItemAppMenuRestart = new DevExpress.XtraLayout.LayoutControlItem();
             this.barNewSpreadsheetDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barNewDashboardDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barNewBookDocument = new DevExpress.XtraBars.BarButtonItem();
@@ -179,6 +181,9 @@
             this.badgeScriptPython = new DevExpress.Utils.VisualEffects.Badge();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles.Panel1)).BeginInit();
+            this.splitProjectFiles.Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles.Panel2)).BeginInit();
             this.splitProjectFiles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.treeProjectFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFiles)).BeginInit();
@@ -197,6 +202,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutAppMenuGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sepAppMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAppMenuExit)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemAppMenuRestart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
@@ -259,10 +265,16 @@
             this.splitProjectFiles.Horizontal = false;
             this.splitProjectFiles.Location = new System.Drawing.Point(0, 0);
             this.splitProjectFiles.Name = "splitProjectFiles";
+            // 
+            // splitProjectFiles.Panel1
+            // 
             this.splitProjectFiles.Panel1.Controls.Add(this.treeProjectFiles);
             this.splitProjectFiles.Panel1.Text = "Panel1";
+            // 
+            // splitProjectFiles.Panel2
+            // 
             this.splitProjectFiles.Panel2.Text = "Panel2";
-            this.splitProjectFiles.Size = new System.Drawing.Size(281, 745);
+            this.splitProjectFiles.Size = new System.Drawing.Size(281, 748);
             this.splitProjectFiles.SplitterPosition = 298;
             this.splitProjectFiles.TabIndex = 0;
             // 
@@ -283,7 +295,7 @@
             this.treeProjectFiles.OptionsView.ShowHorzLines = false;
             this.treeProjectFiles.OptionsView.ShowRowFooterSummary = true;
             this.treeProjectFiles.OptionsView.ShowVertLines = false;
-            this.treeProjectFiles.Size = new System.Drawing.Size(281, 437);
+            this.treeProjectFiles.Size = new System.Drawing.Size(281, 440);
             this.treeProjectFiles.StateImageList = this.imageFiles;
             this.treeProjectFiles.TabIndex = 0;
             this.treeProjectFiles.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.TreeProjectFiles_GetStateImage);
@@ -379,7 +391,7 @@
             this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewSqlScriptDocument);
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.ribbonControl.ShowSearchItem = true;
-            this.ribbonControl.Size = new System.Drawing.Size(1594, 161);
+            this.ribbonControl.Size = new System.Drawing.Size(1594, 158);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Merge += new DevExpress.XtraBars.Ribbon.RibbonMergeEventHandler(this.RibbonControl_Merge);
             this.ribbonControl.UnMerge += new DevExpress.XtraBars.Ribbon.RibbonMergeEventHandler(this.RibbonControl_UnMerge);
@@ -397,6 +409,7 @@
             // 
             // layoutControlAppMenu
             // 
+            this.layoutControlAppMenu.Controls.Add(this.btnAppMenuRestart);
             this.layoutControlAppMenu.Controls.Add(this.btnAppMenuExit);
             this.layoutControlAppMenu.Controls.Add(this.gridApplicationItems);
             this.layoutControlAppMenu.Controls.Add(this.mnuAppHamburger);
@@ -409,13 +422,25 @@
             this.layoutControlAppMenu.TabIndex = 2;
             this.layoutControlAppMenu.Text = "layoutControl1";
             // 
+            // btnAppMenuRestart
+            // 
+            this.btnAppMenuRestart.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAppMenuRestart.ImageOptions.SvgImage")));
+            this.btnAppMenuRestart.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
+            this.btnAppMenuRestart.Location = new System.Drawing.Point(108, 365);
+            this.btnAppMenuRestart.Name = "btnAppMenuRestart";
+            this.btnAppMenuRestart.Size = new System.Drawing.Size(93, 22);
+            this.btnAppMenuRestart.StyleController = this.layoutControlAppMenu;
+            this.btnAppMenuRestart.TabIndex = 6;
+            this.btnAppMenuRestart.Text = "Restart ...";
+            this.btnAppMenuRestart.Click += new System.EventHandler(this.BtnAppMenuRestart_Click);
+            // 
             // btnAppMenuExit
             // 
             this.btnAppMenuExit.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnAppMenuExit.ImageOptions.SvgImage")));
             this.btnAppMenuExit.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.btnAppMenuExit.Location = new System.Drawing.Point(12, 365);
             this.btnAppMenuExit.Name = "btnAppMenuExit";
-            this.btnAppMenuExit.Size = new System.Drawing.Size(189, 22);
+            this.btnAppMenuExit.Size = new System.Drawing.Size(92, 22);
             this.btnAppMenuExit.StyleController = this.layoutControlAppMenu;
             this.btnAppMenuExit.TabIndex = 5;
             this.btnAppMenuExit.Text = "Exit";
@@ -599,7 +624,8 @@
             this.layoutAppMenuHamburger,
             this.layoutAppMenuGrid,
             this.sepAppMenu,
-            this.layoutAppMenuExit});
+            this.layoutAppMenuExit,
+            this.layoutControlItemAppMenuRestart});
             this.layoutAppMenuControlGroup.Name = "layoutAppMenuControlGroup";
             this.layoutAppMenuControlGroup.Size = new System.Drawing.Size(765, 399);
             this.layoutAppMenuControlGroup.TextVisible = false;
@@ -634,9 +660,18 @@
             this.layoutAppMenuExit.Control = this.btnAppMenuExit;
             this.layoutAppMenuExit.Location = new System.Drawing.Point(0, 353);
             this.layoutAppMenuExit.Name = "layoutAppMenuExit";
-            this.layoutAppMenuExit.Size = new System.Drawing.Size(193, 26);
+            this.layoutAppMenuExit.Size = new System.Drawing.Size(96, 26);
             this.layoutAppMenuExit.TextSize = new System.Drawing.Size(0, 0);
             this.layoutAppMenuExit.TextVisible = false;
+            // 
+            // layoutControlItemAppMenuRestart
+            // 
+            this.layoutControlItemAppMenuRestart.Control = this.btnAppMenuRestart;
+            this.layoutControlItemAppMenuRestart.Location = new System.Drawing.Point(96, 353);
+            this.layoutControlItemAppMenuRestart.Name = "layoutControlItemAppMenuRestart";
+            this.layoutControlItemAppMenuRestart.Size = new System.Drawing.Size(97, 26);
+            this.layoutControlItemAppMenuRestart.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItemAppMenuRestart.TextVisible = false;
             // 
             // barNewSpreadsheetDocument
             // 
@@ -925,8 +960,8 @@
             this.documentManager.MdiParent = this;
             this.documentManager.MenuManager = this.ribbonControl;
             this.documentManager.ShowToolTips = DevExpress.Utils.DefaultBoolean.True;
-            this.documentManager.SnapMode = ((DevExpress.Utils.Controls.SnapMode)((((DevExpress.Utils.Controls.SnapMode.OwnerControl | DevExpress.Utils.Controls.SnapMode.OwnerForm)
-            | DevExpress.Utils.Controls.SnapMode.Screens)
+            this.documentManager.SnapMode = ((DevExpress.Utils.Controls.SnapMode)((((DevExpress.Utils.Controls.SnapMode.OwnerControl | DevExpress.Utils.Controls.SnapMode.OwnerForm) 
+            | DevExpress.Utils.Controls.SnapMode.Screens) 
             | DevExpress.Utils.Controls.SnapMode.SnapForms)));
             this.documentManager.View = this.viewDocuments;
             this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
@@ -954,15 +989,15 @@
             this.navProject.Controls.Add(this.pagePSCmdlets);
             this.navProject.Dock = System.Windows.Forms.DockStyle.Left;
             this.navProject.Images = this.imagesProject;
-            this.navProject.Location = new System.Drawing.Point(0, 161);
+            this.navProject.Location = new System.Drawing.Point(0, 158);
             this.navProject.Name = "navProject";
             this.navProject.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.pageProjectFiles,
             this.pagePSCmdlets,
             this.pageConnections});
-            this.navProject.RegularSize = new System.Drawing.Size(368, 818);
+            this.navProject.RegularSize = new System.Drawing.Size(368, 821);
             this.navProject.SelectedPage = this.pageProjectFiles;
-            this.navProject.Size = new System.Drawing.Size(368, 818);
+            this.navProject.Size = new System.Drawing.Size(368, 821);
             this.navProject.TabIndex = 3;
             this.navProject.Text = "Project";
             this.navProject.TransitionAnimationProperties.FrameCount = 500;
@@ -1007,7 +1042,7 @@
             new DevExpress.XtraBars.Docking.CustomHeaderButton("New folder", false, customHeaderButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, superToolTip4, true, false, true, serializableAppearanceObject4, "NewFolder", -1)});
             this.pageProjectFiles.ImageOptions.ImageIndex = 0;
             this.pageProjectFiles.Name = "pageProjectFiles";
-            this.pageProjectFiles.Size = new System.Drawing.Size(281, 745);
+            this.pageProjectFiles.Size = new System.Drawing.Size(281, 748);
             this.pageProjectFiles.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.PageProjectFiles_CustomButtonClick);
             // 
             // pageConnections
@@ -1122,7 +1157,7 @@
             this.pagePSCmdlets.Controls.Add(this.layoutPSCmdlets);
             this.pagePSCmdlets.ImageOptions.ImageIndex = 3;
             this.pagePSCmdlets.Name = "pagePSCmdlets";
-            this.pagePSCmdlets.Size = new System.Drawing.Size(281, 747);
+            this.pagePSCmdlets.Size = new System.Drawing.Size(281, 748);
             // 
             // layoutPSCmdlets
             // 
@@ -1133,7 +1168,7 @@
             this.layoutPSCmdlets.Name = "layoutPSCmdlets";
             this.layoutPSCmdlets.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(2281, 1073, 650, 400);
             this.layoutPSCmdlets.Root = this.Root;
-            this.layoutPSCmdlets.Size = new System.Drawing.Size(281, 747);
+            this.layoutPSCmdlets.Size = new System.Drawing.Size(281, 748);
             this.layoutPSCmdlets.TabIndex = 0;
             this.layoutPSCmdlets.Text = "layoutControl1";
             // 
@@ -1144,8 +1179,10 @@
             this.editPSCmdletDescription.Location = new System.Drawing.Point(24, 420);
             this.editPSCmdletDescription.MenuManager = this.ribbonControl;
             this.editPSCmdletDescription.Name = "editPSCmdletDescription";
+            this.editPSCmdletDescription.Options.DocumentCapabilities.Macros = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
+            this.editPSCmdletDescription.Options.DocumentCapabilities.OleObjects = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.editPSCmdletDescription.ReadOnly = true;
-            this.editPSCmdletDescription.Size = new System.Drawing.Size(233, 303);
+            this.editPSCmdletDescription.Size = new System.Drawing.Size(233, 304);
             this.editPSCmdletDescription.TabIndex = 5;
             this.editPSCmdletDescription.Views.DraftView.AdjustColorsToSkins = true;
             this.editPSCmdletDescription.Views.PrintLayoutView.AdjustColorsToSkins = true;
@@ -1235,7 +1272,7 @@
             this.splitterItem1,
             this.layoutControlGroupPSCmdletDescription});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(281, 747);
+            this.Root.Size = new System.Drawing.Size(281, 748);
             this.Root.TextVisible = false;
             // 
             // layoutControlPSCmdlets
@@ -1283,7 +1320,7 @@
             this.layoutControlPSCmdletDescription});
             this.layoutControlGroupPSCmdletDescription.Location = new System.Drawing.Point(0, 375);
             this.layoutControlGroupPSCmdletDescription.Name = "layoutControlGroupPSCmdletDescription";
-            this.layoutControlGroupPSCmdletDescription.Size = new System.Drawing.Size(261, 352);
+            this.layoutControlGroupPSCmdletDescription.Size = new System.Drawing.Size(261, 353);
             this.layoutControlGroupPSCmdletDescription.Text = "Description";
             this.layoutControlGroupPSCmdletDescription.CustomButtonClick += new DevExpress.XtraBars.Docking2010.BaseButtonEventHandler(this.LayoutControlGroupPSCmdletDescription_CustomButtonClick);
             // 
@@ -1292,7 +1329,7 @@
             this.layoutControlPSCmdletDescription.Control = this.editPSCmdletDescription;
             this.layoutControlPSCmdletDescription.Location = new System.Drawing.Point(0, 0);
             this.layoutControlPSCmdletDescription.Name = "layoutControlPSCmdletDescription";
-            this.layoutControlPSCmdletDescription.Size = new System.Drawing.Size(237, 307);
+            this.layoutControlPSCmdletDescription.Size = new System.Drawing.Size(237, 308);
             this.layoutControlPSCmdletDescription.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlPSCmdletDescription.TextVisible = false;
             // 
@@ -1402,6 +1439,9 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.Load += new System.EventHandler(this.MainView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemPictureEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles.Panel1)).EndInit();
+            this.splitProjectFiles.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles)).EndInit();
             this.splitProjectFiles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.treeProjectFiles)).EndInit();
@@ -1421,6 +1461,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutAppMenuGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sepAppMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAppMenuExit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemAppMenuRestart)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
@@ -1452,79 +1493,79 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
-        }
+		}
 
-        #endregion
+		#endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
-        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageProject;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupNewDocuments;
-        private DevExpress.Utils.MVVM.MVVMContext mvvmContext;
-        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
-        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView viewDocuments;
-        private DevExpress.XtraBars.BarButtonItem barNewSpreadsheetDocument;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkin;
-        private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem;
-        private DevExpress.XtraBars.BarButtonItem barNewSqlScriptDocument;
-        private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager;
-        private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraBars.BarButtonItem barNewRScriptDocument;
-        private DevExpress.XtraBars.BarButtonItem barNewPSScriptDocument;
-        private DevExpress.XtraBars.BarButtonItem barNewPyScriptDocument;
-        private DevExpress.XtraBars.BarButtonItem barNewCSharpScriptDocument;
-        private DevExpress.XtraBars.BarButtonItem barNewFSharpScriptDocument;
-        private DevExpress.XtraBars.Navigation.NavigationPane navProject;
-        private DevExpress.XtraBars.Navigation.NavigationPage pageProjectFiles;
-        private DevExpress.XtraBars.Navigation.NavigationPage pageConnections;
-        private DevExpress.XtraEditors.SplitContainerControl splitProjectFiles;
-        private DevExpress.XtraTreeList.TreeList treeProjectFiles;
-        private DevExpress.XtraBars.BarButtonItem barNewProject;
-        private DevExpress.XtraBars.BarButtonItem barOpenProject;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProject;
-        private DevExpress.XtraTreeList.Columns.TreeListColumn treeFilesText;
-        private DevExpress.Utils.SvgImageCollection imageFiles;
-        private DevExpress.XtraBars.BarButtonItem barNewDashboardDocument;
-        private DevExpress.XtraBars.BarButtonItem barNewBookDocument;
-        private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem;
-        private DevExpress.XtraBars.BarButtonItem barNewChartDocument;
-        private DevExpress.Utils.SvgImageCollection databaseImages;
-        private System.Windows.Forms.BindingSource bindingConnections;
-        private DevExpress.Utils.SvgImageCollection imagesProject;
-        private DevExpress.Utils.Animation.TransitionManager transitionManager;
-        private DevExpress.XtraEditors.XtraOpenFileDialog dlgOpen;
-        private DevExpress.XtraEditors.XtraSaveFileDialog dlgSave;
-        private DevExpress.Utils.VisualEffects.Badge badgeScriptPS;
-        private DevExpress.Utils.VisualEffects.Badge badgeScriptCSharp;
-        private DevExpress.Utils.VisualEffects.Badge badgeScriptSQL;
-        private DevExpress.Utils.VisualEffects.Badge badgeScriptFSharp;
-        private DevExpress.Utils.VisualEffects.Badge badgeScriptR;
-        private DevExpress.Utils.VisualEffects.Badge badgeScriptPython;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupNewScripts;
-        private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu;
-        private DevExpress.XtraBars.BarHeaderItem barHeaderProjects;
-        private DevExpress.XtraBars.BarHeaderItem barHeaderFiles;
-        private DevExpress.XtraBars.BarButtonItem barOpenFile;
-        private DevExpress.XtraBars.BarButtonItem barSaveAll;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
-        private DevExpress.XtraBars.BarHeaderItem barHeaderControl;
-        private DevExpress.XtraBars.BarButtonItem barOptions;
-        private DevExpress.XtraBars.BarButtonItem barClose;
-        private DevExpress.XtraBars.Navigation.NavigationPage pagePSCmdlets;
-        private DevExpress.XtraLayout.LayoutControl layoutPSCmdlets;
-        private DevExpress.XtraRichEdit.RichEditControl editPSCmdletDescription;
-        private DevExpress.XtraGrid.GridControl gridPSCmdlets;
-        private DevExpress.XtraGrid.Views.Grid.GridView viewPSCmdlets;
-        private DevExpress.XtraLayout.LayoutControlGroup Root;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlPSCmdlets;
-        private DevExpress.XtraLayout.SplitterItem splitterItem1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupPSCmdletDescription;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlPSCmdletDescription;
-        private System.Windows.Forms.BindingSource bindingPSCmdlets;
-        private DevExpress.XtraGrid.Columns.GridColumn colName;
-        private DevExpress.XtraGrid.Columns.GridColumn colSource;
-        private DevExpress.XtraGrid.Columns.GridColumn colModuleName;
-        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn colHelpFile;
+		private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl;
+		private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPageProject;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupNewDocuments;
+		private DevExpress.Utils.MVVM.MVVMContext mvvmContext;
+		private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
+		private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView viewDocuments;
+		private DevExpress.XtraBars.BarButtonItem barNewSpreadsheetDocument;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupSkin;
+		private DevExpress.XtraBars.SkinPaletteRibbonGalleryBarItem skinPaletteRibbonGalleryBarItem;
+		private DevExpress.XtraBars.BarButtonItem barNewSqlScriptDocument;
+		private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager;
+		private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
+		private DevExpress.XtraBars.BarButtonItem barNewRScriptDocument;
+		private DevExpress.XtraBars.BarButtonItem barNewPSScriptDocument;
+		private DevExpress.XtraBars.BarButtonItem barNewPyScriptDocument;
+		private DevExpress.XtraBars.BarButtonItem barNewCSharpScriptDocument;
+		private DevExpress.XtraBars.BarButtonItem barNewFSharpScriptDocument;
+		private DevExpress.XtraBars.Navigation.NavigationPane navProject;
+		private DevExpress.XtraBars.Navigation.NavigationPage pageProjectFiles;
+		private DevExpress.XtraBars.Navigation.NavigationPage pageConnections;
+		private DevExpress.XtraEditors.SplitContainerControl splitProjectFiles;
+		private DevExpress.XtraTreeList.TreeList treeProjectFiles;
+		private DevExpress.XtraBars.BarButtonItem barNewProject;
+		private DevExpress.XtraBars.BarButtonItem barOpenProject;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProject;
+		private DevExpress.XtraTreeList.Columns.TreeListColumn treeFilesText;
+		private DevExpress.Utils.SvgImageCollection imageFiles;
+		private DevExpress.XtraBars.BarButtonItem barNewDashboardDocument;
+		private DevExpress.XtraBars.BarButtonItem barNewBookDocument;
+		private DevExpress.XtraBars.SkinDropDownButtonItem skinDropDownButtonItem;
+		private DevExpress.XtraBars.BarButtonItem barNewChartDocument;
+		private DevExpress.Utils.SvgImageCollection databaseImages;
+		private System.Windows.Forms.BindingSource bindingConnections;
+		private DevExpress.Utils.SvgImageCollection imagesProject;
+		private DevExpress.Utils.Animation.TransitionManager transitionManager;
+		private DevExpress.XtraEditors.XtraOpenFileDialog dlgOpen;
+		private DevExpress.XtraEditors.XtraSaveFileDialog dlgSave;
+		private DevExpress.Utils.VisualEffects.Badge badgeScriptPS;
+		private DevExpress.Utils.VisualEffects.Badge badgeScriptCSharp;
+		private DevExpress.Utils.VisualEffects.Badge badgeScriptSQL;
+		private DevExpress.Utils.VisualEffects.Badge badgeScriptFSharp;
+		private DevExpress.Utils.VisualEffects.Badge badgeScriptR;
+		private DevExpress.Utils.VisualEffects.Badge badgeScriptPython;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupNewScripts;
+		private DevExpress.XtraBars.Ribbon.ApplicationMenu applicationMenu;
+		private DevExpress.XtraBars.BarHeaderItem barHeaderProjects;
+		private DevExpress.XtraBars.BarHeaderItem barHeaderFiles;
+		private DevExpress.XtraBars.BarButtonItem barOpenFile;
+		private DevExpress.XtraBars.BarButtonItem barSaveAll;
+		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFiles;
+		private DevExpress.XtraBars.BarHeaderItem barHeaderControl;
+		private DevExpress.XtraBars.BarButtonItem barOptions;
+		private DevExpress.XtraBars.BarButtonItem barClose;
+		private DevExpress.XtraBars.Navigation.NavigationPage pagePSCmdlets;
+		private DevExpress.XtraLayout.LayoutControl layoutPSCmdlets;
+		private DevExpress.XtraRichEdit.RichEditControl editPSCmdletDescription;
+		private DevExpress.XtraGrid.GridControl gridPSCmdlets;
+		private DevExpress.XtraGrid.Views.Grid.GridView viewPSCmdlets;
+		private DevExpress.XtraLayout.LayoutControlGroup Root;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlPSCmdlets;
+		private DevExpress.XtraLayout.SplitterItem splitterItem1;
+		private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupPSCmdletDescription;
+		private DevExpress.XtraLayout.LayoutControlItem layoutControlPSCmdletDescription;
+		private System.Windows.Forms.BindingSource bindingPSCmdlets;
+		private DevExpress.XtraGrid.Columns.GridColumn colName;
+		private DevExpress.XtraGrid.Columns.GridColumn colSource;
+		private DevExpress.XtraGrid.Columns.GridColumn colModuleName;
+		private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+		private DevExpress.XtraGrid.Columns.GridColumn colHelpFile;
         private DevExpress.XtraBars.BarDockingMenuItem barDockingMenuItem;
         private DevExpress.XtraBars.BarButtonItem barNewPivotDocument;
         private DevExpress.XtraBars.BarHeaderItem barHeaderExit;
@@ -1562,6 +1603,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colConnectionName;
         private DevExpress.XtraGrid.Columns.GridColumn colConnectionDescription;
         private DevExpress.XtraBars.BarButtonItem barAbout;
+        private DevExpress.XtraEditors.SimpleButton btnAppMenuRestart;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItemAppMenuRestart;
     }
 }
 

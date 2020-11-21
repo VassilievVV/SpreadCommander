@@ -250,8 +250,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
             else
             {
                 ITypedList list = null;
-                if (DataSource.BaseObject is ITypedList)
-                    list = (ITypedList)DataSource.BaseObject;
+                if (DataSource.BaseObject is ITypedList typedList)
+                    list = typedList;
                 else if (DataSource.BaseObject is IListSource listSource)
                     list = listSource.GetList() as ITypedList;
 

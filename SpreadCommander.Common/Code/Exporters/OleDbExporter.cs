@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public override DbConnection CreateConnection(object connectionStringBuilder)
         {
-            if (!(connectionStringBuilder is OleDbConnectionStringBuilder oleDbConnectionStringBuilder))
+            if (connectionStringBuilder is not OleDbConnectionStringBuilder oleDbConnectionStringBuilder)
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = oleDbConnectionStringBuilder.ConnectionString;
@@ -29,7 +29,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public override void FillInsertCommandParameters(DbCommand cmdInsert, DbDataReader table)
         {
-            if (!(cmdInsert is OleDbCommand oleDbCommand))
+            if (cmdInsert is not OleDbCommand oleDbCommand)
                 throw new ArgumentException("Command is not OLEDB command.");
 
             var parameterID       = oleDbCommand.CreateParameter();
@@ -47,7 +47,7 @@ namespace SpreadCommander.Common.Code.Exporters
             }
         }
 
-        public (OleDbType dbType, int len) GetColumnOleDbType(Type dataType, int maxLength)
+        public static (OleDbType dbType, int len) GetColumnOleDbType(Type dataType, int maxLength)
         {
             if (dataType == typeof(Guid))
                 return (OleDbType.VarWChar, 50);

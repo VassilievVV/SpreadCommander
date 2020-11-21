@@ -18,6 +18,7 @@ using System.Threading;
 using SpreadCommander.Common.Code;
 using System.ComponentModel;
 using DevExpress.XtraRichEdit;
+using DevExpress.XtraGauges.Core.Base;
 
 namespace SpreadCommander.Common.ScriptEngines
 {
@@ -67,14 +68,9 @@ cd {Utils.QuoteString(Project.Current.ProjectPath, "\'")};";
             {
                 _Host = new SpreadCommanderHost(this);
 
-                _Runspace = RunspaceFactory.CreateRunspace(_Host);
-                InitializeRunspaceConfiguration(_Runspace.InitialSessionState);
-
-                _Runspace.Open();
+                _Runspace = CreateHostedRunspace();
 
                 _Runspace.Debugger.DebuggerStop += Debugger_DebuggerStop;
-
-                SendServiceCommand(_Runspace, StartupCommand);
 
                 if (ExecutionType == ScriptExecutionType.Interactive)
                     _Host.UI.WriteLine("SpreadCommander>");
@@ -176,7 +172,10 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
         public void SendCommand(string command, bool silent)
         {
             if (string.IsNullOrEmpty(command))
+            {
+                FireExecutionFinished();
                 return;
+            }
 
             if (!command.EndsWith(Environment.NewLine))
                 command += Environment.NewLine;
@@ -203,19 +202,30 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
 
                 _Pipe.StateChanged += ((s, e) =>
                 {
-                    if (e.PipelineStateInfo.State != PipelineState.Running)
+                    switch (e.PipelineStateInfo.State)
                     {
-                        _Pipe?.Dispose();
-                        _Pipe = null;
-                        ProgressType = ProgressKind.None;
+                        case PipelineState.Running:
+                            //Do nothing
+                            break;
+                        case PipelineState.Stopping:
+                            if (!(silent || Silent))
+                                _Host.UI.WriteErrorLine($"{Environment.NewLine}SpreadCommander> Stopping ...");
+                            break;
+                        case PipelineState.Completed:
+                        case PipelineState.Stopped:
+                        default:
+                            _Pipe?.Dispose();
+                            _Pipe = null;
+                            ProgressType = ProgressKind.None;
 
-                        if (e.PipelineStateInfo.State == PipelineState.Failed)
-                            _Host.UI.WriteErrorLine($"Failed: {e.PipelineStateInfo.Reason?.Message}");
+                            if (e.PipelineStateInfo.State == PipelineState.Failed)
+                                _Host.UI.WriteErrorLine($"Failed: {e.PipelineStateInfo.Reason?.Message}");
 
-                        if (!(silent || Silent))
-                            _Host.UI.Write($"{Environment.NewLine}SpreadCommander>{Environment.NewLine}");
+                            if (!(silent || Silent))
+                                _Host.UI.Write($"{Environment.NewLine}SpreadCommander>{Environment.NewLine}");
 
-                        FireExecutionFinished();
+                            FireExecutionFinished();
+                            break;
                     }
                 });
 
@@ -278,11 +288,6 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                 throw new Exception("Another PowerShell command is already executing.");
 
             pipe.Invoke();
-        }
-
-        public virtual void ExecuteExitCommand()
-        {
-            //Do nothing, override in concrete engines
         }
 
         public void Write(ConsoleColor foregroundColor, ConsoleColor backgroundColor, string value)
@@ -359,10 +364,8 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                     {
                         string str = result[0].BaseObject as string;
                         // Remove \r\n that is added by Out-string.
-#pragma warning disable CRR0049
                         if (!string.IsNullOrEmpty(str) && str.EndsWith("\r\n"))
                             str = str[0..^2];
-#pragma warning restore CRR0049
                         _Host.UI.WriteErrorLine(str);
                     }
                 }
@@ -382,11 +385,60 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
 
         public static Runspace CreateRunspace()
         {
-            var result = RunspaceFactory.CreateRunspace();
-            InitializeRunspaceConfiguration(result.InitialSessionState);
+            var sessionState = InitialSessionState.CreateDefault();
+            InitializeRunspaceConfiguration(sessionState);
+
+            var result = RunspaceFactory.CreateRunspace(sessionState);
             result.Open();
 
             SendServiceCommand(result, StartupCommand);
+
+            return result;
+        }
+
+        public static int DefaultMaxRunspaces => Environment.ProcessorCount;
+
+        //PowerShellScriptEngine shall be started
+        public Runspace CreateHostedRunspace(bool open = true)
+        {
+            var sessionState = InitialSessionState.CreateDefault();
+            InitializeRunspaceConfiguration(sessionState);
+
+            var result = RunspaceFactory.CreateRunspace(_Host, sessionState);
+            if (open)
+            {
+                result.Open();
+                SendServiceCommand(result, StartupCommand);
+            }
+
+            return result;
+        }
+
+        //When using runspace - may need to call SendServiceCommand(runspace, StartupCommand)
+        public static RunspacePool CreateRunspacePool(int minRunspaces, int maxRunspaces)
+        {
+            var sessionState = InitialSessionState.CreateDefault();
+            InitializeRunspaceConfiguration(sessionState);
+
+            var result = RunspaceFactory.CreateRunspacePool(sessionState);
+            result.SetMinRunspaces(minRunspaces);
+            result.SetMaxRunspaces(maxRunspaces);
+            result.Open();
+
+            return result;
+        }
+
+        //PowerShellScriptEngine shall be started
+        //When using runspace - may need to call SendServiceCommand(runspace, StartupCommand)
+        public RunspacePool CreateHostedRunspacePool(int minRunspaces, int maxRunspaces, bool open = true)
+        {
+            var sessionState = InitialSessionState.CreateDefault();
+            InitializeRunspaceConfiguration(sessionState);
+
+            var result = RunspaceFactory.CreateRunspacePool(minRunspaces, maxRunspaces,
+                sessionState, _Host);
+            if (open)
+                result.Open();
 
             return result;
         }

@@ -51,7 +51,7 @@ namespace SpreadCommander.Common.Spreadsheet
 
         public static void RegisterCustomSpreadsheetFunctionDescriptions(IWorkbook workbook)
         {
-            if (!(workbook.GetService(typeof(ICustomFunctionDescriptionsRegisterService)) is ICustomFunctionDescriptionsRegisterService service))
+            if (workbook.GetService(typeof(ICustomFunctionDescriptionsRegisterService)) is not ICustomFunctionDescriptionsRegisterService service)
                 return;
 
             foreach (var function in workbook.Functions.GlobalCustomFunctions.OfType<ICustomFunctionDescription>())

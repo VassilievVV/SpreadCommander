@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -152,7 +150,7 @@ namespace SpreadCommander.Common.SqlScript
             {
                 var result = new List<string>();
 
-                if (!(context.Instance is SqlConnectionStringBuilderLight instance))
+                if (context.Instance is not SqlConnectionStringBuilderLight instance)
                     return new StandardValuesCollection(result);
 
                 var server             = instance.Server;
@@ -353,16 +351,15 @@ namespace SpreadCommander.Common.SqlScript
             return result;
         }
 
-        private string ValueToString(object value, string defaultValue)
+        private static string ValueToString(object value, string defaultValue)
         {
             if (value == null || value.Equals(string.Empty))
                 return defaultValue;
             return Convert.ToString(value, CultureInfo.InvariantCulture);
         }
 
-#pragma warning disable CRR0026 // Unused member
 #pragma warning disable IDE0051 // Remove unused private members
-        private int ValueToInt(object value, int defaultValue)
+        private static int ValueToInt(object value, int defaultValue)
         {
             if (value == null)
                 return defaultValue;
@@ -377,9 +374,8 @@ namespace SpreadCommander.Common.SqlScript
             }
         }
 #pragma warning restore IDE0051 // Remove unused private members
-#pragma warning restore CRR0026 // Unused member
 
-        private bool ValueToBool(object value, bool defaultValue)
+        private static bool ValueToBool(object value, bool defaultValue)
         {
             if (value == null)
                 return defaultValue;
@@ -489,30 +485,17 @@ namespace SpreadCommander.Common.SqlScript
             keyword = keyword.Trim();
             string keywordUpper = keyword.ToUpper();
 
-            switch (keywordUpper)
+            return keywordUpper switch
             {
-                case "SERVER":
-                case "DATASOURCE":
-                case "DATA SOURCE":
-                case "DATABASE":
-                case "INITIAL CATALOG":
-                case "INTEGRATED SECURITY":
-                case "INTEGRATEDSECURITY":
-                case "WINDOWS AUTHENTICATION":
-                case "WINDOWSAUTHENTICATION":
-                case "USER ID":
-                case "USERID":
-                case "PASSWORD":
-                case "PWD":
-                case "DATABASE PASSWORD":
-                case "PERSIST SECURITY INFO":
-                case "ATTACHDBFILENAME":
-                case "EXTENDED PROPERTIES":
-                case "INITIAL FILE NAME":
-                    return true;
-            }
-
-            return false;
+                "SERVER" or "DATASOURCE" or "DATA SOURCE" or 
+                "DATABASE" or "INITIAL CATALOG" or "INTEGRATED SECURITY" or 
+                "INTEGRATEDSECURITY" or "WINDOWS AUTHENTICATION" or 
+                "WINDOWSAUTHENTICATION" or "USER ID" or "USERID" or 
+                "PASSWORD" or "PWD" or "DATABASE PASSWORD" or 
+                "PERSIST SECURITY INFO" or "ATTACHDBFILENAME" or 
+                "EXTENDED PROPERTIES" or "INITIAL FILE NAME" => true,
+                _ => false,
+            };
         }
 
         public override bool TryGetValue(string keyword, out object value)

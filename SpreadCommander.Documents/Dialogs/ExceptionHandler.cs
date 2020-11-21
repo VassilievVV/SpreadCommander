@@ -90,7 +90,7 @@ namespace SpreadCommander.Documents.Dialogs
             UpdateMemo(memoConfig, output.ToString());
         }
 
-        private void UpdateMemo(MemoEdit memo, string str)
+        private static void UpdateMemo(MemoEdit memo, string str)
         {
             memo.Text				= Utils.NonNullString(str);
             memo.SelectionStart		= 0;

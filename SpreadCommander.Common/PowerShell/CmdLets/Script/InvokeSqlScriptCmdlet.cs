@@ -45,6 +45,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Alias("s")]
         public SwitchParameter Scalar { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         private readonly StringBuilder _Messages = new StringBuilder();
 
@@ -64,14 +67,14 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             string scriptText = Query;
             if (string.IsNullOrWhiteSpace(scriptText))
             {
-                lock (LockObject)
+                var scriptFile = Project.Current.MapPath(ScriptFile);
+                if (!string.IsNullOrWhiteSpace(scriptFile) && File.Exists(scriptFile))
                 {
-                    var scriptFile = Project.Current.MapPath(ScriptFile);
-                    if (!string.IsNullOrWhiteSpace(scriptFile) && File.Exists(scriptFile))
+                    ExecuteLocked(() =>
                     {
                         using var reader = File.OpenText(scriptFile);
-                        scriptText = reader.ReadToEnd();
-                    }
+                        scriptText       = reader.ReadToEnd();
+                    }, LockFiles ? LockObject : null);
                 }
             }
 
@@ -201,10 +204,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                     messageText = message.Message;
                     break;
                 case SqlMessage.SqlMessageType.Error:
-                    messageText = $"Error: {message.Message}{Environment.NewLine}";
+                    messageText = $"ERROR: {message.Message}{Environment.NewLine}";
                     break;
                 case SqlMessage.SqlMessageType.Log:
-                    messageText = $"Log: {message.Message}{Environment.NewLine}";
+                    messageText = $"LOG: {message.Message}{Environment.NewLine}";
                     break;
             }
 

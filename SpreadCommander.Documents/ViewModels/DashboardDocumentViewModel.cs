@@ -34,12 +34,8 @@ namespace SpreadCommander.Documents.ViewModels
         public static DashboardDocumentViewModel Create() =>
             ViewModelSource.Create<DashboardDocumentViewModel>(() => new DashboardDocumentViewModel());
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
         public override string DefaultExt => ".scdash";
         public override string FileFilter => "Dashboard (*.scdash)|*.scdash|All files (*.*)|*.*";
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
         public override string DocumentType    => ViewName;
         public override string DocumentSubType => Engine?.EngineName;
 
@@ -104,7 +100,7 @@ namespace SpreadCommander.Documents.ViewModels
             zip.Save(fileName);
         }
 
-        protected void RemoveObjectDataSources(XDocument doc)
+        protected static void RemoveObjectDataSources(XDocument doc)
         {
             //All object databases are parameters. So user will have to re-execute parameters next time
             var objDataSources = doc.Descendants("DataSources").Descendants("ObjectDataSource").ToList();

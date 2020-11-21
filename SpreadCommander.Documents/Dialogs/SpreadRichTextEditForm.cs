@@ -100,7 +100,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         public static void SpreadsheetControl_PopupMenuShowing(object sender, DevExpress.XtraSpreadsheet.PopupMenuShowingEventArgs e)
         {
-            if (!(sender is SpreadsheetControl spreadsheetControl))
+            if (sender is not SpreadsheetControl spreadsheetControl)
                 return;
 
             if (e.MenuType == DevExpress.XtraSpreadsheet.SpreadsheetMenuType.Cell)

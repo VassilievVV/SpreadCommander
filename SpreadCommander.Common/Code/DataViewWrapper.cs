@@ -16,7 +16,7 @@ namespace SpreadCommander.Common.Code
 
 		public DataViewWrapper(DataView view)
 		{
-			_view = view ?? throw new ArgumentNullException("view", "View can not be null.");
+			_view = view ?? throw new ArgumentNullException(nameof(view), "View can not be null.");
 			_view.Initialized += new EventHandler(View_Initialized);
 		}
 

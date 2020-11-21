@@ -17,9 +17,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             ExecuteSynchronized(() => DoWritePageBreak(book));
         }
 
-        protected void DoWritePageBreak(Document book)
+        protected static void DoWritePageBreak(Document book)
         {
             book.AppendText("\f");
+            WriteTextToConsole("\f");
         }
     }
 }

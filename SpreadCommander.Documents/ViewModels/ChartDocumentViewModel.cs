@@ -45,12 +45,8 @@ namespace SpreadCommander.Documents.ViewModels
         public static ChartDocumentViewModel Create() =>
             ViewModelSource.Create<ChartDocumentViewModel>(() => new ChartDocumentViewModel());
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
         public override string DefaultExt      => ".scchart";
         public override string FileFilter      => "Chart (*.scchart)|*.scchart|All files (*.*)|*.*";
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
         public override string DocumentType    => ViewName;
         public override string DocumentSubType => Engine?.EngineName;
         

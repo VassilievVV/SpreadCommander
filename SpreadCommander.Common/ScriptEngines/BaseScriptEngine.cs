@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,10 +18,12 @@ namespace SpreadCommander.Common.ScriptEngines
 {
     public partial class BaseScriptEngine: IDisposable
     {
-        public enum ScriptOutputType { Text, Error }
-        public enum ProgressKind { None, Undetermined, Value }
+        public enum ScriptOutputType        { Text, Error }
+        public enum ProgressKind            { None, Undetermined, Value }
 
-        public enum ScriptExecutionType { Interactive, Script }
+        public enum ScriptExecutionType     { Interactive, Script }
+
+        public enum ScriptApplicationType   { UI, Console }
 
         #region ScriptOutputArgs
         public class ScriptOutputMessage
@@ -66,6 +66,8 @@ namespace SpreadCommander.Common.ScriptEngines
         public event EventHandler<ReadLineArgs> RequestLine;
         public event EventHandler ExecutionFinished;    //Required for script mode, optional for interactive mode
 
+        public static ScriptApplicationType ApplicationType { get; private set; }
+
         public virtual ScriptExecutionType ExecutionType	{ get; set; }
 
         public virtual string EngineName					{ get; }
@@ -74,6 +76,11 @@ namespace SpreadCommander.Common.ScriptEngines
         public virtual string SyntaxFile					{ get; }
         public virtual bool LfInSendCommand					{ get; }
         public virtual ISynchronizeInvoke SynchronizeInvoke { get; set; }
+
+        public static void SetApplicationType(ScriptApplicationType value)
+        {
+            ApplicationType = value;
+        }
 
         private ProgressKind _ProgressType;
         public virtual ProgressKind ProgressType

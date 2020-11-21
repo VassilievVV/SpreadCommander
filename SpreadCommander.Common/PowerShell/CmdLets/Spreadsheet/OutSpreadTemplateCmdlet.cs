@@ -35,6 +35,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -50,6 +53,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         
         [Parameter(HelpMessage = "If set - new spreadsheet will be generated and sent to the pipe")]
         public SwitchParameter OutputSpreadsheet { get; set; }
+
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
 
 
         private readonly List<PSObject> _Output = new List<PSObject>();
@@ -80,7 +86,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 
         protected void WriteTable(IWorkbook spreadsheet)
         {
-            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            var dataSource = GetDataSource(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
             if (string.IsNullOrWhiteSpace(TemplateFile))
                 throw new Exception("Template file is not specified.");
@@ -93,10 +100,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
             
             using (var template = SpreadsheetUtils.CreateWorkbook())
             {
-                template.LoadDocument(templateFile);
+                ExecuteLocked(() => template.LoadDocument(templateFile), LockFiles ? LockObject : null);
 
-                template.MailMergeDataSource = dataSource;
-                template.MailMergeDataMember = null;
+                template.MailMergeDataSource                    = dataSource;
+                template.MailMergeDataMember                    = null;
                 template.MailMergeOptions.UseTemplateSheetNames = true;
                 template.MailMergeParameters.Clear();
                 if (Parameters != null)

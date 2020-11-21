@@ -124,6 +124,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
                     if (ExpandFields)
                         ExpandFieldsInBookRange(range, Snippets);
+
+                    WriteRangeToConsole(book, range);
                 }
 
                 if (rangeEnd != null)

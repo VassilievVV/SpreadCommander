@@ -40,6 +40,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "Parameters for the script. PowerShell script accepts any parameters, R and Python - parameters will be passed as environment strings, so only parameters that can be converted to string are supported")]
         public Hashtable Parameters { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         protected override bool NeedSynchronization() => false;
 
@@ -68,24 +71,13 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 }
             }
 
-            BaseScriptEngine engine;
-#pragma warning disable IDE0066 // Convert switch statement to expression
-            switch (Engine ?? ScriptEngine.PowerShell)
+            BaseScriptEngine engine = (Engine ?? ScriptEngine.PowerShell) switch
             {
-                case ScriptEngine.PowerShell:
-                    engine = new PowerShellScriptEngine();
-                    break;
-                case ScriptEngine.R:
-                    engine = new RScriptEngine();
-                    break;
-                case ScriptEngine.Python:
-                    engine = new PythonScriptEngine();
-                    break;
-                default:
-                    engine = new PowerShellScriptEngine();
-                    break;
-            }
-#pragma warning restore IDE0066 // Convert switch statement to expression
+                ScriptEngine.PowerShell => new PowerShellScriptEngine(),
+                ScriptEngine.R          => new RScriptEngine(),
+                ScriptEngine.Python     => new PythonScriptEngine(),
+                _                       => new PowerShellScriptEngine()
+            };
 
             try
             {
@@ -101,14 +93,16 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 string script = Script;
                 if (string.IsNullOrWhiteSpace(script))
                 {
-                    lock (LockObject)
+                    ExecuteLocked(() =>
                     {
                         using var reader = File.OpenText(scriptFile);
-                        script = reader.ReadToEnd();
-                    }
+                        script           = reader.ReadToEnd();
+                    }, LockFiles ? LockObject : null);
                 }
 
                 var taskSource = new TaskCompletionSource<bool>();
+
+                engine.ExecutionFinished += callback;
 
                 engine.Start();
 
@@ -128,7 +122,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                         throw new Exception("Parameters are not supported for selected script engine.");
                 }
 
-                engine.ExecutionFinished += callback;
                 engine.SendCommand(script);
 
                 taskSource.Task.Wait();     //Cannot await in event handler.

@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public override DbConnection CreateConnection(object connectionStringBuilder)
         {
-            if (!(connectionStringBuilder is OdbcConnectionStringBuilder odbcConnectionStringBuilder))
+            if (connectionStringBuilder is not OdbcConnectionStringBuilder odbcConnectionStringBuilder)
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = odbcConnectionStringBuilder.ConnectionString;
@@ -29,7 +29,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public override void FillInsertCommandParameters(DbCommand cmdInsert, DbDataReader table)
         {
-            if (!(cmdInsert is OdbcCommand odbcCommand))
+            if (cmdInsert is not OdbcCommand odbcCommand)
                 throw new ArgumentException("Command is not ODBC command.");
 
             var parameterID      = odbcCommand.CreateParameter();
@@ -47,7 +47,7 @@ namespace SpreadCommander.Common.Code.Exporters
             }
         }
 
-        public (OdbcType dbType, int len) GetColumnOdbcType(Type dataType, int maxLength)
+        public static (OdbcType dbType, int len) GetColumnOdbcType(Type dataType, int maxLength)
         {
             if (dataType == typeof(Guid))
                 return (OdbcType.NVarChar, 50);

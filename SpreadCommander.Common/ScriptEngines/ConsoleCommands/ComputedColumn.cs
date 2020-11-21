@@ -49,31 +49,15 @@ namespace SpreadCommander.Common.ScriptEngines.ConsoleCommands
 
         public static ComputedColumnType StringToReturnType(string value)
         {
-            switch (value?.ToLower())
+            return (value?.ToLower()) switch
             {
-                case "string":
-                case "varchar":
-                case "char":
-                case "text":
-                    return ComputedColumnType.String;
-                case "integer":
-                case "int":
-                    return ComputedColumnType.Integer;
-                case "decimal":
-                case "numeric":
-                case "double":
-                case "float":
-                    return ComputedColumnType.Decimal;
-                case "datetime":
-                case "date":
-                    return ComputedColumnType.DateTime;
-                case "boolean":
-                case "bool":
-                case "bit":
-                    return ComputedColumnType.Boolean;
-                default:
-                    return ComputedColumnType.String;
-            }
+                "string" or "varchar" or "char" or "text"     => ComputedColumnType.String,
+                "integer" or "int"                            => ComputedColumnType.Integer,
+                "decimal" or "numeric" or "double" or "float" => ComputedColumnType.Decimal,
+                "datetime" or "date"                          => ComputedColumnType.DateTime,
+                "boolean" or "bool" or "bit"                  => ComputedColumnType.Boolean,
+                _                                             => ComputedColumnType.String
+            };
         }
         
         public static IList<ComputedColumn> Parse(string value, bool skipErrors)

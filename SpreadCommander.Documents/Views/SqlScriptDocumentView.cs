@@ -23,20 +23,21 @@ using DevExpress.Utils.Svg;
 using SpreadCommander.Documents.Console;
 using DevExpress.Mvvm;
 using SpreadCommander.Common.Messages;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
     public partial class SqlScriptDocumentView : DevExpress.XtraBars.Ribbon.RibbonForm,
         SqlScriptDocumentViewModel.ICallback, IImageHolder
     {
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private ScriptEditorControl _SqlEditor;
         private ConsoleInputControl _ConsoleInputControl;
         private ConsoleOutputControl _ConsoleOutputControl;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
 
         public SqlScriptDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
             UIUtils.ConfigureRibbonBar(Ribbon);
         }
@@ -185,8 +186,8 @@ namespace SpreadCommander.Documents.Views
                         _SqlEditor.FileFilter       = "SQL files (*.sql)|*.sql";
                         _SqlEditor.ModifiedChanged += (s, arg) =>
                         {
-                            model.Modified = true;
-                            Messenger.Default.Send(new ControlModifiedMessage() { Control = this, Modified = true });
+                            model.Modified = _SqlEditor.IsModified;
+                            Messenger.Default.Send(new ControlModifiedMessage() { Control = this, Modified = model.Modified });
                         };
                         _SqlEditor.ListIntellisenseItems += ScriptEditor_ListIntellisenseItems;
 

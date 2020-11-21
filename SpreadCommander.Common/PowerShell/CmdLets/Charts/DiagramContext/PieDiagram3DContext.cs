@@ -22,7 +22,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
         {
             base.SetupDiagram(diagram);
 
-            if (!(diagram is SimpleDiagram3D diagram3D))
+            if (diagram is not SimpleDiagram3D diagram3D)
                 return;
 
             if (Dimension.HasValue)

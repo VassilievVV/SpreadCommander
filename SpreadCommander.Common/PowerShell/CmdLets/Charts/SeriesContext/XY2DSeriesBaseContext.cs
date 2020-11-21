@@ -36,8 +36,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesContext
 
 			if (series.View is XYDiagram2DSeriesViewBase view)
 			{
-				if (view is SwiftPlotSeriesView)
-					((SwiftPlotSeriesView)view).Antialiasing = true;
+				if (view is SwiftPlotSeriesView swiftView)
+					swiftView.Antialiasing = true;
 
 				if (AggregateFunction != SCSeriesAggregateFunction.Default)
 					view.AggregateFunction = (SeriesAggregateFunction)(int)AggregateFunction;

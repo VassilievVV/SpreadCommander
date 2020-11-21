@@ -10,8 +10,8 @@ namespace SpreadCommander.Common.Code
 	{
 		public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destType)
 		{
-			if (destType == typeof(string) && value != null && value is IList)
-				return $"{((IList)value).Count} item(s)";
+			if (destType == typeof(string) && value != null && value is IList list)
+				return $"{list.Count} item(s)";
 			return base.ConvertTo(context, culture, value, destType);
 		}
 	}

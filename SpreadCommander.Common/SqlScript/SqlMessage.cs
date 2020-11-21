@@ -26,8 +26,8 @@ namespace SpreadCommander.Common.SqlScript
         public SqlMessage(DbException ex): this()
         {
             MessageType = SqlMessageType.Error;
-            if (ex is SqlException)
-                Line = ((SqlException)ex).LineNumber;
+            if (ex is SqlException sqlException)
+                Line = sqlException.LineNumber;
             ErrorCode = ex.ErrorCode;
             HelpLink  = ex.HelpLink;
             HResult   = ex.HResult;

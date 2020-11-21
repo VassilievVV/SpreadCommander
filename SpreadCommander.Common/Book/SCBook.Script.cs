@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.Spreadsheet;
+﻿using DevExpress.Spreadsheet;
 using DevExpress.XtraRichEdit;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.PowerShell.Host;
@@ -115,8 +113,8 @@ namespace SpreadCommander.Common.Book
 
                 var taskSource = new TaskCompletionSource<bool>();
 
-                engine.Start();
                 engine.ExecutionFinished += callback;
+                engine.Start();
                 engine.SendCommand(script);
 
                 taskSource.Task.Wait();     //Cannot await in event handler.

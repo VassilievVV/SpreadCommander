@@ -1,8 +1,4 @@
-﻿#pragma warning disable CRR0046
-#pragma warning disable CRR0049
-#pragma warning disable CRR0050
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -46,20 +42,18 @@ namespace SpreadCommander.Common.ScriptEngines
         private IntPtr _WinPTY_Handle        = IntPtr.Zero;
         private IntPtr _WinPTY_Cfg           = IntPtr.Zero;
         private IntPtr _WinPTY_SpawnCfg      = IntPtr.Zero;
-#pragma warning disable IDE0052 // Remove unread private members
         private IntPtr _WinPTY_ProcessHandle = IntPtr.Zero;
         private IntPtr _WinPTY_ThreadHandle  = IntPtr.Zero;
-#pragma warning restore IDE0052 // Remove unread private members
         private Stream _WinPTY_StdIN         = null;
         private Stream _WinPTY_StdOUT        = null;
         private Stream _WinPTY_StdERR        = null;
-        private string _ScriptFile           = null;
+        private string _ScriptTempFile           = null;
         private readonly object _SyncObject  = new object();
 
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern int GetProcessId(IntPtr hWnd);
 
-        private (int code, string message) GetWinPtyErrorDetails(IntPtr err)
+        private static (int code, string message) GetWinPtyErrorDetails(IntPtr err)
         {
             if (err == IntPtr.Zero)
                 return (0, null);
@@ -72,7 +66,7 @@ namespace SpreadCommander.Common.ScriptEngines
             return (code, message);
         }
 
-        private void CheckWinPtyError(IntPtr err)
+        private static void CheckWinPtyError(IntPtr err)
         {
             if (err == IntPtr.Zero)
                 return;
@@ -174,18 +168,18 @@ namespace SpreadCommander.Common.ScriptEngines
                 _WinPTY_Cfg           = IntPtr.Zero;
                 _WinPTY_SpawnCfg      = IntPtr.Zero;
 
-                if (!string.IsNullOrWhiteSpace(_ScriptFile) && File.Exists(_ScriptFile))
+                if (!string.IsNullOrWhiteSpace(_ScriptTempFile) && File.Exists(_ScriptTempFile))
                 {
                     try
                     {
-                        File.Delete(_ScriptFile);
+                        File.Delete(_ScriptTempFile);
                     }
                     catch (Exception)
                     {
                         //Do nothing
                     }
                 }
-                _ScriptFile = null;
+                _ScriptTempFile = null;
             }
         }
 
@@ -202,8 +196,8 @@ namespace SpreadCommander.Common.ScriptEngines
                     var tempPath = Path.Combine(Path.GetTempPath(), Parameters.ApplicationName);
                     Directory.CreateDirectory(tempPath);
 
-                    var tempFile = Path.Combine(tempPath, Path.ChangeExtension(Guid.NewGuid().ToString("N"), DefaultExt));
-                    _ScriptFile = tempFile;
+                    var tempFile     = Path.Combine(tempPath, Path.ChangeExtension(Guid.NewGuid().ToString("N"), DefaultExt));
+                    _ScriptTempFile  = tempFile;
 
                     using (var writer = File.CreateText(tempFile))
                         writer.WriteLine(command);
@@ -232,7 +226,7 @@ namespace SpreadCommander.Common.ScriptEngines
             //Do nothing, override in concrete engines
         }
 
-        private Stream CreatePipe(string pipeName, PipeDirection direction)
+        private static Stream CreatePipe(string pipeName, PipeDirection direction)
         {
             if (string.IsNullOrWhiteSpace(pipeName))
                 return null;
@@ -245,7 +239,7 @@ namespace SpreadCommander.Common.ScriptEngines
                     serverName = pipeName[2..slash3];
                 int slash4 = pipeName.IndexOf('\\', slash3 + 1);
                 if (slash4 != -1)
-                    pipeName = pipeName.Substring(slash4 + 1);
+                    pipeName = pipeName[(slash4 + 1)..];
             }
 
             var pipe = new NamedPipeClientStream(serverName, pipeName, direction);
@@ -290,7 +284,6 @@ namespace SpreadCommander.Common.ScriptEngines
                     var c2 = (char)reader.Read();
                     switch (c2)
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
                         case '[':
                             /*
                             The ESC[ is followed by any number(including none) of "parameter bytes" in the range 0x30–0x3F(ASCII 0–9:;<=>?), 
@@ -316,10 +309,11 @@ namespace SpreadCommander.Common.ScriptEngines
 
                             switch (closingChar)
                             {
-                                //A-D Moves the cursor n {\displaystyle n} n (default 1) cells in the given direction. 
-                                //If the cursor is already at the edge of the screen, this has no effect. 
+
+                               //A-D Moves the cursor n {\displaystyle n} n (default 1) cells in the given direction. 
+                               //If the cursor is already at the edge of the screen, this has no effect. 
                                 case 'A':
-                                    //CUU – Cursor Up
+                               //CUU – Cursor Up
                                     break;
                                 case 'B':
                                     //CUD – Cursor Down 
@@ -388,18 +382,14 @@ namespace SpreadCommander.Common.ScriptEngines
                                         strBuffer2 = "0";
 
                                     int sgrCode = 0;
-#pragma warning disable CRR0044 // Unused local variable
-#pragma warning disable CRR0045 // Local variable can be replaced with discard
                                     string sgrValue = null;
-#pragma warning restore CRR0045 // Local variable can be replaced with discard
-#pragma warning restore CRR0044 // Unused local variable
 
                                     var sgrP = strBuffer2.IndexOfAny(new char[] { ';', ':' });
                                     if (sgrP >= 0)
                                     {
                                         if (!int.TryParse(strBuffer2.Substring(0, sgrP), out sgrCode))
                                             sgrCode = 0;
-                                        sgrValue = strBuffer2.Substring(sgrP + 1).Trim();
+                                        sgrValue = strBuffer2[(sgrP + 1)..].Trim();
                                     }
                                     else
                                     {
@@ -694,7 +684,6 @@ namespace SpreadCommander.Common.ScriptEngines
                             clear tabulation stops, reset to default font, and more. 
                             */
                             break;
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
                 else

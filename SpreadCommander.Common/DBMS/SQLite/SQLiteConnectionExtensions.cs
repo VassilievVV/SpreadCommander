@@ -26,7 +26,6 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(attributes[0], function);
         }
 
-#pragma warning disable IDE0068 // Use recommended dispose pattern
         public static void BindSCFunctions(this SQLiteConnection connection)
         {
             //Static functions
@@ -99,6 +98,5 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new PopulationCovarianceFunction());
             connection.BindFunction(new SpearmanCorrelationFunction());
         }
-#pragma warning restore IDE0068 // Use recommended dispose pattern
     }
 }

@@ -81,6 +81,9 @@ namespace SpreadCommander.Common.Book
             if (BookServer == null)
                 return;
 
+            BookServer.Options.DocumentCapabilities.OleObjects = DocumentCapability.Disabled;
+            BookServer.Options.DocumentCapabilities.Macros     = DocumentCapability.Disabled;
+
             ProjectUriStreamProvider.RegisterProvider(BookServer);
             BookServer.CalculateDocumentVariable += CalculateDocumentVariable;
         }
@@ -119,60 +122,25 @@ namespace SpreadCommander.Common.Book
 
         public IRichEditDocumentServer CalculateDocumentVariable(string variableName, ArgumentCollection arguments)
         {
-            //Add new DOCVARIABLE or another field - Ctrl+F9
-            
-            IRichEditDocumentServer result;
-
-            switch (Utils.NonNullString(variableName).ToLower())
+            IRichEditDocumentServer result = (Utils.NonNullString(variableName).ToLower()) switch
             {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
-                case "file":
-                case "document":
-                    result = AddDocument(arguments);
-                    break;
-                case "image": 
-                case "picture":
-                    result = AddImage(arguments);
-                    break;
-                case "svg":
-                    result = AddSvg(arguments);
-                    break;
-                case "latex":
-                case "formula":
-                    result = AddLatex(arguments);
-                    break;
-                case "spreadtable":
-                    result = AddSpreadTable(arguments);
-                    break;
-                case "spreadchart":
-                    result = AddSpreadChart(arguments);
-                    break;
-                case "spreadpivot":
-                    result = AddSpreadPivot(arguments);
-                    break;
-                case "footnote":
-                    result = AddFootNote(arguments);
-                    break;
-                case "endnote":
-                    result = AddEndNote(arguments);
-                    break;
+                "file" or "document" => AddDocument(arguments),
+                "image" or "picture" => AddImage(arguments),
+                "svg"                => AddSvg(arguments),
+                "latex" or "formula" => AddLatex(arguments),
+                "spreadtable"        => AddSpreadTable(arguments),
+                "spreadchart"        => AddSpreadChart(arguments),
+                "spreadpivot"        => AddSpreadPivot(arguments),
+                "footnote"           => AddFootNote(arguments),
+                "endnote"            => AddEndNote(arguments),
                 //Do not allow yet to execute scripts from Book for security reasons
-                /*
-                case "script":
-                    result = AddScript(arguments);
-                    break;
-                */
-                default:
-                    throw new Exception($"Invalid variable name for DOCVARIABLE: {variableName}");
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
-            }
-
+                //"script"           => AddScript(arguments),
+                _ => throw new Exception($"Invalid variable name for DOCVARIABLE: {variableName}")
+            };
             return result;
         }
 
-        protected Size ParseSize(string sizeValue)
+        protected static Size ParseSize(string sizeValue)
         {
             var reSize = new Regex(@"^\s*(?<Width>\d+)\s*x\s*(?<Height>\d+)\s*$");
             var match = reSize.Match(sizeValue);

@@ -66,6 +66,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
         [Parameter(HelpMessage = "If set - sends file to FileViewer")]
         public SwitchParameter Preview { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         protected override bool PassThruMapContext => PassThru;
 
@@ -126,35 +129,17 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
                 throw new Exception("No image to save.");
 
             if (string.IsNullOrWhiteSpace(FileName))
-                throw new Exception("Filename for image is not specified.");            
-
-            System.Drawing.Imaging.ImageFormat format;
-#pragma warning disable IDE0066 // Convert switch statement to expression
-            switch (Format ?? GetImageFormatFromFileName(fileName))
+                throw new Exception("Filename for image is not specified.");
+            System.Drawing.Imaging.ImageFormat format = (Format ?? GetImageFormatFromFileName(fileName)) switch
             {
-                case ImageFormat.Png:
-                    format = System.Drawing.Imaging.ImageFormat.Png;
-                    break;
-                case ImageFormat.Tiff:
-                    format = System.Drawing.Imaging.ImageFormat.Tiff;
-                    break;
-                case ImageFormat.Bmp:
-                    format = System.Drawing.Imaging.ImageFormat.Bmp;
-                    break;
-                case ImageFormat.Gif:
-                    format = System.Drawing.Imaging.ImageFormat.Gif;
-                    break;
-                case ImageFormat.Jpeg:
-                    format = System.Drawing.Imaging.ImageFormat.Jpeg;
-                    break;
-                default:
-                    format = System.Drawing.Imaging.ImageFormat.Png;
-                    break;
-            }
-#pragma warning restore IDE0066 // Convert switch statement to expression
-
-            lock (LockObject)
-                mapBitmap.Save(fileName, format);
+                ImageFormat.Png  => System.Drawing.Imaging.ImageFormat.Png,
+                ImageFormat.Tiff => System.Drawing.Imaging.ImageFormat.Tiff,
+                ImageFormat.Bmp  => System.Drawing.Imaging.ImageFormat.Bmp,
+                ImageFormat.Gif  => System.Drawing.Imaging.ImageFormat.Gif,
+                ImageFormat.Jpeg => System.Drawing.Imaging.ImageFormat.Jpeg,
+                _                => System.Drawing.Imaging.ImageFormat.Png
+            };
+            ExecuteLocked(() => mapBitmap.Save(fileName, format), LockFiles ? LockObject : null);
         }
     }
 }

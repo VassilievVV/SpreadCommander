@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -66,7 +64,9 @@ namespace SpreadCommander.Common.Code
             [PasswordPropertyText(true)]
             public string EncPassword { get; set; }
 
+#pragma warning disable CA1822 // Mark members as static
             public bool ShouldSerializePassword() => false;
+#pragma warning restore CA1822 // Mark members as static
 
             public override string ToString()
             {
@@ -133,7 +133,9 @@ namespace SpreadCommander.Common.Code
             [PasswordPropertyText(true)]
             public string EncPassword { get; set; }
 
+#pragma warning disable CA1822 // Mark members as static
             public bool ShouldSerializePassword() => false;
+#pragma warning restore CA1822 // Mark members as static
 
             public override string ToString()
             {

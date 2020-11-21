@@ -72,7 +72,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
             var text = FileNames;
             if (text == null)
-                text = new string[] { };
+                text = Array.Empty<string>();
 
             foreach (var line in text)
             {

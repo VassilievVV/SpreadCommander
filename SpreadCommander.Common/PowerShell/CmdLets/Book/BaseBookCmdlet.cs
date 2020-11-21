@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using DevExpress.XtraRichEdit;
+﻿using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 using DevExpress.XtraRichEdit.API.Native.Implementation;
 using SpreadCommander.Common.Book;
@@ -47,7 +45,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             ScrollToCaret();
         }
 
-        protected void ResetBookFormatting(Document book)
+        protected static void ResetBookFormatting(Document book)
         {
             var cp = book.BeginUpdateCharacters(book.CreateRange(book.Range.End, 0));
             try
@@ -90,7 +88,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                             NeedSynchronizeDefaultSpreadsheet = true, 
                             Snippets                          = ConvertSnippets() 
                         } ;
-                        var helperFieldRange  = book.Document.AppendText($"DOCVARIABLE {code.Substring(1)}");
+                        var helperFieldRange  = book.Document.AppendText($"DOCVARIABLE {code[1..]}");
                         var helperField       = book.Document.Fields.Create(helperFieldRange);
                         helperField.ShowCodes = true;
                         helperField.Update();

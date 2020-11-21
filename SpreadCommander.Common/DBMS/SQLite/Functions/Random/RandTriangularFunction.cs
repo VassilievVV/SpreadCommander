@@ -28,7 +28,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Random
                 double b = Convert.ToDouble(args[1]);
                 double c = Convert.ToDouble(args[2]);
 
-                if (a == double.NaN || b == double.NaN || c == double.NaN)
+                if (double.IsNaN(a) || double.IsNaN(b) || double.IsNaN(c))
                     return null;
 
                 lock (_Random)

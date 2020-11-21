@@ -48,7 +48,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
         {
             base.SetupDiagram(diagram);
 
-            if (!(diagram is Diagram3D diagram3D))
+            if (diagram is not Diagram3D diagram3D)
                 return;
 
             if (HorizontalScrollPercent.HasValue)

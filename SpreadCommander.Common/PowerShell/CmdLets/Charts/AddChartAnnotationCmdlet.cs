@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using DevExpress.XtraCharts;
+﻿using DevExpress.XtraCharts;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -263,7 +261,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                 XYDiagramPane pane = null;
                 if (!string.IsNullOrWhiteSpace(AnchorDockPane))
                 {
-                    if (!(ChartContext.Chart.Diagram is XYDiagram2D diagramXY))
+                    if (ChartContext.Chart.Diagram is not XYDiagram2D diagramXY)
                         throw new Exception("Panes are available only in 2D XY charts.");
 
                     pane = diagramXY.Panes[AnchorDockPane];
@@ -312,7 +310,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                     annotation.AnchorPoint = new ChartAnchorPoint(X, Y);
                     break;
                 case "Pane":
-                    if (!(ChartContext.Chart.Diagram is XYDiagram diagramXY))
+                    if (ChartContext.Chart.Diagram is not XYDiagram diagramXY)
                         throw new Exception("Panes are available only in 2D XY charts.");
 
                     var anchor = new PaneAnchorPoint();

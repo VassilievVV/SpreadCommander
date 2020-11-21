@@ -39,6 +39,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "If set - messages returned from DBMS will be returned in second object (first object is DataSet with results).")]
         public SwitchParameter OutputMessages { get; set; }
 
@@ -109,7 +112,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
                 var readerParameters = new DataReaderWrapper.DataReaderWrapperParameters()
                 {
-                    Columns = this.SelectColumns, 
+                    Columns     = this.SelectColumns, 
+                    SkipColumns = this.SkipColumns,
                     CloseAction = () =>
                     {
                         cmd.Dispose();
@@ -129,7 +133,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
                 return table;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 reader?.Dispose();
@@ -138,7 +142,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 if (closeConnection)
                     conn?.Close();
 
-                throw ex;
+                throw;
             }
         }
     }

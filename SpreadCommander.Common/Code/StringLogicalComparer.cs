@@ -1,7 +1,5 @@
-#pragma warning disable CRRSP01
 // Optimized by Richard Deeming
 // Original code by Vasian Cepa
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
 using System;
 using System.Collections;
@@ -33,8 +31,8 @@ namespace SpreadCommander.Common.Code
 			if (x == null) return -1;
 			if (y == null) return 1;
 			
-			if (x is string && y is string)
-				return Compare((string)x, (string)y);
+			if (x is string str1 && y is string str2)
+				return Compare(str1, str2);
 			
 			return Comparer.Default.Compare(x, y);
 		}

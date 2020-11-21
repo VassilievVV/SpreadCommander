@@ -53,7 +53,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 			get
 			{
 				throw new NotImplementedException(
-					 "The method or operation is not implemented.");
+					 "SC: The method or operation is not implemented.");
 			}
 			set
 			{
@@ -61,7 +61,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 				{ }	//Do nothing, allow to clear screen in later call to SetBufferContents
 				else
 					throw new NotImplementedException(
-						"The method or operation is not implemented.");
+						"SC: The method or operation is not implemented.");
 			}
 		}
 
@@ -154,7 +154,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 		/// <returns>Throws a NotImplementedException exception.</returns>
 		public override BufferCell[,] GetBufferContents(Rectangle rectangle)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -169,7 +169,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 		/// <returns>Throws a NotImplementedException exception.</returns>
 		public override KeyInfo ReadKey(ReadKeyOptions options)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -184,7 +184,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 		/// <param name="fill">The character and attributes to be used to fill all cell.</param>
 		public override void ScrollBufferContents(Rectangle source, Coordinates destination, Rectangle clip, BufferCell fill)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -197,7 +197,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 		public override void SetBufferContents(Coordinates origin,
 			BufferCell[,] contents)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -215,7 +215,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 				fill.BackgroundColor == DefaultBackgroundColor && fill.ForegroundColor == DefaultForegroundColor)
 				_HostUI.Host.ExecuteMethodSync(() => _HostUI.Host.HostOwner.BookServer.Document.Text = string.Empty);
 			else
-				throw new NotImplementedException("The method or operation is not implemented.");
+				throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 	}
 }

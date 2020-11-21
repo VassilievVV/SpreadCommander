@@ -1,5 +1,3 @@
-#pragma warning disable CRR0050
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -66,7 +64,6 @@ namespace SpreadCommander.Documents.Controls
                 {
                     if (row["TYPE"] as string != "PLAN_ROW")
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
                         if (treePlan.OptionsView.AutoCalcPreviewLineCount)
                             e.PreviewText = Utils.TrimString(row["StmtText"] as string);
                         else
@@ -80,7 +77,6 @@ namespace SpreadCommander.Documents.Controls
                             }
                             e.PreviewText = text;
                         }
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                     else
                         e.PreviewText = $"{Utils.TrimString(row["LogicalOp"] as string)} ({Utils.TrimString(row["Argument"] as string)})";

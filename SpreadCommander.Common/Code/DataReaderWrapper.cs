@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraRichEdit.Commands.Internal;
+using DevExpress.XtraSpellChecker;
 using Fizzler;
 using SpreadCommander.Common.SqlScript;
 using System;
@@ -21,9 +22,13 @@ namespace SpreadCommander.Common.Code
         #region DataReaderWrapperParameters
         public class DataReaderWrapperParameters
         {
-            public string[] Columns { get; set; }
+            public string[] Columns         { get; set; }
 
-            public Action CloseAction { get; set; }
+            public string[] SkipColumns     { get; set; }
+
+            public Action CloseAction       { get; set; }
+
+            public bool IgnoreReaderErrors  { get; set; }
         }
         #endregion
 
@@ -31,6 +36,7 @@ namespace SpreadCommander.Common.Code
         private readonly IDataReader _Reader;
         private readonly Action _CloseAction;
         private readonly CancellationToken _CancelToken;
+        private readonly bool _IgnoreReaderErrors;
 
         private Dictionary<int, int> ColumnMap        { get; } = new Dictionary<int, int>();
         private Dictionary<int, int> ColumnMapReverse { get; } = new Dictionary<int, int>();
@@ -51,7 +57,8 @@ namespace SpreadCommander.Common.Code
             _CancelToken = cancelToken;
 
             InitializeColumnMap(parameters);
-            _CloseAction = parameters?.CloseAction;
+            _CloseAction        = parameters?.CloseAction;
+            _IgnoreReaderErrors = parameters?.IgnoreReaderErrors ?? false;
         }
 
         protected override void Dispose(bool disposing)
@@ -64,15 +71,36 @@ namespace SpreadCommander.Common.Code
 
         protected void InitializeColumnMap(DataReaderWrapperParameters parameters)
         {
-            string[] columns = parameters?.Columns;
-            if ((columns?.Length ?? 0) <= 0)
+            var columns = new List<string>();
+            if (parameters?.Columns != null)
+                columns.AddRange(parameters.Columns);
+
+            if (columns.Count <= 0)
             {
-                columns = new string[_Reader.FieldCount];
-                for (int i = 0; i < columns.Length; i++)
-                    columns[i] = _Reader.GetName(i);
+                for (int i = 0; i < _Reader.FieldCount; i++)
+                    columns.Add(_Reader.GetName(i));
             }
 
-            for (int i = 0; i < columns.Length; i++)
+            if ((parameters.SkipColumns?.Length ?? 0) > 0)
+            {
+                var dictSkip = new StringNoCaseDictionary<int>();
+                
+                foreach (string skipColumn in parameters.SkipColumns)
+                {
+                    if (!dictSkip.ContainsKey(skipColumn))
+                        dictSkip.Add(skipColumn, 1);
+                    else
+                        dictSkip[skipColumn]++;
+                }
+
+                for (int i = columns.Count-1; i >= 0; i--)
+                {
+                    if (dictSkip.ContainsKey(columns[i]))
+                        columns.RemoveAt(i);
+                }
+            }
+
+            for (int i = 0; i < columns.Count; i++)
             {
                 string columnName = columns[i];
                 int ordinal = _Reader.GetOrdinal(columnName);
@@ -124,8 +152,17 @@ namespace SpreadCommander.Common.Code
             get
             {
                 var columnOrdinal = ColumnMap[ordinal];
-                var result        = _Reader[columnOrdinal];
-                return result;
+                try
+                {
+                    var result = _Reader[columnOrdinal];
+                    return result;
+                }
+                catch (Exception)
+                {
+                    if (_IgnoreReaderErrors)
+                        return DBNull.Value;
+                    throw;
+                }
             }
         }
 
@@ -294,46 +331,27 @@ namespace SpreadCommander.Common.Code
 
             int CalcColumnSize(int ordinal)
             {
-                switch (Type.GetTypeCode(GetFieldType(ordinal)))
+                return (Type.GetTypeCode(GetFieldType(ordinal))) switch
                 {
-                    case TypeCode.Empty:
-                        return 0;
-                    case TypeCode.Object:
-                        return 0;
-                    case TypeCode.DBNull:
-                        return 0;
-                    case TypeCode.Boolean:
-                        return 1;
-                    case TypeCode.SByte:
-                        return 1;
-                    case TypeCode.Byte:
-                        return 1;
-                    case TypeCode.Int16:
-                        return 2;
-                    case TypeCode.UInt16:
-                        return 2;
-                    case TypeCode.Int32:
-                        return 4;
-                    case TypeCode.UInt32:
-                        return 4;
-                    case TypeCode.Int64:
-                        return 8;
-                    case TypeCode.UInt64:
-                        return 8;
-                    case TypeCode.Single:
-                        return 4;
-                    case TypeCode.Double:
-                        return 8;
-                    case TypeCode.Decimal:
-                        return 29;
-                    case TypeCode.DateTime:
-                        return 8;
-                    case TypeCode.String:
-                    case TypeCode.Char:
-                        return int.MaxValue;
-                    default:
-                        return 0;
-                }
+                    TypeCode.Empty                   => 0,
+                    TypeCode.Object                  => 0,
+                    TypeCode.DBNull                  => 0,
+                    TypeCode.Boolean                 => 1,
+                    TypeCode.SByte                   => 1,
+                    TypeCode.Byte                    => 1,
+                    TypeCode.Int16                   => 2,
+                    TypeCode.UInt16                  => 2,
+                    TypeCode.Int32                   => 4,
+                    TypeCode.UInt32                  => 4,
+                    TypeCode.Int64                   => 8,
+                    TypeCode.UInt64                  => 8,
+                    TypeCode.Single                  => 4,
+                    TypeCode.Double                  => 8,
+                    TypeCode.Decimal                 => 29,
+                    TypeCode.DateTime                => 8,
+                    TypeCode.String or TypeCode.Char => int.MaxValue,
+                    _                                => 0,
+                };
             }
         }
 

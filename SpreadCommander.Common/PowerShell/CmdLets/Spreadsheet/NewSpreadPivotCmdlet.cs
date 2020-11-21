@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.Spreadsheet;
+﻿using DevExpress.Spreadsheet;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.Parsers.ConsoleScript;
 using SpreadCommander.Common.ScriptEngines.ConsoleCommands;
@@ -620,7 +618,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
                     throw new Exception($"Invalid calculated field definition: '{fieldDefinition}'. Field definition shall be in form 'CalcColumn=Column1*Column2'.");
 
                 var fieldName    = fieldDefinition.Substring(0, p - 1).Trim();
-                var fieldFormula = fieldDefinition.Substring(p + 1).Trim();
+                var fieldFormula = fieldDefinition[(p + 1)..].Trim();
 
                 var result = pvtTable.CalculatedFields.Add(fieldFormula, fieldName);
                 return result;

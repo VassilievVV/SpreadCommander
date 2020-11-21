@@ -4,10 +4,6 @@
 #pragma warning disable IDE0028 // Simplify collection initialization
 #pragma warning disable IDE0044 // Add readonly modifier
 #pragma warning disable IDE0059
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRR0046
-#pragma warning disable CRR0047
-#pragma warning disable CRR0052
 
 using System;
 using System.Collections.Generic;

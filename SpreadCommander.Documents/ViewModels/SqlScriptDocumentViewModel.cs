@@ -140,19 +140,21 @@ namespace SpreadCommander.Documents.ViewModels
                         Connection     = null;
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     ConnectionName = null;
                     Connection     = null;
 
-                    throw ex;
+                    throw;
                 }
             }
 
             ConnectionStateChanged();
         }
 
+#pragma warning disable CA1822 // Mark members as static
         public bool CanShowSchemas() => //Connection?.DbConnection != null && Connection.DbConnection.State == ConnectionState.Open;
+#pragma warning restore CA1822 // Mark members as static
             true;
         public async void ShowSchemas()
         {
@@ -215,8 +217,10 @@ namespace SpreadCommander.Documents.ViewModels
             return (dbConnection is SqlConnection || dbConnection is SQLiteConnection || dbConnection is MySqlConnection);
         }
         */
+#pragma warning disable CA1822 // Mark members as static
         public bool CanShowQueryInfo() => true;
-        
+#pragma warning restore CA1822 // Mark members as static
+
         public async Task ShowQueryInfo()
         {
             await LoadInitialConnection(Callback?.ScriptText);
@@ -242,15 +246,11 @@ namespace SpreadCommander.Documents.ViewModels
                 return;
             }
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
-            if (connection is SqlConnection && scriptText.IndexOf("showplan", StringComparison.CurrentCultureIgnoreCase) >= 0)
+            if (connection is SqlConnection && scriptText.Contains("showplan", StringComparison.CurrentCultureIgnoreCase))
             {
                 MessageService.ShowMessage("To show execution plan script shall not contain word 'showplan'.", "Invalid script", MessageButton.OK);
                 return;
             }
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
             var script = new SqlScript(scriptText);
             if (script.Commands.Count < 0)
@@ -273,9 +273,9 @@ namespace SpreadCommander.Documents.ViewModels
                 else if (connection is MySqlConnection mySqlConnection)
                     await ShowMySqlExecutionPlan(mySqlConnection, firstSubCommand, CancellationToken.None).ConfigureAwait(true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
         
@@ -289,15 +289,11 @@ namespace SpreadCommander.Documents.ViewModels
                 {
                     try
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         using (var cmd = sqlConnection.CreateCommand())
                         {
                             cmd.CommandText = "set showplan_all on";
                             cmd.ExecuteNonQuery();
                         }
-#pragma warning disable CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
                         if (cancellationToken.IsCancellationRequested)
                             return;
@@ -314,15 +310,11 @@ namespace SpreadCommander.Documents.ViewModels
                     }
                     finally
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         using var cmd = sqlConnection.CreateCommand();
                         cmd.CommandText = "set showplan_all off";
                         cmd.ExecuteNonQuery();
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
-                }).ConfigureAwait(true);
+                }, cancellationToken).ConfigureAwait(true);
 
                 if (tableExecutionPlan != null)
                     SqlExecutionPlanViewer.ShowExecutionPlan(tableExecutionPlan);
@@ -367,7 +359,7 @@ namespace SpreadCommander.Documents.ViewModels
                     finally
                     {
                     }
-                }).ConfigureAwait(true);
+                }, cancellationToken).ConfigureAwait(true);
 
                 if (tableExecutionPlan != null)
                     SQLiteExecutionPlanViewer.ShowExecutionPlan(tableExecutionPlan);
@@ -406,7 +398,7 @@ namespace SpreadCommander.Documents.ViewModels
                     finally
                     {
                     }
-                }).ConfigureAwait(true);
+                }, cancellationToken).ConfigureAwait(true);
 
                 if (tableExecutionPlan != null)
                     MySqlExecutionPlanViewer.ShowExecutionPlan(tableExecutionPlan);

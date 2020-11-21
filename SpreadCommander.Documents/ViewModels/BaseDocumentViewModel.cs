@@ -26,12 +26,10 @@ namespace SpreadCommander.Documents.ViewModels
     {
         public enum ParametersScriptType { Sql, PowerShell }
 
+#pragma warning disable CA2211 // Non-constant fields should not be visible
         public static int DocumentCounter = 1;
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
-        public static string ParametersFileExtension = ".scparams";
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
+#pragma warning restore CA2211 // Non-constant fields should not be visible
+        public const string ParametersFileExtension = ".scparams";
 
         #region IDocumentParent
         public interface IDocumentParent

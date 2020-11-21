@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using Alsing.Windows.Forms.Document.DocumentStructure.Word;
+﻿using Alsing.Windows.Forms.Document.DocumentStructure.Word;
 using Alsing.Windows.Forms.Document.SyntaxDefinition;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraEditors;
@@ -211,11 +209,19 @@ namespace SpreadCommander.Documents.Controls
             }
             SplitViewBackColor = skin.TranslateColor(Color.FromArgb((isSkinDark ? SystemColors.ControlDarkDark : SystemColors.ControlLightLight).ToArgb()));
 
-            if (syntaxDefinition != null)
-                Document.Parser.Init(syntaxDefinition);
-            else
-                Document.Parser.SyntaxDefinition = null;
-            Document.ReParse();
+            bool modified = Document.Modified;
+            try
+            {
+                if (syntaxDefinition != null)
+                    Document.Parser.Init(syntaxDefinition);
+                else
+                    Document.Parser.SyntaxDefinition = null;
+                Document.ReParse();
+            }
+            finally
+            {
+                Document.Modified = modified;
+            }
         }
 
         public void SetParserSyntax(string syntaxName)

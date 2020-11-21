@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Management.Automation;
@@ -18,7 +19,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
     [Cmdlet(VerbsData.Import, "DelimitedText")]
     [OutputType(typeof(DataTable))]
     [OutputType(typeof(DbDataReader))]
-    public class ImportDelimitedText: BaseTextImportExportCmdlet
+    public class ImportDelimitedTextCmdlet: BaseTextImportExportCmdlet
     {
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Name of the file containing delimited data.")]
         public string FileName { get; set; }
@@ -29,7 +30,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         [Parameter(HelpMessage = "Character or characters used to separate the columns.")]
         public string Separator { get; set; }
 
-        [Parameter(HelpMessage = @"Record separator. Default is /r, /n, /r/n when reading and Environment.NewLine when writing.")]
+        [Parameter(HelpMessage = "Record separator. Default is /r, /n, /r/n when reading and Environment.NewLine when writing.")]
         public string RecordSeparator { get; set; }
 
         [Parameter(HelpMessage = "Character used to quote records containing special characters.)")]
@@ -47,8 +48,14 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Return DbDataReader instead of DataTable. Can be used to export data into database.")]
         public SwitchParameter AsDataReader { get; set; }
+
+        [Parameter(HelpMessage = "Ignore reader errors and return NULL when error is encountered.")]
+        public SwitchParameter IgnoreReaderErrors { get; set; }
 
 
         protected override void ProcessRecord()
@@ -83,9 +90,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 options.Separator = Separator;
             if (RecordSeparator != null)
                 options.RecordSeparator = RecordSeparator;
-            options.Quote = Quote;
+            options.Quote               = Quote;
             options.IsFirstRecordSchema = !NoHeaderRow;
-            options.PreserveWhiteSpace = PreserveWhiteSpace;
+            options.PreserveWhiteSpace  = PreserveWhiteSpace;
             if (!string.IsNullOrWhiteSpace(Culture))
                 options.FormatProvider = new CultureInfo(Culture);
 
@@ -99,11 +106,16 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
             var csvReader  = Columns != null ? new SeparatedValueReader(reader, schema, options) : new SeparatedValueReader(reader, options);
             var dataReader = new FlatFileDataReader(csvReader, readerOptions);
 
-            var resultReader = new DataReaderWrapper(dataReader, new DataReaderWrapper.DataReaderWrapperParameters() { Columns = SelectColumns, 
+            var resultReader = new DataReaderWrapper(dataReader, new DataReaderWrapper.DataReaderWrapperParameters()
+            {
+                Columns            = this.SelectColumns,
+                SkipColumns        = this.SkipColumns,
+                IgnoreReaderErrors = this.IgnoreReaderErrors,
                 CloseAction = () =>
                 {
                     reader.Dispose();
-                } });
+                }
+            });
 
             if (AsDataReader)
                 return resultReader;

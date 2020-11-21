@@ -3,6 +3,7 @@ using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.PowerShell.Host;
+using SpreadCommander.Common.ScriptEngines;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,6 +29,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             public bool IgnoreErrors    { get; set; }
 
             public string[] Columns     { get; set; }
+
+            public string[] SkipColumns { get; set; }
 
             public Action DisposeAction { get; set; }
         }
@@ -63,6 +66,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             var result = ExternalHost ?? throw new Exception("Cannot obtain SpreadCommander Host");
             return result;
         }
+
+#pragma warning disable CA1822 // Mark members as static
+        public BaseScriptEngine.ScriptApplicationType ApplicationType => BaseScriptEngine.ApplicationType;
+#pragma warning restore CA1822 // Mark members as static
 
         protected IRichEditDocumentServer HostBookServer => CheckExternalHost().BookServer;
         protected Document HostBook                      => CheckExternalHost().Book;
@@ -100,6 +107,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             {
                 book.EndUpdateCharacters(cp);
             }
+
+            WriteErrorToConsole(errorMessage);
         }
 
         protected virtual ImageFormat GetImageFormatFromFileName(string fileName)
@@ -107,24 +116,15 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             if (string.IsNullOrWhiteSpace(fileName))
                 return DefaultImageFormat;
 
-            switch (Path.GetExtension(fileName)?.ToLower())
+            return (Path.GetExtension(fileName)?.ToLower()) switch
             {
-                case ".png":
-                    return ImageFormat.Png;
-                case ".tif":
-                case ".tiff":
-                    return ImageFormat.Tiff;
-                case ".bmp":
-                    return ImageFormat.Bmp;
-                case ".gif":
-                    return ImageFormat.Gif;
-                case ".jpg":
-                case ".jpeg":
-                    return ImageFormat.Jpeg;
-                default:
-                    return ImageFormat.Png;
-
-            }
+                ".png"            => ImageFormat.Png,
+                ".tif" or ".tiff" => ImageFormat.Tiff,
+                ".bmp"            => ImageFormat.Bmp,
+                ".gif"            => ImageFormat.Gif,
+                ".jpg" or ".jpeg" => ImageFormat.Jpeg,
+                _                 => ImageFormat.Png
+            };
         }
 
         //IgnoreErrors - for list of PSObject
@@ -138,7 +138,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
 
         protected virtual DbDataReader GetDataSourceReader(IList<PSObject> dataRecords, object dataSource, DataSourceParameters parameters)
         {
-            if (dataSource == null && dataRecords != null && dataRecords.Count == 1 && (dataRecords[0].BaseObject is IList || dataRecords[0].BaseObject is IListSource))
+            if (dataSource == null && dataRecords != null && dataRecords.Count == 1 && AcceptObject(dataRecords[0].BaseObject))
                 dataSource = dataRecords[0].BaseObject;
 
             DbDataReader result = null;
@@ -179,6 +179,14 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
                 return new DataReaderWrapper(result, new DataReaderWrapper.DataReaderWrapperParameters() { Columns = parameters?.Columns, CloseAction = parameters?.DisposeAction });
 
             throw new Exception("Cannot generate DataReader for provided data source.");
+
+
+            static bool AcceptObject(object obj)
+            {
+                return (obj is IList || obj is IListSource ||
+                    obj is DbDataReader ||
+                    obj is DataTable || obj is DataView);
+            }
         }
 
         protected virtual void PreviewFile(string fileName)
@@ -191,10 +199,47 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             externalHost.ExecuteMethodSync(() => fileViewer.ViewFile(fileName));
         }
 
-        protected int GetNextProgressActivityID()
+        internal static int GetNextProgressActivityID()
         {
             var result = Interlocked.Add(ref _ProgressActivityID, 1);
             return result;
+        }
+
+        public static void WriteTextToConsole(string text)
+        {
+            if (BaseScriptEngine.ApplicationType == ScriptEngines.BaseScriptEngine.ScriptApplicationType.Console)
+            {
+                System.Console.ResetColor();
+                System.Console.WriteLine(text);
+            }
+        }
+
+        public static void WriteErrorToConsole(string text)
+        {
+            if (BaseScriptEngine.ApplicationType == ScriptEngines.BaseScriptEngine.ScriptApplicationType.Console)
+            {
+                System.Console.ForegroundColor = ConsoleColor.Red;
+                System.Console.WriteLine($"ERROR: {text}");
+                System.Console.ResetColor();
+            }
+        }
+
+        public static void WriteRangeToConsole(Document doc, DocumentRange range)
+        {
+            if (BaseScriptEngine.ApplicationType == ScriptEngines.BaseScriptEngine.ScriptApplicationType.Console)
+            {
+                var text = doc.GetText(range);
+                WriteTextToConsole(text);
+            }
+        }
+
+        public static void ExecuteLocked(Action action, object lockObject)
+        {
+            if (lockObject != null)
+                lock (lockObject)
+                    action();
+            else
+                action();
         }
     }
 }

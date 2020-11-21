@@ -385,10 +385,10 @@ namespace Alsing.Windows.Forms.Document
         {
             get
             {
-				//VVV
+                //VVV
                 //return Text.Split("\n".ToCharArray());
-				string s = this.Text.Replace(Environment.NewLine, "\n");
-				return /*Text*/ s.Split("\n".ToCharArray());
+                string s = this.Text.Replace(Environment.NewLine, "\n");
+                return /*Text*/ s.Split("\n".ToCharArray());
             }
             set
             {
@@ -1739,154 +1739,154 @@ namespace Alsing.Windows.Forms.Document
         }
 
 
-		//VVV - move from EditViewControl
-		public string ExportToRTF(TextRange selection, string fontName)
-		{
+        //VVV - move from EditViewControl
+        public string ExportToRTF(TextRange selection, string fontName)
+        {
             TextStyle[] styles = Parser.SyntaxDefinition.Styles;
-			ParseAll(true);
+            ParseAll(true);
 
-			int r1, r2, c1, c2;
-			if (selection != null)
-			{
-				r1 = selection.FirstRow;
-				r2 = selection.LastRow;
-				c1 = selection.FirstColumn;
-				c2 = selection.LastColumn;
-			}
-			else
-			{
-				r1 = 0;
-				r2 = Count - 1;
-				c1 = 0;
-				c2 = 0;
-				string laststring = this[r2].Text;
-				if (!string.IsNullOrEmpty(laststring))
-					c2 = laststring.Length;
-			}
+            int r1, r2, c1, c2;
+            if (selection != null)
+            {
+                r1 = selection.FirstRow;
+                r2 = selection.LastRow;
+                c1 = selection.FirstColumn;
+                c2 = selection.LastColumn;
+            }
+            else
+            {
+                r1 = 0;
+                r2 = Count - 1;
+                c1 = 0;
+                c2 = 0;
+                string laststring = this[r2].Text;
+                if (!string.IsNullOrEmpty(laststring))
+                    c2 = laststring.Length;
+            }
 
-			StringBuilder sb = new StringBuilder();
-			sb.Append(@"{\rtf1\ansi\ansicpg1252\deff0\deflang1053{\fonttbl{\f0\fmodern\fprq1\fcharset0 " + fontName +
-					  @";}}");
-			sb.Append(@"{\colortbl ;");
+            StringBuilder sb = new StringBuilder();
+            sb.Append(@"{\rtf1\ansi\ansicpg1252\deff0\deflang1053{\fonttbl{\f0\fmodern\fprq1\fcharset0 " + fontName +
+                      @";}}");
+            sb.Append(@"{\colortbl ;");
 
-			foreach (TextStyle ts in styles)
-			{
-				sb.AppendFormat("\\red{0}\\green{1}\\blue{2};", ts.ForeColor.R,
-								ts.ForeColor.G, ts.ForeColor.B);
-				sb.AppendFormat("\\red{0}\\green{1}\\blue{2};", ts.BackColor.R,
-								ts.BackColor.G, ts.BackColor.B);
-			}
+            foreach (TextStyle ts in styles)
+            {
+                sb.AppendFormat("\\red{0}\\green{1}\\blue{2};", ts.ForeColor.R,
+                                ts.ForeColor.G, ts.ForeColor.B);
+                sb.AppendFormat("\\red{0}\\green{1}\\blue{2};", ts.BackColor.R,
+                                ts.BackColor.G, ts.BackColor.B);
+            }
 
-			sb.Append(@";}");
-			sb.Append(@"\viewkind4\uc1\pard\f0\fs20");
-
-
-			bool Done = false;
-			for (int i = r1; i <= r2; i++)
-			{
-				Row row = this[i];
-
-				foreach (Word w in row)
-				{
-					if (i == r1 && w.Column + w.Text.Length < c1)
-						continue;
-
-					bool IsFirst = (i == r1 && w.Column <= c1 && w.Column + w.Text.Length
-																 > c1);
-					bool IsLast = (i == r2 && w.Column < c2 && w.Column + w.Text.Length >
-															   c2);
+            sb.Append(@";}");
+            sb.Append(@"\viewkind4\uc1\pard\f0\fs20");
 
 
-					if (w.Type == WordType.Word && w.Style != null)
-					{
-						//VVV
-						//int clrindex = Array.IndexOf(styles, w.Style);
-						int clrindex = 0;	//If style is not found, use first one
-						for (int j = 0; j < styles.Length; j++)
-						{
-							var style = styles[j];
-							if (style.Name == w.Style.Name)
-							{
-								clrindex = j;
-								break;
-							}
-						}
-						
-						clrindex *= 2;
-						clrindex++;
+            bool Done = false;
+            for (int i = r1; i <= r2; i++)
+            {
+                Row row = this[i];
 
-						sb.Append("{\\cf" + clrindex.ToString
-												(CultureInfo.InvariantCulture));
-						if (!w.Style.Transparent)
-						{
-							sb.Append("\\highlight" + (clrindex + 1).ToString
-														  (CultureInfo.InvariantCulture));
-						}
-						sb.Append(" ");
-					}
+                foreach (Word w in row)
+                {
+                    if (i == r1 && w.Column + w.Text.Length < c1)
+                        continue;
 
-					if (w.Style != null)
-					{
-						if (w.Style.Bold)
-							sb.Append(@"\b ");
-						if (w.Style.Underline)
-							sb.Append(@"\ul ");
-						if (w.Style.Italic)
-							sb.Append(@"\i ");
-					}
-					string wordtext = w.Text;
+                    bool IsFirst = (i == r1 && w.Column <= c1 && w.Column + w.Text.Length
+                                                                 > c1);
+                    bool IsLast = (i == r2 && w.Column < c2 && w.Column + w.Text.Length >
+                                                               c2);
 
-					if (IsLast)
-						wordtext = wordtext.Substring(0, c2 - w.Column);
 
-					if (IsFirst)
-						wordtext = wordtext.Substring(c1 - w.Column);
+                    if (w.Type == WordType.Word && w.Style != null)
+                    {
+                        //VVV
+                        //int clrindex = Array.IndexOf(styles, w.Style);
+                        int clrindex = 0;	//If style is not found, use first one
+                        for (int j = 0; j < styles.Length; j++)
+                        {
+                            var style = styles[j];
+                            if (style.Name == w.Style.Name)
+                            {
+                                clrindex = j;
+                                break;
+                            }
+                        }
+                        
+                        clrindex *= 2;
+                        clrindex++;
 
-					//VVV
-					wordtext =
-						/*
-						wordtext.Replace(@"\", @" \ \ ").Replace(@"
+                        sb.Append("{\\cf" + clrindex.ToString
+                                                (CultureInfo.InvariantCulture));
+                        if (!w.Style.Transparent)
+                        {
+                            sb.Append("\\highlight" + (clrindex + 1).ToString
+                                                          (CultureInfo.InvariantCulture));
+                        }
+                        sb.Append(" ");
+                    }
+
+                    if (w.Style != null)
+                    {
+                        if (w.Style.Bold)
+                            sb.Append(@"\b ");
+                        if (w.Style.Underline)
+                            sb.Append(@"\ul ");
+                        if (w.Style.Italic)
+                            sb.Append(@"\i ");
+                    }
+                    string wordtext = w.Text;
+
+                    if (IsLast)
+                        wordtext = wordtext.Substring(0, c2 - w.Column);
+
+                    if (IsFirst)
+                        wordtext = wordtext.Substring(c1 - w.Column);
+
+                    //VVV
+                    wordtext =
+                        /*
+                        wordtext.Replace(@"\", @" \ \ ").Replace(@"
         }
         ", @" \
       }
       ").
-							Replace(@"
+                            Replace(@"
       {
         ", @" \
         {
           ");
-						*/
-					wordtext.Replace(@"\", @"\\").Replace(@"}", @"\}").Replace(@"{", @"\{");
+                        */
+                    wordtext.Replace(@"\", @"\\").Replace(@"}", @"\}").Replace(@"{", @"\{");
 
-					sb.Append(wordtext);
+                    sb.Append(wordtext);
 
-					if (w.Style != null)
-					{
-						if (w.Style.Bold) sb.Append(@"\b0 ");
-						if (w.Style.Underline)
-							sb.Append(@"\ul0 ");
-						if (w.Style.Italic) sb.Append(@"\i0 ");
-					}
+                    if (w.Style != null)
+                    {
+                        if (w.Style.Bold) sb.Append(@"\b0 ");
+                        if (w.Style.Underline)
+                            sb.Append(@"\ul0 ");
+                        if (w.Style.Italic) sb.Append(@"\i0 ");
+                    }
 
-					if (w.Type == WordType.Word && w.Style != null)
-					{
-						sb.Append("}");
-					}
+                    if (w.Type == WordType.Word && w.Style != null)
+                    {
+                        sb.Append("}");
+                    }
 
-					if (IsLast)
-					{
-						Done = true;
-						break;
-					}
-				}
-				if (Done) break;
+                    if (IsLast)
+                    {
+                        Done = true;
+                        break;
+                    }
+                }
+                if (Done) break;
 
-				sb.Append(@"\par");
-			}
+                sb.Append(@"\par");
+            }
 
-			sb.Append("\r\n}");
+            sb.Append("\r\n}");
 
-			return sb.ToString();
-		}
+            return sb.ToString();
+        }
     }
 }

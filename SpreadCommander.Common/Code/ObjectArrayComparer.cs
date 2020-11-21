@@ -65,8 +65,8 @@ namespace SpreadCommander.Common.Code
                 var item = obj[i];
                 if (item != null && item != DBNull.Value)
                 {
-                    if (item is string && CaseSensitive)
-                        item = ((string)item).ToLower();
+                    if (item is string str && CaseSensitive)
+                        item = str.ToLower();
                     result ^= item.GetHashCode();
                 }
             }

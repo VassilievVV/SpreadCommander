@@ -41,7 +41,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
         {
             base.SetupDiagram(diagram);
 
-            if (!(diagram is XYDiagram2D diagramXY))
+            if (diagram is not XYDiagram2D diagramXY)
                 return;
 
             if (Margins != null && Margins.Length == 1)
@@ -57,8 +57,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
             if (PaneDistance.HasValue)
                 diagramXY.PaneDistance = PaneDistance.Value;
 
-            if (Rotated && (diagramXY is XYDiagram) && !(diagramXY is GanttDiagram))
-                ((XYDiagram)diagramXY).Rotated = true;
+            if (Rotated && (diagramXY is XYDiagram xyDiagram) && (diagramXY is not GanttDiagram))
+                xyDiagram.Rotated = true;
 
             if (GridLayout)
                 diagramXY.PaneLayout.AutoLayoutMode = PaneAutoLayoutMode.Grid;
@@ -86,7 +86,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
 
                     bool isPixels = part.EndsWith("px", StringComparison.InvariantCultureIgnoreCase);
                     if (isPixels)
-                        part = part.Substring(part.Length - 2).Trim();
+                        part = part[^2..].Trim();
 
                     if (!double.TryParse(part, out double dPart))
                         throw new Exception($"Cannot parse layout definition part: {parts[i]}");

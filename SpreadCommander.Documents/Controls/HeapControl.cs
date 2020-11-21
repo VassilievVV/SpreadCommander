@@ -47,13 +47,13 @@ namespace SpreadCommander.Documents.Controls
 
                     _FileInfo = value;
 
-                    FirePropertyChanged("FileName");
-                    FirePropertyChanged("Extension");
-                    FirePropertyChanged("Description");
-                    FirePropertyChanged("FileType");
-                    FirePropertyChanged("GroupName");
-                    FirePropertyChanged("ImageIndex");
-                    FirePropertyChanged("Enabled");
+                    FirePropertyChanged(nameof(FileName));
+                    FirePropertyChanged(nameof(Extension));
+                    FirePropertyChanged(nameof(Description));
+                    FirePropertyChanged(nameof(FileType));
+                    FirePropertyChanged(nameof(GroupName));
+                    FirePropertyChanged(nameof(ImageIndex));
+                    FirePropertyChanged(nameof(Enabled));
                 }
             }
 
@@ -75,47 +75,18 @@ namespace SpreadCommander.Documents.Controls
             {
                 get
                 {
-                    switch (Extension)
+                    return Extension switch
                     {
-                        case ".xlsx":
-                        case ".xls":
-                            return FileType.Spreadsheet;
-                        case ".csv":
-                        case ".txt":
-                            return FileType.Text;
-                        case ".sql":
-                            return FileType.SqlScript;
-                        case ".ps":
-                        case ".ps1":
-                        case ".csx":
-                        case ".fsx":
-                        case ".r":
-                        case ".py":
-                            return FileType.Script;
-                        case ".docx":
-                        case ".doc":
-                        case ".rtf":
-                        case ".htm":
-                        case ".html":
-                        case ".mht":
-                        case ".odt":
-                        case ".epub":
-                            return FileType.Book;
-                        case ".png":
-                        case ".tif":
-                        case ".tiff":
-                        case ".jpg":
-                        case ".jpeg":
-                        case ".gif":
-                        case ".bmp":
-                            return FileType.Image;
-                        case ".dash":
-                            return FileType.Dashboard;
-                        case ".pdf":
-                            return FileType.PDF;
-                        default:
-                            return FileType.Unknown;
-                    }
+                        ".xlsx" or ".xls"                                                               => FileType.Spreadsheet,
+                        ".csv" or ".txt"                                                                => FileType.Text,
+                        ".sql"                                                                          => FileType.SqlScript,
+                        ".ps" or ".ps1" or ".csx" or ".fsx" or ".r" or ".py"                            => FileType.Script,
+                        ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub" => FileType.Book,
+                        ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"            => FileType.Image,
+                        ".dash"                                                                         => FileType.Dashboard,
+                        ".pdf"                                                                          => FileType.PDF,
+                        _                                                                               => FileType.Unknown,
+                    };
                 }
             }
 
@@ -123,27 +94,18 @@ namespace SpreadCommander.Documents.Controls
             {
                 get
                 {
-                    switch (FileType)
+                    return FileType switch
                     {
-                        case FileType.Spreadsheet:
-                            return "Spreadsheet";
-                        case FileType.Text:
-                            return "CSV";
-                        case FileType.Book:
-                            return "Book";
-                        case FileType.SqlScript:
-                            return "SQL script";
-                        case FileType.Script:
-                            return "Script";
-                        case FileType.Dashboard:
-                            return "Dashboard";
-                        case FileType.Image:
-                            return "Image";
-                        case FileType.PDF:
-                            return "PDF";
-                        default:
-                            return "Others";
-                    }
+                        FileType.Spreadsheet => "Spreadsheet",
+                        FileType.Text        => "CSV",
+                        FileType.Book        => "Book",
+                        FileType.SqlScript   => "SQL script",
+                        FileType.Script      => "Script",
+                        FileType.Dashboard   => "Dashboard",
+                        FileType.Image       => "Image",
+                        FileType.PDF         => "PDF",
+                        _                    => "Others",
+                    };
                 }
             }
 
@@ -151,27 +113,18 @@ namespace SpreadCommander.Documents.Controls
             {
                 get
                 {
-                    switch (FileType)
+                    return FileType switch
                     {
-                        case FileType.Spreadsheet:
-                            return 2;
-                        case FileType.Text:
-                            return 3;
-                        case FileType.Book:
-                            return 6;
-                        case FileType.SqlScript:
-                            return 4;
-                        case FileType.Script:
-                            return 5;
-                        case FileType.Dashboard:
-                            return 8;
-                        case FileType.Image:
-                            return 7;
-                        case FileType.PDF:
-                            return 9;
-                        default:
-                            return 1;
-                    }
+                        FileType.Spreadsheet => 2,
+                        FileType.Text        => 3,
+                        FileType.Book        => 6,
+                        FileType.SqlScript   => 4,
+                        FileType.Script      => 5,
+                        FileType.Dashboard   => 8,
+                        FileType.Image       => 7,
+                        FileType.PDF         => 9,
+                        _                    => 1,
+                    };
 
                     /*
                     0	folder
@@ -192,20 +145,13 @@ namespace SpreadCommander.Documents.Controls
             {
                 get
                 {
-                    switch (FileType)
+                    return FileType switch
                     {
-                        case FileType.Spreadsheet:
-                        case FileType.Text:
-                        case FileType.Book:
-                        case FileType.SqlScript:
-                        case FileType.Script:
-                        case FileType.Dashboard:
-                        case FileType.Image:
-                        case FileType.PDF:
-                            return true;
-                        default:
-                            return false;
-                    }
+                        FileType.Spreadsheet or FileType.Text or FileType.Book or 
+                        FileType.SqlScript or FileType.Script or 
+                        FileType.Dashboard or FileType.Image or FileType.PDF => true,
+                        _                                                    => false,
+                    };
                 }
             }
         }
@@ -262,10 +208,10 @@ namespace SpreadCommander.Documents.Controls
             set => barMask.EditValue = value;
         }
 
-        private string GetHeapFolderPath(string initPath)
+        private static string GetHeapFolderPath(string initPath)
         {
             if (!string.IsNullOrWhiteSpace(initPath) && initPath.StartsWith(HeapFolderPrefix, StringComparison.CurrentCultureIgnoreCase))
-                return initPath.Substring(HeapFolderPrefix.Length);
+                return initPath[HeapFolderPrefix.Length..];
             return initPath;
         }
 
@@ -313,7 +259,7 @@ namespace SpreadCommander.Documents.Controls
                 }
             }
 
-            string UpdateFileMast(string mask)
+            static string UpdateFileMast(string mask)
             {
                 if (string.IsNullOrWhiteSpace(mask))
                     return "*.*";
@@ -424,7 +370,7 @@ namespace SpreadCommander.Documents.Controls
 
         public void PreviewCurrentFile()
         {
-            if (!(bindingFiles.Current is FileItem item))
+            if (bindingFiles.Current is not FileItem item)
                 return;
 
             PreviewFile(item.FileInfo.FullName);
@@ -432,7 +378,7 @@ namespace SpreadCommander.Documents.Controls
 
         private void ViewFiles_ItemDoubleClick(object sender, WinExplorerViewItemDoubleClickEventArgs e)
         {
-            if (!(viewFiles.GetRow(e.ItemInfo.Row.RowHandle) is FileItem item) || !item.Enabled)
+            if (viewFiles.GetRow(e.ItemInfo.Row.RowHandle) is not FileItem item || !item.Enabled)
                 return;
 
             PreviewFile(item.FileInfo.FullName);
@@ -445,7 +391,7 @@ namespace SpreadCommander.Documents.Controls
 
         public void OpenCurrentFile()
         {
-            if (!(bindingFiles.Current is FileItem item))
+            if (bindingFiles.Current is not FileItem item)
                 return;
 
             Process.Start(item.FileInfo.FullName);
@@ -453,9 +399,9 @@ namespace SpreadCommander.Documents.Controls
 
         private void ViewFiles_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
         {
-            if (e.Value1 is string && e.Value2 is string)
+            if (e.Value1 is string str1 && e.Value2 is string str2)
             {
-                e.Result  = StringLogicalComparer.Compare((string)e.Value1, (string)e.Value2);
+                e.Result  = StringLogicalComparer.Compare(str1, str2);
                 e.Handled = true;
             }
         }
@@ -555,7 +501,7 @@ namespace SpreadCommander.Documents.Controls
             if (!folder.StartsWith(ProjectDirectory, StringComparison.CurrentCultureIgnoreCase))
                 return;
 
-            folder = HeapFolderPrefix + folder.Substring(ProjectDirectory.Length + 1);
+            folder = HeapFolderPrefix + folder[(ProjectDirectory.Length + 1)..];
             CurrentHeapFolder = folder;
         }
 
@@ -572,29 +518,69 @@ namespace SpreadCommander.Documents.Controls
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
-            var fileItem = FindFileItem(e.FullPath);
-            if (fileItem != null)
-                fileItem.FileInfo = new FileInfo(e.FullPath);
+            Invoke((MethodInvoker)(() =>
+            {
+                try
+                {
+                    var fileItem = FindFileItem(e.FullPath);
+                    if (fileItem != null)
+                        fileItem.FileInfo = new FileInfo(e.FullPath);
+                }
+                catch (Exception)
+                {
+                    //Do nothing
+                }
+            }));
         }
 
         private void Watcher_Created(object sender, FileSystemEventArgs e)
         {
-            var fileItem = new FileItem(new FileInfo(e.FullPath));
-            bindingFiles.Add(fileItem);
+            Invoke((MethodInvoker)(() =>
+            {
+                try
+                {
+                    var fileItem = new FileItem(new FileInfo(e.FullPath));
+                    bindingFiles.Add(fileItem);
+                }
+                catch (Exception)
+                {
+                    //Do nothing
+                }
+            }));
         }
 
         private void Watcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            var fileItem = FindFileItem(e.FullPath);
-            if (fileItem != null)
-                bindingFiles.Remove(fileItem);
+            Invoke((MethodInvoker)(() =>
+            {
+                try
+                {
+                    var fileItem = FindFileItem(e.FullPath);
+                    if (fileItem != null)
+                        bindingFiles.Remove(fileItem);
+                }
+                catch (Exception)
+                {
+                    //Do nothing
+                }
+            }));
         }
 
         private void Watcher_Renamed(object sender, RenamedEventArgs e)
         {
-            var fileItem = FindFileItem(e.OldFullPath);
-            if (fileItem != null)
-                fileItem.FileInfo = new FileInfo(e.FullPath);
+            Invoke((MethodInvoker)(() =>
+            {
+                try
+                {
+                    var fileItem = FindFileItem(e.OldFullPath);
+                    if (fileItem != null)
+                        fileItem.FileInfo = new FileInfo(e.FullPath);
+                }
+                catch (Exception)
+                {
+                    //Do nothing
+                }
+            }));
         }
 
         private void BarFileFirst_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -643,7 +629,7 @@ namespace SpreadCommander.Documents.Controls
 
         private void BindingFiles_CurrentChanged(object sender, EventArgs e)
         {
-            if (!(bindingFiles.Current is FileItem item))
+            if (bindingFiles.Current is not FileItem item)
                 return;
 
             if (_CurrentFileName != null)
@@ -652,8 +638,8 @@ namespace SpreadCommander.Documents.Controls
 
         private void BarFolder_EditValueChanged(object sender, EventArgs e)
         {
-            if (barFolder.EditValue is string)
-                CurrentHeapFolder = (string)barFolder.EditValue;
+            if (barFolder.EditValue is string str)
+                CurrentHeapFolder = str;
         }
 
         private void RepositoryMask_SelectedValueChanged(object sender, EventArgs e)
@@ -703,7 +689,7 @@ namespace SpreadCommander.Documents.Controls
             if (!folder.StartsWith(ProjectDirectory, StringComparison.CurrentCultureIgnoreCase))
                 return;
 
-            folder = HeapFolderPrefix + folder.Substring(ProjectDirectory.Length + 1);
+            folder = HeapFolderPrefix + folder[(ProjectDirectory.Length + 1)..];
             CurrentHeapFolder = folder;
 
             PathChanged(folder);

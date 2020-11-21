@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public override DbConnection CreateConnection(object connectionStringBuilder)
         {
-            if (!(connectionStringBuilder is SQLiteConnectionStringBuilder sqliteConnectionStringBuilder))
+            if (connectionStringBuilder is not SQLiteConnectionStringBuilder sqliteConnectionStringBuilder)
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = sqliteConnectionStringBuilder.ConnectionString;

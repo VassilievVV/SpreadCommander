@@ -18,7 +18,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
                 return null;
 
             double tau = Convert.ToDouble(_Parameters[0]);
-            if (tau == double.NaN)
+            if (double.IsNaN(tau))
                 return null;
 
             return records.Quantile(tau);

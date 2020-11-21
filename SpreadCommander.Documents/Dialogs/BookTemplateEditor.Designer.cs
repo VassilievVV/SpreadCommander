@@ -1006,7 +1006,7 @@
             this.repositoryItemZoomTrackBar});
             this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.ribbon.ShowSearchItem = true;
-            this.ribbon.Size = new System.Drawing.Size(1125, 157);
+            this.ribbon.Size = new System.Drawing.Size(1125, 158);
             this.ribbon.StatusBar = this.ribbonStatusBar;
             // 
             // undoItem1
@@ -1131,11 +1131,14 @@
             // Editor
             // 
             this.Editor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Editor.Location = new System.Drawing.Point(0, 157);
+            this.Editor.Location = new System.Drawing.Point(0, 158);
             this.Editor.MenuManager = this.ribbon;
             this.Editor.Name = "Editor";
+            this.Editor.Options.DocumentCapabilities.Macros = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
+            this.Editor.Options.DocumentCapabilities.OleObjects = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
+            this.Editor.Options.DocumentCapabilities.TrackChanges = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.Editor.Options.SnapMailMergeVisualOptions.DataSourceName = null;
-            this.Editor.Size = new System.Drawing.Size(925, 670);
+            this.Editor.Size = new System.Drawing.Size(925, 669);
             this.Editor.TabIndex = 2;
             this.Editor.ActiveViewChanged += new System.EventHandler(this.Editor_ActiveViewChanged);
             this.Editor.UpdateUI += new System.EventHandler(this.Editor_UpdateUI);
@@ -3549,6 +3552,7 @@
             // 
             // headerFooterToolsDesignNavigationRibbonPageGroup1
             // 
+            this.headerFooterToolsDesignNavigationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.headerFooterToolsDesignNavigationRibbonPageGroup1.ItemLinks.Add(this.goToPageHeaderItem1, "E");
             this.headerFooterToolsDesignNavigationRibbonPageGroup1.ItemLinks.Add(this.goToPageFooterItem1, "G");
             this.headerFooterToolsDesignNavigationRibbonPageGroup1.ItemLinks.Add(this.goToNextHeaderFooterItem1, "X");
@@ -3558,12 +3562,14 @@
             // 
             // headerFooterToolsDesignOptionsRibbonPageGroup1
             // 
+            this.headerFooterToolsDesignOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.headerFooterToolsDesignOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleDifferentFirstPageItem1, "A");
             this.headerFooterToolsDesignOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleDifferentOddAndEvenPagesItem1, "V");
             this.headerFooterToolsDesignOptionsRibbonPageGroup1.Name = "headerFooterToolsDesignOptionsRibbonPageGroup1";
             // 
             // headerFooterToolsDesignCloseRibbonPageGroup1
             // 
+            this.headerFooterToolsDesignCloseRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.headerFooterToolsDesignCloseRibbonPageGroup1.ItemLinks.Add(this.closePageHeaderFooterItem1, "C");
             this.headerFooterToolsDesignCloseRibbonPageGroup1.Name = "headerFooterToolsDesignCloseRibbonPageGroup1";
             // 
@@ -3588,6 +3594,7 @@
             // 
             // tableStyleOptionsRibbonPageGroup1
             // 
+            this.tableStyleOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableStyleOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleFirstRowItem1);
             this.tableStyleOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleLastRowItem1);
             this.tableStyleOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleBandedRowsItem1);
@@ -3598,16 +3605,19 @@
             // 
             // tableStylesRibbonPageGroup1
             // 
+            this.tableStylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableStylesRibbonPageGroup1.ItemLinks.Add(this.galleryChangeTableStyleItem1);
             this.tableStylesRibbonPageGroup1.Name = "tableStylesRibbonPageGroup1";
             // 
             // tableCellStylesRibbonPageGroup1
             // 
+            this.tableCellStylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableCellStylesRibbonPageGroup1.ItemLinks.Add(this.galleryChangeTableCellStyleItem1);
             this.tableCellStylesRibbonPageGroup1.Name = "tableCellStylesRibbonPageGroup1";
             // 
             // tableDrawBordersRibbonPageGroup1
             // 
+            this.tableDrawBordersRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderLineStyleItem1);
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderLineWeightItem1);
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderColorItem1, "C");
@@ -3627,6 +3637,7 @@
             // 
             // tableTableRibbonPageGroup1
             // 
+            this.tableTableRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableTableRibbonPageGroup1.ItemLinks.Add(this.selectTableElementsItem1, "K");
             this.tableTableRibbonPageGroup1.ItemLinks.Add(this.toggleShowTableGridLinesItem1, "TG");
             this.tableTableRibbonPageGroup1.ItemLinks.Add(this.showTablePropertiesFormItem1, "O");
@@ -3634,6 +3645,7 @@
             // 
             // tableRowsAndColumnsRibbonPageGroup1
             // 
+            this.tableRowsAndColumnsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.tableRowsAndColumnsRibbonPageGroup1.ItemLinks.Add(this.deleteTableElementsItem1, "D");
             this.tableRowsAndColumnsRibbonPageGroup1.ItemLinks.Add(this.insertTableRowAboveItem1, "A");
             this.tableRowsAndColumnsRibbonPageGroup1.ItemLinks.Add(this.insertTableRowBelowItem1, "E");
@@ -3643,6 +3655,7 @@
             // 
             // tableMergeRibbonPageGroup1
             // 
+            this.tableMergeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableMergeRibbonPageGroup1.ItemLinks.Add(this.mergeTableCellsItem1);
             this.tableMergeRibbonPageGroup1.ItemLinks.Add(this.showSplitTableCellsForm1, "P");
             this.tableMergeRibbonPageGroup1.ItemLinks.Add(this.splitTableItem1, "Q");
@@ -3651,11 +3664,13 @@
             // tableCellSizeRibbonPageGroup1
             // 
             this.tableCellSizeRibbonPageGroup1.AllowTextClipping = false;
+            this.tableCellSizeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.tableCellSizeRibbonPageGroup1.ItemLinks.Add(this.toggleTableAutoFitItem1, "F");
             this.tableCellSizeRibbonPageGroup1.Name = "tableCellSizeRibbonPageGroup1";
             // 
             // tableAlignmentRibbonPageGroup1
             // 
+            this.tableAlignmentRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableAlignmentRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tableAlignmentRibbonPageGroup1.ImageOptions.Image")));
             this.tableAlignmentRibbonPageGroup1.ItemLinks.Add(this.toggleTableCellsTopLeftAlignmentItem1, "TL");
             this.tableAlignmentRibbonPageGroup1.ItemLinks.Add(this.toggleTableCellsMiddleLeftAlignmentItem1, "CL");
@@ -3687,6 +3702,7 @@
             // 
             // floatingPictureToolsShapeStylesPageGroup1
             // 
+            this.floatingPictureToolsShapeStylesPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.floatingPictureToolsShapeStylesPageGroup1.ItemLinks.Add(this.changeFloatingObjectFillColorItem1);
             this.floatingPictureToolsShapeStylesPageGroup1.ItemLinks.Add(this.changeFloatingObjectOutlineColorItem1);
             this.floatingPictureToolsShapeStylesPageGroup1.ItemLinks.Add(this.changeFloatingObjectOutlineWeightItem1);
@@ -3694,6 +3710,7 @@
             // 
             // floatingPictureToolsArrangePageGroup1
             // 
+            this.floatingPictureToolsArrangePageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.floatingPictureToolsArrangePageGroup1.ItemLinks.Add(this.changeFloatingObjectTextWrapTypeItem1, "TW");
             this.floatingPictureToolsArrangePageGroup1.ItemLinks.Add(this.changeFloatingObjectAlignmentItem1, "PO");
             this.floatingPictureToolsArrangePageGroup1.ItemLinks.Add(this.floatingObjectBringForwardSubItem1, "AF");
@@ -3727,6 +3744,7 @@
             // 
             // themesRibbonPageGroup1
             // 
+            this.themesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.themesRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("themesRibbonPageGroup1.ImageOptions.Image")));
             this.themesRibbonPageGroup1.ItemLinks.Add(this.themesGalleryBarItem1);
             this.themesRibbonPageGroup1.Name = "themesRibbonPageGroup1";
@@ -3740,6 +3758,7 @@
             // 
             // dataShapingRibbonPageGroup1
             // 
+            this.dataShapingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dataShapingRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem2);
             this.dataShapingRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem3);
             this.dataShapingRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem4);
@@ -3749,6 +3768,7 @@
             // 
             // snMergeFieldPropertiesRibbonPageGroup1
             // 
+            this.snMergeFieldPropertiesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.snMergeFieldPropertiesRibbonPageGroup1.ItemLinks.Add(this.propertiesBarButtonItem1);
             this.snMergeFieldPropertiesRibbonPageGroup1.Name = "snMergeFieldPropertiesRibbonPageGroup1";
             // 
@@ -3760,6 +3780,7 @@
             // 
             // groupingRibbonPageGroup1
             // 
+            this.groupingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.groupingRibbonPageGroup1.ItemLinks.Add(this.commandBarSubItem2);
             this.groupingRibbonPageGroup1.ItemLinks.Add(this.commandBarSubItem3);
             this.groupingRibbonPageGroup1.ItemLinks.Add(this.commandBarItem8);
@@ -3777,6 +3798,7 @@
             // 
             // listHeaderAndFooterRibbonPageGroup1
             // 
+            this.listHeaderAndFooterRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.listHeaderAndFooterRibbonPageGroup1.ItemLinks.Add(this.commandBarSubItem5);
             this.listHeaderAndFooterRibbonPageGroup1.ItemLinks.Add(this.commandBarSubItem6);
             this.listHeaderAndFooterRibbonPageGroup1.ItemLinks.Add(this.commandBarSubItem7);
@@ -3784,6 +3806,7 @@
             // 
             // listCommandsRibbonPageGroup1
             // 
+            this.listCommandsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.listCommandsRibbonPageGroup1.ItemLinks.Add(this.commandBarItem10);
             this.listCommandsRibbonPageGroup1.ItemLinks.Add(this.commandBarItem11);
             this.listCommandsRibbonPageGroup1.ItemLinks.Add(this.commandBarItem12);
@@ -3791,6 +3814,7 @@
             // 
             // listEditorRowLimitRibbonPageGroup1
             // 
+            this.listEditorRowLimitRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.listEditorRowLimitRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup8);
             this.listEditorRowLimitRibbonPageGroup1.Name = "listEditorRowLimitRibbonPageGroup1";
             // 
@@ -3804,6 +3828,7 @@
             // 
             // mailMergeRibbonPageGroup1
             // 
+            this.mailMergeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mailMergeRibbonPageGroup1.ItemLinks.Add(this.mailMergeDataSourceItem1);
             this.mailMergeRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem32);
             this.mailMergeRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem33);
@@ -3811,11 +3836,13 @@
             // 
             // mailMergeCurrentRecordRibbonPageGroup1
             // 
+            this.mailMergeCurrentRecordRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mailMergeCurrentRecordRibbonPageGroup1.ItemLinks.Add(this.mailMergeCurrentRecordItem1);
             this.mailMergeCurrentRecordRibbonPageGroup1.Name = "mailMergeCurrentRecordRibbonPageGroup1";
             // 
             // finishAndMergeRibbonPageGroup1
             // 
+            this.finishAndMergeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.finishAndMergeRibbonPageGroup1.ItemLinks.Add(this.commandBarSubItem8);
             this.finishAndMergeRibbonPageGroup1.Name = "finishAndMergeRibbonPageGroup1";
             // 
@@ -3836,6 +3863,7 @@
             // 
             // chartTypeRibbonPageGroup1
             // 
+            this.chartTypeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.chartTypeRibbonPageGroup1.ItemLinks.Add(this.createBarBaseItem1);
             this.chartTypeRibbonPageGroup1.ItemLinks.Add(this.createLineBaseItem1);
             this.chartTypeRibbonPageGroup1.ItemLinks.Add(this.createPieBaseItem1);
@@ -3846,12 +3874,14 @@
             // 
             // chartAppearanceRibbonPageGroup1
             // 
+            this.chartAppearanceRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.chartAppearanceRibbonPageGroup1.ItemLinks.Add(this.changePaletteGalleryBaseItem1);
             this.chartAppearanceRibbonPageGroup1.ItemLinks.Add(this.changeAppearanceGalleryBaseItem1);
             this.chartAppearanceRibbonPageGroup1.Name = "chartAppearanceRibbonPageGroup1";
             // 
             // chartWizardRibbonPageGroup1
             // 
+            this.chartWizardRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.chartWizardRibbonPageGroup1.ItemLinks.Add(this.runDesignerChartItem1);
             this.chartWizardRibbonPageGroup1.Name = "chartWizardRibbonPageGroup1";
             this.chartWizardRibbonPageGroup1.State = DevExpress.XtraBars.Ribbon.RibbonPageGroupState.Expanded;
@@ -3866,6 +3896,7 @@
             // 
             // commonRibbonPageGroup1
             // 
+            this.commonRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonRibbonPageGroup1.ItemLinks.Add(this.fileNewItem1, "N");
             this.commonRibbonPageGroup1.ItemLinks.Add(this.fileOpenItem1, "O");
             this.commonRibbonPageGroup1.ItemLinks.Add(this.fileSaveItem1, "S");
@@ -3880,12 +3911,14 @@
             // 
             // infoRibbonPageGroup1
             // 
+            this.infoRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.infoRibbonPageGroup1.ItemLinks.Add(this.showDocumentPropertiesFormItem1);
             this.infoRibbonPageGroup1.ItemLinks.Add(this.encryptDocumentItem1);
             this.infoRibbonPageGroup1.Name = "infoRibbonPageGroup1";
             // 
             // dataRibbonPageGroup1
             // 
+            this.dataRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dataRibbonPageGroup1.ItemLinks.Add(this.commandBarItem2);
             this.dataRibbonPageGroup1.Name = "dataRibbonPageGroup1";
             this.dataRibbonPageGroup1.Visible = false;
@@ -3908,6 +3941,7 @@
             // 
             // clipboardRibbonPageGroup1
             // 
+            this.clipboardRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.pasteItem1, "V");
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.cutItem1, "X");
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.copyItem1, "C");
@@ -3916,6 +3950,7 @@
             // 
             // fontRibbonPageGroup1
             // 
+            this.fontRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.fontRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup1);
             this.fontRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup2);
             this.fontRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup3);
@@ -3925,6 +3960,7 @@
             // 
             // paragraphRibbonPageGroup1
             // 
+            this.paragraphRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.paragraphRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup4);
             this.paragraphRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup5);
             this.paragraphRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup6);
@@ -3933,6 +3969,7 @@
             // 
             // stylesRibbonPageGroup1
             // 
+            this.stylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.stylesRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("stylesRibbonPageGroup1.ImageOptions.Image")));
             this.stylesRibbonPageGroup1.ItemLinks.Add(this.galleryChangeStyleItem1);
             this.stylesRibbonPageGroup1.ItemLinks.Add(this.barNewStyle);
@@ -3942,6 +3979,7 @@
             // 
             // editingRibbonPageGroup1
             // 
+            this.editingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.editingRibbonPageGroup1.ItemLinks.Add(this.findItem1, "FD");
             this.editingRibbonPageGroup1.ItemLinks.Add(this.replaceItem1, "R");
             this.editingRibbonPageGroup1.Name = "editingRibbonPageGroup1";
@@ -3962,22 +4000,26 @@
             // pagesRibbonPageGroup1
             // 
             this.pagesRibbonPageGroup1.AllowTextClipping = false;
+            this.pagesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pagesRibbonPageGroup1.ItemLinks.Add(this.insertPageBreakItem21, "B");
             this.pagesRibbonPageGroup1.Name = "pagesRibbonPageGroup1";
             // 
             // tablesRibbonPageGroup1
             // 
             this.tablesRibbonPageGroup1.AllowTextClipping = false;
+            this.tablesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tablesRibbonPageGroup1.ItemLinks.Add(this.insertTableItem1, "T");
             this.tablesRibbonPageGroup1.Name = "tablesRibbonPageGroup1";
             // 
             // illustrationsRibbonPageGroup1
             // 
+            this.illustrationsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.illustrationsRibbonPageGroup1.ItemLinks.Add(this.insertFloatingPictureItem1);
             this.illustrationsRibbonPageGroup1.Name = "illustrationsRibbonPageGroup1";
             // 
             // toolboxRibbonPageGroup1
             // 
+            this.toolboxRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.toolboxRibbonPageGroup1.ItemLinks.Add(this.commandBarItem3);
             this.toolboxRibbonPageGroup1.ItemLinks.Add(this.commandBarItem4);
             this.toolboxRibbonPageGroup1.ItemLinks.Add(this.commandBarItem5);
@@ -3987,12 +4029,14 @@
             // 
             // linksRibbonPageGroup1
             // 
+            this.linksRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.linksRibbonPageGroup1.ItemLinks.Add(this.insertBookmarkItem1, "K");
             this.linksRibbonPageGroup1.ItemLinks.Add(this.insertHyperlinkItem1, "I");
             this.linksRibbonPageGroup1.Name = "linksRibbonPageGroup1";
             // 
             // headerFooterRibbonPageGroup1
             // 
+            this.headerFooterRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.headerFooterRibbonPageGroup1.ItemLinks.Add(this.editPageHeaderItem1, "H");
             this.headerFooterRibbonPageGroup1.ItemLinks.Add(this.editPageFooterItem1, "O");
             this.headerFooterRibbonPageGroup1.ItemLinks.Add(this.insertPageNumberItem1, "NU");
@@ -4001,6 +4045,7 @@
             // 
             // textRibbonPageGroup1
             // 
+            this.textRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.textRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("textRibbonPageGroup1.ImageOptions.Image")));
             this.textRibbonPageGroup1.ItemLinks.Add(this.insertTextBoxItem1, "X");
             this.textRibbonPageGroup1.Name = "textRibbonPageGroup1";
@@ -4008,6 +4053,7 @@
             // symbolsRibbonPageGroup1
             // 
             this.symbolsRibbonPageGroup1.AllowTextClipping = false;
+            this.symbolsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.symbolsRibbonPageGroup1.ItemLinks.Add(this.insertSymbolItem1, "U");
             this.symbolsRibbonPageGroup1.Name = "symbolsRibbonPageGroup1";
             // 
@@ -4020,6 +4066,7 @@
             // 
             // pageSetupRibbonPageGroup1
             // 
+            this.pageSetupRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.pageSetupRibbonPageGroup1.ItemLinks.Add(this.changeSectionPageMarginsItem1, "M");
             this.pageSetupRibbonPageGroup1.ItemLinks.Add(this.changeSectionPageOrientationItem1, "O");
             this.pageSetupRibbonPageGroup1.ItemLinks.Add(this.changeSectionPaperKindItem1, "SZ");
@@ -4032,6 +4079,7 @@
             // pageBackgroundRibbonPageGroup1
             // 
             this.pageBackgroundRibbonPageGroup1.AllowTextClipping = false;
+            this.pageBackgroundRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pageBackgroundRibbonPageGroup1.ItemLinks.Add(this.changePageColorItem1, "PC");
             this.pageBackgroundRibbonPageGroup1.Name = "pageBackgroundRibbonPageGroup1";
             // 
@@ -4047,6 +4095,7 @@
             // 
             // documentViewsRibbonPageGroup1
             // 
+            this.documentViewsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.documentViewsRibbonPageGroup1.ItemLinks.Add(this.switchToSimpleViewItem1, "L");
             this.documentViewsRibbonPageGroup1.ItemLinks.Add(this.switchToDraftViewItem1, "E");
             this.documentViewsRibbonPageGroup1.ItemLinks.Add(this.switchToPrintLayoutViewItem1, "P");
@@ -4054,18 +4103,21 @@
             // 
             // showRibbonPageGroup1
             // 
+            this.showRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.showRibbonPageGroup1.ItemLinks.Add(this.toggleShowHorizontalRulerItem1);
             this.showRibbonPageGroup1.ItemLinks.Add(this.toggleShowVerticalRulerItem1);
             this.showRibbonPageGroup1.Name = "showRibbonPageGroup1";
             // 
             // zoomRibbonPageGroup1
             // 
+            this.zoomRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.zoomRibbonPageGroup1.ItemLinks.Add(this.zoomOutItem1);
             this.zoomRibbonPageGroup1.ItemLinks.Add(this.zoomInItem1);
             this.zoomRibbonPageGroup1.Name = "zoomRibbonPageGroup1";
             // 
             // viewRibbonPageGroup1
             // 
+            this.viewRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.viewRibbonPageGroup1.ItemLinks.Add(this.snapBarToolbarsListItem1);
             this.viewRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem1);
             this.viewRibbonPageGroup1.ItemLinks.Add(this.snapBarToolbarsListItem2);
@@ -4073,6 +4125,7 @@
             // 
             // viewFieldsRibbonPageGroup1
             // 
+            this.viewFieldsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.viewFieldsRibbonPageGroup1.ItemLinks.Add(this.showAllFieldCodesItem1);
             this.viewFieldsRibbonPageGroup1.ItemLinks.Add(this.showAllFieldResultsItem1);
             this.viewFieldsRibbonPageGroup1.ItemLinks.Add(this.toggleFieldHighlightingItem1);
@@ -4086,6 +4139,7 @@
             // 
             // documentProofingRibbonPageGroup1
             // 
+            this.documentProofingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.documentProofingRibbonPageGroup1.ItemLinks.Add(this.checkSpellingItem1, "S");
             this.documentProofingRibbonPageGroup1.ItemLinks.Add(this.changeLanguageItem1);
             this.documentProofingRibbonPageGroup1.Name = "documentProofingRibbonPageGroup1";
@@ -4099,6 +4153,7 @@
             // 
             // tableOfContentsRibbonPageGroup1
             // 
+            this.tableOfContentsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableOfContentsRibbonPageGroup1.ItemLinks.Add(this.insertTableOfContentsItem1, "T");
             this.tableOfContentsRibbonPageGroup1.ItemLinks.Add(this.updateTableOfContentsItem1, "U");
             this.tableOfContentsRibbonPageGroup1.ItemLinks.Add(this.addParagraphsToTableOfContentItem1, "A");
@@ -4106,6 +4161,7 @@
             // 
             // captionsRibbonPageGroup1
             // 
+            this.captionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.captionsRibbonPageGroup1.ItemLinks.Add(this.insertCaptionPlaceholderItem1, "C");
             this.captionsRibbonPageGroup1.ItemLinks.Add(this.insertTableOfFiguresPlaceholderItem1, "G");
             this.captionsRibbonPageGroup1.ItemLinks.Add(this.updateTableOfFiguresItem1, "U");
@@ -4149,10 +4205,10 @@
             this.panelContainer1.Controls.Add(this.reportExplorerDockPanel1);
             this.panelContainer1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.panelContainer1.ID = new System.Guid("3f313e65-ac3d-4678-85c6-046828a99f56");
-            this.panelContainer1.Location = new System.Drawing.Point(925, 157);
+            this.panelContainer1.Location = new System.Drawing.Point(925, 158);
             this.panelContainer1.Name = "panelContainer1";
             this.panelContainer1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.panelContainer1.Size = new System.Drawing.Size(200, 670);
+            this.panelContainer1.Size = new System.Drawing.Size(200, 669);
             this.panelContainer1.Text = "panelContainer1";
             // 
             // fieldListDockPanel1
@@ -4180,15 +4236,15 @@
             this.reportExplorerDockPanel1.ID = new System.Guid("0dea3333-049f-4c63-b042-08eb01d3c080");
             this.reportExplorerDockPanel1.Location = new System.Drawing.Point(0, 335);
             this.reportExplorerDockPanel1.Name = "reportExplorerDockPanel1";
-            this.reportExplorerDockPanel1.OriginalSize = new System.Drawing.Size(200, 367);
-            this.reportExplorerDockPanel1.Size = new System.Drawing.Size(200, 335);
+            this.reportExplorerDockPanel1.OriginalSize = new System.Drawing.Size(200, 335);
+            this.reportExplorerDockPanel1.Size = new System.Drawing.Size(200, 334);
             this.reportExplorerDockPanel1.SnapControl = this.Editor;
             // 
             // reportExplorerDockPanel1_Container
             // 
             this.reportExplorerDockPanel1_Container.Location = new System.Drawing.Point(4, 46);
             this.reportExplorerDockPanel1_Container.Name = "reportExplorerDockPanel1_Container";
-            this.reportExplorerDockPanel1_Container.Size = new System.Drawing.Size(193, 286);
+            this.reportExplorerDockPanel1_Container.Size = new System.Drawing.Size(193, 285);
             this.reportExplorerDockPanel1_Container.TabIndex = 0;
             // 
             // snapDocumentManager

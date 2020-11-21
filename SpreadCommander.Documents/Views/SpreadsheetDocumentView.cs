@@ -25,6 +25,7 @@ using SpreadCommander.Common.Spreadsheet;
 using DevExpress.Utils.Animation;
 using DevExpress.Mvvm;
 using SpreadCommander.Common.Messages;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
@@ -32,6 +33,8 @@ namespace SpreadCommander.Documents.Views
     {
         public SpreadsheetDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
 
             UIUtils.ConfigureRibbonBar(Ribbon);

@@ -92,31 +92,15 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
                     throw new Exception($"File '{FileName}' already exists.");
             }
 
-            System.Drawing.Imaging.ImageFormat format;
-#pragma warning disable IDE0066 // Convert switch statement to expression
-            switch (Format ?? GetImageFormatFromFileName(fileName))
+            System.Drawing.Imaging.ImageFormat format = (Format ?? GetImageFormatFromFileName(fileName)) switch
             {
-                case ImageFormat.Png:
-                    format = System.Drawing.Imaging.ImageFormat.Png;
-                    break;
-                case ImageFormat.Tiff:
-                    format = System.Drawing.Imaging.ImageFormat.Tiff;
-                    break;
-                case ImageFormat.Bmp:
-                    format = System.Drawing.Imaging.ImageFormat.Bmp;
-                    break;
-                case ImageFormat.Gif:
-                    format = System.Drawing.Imaging.ImageFormat.Gif;
-                    break;
-                case ImageFormat.Jpeg:
-                    format = System.Drawing.Imaging.ImageFormat.Jpeg;
-                    break;
-                default:
-                    format = System.Drawing.Imaging.ImageFormat.Png;
-                    break;
-            }
-#pragma warning restore IDE0066 // Convert switch statement to expression
-
+                ImageFormat.Png  => System.Drawing.Imaging.ImageFormat.Png,
+                ImageFormat.Tiff => System.Drawing.Imaging.ImageFormat.Tiff,
+                ImageFormat.Bmp  => System.Drawing.Imaging.ImageFormat.Bmp,
+                ImageFormat.Gif  => System.Drawing.Imaging.ImageFormat.Gif,
+                ImageFormat.Jpeg => System.Drawing.Imaging.ImageFormat.Jpeg,
+                _                => System.Drawing.Imaging.ImageFormat.Png
+            };
             chartImage.Save(FileName, format);
 
             if (CopyToBook)

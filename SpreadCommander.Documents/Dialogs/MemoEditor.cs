@@ -1,5 +1,3 @@
-#pragma warning disable CRR0047
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -62,7 +60,7 @@ namespace SpreadCommander.Documents.Dialogs
     #region MemoTypeEditor
     public class MemoTypeEditor: UITypeEditor
     {
-        private string GetText(List<string> values)
+        private static string GetText(List<string> values)
         {
             if (values == null)
                 return string.Empty;

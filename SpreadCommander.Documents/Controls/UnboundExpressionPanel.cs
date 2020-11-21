@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using DevExpress.Data;
+﻿using DevExpress.Data;
 using DevExpress.Data.ExpressionEditor;
 using DevExpress.DataAccess.UI.ExpressionEditor;
 using DevExpress.XtraEditors;

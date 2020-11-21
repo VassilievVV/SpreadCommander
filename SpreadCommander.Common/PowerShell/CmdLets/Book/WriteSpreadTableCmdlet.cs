@@ -101,13 +101,15 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
     protected virtual void DoWriteSpreadTable(Document book, string htmlTable)
         { 
-            var documentRange = book.AppendHtmlText(htmlTable, DevExpress.XtraRichEdit.API.Native.InsertOptions.KeepSourceFormatting);
+            var range = book.AppendHtmlText(htmlTable, DevExpress.XtraRichEdit.API.Native.InsertOptions.KeepSourceFormatting);
             var paragraph = book.Paragraphs.Append();
 
             book.CaretPosition = paragraph.Range.End;
             ScrollToCaret();
 
-            AddComments(book, documentRange);
+            AddComments(book, range);
+
+            WriteRangeToConsole(book, range);
         }
     }
 }

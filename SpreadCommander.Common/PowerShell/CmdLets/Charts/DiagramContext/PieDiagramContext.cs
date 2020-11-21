@@ -28,7 +28,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
         {
             base.SetupDiagram(diagram);
 
-            if (!(diagram is SimpleDiagram simpleDiagram))
+            if (diagram is not SimpleDiagram simpleDiagram)
                 return;
 
             if (LayoutDirection.HasValue)

@@ -15,6 +15,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(Position = 0, HelpMessage = "Name of file to load content from")]
         public string FileName { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
+
         protected override void EndProcessing()
         {
             var fileName = Project.Current.MapPath(FileName);
@@ -25,8 +29,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 
             if (!string.IsNullOrWhiteSpace(fileName))
             {
-                lock(LockObject)
-                    spreadsheet.Workbook.LoadDocument(fileName);
+                ExecuteLocked(() => spreadsheet.Workbook.LoadDocument(fileName), LockFiles ? LockObject : null);
             }
 
             WriteObject(spreadsheet);

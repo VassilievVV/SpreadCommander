@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.PowerShell.Host
 {
+    public enum PowerShellHostType { UI, Console }
+
     public interface ISpreadCommanderHostOwner
     {
         bool ShouldExit			                { get; set; }

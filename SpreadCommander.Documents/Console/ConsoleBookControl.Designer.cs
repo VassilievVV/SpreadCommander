@@ -50,6 +50,9 @@
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
             DevExpress.Utils.Animation.Transition transition1 = new DevExpress.Utils.Animation.Transition();
             DevExpress.Utils.Animation.FadeTransition fadeTransition1 = new DevExpress.Utils.Animation.FadeTransition();
@@ -338,6 +341,10 @@
             this.barRemoveStyle = new DevExpress.XtraBars.BarButtonItem();
             this.popupBookStyles = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barUpdateMailMergeFields = new DevExpress.XtraBars.BarButtonItem();
+            this.insertFootnoteItem1 = new DevExpress.XtraRichEdit.UI.InsertFootnoteItem();
+            this.insertEndnoteItem1 = new DevExpress.XtraRichEdit.UI.InsertEndnoteItem();
+            this.navigationNotesItem1 = new DevExpress.XtraRichEdit.UI.NavigationNotesItem();
+            this.showNotesItem1 = new DevExpress.XtraRichEdit.UI.ShowNotesItem();
             this.headerFooterToolsRibbonPageCategory1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsRibbonPageCategory();
             this.headerFooterToolsDesignRibbonPage1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsDesignRibbonPage();
             this.headerFooterToolsDesignNavigationRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.HeaderFooterToolsDesignNavigationRibbonPageGroup();
@@ -381,6 +388,7 @@
             this.referencesRibbonPage1 = new DevExpress.XtraRichEdit.UI.ReferencesRibbonPage();
             this.tableOfContentsRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.TableOfContentsRibbonPageGroup();
             this.captionsRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.CaptionsRibbonPageGroup();
+            this.notesRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.NotesRibbonPageGroup();
             this.mailingsRibbonPage1 = new DevExpress.XtraRichEdit.UI.MailingsRibbonPage();
             this.mailMergeRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.MailMergeRibbonPageGroup();
             this.reviewRibbonPage1 = new DevExpress.XtraRichEdit.UI.ReviewRibbonPage();
@@ -422,10 +430,11 @@
             // Editor
             // 
             this.Editor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Editor.DocumentViewDirection = DevExpress.XtraRichEdit.DocumentViewDirection.LeftToRight;
             this.Editor.Location = new System.Drawing.Point(0, 146);
             this.Editor.MenuManager = this.Ribbon;
             this.Editor.Name = "Editor";
+            this.Editor.Options.DocumentCapabilities.Macros = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
+            this.Editor.Options.DocumentCapabilities.OleObjects = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.Editor.Size = new System.Drawing.Size(1173, 532);
             this.Editor.TabIndex = 2;
             this.Editor.Views.DraftView.AdjustColorsToSkins = true;
@@ -719,9 +728,13 @@
             this.barNewStyle,
             this.barEditStyles,
             this.barRemoveStyle,
-            this.barUpdateMailMergeFields});
+            this.barUpdateMailMergeFields,
+            this.insertFootnoteItem1,
+            this.insertEndnoteItem1,
+            this.navigationNotesItem1,
+            this.showNotesItem1});
             this.Ribbon.Location = new System.Drawing.Point(0, 0);
-            this.Ribbon.MaxItemId = 277;
+            this.Ribbon.MaxItemId = 281;
             this.Ribbon.Name = "Ribbon";
             this.Ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.headerFooterToolsRibbonPageCategory1,
@@ -2500,6 +2513,31 @@
             this.barUpdateMailMergeFields.SuperTip = superToolTip6;
             this.barUpdateMailMergeFields.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarUpdateMailMergeFields_ItemClick);
             // 
+            // insertFootnoteItem1
+            // 
+            this.insertFootnoteItem1.Id = 277;
+            this.insertFootnoteItem1.Name = "insertFootnoteItem1";
+            // 
+            // insertEndnoteItem1
+            // 
+            this.insertEndnoteItem1.Id = 278;
+            this.insertEndnoteItem1.Name = "insertEndnoteItem1";
+            // 
+            // navigationNotesItem1
+            // 
+            toolTipTitleItem7.Text = "Next Footnote";
+            toolTipItem7.Text = "Jump to next footnote";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.navigationNotesItem1.DropDownSuperTip = superToolTip7;
+            this.navigationNotesItem1.Id = 279;
+            this.navigationNotesItem1.Name = "navigationNotesItem1";
+            // 
+            // showNotesItem1
+            // 
+            this.showNotesItem1.Id = 280;
+            this.showNotesItem1.Name = "showNotesItem1";
+            // 
             // headerFooterToolsRibbonPageCategory1
             // 
             this.headerFooterToolsRibbonPageCategory1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(176)))), ((int)(((byte)(35)))));
@@ -2861,7 +2899,8 @@
             // 
             this.referencesRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.tableOfContentsRibbonPageGroup1,
-            this.captionsRibbonPageGroup1});
+            this.captionsRibbonPageGroup1,
+            this.notesRibbonPageGroup1});
             this.referencesRibbonPage1.Name = "referencesRibbonPage1";
             // 
             // tableOfContentsRibbonPageGroup1
@@ -2879,6 +2918,15 @@
             this.captionsRibbonPageGroup1.ItemLinks.Add(this.insertTableOfFiguresPlaceholderItem1, "G");
             this.captionsRibbonPageGroup1.ItemLinks.Add(this.updateTableOfFiguresItem1, "V");
             this.captionsRibbonPageGroup1.Name = "captionsRibbonPageGroup1";
+            // 
+            // notesRibbonPageGroup1
+            // 
+            this.notesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.insertFootnoteItem1);
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.insertEndnoteItem1);
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.navigationNotesItem1);
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.showNotesItem1);
+            this.notesRibbonPageGroup1.Name = "notesRibbonPageGroup1";
             // 
             // mailingsRibbonPage1
             // 
@@ -3239,6 +3287,10 @@
             this.richEditBarController1.BarItems.Add(this.setHyphenateDocumentAutomaticItem1);
             this.richEditBarController1.BarItems.Add(this.showHyphenationOptionsFormItem1);
             this.richEditBarController1.BarItems.Add(this.changeHyphenationOptionsItem1);
+            this.richEditBarController1.BarItems.Add(this.insertFootnoteItem1);
+            this.richEditBarController1.BarItems.Add(this.insertEndnoteItem1);
+            this.richEditBarController1.BarItems.Add(this.navigationNotesItem1);
+            this.richEditBarController1.BarItems.Add(this.showNotesItem1);
             this.richEditBarController1.Control = this.Editor;
             // 
             // dockManager1
@@ -3716,5 +3768,10 @@
         private DevExpress.XtraBars.BarButtonItem barRemoveStyle;
         private DevExpress.XtraBars.PopupMenu popupBookStyles;
         private DevExpress.XtraBars.BarButtonItem barUpdateMailMergeFields;
+        private DevExpress.XtraRichEdit.UI.InsertFootnoteItem insertFootnoteItem1;
+        private DevExpress.XtraRichEdit.UI.InsertEndnoteItem insertEndnoteItem1;
+        private DevExpress.XtraRichEdit.UI.NavigationNotesItem navigationNotesItem1;
+        private DevExpress.XtraRichEdit.UI.ShowNotesItem showNotesItem1;
+        private DevExpress.XtraRichEdit.UI.NotesRibbonPageGroup notesRibbonPageGroup1;
     }
 }

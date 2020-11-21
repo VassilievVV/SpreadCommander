@@ -1,7 +1,4 @@
-﻿#pragma warning disable CRR0047
-#pragma warning disable CRR0050
-
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.Messages;
 using System;
@@ -123,7 +120,7 @@ namespace SpreadCommander.Common.ScriptEngines
             Messenger.Default.Send(new PSCmdletListChangedMessage());
         }
 
-        protected AstNode ParseScript(string script)
+        protected static AstNode ParseScript(string script)
         {
             var parser = Parser.ParseInput(script, out Token[] _, out ParseError[] _);
             AstNode result = new AstNode(parser);
@@ -373,7 +370,7 @@ namespace SpreadCommander.Common.ScriptEngines
                     {
                         var pipelineNode = assignment.ChildNodes.FirstOrDefault(n => n.Node == pipeline);
                         if (pipelineNode != null && pipelineNode.ChildNodes.Count > 0 &&
-                            pipelineNode.ChildNodes[pipelineNode.ChildNodes.Count - 1].Node is CommandAst cmdPipeline &&
+                            pipelineNode.ChildNodes[^1].Node is CommandAst cmdPipeline &&
                             cmdPipeline.CommandElements.Count >= 2 && cmdPipeline.CommandElements[0] is StringConstantExpressionAst cmdName &&
                             string.Compare(cmdName.Value, "new-object", false) == 0 && cmdPipeline.CommandElements[1] is StringConstantExpressionAst cmdNewObjectType)
                         {
@@ -446,10 +443,8 @@ namespace SpreadCommander.Common.ScriptEngines
             if (variableUnderCaret == null)
                 ListCommandlets();
 
-#pragma warning disable IDE0062 // Make local function 'static'
             bool IsCaretInAstNode(AstNode node) =>
                 IsCaretInExtent(node.Node.Extent);
-#pragma warning restore IDE0062 // Make local function 'static'
 
             bool IsCaretInExtent(IScriptExtent extent)
             {
@@ -477,7 +472,6 @@ namespace SpreadCommander.Common.ScriptEngines
                 return nonNullType ?? type;
             }
 
-#pragma warning disable IDE0062 // Make local function 'static'
             AstNode FindNodeUnderCaret(AstNode parentNode, Type nodeType)
             {
                 foreach (var childNode in parentNode.ChildNodes)
@@ -494,7 +488,6 @@ namespace SpreadCommander.Common.ScriptEngines
 
                 return null;
             }
-#pragma warning restore IDE0062 // Make local function 'static'
 
             static void FindAllNodes(AstNode parentNode, Type nodeType, List<AstNode> nodes)
             {
@@ -543,7 +536,7 @@ namespace SpreadCommander.Common.ScriptEngines
                         if ((unnamedArguments?.Length ?? 0) > 0)
                         {
                             for (int i = 0; i < unnamedArguments.Length; i++)
-                                if (unnamedArguments[i] is string && ((string)unnamedArguments[i]) == "-")
+                                if (unnamedArguments[i] is string str && str == "-")
                                     unnamedArguments[i] = null;
 
                             ps.AddParameter("ArgumentList", unnamedArguments);
@@ -910,8 +903,6 @@ namespace SpreadCommander.Common.ScriptEngines
 
                 var resultTypeName = initialTypeName;
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                 switch (initialTypeName.ToLower())
                 {
                     case "dbnull":
@@ -963,8 +954,6 @@ namespace SpreadCommander.Common.ScriptEngines
                         resultTypeName = "System.String";
                         break;
                 }
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
                 if (isNullable)
                     resultTypeName = $"System.Nullable`1[{resultTypeName}]";

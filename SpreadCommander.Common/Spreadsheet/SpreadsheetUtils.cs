@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.Data;
+﻿using DevExpress.Data;
 using DevExpress.Data.Filtering;
 using DevExpress.DataAccess.Excel;
 using DevExpress.LookAndFeel;
@@ -68,20 +66,12 @@ namespace SpreadCommander.Common.Spreadsheet
             workbook.Options.Export.Csv.Encoding = Encoding.UTF8;
             workbook.Options.Export.Txt.Encoding = Encoding.UTF8;
 
-            switch (ApplicationSettings.Default.SpreadsheetCulture)
+            workbook.Options.Culture = ApplicationSettings.Default.SpreadsheetCulture switch
             {
-                case SpreadsheetCulture.Default:
-                case SpreadsheetCulture.Invariant:
-                    workbook.Options.Culture = CultureInfo.InvariantCulture;
-                    break;
-                case SpreadsheetCulture.OS:
-                    workbook.Options.Culture = CultureInfo.DefaultThreadCurrentCulture;
-                    break;
-                default:
-                    workbook.Options.Culture = CultureInfo.InvariantCulture;
-                    break;
-            }
-
+                SpreadsheetCulture.Default or SpreadsheetCulture.Invariant => CultureInfo.InvariantCulture,
+                SpreadsheetCulture.OS                                      => CultureInfo.DefaultThreadCurrentCulture,
+                _                                                          => CultureInfo.InvariantCulture,
+            };
             RegisterCustomSpreadsheetFunctionDescriptions(workbook);
         }
 
@@ -101,7 +91,11 @@ namespace SpreadCommander.Common.Spreadsheet
             var tableNames = new List<string>();
 
             foreach (var worksheet in workbook.Worksheets)
-            { 
+            {
+                //Add sheets
+                tableNames.Add($"{worksheet.Name}!");
+
+                //Add tables
                 foreach (var table in worksheet.Tables)
                 {
                     var tableName = includeSheetName ? $"{worksheet.Name}!{table.Name}" : table.Name;
@@ -130,11 +124,15 @@ namespace SpreadCommander.Common.Spreadsheet
             if (p >= 0)
             {
                 worksheetName = tableName.Substring(0, p);
-                worksheetTableName = tableName.Substring(p + 1);
+                worksheetTableName = tableName[(p + 1)..];
 
                 var worksheet = workbook.Worksheets[worksheetName];
                 if (worksheet == null)
-                    return null;
+                    throw new Exception($"Invalid range: sheet '{worksheetName}' does not exist.");
+
+                //Sheet1! - return whole sheet. Unlike Sheet1 it can be used if there is defined range or table with same name.
+                if (string.IsNullOrWhiteSpace(worksheetTableName))
+                    return worksheet.GetDataRange();
 
                 foreach (var table in worksheet.Tables)
                 {
@@ -158,7 +156,7 @@ namespace SpreadCommander.Common.Spreadsheet
                 catch (Exception)
                 {
                     //Invalid range
-                    throw new Exception($"Invalid range '{worksheetTableName}' in table '{tableName}'");
+                    throw new Exception($"Invalid range '{worksheetTableName}' in table '{tableName}'.");
                 }
             }
             else

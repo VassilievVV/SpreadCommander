@@ -44,7 +44,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 					throw new Exception("Cannot find primary axis.");
 			}
 
-			if (!(axis is Axis axis2D))
+			if (axis is not Axis axis2D)
 				throw new Exception("Only 2D axis except SwiftPlot support scale breaks.");
 
 			var scaleBreak = new ScaleBreak();

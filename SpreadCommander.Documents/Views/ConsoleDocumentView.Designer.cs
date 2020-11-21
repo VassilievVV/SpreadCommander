@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsoleDocumentView));
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer11 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer12 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer13 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer14 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer15 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer3 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer4 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer5 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
             this.docScript = new DevExpress.XtraBars.Docking2010.Views.Widget.Document(this.components);
             this.docCommandLine = new DevExpress.XtraBars.Docking2010.Views.Widget.Document(this.components);
             this.docConsole = new DevExpress.XtraBars.Docking2010.Views.Widget.Document(this.components);
@@ -89,8 +89,6 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.viewEditors = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetView(this.components);
-            this.toolbarImages = new DevExpress.Utils.DPIAwareImageCollection(this.components);
-            this.toolbarImagesLarge = new DevExpress.Utils.DPIAwareImageCollection(this.components);
             this.svgFormIcon = new DevExpress.Utils.SvgImageCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.docScript)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.docCommandLine)).BeginInit();
@@ -104,8 +102,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFloatingObjectOutlineWeight1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewEditors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolbarImages)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolbarImagesLarge)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgFormIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -194,7 +190,7 @@
             this.repositoryItemFloatingObjectOutlineWeight1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.ribbonControl.ShowSearchItem = true;
-            this.ribbonControl.Size = new System.Drawing.Size(1305, 159);
+            this.ribbonControl.Size = new System.Drawing.Size(1305, 158);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             // 
             // barNew
@@ -218,8 +214,8 @@
             this.barSave.Caption = "Save";
             this.barSave.Id = 3;
             this.barSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSave.ImageOptions.SvgImage")));
+            this.barSave.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
             this.barSave.Name = "barSave";
-            barSave.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S);
             this.barSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarSave_ItemClick);
             // 
             // barUndo
@@ -306,7 +302,7 @@
             this.barPrintPreview.Caption = "Preview";
             this.barPrintPreview.Id = 13;
             this.barPrintPreview.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barPrintPreview.ImageOptions.SvgImage")));
-            this.barPrintPreview.ItemShortcut = new DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift)
+            this.barPrintPreview.ItemShortcut = new DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
                 | System.Windows.Forms.Keys.F12));
             this.barPrintPreview.Name = "barPrintPreview";
             this.barPrintPreview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarPrintPreview_ItemClick);
@@ -350,13 +346,13 @@
             this.barExecute.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.Execute;
             this.barExecute.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.barExecute.Name = "barExecute";
-            toolTipTitleItem7.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.Execute;
-            toolTipTitleItem7.Text = "Execute";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "Execute whole script or selection.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.barExecute.SuperTip = superToolTip7;
+            toolTipTitleItem1.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.Execute;
+            toolTipTitleItem1.Text = "Execute";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Execute whole script or selection.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.barExecute.SuperTip = superToolTip1;
             this.barExecute.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarExecute_ItemClick);
             // 
             // barCancel
@@ -403,13 +399,13 @@
             this.barExecuteScript.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ExecuteScript;
             this.barExecuteScript.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F8);
             this.barExecuteScript.Name = "barExecuteScript";
-            toolTipTitleItem8.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ExecuteScript;
-            toolTipTitleItem8.Text = "Execute script";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = resources.GetString("toolTipItem8.Text");
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.barExecuteScript.SuperTip = superToolTip8;
+            toolTipTitleItem2.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ExecuteScript;
+            toolTipTitleItem2.Text = "Execute script";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = resources.GetString("toolTipItem2.Text");
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.barExecuteScript.SuperTip = superToolTip2;
             this.barExecuteScript.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarExecuteScript_ItemClick);
             // 
             // barRecreateEngine
@@ -562,8 +558,8 @@
             // 
             this.documentManager.ContainerControl = this;
             this.documentManager.MenuManager = this.ribbonControl;
-            this.documentManager.SnapMode = ((DevExpress.Utils.Controls.SnapMode)((((DevExpress.Utils.Controls.SnapMode.OwnerControl | DevExpress.Utils.Controls.SnapMode.OwnerForm)
-            | DevExpress.Utils.Controls.SnapMode.Screens)
+            this.documentManager.SnapMode = ((DevExpress.Utils.Controls.SnapMode)((((DevExpress.Utils.Controls.SnapMode.OwnerControl | DevExpress.Utils.Controls.SnapMode.OwnerForm) 
+            | DevExpress.Utils.Controls.SnapMode.Screens) 
             | DevExpress.Utils.Controls.SnapMode.SnapForms)));
             this.documentManager.View = this.viewEditors;
             this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
@@ -583,91 +579,28 @@
             this.docConsole,
             this.docCommandLine});
             this.viewEditors.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FreeLayout;
-            widgetDockingContainer13.Element = this.docScript;
-            widgetDockingContainer14.Element = this.docCommandLine;
-            widgetDockingContainer14.Size.Height.UnitValue = 0.54568286607121563D;
-            widgetDockingContainer12.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            widgetDockingContainer13,
-            widgetDockingContainer14});
-            widgetDockingContainer12.Orientation = System.Windows.Forms.Orientation.Vertical;
-            widgetDockingContainer12.Size.Width.UnitValue = 0.8D;
-            widgetDockingContainer15.Element = this.docConsole;
-            widgetDockingContainer15.Size.Width.UnitValue = 1.2D;
-            widgetDockingContainer11.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            widgetDockingContainer12,
-            widgetDockingContainer15});
+            this.viewEditors.LoadingIndicatorProperties.ShowCaption = false;
+            this.viewEditors.LoadingIndicatorProperties.ShowDescription = false;
+            widgetDockingContainer3.Element = this.docScript;
+            widgetDockingContainer4.Element = this.docCommandLine;
+            widgetDockingContainer2.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
+            widgetDockingContainer3,
+            widgetDockingContainer4});
+            widgetDockingContainer2.Orientation = System.Windows.Forms.Orientation.Vertical;
+            widgetDockingContainer2.Size.Width.UnitValue = 0.8D;
+            widgetDockingContainer5.Element = this.docConsole;
+            widgetDockingContainer1.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
+            widgetDockingContainer2,
+            widgetDockingContainer5});
             this.viewEditors.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            widgetDockingContainer11});
+            widgetDockingContainer1});
             this.viewEditors.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.viewEditors.Style = DevExpress.XtraBars.Docking2010.Views.DockingViewStyle.Light;
             this.viewEditors.UseDocumentSelector = DevExpress.Utils.DefaultBoolean.True;
-            this.viewEditors.UseLoadingIndicator = DevExpress.Utils.DefaultBoolean.False;
+            this.viewEditors.UseLoadingIndicator = DevExpress.Utils.DefaultBoolean.True;
             this.viewEditors.UseSnappingEmulation = DevExpress.Utils.DefaultBoolean.True;
             this.viewEditors.QueryControl += new DevExpress.XtraBars.Docking2010.Views.QueryControlEventHandler(this.ViewEditors_QueryControl);
             this.viewEditors.ControlLoaded += new DevExpress.XtraBars.Docking2010.Views.DeferredControlLoadEventHandler(this.ViewEditors_ControlLoaded);
-            // 
-            // toolbarImages
-            // 
-            this.toolbarImages.Images.AddRange(new DevExpress.Utils.DefaultImage[] {
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("new_16x16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("new_32x32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("open_16x16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("open_32x32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("save_16x16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("save_32x32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("undo_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("undo_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("redo_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("redo_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("paste_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("paste_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("scissors_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("scissors_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("copy_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("copy_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("binoculars_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("binoculars_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("replace_b_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("replace_b_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("hand_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("hand_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("printer_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("printer_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("preview_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("preview_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("offer_1_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_back_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("offer_1_back_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_next_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("offer_1_next_32.png"), 192)}),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_close_16.png"), new DevExpress.Utils.DPIAwareImage[] {
-                        new DevExpress.Utils.DPIAwareImage(new DevExpress.Utils.LocalImageLocator("offer_1_close_32.png"), 192)})});
-            this.toolbarImages.Stream = ((DevExpress.Utils.DPIAwareImageCollectionStreamer)(resources.GetObject("toolbarImages.Stream")));
-            // 
-            // toolbarImagesLarge
-            // 
-            this.toolbarImagesLarge.Images.AddRange(new DevExpress.Utils.DefaultImage[] {
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("new_32x32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("open_32x32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("save_32x32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("undo_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("redo_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("paste_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("scissors_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("copy_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("binoculars_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("replace_b_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("hand_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("printer_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("preview_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_16.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_back_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_next_32.png")),
-            new DevExpress.Utils.DefaultImage(new DevExpress.Utils.LocalImageLocator("offer_1_close_32.png"))});
-            this.toolbarImagesLarge.ImageSize = new System.Drawing.Size(32, 32);
-            this.toolbarImagesLarge.Stream = ((DevExpress.Utils.DPIAwareImageCollectionStreamer)(resources.GetObject("toolbarImagesLarge.Stream")));
             // 
             // svgFormIcon
             // 
@@ -696,7 +629,6 @@
             this.ClientSize = new System.Drawing.Size(1305, 907);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("ConsoleDocumentView.IconOptions.Icon")));
             this.Name = "ConsoleDocumentView";
             this.Ribbon = this.ribbonControl;
             this.StatusBar = this.ribbonStatusBar;
@@ -713,8 +645,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFloatingObjectOutlineWeight1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.viewEditors)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolbarImages)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.toolbarImagesLarge)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.svgFormIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -736,8 +666,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupFind;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupPrint;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupBookmarks;
-        private DevExpress.Utils.DPIAwareImageCollection toolbarImages;
-        private DevExpress.Utils.DPIAwareImageCollection toolbarImagesLarge;
         private DevExpress.XtraBars.BarButtonItem barNew;
         private DevExpress.XtraBars.BarButtonItem barOpen;
         private DevExpress.XtraBars.BarButtonItem barSave;

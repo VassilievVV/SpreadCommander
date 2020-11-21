@@ -21,13 +21,19 @@ namespace SpreadCommander.Documents.Extensions
 
         public static void SuspendDrawing(this Control control)
         {
-            SendMessage(control.Handle, WM_SETREDRAW, false, 0);
+            if (control.IsHandleCreated)
+            {
+                var _ = SendMessage(control.Handle, WM_SETREDRAW, false, 0);
+            }
         }
 
         public static void ResumeDrawing(this Control control)
         {
-            SendMessage(control.Handle, WM_SETREDRAW, true, 0);
-            control.Refresh();
+            if (control.IsHandleCreated)
+            {
+                var _ = SendMessage(control.Handle, WM_SETREDRAW, true, 0);
+                control.Refresh();
+            }
         }
 
         public static void MakeXtraDialogFormResizeable(this XtraDialogForm form)

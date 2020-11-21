@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Pdf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         [Parameter(Position = 0, HelpMessage = "Name of file to load content from")]
         public string FileName { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
         protected override void EndProcessing()
         {
             var fileName = Project.Current.MapPath(FileName);
@@ -25,8 +29,23 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
             if (!string.IsNullOrWhiteSpace(fileName))
             {
-                lock(LockObject)
-                    book.Document.LoadDocument(fileName);
+                var ext = Path.GetExtension(fileName)?.ToLower();
+                if (string.Compare(ext, ".pdf", true) == 0) //When loading PDF - extract text.
+                {
+                    string documentText;
+
+                    using (var documentProcessor = new PdfDocumentProcessor())
+                    {
+                        ExecuteLocked(() => documentProcessor.LoadDocument(fileName), LockFiles ? LockObject : null);
+                        documentText = documentProcessor.Text;
+                    }
+
+                    book.Document.AppendText(documentText);
+                }
+                else 
+                {
+                    ExecuteLocked(() => book.Document.LoadDocument(fileName), LockFiles ? LockObject : null);
+                }
             }
 
             WriteObject(book);

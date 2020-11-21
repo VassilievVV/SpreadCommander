@@ -27,6 +27,7 @@ using SpreadCommander.Documents.ViewModels;
 using DevExpress.Utils;
 using DevExpress.Mvvm;
 using SpreadCommander.Common.Messages;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Console
 {
@@ -137,9 +138,7 @@ namespace SpreadCommander.Documents.Console
         public IWorkbook Workbook     => Spreadsheet?.Document;
         public IFileViewer FileViewer => Heap;
 
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private DataSet _DataSet;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
         public DataSet DataSet
         {
             get => _DataSet;
@@ -301,7 +300,7 @@ namespace SpreadCommander.Documents.Console
                 ResetDocumentModified(document);
         }
 
-        private void ResetDocumentModified(BaseDocument document)
+        private static void ResetDocumentModified(BaseDocument document)
         {
             if (document is DevExpress.XtraBars.Docking2010.Views.Tabbed.Document tabDocument)
             { 
@@ -368,7 +367,7 @@ namespace SpreadCommander.Documents.Console
 
             if (controlName.StartsWith(CustomControlName))
             {
-                var index = int.Parse(controlName.Substring(CustomControlName.Length));
+                var index = int.Parse(controlName[CustomControlName.Length..]);
 
                 var customControlType = CustomControlTypes[index];
                 var customControl = CreateControlCustomControl(customControlType) ??
@@ -433,21 +432,17 @@ namespace SpreadCommander.Documents.Console
                 transitionManager.StartTransition(panelConsole);
         }
 
-#pragma warning disable CRR0033
         private async void ViewDocuments_DocumentActivated(object sender, DocumentEventArgs e)
         {
             if (transitionManager.IsTransition)
             {
                 //Allow some time for transition
-#pragma warning disable CRR0029
                 await Task.Yield();
-#pragma warning restore CRR0029
                 transitionManager.EndTransition();
             }
 
             ResetDocumentModified(e.Document);
         }
-#pragma warning restore CRR0033
 
         private void ViewDocuments_DocumentDeactivated(object sender, DocumentEventArgs e)
         {

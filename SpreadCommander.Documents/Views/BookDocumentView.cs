@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -29,17 +27,18 @@ using DevExpress.XtraBars;
 using DevExpress.Mvvm;
 using SpreadCommander.Common.Messages;
 using SpreadCommander.Common;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander.Documents.Views
 {
     public partial class BookDocumentView : DevExpress.XtraBars.Ribbon.RibbonForm, BookDocumentViewModel.ICallback, IImageHolder
     {
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private SCBook SCBook;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
 
         public BookDocumentView()
         {
+            using var _ = new DocumentAddingProcessor(this);
+
             InitializeComponent();
 
             UIUtils.ConfigureRibbonBar(Ribbon);
@@ -48,6 +47,9 @@ namespace SpreadCommander.Documents.Views
             var commentEdit = richEditCommentControl1.Controls.OfType<InnerCommentControl>().FirstOrDefault();
             if (commentEdit != null)
             {
+                commentEdit.Options.DocumentCapabilities.Macros     = DocumentCapability.Disabled;
+                commentEdit.Options.DocumentCapabilities.OleObjects = DocumentCapability.Disabled;
+
                 commentEdit.Views.DraftView.AdjustColorsToSkins       = commentEdit.RichEditControl.Views.DraftView.AdjustColorsToSkins;
                 commentEdit.Views.SimpleView.AdjustColorsToSkins      = commentEdit.RichEditControl.Views.SimpleView.AdjustColorsToSkins;
                 commentEdit.Views.PrintLayoutView.AdjustColorsToSkins = commentEdit.RichEditControl.Views.PrintLayoutView.AdjustColorsToSkins;

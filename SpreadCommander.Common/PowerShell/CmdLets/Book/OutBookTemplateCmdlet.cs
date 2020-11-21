@@ -50,6 +50,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         [Parameter(HelpMessage = "Behavior of numbered lists when the mail merge operation is performed")]
         public DevExpress.Snap.Core.Options.MailMergeNumberingRestart? NumberedListRestart { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         private readonly List<PSObject> _Output = new List<PSObject>();
 
@@ -91,8 +94,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             MemoryStream documentData;
             using (var template = SCBook.NewSnapSCBook())
             {
-                lock(LockObject)
-                    template.Document.LoadDocument(templateFile);
+                ExecuteLocked(() => template.Document.LoadDocument(templateFile), LockFiles ? LockObject : null);
 
                 var mergeOptions = (template.BookServer as SnapDocumentServer).CreateSnapMailMergeExportOptions();
                 mergeOptions.DataSource                 = dataSource;

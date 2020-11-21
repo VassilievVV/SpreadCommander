@@ -42,7 +42,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         public bool ShouldEnableFormsSkins                                 => false;
         public IServiceProvider ServiceProvider                            => null;
         public IComponent Parent                                           => null;
+#pragma warning disable CA1822 // Mark members as static
         public CommandBasedKeyboardHandler<ChartCommandId> KeyboardHandler => null;
+#pragma warning restore CA1822 // Mark members as static
         public ISite Site { get; set; }
 
         event EventHandler UpdateUI;
@@ -227,25 +229,35 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
             UpdateUI?.Invoke(this, new EventArgs());
         }
 
+#pragma warning disable CA1822 // Mark members as static
 #pragma warning disable IDE0060 // Remove unused parameter
         public object GetService(Type serviceType) => null;
 #pragma warning restore IDE0060 // Remove unused parameter
+#pragma warning restore CA1822 // Mark members as static
 
+#pragma warning disable CA1822 // Mark members as static
         public void CommitImeContent()
+#pragma warning restore CA1822 // Mark members as static
         {
         }
 
+#pragma warning disable CA1822 // Mark members as static
 #pragma warning disable IDE0060 // Remove unused parameter
         public Command CreateCommand(ChartCommandId id) => null;
 #pragma warning restore IDE0060 // Remove unused parameter
+#pragma warning restore CA1822 // Mark members as static
 
+#pragma warning disable CA1822 // Mark members as static
         public void Focus()
+#pragma warning restore CA1822 // Mark members as static
         {
         }
 
+#pragma warning disable CA1822 // Mark members as static
 #pragma warning disable IDE0060 // Remove unused parameter
         public bool HandleException(Exception e) => false;
 #pragma warning restore IDE0060 // Remove unused parameter
+#pragma warning restore CA1822 // Mark members as static
 
         #region IChartDataProvider 
         object IChartDataProvider.ParentDataSource      => null;
@@ -304,7 +316,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         protected virtual void ProcessBoundDataChanged()
         {
-            if (!(Chart.Tag is ChartContext chartContext))
+            if (Chart.Tag is not ChartContext chartContext)
                 return;
 
             foreach (Series series in Chart.Series)

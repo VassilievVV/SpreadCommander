@@ -47,6 +47,8 @@ using DevExpress.Utils.Svg;
 using DevExpress.XtraGrid.Views.Tile;
 using DevExpress.Utils.Design;
 using System.Linq.Expressions;
+using DevExpress.Utils.DPI;
+using SpreadCommander.Documents.Messages;
 
 namespace SpreadCommander
 {
@@ -71,17 +73,12 @@ namespace SpreadCommander
 
             //Repeat from Program.cs
             WindowsFormsSettings.SetDPIAware();
-
-            //Do not force DirectX on Windows 7
-            if (Environment.OSVersion.Version.Major >= 10)
-                WindowsFormsSettings.ForceDirectXPaint();
-            else
-                WindowsFormsSettings.ForceGDIPlusPaint();
+            DpiAwarenessHelper.Default.SetDpiAware(DpiAwarenessKind.PerMonitorV2);
 
             BaseForm.ApplicationIcon = this.Icon;
             this.AdjustSizeForMonitor();
 
-            navProject.State           = NavigationPaneState.Collapsed;
+            navProject.State = NavigationPaneState.Collapsed;
 
             UIUtils.ConfigureRibbonBar(Ribbon);
             Ribbon.CommandLayout = (CommandLayout)(int)ApplicationSettings.Default.RibbonCommandLayout;
@@ -95,6 +92,9 @@ namespace SpreadCommander
 
             UserLookAndFeel.Default.StyleChanged += LookAndFeel_StyleChanged;
             ((DevExpress.LookAndFeel.Design.UserLookAndFeelDefault)UserLookAndFeel.Default).StyleChangeProgress += LookAndFeel_StyleChangeProgress;
+
+            barNewPyScriptDocument.Visibility = PythonScriptEngine.IsInstalled ? BarItemVisibility.Always : BarItemVisibility.Never;
+            barNewRScriptDocument.Visibility  = RScriptEngine.IsInstalled ? BarItemVisibility.Always : BarItemVisibility.Never;
 
             PowerShellScriptEngine.RefreshAvailableCommandLets();
 
@@ -173,7 +173,7 @@ namespace SpreadCommander
             fluent.BindCommand(barNewPivotDocument, m => m.AddNewPivot());
             fluent.BindCommand(barOpenFile, m => m.OpenFile());
             fluent.BindCommand(barOptions, m => m.EditApplicationSettings());
-            fluent.BindCommand(barSaveAll, m => m.SaveAllDocuments());
+            fluent.BindCommand(barSaveAll, m => m.SaveAllFiles());
             fluent.BindCommand(barAbout, m => m.ShowAbout());
         }
 
@@ -326,6 +326,21 @@ namespace SpreadCommander
             
             ReloadProjectFiles();
             UpdateRecentProjects();
+
+            navProject.SelectedPage = pageProjectFiles;
+            navProject.State        = NavigationPaneState.Regular;
+
+            //For example project - automatically open ReadMe.ps1
+            if (Project.Current?.IsExample ?? false)
+            {
+                string readMe = Project.Current.MapPath(@"~\ReadMe.ps1");
+                if (File.Exists(readMe))
+                {
+                    var fluent = mvvmContext.OfType<MainViewModel>();
+                    if (fluent.ViewModel.ActiveDocument == null)
+                        fluent.ViewModel.OpenDocumentFile(readMe);
+                }
+            }
         }
 
         public void ReloadProjectFiles()
@@ -355,7 +370,7 @@ namespace SpreadCommander
 
         private void TreeProjectFiles_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
         {
-            if (!(treeProjectFiles.GetDataRecordByNode(e.Node) is BaseFileSystemTreeNode node))
+            if (treeProjectFiles.GetDataRecordByNode(e.Node) is not BaseFileSystemTreeNode node)
                 return;
 
             if (node is DirectoryTreeNode)
@@ -364,7 +379,7 @@ namespace SpreadCommander
 
         private void TreeProjectFiles_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
         {
-            if (!(treeProjectFiles.GetDataRecordByNode(e.Node) is BaseFileSystemTreeNode node))
+            if (treeProjectFiles.GetDataRecordByNode(e.Node) is not BaseFileSystemTreeNode node)
                 return;
 
             if (node is DirectoryTreeNode)
@@ -372,66 +387,20 @@ namespace SpreadCommander
             else if (node is FileTreeNode nodeFile)
             {
                 var ext = Path.GetExtension(nodeFile.Text)?.ToLower();
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
-                switch (ext)
+                e.NodeImageIndex = ext switch
                 {
-                    case ".xlsx":
-                    case ".xls":
-                        e.NodeImageIndex = 2;
-                        break;
-                    case ".csv":
-                    case ".txt":
-                        e.NodeImageIndex = 3;
-                        break;
-                    case ".sql":
-                        e.NodeImageIndex = 4;
-                        break;
-                    case ".ps":
-                    case ".ps1":
-                    case ".csx":
-                    case ".fsx":
-                    case ".r":
-                    case ".py":
-                        e.NodeImageIndex = 5;
-                        break;
-                    case ".docx":
-                    case ".doc":
-                    case ".rtf":
-                    case ".htm":
-                    case ".html":
-                    case ".mht":
-                    case ".odt":
-                    case ".epub":
-                        e.NodeImageIndex = 6;
-                        break;
-                    case ".png":
-                    case ".tif":
-                    case ".tiff":
-                    case ".jpg":
-                    case ".jpeg":
-                    case ".gif":
-                    case ".bmp":
-                        e.NodeImageIndex = 7;
-                        break;
-                    case ".scdash":
-                        e.NodeImageIndex = 8;
-                        break;
-                    case ".pdf":
-                        e.NodeImageIndex = 9;
-                        break;
-                    case ".scchart":
-                        e.NodeImageIndex = 10;
-                        break;
-                    case ".scpivot":
-                        e.NodeImageIndex = 11;
-                        break;
-                    default:
-                        e.NodeImageIndex = 1;
-                        break;
-                }
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
+                    ".xlsx" or ".xls"                                                               => 2,
+                    ".csv" or ".txt"                                                                => 3,
+                    ".sql"                                                                          => 4,
+                    ".ps" or ".ps1" or ".csx" or ".fsx" or ".r" or ".py"                            => 5,
+                    ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub" => 6,
+                    ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"            => 7,
+                    ".scdash"                                                                       => 8,
+                    ".pdf"                                                                          => 9,
+                    ".scchart"                                                                      => 10,
+                    ".scpivot"                                                                      => 11,
+                    _                                                                               => 1
+                };
             }
 
             /*
@@ -459,7 +428,7 @@ namespace SpreadCommander
         {
             var node = treeProjectFiles.FocusedNode;
 
-            if (!(treeProjectFiles.GetDataRecordByNode(node) is FileTreeNode fileNode))
+            if (treeProjectFiles.GetDataRecordByNode(node) is not FileTreeNode fileNode)
                 return;
 
             if (!string.IsNullOrWhiteSpace(fileNode.FullPath) && File.Exists(fileNode.FullPath))
@@ -486,7 +455,7 @@ namespace SpreadCommander
 
                 if (!dragRect.Contains(new Point(e.X, e.Y)))
                 {
-                    if (!(treeProjectFiles.GetDataRecordByNode(dragFiles_StartHitInfo.Node) is FileTreeNode node) || !node.CanDrag || IsFileOpen(node.FullPath))
+                    if (treeProjectFiles.GetDataRecordByNode(dragFiles_StartHitInfo.Node) is not FileTreeNode node || !node.CanDrag || IsFileOpen(node.FullPath))
                         return;
 
                     string text = node.DragText;
@@ -521,10 +490,10 @@ namespace SpreadCommander
 
         private void TreeProjectFiles_DragDrop(object sender, DragEventArgs e)
         {
-            if (!(e.Data.GetData(typeof(FileTreeNode)) is FileTreeNode sourceNode))
+            if (e.Data.GetData(typeof(FileTreeNode)) is not FileTreeNode sourceNode)
                 return;
 
-            if (!(e.Data.GetData(typeof(TreeListNode)) is TreeListNode treeSourceNode))
+            if (e.Data.GetData(typeof(TreeListNode)) is not TreeListNode treeSourceNode)
                 return;
 
             var hitInfo = treeProjectFiles.CalcHitInfo(treeProjectFiles.PointToClient(new Point(e.X, e.Y)));
@@ -533,7 +502,7 @@ namespace SpreadCommander
             if (treeNode == null)
                 return;
 
-            if (!(treeProjectFiles.GetDataRecordByNode(treeNode) is DirectoryTreeNode dirNode))
+            if (treeProjectFiles.GetDataRecordByNode(treeNode) is not DirectoryTreeNode dirNode)
                 return;
 
             var srcFile = sourceNode.FullPath;
@@ -556,9 +525,7 @@ namespace SpreadCommander
             treeProjectFiles.RefreshNode(treeSourceNode.ParentNode);
         }
 
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private BaseViewer _CurrentViewer;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
         private void CloseCurrentViewer()
         {
             if (_CurrentViewer != null)
@@ -573,7 +540,7 @@ namespace SpreadCommander
         {
             CloseCurrentViewer();
 
-            if (!(treeProjectFiles.GetDataRecordByNode(e.Node) is FileTreeNode node))
+            if (treeProjectFiles.GetDataRecordByNode(e.Node) is not FileTreeNode node)
                 return;
 
             using (new UsingProcessor(() => transitionManager.StartTransition(splitProjectFiles.Panel2),
@@ -744,7 +711,7 @@ namespace SpreadCommander
 
         private void TreeConnections_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
         {
-            if (!(treeConnections.GetDataRecordByNode(e.Node) is DbSchemaBaseNode node))
+            if (treeConnections.GetDataRecordByNode(e.Node) is not DbSchemaBaseNode node)
                 return;
 
             if (node is DatabaseSchemaNode)
@@ -756,7 +723,7 @@ namespace SpreadCommander
 
         private void TreeConnections_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
         {
-            if (!(treeConnections.GetDataRecordByNode(e.Node) is DbSchemaBaseNode node))
+            if (treeConnections.GetDataRecordByNode(e.Node) is not DbSchemaBaseNode node)
                 return;
 
             if (node is DatabaseSchemaNode)
@@ -810,7 +777,7 @@ namespace SpreadCommander
 
                 if (!dragRect.Contains(new Point(e.X, e.Y)))
                 {
-                    if (!(treeConnections.GetDataRecordByNode(dragConnections_StartHitInfo.Node) is DbSchemaBaseNode node) || !node.CanDrag)
+                    if (treeConnections.GetDataRecordByNode(dragConnections_StartHitInfo.Node) is not DbSchemaBaseNode node || !node.CanDrag)
                         return;
 
                     string text = node.DragText;
@@ -826,15 +793,18 @@ namespace SpreadCommander
 
         public void StartAddingDocument()
         {
-            //transitionManager.StartTransition(this);
-            transitionManager.StartWaitingIndicator(this, WaitingAnimatorType.Default);
+            transitionManager.StartTransition(this);
+            //transitionManager.StartWaitingIndicator(this, WaitingAnimatorType.Default);
         }
 
-        public void EndAddingDocument()
+        public async void EndAddingDocument()
         {
             if (transitionManager.IsTransition)
-                transitionManager.StopWaitingIndicator();
-                //transitionManager.EndTransition();
+            {
+                await Task.Yield();
+                //transitionManager.StopWaitingIndicator();
+                transitionManager.EndTransition();
+            }
         }
 
         private void ViewDocuments_TabMouseActivating(object sender, DevExpress.XtraBars.Docking2010.Views.DocumentCancelEventArgs e)
@@ -872,7 +842,7 @@ namespace SpreadCommander
                     break;
                 case "NewFolder":
                     var focusedNode = treeProjectFiles.FocusedNode;
-                    if (focusedNode == null || !(treeProjectFiles.GetDataRecordByNode(focusedNode) is DirectoryTreeNode dirNode))
+                    if (focusedNode == null || treeProjectFiles.GetDataRecordByNode(focusedNode) is not DirectoryTreeNode dirNode)
                     {
                         XtraMessageBox.Show(this, "Please select parent directory node", "No parent directory", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
@@ -966,13 +936,19 @@ namespace SpreadCommander
                 DeleteFocusedNode();
         }
 
-        private void UpdateRecentProjects()
+        private static void UpdateRecentProjects()
         {
+            if (Project.Current.IsDefault)
+                return;
+
             var projectPath = Project.Current.ProjectPath;
             var storage = SavedProjectsStorage.Load();
             var recentProject = storage.FindRecentProject(projectPath);
             if (recentProject == null)
+            {
                 recentProject = new SavedProject() { Directory = projectPath };
+                storage.RecentProjects.Add(recentProject);
+            }
             recentProject.LastAccess = DateTime.Now;
             storage.Save();
         }
@@ -980,7 +956,7 @@ namespace SpreadCommander
         private GridHitInfo dragPSCmdlet_StartHitInfo;
         private void ViewPSCmdlets_MouseDown(object sender, MouseEventArgs e)
         {
-            if (!(sender is GridView view))
+            if (sender is not GridView view)
                 return;
 
             if (e.Button == MouseButtons.Left && Control.ModifierKeys == Keys.None)
@@ -989,7 +965,7 @@ namespace SpreadCommander
 
         private void ViewPSCmdlets_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!(sender is GridView view))
+            if (sender is not GridView view)
                 return;
 
             if (e.Button == MouseButtons.Left && dragPSCmdlet_StartHitInfo != null && dragPSCmdlet_StartHitInfo.InRow && 
@@ -1020,7 +996,7 @@ namespace SpreadCommander
 
             editPSCmdletDescription.Text = string.Empty;
 
-            if (!(bindingPSCmdlets.Current is PowerShellScriptEngine.PowerShellCommand cmdlet))
+            if (bindingPSCmdlets.Current is not PowerShellScriptEngine.PowerShellCommand cmdlet)
                 return;
 
             var helper = new CmdletIntellisenseHelp(cmdlet.Name);
@@ -1049,7 +1025,6 @@ namespace SpreadCommander
             switch (Convert.ToString(e.Button?.Properties.Tag))
             {
                 case "Help":
-#pragma warning disable IDE0067 // Dispose objects before losing scope
                     var viewer = new RichTextViewer()
                     {
                         Location = editPSCmdletDescription.PointToScreen(new Point(editPSCmdletDescription.Right + 20, 
@@ -1057,7 +1032,6 @@ namespace SpreadCommander
                         Width  = Math.Min((int)(editPSCmdletDescription.Width * 3), 1000),
                         Height = Math.Min(this.Height, 1000)
                     };
-#pragma warning restore IDE0067 // Dispose objects before losing scope
 
                     viewer.FormClosed += (s, e) =>
                     {
@@ -1102,7 +1076,7 @@ namespace SpreadCommander
                 ResetDocumentModified(document);
         }
 
-        private void ResetDocumentModified(BaseDocument document)
+        private static void ResetDocumentModified(BaseDocument document)
         {
             if (document is DevExpress.XtraBars.Docking2010.Views.Tabbed.Document tabDocument)
             {
@@ -1181,18 +1155,37 @@ namespace SpreadCommander
         private void BtnAppMenuExit_Click(object sender, EventArgs e)
         {
             popupControlContainerAppMenu.HidePopup();
+
+            var fluent = mvvmContext.OfType<MainViewModel>();
+            if (!fluent.ViewModel.CloseProject())
+                return;
+
             Close();
         }
 
         private void ViewApplicationItems_ItemClick(object sender, TileViewItemClickEventArgs e)
         {
-            if (!(e.Item.View.GetRow(e.Item.RowHandle) is AppMenuProjectItem row))
+            if (e.Item.View.GetRow(e.Item.RowHandle) is not AppMenuProjectItem row)
                 return;
 
             popupControlContainerAppMenu.HidePopup();
 
             var model = mvvmContext.GetViewModel<MainViewModel>();
             model.AddNewDocument(row.DocumentType, row.DocumentSubType);
+        }
+
+        private void BtnAppMenuRestart_Click(object sender, EventArgs e)
+        {
+            popupControlContainerAppMenu.HidePopup();
+
+            var fluent = mvvmContext.OfType<MainViewModel>();
+            if (!fluent.ViewModel.CloseProject())
+                return;
+
+            string appPath = Application.ExecutablePath;
+            Process.Start(appPath);
+
+            Close();
         }
     }
 }

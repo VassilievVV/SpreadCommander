@@ -12,6 +12,7 @@ using SpreadCommander.Common.Code;
 using DevExpress.XtraRichEdit;
 using SpreadCommander.Common.PowerShell.CmdLets;
 using System.Threading;
+using SpreadCommander.Common.ScriptEngines;
 
 namespace SpreadCommander.Common.PowerShell.Host
 {
@@ -35,6 +36,8 @@ namespace SpreadCommander.Common.PowerShell.Host
 
         public SCHost SCHost { get; }
 
+        public PowerShellScriptEngine Engine => (PowerShellScriptEngine)_Host.HostOwner;
+
         public bool Silent
         {
             get => _Host.HostOwner.Silent;
@@ -55,7 +58,7 @@ namespace SpreadCommander.Common.PowerShell.Host
             var sync = SynchronizeInvoke;
 
             if (sync?.InvokeRequired ?? false)
-                sync.Invoke(function, new object[] { });
+                sync.Invoke(function, Array.Empty<object>());
             else
                 function();
         }

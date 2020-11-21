@@ -25,7 +25,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesContext
 		{
 			base.SetupXtraChartSeries(chartContext, series);
 
-			if (!(series.View is NestedDoughnutSeriesView viewDoughnut))
+			if (series.View is not NestedDoughnutSeriesView viewDoughnut)
 				return;
 
 			if (InnerIndent.HasValue)

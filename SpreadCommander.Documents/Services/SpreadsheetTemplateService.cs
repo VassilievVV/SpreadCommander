@@ -22,9 +22,7 @@ namespace SpreadCommander.Documents.Services
 
         public static void EditSpreadsheetTemplate(IWin32Window owner, object dataSource, string dataMember = null)
         {
-#pragma warning disable IDE0067 // Dispose objects before losing scope
             var frm = new SpreadsheetTemplateEditor();
-#pragma warning restore IDE0067 // Dispose objects before losing scope
             frm.FormClosed += (s, e) =>
             {
                 frm.Dispose();

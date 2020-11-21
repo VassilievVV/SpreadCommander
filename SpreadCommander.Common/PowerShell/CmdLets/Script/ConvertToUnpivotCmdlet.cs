@@ -5,11 +5,13 @@ using System.Management.Automation;
 using System.Text;
 using System.Linq;
 using SpreadCommander.Common.Code;
+using System.Data.Common;
 
 namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 {
     [Cmdlet(VerbsData.ConvertTo, "UnPivot")]
     [OutputType(typeof(DataTable))]
+    [OutputType(typeof(DbDataReader))]
     public class ConvertToUnPivotCmdlet : SCCmdlet
     {
         [Parameter(ValueFromPipeline = true, HelpMessage = "Data source for data tables. Data source shall implement interface IList or IListSource and final IList shall implement ITypedList.")]
@@ -21,6 +23,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = "Column name for headers of un-pivoting columns.")]
         public string UnPivotColumnName { get; set; }
+
+        [Parameter(HelpMessage = "Type of values in Unpivot column. Default is string.")]
+        [PSDefaultValue(Value = typeof(string))]
+        public Type UnpivotColumnType { get; set; } = typeof(string);
 
         [Parameter(Mandatory = true, Position = 2, HelpMessage = "Column name for values of un-pivoting columns.")]
         public string UnPivotValueColumnName { get; set; }
@@ -38,12 +44,18 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
+        [Parameter(HelpMessage = "Skip values from data source. For example NULL or 0 can be skipped. if $null is specified - DBNull is skipping too.")]
+        public object[] SkipValues { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values.")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
 
-        [Parameter(HelpMessage = "If set - objects will be sending individually into pipeline.")]
-        public SwitchParameter EnumerateCollection { get; set; }
+        [Parameter(HelpMessage = "Return DbDataReader instead of DataTable. Can be used to export data into database.")]
+        public SwitchParameter AsDataReader { get; set; }
 
 
         private readonly List<PSObject> _Input = new List<PSObject>();
@@ -62,10 +74,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         protected override void EndProcessing()
         {
             var result = ConvertList();
-            WriteObject(result, EnumerateCollection);
+            WriteObject(result);
         }
 
-        protected DataTable ConvertList()
+        protected object ConvertList()
         {
             if (PrimaryColumns == null || PrimaryColumns.Length <= 0)
                 throw new ArgumentNullException(nameof(PrimaryColumns));
@@ -76,81 +88,43 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             if (UnPivotValueType == null)
                 throw new ArgumentNullException(nameof(UnPivotValueType));
 
-            using var reader = GetDataSourceReader(_Input, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            var reader = GetDataSourceReader(_Input, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
             if (reader == null)
                 throw new Exception("Input data are not provided.");
 
-            using var sourceTable = new DataTable("Source");
-            sourceTable.Load(reader);
-
-            var primaryColumns = PrimaryColumns.Select(pc => sourceTable.Columns[pc]).ToArray();
-
-            if (primaryColumns.Length <= 0 || primaryColumns.Contains(null))
-                throw new ArgumentException("Cannot find one or more of primary columns.");
-
-            var ignoreColumns = IgnoreColumns?.Select(ic => sourceTable.Columns[ic]).ToArray() ?? new DataColumn[0];
-
-            var result = UnPivot(sourceTable, primaryColumns, ignoreColumns, 
-                UnPivotColumnName, UnPivotValueColumnName, UnPivotValueType, IgnoreErrors);
-            return result;
-        }
-
-        private static DataTable UnPivot(DataTable dt, DataColumn[] primaryColumns, DataColumn[] ignoreColumns,
-            string unPivotColumnName, string unPivotValueColumnName, Type unPivotValueType,
-            bool ignoreErrors)
-        {
-            string[] pkColumnNames = primaryColumns
-                .Select(c => c.ColumnName)
-                .ToArray();
-
-            var result = new DataTable("Pivot");
-            foreach (var column in primaryColumns)
-                result.Columns.Add(column.ColumnName, column.DataType);
-            result.Columns.Add(unPivotColumnName, typeof(string));
-            result.Columns.Add(unPivotValueColumnName, unPivotValueType);
-
-            var unPivotColumns = new List<DataColumn>();
-            foreach (DataColumn column in dt.Columns)
+            try
             {
-                if (!primaryColumns.Contains(column) && !ignoreColumns.Contains(column))
-                    unPivotColumns.Add(column);
-            }
-
-            foreach (DataRow row in dt.Rows)
-            {
-                foreach (var column in unPivotColumns)
+                var readerParameters = new UnpivotDataReader.Parameters()
                 {
-                    var newRow = result.NewRow();
+                    DataSource             = reader,
+                    PrimaryColumns         = this.PrimaryColumns,
+                    IgnoreColumns          = this.IgnoreColumns,
+                    IgnoreErrors           = this.IgnoreErrors,
+                    UnPivotColumnName      = this.UnPivotColumnName,
+                    UnpivotColumnType      = this.UnpivotColumnType,
+                    UnPivotValueColumnName = this.UnPivotValueColumnName,
+                    UnPivotValueType       = this.UnPivotValueType,
+                    SkipValues             = this.SkipValues
+                };
 
-                    foreach (var primaryColumn in primaryColumns)
-                        newRow[primaryColumn.ColumnName] = row[primaryColumn.ColumnName];
+                var result = new UnpivotDataReader(readerParameters);
+                if (AsDataReader)
+                    return result;
 
-                    newRow[unPivotColumnName] = column.ColumnName;
+                var tblResult = new DataTable("UnpivotData");
+                tblResult.Load(result);
+                result.Close();
+                result.Dispose();
 
-                    var value = row[column.ColumnName];
-                    try
-                    {
-                        if (value is string str && string.IsNullOrWhiteSpace(str) && unPivotValueType != typeof(string))
-                            value = DBNull.Value;
-
-                        if (value != null && value != DBNull.Value)
-                            newRow[unPivotValueColumnName] = Utils.ChangeType(unPivotValueType, value, DBNull.Value);
-                        else
-                            newRow[unPivotValueColumnName] = DBNull.Value;
-                    }
-                    catch (Exception ex)
-                    {
-                        if (ignoreErrors)
-                            newRow[unPivotValueColumnName] = DBNull.Value;
-                        else
-                            throw ex;
-                    }
-
-                    result.Rows.Add(newRow);
-                }
+                return tblResult;
             }
-
-            return result;
+            catch (Exception)
+            {
+                reader.Close();
+                reader.Dispose();
+                throw;
+            }
         }
     }
 }

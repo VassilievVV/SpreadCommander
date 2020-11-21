@@ -63,7 +63,7 @@ namespace SpreadCommander.Documents.Console
             if (DocumentMode == ChartDocumentMode.FixedDataSource)
                 return;
 
-            if (!(e.Item.Tag is DataTable table))
+            if (e.Item.Tag is not DataTable table)
                 return;
 
             ActiveTable = table;
@@ -297,7 +297,7 @@ namespace SpreadCommander.Documents.Console
                     renderer.ScaleTransform(scale, scale);
 
                 doc.Draw(renderer);
-            }).ConfigureAwait(true);
+            }, cancellationToken).ConfigureAwait(true);
 
             return bitmap;
         }
@@ -328,9 +328,9 @@ namespace SpreadCommander.Documents.Console
                 else
                     printTool.Print();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -358,9 +358,9 @@ namespace SpreadCommander.Documents.Console
             {
                 await Task.Run(() => { svg.Save(fileName); }).ConfigureAwait(true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -377,9 +377,9 @@ namespace SpreadCommander.Documents.Console
                 using var png = await SaveChartAsBitmap(width, height, dpi, CancellationToken.None).ConfigureAwait(true);
                 await Task.Run(() => { png.Save(fileName); }).ConfigureAwait(true);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

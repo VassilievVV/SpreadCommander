@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.Spreadsheet;
+﻿using DevExpress.Spreadsheet;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.Parsers.ConsoleScript;
 using SpreadCommander.Common.ScriptEngines.ConsoleCommands;
@@ -124,6 +122,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -221,9 +222,22 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 
         protected void WriteTable(IWorkbook spreadsheet)
         {
-            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            var dataSource = GetDataSource(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
+
 
             ExecuteSynchronized(() => DoWriteTable(spreadsheet, dataSource));
+
+            //Longer processing but smaller lock of main thread (~1.5x both on relatively big dataset)
+            /*
+            var spread2 = SpreadsheetUtils.CreateWorkbook();
+            DoWriteTable(spread2, dataSource);
+
+            ExecuteSynchronized(() =>
+            {
+                spreadsheet.Append(spread2);
+            });
+            */
         }
 
         protected virtual void DoWriteTable(IWorkbook spreadsheet, object dataSource)
@@ -328,7 +342,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
                         }
 
                         var columnName    = calculatedColumn.Substring(0, p - 1).Trim();
-                        var columnFormula = calculatedColumn.Substring(p + 1).Trim();
+                        var columnFormula = calculatedColumn[(p + 1)..].Trim();
 
                         var column     = table.Columns.Add();
                         column.Name    = columnName;
@@ -425,6 +439,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
             }
 
             CopyRangeToBook(worksheet.GetDataRange());
+
 
             if (TemporarySheet)
             {

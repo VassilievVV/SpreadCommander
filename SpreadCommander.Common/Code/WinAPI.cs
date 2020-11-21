@@ -1,4 +1,5 @@
-﻿#pragma warning disable CRRSP01 // A misspelled word has been found
+﻿#pragma warning disable CA1069 // Enums values should not be duplicated
+#pragma warning disable CA1401 // P/Invokes should not be visible
 
 using System;
 using System.Collections.Generic;
@@ -470,10 +471,10 @@ namespace SpreadCommander.Common.Code
         public const int PM_REMOVE						= 0x0001;
         public const int PM_NOYIELD						= 0x0002;
         
-        public static IntPtr HWND_TOP					= new IntPtr(0);
-        public static IntPtr HWND_BOTTOM				= new IntPtr(1);
-        public static IntPtr HWND_TOPMOST				= new IntPtr(-1);
-        public static IntPtr HWND_NOTOPMOST				= new IntPtr(-2);
+        public static readonly IntPtr HWND_TOP					= new IntPtr(0);
+        public static readonly IntPtr HWND_BOTTOM				= new IntPtr(1);
+        public static readonly IntPtr HWND_TOPMOST				= new IntPtr(-1);
+        public static readonly IntPtr HWND_NOTOPMOST				= new IntPtr(-2);
 
         /*
          * SetWindowPos Flags
@@ -1105,7 +1106,7 @@ namespace SpreadCommander.Common.Code
         [DllImport("user32.dll")]
         public static extern int GetSystemMetrics(SystemMetric nIndex);
 
-        [DllImport("user32.dll")]
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
         public static extern bool WinHelp(IntPtr hWndMain, string lpszHelp, HelpConstants uCommand,
             int dwData);
 
@@ -1142,7 +1143,7 @@ namespace SpreadCommander.Common.Code
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X,
             int Y, int cx, int cy, uint uFlags);
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern bool DrawText(IntPtr hDC, string lpString, int nCount, ref Rectangle lpRect, DrawTextFormat uFormat);
 
         public static bool DrawText(Graphics Canvas, string str, ref Rectangle rect, DrawTextFormat format)
@@ -1161,7 +1162,7 @@ namespace SpreadCommander.Common.Code
             }
         }
 
-        [DllImport("user32.dll", SetLastError = true)]
+        [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern uint RegisterClipboardFormat(string lpszFormat);
 
         [DllImport("user32.dll")]
@@ -1205,7 +1206,7 @@ namespace SpreadCommander.Common.Code
         [DllImport("kernel32.dll")]
         public static extern bool Module32Next(IntPtr hSnapshot, out MODULEENTRY32 lpme);
 
-        [DllImport("kernel32.dll", EntryPoint = "GetLongPathName", SetLastError = true)]
+        [DllImport("kernel32.dll", EntryPoint = "GetLongPathName", SetLastError = true, CharSet = CharSet.Unicode)]
         public static extern int GetLongPathName(
             string lpszShortPath,	// file name
             string lpszLongPath,	// path buffer
@@ -1231,10 +1232,10 @@ namespace SpreadCommander.Common.Code
                 return s.Substring(0, i);
         }
 
-        [DllImport("kernel32.dll", EntryPoint = "GetDriveType", SetLastError = false)]
+        [DllImport("kernel32.dll", EntryPoint = "GetDriveType", SetLastError = false, CharSet = CharSet.Unicode)]
         public static extern int GetDriveType(string lpRootPathName);
 
-        [DllImport("Kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        [DllImport("Kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
         public extern static bool GetVolumeInformation(string RootPathName, StringBuilder VolumeNameBuffer,
             int VolumeNameSize, out uint VolumeSerialNumber, out uint MaximumComponentLength,
             out FileSystemFeature FileSystemFlags, StringBuilder FileSystemNameBuffer, int nFileSystemNameSize);
@@ -1268,14 +1269,14 @@ namespace SpreadCommander.Common.Code
         #endregion
 
         #region Mapi
-        [DllImport("mapi32.DLL", CharSet = CharSet.Ansi)]
+        [DllImport("mapi32.DLL", CharSet = CharSet.Unicode)]
         public static extern uint MAPISendDocuments(IntPtr ulUIParam, string
             lpszDelimChar, string lpszFullPaths, string lpszFileNames, uint ulReserved); 
         #endregion
 
         #region WinMM
         [DllImport("winmm.dll")]
-        public static extern bool PlaySound([MarshalAs(UnmanagedType.LPStr)] string pszSound,
+        public static extern bool PlaySound([MarshalAs(UnmanagedType.LPWStr)] string pszSound,
             IntPtr hmod, SOUND_MODE fdwSound);
 
         public static bool PlaySound(string fileName, SOUND_MODE fwdSound)

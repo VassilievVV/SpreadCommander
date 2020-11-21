@@ -42,11 +42,13 @@ namespace SpreadCommander
             WindowsFormsSettings.SetDPIAware();
             DpiAwarenessHelper.Default.SetDpiAware(DpiAwarenessKind.PerMonitorV2);
 
+            /*
             //Do not force DirectX on Windows 7
             if (Environment.OSVersion.Version.Major >= 10)
                 WindowsFormsSettings.ForceDirectXPaint();
             else
                 WindowsFormsSettings.ForceGDIPlusPaint();
+            */
 
             Startup.Initialize();            
             SetupDefaultValues();
@@ -96,6 +98,8 @@ namespace SpreadCommander
 
             WindowsFormsSettings.CompactUIMode                  = DefaultBoolean.True;
             WindowsFormsSettings.DefaultRibbonStyle             = DefaultRibbonControlStyle.Office2019;
+
+            WindowsFormsSettings.UseAdvancedTextEdit            = DefaultBoolean.True;
 
             ScriptPermissionManager.GlobalInstance = new ScriptPermissionManager(ExecutionMode.Deny);
 

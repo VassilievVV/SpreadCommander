@@ -1,5 +1,3 @@
-#pragma warning disable CRR0050
-
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,7 +54,7 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
 			FillStorage(comboReplaceWith, _ReplaceItems);
 		}
 
-		private void AddItemToCombobox(ComboBoxEdit combo, string item)
+		private static void AddItemToCombobox(ComboBoxEdit combo, string item)
 		{
 			if (string.IsNullOrEmpty(item))
 				return;
@@ -76,7 +74,7 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
 			items.Add(item);
 		}
 
-		private void FillStorage(ComboBoxEdit combo, List<string> list)
+		private static void FillStorage(ComboBoxEdit combo, List<string> list)
 		{
 			ComboBoxItemCollection items = combo.Properties.Items;
 

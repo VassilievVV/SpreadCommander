@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0050
-
-using SpreadCommander.Common.SqlScript;
+﻿using SpreadCommander.Common.SqlScript;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -315,7 +313,7 @@ namespace SpreadCommander.Common.Code
             if (Result != DbDataReaderResult.Reading)
                 return false;
 
-            if (_CancelToken != null && _CancelToken.IsCancellationRequested)
+            if (_CancelToken.IsCancellationRequested)
             {
                 Result = DbDataReaderResult.Cancelled;
                 return false;

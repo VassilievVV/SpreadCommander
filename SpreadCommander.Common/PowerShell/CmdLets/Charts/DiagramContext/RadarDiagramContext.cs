@@ -52,7 +52,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.DiagramContext
         {
             base.SetupDiagram(diagram);
 
-            if (!(diagram is RadarDiagram diagramRadar))
+            if (diagram is not RadarDiagram diagramRadar)
                 return;
 
             if (!string.IsNullOrWhiteSpace(DiagramBackColor))

@@ -22,8 +22,8 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Math
 
             try
             {
-                double value  = Convert.ToDouble(args[0]);
-                if (value == double.NaN)
+                double value = Convert.ToDouble(args[0]);
+                if (double.IsNaN(value))
                     return null;
                 
                 double result = System.Math.Acos(value);

@@ -100,6 +100,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     book.CaretPosition = range.End;
                     ScrollToCaret();
                 }
+
+                WriteErrorToConsole(text);
             }
             finally
             {

@@ -134,7 +134,6 @@ namespace SpreadCommander.Common.SqlScript
                 odbcConnection.InfoMessage += OdbcConnection_InfoMessage;
             }
 
-#pragma warning disable CRRSP02 // A repeated word has been found
             /*
 #pragma warning disable CS0618 // Type or member is obsolete
             else if (connection is OracleConnection oracleConnection)
@@ -143,7 +142,6 @@ namespace SpreadCommander.Common.SqlScript
                 oracleConnection.InfoMessage += OracleConnection_InfoMessage;
             }
             */
-#pragma warning restore CRRSP02 // A repeated word has been found
             else if (connection is MySqlConnection mySqlConnection)
             {
                 mySqlConnection.InfoMessage += MySqlConnection_InfoMessage;
@@ -187,8 +185,6 @@ namespace SpreadCommander.Common.SqlScript
             {
                 odbcConnection.InfoMessage -= OdbcConnection_InfoMessage;
             }
-
-#pragma warning disable CRRSP02 // A repeated word has been found
             /*
 #pragma warning disable CS0618 // Type or member is obsolete
             else if (connection is OracleConnection oracleConnection)
@@ -197,7 +193,6 @@ namespace SpreadCommander.Common.SqlScript
                 oracleConnection.InfoMessage -= OracleConnection_InfoMessage;
             }
             */
-#pragma warning restore CRRSP02 // A repeated word has been found
             else if (connection is MySqlConnection mySqlConnection)
             {
                 mySqlConnection.InfoMessage -= MySqlConnection_InfoMessage;
@@ -589,15 +584,15 @@ namespace SpreadCommander.Common.SqlScript
                 }
             }
             //throw exceptions
-            catch (DbException ex)
+            catch (DbException)
             {
                 //OnReportScriptMessage(new SqlMessage(ex));
-                throw ex;
+                throw;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //OnReportScriptMessage(new SqlMessage(SqlMessage.SqlMessageType.Error, ex.Message));
-                throw ex;
+                throw;
             }
             finally
             {

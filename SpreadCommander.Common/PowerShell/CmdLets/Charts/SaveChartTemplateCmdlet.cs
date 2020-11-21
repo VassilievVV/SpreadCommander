@@ -25,6 +25,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Alias("r")]
         public SwitchParameter Replace { get; set; }
 
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
+
 
         protected override bool PassThruChartContext => PassThru;
 
@@ -57,11 +60,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                     throw new Exception($"File '{FileName}' already exists.");
             }
 
-            lock (LockObject)
+            ExecuteLocked(() =>
             {
                 using var fileStream = new FileStream(fileName, FileMode.CreateNew);
                 chart.SaveLayout(fileStream);
-            }
+            }, LockFiles ? LockObject : null);
         }
     }
 }

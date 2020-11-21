@@ -210,9 +210,7 @@ namespace SpreadCommander.Documents.Controls
             if (selectedTable == null)
                 return;
 
-#pragma warning disable IDE0067 // Dispose objects before losing scope
             var frm = new BookTemplateEditor();
-#pragma warning restore IDE0067 // Dispose objects before losing scope
             frm.FormClosed += (s, arg) => { ((Form)s).Dispose(); };
             frm.SetupMergeMail(selectedTable);
             frm.Show(this);
@@ -225,12 +223,10 @@ namespace SpreadCommander.Documents.Controls
             if (selectedTable == null)
                 return;
 
-#pragma warning disable IDE0067 // Dispose objects before losing scope
             var frm = new SpreadsheetTemplateEditor()
             {
                 MasterDetailEnabled = true
             };
-#pragma warning restore IDE0067 // Dispose objects before losing scope
             frm.FormClosed += (s, arg) => { ((Form)s).Dispose(); };
             frm.SetupMergeMail(selectedTable, null);
             frm.Show(this);

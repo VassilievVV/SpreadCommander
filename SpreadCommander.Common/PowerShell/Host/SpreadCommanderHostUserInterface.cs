@@ -52,7 +52,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 			string message,
 			System.Collections.ObjectModel.Collection<FieldDescription> descriptions)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -70,7 +70,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 		/// <returns>Throws a NotImplementedException exception.</returns>
 		public override int PromptForChoice(string caption, string message, System.Collections.ObjectModel.Collection<ChoiceDescription> choices, int defaultChoice)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -90,7 +90,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 			string userName,
 			string targetName)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -116,7 +116,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 			PSCredentialTypes allowedCredentialTypes,
 			PSCredentialUIOptions options)
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>
@@ -139,7 +139,7 @@ namespace SpreadCommander.Common.PowerShell.Host
 		/// <returns>Throws a NotImplemented exception.</returns>
 		public override System.Security.SecureString ReadLineAsSecureString()
 		{
-			throw new NotImplementedException("The method or operation is not implemented.");
+			throw new NotImplementedException("SC: The method or operation is not implemented.");
 		}
 
 		/// <summary>

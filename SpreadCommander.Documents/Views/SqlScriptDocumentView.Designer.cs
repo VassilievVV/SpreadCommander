@@ -65,6 +65,10 @@
             this.barQueryInfo = new DevExpress.XtraBars.BarButtonItem();
             this.barExecute = new DevExpress.XtraBars.BarButtonItem();
             this.barCancel = new DevExpress.XtraBars.BarButtonItem();
+            this.barClearAll = new DevExpress.XtraBars.BarButtonItem();
+            this.barClearBook = new DevExpress.XtraBars.BarButtonItem();
+            this.barClearSpreadsheet = new DevExpress.XtraBars.BarButtonItem();
+            this.barClearGrid = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPageScript = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupFile = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupUndoRedo = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -75,6 +79,7 @@
             this.ribbonPageExecution = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroupConnection = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroupQuery = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageClear = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.RibbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.popupControlGridProperties = new DevExpress.XtraBars.PopupControlContainer(this.components);
             this.propertyGridProperties = new SpreadCommander.Documents.Controls.PropertyGridEx();
@@ -83,11 +88,6 @@
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.viewParts = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetView(this.components);
             this.svgFormIcon = new DevExpress.Utils.SvgImageCollection(this.components);
-            this.ribbonPageClear = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barClearAll = new DevExpress.XtraBars.BarButtonItem();
-            this.barClearBook = new DevExpress.XtraBars.BarButtonItem();
-            this.barClearSpreadsheet = new DevExpress.XtraBars.BarButtonItem();
-            this.barClearGrid = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.documentScript)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentCommandLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentResults)).BeginInit();
@@ -182,7 +182,7 @@
             this.ribbonPageExecution});
             this.RibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.RibbonControl.ShowSearchItem = true;
-            this.RibbonControl.Size = new System.Drawing.Size(1390, 159);
+            this.RibbonControl.Size = new System.Drawing.Size(1390, 158);
             this.RibbonControl.StatusBar = this.RibbonStatusBar;
             // 
             // barNew
@@ -380,6 +380,34 @@
             this.barCancel.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ScriptCancel;
             this.barCancel.Name = "barCancel";
             // 
+            // barClearAll
+            // 
+            this.barClearAll.Caption = "All";
+            this.barClearAll.Id = 36;
+            this.barClearAll.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barClearAll.ImageOptions.SvgImage")));
+            this.barClearAll.Name = "barClearAll";
+            // 
+            // barClearBook
+            // 
+            this.barClearBook.Caption = "Book";
+            this.barClearBook.Id = 37;
+            this.barClearBook.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ClearBook;
+            this.barClearBook.Name = "barClearBook";
+            // 
+            // barClearSpreadsheet
+            // 
+            this.barClearSpreadsheet.Caption = "Spreadsheet";
+            this.barClearSpreadsheet.Id = 38;
+            this.barClearSpreadsheet.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ClearSpreadsheet;
+            this.barClearSpreadsheet.Name = "barClearSpreadsheet";
+            // 
+            // barClearGrid
+            // 
+            this.barClearGrid.Caption = "Grid";
+            this.barClearGrid.Id = 39;
+            this.barClearGrid.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ClearGrid;
+            this.barClearGrid.Name = "barClearGrid";
+            // 
             // ribbonPageScript
             // 
             this.ribbonPageScript.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -471,6 +499,15 @@
             this.ribbonPageGroupQuery.Name = "ribbonPageGroupQuery";
             this.ribbonPageGroupQuery.Text = "Query";
             // 
+            // ribbonPageClear
+            // 
+            this.ribbonPageClear.ItemLinks.Add(this.barClearAll);
+            this.ribbonPageClear.ItemLinks.Add(this.barClearBook, true);
+            this.ribbonPageClear.ItemLinks.Add(this.barClearSpreadsheet);
+            this.ribbonPageClear.ItemLinks.Add(this.barClearGrid);
+            this.ribbonPageClear.Name = "ribbonPageClear";
+            this.ribbonPageClear.Text = "Clear";
+            // 
             // RibbonStatusBar
             // 
             this.RibbonStatusBar.Location = new System.Drawing.Point(0, 900);
@@ -533,6 +570,8 @@
             this.documentResults,
             this.documentCommandLine});
             this.viewParts.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FreeLayout;
+            this.viewParts.LoadingIndicatorProperties.ShowCaption = false;
+            this.viewParts.LoadingIndicatorProperties.ShowDescription = false;
             widgetDockingContainer3.Element = this.documentScript;
             widgetDockingContainer4.Element = this.documentCommandLine;
             widgetDockingContainer2.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
@@ -549,48 +588,13 @@
             widgetDockingContainer1});
             this.viewParts.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.viewParts.UseDocumentSelector = DevExpress.Utils.DefaultBoolean.False;
+            this.viewParts.UseLoadingIndicator = DevExpress.Utils.DefaultBoolean.True;
+            this.viewParts.UseSnappingEmulation = DevExpress.Utils.DefaultBoolean.True;
             this.viewParts.QueryControl += new DevExpress.XtraBars.Docking2010.Views.QueryControlEventHandler(this.ViewParts_QueryControl);
             // 
             // svgFormIcon
             // 
             this.svgFormIcon.Add("Script_SQL", ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgFormIcon.Script_SQL"))));
-            // 
-            // ribbonPageClear
-            // 
-            this.ribbonPageClear.ItemLinks.Add(this.barClearAll);
-            this.ribbonPageClear.ItemLinks.Add(this.barClearBook, true);
-            this.ribbonPageClear.ItemLinks.Add(this.barClearSpreadsheet);
-            this.ribbonPageClear.ItemLinks.Add(this.barClearGrid);
-            this.ribbonPageClear.Name = "ribbonPageClear";
-            this.ribbonPageClear.Text = "Clear";
-            // 
-            // barClearAll
-            // 
-            this.barClearAll.Caption = "All";
-            this.barClearAll.Id = 36;
-            this.barClearAll.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barClearAll.ImageOptions.SvgImage")));
-            this.barClearAll.Name = "barClearAll";
-            // 
-            // barClearBook
-            // 
-            this.barClearBook.Caption = "Book";
-            this.barClearBook.Id = 37;
-            this.barClearBook.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ClearBook;
-            this.barClearBook.Name = "barClearBook";
-            // 
-            // barClearSpreadsheet
-            // 
-            this.barClearSpreadsheet.Caption = "Spreadsheet";
-            this.barClearSpreadsheet.Id = 38;
-            this.barClearSpreadsheet.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ClearSpreadsheet;
-            this.barClearSpreadsheet.Name = "barClearSpreadsheet";
-            // 
-            // barClearGrid
-            // 
-            this.barClearGrid.Caption = "Grid";
-            this.barClearGrid.Id = 39;
-            this.barClearGrid.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ClearGrid;
-            this.barClearGrid.Name = "barClearGrid";
             // 
             // SqlScriptDocumentView
             // 

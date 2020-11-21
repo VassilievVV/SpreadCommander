@@ -14,7 +14,7 @@ using DevExpress.XtraMap.Native;
 namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 {
     [Cmdlet(VerbsData.Export, "Dbf")]
-    public class ExportDbf: SCCmdlet
+    public class ExportDbfCmdlet: SCCmdlet
     {
         [Parameter(ValueFromPipeline = true, HelpMessage = "Data source for spreadsheet tables. Data source shall implement interface IList or IListSource and final IList shall implement ITypedList.")]
         public PSObject DataRecord { get; set; }
@@ -24,6 +24,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
+
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
 
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
@@ -74,7 +77,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 File.Delete(fileName);
 
             using var stream = new FileStream(fileName, FileMode.CreateNew, FileAccess.Write);
-            using var dataReader = GetDataSourceReader(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns }) ;
+            using var dataReader = GetDataSourceReader(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns }) ;
 
             var writer      = new DBFWriter(stream);
             var dbFields    = new List<DBFField>();

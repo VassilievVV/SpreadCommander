@@ -71,7 +71,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
             //Remove last ", "
             result.Length -= (2 + Environment.NewLine.Length);
-            result.AppendLine().Append(")");
+            result.AppendLine().Append(')');
 
             return result.ToString();
         }
@@ -161,7 +161,7 @@ namespace SpreadCommander.Common.Code.Exporters
             return base.GetColumnDataType(dataType, maxLength);
         }
 
-        public (SqlDbType dbType, int len) GetColumnSqlDbType(Type dataType, int maxLength)
+        public static (SqlDbType dbType, int len) GetColumnSqlDbType(Type dataType, int maxLength)
         {
             if (dataType == typeof(Guid))
                 return (SqlDbType.UniqueIdentifier, 50);

@@ -60,7 +60,6 @@ namespace SpreadCommander.Common.Book
 
                     switch (prop.Key.ToLower())
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
                         case "rebuild":
                         case "recalculate":
                         case "recalc":
@@ -69,24 +68,21 @@ namespace SpreadCommander.Common.Book
                                 valueRecalc = bool.TrueString;
                             rebuild = bool.Parse(valueRecalc);
                             break;
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
             }
 
             using (new UsingProcessor(() => CheckNestedFile(fileName), () => RemoveNestedFile(fileName)))
             {
-#pragma warning disable IDE0068 // Use recommended dispose pattern
                 var server = new RichEditDocumentServer();
-#pragma warning restore IDE0068 // Use recommended dispose pattern
 
                 if (snippet != null)
                 {
                     SCBook book = null;
-                    if (snippet is SCBook)
-                        book = (SCBook)snippet;
-                    else if (snippet is SCBookContext)
-                        book = ((SCBookContext)snippet).SCBook;
+                    if (snippet is SCBook scBook)
+                        book = scBook;
+                    else if (snippet is SCBookContext bookContext)
+                        book = bookContext.SCBook;
 
                     if (book != null)
                         server.Document.AppendDocumentContent(book.Document.Range);
@@ -100,8 +96,6 @@ namespace SpreadCommander.Common.Book
                     var ext = Path.GetExtension(fileName)?.ToLower();
                     switch (ext)
                     {
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "markdown":
                         case "mdown":
                         case "md":
@@ -112,8 +106,6 @@ namespace SpreadCommander.Common.Book
                         default:
                             server.LoadDocument(fileName);
                             break;
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
                     }
                 }
 

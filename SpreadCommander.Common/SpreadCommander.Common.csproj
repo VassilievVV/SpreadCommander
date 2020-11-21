@@ -1,13 +1,15 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <IsPackable>false</IsPackable>
     <UseWindowsForms>true</UseWindowsForms>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>AnyCPU;x64</Platforms>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>SpreadCommander.snk</AssemblyOriginatorKeyFile>
     <LangVersion>preview</LangVersion>
+    <Authors>Viatcheslav V. Vassiliev</Authors>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,6 +19,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutputPath>..\bin\Debug</OutputPath>
+    <NoWarn>1701;1702;CA1416;CA1816;CA2208</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -26,6 +29,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutputPath>..\bin\Release</OutputPath>
+    <NoWarn>1701;1702;CA1416;</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -55,25 +59,25 @@
 
   <ItemGroup>
     <PackageReference Include="AvalonStudio.winpty.NET" Version="0.4.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="20.1.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="20.1.6" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="20.1.6-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="20.1.6-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="20.2.3" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="20.2.3" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="20.2.3-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="20.2.3-ctp" />
     <PackageReference Include="dotnetdbf" Version="6.0.0.3" />
     <PackageReference Include="Fizzler" Version="1.2.0" />
-    <PackageReference Include="FlatFiles" Version="4.7.0" />
-    <PackageReference Include="Markdig.Signed" Version="0.20.0" />
-    <PackageReference Include="MathNet.Numerics" Version="4.11.0" />
+    <PackageReference Include="FlatFiles" Version="4.12.0" />
+    <PackageReference Include="Markdig.Signed" Version="0.22.0" />
+    <PackageReference Include="MathNet.Numerics" Version="4.12.0" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.4.0" />
-    <PackageReference Include="MathNet.Symbolics" Version="0.21.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.0" />
+    <PackageReference Include="MathNet.Symbolics" Version="0.22.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="2.0.1" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.3" />
-    <PackageReference Include="MySqlConnector" Version="1.0.0" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.0" />
+    <PackageReference Include="MySqlConnector" Version="1.1.0" />
     <PackageReference Include="Svg" Version="3.1.1" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.1" />
-    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
-    <PackageReference Include="WpfMath" Version="0.8.0" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.113.6" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
+    <PackageReference Include="WpfMath" Version="0.9.0" />
   </ItemGroup>
 
   <ItemGroup>

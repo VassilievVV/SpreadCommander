@@ -28,12 +28,12 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BlobEditor));
             this.LayoutRoot = new DevExpress.XtraLayout.LayoutControl();
             this.gridHex = new DevExpress.XtraGrid.GridControl();
@@ -128,10 +128,10 @@
             // gridHex
             // 
             this.gridHex.Font = new System.Drawing.Font("Courier New", 8.25F);
-            this.gridHex.Location = new System.Drawing.Point(24, 94);
+            this.gridHex.Location = new System.Drawing.Point(24, 93);
             this.gridHex.MainView = this.viewHex;
             this.gridHex.Name = "gridHex";
-            this.gridHex.Size = new System.Drawing.Size(594, 242);
+            this.gridHex.Size = new System.Drawing.Size(594, 243);
             this.gridHex.TabIndex = 8;
             this.gridHex.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.viewHex});
@@ -389,35 +389,35 @@
             // 
             // textMime
             // 
-            this.textMime.Location = new System.Drawing.Point(70, 12);
+            this.textMime.Location = new System.Drawing.Point(79, 12);
             this.textMime.Name = "textMime";
             this.textMime.Properties.ReadOnly = true;
-            this.textMime.Size = new System.Drawing.Size(446, 20);
+            this.textMime.Size = new System.Drawing.Size(437, 20);
             this.textMime.StyleController = this.LayoutRoot;
-            toolTipTitleItem1.Text = "MIME type";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Auto-detected MIME type.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.textMime.SuperTip = superToolTip1;
+            toolTipTitleItem3.Text = "MIME type";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Auto-detected MIME type.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.textMime.SuperTip = superToolTip3;
             this.textMime.TabIndex = 4;
             // 
             // comboEncodings
             // 
-            this.comboEncodings.Location = new System.Drawing.Point(70, 36);
+            this.comboEncodings.Location = new System.Drawing.Point(79, 36);
             this.comboEncodings.Name = "comboEncodings";
             this.comboEncodings.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboEncodings.Properties.Sorted = true;
             this.comboEncodings.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboEncodings.Size = new System.Drawing.Size(446, 20);
+            this.comboEncodings.Size = new System.Drawing.Size(437, 20);
             this.comboEncodings.StyleController = this.LayoutRoot;
-            toolTipTitleItem2.Text = "Encoding";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Encoding to use for text representation.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.comboEncodings.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Encoding";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Encoding to use for text representation.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.comboEncodings.SuperTip = superToolTip1;
             this.comboEncodings.TabIndex = 9;
             this.comboEncodings.SelectedIndexChanged += new System.EventHandler(this.ComboEncodings_SelectedIndexChanged);
             // 
@@ -435,20 +435,22 @@
             // 
             // pictureBlob
             // 
-            this.pictureBlob.Location = new System.Drawing.Point(24, 94);
+            this.pictureBlob.Location = new System.Drawing.Point(24, 93);
             this.pictureBlob.Name = "pictureBlob";
             this.pictureBlob.Properties.ReadOnly = true;
             this.pictureBlob.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.pictureBlob.Size = new System.Drawing.Size(594, 242);
+            this.pictureBlob.Size = new System.Drawing.Size(594, 243);
             this.pictureBlob.StyleController = this.LayoutRoot;
             this.pictureBlob.TabIndex = 12;
             // 
             // richEditBlob
             // 
-            this.richEditBlob.Location = new System.Drawing.Point(24, 94);
+            this.richEditBlob.Location = new System.Drawing.Point(24, 93);
             this.richEditBlob.Name = "richEditBlob";
+            this.richEditBlob.Options.DocumentCapabilities.Macros = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
+            this.richEditBlob.Options.DocumentCapabilities.OleObjects = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.richEditBlob.ReadOnly = true;
-            this.richEditBlob.Size = new System.Drawing.Size(594, 242);
+            this.richEditBlob.Size = new System.Drawing.Size(594, 243);
             this.richEditBlob.TabIndex = 11;
             this.richEditBlob.Views.DraftView.AdjustColorsToSkins = true;
             this.richEditBlob.Views.PrintLayoutView.AdjustColorsToSkins = true;
@@ -456,10 +458,10 @@
             // 
             // memoBlob
             // 
-            this.memoBlob.Location = new System.Drawing.Point(24, 94);
+            this.memoBlob.Location = new System.Drawing.Point(24, 93);
             this.memoBlob.Name = "memoBlob";
             this.memoBlob.Properties.ReadOnly = true;
-            this.memoBlob.Size = new System.Drawing.Size(594, 242);
+            this.memoBlob.Size = new System.Drawing.Size(594, 243);
             this.memoBlob.StyleController = this.LayoutRoot;
             this.memoBlob.TabIndex = 10;
             // 
@@ -524,7 +526,7 @@
             this.layoutGridHex});
             this.layoutHex.Location = new System.Drawing.Point(0, 0);
             this.layoutHex.Name = "layoutHex";
-            this.layoutHex.Size = new System.Drawing.Size(598, 246);
+            this.layoutHex.Size = new System.Drawing.Size(598, 247);
             this.layoutHex.Text = "Hex";
             // 
             // layoutGridHex
@@ -533,7 +535,7 @@
             this.layoutGridHex.CustomizationFormText = "layoutGridHex";
             this.layoutGridHex.Location = new System.Drawing.Point(0, 0);
             this.layoutGridHex.Name = "layoutGridHex";
-            this.layoutGridHex.Size = new System.Drawing.Size(598, 246);
+            this.layoutGridHex.Size = new System.Drawing.Size(598, 247);
             this.layoutGridHex.TextSize = new System.Drawing.Size(0, 0);
             this.layoutGridHex.TextVisible = false;
             // 
@@ -544,7 +546,7 @@
             this.layoutMemoBlob});
             this.layoutText.Location = new System.Drawing.Point(0, 0);
             this.layoutText.Name = "layoutText";
-            this.layoutText.Size = new System.Drawing.Size(598, 246);
+            this.layoutText.Size = new System.Drawing.Size(598, 247);
             this.layoutText.Text = "Text";
             // 
             // layoutMemoBlob
@@ -553,7 +555,7 @@
             this.layoutMemoBlob.CustomizationFormText = "layoutMemoBlob";
             this.layoutMemoBlob.Location = new System.Drawing.Point(0, 0);
             this.layoutMemoBlob.Name = "layoutMemoBlob";
-            this.layoutMemoBlob.Size = new System.Drawing.Size(598, 246);
+            this.layoutMemoBlob.Size = new System.Drawing.Size(598, 247);
             this.layoutMemoBlob.TextSize = new System.Drawing.Size(0, 0);
             this.layoutMemoBlob.TextVisible = false;
             // 
@@ -564,7 +566,7 @@
             this.layoutRichEditBlob});
             this.layoutFormatted.Location = new System.Drawing.Point(0, 0);
             this.layoutFormatted.Name = "layoutFormatted";
-            this.layoutFormatted.Size = new System.Drawing.Size(598, 246);
+            this.layoutFormatted.Size = new System.Drawing.Size(598, 247);
             this.layoutFormatted.Text = "Formatted";
             // 
             // layoutRichEditBlob
@@ -573,7 +575,7 @@
             this.layoutRichEditBlob.CustomizationFormText = "layoutRichEditBlob";
             this.layoutRichEditBlob.Location = new System.Drawing.Point(0, 0);
             this.layoutRichEditBlob.Name = "layoutRichEditBlob";
-            this.layoutRichEditBlob.Size = new System.Drawing.Size(598, 246);
+            this.layoutRichEditBlob.Size = new System.Drawing.Size(598, 247);
             this.layoutRichEditBlob.TextSize = new System.Drawing.Size(0, 0);
             this.layoutRichEditBlob.TextVisible = false;
             // 
@@ -584,7 +586,7 @@
             this.layoutPictureBlob});
             this.layoutImage.Location = new System.Drawing.Point(0, 0);
             this.layoutImage.Name = "layoutImage";
-            this.layoutImage.Size = new System.Drawing.Size(598, 246);
+            this.layoutImage.Size = new System.Drawing.Size(598, 247);
             this.layoutImage.Text = "Image";
             // 
             // layoutPictureBlob
@@ -593,7 +595,7 @@
             this.layoutPictureBlob.CustomizationFormText = "layoutPictureBlob";
             this.layoutPictureBlob.Location = new System.Drawing.Point(0, 0);
             this.layoutPictureBlob.Name = "layoutPictureBlob";
-            this.layoutPictureBlob.Size = new System.Drawing.Size(598, 246);
+            this.layoutPictureBlob.Size = new System.Drawing.Size(598, 247);
             this.layoutPictureBlob.TextSize = new System.Drawing.Size(0, 0);
             this.layoutPictureBlob.TextVisible = false;
             // 
@@ -650,7 +652,7 @@
             this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(642, 386);
             this.Controls.Add(this.LayoutRoot);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("BlobEditor.IconOptions.Icon")));
             this.MinimizeBox = false;
             this.Name = "BlobEditor";
             this.ShowInTaskbar = false;

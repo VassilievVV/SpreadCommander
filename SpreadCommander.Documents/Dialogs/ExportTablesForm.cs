@@ -64,9 +64,7 @@ namespace SpreadCommander.Documents.Dialogs
         }
         #endregion
 
-#pragma warning disable IDE0069 // Disposable fields should be disposed
         private CancellationTokenSource _CancelScriptTokenSource;
-#pragma warning restore IDE0069 // Disposable fields should be disposed
         private IExportSource _ExportSource;
 
         public ExportTablesForm()
@@ -143,7 +141,7 @@ namespace SpreadCommander.Documents.Dialogs
                     int p = tableName.IndexOf('!');
                     if (p >= 0 && p < tableName.Length - 1)
                     {
-                        var newName = tableName.Substring(p + 1);
+                        var newName = tableName[(p + 1)..];
                         if (string.IsNullOrWhiteSpace(newName))
                             newNames.Add($"Table{counter++}");
                         else
@@ -180,7 +178,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private async void BtnTestConnection_Click(object sender, EventArgs e)
         {
-            if (!(bindingConnections.Current is DBConnection connection))
+            if (bindingConnections.Current is not DBConnection connection)
             {
                 XtraMessageBox.Show(this, "Please select connection", "Connection is not selected",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -243,7 +241,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private async void BtnExport_Click(object sender, EventArgs e)
         {
-            if (!(bindingConnections.Current is DBConnection connection))
+            if (bindingConnections.Current is not DBConnection connection)
             {
                 XtraMessageBox.Show(this, "Please select connection", "Connection is not selected", 
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -35,12 +35,8 @@ namespace SpreadCommander.Documents.ViewModels
         public static PivotDocumentViewModel Create() =>
             ViewModelSource.Create<PivotDocumentViewModel>(() => new PivotDocumentViewModel());
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
         public override string DefaultExt => ".scpivot";
         public override string FileFilter => "Pivot (*.scpivot)|*.scpivot|All files (*.*)|*.*";
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
         public override string DocumentType    => ViewName;
         public override string DocumentSubType => Engine?.EngineName;
 

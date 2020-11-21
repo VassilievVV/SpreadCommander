@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.XtraCharts;
+﻿using DevExpress.XtraCharts;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -552,7 +550,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                     axis2D.Visibility = Visibility.Value ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
                 if (VisibleInPanes != null && VisibleInPanes.Length > 0)
                 {
-                    if (!(ChartContext.Chart.Diagram is XYDiagram chartDiagram))
+                    if (ChartContext.Chart.Diagram is not XYDiagram chartDiagram)
                         throw new Exception("Property VisibleInPanes can be set only in 2D XY charts.");
 
                     foreach (var paneName in VisibleInPanes)
@@ -566,7 +564,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                 }
                 if (HiddenInPanes != null && HiddenInPanes.Length > 0)
                 {
-                    if (!(ChartContext.Chart.Diagram is XYDiagram chartDiagram))
+                    if (ChartContext.Chart.Diagram is not XYDiagram chartDiagram)
                         throw new Exception("Property HiddenInPanes can be set only in 2D XY charts.");
 
                     foreach (var paneName in HiddenInPanes)

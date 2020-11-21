@@ -81,19 +81,19 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
         protected void WriteBuffer(bool lastBlock)
         {
-            WriteImage(GetCmdletBook(), _Output, lastBlock);
+            WriteText(GetCmdletBook(), _Output, lastBlock);
             _Output.Clear();
         }
 
-        protected void WriteImage(Document book, List<string> buffer, bool lastBlock)
+        protected void WriteText(Document book, List<string> buffer, bool lastBlock)
         {
             if (buffer.Count <= 0 && !lastBlock)
                 return;
 
-            ExecuteSynchronized(() => DoWriteImage(book, buffer, lastBlock));
+            ExecuteSynchronized(() => DoWriteText(book, buffer, lastBlock));
         }
 
-        protected virtual void DoWriteImage(Document book, List<string> buffer, bool lastBlock)
+        protected virtual void DoWriteText(Document book, List<string> buffer, bool lastBlock)
         {
             if (buffer.Count <= 0 && !lastBlock)
                 return;
@@ -150,6 +150,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     }
 
                     AddComments(book, range);
+
+                    WriteRangeToConsole(book, range);
                 }
 
                 if (rangeEnd != null)

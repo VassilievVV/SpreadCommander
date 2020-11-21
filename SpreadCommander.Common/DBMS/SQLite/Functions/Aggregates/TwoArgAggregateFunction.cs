@@ -36,7 +36,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
 
             var value1 = Convert.ToDouble(args[0]);
             var value2 = Convert.ToDouble(args[1]);
-            if (value1 == double.NaN || value2 == double.NaN)
+            if (double.IsNaN(value1) || double.IsNaN(value2))
                 return;
 
             if (contextData == null)
@@ -54,7 +54,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
                 return null;
 
             var result = CalculateAggregate(records.Values1, records.Values2);
-            if (result == double.NaN)
+            if (result.HasValue && double.IsNaN(result.Value))
                 result = null;
 
             return result.HasValue ? (object)result.Value : null;

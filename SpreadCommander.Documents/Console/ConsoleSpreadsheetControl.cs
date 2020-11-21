@@ -132,7 +132,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarSelectTable_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
@@ -141,7 +141,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarSelectTableData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
@@ -150,7 +150,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarExpandSelectionRows_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection.ExpandToTableRows();
@@ -159,7 +159,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarExpandSelectionColumns_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection.ExpandToTableColumn();
@@ -168,7 +168,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarCopySelectionToRows_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection;
@@ -177,7 +177,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarCopySelectionToColumns_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (!(Spreadsheet.Document.Sheets.ActiveSheet is Worksheet sheet))
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
                 throw new Exception("Please select worksheet.");
 
             var selection = sheet.Selection;
@@ -211,9 +211,7 @@ namespace SpreadCommander.Documents.Console
 
             var dataTable = selectedTable.ExportToDataTable();
 
-#pragma warning disable IDE0067 // Dispose objects before losing scope
             var frm = new SpreadsheetTemplateEditor();
-#pragma warning restore IDE0067 // Dispose objects before losing scope
             frm.FormClosed += (s, arg) => { ((Form)s).Dispose(); };
             frm.SetupMergeMail(dataTable, null);
             frm.Show(this);

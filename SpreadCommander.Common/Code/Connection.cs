@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using MySqlConnector;
+﻿using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -525,7 +523,7 @@ namespace SpreadCommander.Common.Code
             if (ConnectionType == null)
                 throw new Exception("Connection type is not specified.");
 
-            if (!(Activator.CreateInstance(ConnectionType) is DbConnection connection))
+            if (Activator.CreateInstance(ConnectionType) is not DbConnection connection)
                 throw new Exception("Invalid connection type.");
 
             connection.ConnectionString = ConnectionString;

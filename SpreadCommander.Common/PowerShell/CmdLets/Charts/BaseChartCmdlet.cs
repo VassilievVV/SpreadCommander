@@ -89,7 +89,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
             }
         }
 
-        protected int GetValuePointCount(ViewType viewType)
+        protected static int GetValuePointCount(ViewType viewType)
         {
             return viewType switch
             {

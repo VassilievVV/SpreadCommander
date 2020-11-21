@@ -41,7 +41,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
             if (ChartContext.CurrentSeries == null)
                 throw new Exception("Cannot determine series to add title.");
 
-            if (!(ChartContext.CurrentSeries.View is SimpleDiagramSeriesViewBase seriesView))
+            if (ChartContext.CurrentSeries.View is not SimpleDiagramSeriesViewBase seriesView)
                 throw new Exception("Series title is supported only on 2D Pie, Doughnut and Funnel series.");
 
             var seriesTitle = new SeriesTitle();

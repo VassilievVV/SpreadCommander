@@ -60,8 +60,8 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
         protected virtual byte[] GetBytes(object value)
         {
             byte[] data = null;
-            if (value is byte[])
-                data = (byte[])value;
+            if (value is byte[] v)
+                data = v;
             else
             {
                 switch (Type.GetTypeCode(value.GetType()))

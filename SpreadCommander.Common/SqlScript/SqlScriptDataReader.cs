@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Data;
@@ -36,7 +34,7 @@ namespace SpreadCommander.Common.SqlScript
 		public SqlScriptDataReader(DbDataReader reader, CancellationToken? cancelToken = null,
 			bool onlyVisibleFields = false)
 		{
-			_Reader = reader ?? throw new ArgumentNullException("reader");
+			_Reader = reader ?? throw new ArgumentNullException(nameof(reader));
 			OnlyVisibleFields = onlyVisibleFields;
 			_CancelToken      = cancelToken;
 		}

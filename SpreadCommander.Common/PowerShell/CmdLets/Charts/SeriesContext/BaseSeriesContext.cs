@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.XtraCharts;
+﻿using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Native;
 using System;
 using System.Collections.Generic;

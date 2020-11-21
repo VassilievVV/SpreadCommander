@@ -61,7 +61,9 @@ namespace SpreadCommander.Common.Spreadsheet.Functions
                 if (input == null || pattern == null || string.IsNullOrWhiteSpace(groupName))
                     return null;
 
+#pragma warning disable IDE0075 // Simplify conditional expression
                 bool horizontal = parameters.Count > 3 ? parameters[3].BooleanValue : false;
+#pragma warning restore IDE0075 // Simplify conditional expression
 
                 var strMatches = new List<string>();
 

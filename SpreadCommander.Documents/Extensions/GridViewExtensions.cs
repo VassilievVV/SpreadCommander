@@ -17,9 +17,7 @@ namespace SpreadCommander.Documents.Extensions
     public static class GridViewExtensions
     {
         public static void SetMonoWidthGridFont(this ColumnView view) =>
-#pragma warning disable IDE0068 // Use recommended dispose pattern
             SetGridFont(view, new Font("Lucida Console", 8.25F));
-#pragma warning restore IDE0068 // Use recommended dispose pattern
 
         public static void SetGridFont(this ColumnView view, Font font)
         {

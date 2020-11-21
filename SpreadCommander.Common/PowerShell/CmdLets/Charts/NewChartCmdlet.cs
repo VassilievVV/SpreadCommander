@@ -1,6 +1,4 @@
-﻿#pragma warning disable CRR0047
-
-using DevExpress.Utils;
+﻿using DevExpress.Utils;
 using DevExpress.XtraCharts;
 using DevExpress.XtraCharts.Native;
 using SpreadCommander.Common.Code;
@@ -49,15 +47,14 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
 
-#pragma warning disable CRRSP01 // A misspelled word has been found
-#pragma warning disable CRRSP06 // A misspelled word has been found
         [Parameter(HelpMessage = "Template file - .scchart file created in Chart document")]
-#pragma warning restore CRRSP06 // A misspelled word has been found
-#pragma warning restore CRRSP01 // A misspelled word has been found
         public string TemplateFile { get; set; }
 
         [Parameter(HelpMessage = "Palette used to draw the chart's series.")]
@@ -122,6 +119,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         [Parameter(HelpMessage = "Maximum width allowed for series labels.")]
         public int? LabelsMaxWidth { get; set; }
+
+        [Parameter(HelpMessage = "Whether to lock file operations or not. Set it if multiple threads can access same file simultaneously.")]
+        public SwitchParameter LockFiles { get; set; }
 
 
         private BaseDiagramContext _DiagramContext;
@@ -251,7 +251,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         protected override void EndProcessing()
         {
-            var dataSource = GetDataSource(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            var dataSource = GetDataSource(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
             var chart = CreateChart();
             chart.DataContainer.DataSource = dataSource;
@@ -385,11 +386,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                     if (!File.Exists(templateFile))
                         throw new Exception($"File '{TemplateFile}' does not exist.");
 
-                    lock (LockObject)
+                    ExecuteLocked(() =>
                     {
                         using var stream = new FileStream(templateFile, FileMode.Open);
                         chart.LoadLayout(stream);
-                    }
+                    }, LockFiles ? LockObject : null);
                 }
 
                 if (Palette.HasValue && Palette.Value != ChartPaletteName.None)

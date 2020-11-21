@@ -226,9 +226,13 @@ namespace SpreadCommander.Documents.ViewModels
             Engine.SendCommand(command);
         }
 
-        public void Cancel()
+        public async void Cancel()
         {
-            Engine.SendCommand("\u0003");	//Ctr+C
+            await Task.Run(() =>
+            {
+                Engine.Stop();
+            });
+            StartEngine();
         }
 
         public void ExecuteScript(string script)
@@ -246,8 +250,8 @@ namespace SpreadCommander.Documents.ViewModels
 
             scriptEngine.ExecutionType = BaseScriptEngine.ScriptExecutionType.Script;
 
-            scriptEngine.Start();
             scriptEngine.ExecutionFinished += callback;
+            scriptEngine.Start();
             scriptEngine.SendCommand(script);
 
 

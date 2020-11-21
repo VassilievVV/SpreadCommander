@@ -1,8 +1,3 @@
-#pragma warning disable IDE0044 // Add readonly modifier
-#pragma warning disable CRR0046
-#pragma warning disable CRR0047
-#pragma warning disable CRR0050
-
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,17 +7,17 @@ namespace SpreadCommander.Common.Code
 {
 	public class CustomPropertyDescriptor: PropertyDescriptor
 	{
-		private Type    _ComponentType  = null;
+		private readonly Type    _ComponentType  = null;
 #pragma warning disable IDE0052 // Remove unread private members
-		private string	_Name			= string.Empty;
+		private readonly string	_Name			= string.Empty;
 #pragma warning restore IDE0052 // Remove unread private members
-		private string	_Category		= string.Empty;
-		private string	_Description	= string.Empty;
-		private string	_DisplayName	= string.Empty;
-		private Type	_ValueType		= null;
-		private object	_Value			= null;
-		private bool	_ReadOnly		= false;
-		private bool	_Visible		= true;
+		private readonly string	_Category		= string.Empty;
+		private readonly string	_Description	= string.Empty;
+		private readonly string	_DisplayName	= string.Empty;
+		private readonly Type	_ValueType		= null;
+		private object	_Value			        = null;
+		private readonly bool	_ReadOnly		= false;
+		private readonly bool	_Visible		= true;
 
 		public CustomPropertyDescriptor(Type componentType, string name, bool readOnly, bool visible, 
 			string category, string description, string displayName,
@@ -122,7 +117,7 @@ namespace SpreadCommander.Common.Code
 
 	public class CustomClass: List<CustomPropertyDescriptor>, ICustomTypeDescriptor
 	{
-		private string _ClassName;
+		private readonly string _ClassName;
 		
 		public CustomClass(string className)
 		{

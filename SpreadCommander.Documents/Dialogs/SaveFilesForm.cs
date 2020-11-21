@@ -56,7 +56,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void RepositoryItemFileName_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            if (!(viewFiles.GetFocusedRow() is SaveFileData fileData))
+            if (viewFiles.GetFocusedRow() is not SaveFileData fileData)
                 return;
 
             string fileName = Convert.ToString(((ButtonEdit)sender).EditValue);
@@ -117,7 +117,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void ViewFiles_ValidateRow(object sender, DevExpress.XtraGrid.Views.Base.ValidateRowEventArgs e)
         {
-            if (!(e.Row is SaveFileData saveFile))
+            if (e.Row is not SaveFileData saveFile)
                 return;
 
             if (!saveFile.Selected)

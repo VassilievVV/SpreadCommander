@@ -1,5 +1,4 @@
-﻿#pragma warning disable CRR0050
-
+﻿using DevExpress.DataProcessing.InMemoryDataProcessor;
 using DevExpress.Spreadsheet;
 using DevExpress.Spreadsheet.Drawings;
 using DevExpress.XtraCharts;
@@ -62,7 +61,7 @@ namespace SpreadCommander.Common.Code
             if (counter >= value.Length - 1)
                 return $"{value}1";
 
-            string strNum = value.Substring(counter + 1);
+            string strNum = value[(counter + 1)..];
             int num = int.Parse(strNum);
             string result = $"{(value.Substring(0, counter + 1))}{++num}";
             return result;
@@ -101,7 +100,7 @@ namespace SpreadCommander.Common.Code
             else
             {
                 baseValue     = value.Substring(0, counter + 1);
-                string strNum = value[counter + 1] == '_' ? value.Substring(counter + 2) : value.Substring(counter + 1);
+                string strNum = value[counter + 1] == '_' ? value[(counter + 2)..] : value[(counter + 1)..];
                 num           = int.Parse(strNum, CultureInfo.InvariantCulture);
             }
 
@@ -151,7 +150,7 @@ namespace SpreadCommander.Common.Code
             else
             {
                 baseValue = value.Substring(0, counter);
-                string strNum = value.Substring(counter + 1);
+                string strNum = value[(counter + 1)..];
                 num = int.Parse(strNum);
             }
 
@@ -190,7 +189,7 @@ namespace SpreadCommander.Common.Code
             else
             {
                 baseValue = value.Substring(0, counter);
-                string strNum = value.Substring(counter + 1);
+                string strNum = value[(counter + 1)..];
                 num = int.Parse(strNum);
             }
 
@@ -381,7 +380,7 @@ namespace SpreadCommander.Common.Code
         public static string[] SplitString(string str, char Delimiter, SplitStringOptions options)
         {
             if (string.IsNullOrEmpty(str))
-                return new string[0];
+                return Array.Empty<string>();
 
             List<string> result = new List<string>();
 
@@ -490,7 +489,7 @@ namespace SpreadCommander.Common.Code
                 if (p > 0)
                 {
                     string name  = Utils.TrimString(part.Substring(0, p));
-                    string value = Utils.TrimString(part.Substring(p + 1));
+                    string value = Utils.TrimString(part[(p + 1)..]);
 
                     name  = ProcessSplitStringOptions(name, options);
                     value = Utils.UnpackString(value);
@@ -760,14 +759,14 @@ namespace SpreadCommander.Common.Code
         public static void WritePropertyToXml(XmlDocument doc, string propName, string value)
         {
             if (doc == null)
-                throw new ArgumentNullException("doc");
+                throw new ArgumentNullException(nameof(doc));
             WritePropertyToXml(doc.DocumentElement, propName, value);
         }
 
         public static void WritePropertyToXml(XmlElement root, string propName, string value)
         {
             if (root == null)
-                throw new ArgumentNullException("root");
+                throw new ArgumentNullException(nameof(root));
 
             XmlElement elProperties = FindChildNode(root, "Properties", true);
             XmlElement elProp = FindChildNode(elProperties, propName, true);
@@ -778,7 +777,7 @@ namespace SpreadCommander.Common.Code
         public static void WritePropertyIntToXml(XmlDocument doc, string propName, int value)
         {
             if (doc == null)
-                throw new ArgumentNullException("doc");
+                throw new ArgumentNullException(nameof(doc));
             WritePropertyIntToXml(doc.DocumentElement, propName, value);
         }
 
@@ -791,7 +790,7 @@ namespace SpreadCommander.Common.Code
         public static string[] SplitStringToLines(string value)
         {
             if (string.IsNullOrEmpty(value))
-                return new string[0];
+                return Array.Empty<string>();
 
             int i, start, len;
             bool lineEnd;
@@ -1006,13 +1005,13 @@ namespace SpreadCommander.Common.Code
             if (string.IsNullOrWhiteSpace(value))
                 return fontStyle;
 
-            if (value.IndexOf("Bold", StringComparison.CurrentCultureIgnoreCase) >= 0)
+            if (value.Contains("Bold", StringComparison.CurrentCultureIgnoreCase))
                 fontStyle |= FontStyle.Bold;
-            if (value.IndexOf("Italic", StringComparison.CurrentCultureIgnoreCase) >= 0)
+            if (value.Contains("Italic", StringComparison.CurrentCultureIgnoreCase))
                 fontStyle |= FontStyle.Italic;
-            if (value.IndexOf("Strikeout", StringComparison.CurrentCultureIgnoreCase) >= 0)
+            if (value.Contains("Strikeout", StringComparison.CurrentCultureIgnoreCase))
                 fontStyle |= FontStyle.Strikeout;
-            if (value.IndexOf("Underline", StringComparison.CurrentCultureIgnoreCase) >= 0)
+            if (value.Contains("Underline", StringComparison.CurrentCultureIgnoreCase))
                 fontStyle |= FontStyle.Underline;
 
             return fontStyle;
@@ -1151,17 +1150,17 @@ namespace SpreadCommander.Common.Code
 
             if (index >= directory.Length)
                 return null;
-            return directory.Substring(index);
+            return directory[index..];
         }
 
         public static string[] GetSubFolders(string rootDirectory)
         {
             if (string.IsNullOrEmpty(rootDirectory))
-                return new string[] { };
+                return Array.Empty<string>();
 
             DirectoryInfo dir = new DirectoryInfo(rootDirectory);
             if (!dir.Exists)
-                return new string[] { };
+                return Array.Empty<string>();
 
             DirectoryInfo[] infos = dir.GetDirectories("*.*", SearchOption.TopDirectoryOnly);
             string[] result = new string[infos.Length];
@@ -1255,7 +1254,7 @@ namespace SpreadCommander.Common.Code
                 {
                     baseName = str.Substring(0, i + 1);
                     if (i < str.Length - 1)
-                        numSuffix = int.Parse(str.Substring(i + 1));
+                        numSuffix = int.Parse(str[(i + 1)..]);
                     return i + 1;
                 }
             }
@@ -1552,23 +1551,21 @@ namespace SpreadCommander.Common.Code
             if (t == null)
                 return false;
 
-            switch (Type.GetTypeCode(t))
+            return (Type.GetTypeCode(t)) switch
             {
-                case TypeCode.Byte:
-                case TypeCode.Decimal:
-                case TypeCode.Double:
-                case TypeCode.Int16:
-                case TypeCode.Int32:
-                case TypeCode.Int64:
-                case TypeCode.SByte:
-                case TypeCode.Single:
-                case TypeCode.UInt16:
-                case TypeCode.UInt32:
-                case TypeCode.UInt64:
-                    return true;
-                default:
-                    return false;
-            }
+                TypeCode.Byte or 
+                TypeCode.Decimal or 
+                TypeCode.Double or 
+                TypeCode.Int16 or 
+                TypeCode.Int32 or 
+                TypeCode.Int64 or 
+                TypeCode.SByte or 
+                TypeCode.Single or 
+                TypeCode.UInt16 or 
+                TypeCode.UInt32 or 
+                TypeCode.UInt64 => true,
+                _ => false,
+            };
         }
 
         public static T FindTypedParentControl<T>(Control control)
@@ -1768,53 +1765,62 @@ namespace SpreadCommander.Common.Code
             }
         }
 
+        //Throws exception if cannot convert
+        public static object ConvertValue(Type type, object value, object defaultValue = null)
+        {
+            if (value == null || value == DBNull.Value)
+                return defaultValue;
+
+            var nullableType = Nullable.GetUnderlyingType(type);
+            if (nullableType != null)
+                type = nullableType;
+
+            if (type == value.GetType())
+                return value;
+
+            if (type.IsEnum)
+            {
+                if (value is string)
+                    return Enum.Parse(type, value as string);
+                else
+                    return Enum.ToObject(type, value);
+            }
+
+            if (!type.IsInterface && type.IsGenericType)
+            {
+                Type innerType = type.GetGenericArguments()[0];
+                object innerValue = ChangeType(value, innerType);
+                return Activator.CreateInstance(type, new object[] { innerValue });
+            }
+
+            if (value is string && type == typeof(Guid))
+                return (object)new Guid(value as string);
+
+            if (value is string && type == typeof(Version))
+                return (object)new Version(value as string);
+
+            if (!(value is IConvertible))
+                return value;
+
+            if (value is string str && type == typeof(Color))
+            {
+                if (Enum.TryParse<KnownColor>(str, out KnownColor knownColor))
+                    return (object)Color.FromKnownColor(knownColor);
+                else
+                    return defaultValue;
+            }
+
+            var result = Convert.ChangeType(value, type, CultureInfo.InvariantCulture);
+            return result;
+        }
+
+        //Returns default value if cannot convert
         public static object ChangeType(Type type, object value, object defaultValue)
         {
             try
             {
-                if (value == null || value == DBNull.Value)
-                    return defaultValue;
-
-                var nullableType = Nullable.GetUnderlyingType(type);
-                if (nullableType != null)
-                    type = nullableType;
-
-                if (type == value.GetType())
-                    return value;
-
-                if (type.IsEnum)
-                {
-                    if (value is string)
-                        return Enum.Parse(type, value as string);
-                    else
-                        return Enum.ToObject(type, value);
-                }
-
-                if (!type.IsInterface && type.IsGenericType)
-                {
-                    Type innerType    = type.GetGenericArguments()[0];
-                    object innerValue = ChangeType(value, innerType);
-                    return Activator.CreateInstance(type, new object[] { innerValue });
-                }
-
-                if (value is string && type == typeof(Guid))
-                    return (object)new Guid(value as string);
-
-                if (value is string && type == typeof(Version))
-                    return (object)new Version(value as string);
-
-                if (!(value is IConvertible))
-                    return value;
-
-                if (value is string str && type == typeof(Color))
-                {
-                    if (Enum.TryParse<KnownColor>(str, out KnownColor knownColor))
-                        return (object)Color.FromKnownColor(knownColor);
-                    else
-                        return defaultValue;
-                }
-
-                return Convert.ChangeType(value, type, CultureInfo.InvariantCulture);
+                var result = ConvertValue(type, value, defaultValue);
+                return result;
             }
             catch (Exception)
             {
@@ -1834,7 +1840,7 @@ namespace SpreadCommander.Common.Code
                 source = listSource.GetList();
             }
 
-            if (!(source is ITypedList typedSource))
+            if (source is not ITypedList typedSource)
                 throw new Exception("Cannot convert data source into data table");
 
             var properties = typedSource.GetItemProperties(null);

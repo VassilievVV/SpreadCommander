@@ -23,7 +23,7 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public override DbConnection CreateConnection(object connectionStringBuilder)
         {
-            if (!(connectionStringBuilder is MySqlConnectionStringBuilder mySqlConnectionStringBuilder))
+            if (connectionStringBuilder is not MySqlConnectionStringBuilder mySqlConnectionStringBuilder)
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = mySqlConnectionStringBuilder.ConnectionString;

@@ -35,25 +35,25 @@ namespace SpreadCommander.Documents.Dialogs
         public static void PrintControl(IWin32Window owner, IPrintable control)
         {
             using PrintableComponentLink link = new PrintableComponentLink() { Component = control };
-            PrintControl(owner, link, link is ISupportLookAndFeel ? ((ISupportLookAndFeel)link).LookAndFeel : null);
+            PrintControl(owner, link, link is ISupportLookAndFeel feel ? feel.LookAndFeel : null);
         }
 
         public static void PrintControl(IWin32Window owner, ListView control)
         {
             using ListViewLink link = new ListViewLink() { ListView = control };
-            PrintControl(owner, link, link is ISupportLookAndFeel ? ((ISupportLookAndFeel)link).LookAndFeel : null);
+            PrintControl(owner, link, link is ISupportLookAndFeel feel ? feel.LookAndFeel : null);
         }
 
         public static void PrintControl(IWin32Window owner, TreeView control)
         {
             using TreeViewLink link = new TreeViewLink() { TreeView = control };
-            PrintControl(owner, link, link is ISupportLookAndFeel ? ((ISupportLookAndFeel)link).LookAndFeel : null);
+            PrintControl(owner, link, link is ISupportLookAndFeel feel ? feel.LookAndFeel : null);
         }
 
         public static void PrintControl(IWin32Window owner, RichTextBox control)
         {
             using RichTextBoxLink link = new RichTextBoxLink() { RichTextBox = control, PrintFormat = RichTextPrintFormat.ClientPageSize };
-            PrintControl(owner, link, link is ISupportLookAndFeel ? ((ISupportLookAndFeel)link).LookAndFeel : null);
+            PrintControl(owner, link, link is ISupportLookAndFeel feel ? feel.LookAndFeel : null);
         }
 
         public static void PrintControl(IWin32Window owner, PictureEdit control)

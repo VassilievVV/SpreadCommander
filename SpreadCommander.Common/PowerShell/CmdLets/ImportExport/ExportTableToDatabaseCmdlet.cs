@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SpreadCommander.Common.PowerShell.CmdLets.Script
+namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 {
     [Cmdlet(VerbsData.Export, "TableToDatabase")]
     public class ExportTableToDatabaseCmdlet : SCCmdlet
@@ -38,6 +38,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
+
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
 
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
@@ -67,7 +70,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         public string PostScript { get; set; }
 
         [Parameter(HelpMessage = "SQL Script to create table. Optional, use when need to have specific table schema.")]
-        public string SqlCreateTable { get; set; }
+        [Alias("SqlCreateTable")]
+        public string CreateTableScript { get; set; }
 
         [Parameter(HelpMessage = "If set - do not create new table to export data into.")]
         public SwitchParameter UseExistingTable { get; set; }
@@ -102,7 +106,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             if (string.IsNullOrWhiteSpace(ConnectionName))
                 throw new Exception("ConnectionName cannot be empty.");
 
-            using var dataReader = GetDataSourceReader(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            using var dataReader = GetDataSourceReader(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
             Connection conn = null;
             bool closeConnection = false;
@@ -146,8 +151,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 if (Replace)
                     exporter.DropTable(conn.DbConnection, TableSchema, TableName);
 
-                if (!string.IsNullOrWhiteSpace(SqlCreateTable))
-                    ExecuteScript(conn, SqlCreateTable);
+                if (!string.IsNullOrWhiteSpace(CreateTableScript))
+                    ExecuteScript(conn, CreateTableScript);
 
                 if (BatchSize.HasValue)
                     exporter.BatchSize = BatchSize.Value;
@@ -170,7 +175,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
                 try
                 {
-                    bool needCreateTable = !UseExistingTable && string.IsNullOrWhiteSpace(SqlCreateTable);
+                    bool needCreateTable = !UseExistingTable && string.IsNullOrWhiteSpace(CreateTableScript);
                     exporter.ExportDataTable(conn.DbConnection, dataReader, 
                         TableSchema, TableName, needCreateTable, CancellationToken.None);
                 }

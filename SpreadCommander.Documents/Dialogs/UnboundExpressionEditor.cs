@@ -174,7 +174,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void PnlExpression_UpdateColumn(object sender, EventArgs e)
         {
-            if (!(bindingColumns.Current is ComboItem column))
+            if (bindingColumns.Current is not ComboItem column)
                 return;
 
             column.Name        = txtName.Text;
@@ -186,7 +186,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void PnlExpression_CancelUpdate(object sender, EventArgs e)
         {
-            if (!(bindingColumns.Current is ComboItem column))
+            if (bindingColumns.Current is not ComboItem column)
                 return;
 
             column.Column.Caption     = column.Name;

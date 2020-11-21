@@ -26,7 +26,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Random
                 double min = Convert.ToDouble(args[0]);
                 double max = Convert.ToDouble(args[1]);
 
-                if (min == double.NaN || max == double.NaN)
+                if (double.IsNaN(min) || double.IsNaN(max))
                     return null;
 
                 lock (_Random)

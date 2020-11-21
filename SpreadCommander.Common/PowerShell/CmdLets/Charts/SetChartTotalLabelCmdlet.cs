@@ -62,7 +62,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         public int? ShadowSize { get; set; }
 
         [Parameter(HelpMessage = "Alignment of the series labels text.")]
-        public StringAlignment TextAlignment { get; set; }
+        public System.Drawing.StringAlignment TextAlignment { get; set; }
 
         [Parameter(HelpMessage = "Pattern specifying the text to be displayed within series labels.")]
         public string TextPattern { get; set; }

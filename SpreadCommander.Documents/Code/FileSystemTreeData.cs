@@ -1,7 +1,4 @@
-﻿#pragma warning disable CRR0047
-#pragma warning disable CRR0048
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,15 +16,13 @@ namespace SpreadCommander.Documents.Code
 	#region BaseFileSystemTreeNode
 	public class BaseFileSystemTreeNode: TreeList.IVirtualTreeListData, IComparable
 	{
-#pragma warning disable CRRSP01 // A misspelled word has been found
-		public static string[] AllowedExtensions = new string[]
+		public static readonly string[] AllowedExtensions = new string[]
 		{
 			".xlsx", ".xls", ".csv", ".txt", ".sql", ".ps", ".ps1", ".csx", ".fsx", ".r", ".py",
 			".docx", ".doc", ".rtf", ".htm", ".html", ".mht", ".odt", ".epub",
 			".png", ".tif", ".tiff", ".jpg", ".jpeg", ".gif", ".bmp",
 			".scdash", ".scchart", ".scpivot"
 		};
-#pragma warning restore CRRSP01 // A misspelled word has been found
 
 		public BaseFileSystemTreeNode(BaseFileSystemTreeNode parentNode)
 		{
@@ -74,8 +69,8 @@ namespace SpreadCommander.Documents.Code
 
 			while (result != null)
 			{
-				if (result is T)
-					return (T)result;
+				if (result is T t)
+					return t;
 
 				result = result.ParentNode;
 			}

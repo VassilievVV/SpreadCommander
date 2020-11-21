@@ -14,7 +14,7 @@ using SpreadCommander.Common.Code;
 namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 {
     [Cmdlet(VerbsData.Export, "DelimitedText")]
-    public class ExportDelimitedText : BaseTextImportExportCmdlet
+    public class ExportDelimitedTextCmdlet : BaseTextImportExportCmdlet
     {
         [Parameter(ValueFromPipeline = true, HelpMessage = "Data source for spreadsheet tables. Data source shall implement interface IList or IListSource and final IList shall implement ITypedList.")]
         public PSObject DataRecord { get; set; }
@@ -24,6 +24,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
 
         [Parameter(HelpMessage = "List of data source columns to export. If not provided - all columns will be exported.")]
         public string[] SelectColumns { get; set; }
+
+        [Parameter(HelpMessage = "Skip listed columns from data source.")]
+        public string[] SkipColumns { get; set; }
 
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
@@ -41,7 +44,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         [Parameter(HelpMessage = "Character or characters used to separate the columns.")]
         public string Separator { get; set; }
 
-        [Parameter(HelpMessage = @"Record separator. Default is /r, /n, /r/n when reading and Environment.NewLine when writing.")]
+        [Parameter(HelpMessage = "Record separator. Default is /r, /n, /r/n when reading and Environment.NewLine when writing.")]
         public string RecordSeparator { get; set; }
 
         [Parameter(HelpMessage = "Character used to quote records containing special characters.)")]
@@ -97,7 +100,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
             if (Overwrite && File.Exists(fileName))
                 File.Delete(fileName);
 
-            using var dataReader = GetDataSourceReader(_Output, DataSource, new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns });
+            using var dataReader = GetDataSourceReader(_Output, DataSource, 
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
             var schema = new SeparatedValueSchema();
 
