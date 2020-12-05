@@ -96,7 +96,9 @@ namespace SpreadCommander.Common
         }
 
 #pragma warning disable CA1822 // Mark members as static
+#pragma warning disable IDE0060 // Remove unused parameter
         public void Save(Stream stream)
+#pragma warning restore IDE0060 // Remove unused parameter
 #pragma warning restore CA1822 // Mark members as static
         {
             //Do nothing

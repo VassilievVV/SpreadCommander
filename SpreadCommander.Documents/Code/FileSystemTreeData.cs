@@ -13,157 +13,298 @@ using SpreadCommander.Common.Code;
 
 namespace SpreadCommander.Documents.Code
 {
-	#region BaseFileSystemTreeNode
-	public class BaseFileSystemTreeNode: TreeList.IVirtualTreeListData, IComparable
-	{
-		public static readonly string[] AllowedExtensions = new string[]
-		{
-			".xlsx", ".xls", ".csv", ".txt", ".sql", ".ps", ".ps1", ".csx", ".fsx", ".r", ".py",
-			".docx", ".doc", ".rtf", ".htm", ".html", ".mht", ".odt", ".epub",
-			".png", ".tif", ".tiff", ".jpg", ".jpeg", ".gif", ".bmp",
-			".scdash", ".scchart", ".scpivot"
-		};
+    #region BaseFileSystemTreeNode
+    public class BaseFileSystemTreeNode: TreeList.IVirtualTreeListData, IComparable, INotifyPropertyChanged
+    {
+        public static readonly string[] AllowedExtensions = new string[]
+        {
+            ".xlsx", ".xls", ".csv", ".txt", ".sql", ".ps", ".ps1", ".csx", ".fsx", ".r", ".py",
+            ".docx", ".doc", ".rtf", ".htm", ".html", ".mht", ".odt", ".epub",
+            ".png", ".tif", ".tiff", ".jpg", ".jpeg", ".gif", ".bmp",
+            ".scdash", ".scchart", ".scpivot"
+        };
 
-		public BaseFileSystemTreeNode(BaseFileSystemTreeNode parentNode)
-		{
-			ParentNode = parentNode;
-		}
+        public BaseFileSystemTreeNode(BaseFileSystemTreeNode parentNode)
+        {
+            ParentNode = parentNode;
+        }
 
-		public BaseFileSystemTreeNode ParentNode	{ get; }
-		public virtual string Text					{ get; set; }
-		public virtual string FullPath				{ get; set; }
-		public BindingList<BaseFileSystemTreeNode> ChildNodes { get; private set; }
+        protected static readonly object LockObject = new object();
 
-		public virtual bool CanDrag    => true;
-		public virtual string DragText => FullPath;
+        public BaseFileSystemTreeNode ParentNode	{ get; }
+        public virtual string Text					{ get; set; }
+        public virtual string FullPath				{ get; set; }
+        public BindingList<BaseFileSystemTreeNode> ChildNodes { get; private set; }
 
-		public virtual BindingList<BaseFileSystemTreeNode> ListChildNodes()
-		{
-			return null;
-		}
+        public event PropertyChangedEventHandler PropertyChanged;
 
-		public void VirtualTreeGetCellValue(VirtualTreeGetCellValueInfo info)
-		{
-			if (info.Node is BaseFileSystemTreeNode node)
-				info.CellData = node.Text;
-		}
+        public virtual bool CanDrag    => true;
+        public virtual string DragText => FullPath;
 
-		public void VirtualTreeGetChildNodes(VirtualTreeGetChildNodesInfo info)
-		{
-			if (info.Node is BaseFileSystemTreeNode node)
-			{
-				node.ChildNodes = node.ListChildNodes();
-				if (node.ChildNodes != null)
-					info.Children = node.ChildNodes;
-			}
-		}
+        public virtual FileSystemInfo Info { get; protected set; }
 
-		public void VirtualTreeSetCellValue(VirtualTreeSetCellValueInfo info)
-		{
-			throw new NotImplementedException();
-		}
+        public virtual BindingList<BaseFileSystemTreeNode> ListChildNodes()
+        {
+            return null;
+        }
 
-		public T FindParentNode<T>() where T : BaseFileSystemTreeNode
-		{
-			BaseFileSystemTreeNode result = this;
+        public virtual void UpdateInfo()
+        {
+            //Do nothing
+        }
 
-			while (result != null)
-			{
-				if (result is T t)
-					return t;
+        public void VirtualTreeGetCellValue(VirtualTreeGetCellValueInfo info)
+        {
+            if (info.Node is BaseFileSystemTreeNode node)
+                info.CellData = node.Text;
+        }
 
-				result = result.ParentNode;
-			}
+        public void VirtualTreeGetChildNodes(VirtualTreeGetChildNodesInfo info)
+        {
+            lock (LockObject)
+            {
+                if (info.Node is BaseFileSystemTreeNode node)
+                {
+                    node.ChildNodes = node.ListChildNodes();
+                    if (node.ChildNodes != null)
+                        info.Children = node.ChildNodes;
+                }
+            }
+        }
 
-			return null;
-		}
+        public void VirtualTreeSetCellValue(VirtualTreeSetCellValueInfo info)
+        {
+            throw new NotImplementedException();
+        }
 
-		public int CompareTo(object obj)
-		{
-			//Place directories above files
-			if (GetType() == obj.GetType())
-				return StringLogicalComparer.Compare(Text, ((BaseFileSystemTreeNode)obj)?.Text);
-			else if (GetType() == typeof(DirectoryTreeNode))
-				return -1;
-			else
-				return 1;
-		}
-	}
-	#endregion
+        public T FindParentNode<T>() where T : BaseFileSystemTreeNode
+        {
+            lock (LockObject)
+            {
+                BaseFileSystemTreeNode result = this;
 
-	#region DirectoryTreeNode
-	public class DirectoryTreeNode: BaseFileSystemTreeNode
-	{
-		public DirectoryInfo Info { get; private set; }
+                while (result != null)
+                {
+                    if (result is T t)
+                        return t;
 
-		public DirectoryTreeNode(DirectoryTreeNode parentNode): base(parentNode)
-		{
-		}
+                    result = result.ParentNode;
+                }
 
-		public DirectoryTreeNode(DirectoryTreeNode parentNode, DirectoryInfo info) : base(parentNode)
-		{
-			Info = info;
-		}
+                return null;
+            }
+        }
 
-		//Top node
-		public DirectoryTreeNode(string directory): base(null)
-		{
-			Info = new DirectoryInfo(directory);
-		}
+        public int CompareTo(object obj)
+        {
+            //Place directories above files
+            if (GetType() == obj.GetType())
+                return StringLogicalComparer.Compare(Text, ((BaseFileSystemTreeNode)obj)?.Text);
+            else if (GetType() == typeof(DirectoryTreeNode))
+                return -1;
+            else
+                return 1;
+        }
 
-		public override string Text { get => Info.Name; set { } }
-		public override string FullPath { get => Info.FullName; set { } }
+        protected void FirePropertyChanged(string propertyName) =>
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-		public bool ShowFiles { get; set; } = true;
+        public static bool IsFileNameAllowed(string fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName))
+                return false;
 
-		public override BindingList<BaseFileSystemTreeNode> ListChildNodes()
-		{
-			var info = new DirectoryInfo(FullPath);
-			if (!info.Exists)
-				return null;
+            string ext  = Path.GetExtension(fileName)?.ToLower();
+            bool result = !string.IsNullOrWhiteSpace(ext) && AllowedExtensions.Contains(ext);
+            return result;
+        }
+    }
+    #endregion
 
-			var result = new List<BaseFileSystemTreeNode>();
+    #region DirectoryTreeNode
+    public class DirectoryTreeNode: BaseFileSystemTreeNode
+    {
+        public override FileSystemInfo Info { get; protected set; }
+        public DirectoryInfo DirectoryInfo => (DirectoryInfo)Info;
 
-			foreach (var folder in info.GetDirectories())
-			{
-				var folderNode = new DirectoryTreeNode(this, folder) { ShowFiles = this.ShowFiles };
-				result.Add(folderNode);
-			}
+        public DirectoryTreeNode(DirectoryTreeNode parentNode): base(parentNode)
+        {
+        }
 
-			if (ShowFiles)
-			{
-				foreach (var file in info.GetFiles())
-				{
-					if (!string.IsNullOrWhiteSpace(file.Extension) && AllowedExtensions.Contains(file.Extension.ToLower()))
-					{
-						var fileNode = new FileTreeNode(this, file);
-						result.Add(fileNode);
-					}
-				}
-			}
+        public DirectoryTreeNode(DirectoryTreeNode parentNode, DirectoryInfo info) : base(parentNode)
+        {
+            Info = info;
+        }
 
-			result.Sort();
-			return new BindingList<BaseFileSystemTreeNode>(result);
-		}
-	}
-	#endregion
+        //Top node
+        public DirectoryTreeNode(string directory): base(null)
+        {
+            Info = new DirectoryInfo(directory);
+        }
 
-	#region FileTreeNode
-	public class FileTreeNode: BaseFileSystemTreeNode
-	{
-		public FileInfo Info { get; private set; }
+        public override string Text { get => Info.Name; set { } }
+        public override string FullPath { get => Info.FullName; set { } }
 
-		public FileTreeNode(DirectoryTreeNode parentNode) : base(parentNode)
-		{
-		}
+        public override void UpdateInfo()
+        {
+            Info = new DirectoryInfo(FullPath);
+        }
 
-		public FileTreeNode(DirectoryTreeNode parentNode, FileInfo info) : base(parentNode)
-		{
-			Info = info;
-		}
+        public bool ShowFiles { get; set; } = true;
 
-		public override string Text { get => Info.Name; set { } }
-		public override string FullPath { get => Info.FullName; set { } }
-	}
-	#endregion
+        public override BindingList<BaseFileSystemTreeNode> ListChildNodes()
+        {
+            var info = new DirectoryInfo(FullPath);
+            if (!info.Exists)
+                return new BindingList<BaseFileSystemTreeNode>();
+
+            var result = new List<BaseFileSystemTreeNode>();
+
+            foreach (var folder in info.GetDirectories())
+            {
+                var folderNode = new DirectoryTreeNode(this, folder) { ShowFiles = this.ShowFiles };
+                result.Add(folderNode);
+            }
+
+            if (ShowFiles)
+            {
+                foreach (var file in info.GetFiles())
+                {
+                    if (!string.IsNullOrWhiteSpace(file.Extension) && AllowedExtensions.Contains(file.Extension.ToLower()))
+                    {
+                        var fileNode = new FileTreeNode(this, file);
+                        result.Add(fileNode);
+                    }
+                }
+            }
+
+            result.Sort();
+            return new BindingList<BaseFileSystemTreeNode>(result);
+        }
+
+        public BaseFileSystemTreeNode FindNode(string name)
+        {
+            lock (LockObject)
+            {
+                var childNodes = ChildNodes;
+                if (childNodes == null)
+                    return null;
+
+                foreach (var childNode in childNodes)
+                {
+                    if (string.Compare(childNode.Text, name, true) == 0)
+                        return childNode;
+                }
+
+                return null;
+            }
+        }
+
+        private int FindNewNameIndex(string name, bool isDirectory)
+        {
+            var childNodes = ChildNodes;
+            if (childNodes == null)
+                return 0;
+
+            int startIndex = 0;
+            var names = new List<string>();
+            foreach (var item in childNodes)
+            {
+                if (item is DirectoryTreeNode)
+                {
+                    startIndex++;
+                    if (isDirectory)
+                        names.Add(item.Text);
+                }
+                else if (!isDirectory)
+                    names.Add(item.Text);
+            }
+
+            Utils.FindSortedStringIndex(names, name, false, out int result);
+            if (!isDirectory)
+                result += startIndex;
+            result = Utils.ValueInRange(result, 0, childNodes.Count);
+            return result;
+        }
+
+        public BaseFileSystemTreeNode AddNode(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                return null;
+
+            lock (LockObject)
+            {
+                var childNodes = ChildNodes;
+                if (childNodes == null)
+                    return null;
+
+                string fullName = Path.Combine(FullPath, name);
+                if (Directory.Exists(fullName))
+                {
+                    var folder     = new DirectoryInfo(fullName);
+                    var folderNode = new DirectoryTreeNode(this, folder) { ShowFiles = this.ShowFiles };
+
+                    int index = FindNewNameIndex(name, true);
+                    childNodes.Insert(index, folderNode);
+
+                    return folderNode;
+                }
+                else if (ShowFiles && File.Exists(fullName))
+                {
+                    string ext = Path.GetExtension(name);
+                    if (!string.IsNullOrWhiteSpace(ext) && AllowedExtensions.Contains(ext.ToLower()))
+                    {
+                        var file     = new FileInfo(fullName);
+                        var fileNode = new FileTreeNode(this, file);
+
+                        int index = FindNewNameIndex(name, false);
+                        childNodes.Insert(index, fileNode);
+
+                        return fileNode;
+                    }
+                }
+
+                return null;
+            }
+        }
+
+        public void RemoveNode(BaseFileSystemTreeNode node)
+        {
+            lock (LockObject)
+            {
+                var childNodes = ChildNodes;
+                if (childNodes == null)
+                    return;
+
+                if (childNodes.Contains(node))
+                    childNodes.Remove(node);
+            }
+        }
+    }
+    #endregion
+
+    #region FileTreeNode
+    public class FileTreeNode: BaseFileSystemTreeNode
+    {
+        public override FileSystemInfo Info { get; protected set; }
+        public FileInfo FileInfo => (FileInfo)Info;
+
+        public FileTreeNode(DirectoryTreeNode parentNode) : base(parentNode)
+        {
+        }
+
+        public FileTreeNode(DirectoryTreeNode parentNode, FileInfo info) : base(parentNode)
+        {
+            Info = info;
+        }
+
+        public override string Text { get => Info.Name; set { } }
+        public override string FullPath { get => Info.FullName; set { } }
+
+        public override void UpdateInfo()
+        {
+            Info = new FileInfo(FullPath);
+        }
+    }
+    #endregion
 }

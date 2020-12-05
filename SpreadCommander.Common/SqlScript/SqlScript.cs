@@ -477,6 +477,10 @@ namespace SpreadCommander.Common.SqlScript
                     }
 
                     commandCounter++;
+
+                    if (string.IsNullOrWhiteSpace(command.Text))
+                        continue;
+
                     var commandTables   = command.GetTables();
                     var formatting      = command.GetTableFormatting();
                     var computedColumns = command.GetTableComputedColumns();
@@ -596,10 +600,16 @@ namespace SpreadCommander.Common.SqlScript
             }
             finally
             {
-                UnprepareConnection(connection);
-
                 if (postProcessTableTasks.Count > 0)
                     Task.WaitAll(postProcessTableTasks.ToArray());
+
+                UnprepareConnection(connection);
+
+                if (connection != initialConnection)
+                {
+                    connection.Close();
+                    connection.Dispose();
+                }
 
                 stopWatch.Stop();
 

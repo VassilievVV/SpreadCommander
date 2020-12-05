@@ -376,6 +376,9 @@ namespace SpreadCommander.Documents.Controls
         private void OpenDocument(object sender, KeyboardActionEventArgs args) => OpenDocument();
         public void OpenDocument()
         {
+            if (string.IsNullOrWhiteSpace(dlgOpen.InitialDirectory))
+                dlgOpen.InitialDirectory = Project.Current.ProjectPath;
+
             if (dlgOpen.ShowDialog(ParentForm) != DialogResult.OK)
                 return;
 

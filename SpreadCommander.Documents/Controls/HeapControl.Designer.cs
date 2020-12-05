@@ -72,7 +72,6 @@
             this.repositoryFolder = new DevExpress.XtraEditors.Repository.RepositoryItemBreadCrumbEdit();
             this.transitionManager = new DevExpress.Utils.Animation.TransitionManager(this.components);
             this.folderBrowser = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
-            this.watcher = new System.IO.FileSystemWatcher();
             this.panelHost = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.gridFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingFiles)).BeginInit();
@@ -83,7 +82,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryFolder2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryMask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryFolder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.watcher)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHost)).BeginInit();
             this.panelHost.SuspendLayout();
             this.SuspendLayout();
@@ -190,6 +188,7 @@
             this.colGroupName.FieldName = "GroupName";
             this.colGroupName.Name = "colGroupName";
             this.colGroupName.OptionsColumn.AllowEdit = false;
+            this.colGroupName.SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom;
             this.colGroupName.Visible = true;
             this.colGroupName.VisibleIndex = 2;
             // 
@@ -465,15 +464,6 @@
             this.folderBrowser.RootFolder = System.Environment.SpecialFolder.MyDocuments;
             this.folderBrowser.Title = "Select folder";
             // 
-            // watcher
-            // 
-            this.watcher.EnableRaisingEvents = true;
-            this.watcher.SynchronizingObject = this;
-            this.watcher.Changed += new System.IO.FileSystemEventHandler(this.Watcher_Changed);
-            this.watcher.Created += new System.IO.FileSystemEventHandler(this.Watcher_Created);
-            this.watcher.Deleted += new System.IO.FileSystemEventHandler(this.Watcher_Deleted);
-            this.watcher.Renamed += new System.IO.RenamedEventHandler(this.Watcher_Renamed);
-            // 
             // panelHost
             // 
             this.panelHost.Controls.Add(this.gridFiles);
@@ -503,7 +493,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryFolder2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryMask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryFolder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.watcher)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelHost)).EndInit();
             this.panelHost.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -541,7 +530,6 @@
 		private DevExpress.XtraGrid.Columns.GridColumn colEnabled;
 		private DevExpress.XtraGrid.Columns.GridColumn colGroupName;
 		private DevExpress.XtraEditors.XtraFolderBrowserDialog folderBrowser;
-		private System.IO.FileSystemWatcher watcher;
 		private DevExpress.XtraEditors.PanelControl panelHost;
 		private DevExpress.XtraBars.Bar toolbarLeft;
 		private DevExpress.XtraBars.BarButtonItem barPreview;

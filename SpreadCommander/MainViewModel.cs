@@ -270,6 +270,12 @@ namespace SpreadCommander
             return true;
         }
 
+        public bool IsFileOpen(string fileName)
+        {
+            var model = GetFileDocument(fileName);
+            return (model != null);
+        }
+
         public BaseDocumentViewModel GetFileDocument(string fileName)
         {
             if (string.IsNullOrWhiteSpace(fileName))

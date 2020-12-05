@@ -78,7 +78,7 @@ namespace SpreadCommander.Documents.Dialogs
                         layoutControlGroupProjects.Text = "Libraries";
                         if (!string.IsNullOrWhiteSpace(projectPath) && Directory.Exists(projectPath))
                             LoadProjectsFromDirectory(projectPath);
-                        else if (bindingLibraries.Current is SavedLibrary library)
+                        else if (lookupLibraries.EditValue is SavedLibrary library)
                             LoadProjectsFromDirectory(library.Directory);
                         break;
                     case LibraryKind.Examples:
@@ -223,14 +223,13 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void LookupLibraries_EditValueChanged(object sender, EventArgs e)
         {
-            ShowLibrary(LibraryKind.Library, (bindingLibraries.Current as SavedLibrary)?.Directory);
+            var library = lookupLibraries.EditValue as SavedLibrary;
+            ShowLibrary(LibraryKind.Library, (library as SavedLibrary)?.Directory);
         }
 
         private void LookupLibraries_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-#pragma warning disable IDE0019 // Use pattern matching
-            var currentLibrary = bindingLibraries.Current as SavedLibrary;
-#pragma warning restore IDE0019 // Use pattern matching
+            var currentLibrary = lookupLibraries.EditValue as SavedLibrary;
 
             switch ((string)e.Button.Tag)
             {

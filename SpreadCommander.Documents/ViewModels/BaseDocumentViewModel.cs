@@ -35,10 +35,19 @@ namespace SpreadCommander.Documents.ViewModels
         public interface IDocumentParent
         {
             IDocument AddNewDocument(BaseDocumentViewModel viewModel, string modelName);
+            
             void SelectDBConnectionByName(string connectionName);
 
             IEnumerable<BaseDocumentViewModel> OpenDocuments { get; }
             BaseDocumentViewModel ActiveDocument { get; }
+
+            bool IsFileOpen(string fileName);
+
+            BaseDocumentViewModel GetFileDocument(string fileName);
+
+            void OpenFile();
+            
+            BaseDocumentViewModel OpenDocumentFile(string fileName);
         }
         #endregion
 

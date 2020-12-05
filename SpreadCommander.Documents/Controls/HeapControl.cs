@@ -157,6 +157,9 @@ namespace SpreadCommander.Documents.Controls
         }
         #endregion
 
+
+        private FileSystemWatcher _Watcher;
+
         public HeapControl()
         {
             InitializeComponent();
@@ -167,6 +170,15 @@ namespace SpreadCommander.Documents.Controls
                 CurrentHeapFolder      = HeapFolderPrefix;
                 _CurrentPreviewControl = gridFiles;
             }
+
+            Disposed += (s, e) =>
+            {
+                if (_Watcher != null)
+                    _Watcher.EnableRaisingEvents = false;
+
+                _Watcher?.Dispose();
+                _Watcher = null;
+            };
         }
 
         public readonly string ProjectDirectory;
@@ -185,19 +197,44 @@ namespace SpreadCommander.Documents.Controls
                 if (Convert.ToString(barFolder.EditValue) != value)
                     barFolder.EditValue = value;
 
-                var folder = Path.Combine(ProjectDirectory, GetHeapFolderPath(value));
+                var folder       = Path.Combine(ProjectDirectory, GetHeapFolderPath(value));
                 var folderExists = !string.IsNullOrWhiteSpace(folder) && Directory.Exists(folder);
 
-                try
+                if (_Watcher != null)
                 {
-                    watcher.EnableRaisingEvents = false;
-                    watcher.Path                = folderExists ? folder : null;
-                    watcher.EnableRaisingEvents = folderExists;
+                    _Watcher.EnableRaisingEvents = false;
 
-                    UpdateFileList();
+                    _Watcher.Changed -= Watcher_Changed;
+                    _Watcher.Created -= Watcher_Created;
+                    _Watcher.Deleted -= Watcher_Deleted;
+                    _Watcher.Renamed -= Watcher_Renamed;
+
+                    _Watcher.Dispose();
+                    _Watcher = null;
                 }
-                catch (Exception)
+
+                if (folderExists)
                 {
+                    try
+                    {
+                        _Watcher = new FileSystemWatcher()
+                        {
+                            Path                  = folder,
+                            IncludeSubdirectories = true
+                        };
+                        _Watcher.Changed += Watcher_Changed;
+                        _Watcher.Created += Watcher_Created;
+                        _Watcher.Deleted += Watcher_Deleted;
+                        _Watcher.Renamed += Watcher_Renamed;
+
+                        _Watcher.EnableRaisingEvents = true;
+
+                        UpdateFileList();
+                    }
+                    catch (Exception)
+                    {
+                        //Do nothing
+                    }
                 }
             }
         }
@@ -394,14 +431,22 @@ namespace SpreadCommander.Documents.Controls
             if (bindingFiles.Current is not FileItem item)
                 return;
 
-            Process.Start(item.FileInfo.FullName);
+            Utils.OpenWithDefaultProgram(item.FileInfo.FullName);
         }
 
         private void ViewFiles_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
         {
             if (e.Value1 is string str1 && e.Value2 is string str2)
             {
-                e.Result  = StringLogicalComparer.Compare(str1, str2);
+                if (str1 == "Others" || str2 == "Others")
+                    e.Result = 0;
+                else if (str1 == "Others")
+                    e.Result = -1;
+                else if (str2 == "Others")
+                    e.Result = 1;
+                else
+                    e.Result  = StringLogicalComparer.Compare(str1, str2);
+
                 e.Handled = true;
             }
         }
@@ -516,9 +561,18 @@ namespace SpreadCommander.Documents.Controls
             return null;
         }
 
+        private static void InvokeMethod(Action action)
+        {
+            var mainForm = Parameters.MainForm;
+            if (mainForm?.IsHandleCreated ?? false)
+                mainForm.Invoke((Delegate)action);
+            else
+                action();   
+        }
+
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
         {
-            Invoke((MethodInvoker)(() =>
+            InvokeMethod(() =>
             {
                 try
                 {
@@ -530,12 +584,12 @@ namespace SpreadCommander.Documents.Controls
                 {
                     //Do nothing
                 }
-            }));
+            });
         }
 
         private void Watcher_Created(object sender, FileSystemEventArgs e)
         {
-            Invoke((MethodInvoker)(() =>
+            InvokeMethod(() =>
             {
                 try
                 {
@@ -546,12 +600,12 @@ namespace SpreadCommander.Documents.Controls
                 {
                     //Do nothing
                 }
-            }));
+            });
         }
 
         private void Watcher_Deleted(object sender, FileSystemEventArgs e)
         {
-            Invoke((MethodInvoker)(() =>
+            InvokeMethod(() =>
             {
                 try
                 {
@@ -563,12 +617,12 @@ namespace SpreadCommander.Documents.Controls
                 {
                     //Do nothing
                 }
-            }));
+            });
         }
 
         private void Watcher_Renamed(object sender, RenamedEventArgs e)
         {
-            Invoke((MethodInvoker)(() =>
+            InvokeMethod(() =>
             {
                 try
                 {
@@ -580,7 +634,7 @@ namespace SpreadCommander.Documents.Controls
                 {
                     //Do nothing
                 }
-            }));
+            });
         }
 
         private void BarFileFirst_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

@@ -13,6 +13,7 @@ using DevExpress.XtraBars.Ribbon;
 using SpreadCommander.Documents.ViewModels;
 using DevExpress.DashboardCommon;
 using SpreadCommander.Common.Code;
+using SpreadCommander.Common;
 
 namespace SpreadCommander.Documents.Console
 {
@@ -181,6 +182,9 @@ namespace SpreadCommander.Documents.Console
 
         private void BarLoadTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(dlgOpen.InitialDirectory))
+                dlgOpen.InitialDirectory = Project.Current.ProjectPath;
+
             if (dlgOpen.ShowDialog(this) != DialogResult.OK)
                 return;
 
@@ -189,6 +193,9 @@ namespace SpreadCommander.Documents.Console
 
         private void BarSaveTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(dlgSave.InitialDirectory))
+                dlgSave.InitialDirectory = Project.Current.ProjectPath;
+
             if (dlgSave.ShowDialog(this) != DialogResult.OK)
                 return;
 

@@ -5,9 +5,9 @@
     <IsPackable>false</IsPackable>
     <TargetFramework>net5.0-windows</TargetFramework>
     <ApplicationIcon>SpreadCommander.ico</ApplicationIcon>
-    <Version>0.9</Version>
-    <AssemblyVersion>0.9.0.0</AssemblyVersion>
-    <FileVersion>0.9.0.0</FileVersion>
+    <Version>0.9.1</Version>
+    <AssemblyVersion>0.9.1.0</AssemblyVersion>
+    <FileVersion>0.9.1.0</FileVersion>
     <Authors>Viatcheslav V. Vassiliev</Authors>
     <Product>Spread Commander</Product>
     <Description>SpreadCommander - application for data analysis. Console version.</Description>

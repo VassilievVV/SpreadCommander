@@ -121,6 +121,18 @@ namespace SpreadCommander.Documents.ViewModels
 
         private SelectedDbConnection _SelectedDbConnection;
 
+        public override void OnDestroy()
+        {
+            base.OnDestroy();
+
+            var dbConnection = Connection?.DbConnection;
+            if (dbConnection != null)
+            {
+                dbConnection.Close();
+                dbConnection.Dispose();
+            }
+        }
+
         public bool CanChangeConnection() => Connection == null || (Connection?.State == ConnectionState.Open || Connection?.State == ConnectionState.Closed);
         public async Task ChangeConnection()
         {

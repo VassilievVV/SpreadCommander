@@ -68,6 +68,7 @@
             DevExpress.Utils.Animation.Transition transition1 = new DevExpress.Utils.Animation.Transition();
             DevExpress.Utils.Animation.FadeTransition fadeTransition1 = new DevExpress.Utils.Animation.FadeTransition();
             DevExpress.Utils.Animation.Transition transition2 = new DevExpress.Utils.Animation.Transition();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             DevExpress.Utils.Animation.Transition transition3 = new DevExpress.Utils.Animation.Transition();
             DevExpress.Utils.Animation.FadeTransition fadeTransition2 = new DevExpress.Utils.Animation.FadeTransition();
             DevExpress.Utils.Controls.SnapOptions snapOptions1 = new DevExpress.Utils.Controls.SnapOptions();
@@ -75,8 +76,7 @@
             this.colAppMenuImageIndex = new DevExpress.XtraGrid.Columns.TileViewColumn();
             this.repositoryItemPictureEdit = new DevExpress.XtraEditors.Repository.RepositoryItemPictureEdit();
             this.splitProjectFiles = new DevExpress.XtraEditors.SplitContainerControl();
-            this.treeProjectFiles = new DevExpress.XtraTreeList.TreeList();
-            this.treeFilesText = new DevExpress.XtraTreeList.Columns.TreeListColumn();
+            this.projectBrowser = new SpreadCommander.Documents.Controls.ProjectBrowser();
             this.imageFiles = new DevExpress.Utils.SvgImageCollection(this.components);
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.popupControlContainerAppMenu = new DevExpress.XtraBars.PopupControlContainer(this.components);
@@ -185,7 +185,6 @@
             this.splitProjectFiles.Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles.Panel2)).BeginInit();
             this.splitProjectFiles.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.treeProjectFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFiles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainerAppMenu)).BeginInit();
@@ -268,58 +267,25 @@
             // 
             // splitProjectFiles.Panel1
             // 
-            this.splitProjectFiles.Panel1.Controls.Add(this.treeProjectFiles);
+            this.splitProjectFiles.Panel1.Controls.Add(this.projectBrowser);
             this.splitProjectFiles.Panel1.Text = "Panel1";
             // 
             // splitProjectFiles.Panel2
             // 
             this.splitProjectFiles.Panel2.Text = "Panel2";
-            this.splitProjectFiles.Size = new System.Drawing.Size(281, 748);
+            this.splitProjectFiles.Size = new System.Drawing.Size(281, 746);
             this.splitProjectFiles.SplitterPosition = 298;
             this.splitProjectFiles.TabIndex = 0;
             // 
-            // treeProjectFiles
+            // projectBrowser
             // 
-            this.treeProjectFiles.AutoFillColumn = this.treeFilesText;
-            this.treeProjectFiles.Columns.AddRange(new DevExpress.XtraTreeList.Columns.TreeListColumn[] {
-            this.treeFilesText});
-            this.treeProjectFiles.Cursor = System.Windows.Forms.Cursors.Default;
-            this.treeProjectFiles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeProjectFiles.Location = new System.Drawing.Point(0, 0);
-            this.treeProjectFiles.Name = "treeProjectFiles";
-            this.treeProjectFiles.OptionsDragAndDrop.DragNodesMode = DevExpress.XtraTreeList.DragNodesMode.Single;
-            this.treeProjectFiles.OptionsView.EnableAppearanceEvenRow = true;
-            this.treeProjectFiles.OptionsView.EnableAppearanceOddRow = true;
-            this.treeProjectFiles.OptionsView.ShowAutoFilterRow = true;
-            this.treeProjectFiles.OptionsView.ShowColumns = false;
-            this.treeProjectFiles.OptionsView.ShowHorzLines = false;
-            this.treeProjectFiles.OptionsView.ShowRowFooterSummary = true;
-            this.treeProjectFiles.OptionsView.ShowVertLines = false;
-            this.treeProjectFiles.Size = new System.Drawing.Size(281, 440);
-            this.treeProjectFiles.StateImageList = this.imageFiles;
-            this.treeProjectFiles.TabIndex = 0;
-            this.treeProjectFiles.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.TreeProjectFiles_GetStateImage);
-            this.treeProjectFiles.FocusedNodeChanged += new DevExpress.XtraTreeList.FocusedNodeChangedEventHandler(this.TreeProjectFiles_FocusedNodeChanged);
-            this.treeProjectFiles.CustomColumnSort += new DevExpress.XtraTreeList.CustomColumnSortEventHandler(this.TreeProjectFiles_CustomColumnSort);
-            this.treeProjectFiles.CustomDrawNodeCell += new DevExpress.XtraTreeList.CustomDrawNodeCellEventHandler(this.TreeProjectFiles_CustomDrawNodeCell);
-            this.treeProjectFiles.DragDrop += new System.Windows.Forms.DragEventHandler(this.TreeProjectFiles_DragDrop);
-            this.treeProjectFiles.DragOver += new System.Windows.Forms.DragEventHandler(this.TreeProjectFiles_DragOver);
-            this.treeProjectFiles.DoubleClick += new System.EventHandler(this.TreeProjectFiles_DoubleClick);
-            this.treeProjectFiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TreeProjectFiles_KeyDown);
-            this.treeProjectFiles.MouseDown += new System.Windows.Forms.MouseEventHandler(this.TreeProjectFiles_MouseDown);
-            this.treeProjectFiles.MouseMove += new System.Windows.Forms.MouseEventHandler(this.TreeProjectFiles_MouseMove);
-            // 
-            // treeFilesText
-            // 
-            this.treeFilesText.Caption = "Text";
-            this.treeFilesText.FieldName = "Text";
-            this.treeFilesText.Name = "treeFilesText";
-            this.treeFilesText.OptionsColumn.AllowEdit = false;
-            this.treeFilesText.OptionsColumn.ReadOnly = true;
-            this.treeFilesText.SortMode = DevExpress.XtraGrid.ColumnSortMode.Custom;
-            this.treeFilesText.UnboundType = DevExpress.XtraTreeList.Data.UnboundColumnType.String;
-            this.treeFilesText.Visible = true;
-            this.treeFilesText.VisibleIndex = 0;
+            this.projectBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.projectBrowser.Location = new System.Drawing.Point(0, 0);
+            this.projectBrowser.Name = "projectBrowser";
+            this.projectBrowser.ShowFiles = true;
+            this.projectBrowser.Size = new System.Drawing.Size(281, 438);
+            this.projectBrowser.TabIndex = 0;
+            this.projectBrowser.SelectedItemChanged += new System.EventHandler<SpreadCommander.Documents.Controls.ProjectBrowser.SelectedItemChangedEventArgs>(this.ProjectBrowser_SelectedItemChanged);
             // 
             // imageFiles
             // 
@@ -391,7 +357,7 @@
             this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewSqlScriptDocument);
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.ribbonControl.ShowSearchItem = true;
-            this.ribbonControl.Size = new System.Drawing.Size(1594, 158);
+            this.ribbonControl.Size = new System.Drawing.Size(1594, 160);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.Merge += new DevExpress.XtraBars.Ribbon.RibbonMergeEventHandler(this.RibbonControl_Merge);
             this.ribbonControl.UnMerge += new DevExpress.XtraBars.Ribbon.RibbonMergeEventHandler(this.RibbonControl_UnMerge);
@@ -989,15 +955,15 @@
             this.navProject.Controls.Add(this.pagePSCmdlets);
             this.navProject.Dock = System.Windows.Forms.DockStyle.Left;
             this.navProject.Images = this.imagesProject;
-            this.navProject.Location = new System.Drawing.Point(0, 158);
+            this.navProject.Location = new System.Drawing.Point(0, 160);
             this.navProject.Name = "navProject";
             this.navProject.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.pageProjectFiles,
             this.pagePSCmdlets,
             this.pageConnections});
-            this.navProject.RegularSize = new System.Drawing.Size(368, 821);
+            this.navProject.RegularSize = new System.Drawing.Size(368, 819);
             this.navProject.SelectedPage = this.pageProjectFiles;
-            this.navProject.Size = new System.Drawing.Size(368, 821);
+            this.navProject.Size = new System.Drawing.Size(368, 819);
             this.navProject.TabIndex = 3;
             this.navProject.Text = "Project";
             this.navProject.TransitionAnimationProperties.FrameCount = 500;
@@ -1042,7 +1008,7 @@
             new DevExpress.XtraBars.Docking.CustomHeaderButton("New folder", false, customHeaderButtonImageOptions4, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, superToolTip4, true, false, true, serializableAppearanceObject4, "NewFolder", -1)});
             this.pageProjectFiles.ImageOptions.ImageIndex = 0;
             this.pageProjectFiles.Name = "pageProjectFiles";
-            this.pageProjectFiles.Size = new System.Drawing.Size(281, 748);
+            this.pageProjectFiles.Size = new System.Drawing.Size(281, 746);
             this.pageProjectFiles.CustomButtonClick += new DevExpress.XtraBars.Docking2010.ButtonEventHandler(this.PageProjectFiles_CustomButtonClick);
             // 
             // pageConnections
@@ -1361,6 +1327,9 @@
             transition2.LineWaitingIndicatorProperties.Description = "";
             transition2.RingWaitingIndicatorProperties.Caption = "";
             transition2.RingWaitingIndicatorProperties.Description = "";
+            pushTransition1.Parameters.FrameCount = 250;
+            pushTransition1.Parameters.FrameInterval = 10000;
+            transition2.TransitionType = pushTransition1;
             transition2.WaitingIndicatorProperties.Caption = "";
             transition2.WaitingIndicatorProperties.Description = "";
             transition3.BarWaitingIndicatorProperties.Caption = "";
@@ -1444,7 +1413,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles.Panel2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitProjectFiles)).EndInit();
             this.splitProjectFiles.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.treeProjectFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageFiles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupControlContainerAppMenu)).EndInit();
@@ -1518,11 +1486,9 @@
 		private DevExpress.XtraBars.Navigation.NavigationPage pageProjectFiles;
 		private DevExpress.XtraBars.Navigation.NavigationPage pageConnections;
 		private DevExpress.XtraEditors.SplitContainerControl splitProjectFiles;
-		private DevExpress.XtraTreeList.TreeList treeProjectFiles;
 		private DevExpress.XtraBars.BarButtonItem barNewProject;
 		private DevExpress.XtraBars.BarButtonItem barOpenProject;
 		private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupProject;
-		private DevExpress.XtraTreeList.Columns.TreeListColumn treeFilesText;
 		private DevExpress.Utils.SvgImageCollection imageFiles;
 		private DevExpress.XtraBars.BarButtonItem barNewDashboardDocument;
 		private DevExpress.XtraBars.BarButtonItem barNewBookDocument;
@@ -1605,6 +1571,7 @@
         private DevExpress.XtraBars.BarButtonItem barAbout;
         private DevExpress.XtraEditors.SimpleButton btnAppMenuRestart;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemAppMenuRestart;
+        private Documents.Controls.ProjectBrowser projectBrowser;
     }
 }
 

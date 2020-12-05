@@ -18,6 +18,10 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 0.9.1-beta
+-Minor updates and fixes.
+-Third-party components updated.
+
 ### Version 0.9-beta
 -**SpreadCommander** now uses standalone .Net framework instead of self-contained .Net framework.
 -Third-party components (*.Net*, *PowerShell*, *DevExpress* etc) are updated to new versions. Many of them are updates to new major versions.

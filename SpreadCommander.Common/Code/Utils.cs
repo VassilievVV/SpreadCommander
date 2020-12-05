@@ -128,15 +128,15 @@ namespace SpreadCommander.Common.Code
             }
         }
 
-        public static string AddUniqueStringSorted(IList<string> lines, string value, StringComparison comparison, bool addValue)
+        public static string AddUniqueStringSorted(IList<string> lines, string value, bool caseSensitive, bool addValue)
         {
             if (string.IsNullOrEmpty(value))
                 value = "1";
 
-            if (!FindSortedStringIndex(lines, value, comparison, out int _))
+            if (!FindSortedStringIndex(lines, value, caseSensitive, out int _))
             {
                 if (addValue)
-                    AddStringToSortedList(lines, value, comparison);
+                    AddStringToSortedList(lines, value, caseSensitive);
                 return value;
             }
 
@@ -157,10 +157,10 @@ namespace SpreadCommander.Common.Code
             while (true)
             {
                 value = $"{baseValue}{num}";
-                if (!FindSortedStringIndex(lines, value, comparison, out _))
+                if (!FindSortedStringIndex(lines, value, caseSensitive, out _))
                 {
                     if (addValue)
-                        AddStringToSortedList(lines, value, comparison);
+                        AddStringToSortedList(lines, value, caseSensitive);
                     return value;
                 }
 
@@ -247,7 +247,7 @@ namespace SpreadCommander.Common.Code
         }
 
         public static bool FindSortedStringIndex(IList<string> list, string value,
-            StringComparison comparison, out int index)
+            bool caseSensitive, out int index)
         {
             int low, high, current, compare;
 
@@ -256,7 +256,8 @@ namespace SpreadCommander.Common.Code
             while (low <= high)
             {
                 current = (low + high) >> 1;
-                compare = string.Compare(list[current], value, comparison);
+                //compare = string.Compare(list[current], value, comparison);
+                compare = StringLogicalComparer.Compare(list[current], value, caseSensitive);
                 if (compare < 0)
                     low = current + 1;
                 else
@@ -274,9 +275,9 @@ namespace SpreadCommander.Common.Code
             return false;
         }
 
-        public static bool AddStringToSortedList(IList<string> list, string value, StringComparison comparison)
+        public static bool AddStringToSortedList(IList<string> list, string value, bool caseSensitive)
         {
-            if (FindSortedStringIndex(list, value, comparison, out int index))
+            if (FindSortedStringIndex(list, value, caseSensitive, out int index))
                 return false;
 
             if (index >= 0)
@@ -2083,6 +2084,17 @@ namespace SpreadCommander.Common.Code
 
                 return true;
             }
+        }
+
+        public static void OpenWithDefaultProgram(string path)
+        {
+            using var fileOpener = new Process();
+
+            string winFollder = Environment.GetFolderPath(Environment.SpecialFolder.Windows);
+
+            fileOpener.StartInfo.FileName  = Path.Combine(winFollder, "explorer");
+            fileOpener.StartInfo.Arguments = Utils.QuoteString(path, "\"");
+            fileOpener.Start();
         }
     }
 }

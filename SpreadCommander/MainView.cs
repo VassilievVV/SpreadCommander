@@ -229,6 +229,9 @@ namespace SpreadCommander
             ApplicationVisualState.Default.SaveSettings();
 
             GridFunctionFactory.UnregisterFunctions();
+
+            Program.MainView    = null;
+            Parameters.MainForm = null;
         }
 
         private void ViewDocuments_DocumentAdded(object sender, DocumentEventArgs e)
@@ -345,17 +348,7 @@ namespace SpreadCommander
 
         public void ReloadProjectFiles()
         {
-            treeProjectFiles.DataSource = null;
-
-            var project = Project.Current;
-
-            if (project == null)
-                return;
-
-            var data = new Code.DirectoryTreeNode(project.ProjectPath);
-
-            treeProjectFiles.DataSource = data;
-            treeProjectFiles.RefreshDataSource();
+            projectBrowser.ProjectChanged();
         }
 
         public void ConnectionListChanged()
@@ -368,163 +361,6 @@ namespace SpreadCommander
             LoadPSCmdlets();
         }
 
-        private void TreeProjectFiles_CustomDrawNodeCell(object sender, DevExpress.XtraTreeList.CustomDrawNodeCellEventArgs e)
-        {
-            if (treeProjectFiles.GetDataRecordByNode(e.Node) is not BaseFileSystemTreeNode node)
-                return;
-
-            if (node is DirectoryTreeNode)
-                e.Appearance.FontStyleDelta = FontStyle.Bold;
-        }
-
-        private void TreeProjectFiles_GetStateImage(object sender, DevExpress.XtraTreeList.GetStateImageEventArgs e)
-        {
-            if (treeProjectFiles.GetDataRecordByNode(e.Node) is not BaseFileSystemTreeNode node)
-                return;
-
-            if (node is DirectoryTreeNode)
-                e.NodeImageIndex = 0;
-            else if (node is FileTreeNode nodeFile)
-            {
-                var ext = Path.GetExtension(nodeFile.Text)?.ToLower();
-                e.NodeImageIndex = ext switch
-                {
-                    ".xlsx" or ".xls"                                                               => 2,
-                    ".csv" or ".txt"                                                                => 3,
-                    ".sql"                                                                          => 4,
-                    ".ps" or ".ps1" or ".csx" or ".fsx" or ".r" or ".py"                            => 5,
-                    ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub" => 6,
-                    ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"            => 7,
-                    ".scdash"                                                                       => 8,
-                    ".pdf"                                                                          => 9,
-                    ".scchart"                                                                      => 10,
-                    ".scpivot"                                                                      => 11,
-                    _                                                                               => 1
-                };
-            }
-
-            /*
-            0	folder
-            1	file
-            2	spreadsheet
-            3	csv
-            4	sql
-            5	script
-            6	document
-            7	image
-            8	dashboard
-            9	pdf
-            10	chart
-            */
-        }
-
-        private void TreeProjectFiles_CustomColumnSort(object sender, CustomColumnSortEventArgs e)
-        {
-            if (e.NodeValue1 is string && e.NodeValue2 is string)
-                e.Result = StringLogicalComparer.Compare(Convert.ToString(e.NodeValue1), Convert.ToString(e.NodeValue2));
-        }
-
-        private void TreeProjectFiles_DoubleClick(object sender, EventArgs e)
-        {
-            var node = treeProjectFiles.FocusedNode;
-
-            if (treeProjectFiles.GetDataRecordByNode(node) is not FileTreeNode fileNode)
-                return;
-
-            if (!string.IsNullOrWhiteSpace(fileNode.FullPath) && File.Exists(fileNode.FullPath))
-            {
-                var fluent = mvvmContext.OfType<MainViewModel>();
-                fluent.ViewModel.OpenDocumentFile(fileNode.FullPath);
-            }
-        }
-
-        private TreeListHitInfo dragFiles_StartHitInfo;
-        private void TreeProjectFiles_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left && Control.ModifierKeys == Keys.None)
-                dragFiles_StartHitInfo = (sender as TreeList).CalcHitInfo(new Point(e.X, e.Y));
-        }
-
-        private void TreeProjectFiles_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left && dragFiles_StartHitInfo != null && dragFiles_StartHitInfo.HitInfoType == HitInfoType.Cell && dragFiles_StartHitInfo.Node != null)
-            {
-                Size dragSize = SystemInformation.DragSize;
-                Rectangle dragRect = new Rectangle(new Point(dragFiles_StartHitInfo.MousePoint.X - dragSize.Width / 2,
-                    dragFiles_StartHitInfo.MousePoint.Y - dragSize.Height / 2), dragSize);
-
-                if (!dragRect.Contains(new Point(e.X, e.Y)))
-                {
-                    if (treeProjectFiles.GetDataRecordByNode(dragFiles_StartHitInfo.Node) is not FileTreeNode node || !node.CanDrag || IsFileOpen(node.FullPath))
-                        return;
-
-                    string text = node.DragText;
-
-                    var dragData = new DataObject();
-                    dragData.SetText(text, TextDataFormat.Text);
-                    dragData.SetText(text, TextDataFormat.UnicodeText);
-                    dragData.SetData(typeof(FileTreeNode), node);
-                    dragData.SetData(typeof(TreeListNode), dragFiles_StartHitInfo.Node);
-
-                    (sender as TreeList).DoDragDrop(dragData, DragDropEffects.Copy | DragDropEffects.Move);
-                }
-            }
-        }
-
-        private void TreeProjectFiles_DragOver(object sender, DragEventArgs e)
-        {
-            if (!(e.Data.GetData(typeof(FileTreeNode)) is FileTreeNode))
-                return;
-
-            var hitInfo = treeProjectFiles.CalcHitInfo(treeProjectFiles.PointToClient(new Point(e.X, e.Y)));
-
-            var treeNode = hitInfo?.Node;
-            if (treeNode == null)
-                return;
-
-            if (!(treeProjectFiles.GetDataRecordByNode(treeNode) is DirectoryTreeNode))
-                return;
-
-            e.Effect = (e.KeyState & 8) == 8 ? DragDropEffects.Copy : DragDropEffects.Move;
-        }
-
-        private void TreeProjectFiles_DragDrop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetData(typeof(FileTreeNode)) is not FileTreeNode sourceNode)
-                return;
-
-            if (e.Data.GetData(typeof(TreeListNode)) is not TreeListNode treeSourceNode)
-                return;
-
-            var hitInfo = treeProjectFiles.CalcHitInfo(treeProjectFiles.PointToClient(new Point(e.X, e.Y)));
-
-            var treeNode = hitInfo?.Node;
-            if (treeNode == null)
-                return;
-
-            if (treeProjectFiles.GetDataRecordByNode(treeNode) is not DirectoryTreeNode dirNode)
-                return;
-
-            var srcFile = sourceNode.FullPath;
-            var dstFile = Path.Combine(dirNode.FullPath, Path.GetFileName(srcFile));
-
-            switch (e.Effect)
-            {
-                case DragDropEffects.Copy:
-                    File.Copy(srcFile, dstFile);
-                    dirNode.ChildNodes.Add(new FileTreeNode(dirNode, new FileInfo(dstFile)));
-                    break;
-                case DragDropEffects.Move:
-                    File.Move(srcFile, dstFile);
-                    dirNode.ChildNodes.Add(new FileTreeNode(dirNode, new FileInfo(dstFile)));
-                    sourceNode.ParentNode.ChildNodes.Remove(sourceNode);
-                    break;
-            }
-
-            treeProjectFiles.RefreshNode(treeNode);
-            treeProjectFiles.RefreshNode(treeSourceNode.ParentNode);
-        }
-
         private BaseViewer _CurrentViewer;
         private void CloseCurrentViewer()
         {
@@ -533,37 +369,6 @@ namespace SpreadCommander
                 _CurrentViewer.Parent = null;
                 _CurrentViewer.Dispose();
                 _CurrentViewer = null;
-            }
-        }
-
-        private void TreeProjectFiles_FocusedNodeChanged(object sender, DevExpress.XtraTreeList.FocusedNodeChangedEventArgs e)
-        {
-            CloseCurrentViewer();
-
-            if (treeProjectFiles.GetDataRecordByNode(e.Node) is not FileTreeNode node)
-                return;
-
-            using (new UsingProcessor(() => transitionManager.StartTransition(splitProjectFiles.Panel2),
-                () => transitionManager.EndTransition()))
-            { 
-                if (node.Info.Length > 10 * 1024 * 1024)    //10MB
-                    _CurrentViewer = new OtherViewer("Big file");
-
-                if (!File.Exists(node.FullPath))
-                    _CurrentViewer = new OtherViewer("File does not exist");
-
-                try
-                { 
-                    if (_CurrentViewer == null)
-                        _CurrentViewer = BaseViewer.CreateViewer(this, node.FullPath, null, null);
-                }
-                catch (Exception ex)
-                {
-                    _CurrentViewer = new OtherViewer("Cannot preview: " + ex.Message);
-                }
-
-                _CurrentViewer.Dock   = DockStyle.Fill;
-                _CurrentViewer.Parent = splitProjectFiles.Panel2;
             }
         }
 
@@ -841,8 +646,10 @@ namespace SpreadCommander
                     ReloadProjectFiles();
                     break;
                 case "NewFolder":
-                    var focusedNode = treeProjectFiles.FocusedNode;
-                    if (focusedNode == null || treeProjectFiles.GetDataRecordByNode(focusedNode) is not DirectoryTreeNode dirNode)
+                    var focusedNode = projectBrowser.SelectedItem;
+                    var dirNode     = focusedNode as DirectoryTreeNode ?? projectBrowser.RootItem;
+
+                    if (dirNode == null)
                     {
                         XtraMessageBox.Show(this, "Please select parent directory node", "No parent directory", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
@@ -867,15 +674,13 @@ namespace SpreadCommander
 
                     Directory.CreateDirectory(fullFolderName);
 
-                    var newDirNode = new DirectoryTreeNode(dirNode, new DirectoryInfo(fullFolderName));
-                    dirNode.ChildNodes.Add(newDirNode);
+                    dirNode.AddNode(folderName);
                     break;
                 case "Delete":
                     DeleteFocusedNode();
                     break;
                 case "Explorer":
-                    Process.Start(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "explorer.exe"),
-                        Utils.QuoteString(Project.Current.ProjectPath, "\""));
+                    Utils.OpenWithDefaultProgram(Project.Current.ProjectPath);
                     break;
             }
         }
@@ -896,11 +701,11 @@ namespace SpreadCommander
 
         private void DeleteFocusedNode()
         {
-            var focusedNode = treeProjectFiles.FocusedNode;
+            var focusedNode = projectBrowser.SelectedItem;
             if (focusedNode == null)
                 return;
 
-            if (treeProjectFiles.GetDataRecordByNode(focusedNode) is DirectoryTreeNode dirNode && dirNode.ParentNode != null)
+            if (focusedNode is DirectoryTreeNode dirNode && dirNode.ParentNode != null)
             {
                 if (HasOpenFilesInDirectory(dirNode.FullPath))
                 {
@@ -914,7 +719,7 @@ namespace SpreadCommander
                     dirNode.ParentNode.ChildNodes.Remove(dirNode);
                 }
             }
-            else if (treeProjectFiles.GetDataRecordByNode(focusedNode) is FileTreeNode fileNode && fileNode.ParentNode != null)
+            else if (focusedNode is FileTreeNode fileNode && fileNode.ParentNode != null)
             {
                 if (IsFileOpen(fileNode.FullPath))
                 {
@@ -928,12 +733,6 @@ namespace SpreadCommander
                     fileNode.ParentNode.ChildNodes.Remove(fileNode);
                 }
             }
-        }
-
-        private void TreeProjectFiles_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && e.Modifiers == Keys.None)
-                DeleteFocusedNode();
         }
 
         private static void UpdateRecentProjects()
@@ -1186,6 +985,40 @@ namespace SpreadCommander
             Process.Start(appPath);
 
             Close();
+        }
+
+        private void ProjectBrowser_SelectedItemChanged(object sender, Documents.Controls.ProjectBrowser.SelectedItemChangedEventArgs e)
+        {
+            CloseCurrentViewer();
+
+            var selectedItem = e.FullPath;
+            if (string.IsNullOrWhiteSpace(selectedItem) || !File.Exists(selectedItem))
+                return;
+
+            using (new UsingProcessor(() => transitionManager.StartTransition(splitProjectFiles.Panel2),
+                () => transitionManager.EndTransition()))
+            {
+                var fileInfo = new FileInfo(selectedItem);
+
+                if (fileInfo.Length > 10 * 1024 * 1024)    //10MB
+                    _CurrentViewer = new OtherViewer("Big file");
+
+                if (!File.Exists(fileInfo.FullName))
+                    _CurrentViewer = new OtherViewer("File does not exist");
+
+                try
+                {
+                    if (_CurrentViewer == null)
+                        _CurrentViewer = BaseViewer.CreateViewer(this, fileInfo.FullName, null, null);
+                }
+                catch (Exception ex)
+                {
+                    _CurrentViewer = new OtherViewer("Cannot preview: " + ex.Message);
+                }
+
+                _CurrentViewer.Dock = DockStyle.Fill;
+                _CurrentViewer.Parent = splitProjectFiles.Panel2;
+            }
         }
     }
 }
