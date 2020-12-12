@@ -18,6 +18,10 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 0.9.2-beta
+-Program and setup are now signed.
+-Third-party components updated.
+
 ### Version 0.9.1-beta
 -Minor updates and fixes.
 -Third-party components updated.
