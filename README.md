@@ -45,9 +45,9 @@ these cmdlets initialize Runspace and RunspacePool to be able to use other **Spr
 - Multiple minor fixes and enhancements.
 
 ### Version 0.8.5-beta
--Updated components to convert data, now it is possible to specify which columns to use.
--Updated third-party components.
--Minor fixes and enhancements.
+- Updated components to convert data, now it is possible to specify which columns to use.
+- Updated third-party components.
+- Minor fixes and enhancements.
 
 Next version will be based on .Net 5 and PowerShell 7.1.
 
