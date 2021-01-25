@@ -19,30 +19,30 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 ## UPDATES
 
 ### Version 0.9.3-beta
--Hash functions added to *Spreadsheet*, *SQLite* and *Grid*.
--Drag/drop from *Spreadsheet* to other applications is added, with Shift+Ctrl+Alt+<drag range>,
+- Hash functions added to *Spreadsheet*, *SQLite* and *Grid*.
+- Drag/drop from *Spreadsheet* to other applications is added, with Shift+Ctrl+Alt+<drag range>,
 and drag/drop from other applications to *Spreadsheet*.
--Cmdlet Invoke-GenericMethod.
--Third-party components updated.
--Minor updates and fixes.
+- Cmdlet Invoke-GenericMethod.
+- Third-party components updated.
+- Minor updates and fixes.
 
 ### Version 0.9.2-beta
--Program and setup are now signed.
--Third-party components updated.
+- Program and setup are now signed.
+- Third-party components updated.
 
 ### Version 0.9.1-beta
--Minor updates and fixes.
--Third-party components updated.
+- Minor updates and fixes.
+- Third-party components updated.
 
 ### Version 0.9-beta
--**SpreadCommander** now uses standalone .Net framework instead of self-contained .Net framework.
--Third-party components (*.Net*, *PowerShell*, *DevExpress* etc) are updated to new versions. Many of them are updates to new major versions.
--In projects folder "bin" is configured for probing referenced *.Net* (.Net Standard, .Net Core, .Net 5) assemblies and unmanaged dlls.
--New cmdlets *Invoke-AsyncCommands*, *New-SCRunspace*, *New-SCRunspacePool* for asynchronous tasks. Unlike other PowerShell cmdlets 
+- **SpreadCommander** now uses standalone .Net framework instead of self-contained .Net framework.
+- Third-party components (*.Net*, *PowerShell*, *DevExpress* etc) are updated to new versions. Many of them are updates to new major versions.
+- In projects folder "bin" is configured for probing referenced *.Net* (.Net Standard, .Net Core, .Net 5) assemblies and unmanaged dlls.
+- New cmdlets *Invoke-AsyncCommands*, *New-SCRunspace*, *New-SCRunspacePool* for asynchronous tasks. Unlike other PowerShell cmdlets 
 these cmdlets initialize Runspace and RunspacePool to be able to use other **SpreadCommander** cmdlets. See new example *Async* for details.
--*Book* can now load PDF files; in this case text is extracted from PDF *without* formatting.
--Cmdlets to import/export text and csv files are enhanced.
--Multiple minor fixes and enhancements.
+- *Book* can now load PDF files; in this case text is extracted from PDF *without* formatting.
+- Cmdlets to import/export text and csv files are enhanced.
+- Multiple minor fixes and enhancements.
 
 ### Version 0.8.5-beta
 -Updated components to convert data, now it is possible to specify which columns to use.
