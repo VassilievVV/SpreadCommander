@@ -258,11 +258,13 @@ namespace SpreadCommander.Documents.ViewModels
                 return;
             }
 
+#pragma warning disable CRRSP06 // A misspelled word has been found
             if (connection is SqlConnection && scriptText.Contains("showplan", StringComparison.CurrentCultureIgnoreCase))
             {
                 MessageService.ShowMessage("To show execution plan script shall not contain word 'showplan'.", "Invalid script", MessageButton.OK);
                 return;
             }
+#pragma warning restore CRRSP06 // A misspelled word has been found
 
             var script = new SqlScript(scriptText);
             if (script.Commands.Count < 0)
@@ -303,7 +305,9 @@ namespace SpreadCommander.Documents.ViewModels
                     {
                         using (var cmd = sqlConnection.CreateCommand())
                         {
+#pragma warning disable CRRSP06 // A misspelled word has been found
                             cmd.CommandText = "set showplan_all on";
+#pragma warning restore CRRSP06 // A misspelled word has been found
                             cmd.ExecuteNonQuery();
                         }
 
@@ -323,7 +327,9 @@ namespace SpreadCommander.Documents.ViewModels
                     finally
                     {
                         using var cmd = sqlConnection.CreateCommand();
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         cmd.CommandText = "set showplan_all off";
+#pragma warning restore CRRSP06 // A misspelled word has been found
                         cmd.ExecuteNonQuery();
                     }
                 }, cancellationToken).ConfigureAwait(true);

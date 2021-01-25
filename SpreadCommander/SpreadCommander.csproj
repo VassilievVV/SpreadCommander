@@ -37,11 +37,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="20.2.4" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="20.2.4" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="20.2.4-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.BonusSkins" Version="20.2.4-ctp" />
-    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="20.2.4-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Core" Version="20.2.5" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Document.Processor" Version="20.2.5" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win" Version="20.2.5-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.BonusSkins" Version="20.2.5-ctp" />
+    <PackageReference Include="DevExpress.WindowsDesktop.Win.Charts" Version="20.2.5-ctp" />
   </ItemGroup>
 
   <ItemGroup>

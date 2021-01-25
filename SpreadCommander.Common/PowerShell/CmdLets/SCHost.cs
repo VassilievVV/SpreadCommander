@@ -49,7 +49,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             return result;
         }
 
-        private static object DoInvokeGenericMethod(Type type, object inputObject, string methodName, Type[] genericTypes, object[] argumentList, int methodIndex)
+        internal static object DoInvokeGenericMethod(Type type, object inputObject, string methodName, Type[] genericTypes, object[] argumentList, int methodIndex)
         {
             if (string.IsNullOrWhiteSpace(methodName))
                 throw new ArgumentNullException(nameof(methodName));

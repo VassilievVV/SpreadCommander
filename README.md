@@ -18,6 +18,14 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 0.9.3-beta
+-Hash functions added to *Spreadsheet*, *SQLite* and *Grid*.
+-Drag/drop from *Spreadsheet* to other applications is added, with Shift+Ctrl+Alt+<drag range>,
+and drag/drop from other applications to *Spreadsheet*.
+-Cmdlet Invoke-GenericMethod.
+-Third-party components updated.
+-Minor updates and fixes.
+
 ### Version 0.9.2-beta
 -Program and setup are now signed.
 -Third-party components updated.

@@ -40,6 +40,8 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new MD5Function());
             connection.BindFunction(new SHA1Function());
             connection.BindFunction(new SHA256Function());
+            connection.BindFunction(new SHA384Function());
+            connection.BindFunction(new SHA512Function());
             //Path
             connection.BindFunction(new PathChangeExtensionFunction());
             connection.BindFunction(new PathCombineFunction());
@@ -92,7 +94,6 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new SkewnessFunction());
             connection.BindFunction(new StdevFunction());
             connection.BindFunction(new VarianceFunction());
-
             connection.BindFunction(new CovarianceFunction());
             connection.BindFunction(new PearsonCorrelationFunction());
             connection.BindFunction(new PopulationCovarianceFunction());

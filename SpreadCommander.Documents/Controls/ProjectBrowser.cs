@@ -239,6 +239,7 @@ namespace SpreadCommander.Documents.Controls
                 return;
 
             e.Effect = (e.KeyState & 8) == 8 ? DragDropEffects.Copy : DragDropEffects.Move;
+            e.Effect &= e.AllowedEffect;
         }
 
         private void TreeProjectFiles_DragDrop(object sender, DragEventArgs e)

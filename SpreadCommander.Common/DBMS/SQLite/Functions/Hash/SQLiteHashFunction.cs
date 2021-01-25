@@ -25,7 +25,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
 
         public override object Invoke(object[] args)
         {
-            if (args == null || args.Length != 1)
+            if (args == null || args.Length < 1)
                 return null;
 
             try
@@ -34,7 +34,11 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
                 if (value == null)
                     return null;
 
-                var data = GetBytes(value);
+                var encoding = Encoding.UTF8;
+                if (args.Length >= 2)
+                    encoding = GetEncoding(Convert.ToString(args[1]));
+
+                var data = GetBytes(value, encoding);
 
                 if (data == null)
                     return null;
@@ -48,6 +52,40 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
             }
         }
 
+        protected virtual Encoding GetEncoding(string strEncoding)
+        {
+            Encoding encoding = Encoding.UTF8;
+
+            switch (strEncoding?.ToLower())
+            {
+                case "unicode":
+                    encoding = Encoding.Unicode;
+                    break;
+                case "utf8":
+                case "utf-8":
+                    encoding = Encoding.UTF8;
+                    break;
+                case "utf32":
+                case "utf-32":
+                    encoding = Encoding.UTF32;
+                    break;
+                case "ascii":
+                    encoding = Encoding.ASCII;
+                    break;
+                default:
+                    if (!string.IsNullOrWhiteSpace(strEncoding))
+                    {
+                        if (int.TryParse(strEncoding, out int codePage))
+                            encoding = Encoding.GetEncoding(codePage);
+                        else
+                            encoding = Encoding.GetEncoding(strEncoding);
+                    }
+                    break;
+            }
+
+            return encoding;
+        }
+
         protected virtual byte[] ComputeHash(byte[] data)
         {
             lock (_Hash)
@@ -57,7 +95,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
             }
         }
 
-        protected virtual byte[] GetBytes(object value)
+        protected virtual byte[] GetBytes(object value, Encoding encoding)
         {
             byte[] data = null;
             if (value is byte[] v)
@@ -115,7 +153,9 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
                         data = BitConverter.GetBytes(Convert.ToDouble(value));
                         break;
                     case TypeCode.String:
-                        data = Encoding.UTF8.GetBytes(Convert.ToString(value));
+                        if (encoding == null)
+                            encoding = Encoding.UTF8;
+                        data = encoding.GetBytes(Convert.ToString(value));
                         break;
                     default:
                         break;

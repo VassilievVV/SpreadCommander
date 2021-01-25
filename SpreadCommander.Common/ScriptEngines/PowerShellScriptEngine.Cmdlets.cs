@@ -34,6 +34,7 @@ namespace SpreadCommander.Common.ScriptEngines
             {
                 //Common
                 typeof(ConvertSCPathCmdlet),
+                typeof(InvokeGenericMethodCmdlet),
 
                 //Book
                 typeof(WriteTextCmdlet),

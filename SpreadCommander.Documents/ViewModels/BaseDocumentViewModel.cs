@@ -66,7 +66,7 @@ namespace SpreadCommander.Documents.ViewModels
         public BaseDocumentViewModel()
         {
             _ID    = DocumentCounter++;
-            _Title = $"Document {_ID++}";
+            _Title = $"Document {_ID}";
         }
 
         protected IDialogService DialogService                                     => this.GetService<IDialogService>();

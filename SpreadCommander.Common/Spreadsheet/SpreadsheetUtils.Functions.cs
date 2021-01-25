@@ -1,6 +1,10 @@
 ﻿using DevExpress.Spreadsheet;
 using DevExpress.Spreadsheet.Functions;
 using SpreadCommander.Common.Spreadsheet.Functions;
+using SpreadCommander.Common.Spreadsheet.Functions.Hash;
+using SpreadCommander.Common.Spreadsheet.Functions.Path;
+using SpreadCommander.Common.Spreadsheet.Functions.Regex;
+using SpreadCommander.Common.Spreadsheet.Functions.String;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +35,13 @@ namespace SpreadCommander.Common.Spreadsheet
                     new PathGetDirectoryNameFunction(),
                     new PathGetExtensionFunction(),
                     new PathGetFileNameFunction(),
-                    new PathGetFileNameWithoutExtensionFunction()
+                    new PathGetFileNameWithoutExtensionFunction(),
+
+                    new HashMD5Function(),
+                    new HashSHA1Function(),
+                    new HashSHA256Function(),
+                    new HashSHA384Function(),
+                    new HashSHA512Function()
                 });
             }
 

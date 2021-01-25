@@ -38,7 +38,7 @@
           RegexIsMatch RegexMatch RegexNamedMatch RegexReplace StringFormat PathChangeExtension PathCombine PathGetDirectoryName PathGetFileExtension PathGetFileName PathGetFileNameWithout Extension
           RandUniform RandNormal RandTriangular
           
-          Acos Asin Atan2 Atan Ceiling Cos Cosh Exp Floor IEEERemainder Log10 Log Pow Sign Sin Sinh Sqrt Tan Tanh Truncate 
+          Acos Asin Atan2 Atan Ceiling Cos Cosh Exp Floor Hex IEEERemainder Log10 Log Pow Sign Sin Sinh Sqrt Tan Tanh Truncate 
           
           Logical LogicalCI
           
@@ -46,7 +46,7 @@
           
           COVAR CORR COVARP CORR_Spearman
           
-          MD5 SHA1 SHA256
+          MD5 SHA1 SHA256 SHA384 SHA512
         </Patterns>
       </PatternGroup>
       <PatternGroup Name="C5" Style="C5" CaseSensitive="false" NormalizeCase="false">

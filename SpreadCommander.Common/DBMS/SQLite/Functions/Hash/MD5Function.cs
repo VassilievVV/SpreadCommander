@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
 {
-    [SQLiteFunction(Name = "MD5", Arguments = 1, FuncType = FunctionType.Scalar)]
+    [SQLiteFunction(Name = "MD5", Arguments = -1, FuncType = FunctionType.Scalar)]
     public class MD5Function : SQLiteHashFunction
     {
         public MD5Function() : base()

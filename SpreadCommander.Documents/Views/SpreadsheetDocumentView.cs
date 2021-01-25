@@ -140,6 +140,8 @@ namespace SpreadCommander.Documents.Views
         {
             SpreadsheetUtils.InitializeWorkbook(Spreadsheet.Document);
 
+            Spreadsheet.Modified = false;
+
             var fluent = mvvmContext.OfType<SpreadsheetDocumentViewModel>();
             fluent.ViewModel.FileName = Spreadsheet.Document.Options.Save.CurrentFileName;
             fluent.ViewModel.Modified = false;
@@ -147,6 +149,8 @@ namespace SpreadCommander.Documents.Views
 
         private void Spreadsheet_DocumentSaved(object sender, EventArgs e)
         {
+            Spreadsheet.Modified = false;
+
             var fluent = mvvmContext.OfType<SpreadsheetDocumentViewModel>();
             fluent.ViewModel.FileName = Spreadsheet.Document.Options.Save.CurrentFileName;
             fluent.ViewModel.Modified = false;

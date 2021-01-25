@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.DBMS.SQLite.Functions.Hash
 {
-    [SQLiteFunction(Name = "SHA1", Arguments = 1, FuncType = FunctionType.Scalar)]
+    [SQLiteFunction(Name = "SHA1", Arguments = -1, FuncType = FunctionType.Scalar)]
     public class SHA1Function : SQLiteHashFunction
     {
         public SHA1Function() : base()
