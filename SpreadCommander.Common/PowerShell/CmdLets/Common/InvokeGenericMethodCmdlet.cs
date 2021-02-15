@@ -16,16 +16,16 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Common
         [Parameter(HelpMessage = "Type of the object. Mandatory for static methods.")]
         public Type Type { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Method name to invoke.")]
+        [Parameter(Mandatory = true, Position = 0, HelpMessage = "Method name to invoke.")]
         public string MethodName { get; set; }
 
-        [Parameter(Mandatory = true, HelpMessage = "Generic types of the method to invoke.")]
+        [Parameter(Mandatory = true, Position = 1, HelpMessage = "Generic types of the method to invoke.")]
         public Type[] GenericTypes { get; set; }
 
-        [Parameter(HelpMessage = "List of arguments to invoke.")]
+        [Parameter(Position = 3, HelpMessage = "List of arguments to invoke.")]
         public object[] Arguments { get; set; }
 
-        [Parameter(HelpMessage = "Method index in case there are multiple methods with same generic types.")]
+        [Parameter(Position = 4, HelpMessage = "Method index in case there are multiple methods with same generic types.")]
         public int MethodIndex { get; set; }
 
 
