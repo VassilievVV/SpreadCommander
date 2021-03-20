@@ -258,13 +258,11 @@ namespace SpreadCommander.Documents.ViewModels
                 return;
             }
 
-#pragma warning disable CRRSP06 // A misspelled word has been found
             if (connection is SqlConnection && scriptText.Contains("showplan", StringComparison.CurrentCultureIgnoreCase))
             {
                 MessageService.ShowMessage("To show execution plan script shall not contain word 'showplan'.", "Invalid script", MessageButton.OK);
                 return;
             }
-#pragma warning restore CRRSP06 // A misspelled word has been found
 
             var script = new SqlScript(scriptText);
             if (script.Commands.Count < 0)
@@ -305,9 +303,7 @@ namespace SpreadCommander.Documents.ViewModels
                     {
                         using (var cmd = sqlConnection.CreateCommand())
                         {
-#pragma warning disable CRRSP06 // A misspelled word has been found
                             cmd.CommandText = "set showplan_all on";
-#pragma warning restore CRRSP06 // A misspelled word has been found
                             cmd.ExecuteNonQuery();
                         }
 
@@ -316,9 +312,9 @@ namespace SpreadCommander.Documents.ViewModels
 
                         using (var cmd = sqlConnection.CreateCommand())
                         {
-                            cmd.CommandText = cmdText;
-                            using SqlDataReader reader = cmd.ExecuteReader();
-                            using LoadAdapter adapter = new LoadAdapter();
+                            cmd.CommandText    = cmdText;
+                            using var reader   = cmd.ExecuteReader();
+                            using var adapter  = new LoadAdapter();
                             tableExecutionPlan = new DataTable("ExecutionPlan");
                             adapter.FillSchema(tableExecutionPlan, SchemaType.Source, reader);
                             adapter.Fill(tableExecutionPlan, reader);
@@ -327,9 +323,7 @@ namespace SpreadCommander.Documents.ViewModels
                     finally
                     {
                         using var cmd = sqlConnection.CreateCommand();
-#pragma warning disable CRRSP06 // A misspelled word has been found
                         cmd.CommandText = "set showplan_all off";
-#pragma warning restore CRRSP06 // A misspelled word has been found
                         cmd.ExecuteNonQuery();
                     }
                 }, cancellationToken).ConfigureAwait(true);
@@ -366,10 +360,10 @@ namespace SpreadCommander.Documents.ViewModels
                         if (cancellationToken.IsCancellationRequested)
                             return;
 
-                        using var cmd = sqliteConnection.CreateCommand();
-                        cmd.CommandText = $"explain query plan\r\n{cmdText}";
-                        using DbDataReader reader = cmd.ExecuteReader();
-                        using LoadAdapter adapter = new LoadAdapter();
+                        using var cmd      = sqliteConnection.CreateCommand();
+                        cmd.CommandText    = $"explain query plan\r\n{cmdText}";
+                        using var reader   = cmd.ExecuteReader();
+                        using var adapter  = new LoadAdapter();
                         tableExecutionPlan = new DataTable("ExecutionPlan");
                         //adapter.FillSchema(tableExecutionPlan, SchemaType.Source, reader);
                         adapter.Fill(tableExecutionPlan, reader);
@@ -405,10 +399,10 @@ namespace SpreadCommander.Documents.ViewModels
                         if (cancellationToken.IsCancellationRequested)
                             return;
 
-                        using var cmd = mySqlConnection.CreateCommand();
-                        cmd.CommandText = $"set session transaction read only;\r\nexplain\r\n{cmdText}";
-                        using DbDataReader reader = cmd.ExecuteReader();
-                        using LoadAdapter adapter = new LoadAdapter();
+                        using var cmd      = mySqlConnection.CreateCommand();
+                        cmd.CommandText    = $"set session transaction read only;\r\nexplain\r\n{cmdText}";
+                        using var reader   = cmd.ExecuteReader();
+                        using var adapter  = new LoadAdapter();
                         tableExecutionPlan = new DataTable("ExecutionPlan");
                         //adapter.FillSchema(tableExecutionPlan, SchemaType.Source, reader);
                         adapter.Fill(tableExecutionPlan, reader);

@@ -27,7 +27,7 @@ namespace SpreadCommander.Documents.Dialogs
             base.OnLoad(e);
         }
 
-    protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
+        protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
     }
 
     public class BaseRibbonForm : DevExpress.XtraBars.Ribbon.RibbonForm
@@ -43,6 +43,6 @@ namespace SpreadCommander.Documents.Dialogs
             base.OnLoad(e);
         }
 
-    protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
+        protected override FormShowMode ShowMode => FormShowMode.AfterInitialization;
     }
 }

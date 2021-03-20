@@ -57,7 +57,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Path
                     return string.Empty;
 
                 var result = IO.Path.ChangeExtension(path, ext);
-                return result;
+                return result ?? string.Empty;
             }
             catch (Exception)
             {

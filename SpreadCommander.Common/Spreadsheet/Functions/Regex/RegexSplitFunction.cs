@@ -72,7 +72,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 {
                     var result = new CellValue[split.Length, 1];
                     for (int i = 0; i < split.Length; i++)
-                        result[i, 0] = split[i];
+                        result[i, 0] = split[i] ?? string.Empty;
 
                     return result;
                 }
@@ -80,7 +80,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 {
                     var result = new CellValue[1, split.Length];
                     for (int i = 0; i < split.Length; i++)
-                        result[0, i] = split[i];
+                        result[0, i] = split[i] ?? string.Empty;
 
                     return result;
                 }

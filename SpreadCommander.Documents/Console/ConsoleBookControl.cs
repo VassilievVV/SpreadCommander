@@ -52,6 +52,9 @@ namespace SpreadCommander.Documents.Console
             Ribbon.SelectedPage = homeRibbonPage1;
 
             ProjectUriStreamProvider.RegisterProvider(Editor);
+
+            //Disable removing styles
+            barRemoveStyle.Visibility = BarItemVisibility.Never;
         }
 
         public Document Document      => Editor?.Document;
@@ -277,13 +280,39 @@ namespace SpreadCommander.Documents.Console
                 barItem.ItemClick += (s, args) =>
                 {
                     var name = args.Item.Caption;
+                    var style = Editor.Document.ParagraphStyles[name];
+
+                    if (style == null)
+                    {
+                        XtraMessageBox.Show(this, "Style does not exist in document", "Cannot find style",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    var paragraph = Editor.Document.Paragraphs.FirstOrDefault(p => p.Style == style);
+                    if (paragraph != null)
+                    {
+                        XtraMessageBox.Show(this, "Cannot delete style that is using in document.", "Style is using",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     if (XtraMessageBox.Show(this, $"Do you want to delete style '{name}'?", "Confirm delete",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.Yes)
                         return;
 
-                    var style = Editor.Document.ParagraphStyles[name];
                     if (style != null)
-                        Editor.Document.ParagraphStyles.Delete(style);
+                    {
+                        try
+                        {
+                            Editor.Document.ParagraphStyles.Delete(style);
+                        }
+                        catch (Exception ex)
+                        {
+                            XtraMessageBox.Show(this, ex.Message, "Cannot delete style",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
                 };
                 popupBookStyles.AddItem(barItem);
             }

@@ -47,8 +47,8 @@ namespace SpreadCommander.Common.ScriptEngines
         private Stream _WinPTY_StdIN         = null;
         private Stream _WinPTY_StdOUT        = null;
         private Stream _WinPTY_StdERR        = null;
-        private string _ScriptTempFile           = null;
-        private readonly object _SyncObject  = new object();
+        private string _ScriptTempFile       = null;
+        private readonly object _SyncObject  = new();
 
         [DllImport("kernel32.dll", SetLastError = true)]
         private static extern int GetProcessId(IntPtr hWnd);

@@ -60,7 +60,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 var matchNum  = Convert.ToInt32(parameters.Count > 3 ? parameters[3].NumericValue : 0);
 
                 if (input == null || pattern == null || string.IsNullOrWhiteSpace(groupName))
-                    return null;
+                    return string.Empty;
 
                 var match = RE.Regex.Match(input, pattern, RegexOptions.ExplicitCapture);
                 int counter = 0;
@@ -71,13 +71,13 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 }
 
                 if (!match.Success)
-                    return null;
+                    return string.Empty;
 
                 var group = match.Groups[groupName];
                 if (!group.Success)
-                    return null;
+                    return string.Empty;
 
-                return group.Value;
+                return group.Value ?? string.Empty;
             }
             catch (Exception)
             {

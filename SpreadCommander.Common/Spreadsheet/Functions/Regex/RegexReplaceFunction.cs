@@ -56,10 +56,12 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 var pattern     = parameters[1].ToString();
                 var replacement = parameters[2].ToString() ?? string.Empty;
 
-                if (input == null || pattern == null)
-                    return null;
+                if (input == null)
+                    return string.Empty;
+                if (pattern == null)
+                    return input;
 
-                var result = RE.Regex.Replace(input, pattern, replacement);
+                var result = RE.Regex.Replace(input, pattern, replacement) ?? string.Empty;
                 return result;
             }
             catch (Exception)

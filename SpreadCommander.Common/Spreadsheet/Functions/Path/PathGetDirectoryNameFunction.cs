@@ -51,7 +51,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Path
                 var path = parameters[0].ToString();
 
                 var result = IO.Path.GetDirectoryName(path);
-                return result;
+                return result ?? string.Empty;
             }
             catch (Exception)
             {

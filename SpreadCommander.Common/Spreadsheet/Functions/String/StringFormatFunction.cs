@@ -67,7 +67,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.String
                 }
 
                 var result = string.Format(format, parts.ToArray());
-                return result;
+                return result ?? string.Empty;
             }
             catch (Exception)
             {

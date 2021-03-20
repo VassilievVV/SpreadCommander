@@ -51,7 +51,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Path
                     parts.Add(parameter.ToString() ?? string.Empty);
 
                 var result = IO.Path.Combine(parts.ToArray());
-                return result;
+                return result ?? string.Empty;
             }
             catch (Exception)
             {

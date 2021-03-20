@@ -102,7 +102,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Hash
 
                 var data = encoding.GetBytes(value);
                 if (data == null)
-                    return null;
+                    return string.Empty;
 
                 var hash   = ComputeHash(data);
                 var result = Convert.ToHexString(hash);

@@ -95,7 +95,8 @@ namespace SpreadCommander
         protected IMessageBoxService MessageService                        => this.GetService<IMessageBoxService>();
         //protected IDispatcherService DispatcherService                     => this.GetService<IDispatcherService>();
         protected ISCDispatcherService SCDispatcherService                 => this.GetService<ISCDispatcherService>();
-        protected IOpenFileDialogService OpenFileService                   => this.GetService<IOpenFileDialogService>();
+        protected IOpenFileDialogService OpenFileService                   => this.GetService<IOpenFileDialogService>("OpenSingleFile");
+        protected IOpenFileDialogService OpenMultiFilesService             => this.GetService<IOpenFileDialogService>("OpenMultiFiles");
         protected ISaveFileDialogService SaveFileService                   => this.GetService<ISaveFileDialogService>();
         protected IFolderBrowserDialogService BrowseFolderService          => this.GetService<IFolderBrowserDialogService>();
         protected ISpreadsheetEditTableService SpreadsheetEditTableService => this.GetService<ISpreadsheetEditTableService>();
@@ -330,9 +331,16 @@ namespace SpreadCommander
                 //.Append("F# script files (*.fsx)|*.fsx|")
                 .Append("Picture (*.png;*.jpg;*.gif;*.tif;*.bmp)|*.png;*.jpg;*.gif;*.tif;*.bmp");
 
-            OpenFileService.Filter = filter.ToString();
-            if (OpenFileService.ShowDialog())
-                OpenDocumentFile(OpenFileService.File.GetFullName());
+            OpenMultiFilesService.Filter = filter.ToString();
+            
+            //if (OpenFileService.ShowDialog())
+            //    OpenDocumentFile(OpenFileService.File.GetFullName());
+
+            if (OpenMultiFilesService.ShowDialog())
+            {
+                foreach (var file in OpenMultiFilesService.Files)
+                    OpenDocumentFile(file.GetFullName());
+            }
         }
 
         public BaseDocumentViewModel OpenDocumentFile(string fileName)

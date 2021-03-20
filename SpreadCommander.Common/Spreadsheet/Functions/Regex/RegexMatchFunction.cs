@@ -57,7 +57,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 var matchNum = Convert.ToInt32(parameters.Count > 2 ? parameters[2].NumericValue : 0);
 
                 if (input == null || pattern == null)
-                    return null;
+                    return string.Empty;
 
                 var match   = RE.Regex.Match(input, pattern, RegexOptions.ExplicitCapture);
                 int counter = 0;
@@ -68,9 +68,9 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 }
 
                 if (!match.Success)
-                    return null;
+                    return string.Empty;
 
-                return match.Value;
+                return match.Value ?? string.Empty;
             }
             catch (Exception)
             {

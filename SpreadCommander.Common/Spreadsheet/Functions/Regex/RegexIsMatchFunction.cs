@@ -54,7 +54,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
                 var pattern  = parameters[1]?.ToString();
 
                 if (input == null || pattern == null)
-                    return null;
+                    return false;
 
                 var result = RE.Regex.IsMatch(input, pattern, RegexOptions.ExplicitCapture);
                 return result;

@@ -343,8 +343,8 @@ namespace SpreadCommander.Common.Code
 
         public static string GetManifestResourceString(Assembly assembly, string ResourceName)
         {
-            using Stream s = assembly.GetManifestResourceStream(ResourceName);
-            StreamReader sr = new StreamReader(s);
+            using var s = assembly.GetManifestResourceStream(ResourceName);
+            var sr      = new StreamReader(s);
             return sr.ReadToEnd();
         }
 
@@ -383,7 +383,7 @@ namespace SpreadCommander.Common.Code
             if (string.IsNullOrEmpty(str))
                 return Array.Empty<string>();
 
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
             int Start, i;
             string value;
@@ -516,16 +516,16 @@ namespace SpreadCommander.Common.Code
 
         public static string GetEmbeddedResourceString(Assembly Assembly, string ResourceName)
         {
-            Stream s = GetEmbeddedResource(Assembly, ResourceName);
-            using StreamReader sr = new StreamReader(s);
+            var s        = GetEmbeddedResource(Assembly, ResourceName);
+            using var sr = new StreamReader(s);
             return sr.ReadToEnd();
         }
 
         public static string[] GetEmbeddedResourceStrings(Assembly Assembly, string ResourceName)
         {
-            Stream s = GetEmbeddedResource(Assembly, ResourceName);
-            List<string> result = new List<string>();
-            using (StreamReader sr = new StreamReader(s))
+            var s      = GetEmbeddedResource(Assembly, ResourceName);
+            var result = new List<string>();
+            using (var sr = new StreamReader(s))
             {
                 while (true)
                 {
@@ -647,7 +647,7 @@ namespace SpreadCommander.Common.Code
 
         private static XmlWriterSettings CreateXmlWriterSettings()
         {
-            XmlWriterSettings writerSettings = new XmlWriterSettings()
+            var writerSettings = new XmlWriterSettings()
             {
                 Encoding            = Encoding.UTF8,
                 Indent              = true,
@@ -661,9 +661,9 @@ namespace SpreadCommander.Common.Code
 
         public static void SaveXmlDocument(XmlDocument doc, Stream stream)
         {
-            XmlWriterSettings writerSettings = CreateXmlWriterSettings();
+            var writerSettings = CreateXmlWriterSettings();
 
-            XmlWriter writer = XmlWriter.Create(stream, writerSettings);
+            var writer = XmlWriter.Create(stream, writerSettings);
             try
             {
                 doc.Save(writer);
@@ -676,9 +676,9 @@ namespace SpreadCommander.Common.Code
 
         public static void SaveXmlDocument(XmlDocument doc, string fileName)
         {
-            XmlWriterSettings writerSettings = CreateXmlWriterSettings();
+            var writerSettings = CreateXmlWriterSettings();
 
-            XmlWriter writer = XmlWriter.Create(fileName, writerSettings);
+            var writer = XmlWriter.Create(fileName, writerSettings);
             try
             {
                 doc.Save(writer);
@@ -796,7 +796,7 @@ namespace SpreadCommander.Common.Code
             int i, start, len;
             bool lineEnd;
 
-            List<string> result = new List<string>();
+            var result = new List<string>();
 
             len = value.Length;
             i = 0;
@@ -1042,7 +1042,7 @@ namespace SpreadCommander.Common.Code
 
         public static string TimeSpanToString(TimeSpan value)
         {
-            StringBuilder text = new StringBuilder();
+            var text = new StringBuilder();
             if (value < TimeSpan.Zero)
             {
                 text.Append('-');
@@ -1159,12 +1159,12 @@ namespace SpreadCommander.Common.Code
             if (string.IsNullOrEmpty(rootDirectory))
                 return Array.Empty<string>();
 
-            DirectoryInfo dir = new DirectoryInfo(rootDirectory);
+            var dir = new DirectoryInfo(rootDirectory);
             if (!dir.Exists)
                 return Array.Empty<string>();
 
-            DirectoryInfo[] infos = dir.GetDirectories("*.*", SearchOption.TopDirectoryOnly);
-            string[] result = new string[infos.Length];
+            var infos  = dir.GetDirectories("*.*", SearchOption.TopDirectoryOnly);
+            var result = new string[infos.Length];
             for (int i = 0; i < infos.Length; i++)
                 result[i] = infos[i].Name;
 
@@ -1209,7 +1209,7 @@ namespace SpreadCommander.Common.Code
             if (invalidChars == null || invalidChars.Length <= 0)
                 return initialName;
 
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             foreach (char c in initialName)
             {
                 char newc = c;
@@ -1230,7 +1230,7 @@ namespace SpreadCommander.Common.Code
             if (invalidChars == null || invalidChars.Length <= 0)
                 return initialName;
 
-            StringBuilder result = new StringBuilder();
+            var result = new StringBuilder();
             foreach (char c in initialName)
             {
                 char newc = c;
@@ -1352,7 +1352,7 @@ namespace SpreadCommander.Common.Code
             if (string.IsNullOrEmpty(value))
                 return value;
 
-            StringBuilder builder = new StringBuilder(value);
+            var builder = new StringBuilder(value);
             int i = 0;
             bool spaceNeeded = false;
             while (i < builder.Length)
@@ -1387,7 +1387,7 @@ namespace SpreadCommander.Common.Code
 
         public static byte[] Encrypt(byte[] clearData, string password)
         {
-            using MemoryStream ms = new MemoryStream();
+            using var ms = new MemoryStream();
             using (Aes aes = new AesManaged())
             {
                 using (var deriveBytes = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(PasswordSalt)))
@@ -1441,7 +1441,7 @@ namespace SpreadCommander.Common.Code
 
         public static byte[] Decrypt(byte[] cipherData, string password)
         {
-            using MemoryStream ms = new MemoryStream();
+            using var ms = new MemoryStream();
             ms.Write(cipherData, 0, cipherData.Length);
             ms.Seek(0, SeekOrigin.Begin);
 
@@ -1453,9 +1453,9 @@ namespace SpreadCommander.Common.Code
                 aes.IV = ReadByteArray(ms);
             }
 
-            using CryptoStream cs = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
-            byte[] buffer = new byte[4096];
-            using MemoryStream result = new MemoryStream();
+            using var cs     = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
+            byte[] buffer    = new byte[4096];
+            using var result = new MemoryStream();
             while (true)
             {
                 int bytesRead = cs.Read(buffer, 0, buffer.Length);
@@ -1609,8 +1609,8 @@ namespace SpreadCommander.Common.Code
 
             using TextWriter writer = new StringWriter();
             //Serialize descendant type too
-            //XmlSerializer serializer = new XmlSerializer(typeof(T));
-            XmlSerializer serializer = new XmlSerializer(value.GetType());
+            //var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(value.GetType());
             serializer.Serialize(writer, value);
             return writer.ToString();
         }
@@ -1621,8 +1621,8 @@ namespace SpreadCommander.Common.Code
             if (value == null)
                 return null;
 
-            using TextWriter writer = new StringWriter();
-            XmlSerializer serializer = new XmlSerializer(value.GetType());
+            using var writer = new StringWriter();
+            var serializer   = new XmlSerializer(value.GetType());
             serializer.Serialize(writer, value);
             return writer.ToString();
         }
@@ -1634,8 +1634,8 @@ namespace SpreadCommander.Common.Code
             if (value == null)
                 return;
 
-            //XmlSerializer serializer = new XmlSerializer(typeof(T));
-            XmlSerializer serializer = new XmlSerializer(value.GetType());
+            //var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(value.GetType());
             serializer.Serialize(stream, value);
         }
 
@@ -1651,8 +1651,8 @@ namespace SpreadCommander.Common.Code
         public static T DeserializeObject<T>(Stream stream)
             where T : class
         {
-            using XmlTextReader xmlReader = new XmlTextReader(stream) { Normalization = false };
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using var xmlReader = new XmlTextReader(stream) { Normalization = false };
+            var serializer      = new XmlSerializer(typeof(T));
             object result = serializer.Deserialize(xmlReader);
             return result as T;
         }
@@ -1668,8 +1668,8 @@ namespace SpreadCommander.Common.Code
         [DebuggerStepThrough()]
         public static object DeserializeObject(Type type, Stream stream)
         {
-            using XmlTextReader xmlReader = new XmlTextReader(stream) { Normalization = false };
-            XmlSerializer serializer = new XmlSerializer(type);
+            using var xmlReader = new XmlTextReader(stream) { Normalization = false };
+            var serializer      = new XmlSerializer(type);
             object result = serializer.Deserialize(xmlReader);
             return result;
         }
@@ -1679,9 +1679,9 @@ namespace SpreadCommander.Common.Code
         public static T DeserializeObjectFromText<T>(string text)
             where T : class
         {
-            using StringReader reader = new StringReader(text);
-            using XmlTextReader xmlReader = new XmlTextReader(reader) { Normalization = false };
-            XmlSerializer serializer = new XmlSerializer(typeof(T));
+            using var reader    = new StringReader(text);
+            using var xmlReader = new XmlTextReader(reader) { Normalization = false };
+            var serializer      = new XmlSerializer(typeof(T));
             object result = serializer.Deserialize(xmlReader);
             return result as T;
         }
@@ -1689,16 +1689,16 @@ namespace SpreadCommander.Common.Code
         [DebuggerStepThrough()]
         public static object DeserializeObjectFromText(Type objectType, string text)
         {
-            using StringReader reader = new StringReader(text);
+            using var reader = new StringReader(text);
             return DeserializeObjectFromTextReader(objectType, reader);
         }
 
         [DebuggerStepThrough()]
         public static object DeserializeObjectFromTextReader(Type objectType, TextReader reader)
         {
-            using XmlTextReader xmlReader = new XmlTextReader(reader) { Normalization = false };
-            XmlSerializer serializer = new XmlSerializer(objectType);
-            object result = serializer.Deserialize(xmlReader);
+            using var xmlReader = new XmlTextReader(reader) { Normalization = false };
+            var serializer      = new XmlSerializer(objectType);
+            object result       = serializer.Deserialize(xmlReader);
             return result;
         }
 

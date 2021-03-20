@@ -18,6 +18,11 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 0.9.5-beta
+- SpreadCommander's spreadsheet functions are updated to return empty string instead of empty value (later one is displayed as zero).
+- Third-party components updated.
+- Minor updates and fixes.
+
 ### Version 0.9.4-beta
 - Third-party components updated.
 

@@ -144,9 +144,16 @@ namespace SpreadCommander
 
             var openFileOptions = new OpenFileDialogServiceOptions()
             {
-                Title = Parameters.ApplicationName
+                Title = Parameters.ApplicationName,
             };
-            mvvmContext.RegisterDefaultService(OpenFileDialogService.Create(this, openFileOptions, DevExpress.Utils.CommonDialogs.FileBrowserStyle.Skinnable));
+            mvvmContext.RegisterDefaultService("OpenSingleFile", OpenFileDialogService.Create(this, openFileOptions, DevExpress.Utils.CommonDialogs.FileBrowserStyle.Skinnable));
+
+            var openMultiFileOptions = new OpenFileDialogServiceOptions()
+            {
+                Title       = Parameters.ApplicationName,
+                MultiSelect = DefaultBoolean.True
+            };
+            mvvmContext.RegisterDefaultService("OpenMultiFiles", OpenFileDialogService.Create(this, openMultiFileOptions, DevExpress.Utils.CommonDialogs.FileBrowserStyle.Skinnable));
 
             var saveFileOptions = new SaveFileDialogServiceOptions()
             {
@@ -576,8 +583,8 @@ namespace SpreadCommander
         {
             if (e.Button == MouseButtons.Left && dragConnections_StartHitInfo != null && dragConnections_StartHitInfo.HitInfoType == HitInfoType.Cell && dragConnections_StartHitInfo.Node != null)
             {
-                Size dragSize = SystemInformation.DragSize;
-                Rectangle dragRect = new Rectangle(new Point(dragConnections_StartHitInfo.MousePoint.X - dragSize.Width / 2,
+                var dragSize = SystemInformation.DragSize;
+                var dragRect = new Rectangle(new Point(dragConnections_StartHitInfo.MousePoint.X - dragSize.Width / 2,
                     dragConnections_StartHitInfo.MousePoint.Y - dragSize.Height / 2), dragSize);
 
                 if (!dragRect.Contains(new Point(e.X, e.Y)))
@@ -770,8 +777,8 @@ namespace SpreadCommander
             if (e.Button == MouseButtons.Left && dragPSCmdlet_StartHitInfo != null && dragPSCmdlet_StartHitInfo.InRow && 
                 dragPSCmdlet_StartHitInfo.RowHandle != GridControl.InvalidRowHandle)
             {
-                Size dragSize = SystemInformation.DragSize;
-                Rectangle dragRect = new Rectangle(new Point(dragPSCmdlet_StartHitInfo.HitPoint.X - dragSize.Width / 2,
+                var dragSize = SystemInformation.DragSize;
+                var dragRect = new Rectangle(new Point(dragPSCmdlet_StartHitInfo.HitPoint.X - dragSize.Width / 2,
                     dragPSCmdlet_StartHitInfo.HitPoint.Y - dragSize.Height / 2), dragSize);
 
                 if (!dragRect.Contains(new Point(e.X, e.Y)))
