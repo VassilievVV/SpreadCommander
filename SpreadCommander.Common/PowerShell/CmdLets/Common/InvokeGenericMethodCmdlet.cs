@@ -31,7 +31,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Common
 
         protected override void ProcessRecord()
         {
-            Type objectType = Type;
+            Type objectType = Type; 
             if (objectType == null)
             {
                 if (Object is PSObject pSObject)

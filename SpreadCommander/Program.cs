@@ -79,7 +79,7 @@ namespace SpreadCommander
             WindowsFormsSettings.AllowHoverAnimation            = DefaultBoolean.True;
             WindowsFormsSettings.AllowOverpanApplicationWindow  = DefaultBoolean.True;
             WindowsFormsSettings.AllowPixelScrolling            = DefaultBoolean.True;
-            WindowsFormsSettings.AnimationMode                  = AnimationMode.EnableAll;
+            WindowsFormsSettings.AnimationMode                  = AnimationMode.Default;
             WindowsFormsSettings.CustomizationFormSnapMode      = DevExpress.Utils.Controls.SnapMode.OwnerControl;
             WindowsFormsSettings.DockingViewStyle               = DevExpress.XtraBars.Docking2010.Views.DockingViewStyle.Classic;
             WindowsFormsSettings.FilterCriteriaDisplayStyle     = FilterCriteriaDisplayStyle.Visual;
@@ -95,11 +95,9 @@ namespace SpreadCommander
             WindowsFormsSettings.SvgImageRenderingMode          = DevExpress.Utils.Svg.SvgImageRenderingMode.HighQuality;
             WindowsFormsSettings.UseAdvancedFilterEditorControl = DefaultBoolean.True;
             WindowsFormsSettings.UseDXDialogs                   = DefaultBoolean.True;
-
             WindowsFormsSettings.CompactUIMode                  = DefaultBoolean.True;
             WindowsFormsSettings.DefaultRibbonStyle             = DefaultRibbonControlStyle.Office2019;
-
-            WindowsFormsSettings.UseAdvancedTextEdit            = DefaultBoolean.True;
+            WindowsFormsSettings.UseAdvancedTextEdit            = DefaultBoolean.False;
 
             ScriptPermissionManager.GlobalInstance = new ScriptPermissionManager(ExecutionMode.Deny);
 

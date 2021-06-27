@@ -54,16 +54,18 @@ namespace SpreadCommander.Common.Extensions
             if (range == null)
                 throw new ArgumentNullException(nameof(range));
 
-            var table = range.GetRangeTable();
-            if (table == null)
-                throw new Exception("Cannot find a table associated with spreadsheet range.");
-
-            var sheet    = range.Worksheet;
+            CellRange dataRange;
+            var sheet        = range.Worksheet;
             var resultRanges = new List<CellRange>();
 
-            var tableDataRange = table.DataRange;
-            var topRowIndex    = tableDataRange.TopRowIndex;
-            var bottomRowIndex = tableDataRange.BottomRowIndex;
+            var table = range.GetRangeTable();
+            if (table != null)
+                dataRange = table.DataRange;
+            else
+                dataRange = range.Worksheet.GetDataRange();
+
+            var topRowIndex    = dataRange.TopRowIndex;
+            var bottomRowIndex = dataRange.BottomRowIndex;
 
             foreach (var area in range.Areas)
             {
@@ -80,16 +82,18 @@ namespace SpreadCommander.Common.Extensions
             if (range == null)
                 throw new ArgumentNullException(nameof(range));
 
-            var table = range.GetRangeTable();
-            if (table == null)
-                throw new Exception("Cannot find a table associated with spreadsheet range.");
-
-            var sheet    = range.Worksheet;
+            CellRange dataRange;
+            var sheet        = range.Worksheet;
             var resultRanges = new List<CellRange>();
 
-            var tableDataRange   = table.DataRange;
-            var leftColumnIndex  = tableDataRange.LeftColumnIndex;
-            var rightColumnIndex = tableDataRange.RightColumnIndex;
+            var table = range.GetRangeTable();
+            if (table != null)
+                dataRange = table.DataRange;
+            else
+                dataRange = range.Worksheet.GetDataRange();
+
+            var leftColumnIndex  = dataRange.LeftColumnIndex;
+            var rightColumnIndex = dataRange.RightColumnIndex;
 
             foreach (var area in range.Areas)
             {

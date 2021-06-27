@@ -47,14 +47,33 @@ namespace SpreadCommander.Documents.Views
 
         private void ConsoleDocumentView_Disposed(object sender, EventArgs e)
         {
-            _ScriptEditor?.Dispose();
-            _ScriptEditor = null;
+            if (_ScriptEditor != null)
+            {
+                _ScriptEditor.ListIntellisenseItems -= ScriptEditor_ListIntellisenseItems;
+                _ScriptEditor.ScriptChanged         -= ScriptEditor_ScriptChanged;
 
-            _ConsoleInputControl?.Dispose();
-            _ConsoleInputControl = null;
+                _ScriptEditor.Dispose();
+                _ScriptEditor = null;
+            }
 
-            _ConsoleOutputControl?.Dispose();
-            _ConsoleOutputControl = null;
+            if (_ConsoleInputControl != null)
+            {
+                _ConsoleInputControl.ExecuteCommand        -= ExecuteCommandHandler;
+                _ConsoleInputControl.ListIntellisenseItems -= ScriptEditor_ListIntellisenseItems;
+                _ConsoleInputControl.ShowParseError        -= ScriptEditor_ShowParseError;
+
+                _ConsoleInputControl.Dispose();
+                _ConsoleInputControl = null;
+            }
+
+            if (_ConsoleOutputControl != null)
+            {
+                _ConsoleOutputControl.RibbonUpdateRequest -= ConsoleOutputControl_RibbonUpdateRequest;
+                _ConsoleOutputControl.ConsoleLoaded       -= ConsoleOutputControl_ConsoleLoaded;
+
+                _ConsoleOutputControl.Dispose();
+                _ConsoleOutputControl = null;
+            }
         }
 
         protected override void WndProc(ref Message msg)
@@ -209,11 +228,7 @@ namespace SpreadCommander.Documents.Views
                         _ScriptEditor.LoadSyntax(model.Engine.SyntaxFile);
                         _ScriptEditor.DefaultExt = model.Engine.DefaultExt;
                         _ScriptEditor.FileFilter = model.Engine.FileFilter;
-                        _ScriptEditor.ModifiedChanged += (s, arg) =>
-                        {
-                            model.Modified = true;
-                            Messenger.Default.Send(new ControlModifiedMessage() { Control = this, Modified = true });
-                        };
+                        _ScriptEditor.ModifiedChanged       += ScriptEditor_ModifiedChanged;
                         _ScriptEditor.ListIntellisenseItems += ScriptEditor_ListIntellisenseItems;
                         _ScriptEditor.ScriptChanged         += ScriptEditor_ScriptChanged;
 
@@ -256,6 +271,13 @@ namespace SpreadCommander.Documents.Views
                     e.Control = _ConsoleInputControl;
                     break;
             }
+        }
+
+        private void ScriptEditor_ModifiedChanged(object sender, EventArgs args)
+        {
+            var fluent = mvvmContext.OfType<ConsoleDocumentViewModel>();
+            fluent.ViewModel.Modified = true;
+            Messenger.Default.Send(new ControlModifiedMessage() { Control = this, Modified = true });
         }
 
         private void ScriptEditor_ListIntellisenseItems(object sender, ScriptEditorControl.ListIntellisenseItemsEventArgs e)

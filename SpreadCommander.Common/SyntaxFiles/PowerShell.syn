@@ -181,14 +181,14 @@
 	<Style Name="PS Region" ForeColor="Blue" BackColor="" Bold="true" Italic="false" Underline="false" />
 	<Style Name="PS Comment" ForeColor="Gray" BackColor="" Bold="false" Italic="false" Underline="false" />
 	<Style Name="PS Attrib" ForeColor="Gray" BackColor="" Bold="false" Italic="false" Underline="false" />
-	<Style Name="PS String" ForeColor="SteelBlue" BackColor="" Bold="false" Italic="false" Underline="false" />
-	<Style Name="PS Number" ForeColor="Teal" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS String" ForeColor="SaddleBrown" BackColor="" Bold="false" Italic="false" Underline="false" />
+	<Style Name="PS Number" ForeColor="Maroon" BackColor="" Bold="false" Italic="false" Underline="false" />
 	<Style Name="PS Operator" ForeColor="Red" BackColor="" Bold="false" Italic="false" Underline="false" />
-	<Style Name="PS Keyword" ForeColor="Magenta" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Keyword" ForeColor="Navy" BackColor="" Bold="true" Italic="false" Underline="false" />
 	<Style Name="PS Datatype" ForeColor="DarkSkyBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
-	<Style Name="PS Variable" ForeColor="DodgerBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
-	<Style Name="PS Property" ForeColor="RoyalBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
-	<Style Name="PS Cmdlet" ForeColor="DarkOrchid" BackColor="" Bold="true" Italic="false" Underline="false" />
-	<Style Name="PS URL" ForeColor="Fuschia" BackColor="" Bold="false" Italic="false" Underline="true" />
+	<Style Name="PS Variable" ForeColor="MediumBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Property" ForeColor="Sienna" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS Cmdlet" ForeColor="DarkMagenta" BackColor="" Bold="true" Italic="false" Underline="false" />
+	<Style Name="PS URL" ForeColor="DarkViolet" BackColor="" Bold="false" Italic="false" Underline="true" />
 	<Style Name="PS Type" ForeColor="DarkSkyBlue" BackColor="" Bold="true" Italic="false" Underline="false" />
 </Language>

@@ -49,7 +49,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         public SwitchParameter LockFiles { get; set; }
 
 
-        private readonly StringBuilder _Messages = new StringBuilder();
+        private readonly StringBuilder _Messages = new ();
 
         protected override void ProcessRecord()
         {

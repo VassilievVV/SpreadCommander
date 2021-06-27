@@ -48,7 +48,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public const string ViewName = "ConsoleDocument";
 
-        public static readonly Guid CustomControlID = new Guid("{29E5AF72-C46B-4C5D-80A0-9CDB90F9B732}");
+        public static readonly Guid CustomControlID = new ("{29E5AF72-C46B-4C5D-80A0-9CDB90F9B732}");
 
         public BaseScriptEngine Engine { get; private set; }
 
@@ -250,15 +250,17 @@ namespace SpreadCommander.Documents.ViewModels
 
             scriptEngine.ExecutionType = BaseScriptEngine.ScriptExecutionType.Script;
 
-            scriptEngine.ExecutionFinished += callback;
+            scriptEngine.ExecutionFinished += callbackFinished;
             scriptEngine.Start();
             scriptEngine.SendCommand(script);
 
 
-            void callback(object s, EventArgs e)
+            void callbackFinished(object s, EventArgs e)
             {
-                scriptEngine.ExecutionFinished -= callback;
+                scriptEngine.ExecutionFinished -= callbackFinished;
                 scriptEngine.Dispose();
+
+                GC.Collect();
             }
         }
 

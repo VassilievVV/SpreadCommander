@@ -38,12 +38,16 @@ namespace SpreadCommander.Common.Code.Exporters
             if (connectionStringBuilder is SqlConnectionStringBuilder sqlConnectionStringBuilder)
             {
                 var connStr = sqlConnectionStringBuilder.ConnectionString;
-                return new SqlConnection(connStr);
+                var result  = new SqlConnection();
+                Connection.SetConnectionString(result, connStr);
+                return result;
             }
             else if (connectionStringBuilder is SqlConnectionStringBuilderLight sqlConnectionStringBuilderLight)
             {
                 var connStr = sqlConnectionStringBuilderLight.ConnectionString;
-                return new SqlConnection(connStr);
+                var result  = new SqlConnection();
+                Connection.SetConnectionString(result, connStr);
+                return result;
             }
             else
                 throw new ArgumentException("Invalid connection string builder");
@@ -67,7 +71,9 @@ namespace SpreadCommander.Common.Code.Exporters
             result.AppendLine($"  {columnID} integer identity(1, 1) primary key, ");
 
             for (int i = 0; i < table.FieldCount; i++)
+            {
                 result.AppendLine($"  {QuoteString(table.GetName(i))} {GetColumnDataType(table.GetFieldType(i), GetColumnMaxLength(table, i))}, ");
+            }
 
             //Remove last ", "
             result.Length -= (2 + Environment.NewLine.Length);
@@ -76,7 +82,7 @@ namespace SpreadCommander.Common.Code.Exporters
             return result.ToString();
         }
 
-        private static readonly Dictionary<SqlBulkCopy, BulkData> _BulkData = new Dictionary<SqlBulkCopy, BulkData>();
+        private static readonly Dictionary<SqlBulkCopy, BulkData> _BulkData = new();
 
         public override void ExportDataTable(DbConnection connection, DbDataReader table,
             string tableSchema, string tableName, bool needCreateTable,
@@ -158,7 +164,29 @@ namespace SpreadCommander.Common.Code.Exporters
             if (dataType == typeof(Guid))
                 return "uniqueidentifier";
 
-            return base.GetColumnDataType(dataType, maxLength);
+            if (maxLength < 0)
+                maxLength = int.MaxValue;
+
+            return Type.GetTypeCode(dataType) switch
+            {
+                TypeCode.Boolean  => "bit",
+                TypeCode.Byte     => "integer",
+                TypeCode.Char     => maxLength > 1000 ? "nvarchar(max)" : $"nchar({maxLength})",
+                TypeCode.DateTime => "datetime",
+                TypeCode.Decimal  => "float",
+                TypeCode.Double   => "float",
+                TypeCode.Int16    => "integer",
+                TypeCode.Int32    => "integer",
+                TypeCode.Int64    => "bigint",
+                TypeCode.Object   => "varbinary(max)",
+                TypeCode.SByte    => "integer",
+                TypeCode.Single   => "float",
+                TypeCode.String   => $"nvarchar({(maxLength > 1000 ? "max" : maxLength.ToString())})",
+                TypeCode.UInt16   => "integer",
+                TypeCode.UInt32   => "bigint",
+                TypeCode.UInt64   => "bigint",
+                _                 => "varbinary(max)"
+            };
         }
 
         public static (SqlDbType dbType, int len) GetColumnSqlDbType(Type dataType, int maxLength)

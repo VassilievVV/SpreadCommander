@@ -104,7 +104,7 @@ namespace SpreadCommander.Common.Code
 
         public static List<ConnectionFactory> ListConnectionFactories()
         {
-            List<ConnectionFactory> connFactories = new List<ConnectionFactory>
+            var connFactories = new List<ConnectionFactory>
             {
                 CreateConnectionFactory(SqlClientFactoryLightName),
                 CreateConnectionFactory(SqlClientFactoryName),
@@ -225,7 +225,7 @@ namespace SpreadCommander.Common.Code
             }
             catch (Exception)
             {
-                DbConnectionStringBuilder result = new DbConnectionStringBuilder(false)
+                var result = new DbConnectionStringBuilder(false)
                 {
                     BrowsableConnectionString = false
                 };
@@ -325,9 +325,9 @@ namespace SpreadCommander.Common.Code
             get { return DbConnection != null ? DbConnection.State : ConnectionState.Closed; }
         }
 
-        protected void SetConnectionString(DbConnection connection, string connectionString)
+        public static void SetConnectionString(DbConnection connection, string connectionString)
         {
-            if (DbConnection is SQLiteConnection sqliteConnection)
+            if (connection is SQLiteConnection sqliteConnection)
             {
                 var sqliteBuilder = new SQLiteConnectionStringBuilder(connectionString);
 
@@ -343,7 +343,7 @@ namespace SpreadCommander.Common.Code
                 
                 sqliteConnection.ConnectionString = sqliteBuilder.ConnectionString;
             }
-            else if (DbConnection is SqlConnection sqlConnection)
+            else if (connection is SqlConnection sqlConnection)
             {
                 var sqlBuilder = new SqlConnectionStringBuilder(connectionString)
                 {
@@ -374,7 +374,7 @@ namespace SpreadCommander.Common.Code
 
                 sqlConnection.ConnectionString = sqlBuilder.ConnectionString;
             }
-            else if (DbConnection is MySqlConnection mySqlConnection)
+            else if (connection is MySqlConnection mySqlConnection)
             {
                 var mySqlBuilder = new MySqlConnectionStringBuilder(connectionString)
                 {
@@ -463,14 +463,14 @@ namespace SpreadCommander.Common.Code
                 if (ConnectionStringBuilderType == null)
                     throw new Exception("Connection StringBuilder type is not specified.");
                 
-                DbConnectionStringBuilder builder = Activator.CreateInstance(ConnectionStringBuilderType) as DbConnectionStringBuilder;
+                var builder = Activator.CreateInstance(ConnectionStringBuilderType) as DbConnectionStringBuilder;
                 builder.ConnectionString = ConnectionString;
                 builder.BrowsableConnectionString = false;
                 return builder;
             }
             catch (Exception)
             {
-                DbConnectionStringBuilder result = new DbConnectionStringBuilder(false)
+                var result = new DbConnectionStringBuilder(false)
                 {
                     ConnectionString = Utils.NonNullString(ConnectionString),
                     BrowsableConnectionString = false
@@ -526,7 +526,7 @@ namespace SpreadCommander.Common.Code
             if (Activator.CreateInstance(ConnectionType) is not DbConnection connection)
                 throw new Exception("Invalid connection type.");
 
-            connection.ConnectionString = ConnectionString;
+            SetConnectionString(connection, ConnectionString);
             return connection;
         }
     }

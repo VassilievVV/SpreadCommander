@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Globalization;
 
 namespace SpreadCommander.Common.SqlScript
 {
@@ -124,7 +125,7 @@ namespace SpreadCommander.Common.SqlScript
                         break;
 
                     case '-':
-                        if (i < commandText.Length - 2 && commandText[i+1] == '-' && commandText[i+2] == '#')
+                        if (i < commandText.Length - 2 && commandText[i+1] == '-' && commandText[i+2] == '#' && StartsLine(commandText, i))
                         {
                             i++; i++; i++;
                             c = commandText[i];
@@ -220,6 +221,32 @@ namespace SpreadCommander.Common.SqlScript
 
             ListCommands();
             ListParameters();
+
+
+            static bool StartsLine(string cmd, int index)
+            {
+                while (--index >= 0)
+                {
+                    var c = cmd[index];
+                    var category = char.GetUnicodeCategory(c);
+                    switch (category)
+                    {
+                        case UnicodeCategory.LineSeparator:
+                        case UnicodeCategory.ParagraphSeparator:
+                            return true;
+                        case UnicodeCategory.Control:
+                            if (c == '\r' || c == '\n')
+                                return true;
+                            break;
+                        case UnicodeCategory.SpaceSeparator:
+                            break;
+                        default:
+                            return false;
+                    }
+                }
+
+                return true;
+            }
         }
 
         private void ListCommands()

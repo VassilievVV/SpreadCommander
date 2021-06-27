@@ -1,6 +1,7 @@
 ﻿using DevExpress.Spreadsheet;
 using DevExpress.Spreadsheet.Functions;
 using SpreadCommander.Common.Spreadsheet.Functions;
+using SpreadCommander.Common.Spreadsheet.Functions.Guid;
 using SpreadCommander.Common.Spreadsheet.Functions.Hash;
 using SpreadCommander.Common.Spreadsheet.Functions.Path;
 using SpreadCommander.Common.Spreadsheet.Functions.Regex;
@@ -41,7 +42,9 @@ namespace SpreadCommander.Common.Spreadsheet
                     new HashSHA1Function(),
                     new HashSHA256Function(),
                     new HashSHA384Function(),
-                    new HashSHA512Function()
+                    new HashSHA512Function(),
+
+                    new NewIdFunction()
                 });
             }
 

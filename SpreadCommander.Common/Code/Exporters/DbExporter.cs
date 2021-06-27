@@ -297,6 +297,9 @@ namespace SpreadCommander.Common.Code.Exporters
             if (dataType == typeof(Guid))
                 return "nvarchar(50)";
 
+            if (maxLength < 0)
+                maxLength = int.MaxValue;
+
             return Type.GetTypeCode(dataType) switch
             {
                 TypeCode.Boolean  => "bit",

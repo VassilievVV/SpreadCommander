@@ -372,6 +372,8 @@
             // 
             // accordionControl
             // 
+            this.accordionControl.Appearance.Item.Default.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.accordionControl.Appearance.Item.Default.Options.UseFont = true;
             this.accordionControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.accordionControl.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
             this.accordionControlFavorites,
@@ -383,6 +385,7 @@
             this.accordionControl.Location = new System.Drawing.Point(0, 0);
             this.accordionControl.Name = "accordionControl";
             this.accordionControl.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Auto;
+            this.accordionControl.ShowFilterControl = DevExpress.XtraBars.Navigation.ShowFilterControl.Auto;
             this.accordionControl.Size = new System.Drawing.Size(148, 401);
             this.accordionControl.TabIndex = 1;
             this.accordionControl.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;

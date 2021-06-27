@@ -3,6 +3,7 @@ using DevExpress.XtraRichEdit.API.Native;
 using SpreadCommander.Common.Code;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -37,6 +38,18 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
 
         [Parameter(HelpMessage = "Target window or frame in which to display the web page content when the hyperlink is clicked")]
         public string BookHyperlinkTarget { get; set; }
+
+        [Parameter(HelpMessage = "Whether to repeat a row as header at the top of each page.")]
+        public SwitchParameter RepeatAsHeaderRow { get; set; }
+
+        [Parameter(HelpMessage = "Count of rows to repeat at the top of each page.")]
+        [DefaultValue(1)]
+        [PSDefaultValue(Value = 1)]
+        [ValidateRange(1, 100)]
+        public int RepeatAsHeaderRowCount { get; set; } = 1;
+
+        [Parameter(HelpMessage = "Whether the table row can break across pages.")]
+        public SwitchParameter BreakRowsAcrossPages { get; set; }
 
 
         protected void CopyRangeToBook(CellRange range)
@@ -79,6 +92,31 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
             {
                 var documentRange = book.AppendHtmlText(htmlTable, DevExpress.XtraRichEdit.API.Native.InsertOptions.KeepSourceFormatting);
                 book.Paragraphs.Append();
+
+                if (RepeatAsHeaderRow || BreakRowsAcrossPages)
+                {
+                    RepeatAsHeaderRowCount = Utils.ValueInRange(RepeatAsHeaderRowCount, 1, 100);
+
+                    var tables = book.Tables.Get(documentRange);
+                    foreach (var table in tables)
+                    {
+                        using (new UsingProcessor(() => table.BeginUpdate(), () => table.EndUpdate()))
+                        {
+                            if (RepeatAsHeaderRow)
+                            {
+                                for (int i = 0; i < Math.Max(RepeatAsHeaderRowCount, table.Rows.Count); i++)
+                                    table.Rows[i].RepeatAsHeaderRow = true;
+                            }
+
+                            if (BreakRowsAcrossPages)
+                            {
+                                for (int i = 0; i < table.Rows.Count; i++)
+                                    table.Rows[i].BreakAcrossPages = true;
+                            }
+                        }
+                    }
+                }
+                
 
                 AddBookComments(book, documentRange);
 

@@ -17,8 +17,8 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
 {
 	public partial class EditorFindReplaceForm: XtraForm
 	{
-		private static readonly List<string> _FindItems		= new List<string>();
-		private static readonly List<string> _ReplaceItems	= new List<string>();
+		private static readonly List<string> _FindItems		= new ();
+		private static readonly List<string> _ReplaceItems	= new ();
 
 		private readonly EditViewControl	_Owner;
 		private string						_Last;
@@ -179,7 +179,7 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
 			if (wholeWord)
 				pattern = $"\b{pattern}\b";
 
-			Regex re = new Regex(pattern, matchCase ? RegexOptions.None : RegexOptions.IgnoreCase);
+			var re = new Regex(pattern, matchCase ? RegexOptions.None : RegexOptions.IgnoreCase);
 			string result = re.Replace(selection, replace);
 
 			_Owner.ReplaceSelection(result);

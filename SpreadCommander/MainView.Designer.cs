@@ -29,7 +29,6 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::SpreadCommander.SplashScreen), true, true, true);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
             DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
@@ -57,6 +56,11 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
@@ -231,10 +235,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlPSCmdletDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagesProject)).BeginInit();
             this.SuspendLayout();
-            // 
-            // splashScreenManager
-            // 
-            splashScreenManager.ClosingDelay = 500;
             // 
             // colAppMenuItemName
             // 
@@ -504,7 +504,6 @@
             this.mnuAppHamburger.Size = new System.Drawing.Size(189, 349);
             this.mnuAppHamburger.StyleController = this.layoutControlAppMenu;
             this.mnuAppHamburger.TabIndex = 0;
-            this.mnuAppHamburger.Text = "accordionControl1";
             this.mnuAppHamburger.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
             // mnuAppProject
@@ -1017,7 +1016,7 @@
             this.pageConnections.Controls.Add(this.panelDatabases);
             this.pageConnections.ImageOptions.ImageIndex = 1;
             this.pageConnections.Name = "pageConnections";
-            this.pageConnections.Size = new System.Drawing.Size(281, 747);
+            this.pageConnections.Size = new System.Drawing.Size(281, 748);
             // 
             // panelDatabases
             // 
@@ -1026,7 +1025,7 @@
             this.panelDatabases.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDatabases.Location = new System.Drawing.Point(0, 0);
             this.panelDatabases.Name = "panelDatabases";
-            this.panelDatabases.Size = new System.Drawing.Size(281, 747);
+            this.panelDatabases.Size = new System.Drawing.Size(281, 748);
             this.panelDatabases.TabIndex = 19;
             // 
             // treeConnections
@@ -1043,7 +1042,7 @@
             this.treeConnections.OptionsView.ShowHorzLines = false;
             this.treeConnections.OptionsView.ShowTreeLines = DevExpress.Utils.DefaultBoolean.False;
             this.treeConnections.OptionsView.ShowVertLines = false;
-            this.treeConnections.Size = new System.Drawing.Size(277, 723);
+            this.treeConnections.Size = new System.Drawing.Size(277, 724);
             this.treeConnections.StateImageList = this.databaseImages;
             this.treeConnections.TabIndex = 2;
             this.treeConnections.GetStateImage += new DevExpress.XtraTreeList.GetStateImageEventHandler(this.TreeConnections_GetStateImage);
@@ -1085,7 +1084,8 @@
             this.searchConnections.MenuManager = this.ribbonControl;
             this.searchConnections.Name = "searchConnections";
             this.searchConnections.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "Edit", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "Edit connections ...", "Edit", null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.searchConnections.Properties.DataSource = this.bindingConnections;
             this.searchConnections.Properties.DisplayMember = "Name";
             this.searchConnections.Properties.PopupView = this.searchLookUpEdit1View;

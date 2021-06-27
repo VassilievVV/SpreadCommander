@@ -13,6 +13,7 @@ using SpreadCommander.Common.DBMS.SQLite.Functions.Regex;
 using SpreadCommander.Common.DBMS.SQLite.Functions.String;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Hash;
+using SpreadCommander.Common.DBMS.SQLite.Functions.Guid;
 
 namespace SpreadCommander.Common.DBMS.SQLite
 {
@@ -74,6 +75,8 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new TanFunction());
             connection.BindFunction(new TanhFunction());
             connection.BindFunction(new TruncateFunction());
+            //Guid
+            connection.BindFunction(new NewIdFunction());
 
             //Collations
             connection.BindFunction(new LogicalCollationFunction());

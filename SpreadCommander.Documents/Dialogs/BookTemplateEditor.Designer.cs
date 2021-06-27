@@ -173,6 +173,9 @@
             DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
             DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation2 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.undoItem1 = new DevExpress.XtraRichEdit.UI.UndoItem();
             this.redoItem1 = new DevExpress.XtraRichEdit.UI.RedoItem();
@@ -610,6 +613,13 @@
             this.noDocumentsView = new DevExpress.XtraBars.Docking2010.Views.NoDocuments.NoDocumentsView(this.components);
             this.snapBarController = new DevExpress.Snap.Extensions.SnapBarController();
             this.svgImages = new DevExpress.Utils.SvgImageCollection(this.components);
+            this.insertObjectItem1 = new DevExpress.XtraRichEdit.UI.InsertObjectItem();
+            this.snapBarToolbarsListItem3 = new DevExpress.Snap.Extensions.UI.SnapBarToolbarsListItem();
+            this.notesRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.NotesRibbonPageGroup();
+            this.insertFootnoteItem1 = new DevExpress.XtraRichEdit.UI.InsertFootnoteItem();
+            this.insertEndnoteItem1 = new DevExpress.XtraRichEdit.UI.InsertEndnoteItem();
+            this.navigationNotesItem1 = new DevExpress.XtraRichEdit.UI.NavigationNotesItem();
+            this.showNotesItem1 = new DevExpress.XtraRichEdit.UI.ShowNotesItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRichEditFontSizeEdit1)).BeginInit();
@@ -976,9 +986,15 @@
             this.snapBarToolbarsListItem2,
             this.barNewStyle,
             this.barEditStyles,
-            this.barRemoveStyle});
+            this.barRemoveStyle,
+            this.insertObjectItem1,
+            this.snapBarToolbarsListItem3,
+            this.insertFootnoteItem1,
+            this.insertEndnoteItem1,
+            this.navigationNotesItem1,
+            this.showNotesItem1});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 335;
+            this.ribbon.MaxItemId = 341;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.headerFooterToolsRibbonPageCategory1,
@@ -1138,7 +1154,7 @@
             this.Editor.Options.DocumentCapabilities.OleObjects = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.Editor.Options.DocumentCapabilities.TrackChanges = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.Editor.Options.SnapMailMergeVisualOptions.DataSourceName = null;
-            this.Editor.Size = new System.Drawing.Size(925, 669);
+            this.Editor.Size = new System.Drawing.Size(925, 667);
             this.Editor.TabIndex = 2;
             this.Editor.ActiveViewChanged += new System.EventHandler(this.Editor_ActiveViewChanged);
             this.Editor.UpdateUI += new System.EventHandler(this.Editor_UpdateUI);
@@ -4048,6 +4064,7 @@
             this.textRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.textRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("textRibbonPageGroup1.ImageOptions.Image")));
             this.textRibbonPageGroup1.ItemLinks.Add(this.insertTextBoxItem1, "X");
+            this.textRibbonPageGroup1.ItemLinks.Add(this.insertObjectItem1);
             this.textRibbonPageGroup1.Name = "textRibbonPageGroup1";
             // 
             // symbolsRibbonPageGroup1
@@ -4121,6 +4138,7 @@
             this.viewRibbonPageGroup1.ItemLinks.Add(this.snapBarToolbarsListItem1);
             this.viewRibbonPageGroup1.ItemLinks.Add(this.commandBarCheckItem1);
             this.viewRibbonPageGroup1.ItemLinks.Add(this.snapBarToolbarsListItem2);
+            this.viewRibbonPageGroup1.ItemLinks.Add(this.snapBarToolbarsListItem3);
             this.viewRibbonPageGroup1.Name = "viewRibbonPageGroup1";
             // 
             // viewFieldsRibbonPageGroup1
@@ -4148,7 +4166,8 @@
             // 
             this.referencesRibbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.tableOfContentsRibbonPageGroup1,
-            this.captionsRibbonPageGroup1});
+            this.captionsRibbonPageGroup1,
+            this.notesRibbonPageGroup1});
             this.referencesRibbonPage1.Name = "referencesRibbonPage1";
             // 
             // tableOfContentsRibbonPageGroup1
@@ -4174,10 +4193,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.barViewSimple);
             this.ribbonStatusBar.ItemLinks.Add(this.barZoom, true);
             this.ribbonStatusBar.ItemLinks.Add(this.barPages);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 827);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 825);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1125, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1125, 24);
             // 
             // snapDockManager
             // 
@@ -4208,7 +4227,7 @@
             this.panelContainer1.Location = new System.Drawing.Point(925, 158);
             this.panelContainer1.Name = "panelContainer1";
             this.panelContainer1.OriginalSize = new System.Drawing.Size(200, 200);
-            this.panelContainer1.Size = new System.Drawing.Size(200, 669);
+            this.panelContainer1.Size = new System.Drawing.Size(200, 667);
             this.panelContainer1.Text = "panelContainer1";
             // 
             // fieldListDockPanel1
@@ -4218,15 +4237,15 @@
             this.fieldListDockPanel1.ID = new System.Guid("310792ed-70de-4ef2-bdaf-fe7bd546cae1");
             this.fieldListDockPanel1.Location = new System.Drawing.Point(0, 0);
             this.fieldListDockPanel1.Name = "fieldListDockPanel1";
-            this.fieldListDockPanel1.OriginalSize = new System.Drawing.Size(200, 368);
-            this.fieldListDockPanel1.Size = new System.Drawing.Size(200, 335);
+            this.fieldListDockPanel1.OriginalSize = new System.Drawing.Size(200, 335);
+            this.fieldListDockPanel1.Size = new System.Drawing.Size(200, 334);
             this.fieldListDockPanel1.SnapControl = this.Editor;
             // 
             // fieldListDockPanel1_Container
             // 
-            this.fieldListDockPanel1_Container.Location = new System.Drawing.Point(4, 46);
+            this.fieldListDockPanel1_Container.Location = new System.Drawing.Point(4, 26);
             this.fieldListDockPanel1_Container.Name = "fieldListDockPanel1_Container";
-            this.fieldListDockPanel1_Container.Size = new System.Drawing.Size(193, 285);
+            this.fieldListDockPanel1_Container.Size = new System.Drawing.Size(193, 304);
             this.fieldListDockPanel1_Container.TabIndex = 0;
             // 
             // reportExplorerDockPanel1
@@ -4234,17 +4253,17 @@
             this.reportExplorerDockPanel1.Controls.Add(this.reportExplorerDockPanel1_Container);
             this.reportExplorerDockPanel1.Dock = DevExpress.XtraBars.Docking.DockingStyle.Fill;
             this.reportExplorerDockPanel1.ID = new System.Guid("0dea3333-049f-4c63-b042-08eb01d3c080");
-            this.reportExplorerDockPanel1.Location = new System.Drawing.Point(0, 335);
+            this.reportExplorerDockPanel1.Location = new System.Drawing.Point(0, 334);
             this.reportExplorerDockPanel1.Name = "reportExplorerDockPanel1";
-            this.reportExplorerDockPanel1.OriginalSize = new System.Drawing.Size(200, 335);
-            this.reportExplorerDockPanel1.Size = new System.Drawing.Size(200, 334);
+            this.reportExplorerDockPanel1.OriginalSize = new System.Drawing.Size(200, 334);
+            this.reportExplorerDockPanel1.Size = new System.Drawing.Size(200, 333);
             this.reportExplorerDockPanel1.SnapControl = this.Editor;
             // 
             // reportExplorerDockPanel1_Container
             // 
-            this.reportExplorerDockPanel1_Container.Location = new System.Drawing.Point(4, 46);
+            this.reportExplorerDockPanel1_Container.Location = new System.Drawing.Point(4, 26);
             this.reportExplorerDockPanel1_Container.Name = "reportExplorerDockPanel1_Container";
-            this.reportExplorerDockPanel1_Container.Size = new System.Drawing.Size(193, 285);
+            this.reportExplorerDockPanel1_Container.Size = new System.Drawing.Size(193, 304);
             this.reportExplorerDockPanel1_Container.TabIndex = 0;
             // 
             // snapDocumentManager
@@ -4574,6 +4593,12 @@
             this.snapBarController.BarItems.Add(this.showHyphenationOptionsFormItem1);
             this.snapBarController.BarItems.Add(this.changeHyphenationOptionsItem1);
             this.snapBarController.BarItems.Add(this.snapBarToolbarsListItem2);
+            this.snapBarController.BarItems.Add(this.insertObjectItem1);
+            this.snapBarController.BarItems.Add(this.snapBarToolbarsListItem3);
+            this.snapBarController.BarItems.Add(this.insertFootnoteItem1);
+            this.snapBarController.BarItems.Add(this.insertEndnoteItem1);
+            this.snapBarController.BarItems.Add(this.navigationNotesItem1);
+            this.snapBarController.BarItems.Add(this.showNotesItem1);
             this.snapBarController.ContextPageCategories.Add(new DevExpress.Snap.Extensions.UI.ContextRibbonPageCategoryItem(this.headerFooterToolsRibbonPageCategory1));
             this.snapBarController.ContextPageCategories.Add(new DevExpress.Snap.Extensions.UI.ContextRibbonPageCategoryItem(this.tableToolsRibbonPageCategory1));
             this.snapBarController.ContextPageCategories.Add(new DevExpress.Snap.Extensions.UI.ContextRibbonPageCategoryItem(this.floatingPictureToolsRibbonPageCategory1));
@@ -4586,6 +4611,57 @@
             // svgImages
             // 
             this.svgImages.Add("style", "image://svgimages/business objects/bo_list.svg");
+            // 
+            // insertObjectItem1
+            // 
+            this.insertObjectItem1.Id = 335;
+            this.insertObjectItem1.Name = "insertObjectItem1";
+            // 
+            // snapBarToolbarsListItem3
+            // 
+            this.snapBarToolbarsListItem3.Hint = "Show or hide the Data Explorer and Report Explorer windows.";
+            this.snapBarToolbarsListItem3.Id = 336;
+            this.snapBarToolbarsListItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("snapBarToolbarsListItem3.ImageOptions.Image")));
+            this.snapBarToolbarsListItem3.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("snapBarToolbarsListItem3.ImageOptions.LargeImage")));
+            this.snapBarToolbarsListItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("snapBarToolbarsListItem3.ImageOptions.SvgImage")));
+            this.snapBarToolbarsListItem3.Name = "snapBarToolbarsListItem3";
+            this.snapBarToolbarsListItem3.ShowCustomizationItem = false;
+            this.snapBarToolbarsListItem3.ShowDockPanels = true;
+            this.snapBarToolbarsListItem3.ShowToolbars = false;
+            // 
+            // notesRibbonPageGroup1
+            // 
+            this.notesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.insertFootnoteItem1);
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.insertEndnoteItem1);
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.navigationNotesItem1);
+            this.notesRibbonPageGroup1.ItemLinks.Add(this.showNotesItem1);
+            this.notesRibbonPageGroup1.Name = "notesRibbonPageGroup1";
+            // 
+            // insertFootnoteItem1
+            // 
+            this.insertFootnoteItem1.Id = 337;
+            this.insertFootnoteItem1.Name = "insertFootnoteItem1";
+            // 
+            // insertEndnoteItem1
+            // 
+            this.insertEndnoteItem1.Id = 338;
+            this.insertEndnoteItem1.Name = "insertEndnoteItem1";
+            // 
+            // navigationNotesItem1
+            // 
+            toolTipTitleItem4.Text = "Next Footnote";
+            toolTipItem4.Text = "Jump to next footnote";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.navigationNotesItem1.DropDownSuperTip = superToolTip4;
+            this.navigationNotesItem1.Id = 339;
+            this.navigationNotesItem1.Name = "navigationNotesItem1";
+            // 
+            // showNotesItem1
+            // 
+            this.showNotesItem1.Id = 340;
+            this.showNotesItem1.Name = "showNotesItem1";
             // 
             // BookTemplateEditor
             // 
@@ -5072,5 +5148,12 @@
         private DevExpress.XtraBars.BarButtonItem barRemoveStyle;
         private DevExpress.XtraBars.PopupMenu popupBookStyles;
         private DevExpress.Utils.SvgImageCollection svgImages;
+        private DevExpress.XtraRichEdit.UI.InsertObjectItem insertObjectItem1;
+        private DevExpress.Snap.Extensions.UI.SnapBarToolbarsListItem snapBarToolbarsListItem3;
+        private DevExpress.XtraRichEdit.UI.InsertFootnoteItem insertFootnoteItem1;
+        private DevExpress.XtraRichEdit.UI.InsertEndnoteItem insertEndnoteItem1;
+        private DevExpress.XtraRichEdit.UI.NavigationNotesItem navigationNotesItem1;
+        private DevExpress.XtraRichEdit.UI.ShowNotesItem showNotesItem1;
+        private DevExpress.XtraRichEdit.UI.NotesRibbonPageGroup notesRibbonPageGroup1;
     }
 }

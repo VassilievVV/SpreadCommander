@@ -134,14 +134,17 @@ namespace SpreadCommander.Common.SqlScript
                 odbcConnection.InfoMessage += OdbcConnection_InfoMessage;
             }
 
+
+#pragma warning disable CRRSP02 // A repeated word has been found
             /*
-#pragma warning disable CS0618 // Type or member is obsolete
+            #pragma warning disable CS0618 // Type or member is obsolete
             else if (connection is OracleConnection oracleConnection)
-#pragma warning restore CS0618 // Type or member is obsolete
+            #pragma warning restore CS0618 // Type or member is obsolete
             {
                 oracleConnection.InfoMessage += OracleConnection_InfoMessage;
             }
             */
+#pragma warning restore CRRSP02 // A repeated word has been found
             else if (connection is MySqlConnection mySqlConnection)
             {
                 mySqlConnection.InfoMessage += MySqlConnection_InfoMessage;
@@ -185,14 +188,17 @@ namespace SpreadCommander.Common.SqlScript
             {
                 odbcConnection.InfoMessage -= OdbcConnection_InfoMessage;
             }
+
+#pragma warning disable CRRSP02 // A repeated word has been found
             /*
-#pragma warning disable CS0618 // Type or member is obsolete
+            #pragma warning disable CS0618 // Type or member is obsolete
             else if (connection is OracleConnection oracleConnection)
-#pragma warning restore CS0618 // Type or member is obsolete
+            #pragma warning restore CS0618 // Type or member is obsolete
             {
                 oracleConnection.InfoMessage -= OracleConnection_InfoMessage;
             }
             */
+#pragma warning restore CRRSP02 // A repeated word has been found
             else if (connection is MySqlConnection mySqlConnection)
             {
                 mySqlConnection.InfoMessage -= MySqlConnection_InfoMessage;
@@ -466,6 +472,7 @@ namespace SpreadCommander.Common.SqlScript
                         {
                             connection.Close();
                             connection.Dispose();
+                            connection = null;
                         }
 
                         connection = newConnection;
@@ -603,12 +610,12 @@ namespace SpreadCommander.Common.SqlScript
                 if (postProcessTableTasks.Count > 0)
                     Task.WaitAll(postProcessTableTasks.ToArray());
 
-                UnprepareConnection(connection);
-
-                if (connection != initialConnection)
+                if (connection != null)
                 {
-                    connection.Close();
-                    connection.Dispose();
+                    UnprepareConnection(connection);
+#pragma warning disable CRRSP05 // A misspelled word has been found
+                    //If connection != this.Connection, it was disposed in UnprepareConnection.
+#pragma warning restore CRRSP05 // A misspelled word has been found
                 }
 
                 stopWatch.Stop();

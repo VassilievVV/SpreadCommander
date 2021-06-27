@@ -66,6 +66,7 @@ namespace SpreadCommander.Documents.Dialogs
 
         private CancellationTokenSource _CancelScriptTokenSource;
         private IExportSource _ExportSource;
+        private DBConnection _CustomConnection;
 
         public ExportTablesForm()
         {
@@ -84,6 +85,9 @@ namespace SpreadCommander.Documents.Dialogs
         public void LoadConnections()
         {
             bindingConnections.Clear();
+
+            _CustomConnection = new DBConnection() { Name = "(Custom connection)", Description = "Use connection string in top edit box." };
+            bindingConnections.Add(_CustomConnection);
 
             var connections = DBConnections.LoadConnections();
 
@@ -120,7 +124,7 @@ namespace SpreadCommander.Documents.Dialogs
 
             for (int i = 0; i < tableNames.Length; i++)
             {
-                var exportTable = new ExportTable() { TableName = tableNames[i], NewTableName = newTableNames[i], Selected = true };
+                var exportTable = new ExportTable() { TableName = tableNames[i], NewTableName = newTableNames[i], Selected = false };
                 bindingTables.Add(exportTable);
             }
 
@@ -216,7 +220,7 @@ namespace SpreadCommander.Documents.Dialogs
                 var conn = exporter.CreateConnection(connectionStringBuilder);
                 try
                 {
-                    conn.ConnectionString = connection.ConnectionString;
+                    Connection.SetConnectionString(conn, connection.ConnectionString);
                     await conn.OpenAsync(_CancelScriptTokenSource.Token).ConfigureAwait(true);
                 }
                 finally
@@ -284,7 +288,7 @@ namespace SpreadCommander.Documents.Dialogs
             _CancelScriptTokenSource = new CancellationTokenSource();
             try
             {
-                conn.ConnectionString = connection.ConnectionString;
+                Connection.SetConnectionString(conn, connection.ConnectionString);
                 await conn.OpenAsync(_CancelScriptTokenSource.Token).ConfigureAwait(true);
 
                 bool hasErrors = false;
@@ -305,7 +309,7 @@ namespace SpreadCommander.Documents.Dialogs
                             {
                                 var dataTable = _ExportSource.GetDataTable(table.TableName);
                                 if (dataTable != null)
-                                    exporter.ExportDataTable(conn, dataTable, null, prefix + table.NewTableName, true, _CancelScriptTokenSource.Token);
+                                    exporter.ExportDataTable(conn, dataTable, table.NewTableSchema, prefix + table.NewTableName, true, _CancelScriptTokenSource.Token);
                                 else
                                     throw new Exception("Cannot load source table");
 
@@ -343,6 +347,7 @@ namespace SpreadCommander.Documents.Dialogs
                 _CancelScriptTokenSource = null;
 
                 conn.Close();
+                conn.Dispose();
 
                 EnableButtons(true);
             }
@@ -382,6 +387,68 @@ namespace SpreadCommander.Documents.Dialogs
             {
                 foreach (ExportTable tbl in bindingTables)
                     tbl.NewTableSchema = newSchema;
+            }
+        }
+
+        private void BtnCustomConnectionString_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Tag == null)
+                return;
+
+            var tag = Convert.ToString(e.Button.Tag);
+            if (tag == "Parse")
+            {
+                var search = Utils.NonNullString(Convert.ToString(btnCustomConnectionString.EditValue));
+                var p = search.IndexOf(':');
+                if (p < 0)
+                {
+                    XtraMessageBox.Show(this, "String to parse shall contain color (':') character, such as 'sqlite:~\\Data\\myDb.sqlite'.",
+                        "Invalid parse string", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var dbConnection = DBConnections.ParseConnection(search);
+                if (dbConnection == null)
+                {
+                    XtraMessageBox.Show(this, "Cannot parse provided string.",
+                        "Invalid parse string", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                _CustomConnection.Provider            = dbConnection.Provider;
+                _CustomConnection.EncConnectionString = dbConnection.EncConnectionString;
+
+                bindingConnections.Position = bindingConnections.IndexOf(_CustomConnection);
+            }
+            else if (tag == "Edit")
+            {
+                SelectConnection();
+            }
+        }
+
+        private void SelectConnection()
+        {
+            string selectedConnectionName = null;
+
+            using (var frm = new DbConnectionEditor())
+            {
+                if (frm.ShowDialog(this) == DialogResult.OK)
+                    selectedConnectionName = frm.SelectedConnectionName;
+            }
+
+            LoadConnections();
+
+            if (!string.IsNullOrWhiteSpace(selectedConnectionName))
+            {
+                for (int i = 0; i < bindingConnections.Count; i++)
+                {
+                    var conn = bindingConnections[i] as DBConnection;
+                    if (string.Compare(conn?.Name, selectedConnectionName, true) == 0)
+                    {
+                        bindingConnections.Position = i;
+                        break;
+                    }
+                }
             }
         }
     }

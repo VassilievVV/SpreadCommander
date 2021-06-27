@@ -81,20 +81,22 @@ namespace SpreadCommander.Documents.Dialogs
             this.btnSelect = new DevExpress.XtraEditors.SimpleButton();
             this.edName = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroupRoot = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutName = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutDescription = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutProvider = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutPropGrid = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutButtonCancel = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutButtonSelect = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutListConnections = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutWarning = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroupNameDescription = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutName = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutDescription = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroupProperties = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutPropGrid = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutProvider = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlGroupConnections = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlSearchConnection = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutCustomConnectionStrng = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutListConnections = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutButtonTest = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutDockButtons = new DevExpress.XtraLayout.LayoutControlItem();
             this.splitterConnections = new DevExpress.XtraLayout.SplitterItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutButtonTest = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutCustomConnectionStrng = new DevExpress.XtraLayout.LayoutControlItem();
             this.dxErrorProvider = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.layoutRoot)).BeginInit();
             this.layoutRoot.SuspendLayout();
@@ -109,20 +111,22 @@ namespace SpreadCommander.Documents.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.edServerDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupRoot)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutName)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutProvider)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutPropGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutButtonCancel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutButtonSelect)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutListConnections)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutWarning)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupNameDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutDescription)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutPropGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupConnections)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlSearchConnection)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutCustomConnectionStrng)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutListConnections)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutButtonTest)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutDockButtons)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterConnections)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutButtonTest)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutCustomConnectionStrng)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -143,15 +147,16 @@ namespace SpreadCommander.Documents.Dialogs
             this.layoutRoot.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutRoot.Location = new System.Drawing.Point(0, 0);
             this.layoutRoot.Name = "layoutRoot";
-            this.layoutRoot.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(2413, 652, 650, 400);
+            this.layoutRoot.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1804, 899, 650, 400);
+            this.layoutRoot.OptionsFocus.MoveFocusDirection = DevExpress.XtraLayout.MoveFocusDirection.DownThenAcross;
             this.layoutRoot.Root = this.layoutControlGroupRoot;
-            this.layoutRoot.Size = new System.Drawing.Size(784, 661);
-            this.layoutRoot.TabIndex = 10;
+            this.layoutRoot.Size = new System.Drawing.Size(798, 668);
+            this.layoutRoot.TabIndex = 0;
             this.layoutRoot.Text = "layoutControl1";
             // 
             // btnCustomConnectionString
             // 
-            this.btnCustomConnectionString.Location = new System.Drawing.Point(12, 42);
+            this.btnCustomConnectionString.Location = new System.Drawing.Point(24, 73);
             this.btnCustomConnectionString.MenuManager = this.barManager;
             this.btnCustomConnectionString.Name = "btnCustomConnectionString";
             editorButtonImageOptions1.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("editorButtonImageOptions1.SvgImage")));
@@ -164,11 +169,10 @@ namespace SpreadCommander.Documents.Dialogs
             superToolTip6.Items.Add(toolTipItem6);
             this.btnCustomConnectionString.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", "Parse", superToolTip6, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnCustomConnectionString.Properties.NullValuePrompt = "Custom connection string";
-            this.btnCustomConnectionString.Properties.NullValuePromptShowForEmptyValue = true;
-            this.btnCustomConnectionString.Size = new System.Drawing.Size(234, 24);
+            this.btnCustomConnectionString.Properties.NullText = "Custom connection string";
+            this.btnCustomConnectionString.Size = new System.Drawing.Size(244, 24);
             this.btnCustomConnectionString.StyleController = this.layoutRoot;
-            this.btnCustomConnectionString.TabIndex = 11;
+            this.btnCustomConnectionString.TabIndex = 0;
             this.btnCustomConnectionString.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.BtnCustomConnectionString_ButtonClick);
             // 
             // barManager
@@ -290,10 +294,10 @@ namespace SpreadCommander.Documents.Dialogs
             // dockButtons
             // 
             this.dockButtons.CausesValidation = false;
-            this.dockButtons.Location = new System.Drawing.Point(12, 12);
+            this.dockButtons.Location = new System.Drawing.Point(24, 45);
             this.dockButtons.Manager = this.barManager;
             this.dockButtons.Name = "dockButtons";
-            this.dockButtons.Size = new System.Drawing.Size(234, 26);
+            this.dockButtons.Size = new System.Drawing.Size(244, 24);
             this.dockButtons.Text = "standaloneBarDockControl1";
             // 
             // barDockControlTop
@@ -302,15 +306,15 @@ namespace SpreadCommander.Documents.Dialogs
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager;
-            this.barDockControlTop.Size = new System.Drawing.Size(784, 0);
+            this.barDockControlTop.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlBottom
             // 
             this.barDockControlBottom.CausesValidation = false;
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 661);
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 668);
             this.barDockControlBottom.Manager = this.barManager;
-            this.barDockControlBottom.Size = new System.Drawing.Size(784, 0);
+            this.barDockControlBottom.Size = new System.Drawing.Size(798, 0);
             // 
             // barDockControlLeft
             // 
@@ -318,15 +322,15 @@ namespace SpreadCommander.Documents.Dialogs
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
             this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
             this.barDockControlLeft.Manager = this.barManager;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 661);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 668);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(784, 0);
+            this.barDockControlRight.Location = new System.Drawing.Point(798, 0);
             this.barDockControlRight.Manager = this.barManager;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 661);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 668);
             // 
             // repositoryItemSearchControl
             // 
@@ -339,15 +343,15 @@ namespace SpreadCommander.Documents.Dialogs
             // searchConnections
             // 
             this.searchConnections.Client = this.listConnections;
-            this.searchConnections.Location = new System.Drawing.Point(12, 70);
+            this.searchConnections.Location = new System.Drawing.Point(24, 101);
             this.searchConnections.Name = "searchConnections";
             this.searchConnections.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.searchConnections.Properties.Client = this.listConnections;
-            this.searchConnections.Size = new System.Drawing.Size(234, 20);
+            this.searchConnections.Size = new System.Drawing.Size(244, 20);
             this.searchConnections.StyleController = this.layoutRoot;
-            this.searchConnections.TabIndex = 10;
+            this.searchConnections.TabIndex = 1;
             // 
             // listConnections
             // 
@@ -355,11 +359,11 @@ namespace SpreadCommander.Documents.Dialogs
             this.listConnections.DisplayMember = "Name";
             this.listConnections.ImageIndexMember = "ImageIndex";
             this.listConnections.ImageList = this.imageConnection;
-            this.listConnections.Location = new System.Drawing.Point(12, 94);
+            this.listConnections.Location = new System.Drawing.Point(24, 125);
             this.listConnections.Name = "listConnections";
-            this.listConnections.Size = new System.Drawing.Size(234, 529);
+            this.listConnections.Size = new System.Drawing.Size(244, 493);
             this.listConnections.StyleController = this.layoutRoot;
-            this.listConnections.TabIndex = 8;
+            this.listConnections.TabIndex = 2;
             // 
             // bindingConnections
             // 
@@ -378,10 +382,10 @@ namespace SpreadCommander.Documents.Dialogs
             this.lblWarning.Appearance.Options.UseBackColor = true;
             this.lblWarning.Appearance.Options.UseForeColor = true;
             this.lblWarning.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
-            this.lblWarning.Location = new System.Drawing.Point(260, 597);
+            this.lblWarning.Location = new System.Drawing.Point(294, 604);
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.lblWarning.Size = new System.Drawing.Size(512, 26);
+            this.lblWarning.Size = new System.Drawing.Size(492, 26);
             this.lblWarning.StyleController = this.layoutRoot;
             this.lblWarning.TabIndex = 9;
             this.lblWarning.Text = "<b>Storing passwords here is not safe</b>. Please use Windows authentication in M" +
@@ -390,31 +394,31 @@ namespace SpreadCommander.Documents.Dialogs
             // 
             // comboDataSource
             // 
-            this.comboDataSource.Location = new System.Drawing.Point(260, 108);
+            this.comboDataSource.Location = new System.Drawing.Point(306, 186);
             this.comboDataSource.Name = "comboDataSource";
             this.comboDataSource.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboDataSource.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboDataSource.Size = new System.Drawing.Size(512, 20);
+            this.comboDataSource.Size = new System.Drawing.Size(468, 20);
             this.comboDataSource.StyleController = this.layoutRoot;
-            this.comboDataSource.TabIndex = 3;
+            this.comboDataSource.TabIndex = 5;
             this.comboDataSource.EditValueChanged += new System.EventHandler(this.ComboDataSource_EditValueChanged);
             // 
             // edServerDescription
             // 
-            this.edServerDescription.Location = new System.Drawing.Point(260, 68);
+            this.edServerDescription.Location = new System.Drawing.Point(306, 101);
             this.edServerDescription.Name = "edServerDescription";
-            this.edServerDescription.Size = new System.Drawing.Size(512, 20);
+            this.edServerDescription.Size = new System.Drawing.Size(468, 20);
             this.edServerDescription.StyleController = this.layoutRoot;
-            this.edServerDescription.TabIndex = 2;
+            this.edServerDescription.TabIndex = 4;
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(12, 627);
+            this.btnTest.Location = new System.Drawing.Point(24, 622);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(234, 22);
+            this.btnTest.Size = new System.Drawing.Size(244, 22);
             this.btnTest.StyleController = this.layoutRoot;
-            this.btnTest.TabIndex = 0;
+            this.btnTest.TabIndex = 7;
             this.btnTest.Text = "&Test";
             this.btnTest.ToolTip = "Test connection";
             this.btnTest.Click += new System.EventHandler(this.BtnTest_Click);
@@ -422,41 +426,41 @@ namespace SpreadCommander.Documents.Dialogs
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(539, 627);
+            this.btnCancel.Location = new System.Drawing.Point(542, 634);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(233, 22);
+            this.btnCancel.Size = new System.Drawing.Size(244, 22);
             this.btnCancel.StyleController = this.layoutRoot;
-            this.btnCancel.TabIndex = 7;
+            this.btnCancel.TabIndex = 9;
             this.btnCancel.Text = "&Cancel";
             // 
             // PropertyGrid
             // 
-            this.PropertyGrid.Location = new System.Drawing.Point(260, 132);
+            this.PropertyGrid.Location = new System.Drawing.Point(306, 210);
             this.PropertyGrid.Name = "PropertyGrid";
             this.PropertyGrid.SelectedObject = null;
             this.PropertyGrid.SelectedObjects = new object[0];
-            this.PropertyGrid.Size = new System.Drawing.Size(512, 461);
-            this.PropertyGrid.TabIndex = 4;
+            this.PropertyGrid.Size = new System.Drawing.Size(468, 378);
+            this.PropertyGrid.TabIndex = 6;
             this.PropertyGrid.PropertyValueChanged += new System.EventHandler<SpreadCommander.Documents.Controls.PropertyGridEx.PropertyValueChangedEventArgs>(this.PropertyGrid_PropertyValueChanged);
             // 
             // btnSelect
             // 
             this.btnSelect.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnSelect.Location = new System.Drawing.Point(302, 627);
+            this.btnSelect.Location = new System.Drawing.Point(294, 634);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(233, 22);
+            this.btnSelect.Size = new System.Drawing.Size(244, 22);
             this.btnSelect.StyleController = this.layoutRoot;
-            this.btnSelect.TabIndex = 6;
+            this.btnSelect.TabIndex = 8;
             this.btnSelect.Text = "&Select";
             // 
             // edName
             // 
-            this.edName.Location = new System.Drawing.Point(260, 28);
+            this.edName.Location = new System.Drawing.Point(306, 61);
             this.edName.Name = "edName";
             this.edName.Properties.MaxLength = 250;
-            this.edName.Size = new System.Drawing.Size(512, 20);
+            this.edName.Size = new System.Drawing.Size(468, 20);
             this.edName.StyleController = this.layoutRoot;
-            this.edName.TabIndex = 1;
+            this.edName.TabIndex = 3;
             this.edName.EditValueChanged += new System.EventHandler(this.EdName_EditValueChanged);
             // 
             // layoutControlGroupRoot
@@ -465,31 +469,61 @@ namespace SpreadCommander.Documents.Dialogs
             this.layoutControlGroupRoot.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
             this.layoutControlGroupRoot.GroupBordersVisible = false;
             this.layoutControlGroupRoot.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutName,
-            this.layoutDescription,
-            this.layoutProvider,
-            this.layoutPropGrid,
             this.layoutButtonCancel,
             this.layoutButtonSelect,
-            this.layoutListConnections,
             this.layoutWarning,
-            this.layoutControlSearchConnection,
-            this.layoutDockButtons,
-            this.splitterConnections,
-            this.emptySpaceItem1,
-            this.layoutButtonTest,
-            this.layoutCustomConnectionStrng});
+            this.layoutControlGroupNameDescription,
+            this.layoutControlGroupProperties,
+            this.layoutControlGroupConnections,
+            this.splitterConnections});
             this.layoutControlGroupRoot.Name = "Root";
-            this.layoutControlGroupRoot.Size = new System.Drawing.Size(784, 661);
+            this.layoutControlGroupRoot.Size = new System.Drawing.Size(798, 668);
             this.layoutControlGroupRoot.TextVisible = false;
+            // 
+            // layoutButtonCancel
+            // 
+            this.layoutButtonCancel.Control = this.btnCancel;
+            this.layoutButtonCancel.Location = new System.Drawing.Point(530, 622);
+            this.layoutButtonCancel.Name = "layoutButtonCancel";
+            this.layoutButtonCancel.Size = new System.Drawing.Size(248, 26);
+            this.layoutButtonCancel.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutButtonCancel.TextVisible = false;
+            // 
+            // layoutButtonSelect
+            // 
+            this.layoutButtonSelect.Control = this.btnSelect;
+            this.layoutButtonSelect.Location = new System.Drawing.Point(282, 622);
+            this.layoutButtonSelect.Name = "layoutButtonSelect";
+            this.layoutButtonSelect.Size = new System.Drawing.Size(248, 26);
+            this.layoutButtonSelect.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutButtonSelect.TextVisible = false;
+            // 
+            // layoutWarning
+            // 
+            this.layoutWarning.Control = this.lblWarning;
+            this.layoutWarning.Location = new System.Drawing.Point(282, 592);
+            this.layoutWarning.Name = "layoutWarning";
+            this.layoutWarning.Size = new System.Drawing.Size(496, 30);
+            this.layoutWarning.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutWarning.TextVisible = false;
+            // 
+            // layoutControlGroupNameDescription
+            // 
+            this.layoutControlGroupNameDescription.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutName,
+            this.layoutDescription});
+            this.layoutControlGroupNameDescription.Location = new System.Drawing.Point(282, 0);
+            this.layoutControlGroupNameDescription.Name = "layoutControlGroupNameDescription";
+            this.layoutControlGroupNameDescription.Size = new System.Drawing.Size(496, 125);
+            this.layoutControlGroupNameDescription.Text = "Name && Description";
             // 
             // layoutName
             // 
             this.layoutName.Control = this.edName;
             this.layoutName.CustomizationFormText = "Name:";
-            this.layoutName.Location = new System.Drawing.Point(248, 0);
+            this.layoutName.Location = new System.Drawing.Point(0, 0);
             this.layoutName.Name = "layoutName";
-            this.layoutName.Size = new System.Drawing.Size(516, 40);
+            this.layoutName.Size = new System.Drawing.Size(472, 40);
             this.layoutName.Text = "Name:";
             this.layoutName.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutName.TextSize = new System.Drawing.Size(57, 13);
@@ -498,125 +532,109 @@ namespace SpreadCommander.Documents.Dialogs
             // 
             this.layoutDescription.Control = this.edServerDescription;
             this.layoutDescription.CustomizationFormText = "Description:";
-            this.layoutDescription.Location = new System.Drawing.Point(248, 40);
+            this.layoutDescription.Location = new System.Drawing.Point(0, 40);
             this.layoutDescription.Name = "layoutDescription";
-            this.layoutDescription.Size = new System.Drawing.Size(516, 40);
+            this.layoutDescription.Size = new System.Drawing.Size(472, 40);
             this.layoutDescription.Text = "Description:";
             this.layoutDescription.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutDescription.TextSize = new System.Drawing.Size(57, 13);
             // 
-            // layoutProvider
+            // layoutControlGroupProperties
             // 
-            this.layoutProvider.Control = this.comboDataSource;
-            this.layoutProvider.CustomizationFormText = "Provider:";
-            this.layoutProvider.Location = new System.Drawing.Point(248, 80);
-            this.layoutProvider.Name = "layoutProvider";
-            this.layoutProvider.Size = new System.Drawing.Size(516, 40);
-            this.layoutProvider.Text = "Provider:";
-            this.layoutProvider.TextLocation = DevExpress.Utils.Locations.Top;
-            this.layoutProvider.TextSize = new System.Drawing.Size(57, 13);
+            this.layoutControlGroupProperties.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutPropGrid,
+            this.layoutProvider});
+            this.layoutControlGroupProperties.Location = new System.Drawing.Point(282, 125);
+            this.layoutControlGroupProperties.Name = "layoutControlGroupProperties";
+            this.layoutControlGroupProperties.Size = new System.Drawing.Size(496, 467);
+            this.layoutControlGroupProperties.Text = "Properties";
             // 
             // layoutPropGrid
             // 
             this.layoutPropGrid.Control = this.PropertyGrid;
             this.layoutPropGrid.CustomizationFormText = "layoutPropGrid";
-            this.layoutPropGrid.Location = new System.Drawing.Point(248, 120);
+            this.layoutPropGrid.Location = new System.Drawing.Point(0, 40);
             this.layoutPropGrid.Name = "layoutPropGrid";
-            this.layoutPropGrid.Size = new System.Drawing.Size(516, 465);
+            this.layoutPropGrid.Size = new System.Drawing.Size(472, 382);
             this.layoutPropGrid.TextSize = new System.Drawing.Size(0, 0);
             this.layoutPropGrid.TextVisible = false;
             // 
-            // layoutButtonCancel
+            // layoutProvider
             // 
-            this.layoutButtonCancel.Control = this.btnCancel;
-            this.layoutButtonCancel.CustomizationFormText = "layoutControlItem6";
-            this.layoutButtonCancel.Location = new System.Drawing.Point(527, 615);
-            this.layoutButtonCancel.Name = "layoutButtonCancel";
-            this.layoutButtonCancel.Size = new System.Drawing.Size(237, 26);
-            this.layoutButtonCancel.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutButtonCancel.TextVisible = false;
+            this.layoutProvider.Control = this.comboDataSource;
+            this.layoutProvider.CustomizationFormText = "Provider:";
+            this.layoutProvider.Location = new System.Drawing.Point(0, 0);
+            this.layoutProvider.Name = "layoutProvider";
+            this.layoutProvider.Size = new System.Drawing.Size(472, 40);
+            this.layoutProvider.Text = "Provider:";
+            this.layoutProvider.TextLocation = DevExpress.Utils.Locations.Top;
+            this.layoutProvider.TextSize = new System.Drawing.Size(57, 13);
             // 
-            // layoutButtonSelect
+            // layoutControlGroupConnections
             // 
-            this.layoutButtonSelect.Control = this.btnSelect;
-            this.layoutButtonSelect.CustomizationFormText = "layoutControlItem5";
-            this.layoutButtonSelect.Location = new System.Drawing.Point(290, 615);
-            this.layoutButtonSelect.Name = "layoutButtonSelect";
-            this.layoutButtonSelect.Size = new System.Drawing.Size(237, 26);
-            this.layoutButtonSelect.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutButtonSelect.TextVisible = false;
-            // 
-            // layoutListConnections
-            // 
-            this.layoutListConnections.Control = this.listConnections;
-            this.layoutListConnections.Location = new System.Drawing.Point(0, 82);
-            this.layoutListConnections.Name = "layoutListConnections";
-            this.layoutListConnections.Size = new System.Drawing.Size(238, 533);
-            this.layoutListConnections.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutListConnections.TextVisible = false;
-            // 
-            // layoutWarning
-            // 
-            this.layoutWarning.Control = this.lblWarning;
-            this.layoutWarning.Location = new System.Drawing.Point(248, 585);
-            this.layoutWarning.Name = "layoutWarning";
-            this.layoutWarning.Size = new System.Drawing.Size(516, 30);
-            this.layoutWarning.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutWarning.TextVisible = false;
+            this.layoutControlGroupConnections.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlSearchConnection,
+            this.layoutCustomConnectionStrng,
+            this.layoutListConnections,
+            this.layoutButtonTest,
+            this.layoutDockButtons});
+            this.layoutControlGroupConnections.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroupConnections.Name = "layoutControlGroupConnections";
+            this.layoutControlGroupConnections.Size = new System.Drawing.Size(272, 648);
+            this.layoutControlGroupConnections.Text = "Connections";
             // 
             // layoutControlSearchConnection
             // 
             this.layoutControlSearchConnection.Control = this.searchConnections;
-            this.layoutControlSearchConnection.Location = new System.Drawing.Point(0, 58);
+            this.layoutControlSearchConnection.Location = new System.Drawing.Point(0, 56);
             this.layoutControlSearchConnection.Name = "layoutControlSearchConnection";
-            this.layoutControlSearchConnection.Size = new System.Drawing.Size(238, 24);
+            this.layoutControlSearchConnection.Size = new System.Drawing.Size(248, 24);
             this.layoutControlSearchConnection.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlSearchConnection.TextVisible = false;
+            // 
+            // layoutCustomConnectionStrng
+            // 
+            this.layoutCustomConnectionStrng.Control = this.btnCustomConnectionString;
+            this.layoutCustomConnectionStrng.Location = new System.Drawing.Point(0, 28);
+            this.layoutCustomConnectionStrng.Name = "layoutCustomConnectionStrng";
+            this.layoutCustomConnectionStrng.Size = new System.Drawing.Size(248, 28);
+            this.layoutCustomConnectionStrng.Text = "Custom connection";
+            this.layoutCustomConnectionStrng.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutCustomConnectionStrng.TextVisible = false;
+            // 
+            // layoutListConnections
+            // 
+            this.layoutListConnections.Control = this.listConnections;
+            this.layoutListConnections.Location = new System.Drawing.Point(0, 80);
+            this.layoutListConnections.Name = "layoutListConnections";
+            this.layoutListConnections.Size = new System.Drawing.Size(248, 497);
+            this.layoutListConnections.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutListConnections.TextVisible = false;
+            // 
+            // layoutButtonTest
+            // 
+            this.layoutButtonTest.Control = this.btnTest;
+            this.layoutButtonTest.Location = new System.Drawing.Point(0, 577);
+            this.layoutButtonTest.Name = "layoutButtonTest";
+            this.layoutButtonTest.Size = new System.Drawing.Size(248, 26);
+            this.layoutButtonTest.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutButtonTest.TextVisible = false;
             // 
             // layoutDockButtons
             // 
             this.layoutDockButtons.Control = this.dockButtons;
             this.layoutDockButtons.Location = new System.Drawing.Point(0, 0);
             this.layoutDockButtons.Name = "layoutDockButtons";
-            this.layoutDockButtons.Size = new System.Drawing.Size(238, 30);
+            this.layoutDockButtons.Size = new System.Drawing.Size(248, 28);
             this.layoutDockButtons.TextSize = new System.Drawing.Size(0, 0);
             this.layoutDockButtons.TextVisible = false;
             // 
             // splitterConnections
             // 
             this.splitterConnections.AllowHotTrack = true;
-            this.splitterConnections.Location = new System.Drawing.Point(238, 0);
+            this.splitterConnections.Location = new System.Drawing.Point(272, 0);
             this.splitterConnections.Name = "splitterConnections";
-            this.splitterConnections.Size = new System.Drawing.Size(10, 615);
-            // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(238, 615);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(52, 26);
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutButtonTest
-            // 
-            this.layoutButtonTest.Control = this.btnTest;
-            this.layoutButtonTest.CustomizationFormText = "layoutControlItem7";
-            this.layoutButtonTest.Location = new System.Drawing.Point(0, 615);
-            this.layoutButtonTest.Name = "layoutButtonTest";
-            this.layoutButtonTest.Size = new System.Drawing.Size(238, 26);
-            this.layoutButtonTest.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutButtonTest.TextVisible = false;
-            // 
-            // layoutCustomConnectionStrng
-            // 
-            this.layoutCustomConnectionStrng.Control = this.btnCustomConnectionString;
-            this.layoutCustomConnectionStrng.Location = new System.Drawing.Point(0, 30);
-            this.layoutCustomConnectionStrng.Name = "layoutCustomConnectionStrng";
-            this.layoutCustomConnectionStrng.Size = new System.Drawing.Size(238, 28);
-            this.layoutCustomConnectionStrng.Text = "Custom connection";
-            this.layoutCustomConnectionStrng.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutCustomConnectionStrng.TextVisible = false;
+            this.splitterConnections.Size = new System.Drawing.Size(10, 648);
             // 
             // dxErrorProvider
             // 
@@ -628,16 +646,16 @@ namespace SpreadCommander.Documents.Dialogs
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(784, 661);
+            this.ClientSize = new System.Drawing.Size(798, 668);
             this.Controls.Add(this.layoutRoot);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IconOptions.Icon = ((System.Drawing.Icon)(resources.GetObject("DbConnectionEditor.IconOptions.Icon")));
+            this.IconOptions.ShowIcon = false;
             this.MinimizeBox = false;
             this.Name = "DbConnectionEditor";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Connection Editor";
@@ -656,20 +674,22 @@ namespace SpreadCommander.Documents.Dialogs
             ((System.ComponentModel.ISupportInitialize)(this.edServerDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.edName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupRoot)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutName)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutProvider)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutPropGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutButtonCancel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutButtonSelect)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutListConnections)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutWarning)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupNameDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutDescription)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutPropGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroupConnections)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlSearchConnection)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutCustomConnectionStrng)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutListConnections)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutButtonTest)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutDockButtons)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitterConnections)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutButtonTest)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutCustomConnectionStrng)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -689,7 +709,6 @@ namespace SpreadCommander.Documents.Dialogs
 		private DevExpress.XtraLayout.LayoutControlItem layoutDescription;
 		private DevExpress.XtraLayout.LayoutControlItem layoutProvider;
 		private DevExpress.XtraLayout.LayoutControlItem layoutPropGrid;
-		private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
 		private DevExpress.XtraLayout.LayoutControlItem layoutButtonCancel;
 		private DevExpress.XtraLayout.LayoutControlItem layoutButtonTest;
 		private DevExpress.XtraEditors.SimpleButton btnSelect;
@@ -721,5 +740,8 @@ namespace SpreadCommander.Documents.Dialogs
         private DevExpress.XtraEditors.TextEdit edName;
         private DevExpress.XtraEditors.ButtonEdit btnCustomConnectionString;
         private DevExpress.XtraLayout.LayoutControlItem layoutCustomConnectionStrng;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupNameDescription;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupProperties;
+        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroupConnections;
     }
 }

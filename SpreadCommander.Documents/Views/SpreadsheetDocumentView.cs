@@ -59,6 +59,7 @@ namespace SpreadCommander.Documents.Views
             fluent.BindCommand(barBookTemplateEditor, m => m.ShowBookTemplateEditor());
             fluent.BindCommand(barSelectTable, m => m.SelectTable());
             fluent.BindCommand(barSelectTableData, m => m.SelectTableData());
+            fluent.BindCommand(barSelectDataRange, m => m.SelectDataRange());
             fluent.BindCommand(barExpandSelectionRows, m => m.ExpandSelectionToRows());
             fluent.BindCommand(barExpandSelectionColumns, m => m.ExpandSelectionToColumns());
             fluent.BindCommand(barCopySelectionToRows, m => m.CopySelectionToRows());

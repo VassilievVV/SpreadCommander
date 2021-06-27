@@ -79,7 +79,7 @@ namespace SpreadCommander.Documents.Console
 
         private void DataSetView_Modified(object sender, EventArgs e)
         {
-            FireModified(false);
+            FireModified(true);
         }
 
         private void DataSetView_RibbonUpdateRequest(object sender, RibbonUpdateRequestEventArgs e)

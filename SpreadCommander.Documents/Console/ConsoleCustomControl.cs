@@ -39,7 +39,8 @@ namespace SpreadCommander.Documents.Console
 
         protected virtual void DataSetChanged(DataSet oldDataSet, DataSet newDataSet)
         {
-            //Do nothing
+            //Do nothing, just collect garbage
+            GC.Collect();
         }
 
         protected virtual void FireRibbonUpdateRequest()

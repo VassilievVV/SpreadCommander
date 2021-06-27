@@ -29,7 +29,7 @@ namespace SpreadCommander.Common.Spreadsheet
         #region XlColumnPositionConverter
         public class XlColumnPositionConverter : DevExpress.Export.Xl.IXlColumnPositionConverter
         {
-            private readonly List<string> _ColumnNames = new List<string>();
+            private readonly List<string> _ColumnNames = new();
 
             public XlColumnPositionConverter(IList<string> columnNames)
             {
@@ -187,13 +187,23 @@ namespace SpreadCommander.Common.Spreadsheet
         public static DbDataReader GetTableDataReader(IWorkbook workbook, string tableName)
         {
             var dataTable = GetDataTable(workbook, tableName);
-            var reader    = dataTable.CreateDataReader();
+            //var reader    = dataTable.CreateDataReader();
+            var reader    = new DataViewReader(dataTable);
+
+            return reader;
+        }
+
+        public static DbDataReader GetTableReaderForSelection(IWorkbook workbook)
+        {
+            var dataTable = GetDataTable(workbook.Worksheets.ActiveWorksheet.Selection);
+            var reader    = new DataViewReader(dataTable);
+
             return reader;
         }
 
         public static DataTable GetDataTable(Table table)
         {
-            var range = table.Range.Exclude(table.TotalRowRange);
+            var range  = table.Range.Exclude(table.TotalRowRange);
             var result = GetDataTable(range);
             return result;
         }
@@ -202,15 +212,31 @@ namespace SpreadCommander.Common.Spreadsheet
         {
             var dataTable = range.Worksheet.CreateDataTable(range, true);
 
-            for (int col = 0; col < range.ColumnCount; col++)
+            if (range.RowCount > 1)
             {
-                CellValueType cellType = range[0, col].Value.Type;
-                for (int r = 1; r < range.RowCount; r++)
+                for (int col = 0; col < range.ColumnCount; col++)
                 {
-                    if (cellType != range[r, col].Value.Type)
+                    CellValueType cellType = range[1, col].Value.Type;
+                    for (int r = 2; r < range.RowCount; r++)
                     {
-                        dataTable.Columns[col].DataType = typeof(string);
-                        break;
+                        var value = range[r, col].Value;
+                        switch (value.Type)
+                        {
+                            case CellValueType.None:
+                            case CellValueType.Error:
+                            case CellValueType.Unknown:
+                                continue;
+                            case CellValueType.Text:
+                                if (string.IsNullOrWhiteSpace(value.TextValue))
+                                    continue;
+                                break;
+                        }
+
+                        if (cellType != value.Type)
+                        {
+                            dataTable.Columns[col].DataType = typeof(string);
+                            break;
+                        }
                     }
                 }
             }

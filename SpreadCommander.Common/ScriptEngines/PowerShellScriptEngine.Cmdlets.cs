@@ -18,6 +18,7 @@ using System.Threading.Tasks;
 using SpreadCommander.Common.PowerShell.CmdLets.ImportExport;
 using SpreadCommander.Common.PowerShell.CmdLets.Common;
 using SpreadCommander.Common.PowerShell.CmdLets.Async;
+using SpreadCommander.Common.PowerShell.CmdLets.Sankey;
 
 namespace SpreadCommander.Common.ScriptEngines
 {
@@ -79,6 +80,7 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(ClearSpreadsheetCmdlet),
                 typeof(GetSpreadTableNamesCmdlet),
                 typeof(GetSpreadSheetNamesCmdlet),
+                typeof(SelectSpreadSheetCmdlet),
 
                 //Chart
                 typeof(NewChartCmdlet),
@@ -106,11 +108,16 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(SaveChartCmdlet),
                 typeof(SaveChartTemplateCmdlet),
 
+                //Sankey
+                typeof(WriteSankeyDiagramCmdlet),
+                typeof(SaveSankeyDiagramCmdlet),
+
                 //Grid
                 typeof(OutDataCmdlet),
                 typeof(OutDataSetCmdlet),
                 typeof(RemoveDataTableCmdlet),
                 typeof(ClearDataCmdlet),
+                typeof(SelectDataTableCmdlet),
 
                 //Map
                 typeof(NewMapCmdlet),

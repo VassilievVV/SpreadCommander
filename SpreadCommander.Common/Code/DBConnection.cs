@@ -22,11 +22,11 @@ namespace SpreadCommander.Common.Code
     #region DBConnections
     public class DBConnections
     {
-        public static readonly object LockObject = new object();
+        public static readonly object LockObject = new ();
 
         public string SelectedConnection { get; set; }
 
-        public List<DBConnection> Connections = new List<DBConnection>();
+        public List<DBConnection> Connections = new ();
 
 
         public static DBConnection ParseConnection(string scConnectionString)
@@ -36,6 +36,7 @@ namespace SpreadCommander.Common.Code
             var prefix           = scConnectionString.Substring(0, posColon).Trim().ToLowerInvariant();
             var connectionString = scConnectionString[(posColon + 1)..].Trim();
 
+#pragma warning disable CRRSP06 // A misspelled word has been found
             switch (prefix)
             {
                 case "mssql":
@@ -57,7 +58,12 @@ namespace SpreadCommander.Common.Code
                     var resultODBC = new DBConnection() { Provider = ConnectionFactory.OdbcFactoryName };
                     resultODBC.ConnectionString = connectionString;
                     return resultODBC;
+                case "oledb":
+                    var resultOLEDB = new DBConnection() { Provider = ConnectionFactory.OleDbFactoryName };
+                    resultOLEDB.ConnectionString = connectionString;
+                    return resultOLEDB;
             }
+#pragma warning restore CRRSP06 // A misspelled word has been found
 
             return null;
 

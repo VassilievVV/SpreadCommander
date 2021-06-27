@@ -61,7 +61,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
         public SwitchParameter ResetDataSet { get; set; }
         
 
-        private readonly List<PSObject> _Output = new List<PSObject>();
+        private readonly List<PSObject> _Output = new ();
 
         protected override void BeginProcessing()
         {
@@ -91,6 +91,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
            
             var dataSource = GetDataSource(_Output, DataSource, 
                 new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
+
+#pragma warning disable CRRSP02 // A repeated word has been found
+            /*
             if (dataSource is DataView dataView)
                 dataSource = dataView.ToTable();
             if (!(dataSource is DataTable))
@@ -101,8 +104,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
 
                 dataSource = table;
             }
+            */
+#pragma warning restore CRRSP02 // A repeated word has been found
 
             var dataTable = (DataTable)dataSource;
+
             try
             {
                 List<BaseCommand> commands = null;

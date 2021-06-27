@@ -49,6 +49,8 @@ using DevExpress.Utils.Design;
 using System.Linq.Expressions;
 using DevExpress.Utils.DPI;
 using SpreadCommander.Documents.Messages;
+using DevExpress.XtraEditors.Controls;
+using DevExpress.XtraSplashScreen;
 
 namespace SpreadCommander
 {
@@ -68,6 +70,8 @@ namespace SpreadCommander
         {
             //Load skins before InitializeComponent(), to allow skinned splash screen.
             LoadStartupSkin();
+
+            ShowSplashScreen();
 
             InitializeComponent();
 
@@ -99,6 +103,40 @@ namespace SpreadCommander
             PowerShellScriptEngine.RefreshAvailableCommandLets();
 
             GridFunctionFactory.RegisterFunctions();
+        }
+
+        private void ShowSplashScreen()
+        {
+            using var op = new FluentSplashScreenOptions
+            {
+                Title                = "Spread Commander",
+                Subtitle             = "Office Tools & Data Analysis",
+                RightFooter          = "Starting ...",
+                LeftFooter           = "Viatcheslav V. Vassiliev\r\nCopyright © Since 2019\r\nAll Rights reserved.",
+                LoadingIndicatorType = FluentLoadingIndicatorType.Dots,
+                OpacityColor         = Color.DarkBlue,
+                Opacity              = 150
+            };
+            op.AppearanceTitle.Font            = new Font("Times New Roman", 48, FontStyle.Bold | FontStyle.Underline);
+            op.AppearanceTitle.ForeColor       = Color.LightGoldenrodYellow;
+            op.AppearanceSubtitle.Font         = new Font("Times New Roman", 24, FontStyle.Italic);
+            op.AppearanceSubtitle.ForeColor    = Color.AntiqueWhite;
+            op.AppearanceLeftFooter.Font       = new Font("Times New Roman", 12, FontStyle.Italic);
+            op.AppearanceLeftFooter.ForeColor  = Color.AntiqueWhite;
+            op.AppearanceRightFooter.Font      = new Font("Lucida Console", 12);
+            op.AppearanceRightFooter.ForeColor = Color.AntiqueWhite;
+
+            op.LogoImageOptions.Image = Utils.GetEmbeddedResourceImage(GetType().Assembly, "Images.Logo.png");
+            if (op.LogoImageOptions.Image is Bitmap bmpLogo)
+                bmpLogo.MakeTransparent();
+
+            DevExpress.XtraSplashScreen.SplashScreenManager.ShowFluentSplashScreen(
+                op,
+                parentForm: this,
+                useFadeIn:  true,
+                useFadeOut: true,
+                startPos:   SplashFormStartPosition.CenterScreen
+            );
         }
 
         RibbonControl IRibbonHolder.Ribbon            => Ribbon;
@@ -182,6 +220,8 @@ namespace SpreadCommander
             fluent.BindCommand(barOptions, m => m.EditApplicationSettings());
             fluent.BindCommand(barSaveAll, m => m.SaveAllFiles());
             fluent.BindCommand(barAbout, m => m.ShowAbout());
+            fluent.WithEvent<ButtonPressedEventArgs>(searchConnections, nameof(searchConnections.ButtonClick))
+                .EventToCommand(m => m.ConnectionOptions(null), x => (string)x.Button.Tag);
         }
 
         private void InitializeAppMenuItems()
@@ -214,6 +254,10 @@ namespace SpreadCommander
                 Invoke((MethodInvoker)(() =>
                 {
                     Application.DoEvents();
+
+                    //Close the splash screen
+                    SplashScreenManager.CloseForm();
+
                     SelectProject();
                 }));
             });
@@ -322,11 +366,11 @@ namespace SpreadCommander
                         UserLookAndFeel.Default.SetSkinStyle(parts[0], parts[1]);
                 }
                 else
-                    UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.Bezier.Default);
+                    UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.DefaultSkin.Default);
             }
             catch (Exception)
             {
-                UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.Bezier.Default);
+                UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.DefaultSkin.Default);
             }
         }
 
@@ -414,6 +458,22 @@ namespace SpreadCommander
                     bindingConnections.Position = selectedIndex;
                 else
                     bindingConnections.Position = 0;
+
+                searchConnections.EditValue = bindingConnections.Current;
+            }
+        }
+
+        public void SelectConnection(string connectionName)
+        {
+            for (int i = 0; i < bindingConnections.Count-1; i++)
+            {
+                var conn = (DBConnection)bindingConnections[i];
+                if (string.Compare(conn.Name, connectionName, true) == 0)
+                {
+                    bindingConnections.Position = i;
+                    searchConnections.EditValue = conn;
+                    break;
+                }
             }
         }
 
@@ -459,6 +519,7 @@ namespace SpreadCommander
         private async void SelectDBConnection(DBConnection connection)
         {
             treeConnections.DataSource = null;
+            treeConnections.ClearNodes();
 
             if (connection == null)
                 return;

@@ -45,9 +45,16 @@ namespace SpreadCommander.Documents.Code
         {
             if (info.Node is DbSchemaBaseNode node)
             {
-                var childNodes = node.ListChildNodes();
-                if (childNodes != null)
-                    info.Children = childNodes;
+                try
+                {
+                    var childNodes = node.ListChildNodes();
+                    if (childNodes != null)
+                        info.Children = childNodes;
+                }
+                catch (Exception)
+                {
+                    //Do nothing
+                }
             }
         }
 
@@ -145,7 +152,7 @@ namespace SpreadCommander.Documents.Code
                 if (dbConnectionType == typeof(SqlConnection) || dbConnectionType.IsSubclassOf(typeof(SqlConnection)))
                     return $"[{Utils.NonNullString(str).Replace("]", "]]")}]";
                 else if (dbConnectionType == typeof(MySqlConnection) || dbConnectionType.IsSubclassOf(typeof(MySqlConnection)))
-                    return $"`{Utils.NonNullString(str).Replace("`", "``")}`]";
+                    return $"`{Utils.NonNullString(str).Replace("`", "``")}`";
                 else if (dbConnectionType == typeof(SQLiteConnection) || dbConnectionType.IsSubclassOf(typeof(SQLiteConnection)))
                     return $"[{Utils.NonNullString(str).Replace("]", "]]")}]";
 
@@ -173,11 +180,19 @@ namespace SpreadCommander.Documents.Code
 
             var tblDatabases = GetSchema("Databases");
             if (tblDatabases == null)
-                return null;
+                return result;
+
+            DataColumn colDatabaseName;
+            if (tblDatabases.Columns.Contains("DATABASE_NAME"))
+                colDatabaseName = tblDatabases.Columns["DATABASE_NAME"];
+            else if (tblDatabases.Columns.Contains("SCHEMA_NAME"))
+                colDatabaseName = tblDatabases.Columns["SCHEMA_NAME"];
+            else
+                return result;
 
             foreach (DataRow rowDB in tblDatabases.Rows)
             {
-                string dbName = Convert.ToString(rowDB["DATABASE_NAME"]);
+                string dbName = Convert.ToString(rowDB[colDatabaseName]);
                 if (!string.IsNullOrEmpty(dbName))
                     result.Add(new DatabaseSchemaNode(this) { Text = dbName });
             }
@@ -277,11 +292,15 @@ namespace SpreadCommander.Documents.Code
             if (tblTables == null)
                 return null;
 
+            bool hasType   = tblTables.Columns.Contains("TABLE_TYPE");
+            bool hasName   = tblTables.Columns.Contains("TABLE_NAME");
+            bool hasSchema = tblTables.Columns.Contains("TABLE_SCHEMA");
+
             foreach (DataRow rowTable in tblTables.Rows)
             {
-                string tblType   = Convert.ToString(rowTable["TABLE_TYPE"]);
-                string tblName   = Convert.ToString(rowTable["TABLE_NAME"]);
-                string tblSchema = Convert.ToString(rowTable["TABLE_SCHEMA"]);
+                string tblType   = hasType? Convert.ToString(rowTable["TABLE_TYPE"]) : null;
+                string tblName   = hasName ? Convert.ToString(rowTable["TABLE_NAME"]) : null;
+                string tblSchema = hasSchema ? Convert.ToString(rowTable["TABLE_SCHEMA"]) : null;
                 if (!string.IsNullOrEmpty(tblName))
                 {
                     var node = new TableSchemaNode(this)
@@ -316,13 +335,15 @@ namespace SpreadCommander.Documents.Code
             if (tblProcedures == null)
                 return null;
 
-            bool hasType      = tblProcedures.Columns.Contains("ROUTINE_TYPE");
+            bool hasType   = tblProcedures.Columns.Contains("ROUTINE_TYPE");
+            bool hasName   = tblProcedures.Columns.Contains("SPECIFIC_NAME");
+            bool hasSchema = tblProcedures.Columns.Contains("SCPEIFIC_SCHEMA");
 
             foreach (DataRow rowProcedure in tblProcedures.Rows)
             {
                 string procType   = hasType ? Convert.ToString(rowProcedure["ROUTINE_TYPE"]) : null;
-                string procName   = Convert.ToString(rowProcedure["SPECIFIC_NAME"]);
-                string procSchema = Convert.ToString(rowProcedure["SPECIFIC_SCHEMA"]);
+                string procName   = hasName ? Convert.ToString(rowProcedure["SPECIFIC_NAME"]) : null;
+                string procSchema = hasSchema ? Convert.ToString(rowProcedure["SPECIFIC_SCHEMA"]) : null;
                 if (!string.IsNullOrEmpty(procName) && (!hasType || (string.Compare(procType, "PROCEDURE") == 0)))
                 {
                     var node = new StoredProcedureSchemaNode(this)
@@ -357,13 +378,15 @@ namespace SpreadCommander.Documents.Code
             if (tblProcedures == null)
                 return null;
 
-            bool hasType = tblProcedures.Columns.Contains("ROUTINE_TYPE");
+            bool hasType   = tblProcedures.Columns.Contains("ROUTINE_TYPE");
+            bool hasName   = tblProcedures.Columns.Contains("SPECIFIC_NAME");
+            bool hasSchema = tblProcedures.Columns.Contains("SCPEIFIC_SCHEMA");
 
             foreach (DataRow rowProcedure in tblProcedures.Rows)
             {
                 string procType   = hasType ? Convert.ToString(rowProcedure["ROUTINE_TYPE"]) : null;
-                string procName   = Convert.ToString(rowProcedure["SPECIFIC_NAME"]);
-                string procSchema = Convert.ToString(rowProcedure["SPECIFIC_SCHEMA"]);
+                string procName   = hasName ? Convert.ToString(rowProcedure["SPECIFIC_NAME"]) : null;
+                string procSchema = hasSchema ? Convert.ToString(rowProcedure["SPECIFIC_SCHEMA"]) : null;
                 if (!string.IsNullOrEmpty(procName) && (!hasType || (string.Compare(procType, "FUNCTION") == 0)))
                 {
                     var node = new FunctionSchemaNode(this)
@@ -426,26 +449,32 @@ namespace SpreadCommander.Documents.Code
             if (tblParameters == null)
                 return null;
 
+            bool hasName     = tblParameters.Columns.Contains("PARAMETER_NAME");
+            bool hasLength   = tblParameters.Columns.Contains("CHARACTER_MAXIMUM_LENGTH");
+            bool hasIsResult = tblParameters.Columns.Contains("IS_RESULT");
+            bool hasDataType = tblParameters.Columns.Contains("DATA_TYPE");
+            bool hasOrdinal  = tblParameters.Columns.Contains("ORDINAL_POSITION");
+
             foreach (DataRow rowColumn in tblParameters.Rows)
             {
-                var parameterName = Convert.ToString(rowColumn["PARAMETER_NAME"]);
+                var parameterName = hasName ? Convert.ToString(rowColumn["PARAMETER_NAME"]) : "<Parameter>";
 
                 int? maxLength = null;
-                var strLength = Convert.ToString(rowColumn["CHARACTER_MAXIMUM_LENGTH"]);
+                var strLength = hasLength ? Convert.ToString(rowColumn["CHARACTER_MAXIMUM_LENGTH"]) : null;
                 if (int.TryParse(strLength, out int iLength))
                     maxLength = iLength;
 
-                if (string.IsNullOrWhiteSpace(parameterName) && tblParameters.Columns.Contains("IS_RESULT") &&
+                if (string.IsNullOrWhiteSpace(parameterName) && hasIsResult &&
                     Convert.ToString(rowColumn["IS_RESULT"])?.ToUpper() == "YES")
                     parameterName = "<RESULT>";
 
 
-                var node = new StoredProcedureParameterSchemaNode(this)
+                var node = new FunctionParameterSchemaNode(this)
                 {
-                    ParameterName   = parameterName,
-                    DataType        = Convert.ToString(rowColumn["DATA_TYPE"]),
-                    MaxLength       = maxLength,
-                    OrdinalPosition = Convert.ToInt32(rowColumn["ORDINAL_POSITION"])
+                    ParameterName = parameterName,
+                    DataType = hasDataType ? Convert.ToString(rowColumn["DATA_TYPE"]) : null,
+                    MaxLength = maxLength,
+                    OrdinalPosition = hasOrdinal ? Convert.ToInt32(rowColumn["ORDINAL_POSITION"]) : -1
                 };
                 result.Add(node);
             }
@@ -476,16 +505,22 @@ namespace SpreadCommander.Documents.Code
             if (tblParameters == null)
                 return null;
 
+            bool hasName     = tblParameters.Columns.Contains("PARAMETER_NAME");
+            bool hasLength   = tblParameters.Columns.Contains("CHARACTER_MAXIMUM_LENGTH");
+            bool hasIsResult = tblParameters.Columns.Contains("IS_RESULT");
+            bool hasDataType = tblParameters.Columns.Contains("DATA_TYPE");
+            bool hasOrdinal  = tblParameters.Columns.Contains("ORDINAL_POSITION");
+
             foreach (DataRow rowColumn in tblParameters.Rows)
             {
-                var parameterName = Convert.ToString(rowColumn["PARAMETER_NAME"]);
+                var parameterName = hasName ? Convert.ToString(rowColumn["PARAMETER_NAME"]) : "<Parameter>";
 
                 int? maxLength = null;
-                var strLength = Convert.ToString(rowColumn["CHARACTER_MAXIMUM_LENGTH"]);
+                var strLength = hasLength ? Convert.ToString(rowColumn["CHARACTER_MAXIMUM_LENGTH"]) : null;
                 if (int.TryParse(strLength, out int iLength))
                     maxLength = iLength;
 
-                if (string.IsNullOrWhiteSpace(parameterName) && tblParameters.Columns.Contains("IS_RESULT") &&
+                if (string.IsNullOrWhiteSpace(parameterName) && hasIsResult &&
                     Convert.ToString(rowColumn["IS_RESULT"])?.ToUpper() == "YES")
                     parameterName = "<RESULT>";
 
@@ -493,9 +528,9 @@ namespace SpreadCommander.Documents.Code
                 var node = new FunctionParameterSchemaNode(this)
                 {
                     ParameterName   = parameterName,
-                    DataType        = Convert.ToString(rowColumn["DATA_TYPE"]),
+                    DataType        = hasDataType ? Convert.ToString(rowColumn["DATA_TYPE"]): null,
                     MaxLength       = maxLength,
-                    OrdinalPosition = Convert.ToInt32(rowColumn["ORDINAL_POSITION"])
+                    OrdinalPosition = hasOrdinal ? Convert.ToInt32(rowColumn["ORDINAL_POSITION"]) : -1
                 };
                 result.Add(node);
             }
@@ -556,19 +591,24 @@ namespace SpreadCommander.Documents.Code
             if (tblColumns == null)
                 return null;
 
+            bool hasName = tblColumns.Columns.Contains("COLUMNN_NAME");
+            bool hasType = tblColumns.Constraints.Contains("DATA_TYPE");
+            bool hasLength = tblColumns.Columns.Contains("CHARACTER_MAXIMUM_LENGTH");
+            bool hasOrdinal = tblColumns.Columns.Contains("ORDINAL_POSITION");
+
             foreach (DataRow rowColumn in tblColumns.Rows)
             {
                 int? maxLength = null;
-                var strLength = Convert.ToString(rowColumn["CHARACTER_MAXIMUM_LENGTH"]);
+                var strLength = hasLength ? Convert.ToString(rowColumn["CHARACTER_MAXIMUM_LENGTH"]) : null;
                 if (int.TryParse(strLength, out int iLength))
                     maxLength = iLength;
 
                 var node = new ColumnSchemaNode(this)
                 {
-                    ColumnName      = Convert.ToString(rowColumn["COLUMN_NAME"]),
-                    DataType        = Convert.ToString(rowColumn["DATA_TYPE"]),
+                    ColumnName      = hasName ? Convert.ToString(rowColumn["COLUMN_NAME"]) : "<Column>",
+                    DataType        = hasName ? Convert.ToString(rowColumn["DATA_TYPE"]) : null,
                     MaxLength       = maxLength,
-                    OrdinalPosition = Convert.ToInt32(rowColumn["ORDINAL_POSITION"])
+                    OrdinalPosition = hasOrdinal ? Convert.ToInt32(rowColumn["ORDINAL_POSITION"]) : -1
                 };
                 result.Add(node);
             }
@@ -599,11 +639,13 @@ namespace SpreadCommander.Documents.Code
             if (tblColumns == null)
                 return null;
 
+            bool hasName = tblColumns.Columns.Contains("CONSTRAINT_NAME");
+
             foreach (DataRow rowColumn in tblColumns.Rows)
             {
                 var node = new IndexSchemaNode(this)
                 {
-                    Text = Convert.ToString(rowColumn["CONSTRAINT_NAME"])
+                    Text = hasName ? Convert.ToString(rowColumn["CONSTRAINT_NAME"]) : "<Index>"
                 };
                 result.Add(node);
             }
@@ -646,12 +688,15 @@ namespace SpreadCommander.Documents.Code
             if (tblColumns == null)
                 return null;
 
+            bool hasName    = tblColumns.Columns.Contains("COLUMN_NAME");
+            bool hasOrdinal = tblColumns.Columns.Contains("ORDINAL_POSITION");
+
             foreach (DataRow rowColumn in tblColumns.Rows)
             {
                 var node = new IndexColumnSchemaNode(this)
                 {
-                    Text = Convert.ToString(rowColumn["COLUMN_NAME"]),
-                    OrdinalPosition = Convert.ToInt32(rowColumn["ORDINAL_POSITION"])
+                    Text            = hasName ? Convert.ToString(rowColumn["COLUMN_NAME"]) : "<Column>",
+                    OrdinalPosition = hasOrdinal ? Convert.ToInt32(rowColumn["ORDINAL_POSITION"]) : -1
                 };
                 result.Add(node);
             }

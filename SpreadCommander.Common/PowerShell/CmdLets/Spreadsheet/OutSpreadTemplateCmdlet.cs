@@ -23,7 +23,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         public object DataSource { get; set; }
 
         [Parameter(Mandatory = true, HelpMessage = "File with spreadsheet template.")]
-        public string TemplateFile { get; set; }
+        public string TemplateFileName { get; set; }
+
+        [Parameter(HelpMessage = "Sheet name that contains template. If not specified - first sheet is using.")]
+        public string TemplateSheetName { get; set; }
 
         [Parameter(HelpMessage = "Sheet name for the data source. Unique sheet name will be generated if sheet already exists or in case of multiple data sources")]
         [Alias("Sheet")]
@@ -58,7 +61,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         public SwitchParameter LockFiles { get; set; }
 
 
-        private readonly List<PSObject> _Output = new List<PSObject>();
+        private readonly List<PSObject> _Output = new();
 
         protected override void BeginProcessing()
         {
@@ -89,18 +92,18 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
             var dataSource = GetDataSource(_Output, DataSource, 
                 new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
-            if (string.IsNullOrWhiteSpace(TemplateFile))
+            if (string.IsNullOrWhiteSpace(TemplateFileName))
                 throw new Exception("Template file is not specified.");
 
-            var templateFile = Project.Current.MapPath(TemplateFile);
+            var templateFile = Project.Current.MapPath(TemplateFileName);
             if (!File.Exists(templateFile))
-                throw new Exception($"Template file '{TemplateFile}' does not exist.");
+                throw new Exception($"Template file '{TemplateFileName}' does not exist.");
 
             IList<IWorkbook> workbooks;
             
             using (var template = SpreadsheetUtils.CreateWorkbook())
             {
-                ExecuteLocked(() => template.LoadDocument(templateFile), LockFiles ? LockObject : null);
+                ExecuteLocked(() => LoadTemplate(template, templateFile, TemplateSheetName), LockFiles ? LockObject : null);
 
                 template.MailMergeDataSource                    = dataSource;
                 template.MailMergeDataMember                    = null;
@@ -121,6 +124,21 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
             {
                 foreach (var workbook in workbooks)
                     WriteObject(new SCSpreadsheetContext(workbook));
+            }
+
+
+            static void LoadTemplate(Workbook template, string templateFile, string templateSheet)
+            {
+                if (string.IsNullOrWhiteSpace(templateSheet))
+                {
+                    template.LoadDocument(templateFile);
+                }
+                else
+                {
+                    using var workbook = SpreadsheetUtils.CreateWorkbook();
+                    workbook.LoadDocument(templateFile);
+                    template.Worksheets[0].CopyFrom(workbook.Worksheets[templateSheet]);
+                }
             }
         }
 

@@ -48,6 +48,13 @@ namespace SpreadCommander.Documents.Controls
             StoreInitialColors();
         }
 
+        protected override void Dispose(bool disposing)
+        {
+            UserLookAndFeel.Default.StyleChanged -= LookAndFeel_StyleChanged;
+
+            base.Dispose(disposing);
+        }
+
         private void LookAndFeel_StyleChanged(object sender, EventArgs e)
         {
             ApplyStyle();
@@ -145,6 +152,9 @@ namespace SpreadCommander.Documents.Controls
 
         protected void ApplyStyle()
         {
+            if (IsDisposed)
+                return;
+
             _InitialSyntaxDefinition = LoadSyntax();
             var syntaxDefinition     = LoadSyntax();
 

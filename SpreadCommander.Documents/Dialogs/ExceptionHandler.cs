@@ -28,7 +28,7 @@ namespace SpreadCommander.Documents.Dialogs
             UpdateMemo(memoDescription, ex != null ? ex.Message : "Unknown exception");
             
             //Details
-            StringBuilder output = new StringBuilder();
+            var output = new StringBuilder();
 
             while (ex != null)
             {
@@ -102,7 +102,7 @@ namespace SpreadCommander.Documents.Dialogs
             if (_SplashScreen != null)
                 _SplashScreen.Close();
 
-            using ExceptionHandler frm = new ExceptionHandler(ex);
+            using var frm = new ExceptionHandler(ex);
             switch (frm.ShowDialog(null))
             {
                 case DialogResult.Abort:

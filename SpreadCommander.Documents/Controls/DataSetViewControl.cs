@@ -21,6 +21,7 @@ using System.Data.Common;
 using SpreadCommander.Documents.Services;
 using System.Threading;
 using DevExpress.Mvvm;
+using SpreadCommander.Common.Messages;
 
 namespace SpreadCommander.Documents.Controls
 {
@@ -37,6 +38,13 @@ namespace SpreadCommander.Documents.Controls
             UIUtils.ConfigureRibbonBar(ribbonControl);
 
             HandleCreated += DataSetViewControl_HandleCreated;
+
+            Messenger.Default.Register<SelectDataSetTableMessage>(this, OnSelectDataSetTableMessage);
+
+            Disposed += (s, e) =>
+            {
+                Messenger.Default.Unregister<SelectDataSetTableMessage>(this);
+            };
         }
 
         RibbonControl IRibbonHolder.Ribbon            => this.ribbonControl;
@@ -128,7 +136,7 @@ namespace SpreadCommander.Documents.Controls
                 case CollectionChangeAction.Remove:
                     var docRemove = viewTableViews.Documents.FirstOrDefault(d => ((TableViewControl)d.Control).DataSource == dataTable);
                     var control = docRemove.Control;
-                    if (docRemove != null)
+                    if (control != null)
                         viewTableViews.RemoveDocument(control);
                     if (!control.IsDisposed)
                         control.Parent = null;
@@ -147,8 +155,11 @@ namespace SpreadCommander.Documents.Controls
                     if (dataSet == null)
                         return;
 
-                    foreach (DataTable table in DataSet.Tables)
+                    foreach (DataTable table in dataSet.Tables)
                         AddDocument(table);
+
+                    if (controls.Count <= 0 && dataSet.Tables.Count <= 0)
+                        return;
                     break;
             }
 
@@ -160,7 +171,7 @@ namespace SpreadCommander.Documents.Controls
             if (activeDocument == null && viewTableViews.Documents.Count > 0)
                 activeDocument = viewTableViews.Documents[0];
 
-            if (activeDocument != null)
+            if (activeDocument?.Control != null)
                 viewTableViews.ActivateDocument(activeDocument.Control);
             RequestRibbonUpdate(activeDocument);
             
@@ -206,7 +217,10 @@ namespace SpreadCommander.Documents.Controls
                     }
                     break;
                 case CollectionChangeAction.Refresh:
-                    foreach (DataTable dataTable in DataSet.Tables)
+                    if (dataSet.Tables.Count <= 0)
+                        return; //Do not call FireModified(), nothing was updated.
+
+                    foreach (DataTable dataTable in dataSet.Tables)
                         RefreshDataTable(dataTable);
                     break;
             }
@@ -300,6 +314,17 @@ namespace SpreadCommander.Documents.Controls
         {
             if (e.Document?.Control is IRibbonHolder ribbonHolder)
                 ribbonHolder.IsRibbonVisible = false;
+        }
+
+        private void OnSelectDataSetTableMessage(SelectDataSetTableMessage message)
+        {
+            if (message.DataSet == null || message.SelectedDataTable == null || message.DataSet != this.DataSet)
+                return;
+
+            var docSelect = viewTableViews.Documents.FirstOrDefault(d => ((TableViewControl)d.Control).DataSource == message.SelectedDataTable);
+            if (docSelect?.Control != null)
+                viewTableViews.ActivateDocument(docSelect.Control);
+            RequestRibbonUpdate(docSelect);
         }
     }
 }

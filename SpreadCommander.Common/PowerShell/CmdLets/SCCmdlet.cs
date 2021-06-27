@@ -36,11 +36,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
         }
         #endregion
 
-        public enum ImageFormat { Png, Tiff, Bmp, Gif, Jpeg }
+        public enum ImageFileFormat { Png, Tiff, Bmp, Gif, Jpeg }
 
-        public const ImageFormat DefaultImageFormat = ImageFormat.Png;
+        public const ImageFileFormat DefaultImageFormat = ImageFileFormat.Png;
 
-        public static readonly object LockObject = new object();
+        public static readonly object LockObject = new();
 
         private static int _ProgressActivityID;
 
@@ -111,24 +111,24 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
             WriteErrorToConsole(errorMessage);
         }
 
-        protected virtual ImageFormat GetImageFormatFromFileName(string fileName)
+        protected virtual ImageFileFormat GetImageFormatFromFileName(string fileName)
         {
             if (string.IsNullOrWhiteSpace(fileName))
                 return DefaultImageFormat;
 
             return (Path.GetExtension(fileName)?.ToLower()) switch
             {
-                ".png"            => ImageFormat.Png,
-                ".tif" or ".tiff" => ImageFormat.Tiff,
-                ".bmp"            => ImageFormat.Bmp,
-                ".gif"            => ImageFormat.Gif,
-                ".jpg" or ".jpeg" => ImageFormat.Jpeg,
-                _                 => ImageFormat.Png
+                ".png"            => ImageFileFormat.Png,
+                ".tif" or ".tiff" => ImageFileFormat.Tiff,
+                ".bmp"            => ImageFileFormat.Bmp,
+                ".gif"            => ImageFileFormat.Gif,
+                ".jpg" or ".jpeg" => ImageFileFormat.Jpeg,
+                _                 => ImageFileFormat.Png
             };
         }
 
         //IgnoreErrors - for list of PSObject
-        protected virtual object GetDataSource(IList<PSObject> dataRecords, object dataSource, DataSourceParameters parameters)
+        protected virtual DataTable GetDataSource(IList<PSObject> dataRecords, object dataSource, DataSourceParameters parameters)
         {
             var reader = GetDataSourceReader(dataRecords, dataSource, parameters);
             var table  = new DataTable("Table");
@@ -138,6 +138,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
 
         protected virtual DbDataReader GetDataSourceReader(IList<PSObject> dataRecords, object dataSource, DataSourceParameters parameters)
         {
+            if (dataSource == null && dataRecords == null)
+                throw new ArgumentException("Data source is not assigned.");
+
+            if (dataSource == null && dataRecords != null && dataRecords.Count == 1 && dataRecords[0] == null)
+                throw new ArgumentException("Data source is not assigned.");
+
             if (dataSource == null && dataRecords != null && dataRecords.Count == 1 && AcceptObject(dataRecords[0].BaseObject))
                 dataSource = dataRecords[0].BaseObject;
 

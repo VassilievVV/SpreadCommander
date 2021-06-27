@@ -73,7 +73,7 @@ namespace SpreadCommander.Documents.Dialogs
         {
             bindingConnections.Clear();
             
-            _CustomConnection = new DBConnection() { Name = "(Custom connection)", Description = "Custom connection that is not saved" };
+            _CustomConnection = new DBConnection() { Name = "(Custom connection)", Description = "Use connection string in top edit box." };
             bindingConnections.Add(_CustomConnection);
 
             _DBConnections = DBConnections.LoadConnections();
@@ -288,8 +288,8 @@ namespace SpreadCommander.Documents.Dialogs
                     if (!string.IsNullOrEmpty(connStr) &&
                         PropertyGrid.SelectedObject is DbConnectionStringBuilder builder)
                     {
-                        builder.ConnectionString			= connStr;
-                        PropertyGrid.SelectedObject			= builder;
+                        builder.ConnectionString	= connStr;
+                        PropertyGrid.SelectedObject	= builder;
                         PropertyGrid.Invalidate();
                     }
                     
@@ -308,8 +308,8 @@ namespace SpreadCommander.Documents.Dialogs
                     if (!string.IsNullOrEmpty(connStr) &&
                         PropertyGrid.SelectedObject is DbConnectionStringBuilder builder)
                     {
-                        builder.ConnectionString			= connStr;
-                        PropertyGrid.SelectedObject			= builder;
+                        builder.ConnectionString	= connStr;
+                        PropertyGrid.SelectedObject	= builder;
                         PropertyGrid.Invalidate();
                     }
 
@@ -391,11 +391,16 @@ namespace SpreadCommander.Documents.Dialogs
 
         private void UpdateToolButtons()
         {
+            bool isCustomConnection = bindingConnections.Current == _CustomConnection;
+
             barAdd.Enabled               = true;
-            barDelete.Enabled            = bindingConnections.Current != null;
-            barUpdate.Enabled            = bindingConnections.Current != null;
-            barUp.Enabled                = bindingConnections.Count > 0 && bindingConnections.Position > 0;
-            barDockControlBottom.Enabled = bindingConnections.Count > 0 && bindingConnections.Position < bindingConnections.Count - 1;
+            barDelete.Enabled            = bindingConnections.Current != null && !isCustomConnection;
+            barUpdate.Enabled            = bindingConnections.Current != null && !isCustomConnection;
+            barUp.Enabled                = bindingConnections.Count > 1 && bindingConnections.Position > 1 && !isCustomConnection;
+            barDown.Enabled              = bindingConnections.Count > 1 && bindingConnections.Position < bindingConnections.Count - 1 && !isCustomConnection;
+
+            layoutName.Enabled           = !isCustomConnection;
+            layoutDescription.Enabled    = !isCustomConnection;
         }
 
         private void CheckEditingItem()
@@ -505,9 +510,6 @@ namespace SpreadCommander.Documents.Dialogs
         private void BarUpdate_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (bindingConnections.Position < 0)
-                return;
-
-            if (XtraMessageBox.Show(this, "Do you want to update connection?", "Update connection", MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
 
             _ModifyingConnection = bindingConnections.Current as DBConnection;

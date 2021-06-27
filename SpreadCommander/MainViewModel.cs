@@ -40,6 +40,7 @@ namespace SpreadCommander
             void EndAddingDocument();
             void SelectDBConnectionByName(string connectionName);
             void ControlModified(ControlModifiedMessage message);
+            void SelectConnection(string connectionName);
         }
         #endregion
 
@@ -73,6 +74,8 @@ namespace SpreadCommander
             Messenger.Default.Unregister<ConnectionListChangedMessage>(this);
             Messenger.Default.Unregister<PSCmdletListChangedMessage>(this);
             Messenger.Default.Unregister<ControlModifiedMessage>(this);
+            Messenger.Default.Unregister<DocumentStartAddingMessage>(this);
+            Messenger.Default.Unregister<DocumentEndAddingMessage>(this);
         }
 
 #pragma warning disable CA1822 // Mark members as static
@@ -101,11 +104,12 @@ namespace SpreadCommander
         protected IFolderBrowserDialogService BrowseFolderService          => this.GetService<IFolderBrowserDialogService>();
         protected ISpreadsheetEditTableService SpreadsheetEditTableService => this.GetService<ISpreadsheetEditTableService>();
         protected IAlertService AlertService                               => this.GetService<IAlertService>();
-        protected IBatchProcessDocumentsService BatchProcessDocuments             => this.GetService<IBatchProcessDocumentsService>();
+        protected IBatchProcessDocumentsService BatchProcessDocuments      => this.GetService<IBatchProcessDocumentsService>();
         protected ISaveFilesService SaveFilesService                       => this.GetService<ISaveFilesService>();
         protected IEditObjectService EditObjectService                     => this.GetService<IEditObjectService>();
         protected ISelectProjectService SelectProjectService               => this.GetService<ISelectProjectService>();
         protected IViewRichTextService ViewRichTextService                 => this.GetService<IViewRichTextService>();
+        protected IDbConnectionEditorService DbConnectionEditor            => this.GetService<IDbConnectionEditorService>();
 
 
         public virtual ICallback Callback { get; set; }
@@ -316,6 +320,7 @@ namespace SpreadCommander
         public void OpenFile()
         {
             var filter = new StringBuilder();
+#pragma warning disable CRRSP06 // A misspelled word has been found
             filter
                 .Append("SpreadCommander files|*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub;*.xlsx;*.xls;*.csv;*.scchart;*.scpivot;*.scdash;*.ps1;*.sql|")
                 .Append("Book files (*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub)|*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub|")
@@ -330,6 +335,7 @@ namespace SpreadCommander
                 //.Append("C# script files (*.csx)|*.csx|")
                 //.Append("F# script files (*.fsx)|*.fsx|")
                 .Append("Picture (*.png;*.jpg;*.gif;*.tif;*.bmp)|*.png;*.jpg;*.gif;*.tif;*.bmp");
+#pragma warning restore CRRSP06 // A misspelled word has been found
 
             OpenMultiFilesService.Filter = filter.ToString();
             
@@ -356,6 +362,7 @@ namespace SpreadCommander
             }
 
             var ext = Path.GetExtension(fileName)?.ToLower();
+#pragma warning disable CRRSP06 // A misspelled word has been found
             switch (ext)
             {
                 case ".xlsx":
@@ -415,6 +422,7 @@ namespace SpreadCommander
                     viewModel = AddNewPivotDocument();
                     break;
             }
+#pragma warning restore CRRSP06 // A misspelled word has been found
 
             if (viewModel == null)
                 return null;
@@ -689,6 +697,16 @@ namespace SpreadCommander
                 AddNewDocument(viewModel, PdfDocumentViewModel.ViewName);
 
                 return viewModel;
+            }
+        }
+
+        public void ConnectionOptions(string tag)
+        {
+            if (string.Compare(tag, "Edit", true) == 0)
+            {
+                var connName = DbConnectionEditor.SelectConnection()?.ConnectionName;
+                if (!string.IsNullOrWhiteSpace(connName))
+                    Callback?.SelectConnection(connName);
             }
         }
     }

@@ -27,7 +27,9 @@ namespace SpreadCommander.Common.Code.Exporters
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = mySqlConnectionStringBuilder.ConnectionString;
-            return new MySqlConnection(connStr);
+            var result  = new MySqlConnection();
+            Connection.SetConnectionString(result, connStr);
+            return result;
         }
 
         public override string QuoteString(string value)

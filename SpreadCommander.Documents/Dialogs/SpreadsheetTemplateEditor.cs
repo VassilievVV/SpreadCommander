@@ -91,6 +91,15 @@ namespace SpreadCommander.Documents.Dialogs
             sheet.Selection = table.DataRange;
         }
 
+        private void BarSelectDataRange_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
+                throw new Exception("Please select worksheet.");
+
+            var range = sheet.GetDataRange();
+            sheet.Selection = range;
+        }
+
         private void BarExpandSelectionRows_ItemClick(object sender, ItemClickEventArgs e)
         {
             if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)

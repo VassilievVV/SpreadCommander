@@ -29,7 +29,9 @@ namespace SpreadCommander.Documents.ViewModels
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static int DocumentCounter = 1;
 #pragma warning restore CA2211 // Non-constant fields should not be visible
+#pragma warning disable CRRSP06 // A misspelled word has been found
         public const string ParametersFileExtension = ".scparams";
+#pragma warning restore CRRSP06 // A misspelled word has been found
 
         #region IDocumentParent
         public interface IDocumentParent

@@ -188,10 +188,10 @@
         HyAAAAAASUVORK5CYII=
 </value>
   </data>
-  <assembly alias="DevExpress.Data.v20.2" name="DevExpress.Data.v20.2, Version=20.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="snapBarToolbarsListItem1.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <assembly alias="DevExpress.Data.v21.1" name="DevExpress.Data.v21.1, Version=21.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+  <data name="snapBarToolbarsListItem1.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi4z
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjEsIFZlcnNpb249MjEuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAFsEAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -3045,9 +3045,9 @@ This option allows you to save time when working with large data sources. It doe
         iWBC+fl5TgQTyp8GuLw94OW9gVXic506burvh2jlaS99AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="barViewDraft.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barViewDraft.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi4z
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjEsIFZlcnNpb249MjEuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAHkDAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -3067,9 +3067,9 @@ This option allows you to save time when working with large data sources. It doe
         NywyMC40eiIgZmlsbD0iI0QxMUMxQyIgY2xhc3M9IlJlZCIgLz4NCjwvc3ZnPgs=
 </value>
   </data>
-  <data name="barViewPrintLayout.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barViewPrintLayout.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi4z
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjEsIFZlcnNpb249MjEuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAACoDAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -3088,9 +3088,9 @@ This option allows you to save time when working with large data sources. It doe
         bnQiIGNsYXNzPSJCbHVlIiAvPg0KPC9zdmc+Cw==
 </value>
   </data>
-  <data name="barViewSimple.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barViewSimple.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi4z
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjEsIFZlcnNpb249MjEuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAOMCAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -3178,9 +3178,9 @@ This option allows you to save time when working with large data sources. It doe
         HyAAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="snapBarToolbarsListItem2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v20.2" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="snapBarToolbarsListItem2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIwLjIsIFZlcnNpb249MjAuMi4z
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjEsIFZlcnNpb249MjEuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
         dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAEMEAAAC77u/
         PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
@@ -3207,6 +3207,102 @@ This option allows you to save time when working with large data sources. It doe
   <metadata name="popupBookStyles.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>509, 17</value>
   </metadata>
+  <data name="snapBarToolbarsListItem3.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAARdEVYdFRpdGxlAFdpbmRvd3M7RXll7xo9bwAAAvxJREFUOE+lk2lIlFEUhs19yRIJLMJIghZI
+        CYuwTUONCjKsjNKyGq00jdwXatxS0zSb0SkzG9MGS9pEMQ1xaVwm9y1LXNLccRlnHGfcjbd7v5xo+dmF
+        h/PBve/znfPjqAD4L+hZQVAjaCyjuYzWb2j/Bb1XVQrUXDgioSu3Ci7cj2BxRLiQIILzvUqci6uAY2wZ
+        zsQIcTr6AxwiS3EiogR27IIKktNSCjRZJJjVLMbzhnEI6sfwtGYM/KoRpFYOI7l8GEnCIdwvGUB8YT9i
+        3/fi6K1CmtRTCrQu3Bcx4eCcHgRmd8P/bTd8X3fB52UXvLI6ceNFOzwz2+EhaIP7szbYBhXQ5MpfAtrq
+        4/JBXBe0wiOjFe7prbiS9gmXU1twKaUFF5Obcf5BE87xmuCU2IiDvnk0qa8UaPMy6zE3/x2KmUUoZgmk
+        yhmWluufhHGLaXKVUqDDyajBzPwSpqYXf0Ie0SqfnoNUNo0JiQzjYinGJyYhlkwhK7eBJg12H0lgBLrx
+        fBFm5pYgI6FJBQnOLmBCOoWi8i+ISykBO64AHuwcBETmku88xCcXQENT34Rk1alA786jMqZ1qWIBMsU8
+        evrGEMUrRvqbBlTUfsXNGAFOukYyVVjVCc6TMuw6FD1gvMXejApWRvBKmdkk8gVISMscvhDNbcNkjHn4
+        RfBRNyJFQDgPXmF8XA1IxIhYjryiFpjuD6lmBKGcQqZ98dQCRidk8I/Ox7hkGkOjclifCoAPm0tnhoOz
+        JyztfdHdL0Zt8zeYWt6eoQJtv6hsYfDdfATG5OHVu3o4XUsn83ego3cMLj4JzJ8dWd5wC0yEA4uNhs99
+        ELypxlaLoDoqUCXoEFYRVhMMN2w+vMfKnjPgE5aNB+lFsDvrj007juMYqUlphXDzfwEzy7BBo422O//Z
+        LquTD4lDRd1gzWaj7Xu9A82tIxrNbSJHzG1iSSh8dJtFcIuJKStEV994PXmn8Y/ggH2Syj47LpXQLaWb
+        Z0AwIqwjrCUYEnQJqlstQlV+ANeAUYBkev9JAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="snapBarToolbarsListItem3.ImageOptions.LargeImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAARdEVYdFRpdGxlAFdpbmRvd3M7RXll7xo9bwAACnBJREFUWEetl3lQFGcahxVRo5KDxDWuWddK
+        rNrKZpMy2cTs5jJqIpFgVEAQ8AoKCoggDJecCioIHgsqCALKIfc1iKACchMc7hthBOScgxlmOMXs1m/f
+        rwcIiUll/9iueqqnu6f7+b3v9/U3MA/ALGvXrv0l8/8PqM1h5tys47kA9hHVM+KZmxbMQf0XLPwVFs1h
+        8S9g59hzZkM8F4BdtL1Wsel4WKXANqwKNtcqcSxEAGviaPBDWF2pgMXlChwJKod5YBnML5XB7GIpDl4s
+        gen5EhwIKMIB/yLs8yvEXt8CmJwlzjyA0WnCJ7dK70SaFjlYeC7EcxudVLMLqxSlVItR+FiJQqES+R1K
+        5LUrkPdoGLltw7jbOoycFjnuNMtxu1GGjAaiXoo0IrVWgiS6N7FKjHiBGLEPRYQY0T8M4kKWELu988Tk
+        YN1g3Z22Tm+amppqq1atUqcAKBAqEFJKN+X34nxeD0dAbg/87/fg3P0n8LvbDd/sbpwlTmd34fSdTvjc
+        foxTmUKc4nfgZEYHvNI74JnWgbYDJuiyNofv7U4Y+uSDxEtnA+y9UMbc8wk1DQ2NBcuXL18cce8RGvpG
+        kF4nRnqtiKqapmoAKYzKASQLBpAk6EdCRR9HfHkfbpX14FZpD2JLniCaiCmh47I+iMKuYuDEcUSWDFAH
+        uADLCDYXmHvefCO/gk3G/iUCI/9S7PYrgaFvMQzOFkH/TCH0fAqw07sAO07l4zuvPGzzyIOOey603e9j
+        q+s9aLnkYItzDr5yzMZmhzvYyCPss7DBLgt6p3Lhm9KI6OIeBFEHw4v7ZzqgMTeAmol/iehGWT+yaXyz
+        aXxvNw+D3yQHnxvfIaTWDyG5TorEGiniqySIrZQgRiBCFHGTxjaibADXSwcQSoLgwj5cLezH5Qe9cEto
+        xdeOdxBytx1WYXVwim6mAHnPBVhgElDKyf3y+uCe1Q23211wy+yCK78LJzI64ZzxGE5pQjimCOFA2Cd3
+        wD6pHccTHsEmnohrw7FbbTga2wqr6BY0bNmIdoNtcKBrn9lmQiJTQKacxPDoM/gE3mcBXpwbQJ0FuEOz
+        mpOT+AS/k8M5ncSMVJWYNyNObIctE8erxNZMHNMKy6hWWNxsRvsuHfSYGeMiTdjPbTIhliogHR6nAFPw
+        DrzHArw0N8BCFiCTWu6aqRK7pJM8TVW1Q0oHHKbFdkzMVU1iqpqrOKYNljEtsIhqwRGSH77RBPOIJnhT
+        F8/ffcJ1QCSRcwHkI1M4eTFnJgBbC1QBjGnyxf3QD8sb9bCMqIdFeB2OXK+DOY2bGXHoWh1MQ2phGlyL
+        A8E12H+lBvuCarAnsBomhNGlSuwmDC9WwuCCALsI/YBKfH+5hgLwuQASuSqA14VsFuDluQEWeV66j4mp
+        H6EcewYFxxQU1C7WsllGnhJT3EPkdCynYxnB9txn5QyTGOJgn6dgezIdg2IZxLIx+v4UPM7fYQFeYQE4
+        O22L3C/cw8TTf2OY5Ew2K6cbhkdJzAlVUjk9eFZKDClIppigFk9AQm0Wy8dINg4RCVnVxzxT0TcohWho
+        lAvlHpD1XIDFbgF3KcCP00IVTMiqVsmm5bSfqZSJmZTJZUqaYIRihPYM5RiHnM7Fpj6kIZBBJFVyAV39
+        +CyA5twAL7icy8Y4BZgrY9X91NafIyUpEytGJkg4hr7mcjwuiEVbylk03OSh6spBCAIPQXDlGLIDPdBa
+        yMeQXMmFvHQ9D2vWrFm+evXqRZHaa1QBnH2zMD75o2pMScAF+Zl0elwVT6mtE3SNicfxpCYXzXEu6M70
+        grQ0CKONUZhsjcVUazTGaq9hqMAXwjhbVPjpIsdBGw058bj7oAErV65ctWLFihfIzX4C5i1xPHMbY9MB
+        mFA1gVT7mQnFWs7NZMU4hoZkaEr0gTDeDnJBMAoS/OHjbI19uwzxzZffYP0HG7FNayfM9nyPM862eHDD
+        Hb1pPBS5foVExz342xuvvU+/Oy8vWbKEG4YlvNN8jFIAVqGM4CYWSaX0WcpNMlXl7F2WDg2jOoKH3kxX
+        pIf5wMTYDAZGVtDWP4YtO23xraETdA94YauhI7781hIbtprBaL8TzMzskRroiMZAA4TovPXwzVeXvaWu
+        rr6EBVhq552B0YlnKul0tUzMkBBikrNZLVOMojYpAJWhh+Hq5ApH1/OIS86GtWcEfK4kg19Wh0h+CfxD
+        +PD5VwrsTkVA/6A3Nu20R+iNDDi6B8HF3hG5btrw+/KNSDU1tT+wAMuO07s6Mv5sViodnpbTniGi10oi
+        G0V3az2ynbVg7+CNlPQ8NDQ/RmRSISzcw1HW1o3qfimqaNHRMeHB2MwTl29m09qfhG37POHkfR3FPzQi
+        IiYLR495INLo/f8Yvq2pxQWw8UpVBeCE7H1m402V015M+37JCKTyERRf94a9zQkUl9eip19C55Q4cy0T
+        DmeikVsjRDO9esEZufhEyxQfbjDGzj08hCcW0loQjh0HPND8qA9V9UKkZ5fCwpwHrw1vJrAAGtbuyVBS
+        ACbkAlDLmXim9b1ieodp7L0szJGQlgsxfR4emcTo+FM4nouD+/l4RKeXQXu3HT75xhTrN+3Fus8M8O76
+        7YjOKIdbQBw26vIgfCJBc8cAqhu7EByZAStd/VEW4EUrtyRu+VWJVYg4xjE4NI5ekYKWUzn2H4/HoIR+
+        2eSjtBxP0tI9iRMBCXA4HUWVFsHksCf+TpWv+3QX3iG51o7DiEgqho1XOLbvc0drp5gCDKK2rQ+C2i5s
+        1g8CF8DSNZELoKpYJR8kORt7dtwjog7IlLSIFCI9p4kCKek8G5ZxEufDlHcZAaGZCI3LhS61/Z0Pt3Hy
+        q1HZ8A/LxHZ6Kzx8o9D4aAA1Tb2oqO1GUEQRPtrimckCLDvsHDdYUdcDMTfx5gwBC0MMSsdoKVVA2NUP
+        +5N8VNR0UzuleNIvR3u3hAIEwcItBP4UIjyhCDEZZbhOHWHyQw6B2KLvhPJqIQT13Sh+2IG0nDp8bRg4
+        +MqKt//BAiw2Mr+0y8wxVmLmeAscDrdwiHcLB3mxHKb20XQuBlFJpbiZUIijHmnIyqO/fNoG0CIU4V5R
+        PXQPnYbhEV9Yu4fRD048rFyv4bv9Xvhiuy3iM0pRWvUY+WVtiIgvx7a9wcMr13ymQ+4VLMACgi2LLxKv
+        EJrTvDqH1wj2zv6R+MvqtR/r7fj+auvZy/nILWmjlnYhr6QF7udioEfv/Sc6Nvhunwd4nmHIuFeD+3Qt
+        OasK9qfS8en2cy2v//ljbXrOSoJ5VX+SEywIWxoZC3+DxYQG8fqixcve26DjEqR7KFLm4JOJkOgSxKVX
+        gp9bj5yCJmpzLW4kluNCaD6OuCRis0GgfN0X1lfUFy59j+5nxTA58/5PGws5A7tpEfEy8aelGss/WL/J
+        0m2znm+R1u7Azq17Qse+3RsGLeOrYxv1Ajo/1TlZ/O4/TT1eWKr5EX1/9fR97P75n+8I/Pn/hr/Gb2ws
+        COsY68hLxOvEm8TbBKtw3fT+r8RbBBs6JmZVsw6z+1Xbr0nn8jvbTBA2POzhS4llBBsmtmfH7Dy7zr73
+        k5jb5s37L91SgghaKB8gAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="snapBarToolbarsListItem3.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v21.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjIxLjEsIFZlcnNpb249MjEuMS4z
+        LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
+        dkV4cHJlc3MuVXRpbHMuU3ZnLlN2Z0ltYWdlAQAAAAREYXRhBwICAAAACQMAAAAPAwAAAEMEAAAC77u/
+        PD94bWwgdmVyc2lvbj0nMS4wJyBlbmNvZGluZz0nVVRGLTgnPz4NCjxzdmcgeD0iMHB4IiB5PSIwcHgi
+        IHZpZXdCb3g9IjAgMCAzMiAzMiIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcv
+        MjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3Bh
+        Y2U9InByZXNlcnZlIiBpZD0iTGF5ZXJfMSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAg
+        MzIgMzIiPg0KICA8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLkJsYWNre2ZpbGw6IzcyNzI3Mjt9Cgku
+        WWVsbG93e2ZpbGw6I0ZGQjExNTt9CgkuQmx1ZXtmaWxsOiMxMTc3RDc7fQoJLkdyZWVue2ZpbGw6IzAz
+        OUMyMzt9CgkuUmVke2ZpbGw6I0QxMUMxQzt9CgkuV2hpdGV7ZmlsbDojRkZGRkZGO30KCS5zdDB7b3Bh
+        Y2l0eTowLjc1O30KCS5zdDF7b3BhY2l0eTowLjU7fQoJLnN0MntvcGFjaXR5OjAuMjU7fQo8L3N0eWxl
+        Pg0KICA8ZyBpZD0iV2luZG93cyI+DQogICAgPHBhdGggZD0iTTE4LDE4LjFWMTZoMnYwLjlDMTkuMywx
+        Ny4yLDE4LjYsMTcuNiwxOCwxOC4xeiBNMTQuNywyNkgyVjE2SDB2MTFjMCwwLjUsMC41LDEsMSwxaDE1
+        LjEgICBDMTUuNSwyNy4zLDE1LjEsMjYuNiwxNC43LDI2eiBNMjQsMThjNS43LDAsOCw2LDgsNnMtMi4z
+        LDYtOCw2Yy01LjcsMC04LTYtOC02UzE4LjMsMTgsMjQsMTggTTI0LDIwYy0zLjMsMC01LjEsMi43LTUu
+        OCw0ICAgYzAuNywxLjMsMi41LDQsNS44LDRjMy4zLDAsNS4xLTIuNyw1LjgtNEMyOS4xLDIyLjcsMjcu
+        MywyMCwyNCwyMEwyNCwyMHogTTI0LDIyYy0xLjEsMC0yLDAuOS0yLDJzMC45LDIsMiwyYzEuMSwwLDIt
+        MC45LDItMiAgIFMyNS4xLDIyLDI0LDIyeiBNMjYsMTYuMlY4aDJ2OC45QzI3LjQsMTYuNiwyNi43LDE2
+        LjQsMjYsMTYuMnogTTEwLDhIOHYyaDJWOHoiIGNsYXNzPSJCbGFjayIgLz4NCiAgICA8cGF0aCBkPSJN
+        MCwxNnYtNWMwLTAuNSwwLjUtMSwxLTFoMThjMC41LDAsMSwwLjUsMSwxdjVIMHogTTI4LDhWM2MwLTAu
+        NS0wLjUtMS0xLTFIOUM4LjUsMiw4LDIuNSw4LDN2NUgyOHoiIGNsYXNzPSJCbHVlIiAvPg0KICA8L2c+
+        DQo8L3N2Zz4L
+</value>
+  </data>
   <data name="tableAlignmentRibbonPageGroup1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAD10RVh0VGl0

@@ -32,6 +32,14 @@ namespace SpreadCommander.Common.Code
             _CancelToken = cancelToken;
         }
 
+        public DataViewReader(DataTable table) : this(table.DefaultView)
+        {
+        }
+
+        public DataViewReader(DataTable table, CancellationToken cancelToken): this(table.DefaultView, cancelToken)
+        {
+        }
+
         protected override void Dispose(bool disposing)
         {
             base.Dispose(disposing);

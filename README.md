@@ -18,6 +18,15 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 1.1
+- First release of **SpreadCommander**.
+- *Sankey diagram* is added, 2 new cmdlets - Write-SankeyDiagram and Save-SankeyDiagram.
+- New Charts in *SpreadSheet*.
+- New function NewID() to generate GUID in *Spreadsheet* and *SQLite*.
+- Fixed export to database from *Spreadsheet*.
+- Third-party components updated.
+- Minor updates and fixes.
+
 ### Version 0.9.5-beta
 - SpreadCommander's spreadsheet functions are updated to return empty string instead of empty value (later one is displayed as zero).
 - Third-party components updated.

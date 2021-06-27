@@ -95,7 +95,7 @@ namespace SpreadCommander.Documents.Console
 
         private void Spreadsheet_ContentChanged(object sender, EventArgs e)
         {
-            FireModified(false);
+            FireModified(true);
         }
 
         private void BarClone_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -146,6 +146,15 @@ namespace SpreadCommander.Documents.Console
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
             sheet.Selection = table.DataRange;
+        }
+
+        private void BarSelectDataRange_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (Spreadsheet.Document.Sheets.ActiveSheet is not Worksheet sheet)
+                throw new Exception("Please select worksheet.");
+
+            var range = sheet.GetDataRange();
+            sheet.Selection = range;
         }
 
         private void BarExpandSelectionRows_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

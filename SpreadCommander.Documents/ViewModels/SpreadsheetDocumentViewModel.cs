@@ -162,6 +162,7 @@ namespace SpreadCommander.Documents.ViewModels
                 return null;
 
             var result = SpreadsheetUtils.GetTableNames(rootWorkbook);
+            result.Insert(0, "(Current selection)");
             return result.ToArray();
         }
 
@@ -173,7 +174,11 @@ namespace SpreadCommander.Documents.ViewModels
                 if (rootWorkbook == null || string.IsNullOrWhiteSpace(tableName))
                     return null;
 
-                var dbTable = SpreadsheetUtils.GetTableDataReader(rootWorkbook, tableName);
+                DbDataReader dbTable;
+                if (string.Compare(tableName, "(Current selection)", true) == 0)
+                    dbTable = SpreadsheetUtils.GetTableReaderForSelection(rootWorkbook);
+                else
+                    dbTable = SpreadsheetUtils.GetTableDataReader(rootWorkbook, tableName);
                 return dbTable;
             });
             return result;
@@ -239,6 +244,15 @@ namespace SpreadCommander.Documents.ViewModels
 
             var table = sheet.Selection.GetRangeTable() ?? throw new Exception("Please select range inside a table.");
             sheet.Selection = table.DataRange;
+        }
+
+        public void SelectDataRange()
+        {
+            if (Workbook?.Sheets.ActiveSheet is not Worksheet sheet)
+                throw new Exception("Please select worksheet.");
+
+            var range = sheet.GetDataRange();
+            sheet.Selection = range;
         }
 
         public void ExpandSelectionToRows()

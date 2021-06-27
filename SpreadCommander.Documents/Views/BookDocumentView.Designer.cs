@@ -37,9 +37,9 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             DevExpress.XtraSpellChecker.OptionsSpelling optionsSpelling1 = new DevExpress.XtraSpellChecker.OptionsSpelling();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
@@ -60,6 +60,18 @@
             DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
             DevExpress.Utils.Animation.Transition transition1 = new DevExpress.Utils.Animation.Transition();
             DevExpress.Utils.Animation.FadeTransition fadeTransition1 = new DevExpress.Utils.Animation.FadeTransition();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
             this.stylesRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.StylesRibbonPageGroup();
             this.galleryChangeStyleItem1 = new DevExpress.XtraRichEdit.UI.GalleryChangeStyleItem();
             this.barNewStyle = new DevExpress.XtraBars.BarButtonItem();
@@ -418,6 +430,16 @@
             this.transitionManager = new DevExpress.Utils.Animation.TransitionManager(this.components);
             this.dlgOpen = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.dlgSave = new DevExpress.XtraEditors.XtraSaveFileDialog(this.components);
+            this.insertObjectItem1 = new DevExpress.XtraRichEdit.UI.InsertObjectItem();
+            this.toggleTrackChangesBarItem1 = new DevExpress.XtraRichEdit.UI.ToggleTrackChangesBarItem();
+            this.changeDisplayForReviewModeItem1 = new DevExpress.XtraRichEdit.UI.ChangeDisplayForReviewModeItem();
+            this.showMarkupSubItem1 = new DevExpress.XtraRichEdit.UI.ShowMarkupSubItem();
+            this.displayForReviewModeComboBox1 = new DevExpress.XtraRichEdit.UI.DisplayForReviewModeComboBox();
+            this.documentChangesRibbonPageGroup1 = new DevExpress.XtraRichEdit.UI.DocumentChangesRibbonPageGroup();
+            this.acceptAndMoveToNextSubItem1 = new DevExpress.XtraRichEdit.UI.AcceptAndMoveToNextSubItem();
+            this.rejectAndMoveToNextSubItem1 = new DevExpress.XtraRichEdit.UI.RejectAndMoveToNextSubItem();
+            this.previousChangeItem1 = new DevExpress.XtraRichEdit.UI.PreviousChangeItem();
+            this.nextChangeItem1 = new DevExpress.XtraRichEdit.UI.NextChangeItem();
             ((System.ComponentModel.ISupportInitialize)(this.popupBookStyles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemFontEdit1)).BeginInit();
@@ -433,6 +455,7 @@
             this.dockPanel1.SuspendLayout();
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.svgFormIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.displayForReviewModeComboBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // stylesRibbonPageGroup1
@@ -500,13 +523,13 @@
             this.barRemoveStyle.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.DeleteBookStyle;
             this.barRemoveStyle.Name = "barRemoveStyle";
             this.barRemoveStyle.RibbonStyle = ((DevExpress.XtraBars.Ribbon.RibbonItemStyles)((DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText | DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText)));
-            toolTipTitleItem8.Text = "Remove Style";
-            toolTipItem8.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.DeleteBookStyle;
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Remove one of existing book styles";
-            superToolTip8.Items.Add(toolTipTitleItem8);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.barRemoveStyle.SuperTip = superToolTip8;
+            toolTipTitleItem12.Text = "Remove Style";
+            toolTipItem12.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.DeleteBookStyle;
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Remove one of existing book styles";
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.barRemoveStyle.SuperTip = superToolTip12;
             // 
             // popupBookStyles
             // 
@@ -801,9 +824,17 @@
             this.insertFootnoteItem1,
             this.insertEndnoteItem1,
             this.navigationNotesItem1,
-            this.showNotesItem1});
+            this.showNotesItem1,
+            this.insertObjectItem1,
+            this.toggleTrackChangesBarItem1,
+            this.changeDisplayForReviewModeItem1,
+            this.showMarkupSubItem1,
+            this.acceptAndMoveToNextSubItem1,
+            this.rejectAndMoveToNextSubItem1,
+            this.previousChangeItem1,
+            this.nextChangeItem1});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 288;
+            this.ribbonControl.MaxItemId = 297;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.headerFooterToolsRibbonPageCategory1,
@@ -824,7 +855,8 @@
             this.repositoryItemBorderLineStyle1,
             this.repositoryItemBorderLineWeight1,
             this.repositoryItemFloatingObjectOutlineWeight1,
-            this.repositoryItemZoomTrackBar});
+            this.repositoryItemZoomTrackBar,
+            this.displayForReviewModeComboBox1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.ribbonControl.ShowSearchItem = true;
             this.ribbonControl.Size = new System.Drawing.Size(1282, 158);
@@ -952,7 +984,7 @@
             this.Editor.Options.MailMerge.CustomSeparators.MaskDecimalSeparator = ".";
             this.Editor.Options.MailMerge.CustomSeparators.MaskGroupSeparator = "\'";
             this.Editor.Options.MailMerge.ViewMergedData = true;
-            this.Editor.Size = new System.Drawing.Size(1255, 752);
+            this.Editor.Size = new System.Drawing.Size(1261, 750);
             this.Editor.SpellChecker = this.spellChecker;
             this.spellChecker.SetSpellCheckerOptions(this.Editor, optionsSpelling1);
             this.Editor.TabIndex = 0;
@@ -2666,9 +2698,9 @@
             this.tableDrawBordersRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.True;
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderLineStyleItem1);
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderLineWeightItem1);
-            this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderColorItem1, "C");
+            this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderColorItem1);
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBordersItem1, "B");
-            this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableCellsShadingItem1, "H");
+            this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableCellsShadingItem1);
             this.tableDrawBordersRibbonPageGroup1.Name = "tableDrawBordersRibbonPageGroup1";
             // 
             // tableLayoutRibbonPage1
@@ -2813,9 +2845,9 @@
             // clipboardRibbonPageGroup1
             // 
             this.clipboardRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.clipboardRibbonPageGroup1.ItemLinks.Add(this.pasteItem1, "V");
+            this.clipboardRibbonPageGroup1.ItemLinks.Add(this.pasteItem1);
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.cutItem1, "X");
-            this.clipboardRibbonPageGroup1.ItemLinks.Add(this.copyItem1, "C");
+            this.clipboardRibbonPageGroup1.ItemLinks.Add(this.copyItem1);
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.pasteSpecialItem1);
             this.clipboardRibbonPageGroup1.Name = "clipboardRibbonPageGroup1";
             // 
@@ -2868,13 +2900,13 @@
             // 
             this.tablesRibbonPageGroup1.AllowTextClipping = false;
             this.tablesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.tablesRibbonPageGroup1.ItemLinks.Add(this.insertTableItem1, "T");
+            this.tablesRibbonPageGroup1.ItemLinks.Add(this.insertTableItem1);
             this.tablesRibbonPageGroup1.Name = "tablesRibbonPageGroup1";
             // 
             // illustrationsRibbonPageGroup1
             // 
             this.illustrationsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.illustrationsRibbonPageGroup1.ItemLinks.Add(this.insertPictureItem1, "P");
+            this.illustrationsRibbonPageGroup1.ItemLinks.Add(this.insertPictureItem1);
             this.illustrationsRibbonPageGroup1.ItemLinks.Add(this.insertFloatingPictureItem1);
             this.illustrationsRibbonPageGroup1.Name = "illustrationsRibbonPageGroup1";
             // 
@@ -2899,6 +2931,7 @@
             this.textRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.textRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("textRibbonPageGroup1.ImageOptions.Image")));
             this.textRibbonPageGroup1.ItemLinks.Add(this.insertTextBoxItem1, "X");
+            this.textRibbonPageGroup1.ItemLinks.Add(this.insertObjectItem1);
             this.textRibbonPageGroup1.Name = "textRibbonPageGroup1";
             // 
             // symbolsRibbonPageGroup1
@@ -2989,7 +3022,8 @@
             this.documentProofingRibbonPageGroup1,
             this.documentProtectionRibbonPageGroup1,
             this.documentCommentRibbonPageGroup1,
-            this.documentTrackingRibbonPageGroup1});
+            this.documentTrackingRibbonPageGroup1,
+            this.documentChangesRibbonPageGroup1});
             this.reviewRibbonPage1.Name = "reviewRibbonPage1";
             // 
             // documentProofingRibbonPageGroup1
@@ -3022,6 +3056,9 @@
             this.documentTrackingRibbonPageGroup1.ItemLinks.Add(this.changeCommentItem1);
             this.documentTrackingRibbonPageGroup1.ItemLinks.Add(this.reviewersItem1);
             this.documentTrackingRibbonPageGroup1.ItemLinks.Add(this.reviewingPaneItem1);
+            this.documentTrackingRibbonPageGroup1.ItemLinks.Add(this.toggleTrackChangesBarItem1, "G");
+            this.documentTrackingRibbonPageGroup1.ItemLinks.Add(this.changeDisplayForReviewModeItem1, "TD");
+            this.documentTrackingRibbonPageGroup1.ItemLinks.Add(this.showMarkupSubItem1, "TM");
             this.documentTrackingRibbonPageGroup1.Name = "documentTrackingRibbonPageGroup1";
             // 
             // viewRibbonPage1
@@ -3061,10 +3098,10 @@
             this.ribbonStatusBar.ItemLinks.Add(this.barViewSimple);
             this.ribbonStatusBar.ItemLinks.Add(this.barZoom, true);
             this.ribbonStatusBar.ItemLinks.Add(this.barPages);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 910);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 908);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1282, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1282, 24);
             // 
             // mvvmContext
             // 
@@ -3337,6 +3374,14 @@
             this.richEditBarController.BarItems.Add(this.insertEndnoteItem1);
             this.richEditBarController.BarItems.Add(this.navigationNotesItem1);
             this.richEditBarController.BarItems.Add(this.showNotesItem1);
+            this.richEditBarController.BarItems.Add(this.insertObjectItem1);
+            this.richEditBarController.BarItems.Add(this.toggleTrackChangesBarItem1);
+            this.richEditBarController.BarItems.Add(this.changeDisplayForReviewModeItem1);
+            this.richEditBarController.BarItems.Add(this.showMarkupSubItem1);
+            this.richEditBarController.BarItems.Add(this.acceptAndMoveToNextSubItem1);
+            this.richEditBarController.BarItems.Add(this.rejectAndMoveToNextSubItem1);
+            this.richEditBarController.BarItems.Add(this.previousChangeItem1);
+            this.richEditBarController.BarItems.Add(this.nextChangeItem1);
             this.richEditBarController.Control = this.Editor;
             // 
             // dockManager
@@ -3359,12 +3404,12 @@
             // 
             // hideContainerRight
             // 
-            this.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.hideContainerRight.Controls.Add(this.dockPanel1);
             this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.hideContainerRight.Location = new System.Drawing.Point(1255, 158);
+            this.hideContainerRight.Location = new System.Drawing.Point(1261, 158);
             this.hideContainerRight.Name = "hideContainerRight";
-            this.hideContainerRight.Size = new System.Drawing.Size(27, 752);
+            this.hideContainerRight.Size = new System.Drawing.Size(21, 750);
             // 
             // dockPanel1
             // 
@@ -3376,7 +3421,7 @@
             this.dockPanel1.OriginalSize = new System.Drawing.Size(394, 200);
             this.dockPanel1.SavedDock = DevExpress.XtraBars.Docking.DockingStyle.Right;
             this.dockPanel1.SavedIndex = 0;
-            this.dockPanel1.Size = new System.Drawing.Size(394, 756);
+            this.dockPanel1.Size = new System.Drawing.Size(394, 752);
             this.dockPanel1.Text = "Comments";
             this.dockPanel1.Visibility = DevExpress.XtraBars.Docking.DockVisibility.AutoHide;
             // 
@@ -3385,7 +3430,7 @@
             this.dockPanel1_Container.Controls.Add(this.richEditCommentControl1);
             this.dockPanel1_Container.Location = new System.Drawing.Point(4, 46);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(387, 707);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(387, 703);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // richEditCommentControl1
@@ -3396,7 +3441,7 @@
             this.richEditCommentControl1.Name = "richEditCommentControl1";
             this.richEditCommentControl1.ReadOnly = false;
             this.richEditCommentControl1.RichEditControl = this.Editor;
-            this.richEditCommentControl1.Size = new System.Drawing.Size(387, 707);
+            this.richEditCommentControl1.Size = new System.Drawing.Size(387, 703);
             this.richEditCommentControl1.TabIndex = 0;
             // 
             // svgFormIcon
@@ -3436,6 +3481,86 @@
             this.dlgSave.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.dlgSave.Title = "Spread Commander";
             // 
+            // insertObjectItem1
+            // 
+            this.insertObjectItem1.Id = 289;
+            this.insertObjectItem1.Name = "insertObjectItem1";
+            // 
+            // toggleTrackChangesBarItem1
+            // 
+            toolTipTitleItem8.Text = "Track Changes";
+            toolTipItem8.Text = "Keep track of changes made to this document.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.toggleTrackChangesBarItem1.DropDownSuperTip = superToolTip8;
+            this.toggleTrackChangesBarItem1.Id = 290;
+            this.toggleTrackChangesBarItem1.Name = "toggleTrackChangesBarItem1";
+            // 
+            // changeDisplayForReviewModeItem1
+            // 
+            this.changeDisplayForReviewModeItem1.Edit = this.displayForReviewModeComboBox1;
+            this.changeDisplayForReviewModeItem1.Id = 291;
+            this.changeDisplayForReviewModeItem1.Name = "changeDisplayForReviewModeItem1";
+            // 
+            // showMarkupSubItem1
+            // 
+            this.showMarkupSubItem1.ActAsDropDown = true;
+            toolTipTitleItem9.Text = "Show Markup";
+            toolTipItem9.Text = "Choose what types of markup to show in your document.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.showMarkupSubItem1.DropDownSuperTip = superToolTip9;
+            this.showMarkupSubItem1.Id = 292;
+            this.showMarkupSubItem1.Name = "showMarkupSubItem1";
+            this.showMarkupSubItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            // 
+            // displayForReviewModeComboBox1
+            // 
+            this.displayForReviewModeComboBox1.AutoHeight = false;
+            this.displayForReviewModeComboBox1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.displayForReviewModeComboBox1.Name = "displayForReviewModeComboBox1";
+            this.displayForReviewModeComboBox1.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            // 
+            // documentChangesRibbonPageGroup1
+            // 
+            this.documentChangesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.documentChangesRibbonPageGroup1.ItemLinks.Add(this.acceptAndMoveToNextSubItem1, "M");
+            this.documentChangesRibbonPageGroup1.ItemLinks.Add(this.rejectAndMoveToNextSubItem1, "M");
+            this.documentChangesRibbonPageGroup1.ItemLinks.Add(this.previousChangeItem1, "H");
+            this.documentChangesRibbonPageGroup1.ItemLinks.Add(this.nextChangeItem1, "F");
+            this.documentChangesRibbonPageGroup1.Name = "documentChangesRibbonPageGroup1";
+            // 
+            // acceptAndMoveToNextSubItem1
+            // 
+            toolTipTitleItem10.Text = "Accept";
+            toolTipItem10.Text = "Click for additional options, such as accepting all the changes at once.";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.acceptAndMoveToNextSubItem1.DropDownSuperTip = superToolTip10;
+            this.acceptAndMoveToNextSubItem1.Id = 293;
+            this.acceptAndMoveToNextSubItem1.Name = "acceptAndMoveToNextSubItem1";
+            // 
+            // rejectAndMoveToNextSubItem1
+            // 
+            toolTipTitleItem11.Text = "Reject";
+            toolTipItem11.Text = "Click for additional options, such as rejecting all the changes at once.";
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.rejectAndMoveToNextSubItem1.DropDownSuperTip = superToolTip11;
+            this.rejectAndMoveToNextSubItem1.Id = 294;
+            this.rejectAndMoveToNextSubItem1.Name = "rejectAndMoveToNextSubItem1";
+            // 
+            // previousChangeItem1
+            // 
+            this.previousChangeItem1.Id = 295;
+            this.previousChangeItem1.Name = "previousChangeItem1";
+            // 
+            // nextChangeItem1
+            // 
+            this.nextChangeItem1.Id = 296;
+            this.nextChangeItem1.Name = "nextChangeItem1";
+            // 
             // BookDocumentView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3465,6 +3590,7 @@
             this.dockPanel1.ResumeLayout(false);
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.svgFormIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.displayForReviewModeComboBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3785,7 +3911,6 @@
 		private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
 		private DevExpress.XtraSpellChecker.SpellChecker spellChecker;
 		private DevExpress.Utils.SvgImageCollection svgFormIcon;
-		private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
         private DevExpress.XtraBars.BarButtonItem barUpdateMailMergeFields;
         private DevExpress.Utils.Animation.TransitionManager transitionManager;
         private DevExpress.XtraBars.BarEditItem barZoom;
@@ -3829,5 +3954,16 @@
         private DevExpress.XtraRichEdit.UI.NavigationNotesItem navigationNotesItem1;
         private DevExpress.XtraRichEdit.UI.ShowNotesItem showNotesItem1;
         private DevExpress.XtraRichEdit.UI.NotesRibbonPageGroup notesRibbonPageGroup1;
+        private DevExpress.XtraBars.Docking.AutoHideContainer hideContainerRight;
+        private DevExpress.XtraRichEdit.UI.InsertObjectItem insertObjectItem1;
+        private DevExpress.XtraRichEdit.UI.ToggleTrackChangesBarItem toggleTrackChangesBarItem1;
+        private DevExpress.XtraRichEdit.UI.ChangeDisplayForReviewModeItem changeDisplayForReviewModeItem1;
+        private DevExpress.XtraRichEdit.UI.DisplayForReviewModeComboBox displayForReviewModeComboBox1;
+        private DevExpress.XtraRichEdit.UI.ShowMarkupSubItem showMarkupSubItem1;
+        private DevExpress.XtraRichEdit.UI.AcceptAndMoveToNextSubItem acceptAndMoveToNextSubItem1;
+        private DevExpress.XtraRichEdit.UI.RejectAndMoveToNextSubItem rejectAndMoveToNextSubItem1;
+        private DevExpress.XtraRichEdit.UI.PreviousChangeItem previousChangeItem1;
+        private DevExpress.XtraRichEdit.UI.NextChangeItem nextChangeItem1;
+        private DevExpress.XtraRichEdit.UI.DocumentChangesRibbonPageGroup documentChangesRibbonPageGroup1;
     }
 }

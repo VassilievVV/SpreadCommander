@@ -21,7 +21,7 @@ namespace SpreadCommander.Documents.Dialogs
         private readonly string					        	_DefaultSchemaName;
         private readonly List<string>			        	_CollectionNames;
         private Dictionary<string, string>              	_Restrictions;
-        private readonly Dictionary<string, List<DataRow>>	_SchemaRestrictions = new Dictionary<string, List<DataRow>>();
+        private readonly Dictionary<string, List<DataRow>>	_SchemaRestrictions = new ();
     
         public DbSchemaViewer(DbConnection connection, string databaseName)
         {
@@ -175,6 +175,8 @@ namespace SpreadCommander.Documents.Dialogs
 
                 using (new UsingProcessor(() => listSchemas.BeginUpdate(), () => listSchemas.EndUpdate()))
                 {
+                    listSchemas.Items.Add("[Schemas]");
+
                     foreach (DataRow row in tblSchemas.Rows)
                     {
                         string collectionName = Convert.ToString(row["CollectionName"]);
@@ -214,7 +216,14 @@ namespace SpreadCommander.Documents.Dialogs
                 if (!string.IsNullOrEmpty(_DatabaseName))
                     _Connection.ChangeDatabase(_DatabaseName);
 
-                List<string> restrictions = new List<string>();
+                if (string.Compare(schemaName, "[Schemas]", true) == 0)
+                {
+                    DataTable tblSchemas = _Connection.GetSchema();
+                    gridSchema.AttachDataSource(tblSchemas);
+                    return;
+                }
+
+                List<string> restrictions = new ();
                 try
                 {
                     if (_Restrictions != null && _SchemaRestrictions != null)

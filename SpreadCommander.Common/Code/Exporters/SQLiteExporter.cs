@@ -24,7 +24,9 @@ namespace SpreadCommander.Common.Code.Exporters
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = sqliteConnectionStringBuilder.ConnectionString;
-            return new SQLiteConnection(connStr);
+            var result  = new SQLiteConnection();
+            Connection.SetConnectionString(result, connStr);
+            return result;
         }
 
         public override string QuoteString(string value)

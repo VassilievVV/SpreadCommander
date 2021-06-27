@@ -53,10 +53,42 @@
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem20 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem21 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItem galleryItem22 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem23 = new DevExpress.XtraBars.Ribbon.GalleryItem();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup2 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup3 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup4 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
             DevExpress.Skins.SkinPaddingEdges skinPaddingEdges1 = new DevExpress.Skins.SkinPaddingEdges();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup5 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup6 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup7 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem24 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem25 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem26 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem27 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem28 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem29 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem30 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem31 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem32 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem33 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem34 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem35 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem36 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem37 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem38 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem39 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem40 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem41 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem42 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem43 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem44 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem45 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItem galleryItem46 = new DevExpress.XtraBars.Ribbon.GalleryItem();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup8 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup9 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup10 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
+            DevExpress.Skins.SkinPaddingEdges skinPaddingEdges2 = new DevExpress.Skins.SkinPaddingEdges();
             DevExpress.DashboardWin.Bars.ChartInsideHorizontalLegendGalleryGroup chartInsideHorizontalLegendGalleryGroup1 = new DevExpress.DashboardWin.Bars.ChartInsideHorizontalLegendGalleryGroup();
             DevExpress.DashboardWin.Bars.ChartLegendInsideTopLeftHorizontalGalleryItem chartLegendInsideTopLeftHorizontalGalleryItem1 = new DevExpress.DashboardWin.Bars.ChartLegendInsideTopLeftHorizontalGalleryItem();
             DevExpress.DashboardWin.Bars.ChartLegendInsideTopCenterHorizontalGalleryItem chartLegendInsideTopCenterHorizontalGalleryItem1 = new DevExpress.DashboardWin.Bars.ChartLegendInsideTopCenterHorizontalGalleryItem();
@@ -170,9 +202,6 @@
             DevExpress.DashboardWin.Bars.MapWeightedLegendBottomLeftGalleryItem mapWeightedLegendBottomLeftGalleryItem1 = new DevExpress.DashboardWin.Bars.MapWeightedLegendBottomLeftGalleryItem();
             DevExpress.DashboardWin.Bars.MapWeightedLegendBottomCenterGalleryItem mapWeightedLegendBottomCenterGalleryItem1 = new DevExpress.DashboardWin.Bars.MapWeightedLegendBottomCenterGalleryItem();
             DevExpress.DashboardWin.Bars.MapWeightedLegendBottomRightGalleryItem mapWeightedLegendBottomRightGalleryItem1 = new DevExpress.DashboardWin.Bars.MapWeightedLegendBottomRightGalleryItem();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup5 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.GalleryItemGroup galleryItemGroup6 = new DevExpress.XtraBars.Ribbon.GalleryItemGroup();
-            DevExpress.XtraBars.Ribbon.ReduceOperation reduceOperation1 = new DevExpress.XtraBars.Ribbon.ReduceOperation();
             this.Ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.dashboardBackstageViewControl1 = new DevExpress.DashboardWin.Bars.DashboardBackstageViewControl();
             this.dashboardBarAndDockingController = new DevExpress.DashboardWin.Native.DashboardBarAndDockingController(this.components);
@@ -180,35 +209,11 @@
             this.recentDashboardsControl1 = new DevExpress.DashboardWin.Bars.RecentDashboardsControl();
             this.DashboardDesigner = new DevExpress.DashboardWin.DashboardDesigner();
             this.dashboardPopupMenu1 = new DevExpress.DashboardWin.DashboardPopupMenu(this.components);
-            this.showItemCaptionBarItem1 = new DevExpress.DashboardWin.Bars.ShowItemCaptionBarItem();
             this.duplicateItemBarItem1 = new DevExpress.DashboardWin.Bars.DuplicateItemBarItem();
             this.deleteItemBarItem1 = new DevExpress.DashboardWin.Bars.DeleteItemBarItem();
-            this.convertDashboardItemTypeBarItem1 = new DevExpress.DashboardWin.Bars.ConvertDashboardItemTypeBarItem();
-            this.convertToPivotBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToPivotBarItem();
-            this.convertToGridBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToGridBarItem();
-            this.convertToChartBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToChartBarItem();
-            this.convertToScatterChartBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToScatterChartBarItem();
-            this.convertToPieBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToPieBarItem();
-            this.convertToGaugeBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToGaugeBarItem();
-            this.convertToCardBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToCardBarItem();
-            this.convertToTreemapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToTreemapBarItem();
-            this.convertToChoroplethMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToChoroplethMapBarItem();
-            this.convertGeoPointMapBaseBarItem1 = new DevExpress.DashboardWin.Bars.ConvertGeoPointMapBaseBarItem();
-            this.convertToGeoPointMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToGeoPointMapBarItem();
-            this.convertToBubbleMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToBubbleMapBarItem();
-            this.convertToPieMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToPieMapBarItem();
-            this.convertToRangeFilterBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToRangeFilterBarItem();
-            this.convertToFilterElementsBaseBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToFilterElementsBaseBarItem();
-            this.convertToComboBoxBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToComboBoxBarItem();
-            this.convertToListBoxBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToListBoxBarItem();
-            this.convertToTreeViewBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToTreeViewBarItem();
-            this.convertToDateFilterBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToDateFilterBarItem();
-            this.convertToBoundImageBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToBoundImageBarItem();
-            this.convertToTextBoxBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToTextBoxBarItem();
             this.removeDataItemsBarItem1 = new DevExpress.DashboardWin.Bars.RemoveDataItemsBarItem();
             this.transposeItemBarItem1 = new DevExpress.DashboardWin.Bars.TransposeItemBarItem();
             this.editRulesBarItem1 = new DevExpress.DashboardWin.Bars.EditRulesBarItem();
-            this.editItemNamesBarItem1 = new DevExpress.DashboardWin.Bars.EditItemNamesBarItem();
             this.deleteGroupBarItem1 = new DevExpress.DashboardWin.Bars.DeleteGroupBarItem();
             this.deleteTabContainerBarItem1 = new DevExpress.DashboardWin.Bars.DeleteTabContainerBarItem();
             this.deleteTabPageBarItem1 = new DevExpress.DashboardWin.Bars.DeleteTabPageBarItem();
@@ -233,7 +238,6 @@
             this.textBoxInsertFieldBarItem1 = new DevExpress.DashboardWin.Bars.TextBoxInsertFieldBarItem();
             this.rangeFilterEditDateTimePeriodsBarItem1 = new DevExpress.DashboardWin.Bars.RangeFilterEditDateTimePeriodsBarItem();
             this.dateFilterEditDateTimePeriodsBarItem1 = new DevExpress.DashboardWin.Bars.DateFilterEditDateTimePeriodsBarItem();
-            this.pivotResetLayoutOptionsBarItem1 = new DevExpress.DashboardWin.Bars.PivotResetLayoutOptionsBarItem();
             this.dashboardBackstageRecentTab1 = new DevExpress.DashboardWin.Bars.DashboardBackstageRecentTab();
             this.dashboardBackstageNewButton1 = new DevExpress.DashboardWin.Bars.DashboardBackstageNewButton();
             this.dashboardBackstageOpenButton1 = new DevExpress.DashboardWin.Bars.DashboardBackstageOpenButton();
@@ -261,11 +265,6 @@
             this.insertBubbleMapBarItem1 = new DevExpress.DashboardWin.Bars.InsertBubbleMapBarItem();
             this.insertPieMapBarItem1 = new DevExpress.DashboardWin.Bars.InsertPieMapBarItem();
             this.insertRangeFilterBarItem1 = new DevExpress.DashboardWin.Bars.InsertRangeFilterBarItem();
-            this.insertFilterElementSubItem1 = new DevExpress.DashboardWin.Bars.InsertFilterElementSubItem();
-            this.insertComboBoxBarItem1 = new DevExpress.DashboardWin.Bars.InsertComboBoxBarItem();
-            this.insertListBoxBarItem1 = new DevExpress.DashboardWin.Bars.InsertListBoxBarItem();
-            this.insertTreeViewBarItem1 = new DevExpress.DashboardWin.Bars.InsertTreeViewBarItem();
-            this.insertDateFilterBarItem1 = new DevExpress.DashboardWin.Bars.InsertDateFilterBarItem();
             this.insertImagesBarSubItem1 = new DevExpress.DashboardWin.Bars.InsertImagesBarSubItem();
             this.insertImageBarItem1 = new DevExpress.DashboardWin.Bars.InsertImageBarItem();
             this.insertBoundImageBarItem1 = new DevExpress.DashboardWin.Bars.InsertBoundImageBarItem();
@@ -275,7 +274,6 @@
             this.dashboardTitleBarItem1 = new DevExpress.DashboardWin.Bars.DashboardTitleBarItem();
             this.setCurrencyCultureBarItem1 = new DevExpress.DashboardWin.Bars.SetCurrencyCultureBarItem();
             this.dashboardColorSchemeBarItem1 = new DevExpress.DashboardWin.Bars.DashboardColorSchemeBarItem();
-            this.dashboardParametersBarItem1 = new DevExpress.DashboardWin.Bars.DashboardParametersBarItem();
             this.dashboardAutomaticUpdatesBarItem1 = new DevExpress.DashboardWin.Bars.DashboardAutomaticUpdatesBarItem();
             this.newDataSourceBarItem1 = new DevExpress.DashboardWin.Bars.NewDataSourceBarItem();
             this.editSqlConnectionBarItem1 = new DevExpress.DashboardWin.Bars.EditSqlConnectionBarItem();
@@ -288,7 +286,6 @@
             this.deleteDataSourceBarItem1 = new DevExpress.DashboardWin.Bars.DeleteDataSourceBarItem();
             this.serverModeBarItem1 = new DevExpress.DashboardWin.Bars.ServerModeBarItem();
             this.upateDataExtractBarItem1 = new DevExpress.DashboardWin.Bars.UpateDataExtractBarItem();
-            this.addCalculatedFieldBarItem1 = new DevExpress.DashboardWin.Bars.AddCalculatedFieldBarItem();
             this.addQueryBarItem1 = new DevExpress.DashboardWin.Bars.AddQueryBarItem();
             this.editQueryBarItem1 = new DevExpress.DashboardWin.Bars.EditQueryBarItem();
             this.renameQueryBarItem1 = new DevExpress.DashboardWin.Bars.RenameQueryBarItem();
@@ -304,30 +301,10 @@
             this.editDataSourceFilterBarItem1 = new DevExpress.DashboardWin.Bars.EditDataSourceFilterBarItem();
             this.clearDataSourceFilterBarItem1 = new DevExpress.DashboardWin.Bars.ClearDataSourceFilterBarItem();
             this.dashboardSkinsBarItem1 = new DevExpress.DashboardWin.Bars.DashboardSkinsBarItem();
-            this.dashboardSkinDropDownButtonItem1 = new DevExpress.DashboardWin.Bars.DashboardSkinDropDownButtonItem();
-            this.dashboardSkinPaletteRibbonGalleryBarItem1 = new DevExpress.DashboardWin.Bars.DashboardSkinPaletteRibbonGalleryBarItem();
             this.ignoreMasterFiltersBarItem1 = new DevExpress.DashboardWin.Bars.IgnoreMasterFiltersBarItem();
             this.pivotInitialStateBarItem1 = new DevExpress.DashboardWin.Bars.PivotInitialStateBarItem();
             this.pivotAutoExpandColumnBarItem1 = new DevExpress.DashboardWin.Bars.PivotAutoExpandColumnBarItem();
             this.pivotAutoExpandRowBarItem1 = new DevExpress.DashboardWin.Bars.PivotAutoExpandRowBarItem();
-            this.pivotShowTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowTotalsBarItem();
-            this.pivotShowColumnTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowColumnTotalsBarItem();
-            this.pivotShowRowTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowRowTotalsBarItem();
-            this.pivotShowGrandTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowGrandTotalsBarItem();
-            this.pivotShowColumnGrandTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowColumnGrandTotalsBarItem();
-            this.pivotShowRowGrandTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowRowGrandTotalsBarItem();
-            this.pivotLayoutTypeBarItem1 = new DevExpress.DashboardWin.Bars.PivotLayoutTypeBarItem();
-            this.pivotLayoutTypeCompactBarItem1 = new DevExpress.DashboardWin.Bars.PivotLayoutTypeCompactBarItem();
-            this.pivotLayoutTypeTabularBarItem1 = new DevExpress.DashboardWin.Bars.PivotLayoutTypeTabularBarItem();
-            this.pivotRowTotalsPositionBarItem1 = new DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBarItem();
-            this.pivotRowTotalsPositionTopBarItem1 = new DevExpress.DashboardWin.Bars.PivotRowTotalsPositionTopBarItem();
-            this.pivotRowTotalsPositionBottomBarItem1 = new DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBottomBarItem();
-            this.pivotColumnTotalsPositionBarItem1 = new DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionBarItem();
-            this.pivotColumnTotalsPositionNearBarItem1 = new DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionNearBarItem();
-            this.pivotColumnTotalsPositionFarBarItem1 = new DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionFarBarItem();
-            this.pivotValuesPositionBarItem1 = new DevExpress.DashboardWin.Bars.PivotValuesPositionBarItem();
-            this.pivotValuesPositionColumnsBarItem1 = new DevExpress.DashboardWin.Bars.PivotValuesPositionColumnsBarItem();
-            this.pivotValuesPositionRowsBarItem1 = new DevExpress.DashboardWin.Bars.PivotValuesPositionRowsBarItem();
             this.masterFilterBarItem1 = new DevExpress.DashboardWin.Bars.MasterFilterBarItem();
             this.multipleValuesMasterFilterBarItem1 = new DevExpress.DashboardWin.Bars.MultipleValuesMasterFilterBarItem();
             this.drillDownBarItem1 = new DevExpress.DashboardWin.Bars.DrillDownBarItem();
@@ -348,8 +325,6 @@
             this.chartXAxisSettingsBarItem1 = new DevExpress.DashboardWin.Bars.ChartXAxisSettingsBarItem();
             this.chartYAxisSettingsBarItem1 = new DevExpress.DashboardWin.Bars.ChartYAxisSettingsBarItem();
             this.chartShowLegendBarItem1 = new DevExpress.DashboardWin.Bars.ChartShowLegendBarItem();
-            this.galleryChartLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryChartLegendPositionItem();
-            this.galleryChartSeriesTypeItem1 = new DevExpress.DashboardWin.Bars.GalleryChartSeriesTypeItem();
             this.useGlobalColorsBarItem1 = new DevExpress.DashboardWin.Bars.UseGlobalColorsBarItem();
             this.useLocalColorsBarItem1 = new DevExpress.DashboardWin.Bars.UseLocalColorsBarItem();
             this.editActualColorsBarItem1 = new DevExpress.DashboardWin.Bars.EditActualColorsBarItem();
@@ -358,7 +333,6 @@
             this.scatterChartYAxisSettingsBarItem1 = new DevExpress.DashboardWin.Bars.ScatterChartYAxisSettingsBarItem();
             this.scatterChartPointLabelOptionsBarItem1 = new DevExpress.DashboardWin.Bars.ScatterChartPointLabelOptionsBarItem();
             this.scatterChartShowLegendBarItem1 = new DevExpress.DashboardWin.Bars.ScatterChartShowLegendBarItem();
-            this.galleryScatterChartLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryScatterChartLegendPositionItem();
             this.pieTargetDimensionsArgumentsBarItem1 = new DevExpress.DashboardWin.Bars.PieTargetDimensionsArgumentsBarItem();
             this.pieTargetDimensionsSeriesBarItem1 = new DevExpress.DashboardWin.Bars.PieTargetDimensionsSeriesBarItem();
             this.pieTargetDimensionsPointsBarItem1 = new DevExpress.DashboardWin.Bars.PieTargetDimensionsPointsBarItem();
@@ -399,18 +373,15 @@
             this.gaugeStyleLinearHorizontalBarItem1 = new DevExpress.DashboardWin.Bars.GaugeStyleLinearHorizontalBarItem();
             this.gaugeStyleLinearVerticalBarItem1 = new DevExpress.DashboardWin.Bars.GaugeStyleLinearVerticalBarItem();
             this.gaugeShowCaptionsBarItem1 = new DevExpress.DashboardWin.Bars.GaugeShowCaptionsBarItem();
-            this.galleryRangeFilterSeriesTypeItem1 = new DevExpress.DashboardWin.Bars.GalleryRangeFilterSeriesTypeItem();
             this.mapLockNavigationBarItem1 = new DevExpress.DashboardWin.Bars.MapLockNavigationBarItem();
             this.choroplethMapShapeLabelsAttributeBarItem1 = new DevExpress.DashboardWin.Bars.ChoroplethMapShapeLabelsAttributeBarItem();
             this.mapShowLegendBarItem1 = new DevExpress.DashboardWin.Bars.MapShowLegendBarItem();
-            this.galleryMapLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryMapLegendPositionItem();
             this.geoPointMapClusterizationBarItem1 = new DevExpress.DashboardWin.Bars.GeoPointMapClusterizationBarItem();
             this.mapShapeTitleAttributeBarItem1 = new DevExpress.DashboardWin.Bars.MapShapeTitleAttributeBarItem();
             this.changeWeightedLegendTypeBarItem1 = new DevExpress.DashboardWin.Bars.ChangeWeightedLegendTypeBarItem();
             this.weightedLegendNoneBarItem1 = new DevExpress.DashboardWin.Bars.WeightedLegendNoneBarItem();
             this.weightedLegendLinearBarItem1 = new DevExpress.DashboardWin.Bars.WeightedLegendLinearBarItem();
             this.weightedLegendNestedBarItem1 = new DevExpress.DashboardWin.Bars.WeightedLegendNestedBarItem();
-            this.galleryWeightedLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryWeightedLegendPositionItem();
             this.pieMapIsWeightedBarItem1 = new DevExpress.DashboardWin.Bars.PieMapIsWeightedBarItem();
             this.comboBoxStandardTypeBarItem1 = new DevExpress.DashboardWin.Bars.ComboBoxStandardTypeBarItem();
             this.comboBoxCheckedTypeBarItem1 = new DevExpress.DashboardWin.Bars.ComboBoxCheckedTypeBarItem();
@@ -658,7 +629,6 @@
             this.dashboardItemDesignRibbonPage1 = new DevExpress.DashboardWin.Bars.DashboardItemDesignRibbonPage();
             this.commonItemDesignRibbonPageGroup1 = new DevExpress.DashboardWin.Bars.CommonItemDesignRibbonPageGroup();
             this.pivotInitialStateRibbonPageGroup1 = new DevExpress.DashboardWin.Bars.PivotInitialStateRibbonPageGroup();
-            this.pivotLayoutRibbonPageGroup1 = new DevExpress.DashboardWin.Bars.PivotLayoutRibbonPageGroup();
             this.gridToolsRibbonPageCategory1 = new DevExpress.DashboardWin.Bars.GridToolsRibbonPageCategory();
             this.dataRibbonPage2 = new DevExpress.DashboardWin.Bars.DataRibbonPage();
             this.filteringRibbonPageGroup2 = new DevExpress.DashboardWin.Bars.FilteringRibbonPageGroup();
@@ -898,6 +868,74 @@
             this.images = new DevExpress.Utils.SvgImageCollection(this.components);
             this.dlgOpen = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.dlgSave = new DevExpress.XtraEditors.XtraSaveFileDialog(this.components);
+            this.insertComboBoxBarItem1 = new DevExpress.DashboardWin.Bars.InsertComboBoxBarItem();
+            this.insertListBoxBarItem1 = new DevExpress.DashboardWin.Bars.InsertListBoxBarItem();
+            this.insertTreeViewBarItem1 = new DevExpress.DashboardWin.Bars.InsertTreeViewBarItem();
+            this.insertDateFilterBarItem1 = new DevExpress.DashboardWin.Bars.InsertDateFilterBarItem();
+            this.insertFilterElementSubItem1 = new DevExpress.DashboardWin.Bars.InsertFilterElementSubItem();
+            this.convertToPivotBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToPivotBarItem();
+            this.convertToGridBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToGridBarItem();
+            this.convertToChartBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToChartBarItem();
+            this.convertToScatterChartBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToScatterChartBarItem();
+            this.convertToPieBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToPieBarItem();
+            this.convertToGaugeBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToGaugeBarItem();
+            this.convertToCardBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToCardBarItem();
+            this.convertToTreemapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToTreemapBarItem();
+            this.convertToChoroplethMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToChoroplethMapBarItem();
+            this.convertToGeoPointMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToGeoPointMapBarItem();
+            this.convertToBubbleMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToBubbleMapBarItem();
+            this.convertToPieMapBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToPieMapBarItem();
+            this.convertGeoPointMapBaseBarItem1 = new DevExpress.DashboardWin.Bars.ConvertGeoPointMapBaseBarItem();
+            this.convertToRangeFilterBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToRangeFilterBarItem();
+            this.convertToComboBoxBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToComboBoxBarItem();
+            this.convertToListBoxBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToListBoxBarItem();
+            this.convertToTreeViewBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToTreeViewBarItem();
+            this.convertToDateFilterBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToDateFilterBarItem();
+            this.convertToFilterElementsBaseBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToFilterElementsBaseBarItem();
+            this.convertToBoundImageBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToBoundImageBarItem();
+            this.convertToTextBoxBarItem1 = new DevExpress.DashboardWin.Bars.ConvertToTextBoxBarItem();
+            this.convertDashboardItemTypeBarItem1 = new DevExpress.DashboardWin.Bars.ConvertDashboardItemTypeBarItem();
+            this.dashboardParametersBarItem1 = new DevExpress.DashboardWin.Bars.DashboardParametersBarItem();
+            this.editMongoDBConnectionBarItem1 = new DevExpress.DashboardWin.Bars.EditMongoDBConnectionBarItem();
+            this.editXpoConnectionBarItem1 = new DevExpress.DashboardWin.Bars.EditXpoConnectionBarItem();
+            this.addCalculatedFieldBarItem1 = new DevExpress.DashboardWin.Bars.AddCalculatedFieldBarItem();
+            this.editJsonDataSourceBarItem1 = new DevExpress.DashboardWin.Bars.EditJsonDataSourceBarItem();
+            this.mongoDBDataSourceQueryRibbonPageGroup1 = new DevExpress.DashboardWin.Bars.MongoDBDataSourceQueryRibbonPageGroup();
+            this.manageMongoDBQueriesBarItem1 = new DevExpress.DashboardWin.Bars.ManageMongoDBQueriesBarItem();
+            this.renameMongoDBQueryBarItem1 = new DevExpress.DashboardWin.Bars.RenameMongoDBQueryBarItem();
+            this.deleteMongoDBQueryBarItem1 = new DevExpress.DashboardWin.Bars.DeleteMongoDBQueryBarItem();
+            this.dashboardSkinsBarItem2 = new DevExpress.DashboardWin.Bars.DashboardSkinsBarItem();
+            this.dashboardSkinDropDownButtonItem1 = new DevExpress.DashboardWin.Bars.DashboardSkinDropDownButtonItem();
+            this.dashboardSkinPaletteRibbonGalleryBarItem1 = new DevExpress.DashboardWin.Bars.DashboardSkinPaletteRibbonGalleryBarItem();
+            this.editVisibleDataFilterBarItem1 = new DevExpress.DashboardWin.Bars.EditVisibleDataFilterBarItem();
+            this.showItemCaptionBarItem1 = new DevExpress.DashboardWin.Bars.ShowItemCaptionBarItem();
+            this.editItemNamesBarItem1 = new DevExpress.DashboardWin.Bars.EditItemNamesBarItem();
+            this.pivotLayoutRibbonPageGroup1 = new DevExpress.DashboardWin.Bars.PivotLayoutRibbonPageGroup();
+            this.pivotShowColumnTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowColumnTotalsBarItem();
+            this.pivotShowRowTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowRowTotalsBarItem();
+            this.pivotShowTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowTotalsBarItem();
+            this.pivotShowColumnGrandTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowColumnGrandTotalsBarItem();
+            this.pivotShowRowGrandTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowRowGrandTotalsBarItem();
+            this.pivotShowGrandTotalsBarItem1 = new DevExpress.DashboardWin.Bars.PivotShowGrandTotalsBarItem();
+            this.pivotLayoutTypeCompactBarItem1 = new DevExpress.DashboardWin.Bars.PivotLayoutTypeCompactBarItem();
+            this.pivotLayoutTypeTabularBarItem1 = new DevExpress.DashboardWin.Bars.PivotLayoutTypeTabularBarItem();
+            this.pivotLayoutTypeBarItem1 = new DevExpress.DashboardWin.Bars.PivotLayoutTypeBarItem();
+            this.pivotRowTotalsPositionTopBarItem1 = new DevExpress.DashboardWin.Bars.PivotRowTotalsPositionTopBarItem();
+            this.pivotRowTotalsPositionBottomBarItem1 = new DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBottomBarItem();
+            this.pivotRowTotalsPositionBarItem1 = new DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBarItem();
+            this.pivotColumnTotalsPositionNearBarItem1 = new DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionNearBarItem();
+            this.pivotColumnTotalsPositionFarBarItem1 = new DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionFarBarItem();
+            this.pivotColumnTotalsPositionBarItem1 = new DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionBarItem();
+            this.pivotValuesPositionColumnsBarItem1 = new DevExpress.DashboardWin.Bars.PivotValuesPositionColumnsBarItem();
+            this.pivotValuesPositionRowsBarItem1 = new DevExpress.DashboardWin.Bars.PivotValuesPositionRowsBarItem();
+            this.pivotValuesPositionBarItem1 = new DevExpress.DashboardWin.Bars.PivotValuesPositionBarItem();
+            this.pivotResetLayoutOptionsBarItem1 = new DevExpress.DashboardWin.Bars.PivotResetLayoutOptionsBarItem();
+            this.galleryChartLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryChartLegendPositionItem();
+            this.galleryChartSeriesTypeItem1 = new DevExpress.DashboardWin.Bars.GalleryChartSeriesTypeItem();
+            this.galleryScatterChartLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryScatterChartLegendPositionItem();
+            this.galleryRangeFilterSeriesTypeItem1 = new DevExpress.DashboardWin.Bars.GalleryRangeFilterSeriesTypeItem();
+            this.galleryMapLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryMapLegendPositionItem();
+            this.galleryWeightedLegendPositionItem1 = new DevExpress.DashboardWin.Bars.GalleryWeightedLegendPositionItem();
             ((System.ComponentModel.ISupportInitialize)(this.Ribbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dashboardBackstageViewControl1)).BeginInit();
             this.dashboardBackstageViewControl1.SuspendLayout();
@@ -948,11 +986,6 @@
             this.insertBubbleMapBarItem1,
             this.insertPieMapBarItem1,
             this.insertRangeFilterBarItem1,
-            this.insertFilterElementSubItem1,
-            this.insertComboBoxBarItem1,
-            this.insertListBoxBarItem1,
-            this.insertTreeViewBarItem1,
-            this.insertDateFilterBarItem1,
             this.insertImagesBarSubItem1,
             this.insertImageBarItem1,
             this.insertBoundImageBarItem1,
@@ -961,28 +994,6 @@
             this.insertTabContainerBarItem1,
             this.duplicateItemBarItem1,
             this.deleteItemBarItem1,
-            this.convertDashboardItemTypeBarItem1,
-            this.convertToPivotBarItem1,
-            this.convertToGridBarItem1,
-            this.convertToChartBarItem1,
-            this.convertToScatterChartBarItem1,
-            this.convertToPieBarItem1,
-            this.convertToGaugeBarItem1,
-            this.convertToCardBarItem1,
-            this.convertToTreemapBarItem1,
-            this.convertToChoroplethMapBarItem1,
-            this.convertToGeoPointMapBarItem1,
-            this.convertToBubbleMapBarItem1,
-            this.convertToPieMapBarItem1,
-            this.convertGeoPointMapBaseBarItem1,
-            this.convertToRangeFilterBarItem1,
-            this.convertToComboBoxBarItem1,
-            this.convertToListBoxBarItem1,
-            this.convertToTreeViewBarItem1,
-            this.convertToDateFilterBarItem1,
-            this.convertToFilterElementsBaseBarItem1,
-            this.convertToBoundImageBarItem1,
-            this.convertToTextBoxBarItem1,
             this.removeDataItemsBarItem1,
             this.transposeItemBarItem1,
             this.editRulesBarItem1,
@@ -992,7 +1003,6 @@
             this.dashboardTitleBarItem1,
             this.setCurrencyCultureBarItem1,
             this.dashboardColorSchemeBarItem1,
-            this.dashboardParametersBarItem1,
             this.dashboardAutomaticUpdatesBarItem1,
             this.updateDataBarItem1,
             this.newDataSourceBarItem1,
@@ -1006,7 +1016,6 @@
             this.deleteDataSourceBarItem1,
             this.serverModeBarItem1,
             this.upateDataExtractBarItem1,
-            this.addCalculatedFieldBarItem1,
             this.addQueryBarItem1,
             this.editQueryBarItem1,
             this.renameQueryBarItem1,
@@ -1022,35 +1031,12 @@
             this.editDataSourceFilterBarItem1,
             this.clearDataSourceFilterBarItem1,
             this.dashboardSkinsBarItem1,
-            this.dashboardSkinDropDownButtonItem1,
-            this.dashboardSkinPaletteRibbonGalleryBarItem1,
             this.editFilterBarItem1,
             this.clearFilterBarItem1,
             this.ignoreMasterFiltersBarItem1,
-            this.showItemCaptionBarItem1,
-            this.editItemNamesBarItem1,
             this.pivotInitialStateBarItem1,
             this.pivotAutoExpandColumnBarItem1,
             this.pivotAutoExpandRowBarItem1,
-            this.pivotShowTotalsBarItem1,
-            this.pivotShowColumnTotalsBarItem1,
-            this.pivotShowRowTotalsBarItem1,
-            this.pivotShowGrandTotalsBarItem1,
-            this.pivotShowColumnGrandTotalsBarItem1,
-            this.pivotShowRowGrandTotalsBarItem1,
-            this.pivotLayoutTypeBarItem1,
-            this.pivotLayoutTypeCompactBarItem1,
-            this.pivotLayoutTypeTabularBarItem1,
-            this.pivotRowTotalsPositionBarItem1,
-            this.pivotRowTotalsPositionTopBarItem1,
-            this.pivotRowTotalsPositionBottomBarItem1,
-            this.pivotColumnTotalsPositionBarItem1,
-            this.pivotColumnTotalsPositionNearBarItem1,
-            this.pivotColumnTotalsPositionFarBarItem1,
-            this.pivotValuesPositionBarItem1,
-            this.pivotValuesPositionColumnsBarItem1,
-            this.pivotValuesPositionRowsBarItem1,
-            this.pivotResetLayoutOptionsBarItem1,
             this.masterFilterBarItem1,
             this.multipleValuesMasterFilterBarItem1,
             this.drillDownBarItem1,
@@ -1071,8 +1057,6 @@
             this.chartXAxisSettingsBarItem1,
             this.chartYAxisSettingsBarItem1,
             this.chartShowLegendBarItem1,
-            this.galleryChartLegendPositionItem1,
-            this.galleryChartSeriesTypeItem1,
             this.useGlobalColorsBarItem1,
             this.useLocalColorsBarItem1,
             this.editActualColorsBarItem1,
@@ -1081,7 +1065,6 @@
             this.scatterChartYAxisSettingsBarItem1,
             this.scatterChartPointLabelOptionsBarItem1,
             this.scatterChartShowLegendBarItem1,
-            this.galleryScatterChartLegendPositionItem1,
             this.pieTargetDimensionsArgumentsBarItem1,
             this.pieTargetDimensionsSeriesBarItem1,
             this.pieTargetDimensionsPointsBarItem1,
@@ -1121,7 +1104,6 @@
             this.gaugeStyleLinearHorizontalBarItem1,
             this.gaugeStyleLinearVerticalBarItem1,
             this.gaugeShowCaptionsBarItem1,
-            this.galleryRangeFilterSeriesTypeItem1,
             this.rangeFilterEditDateTimePeriodsBarItem1,
             this.mapLoadBarItem1,
             this.mapImportBarItem1,
@@ -1138,14 +1120,12 @@
             this.mapFullExtentBarItem1,
             this.choroplethMapShapeLabelsAttributeBarItem1,
             this.mapShowLegendBarItem1,
-            this.galleryMapLegendPositionItem1,
             this.geoPointMapClusterizationBarItem1,
             this.mapShapeTitleAttributeBarItem1,
             this.changeWeightedLegendTypeBarItem1,
             this.weightedLegendNoneBarItem1,
             this.weightedLegendLinearBarItem1,
             this.weightedLegendNestedBarItem1,
-            this.galleryWeightedLegendPositionItem1,
             this.pieMapIsWeightedBarItem1,
             this.comboBoxStandardTypeBarItem1,
             this.comboBoxCheckedTypeBarItem1,
@@ -1385,11 +1365,78 @@
             this.floatingObjectSendToBackItem1,
             this.floatingObjectSendBehindTextItem1,
             this.barLoadTemplate,
-            this.barSaveTemplate});
+            this.barSaveTemplate,
+            this.insertFilterElementSubItem1,
+            this.insertComboBoxBarItem1,
+            this.insertListBoxBarItem1,
+            this.insertTreeViewBarItem1,
+            this.insertDateFilterBarItem1,
+            this.convertDashboardItemTypeBarItem1,
+            this.convertToPivotBarItem1,
+            this.convertToGridBarItem1,
+            this.convertToChartBarItem1,
+            this.convertToScatterChartBarItem1,
+            this.convertToPieBarItem1,
+            this.convertToGaugeBarItem1,
+            this.convertToCardBarItem1,
+            this.convertToTreemapBarItem1,
+            this.convertToChoroplethMapBarItem1,
+            this.convertToGeoPointMapBarItem1,
+            this.convertToBubbleMapBarItem1,
+            this.convertToPieMapBarItem1,
+            this.convertGeoPointMapBaseBarItem1,
+            this.convertToRangeFilterBarItem1,
+            this.convertToComboBoxBarItem1,
+            this.convertToListBoxBarItem1,
+            this.convertToTreeViewBarItem1,
+            this.convertToDateFilterBarItem1,
+            this.convertToFilterElementsBaseBarItem1,
+            this.convertToBoundImageBarItem1,
+            this.convertToTextBoxBarItem1,
+            this.dashboardParametersBarItem1,
+            this.editMongoDBConnectionBarItem1,
+            this.editXpoConnectionBarItem1,
+            this.addCalculatedFieldBarItem1,
+            this.editJsonDataSourceBarItem1,
+            this.manageMongoDBQueriesBarItem1,
+            this.renameMongoDBQueryBarItem1,
+            this.deleteMongoDBQueryBarItem1,
+            this.dashboardSkinsBarItem2,
+            this.dashboardSkinDropDownButtonItem1,
+            this.dashboardSkinPaletteRibbonGalleryBarItem1,
+            this.editVisibleDataFilterBarItem1,
+            this.showItemCaptionBarItem1,
+            this.editItemNamesBarItem1,
+            this.pivotShowTotalsBarItem1,
+            this.pivotShowColumnTotalsBarItem1,
+            this.pivotShowRowTotalsBarItem1,
+            this.pivotShowGrandTotalsBarItem1,
+            this.pivotShowColumnGrandTotalsBarItem1,
+            this.pivotShowRowGrandTotalsBarItem1,
+            this.pivotLayoutTypeBarItem1,
+            this.pivotLayoutTypeCompactBarItem1,
+            this.pivotLayoutTypeTabularBarItem1,
+            this.pivotRowTotalsPositionBarItem1,
+            this.pivotRowTotalsPositionTopBarItem1,
+            this.pivotRowTotalsPositionBottomBarItem1,
+            this.pivotColumnTotalsPositionBarItem1,
+            this.pivotColumnTotalsPositionNearBarItem1,
+            this.pivotColumnTotalsPositionFarBarItem1,
+            this.pivotValuesPositionBarItem1,
+            this.pivotValuesPositionColumnsBarItem1,
+            this.pivotValuesPositionRowsBarItem1,
+            this.pivotResetLayoutOptionsBarItem1,
+            this.galleryChartLegendPositionItem1,
+            this.galleryChartSeriesTypeItem1,
+            this.galleryScatterChartLegendPositionItem1,
+            this.galleryRangeFilterSeriesTypeItem1,
+            this.galleryMapLegendPositionItem1,
+            this.galleryWeightedLegendPositionItem1});
             this.Ribbon.Location = new System.Drawing.Point(0, 0);
-            this.Ribbon.MaxItemId = 461;
+            this.Ribbon.MaxItemId = 527;
             this.Ribbon.Name = "Ribbon";
             this.Ribbon.OptionsAnimation.PageCategoryShowAnimation = DevExpress.Utils.DefaultBoolean.False;
+            this.Ribbon.OptionsPageCategories.AutoCorrectForeColor = DevExpress.Utils.DefaultBoolean.True;
             this.Ribbon.PageCategories.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageCategory[] {
             this.pivotToolsRibbonPageCategory1,
             this.gridToolsRibbonPageCategory1,
@@ -1417,6 +1464,10 @@
             this.homeRibbonPage1,
             this.dataSourceRibbonPage1,
             this.viewRibbonPage1});
+            this.Ribbon.QuickToolbarItemLinks.Add(this.fileSaveBarItem1);
+            this.Ribbon.QuickToolbarItemLinks.Add(this.quickAccessUndoBarItem1);
+            this.Ribbon.QuickToolbarItemLinks.Add(this.quickAccessRedoBarItem1);
+            this.Ribbon.QuickToolbarItemLinks.Add(this.updateDataBarItem1);
             this.Ribbon.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemSpinEdit1,
             this.repositoryItemFontEdit1,
@@ -1425,7 +1476,7 @@
             this.repositoryItemBorderLineWeight1,
             this.repositoryItemFloatingObjectOutlineWeight1});
             this.Ribbon.ShowSearchItem = true;
-            this.Ribbon.Size = new System.Drawing.Size(1325, 146);
+            this.Ribbon.Size = new System.Drawing.Size(1325, 150);
             this.Ribbon.StatusBar = this.RibbonStatusBar;
             // 
             // dashboardBackstageViewControl1
@@ -1445,6 +1496,7 @@
             this.dashboardBackstageViewControl1.SelectedTabIndex = 4;
             this.dashboardBackstageViewControl1.Size = new System.Drawing.Size(240, 150);
             this.dashboardBackstageViewControl1.TabIndex = 3;
+            this.dashboardBackstageViewControl1.VisibleInDesignTime = true;
             // 
             // backstageViewClientControl1
             // 
@@ -1468,27 +1520,20 @@
             // DashboardDesigner
             // 
             this.DashboardDesigner.ActionOnClose = DevExpress.DashboardWin.DashboardActionOnClose.Discard;
-            this.DashboardDesigner.AllowInspectAggregatedData = false;
-            this.DashboardDesigner.AllowInspectRawData = false;
-            this.DashboardDesigner.AllowMaximizeAnimation = true;
-            this.DashboardDesigner.AllowMaximizeDashboardItems = true;
-            this.DashboardDesigner.AllowPrintDashboard = true;
-            this.DashboardDesigner.AllowPrintDashboardItems = true;
             this.DashboardDesigner.AsyncMode = true;
             this.DashboardDesigner.BarAndDockingController = this.dashboardBarAndDockingController;
             this.DashboardDesigner.DataSourceOptions.ObjectDataSourceLoadingBehavior = DevExpress.DataAccess.DocumentLoadingBehavior.LoadSafely;
             this.DashboardDesigner.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DashboardDesigner.ImageExportOptions.Resolution = 300;
-            this.DashboardDesigner.Location = new System.Drawing.Point(0, 146);
+            this.DashboardDesigner.Location = new System.Drawing.Point(0, 150);
             this.DashboardDesigner.MenuManager = this.Ribbon;
             this.DashboardDesigner.Name = "DashboardDesigner";
             this.DashboardDesigner.PopupMenu = this.dashboardPopupMenu1;
             this.DashboardDesigner.RangeFilterIncludeCurrentDate = true;
-            this.DashboardDesigner.Size = new System.Drawing.Size(1325, 623);
+            this.DashboardDesigner.Size = new System.Drawing.Size(1325, 614);
             this.DashboardDesigner.TabIndex = 2;
-            this.DashboardDesigner.DataLoading += new DevExpress.DashboardCommon.DataLoadingEventHandler(this.DashboardDesigner_DataLoading);
             this.DashboardDesigner.AsyncDataLoading += new DevExpress.DashboardCommon.DataLoadingEventHandler(this.DashboardDesigner_AsyncDataLoading);
-            this.DashboardDesigner.Initialized += new System.EventHandler(this.DashboardDesigner_Initialized);
+            this.DashboardDesigner.DataLoading += new DevExpress.DashboardCommon.DataLoadingEventHandler(this.DashboardDesigner_DataLoading);
             // 
             // dashboardPopupMenu1
             // 
@@ -1505,6 +1550,7 @@
             this.dashboardPopupMenu1.ItemLinks.Add(this.deleteTabPageBarItem1, true);
             this.dashboardPopupMenu1.ItemLinks.Add(this.editFilterBarItem1, true);
             this.dashboardPopupMenu1.ItemLinks.Add(this.clearFilterBarItem1);
+            this.dashboardPopupMenu1.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.dashboardPopupMenu1.ItemLinks.Add(this.updateDataBarItem1, true);
             this.dashboardPopupMenu1.ItemLinks.Add(this.mapLoadBarItem1, true);
             this.dashboardPopupMenu1.ItemLinks.Add(this.mapImportBarItem1);
@@ -1520,11 +1566,6 @@
             this.dashboardPopupMenu1.Name = "dashboardPopupMenu1";
             this.dashboardPopupMenu1.Ribbon = this.Ribbon;
             // 
-            // showItemCaptionBarItem1
-            // 
-            this.showItemCaptionBarItem1.Id = 102;
-            this.showItemCaptionBarItem1.Name = "showItemCaptionBarItem1";
-            // 
             // duplicateItemBarItem1
             // 
             this.duplicateItemBarItem1.Id = 34;
@@ -1534,140 +1575,6 @@
             // 
             this.deleteItemBarItem1.Id = 35;
             this.deleteItemBarItem1.Name = "deleteItemBarItem1";
-            // 
-            // convertDashboardItemTypeBarItem1
-            // 
-            this.convertDashboardItemTypeBarItem1.Id = 36;
-            this.convertDashboardItemTypeBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToPivotBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToGridBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToChartBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToScatterChartBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToPieBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToGaugeBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToCardBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToTreemapBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToChoroplethMapBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertGeoPointMapBaseBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToRangeFilterBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToFilterElementsBaseBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToBoundImageBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToTextBoxBarItem1)});
-            this.convertDashboardItemTypeBarItem1.Name = "convertDashboardItemTypeBarItem1";
-            // 
-            // convertToPivotBarItem1
-            // 
-            this.convertToPivotBarItem1.Id = 37;
-            this.convertToPivotBarItem1.Name = "convertToPivotBarItem1";
-            // 
-            // convertToGridBarItem1
-            // 
-            this.convertToGridBarItem1.Id = 38;
-            this.convertToGridBarItem1.Name = "convertToGridBarItem1";
-            // 
-            // convertToChartBarItem1
-            // 
-            this.convertToChartBarItem1.Id = 39;
-            this.convertToChartBarItem1.Name = "convertToChartBarItem1";
-            // 
-            // convertToScatterChartBarItem1
-            // 
-            this.convertToScatterChartBarItem1.Id = 40;
-            this.convertToScatterChartBarItem1.Name = "convertToScatterChartBarItem1";
-            // 
-            // convertToPieBarItem1
-            // 
-            this.convertToPieBarItem1.Id = 41;
-            this.convertToPieBarItem1.Name = "convertToPieBarItem1";
-            // 
-            // convertToGaugeBarItem1
-            // 
-            this.convertToGaugeBarItem1.Id = 42;
-            this.convertToGaugeBarItem1.Name = "convertToGaugeBarItem1";
-            // 
-            // convertToCardBarItem1
-            // 
-            this.convertToCardBarItem1.Id = 43;
-            this.convertToCardBarItem1.Name = "convertToCardBarItem1";
-            // 
-            // convertToTreemapBarItem1
-            // 
-            this.convertToTreemapBarItem1.Id = 44;
-            this.convertToTreemapBarItem1.Name = "convertToTreemapBarItem1";
-            // 
-            // convertToChoroplethMapBarItem1
-            // 
-            this.convertToChoroplethMapBarItem1.Id = 45;
-            this.convertToChoroplethMapBarItem1.Name = "convertToChoroplethMapBarItem1";
-            // 
-            // convertGeoPointMapBaseBarItem1
-            // 
-            this.convertGeoPointMapBaseBarItem1.Id = 49;
-            this.convertGeoPointMapBaseBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToGeoPointMapBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToBubbleMapBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToPieMapBarItem1)});
-            this.convertGeoPointMapBaseBarItem1.Name = "convertGeoPointMapBaseBarItem1";
-            // 
-            // convertToGeoPointMapBarItem1
-            // 
-            this.convertToGeoPointMapBarItem1.Id = 46;
-            this.convertToGeoPointMapBarItem1.Name = "convertToGeoPointMapBarItem1";
-            // 
-            // convertToBubbleMapBarItem1
-            // 
-            this.convertToBubbleMapBarItem1.Id = 47;
-            this.convertToBubbleMapBarItem1.Name = "convertToBubbleMapBarItem1";
-            // 
-            // convertToPieMapBarItem1
-            // 
-            this.convertToPieMapBarItem1.Id = 48;
-            this.convertToPieMapBarItem1.Name = "convertToPieMapBarItem1";
-            // 
-            // convertToRangeFilterBarItem1
-            // 
-            this.convertToRangeFilterBarItem1.Id = 50;
-            this.convertToRangeFilterBarItem1.Name = "convertToRangeFilterBarItem1";
-            // 
-            // convertToFilterElementsBaseBarItem1
-            // 
-            this.convertToFilterElementsBaseBarItem1.Id = 55;
-            this.convertToFilterElementsBaseBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToComboBoxBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToListBoxBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToTreeViewBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.convertToDateFilterBarItem1)});
-            this.convertToFilterElementsBaseBarItem1.Name = "convertToFilterElementsBaseBarItem1";
-            // 
-            // convertToComboBoxBarItem1
-            // 
-            this.convertToComboBoxBarItem1.Id = 51;
-            this.convertToComboBoxBarItem1.Name = "convertToComboBoxBarItem1";
-            // 
-            // convertToListBoxBarItem1
-            // 
-            this.convertToListBoxBarItem1.Id = 52;
-            this.convertToListBoxBarItem1.Name = "convertToListBoxBarItem1";
-            // 
-            // convertToTreeViewBarItem1
-            // 
-            this.convertToTreeViewBarItem1.Id = 53;
-            this.convertToTreeViewBarItem1.Name = "convertToTreeViewBarItem1";
-            // 
-            // convertToDateFilterBarItem1
-            // 
-            this.convertToDateFilterBarItem1.Id = 54;
-            this.convertToDateFilterBarItem1.Name = "convertToDateFilterBarItem1";
-            // 
-            // convertToBoundImageBarItem1
-            // 
-            this.convertToBoundImageBarItem1.Id = 56;
-            this.convertToBoundImageBarItem1.Name = "convertToBoundImageBarItem1";
-            // 
-            // convertToTextBoxBarItem1
-            // 
-            this.convertToTextBoxBarItem1.Id = 57;
-            this.convertToTextBoxBarItem1.Name = "convertToTextBoxBarItem1";
             // 
             // removeDataItemsBarItem1
             // 
@@ -1683,11 +1590,6 @@
             // 
             this.editRulesBarItem1.Id = 60;
             this.editRulesBarItem1.Name = "editRulesBarItem1";
-            // 
-            // editItemNamesBarItem1
-            // 
-            this.editItemNamesBarItem1.Id = 103;
-            this.editItemNamesBarItem1.Name = "editItemNamesBarItem1";
             // 
             // deleteGroupBarItem1
             // 
@@ -1818,11 +1720,6 @@
             // 
             this.dateFilterEditDateTimePeriodsBarItem1.Id = 242;
             this.dateFilterEditDateTimePeriodsBarItem1.Name = "dateFilterEditDateTimePeriodsBarItem1";
-            // 
-            // pivotResetLayoutOptionsBarItem1
-            // 
-            this.pivotResetLayoutOptionsBarItem1.Id = 125;
-            this.pivotResetLayoutOptionsBarItem1.Name = "pivotResetLayoutOptionsBarItem1";
             // 
             // dashboardBackstageRecentTab1
             // 
@@ -1978,37 +1875,6 @@
             this.insertRangeFilterBarItem1.Id = 22;
             this.insertRangeFilterBarItem1.Name = "insertRangeFilterBarItem1";
             // 
-            // insertFilterElementSubItem1
-            // 
-            this.insertFilterElementSubItem1.Id = 23;
-            this.insertFilterElementSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.insertComboBoxBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.insertListBoxBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.insertTreeViewBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.insertDateFilterBarItem1)});
-            this.insertFilterElementSubItem1.Name = "insertFilterElementSubItem1";
-            this.insertFilterElementSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // insertComboBoxBarItem1
-            // 
-            this.insertComboBoxBarItem1.Id = 24;
-            this.insertComboBoxBarItem1.Name = "insertComboBoxBarItem1";
-            // 
-            // insertListBoxBarItem1
-            // 
-            this.insertListBoxBarItem1.Id = 25;
-            this.insertListBoxBarItem1.Name = "insertListBoxBarItem1";
-            // 
-            // insertTreeViewBarItem1
-            // 
-            this.insertTreeViewBarItem1.Id = 26;
-            this.insertTreeViewBarItem1.Name = "insertTreeViewBarItem1";
-            // 
-            // insertDateFilterBarItem1
-            // 
-            this.insertDateFilterBarItem1.Id = 27;
-            this.insertDateFilterBarItem1.Name = "insertDateFilterBarItem1";
-            // 
             // insertImagesBarSubItem1
             // 
             this.insertImagesBarSubItem1.Id = 28;
@@ -2057,11 +1923,6 @@
             // 
             this.dashboardColorSchemeBarItem1.Id = 66;
             this.dashboardColorSchemeBarItem1.Name = "dashboardColorSchemeBarItem1";
-            // 
-            // dashboardParametersBarItem1
-            // 
-            this.dashboardParametersBarItem1.Id = 67;
-            this.dashboardParametersBarItem1.Name = "dashboardParametersBarItem1";
             // 
             // dashboardAutomaticUpdatesBarItem1
             // 
@@ -2122,11 +1983,6 @@
             // 
             this.upateDataExtractBarItem1.Id = 80;
             this.upateDataExtractBarItem1.Name = "upateDataExtractBarItem1";
-            // 
-            // addCalculatedFieldBarItem1
-            // 
-            this.addCalculatedFieldBarItem1.Id = 81;
-            this.addCalculatedFieldBarItem1.Name = "addCalculatedFieldBarItem1";
             // 
             // addQueryBarItem1
             // 
@@ -2208,6 +2064,7 @@
             this.dashboardSkinsBarItem1.Gallery.FixedHoverImageSize = false;
             galleryItemGroup1.Caption = "Standard Skins";
             galleryItem1.Caption = "Basic";
+            galleryItem1.Checked = true;
             galleryItem1.Hint = "Basic";
             galleryItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
             galleryItem1.Tag = "Basic";
@@ -2218,7 +2075,6 @@
             galleryItem2.Tag = "The Bezier";
             galleryItem2.Value = "The Bezier";
             galleryItem3.Caption = "Office 2019 Colorful";
-            galleryItem3.Checked = true;
             galleryItem3.Hint = "Office 2019 Colorful";
             galleryItem3.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage2")));
             galleryItem3.Tag = "Office 2019 Colorful";
@@ -2233,91 +2089,96 @@
             galleryItem5.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage4")));
             galleryItem5.Tag = "Office 2019 White";
             galleryItem5.Value = "Office 2019 White";
-            galleryItem6.Caption = "Office 2019 Dark Gray";
-            galleryItem6.Hint = "Office 2019 Dark Gray";
+            galleryItem6.Caption = "Office 2019 Dark";
+            galleryItem6.Hint = "Office 2019 Dark";
             galleryItem6.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage5")));
             galleryItem6.Tag = "Office 2019 Dark Gray";
             galleryItem6.Value = "Office 2019 Dark Gray";
-            galleryItem7.Caption = "DevExpress Style";
-            galleryItem7.Hint = "DevExpress Style";
+            galleryItem7.Caption = "High Contrast";
+            galleryItem7.Hint = "High Contrast";
             galleryItem7.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage6")));
-            galleryItem7.Tag = "DevExpress Style";
-            galleryItem7.Value = "DevExpress Style";
-            galleryItem8.Caption = "DevExpress Dark Style";
-            galleryItem8.Hint = "DevExpress Dark Style";
+            galleryItem7.Tag = "High Contrast";
+            galleryItem7.Value = "High Contrast";
+            galleryItem8.Caption = "DevExpress Style";
+            galleryItem8.Hint = "DevExpress Style";
             galleryItem8.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage7")));
-            galleryItem8.Tag = "DevExpress Dark Style";
-            galleryItem8.Value = "DevExpress Dark Style";
-            galleryItem9.Caption = "Office 2016 Colorful";
-            galleryItem9.Hint = "Office 2016 Colorful";
+            galleryItem8.Tag = "DevExpress Style";
+            galleryItem8.Value = "DevExpress Style";
+            galleryItem9.Caption = "DevExpress Dark Style";
+            galleryItem9.Hint = "DevExpress Dark Style";
             galleryItem9.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage8")));
-            galleryItem9.Tag = "Office 2016 Colorful";
-            galleryItem9.Value = "Office 2016 Colorful";
-            galleryItem10.Caption = "Office 2016 Dark";
-            galleryItem10.Hint = "Office 2016 Dark";
+            galleryItem9.Tag = "DevExpress Dark Style";
+            galleryItem9.Value = "DevExpress Dark Style";
+            galleryItem10.Caption = "Office 2016 Colorful";
+            galleryItem10.Hint = "Office 2016 Colorful";
             galleryItem10.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage9")));
-            galleryItem10.Tag = "Office 2016 Dark";
-            galleryItem10.Value = "Office 2016 Dark";
-            galleryItem11.Caption = "Office 2016 Black";
-            galleryItem11.Hint = "Office 2016 Black";
+            galleryItem10.Tag = "Office 2016 Colorful";
+            galleryItem10.Value = "Office 2016 Colorful";
+            galleryItem11.Caption = "Office 2016 Dark";
+            galleryItem11.Hint = "Office 2016 Dark";
             galleryItem11.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage10")));
-            galleryItem11.Tag = "Office 2016 Black";
-            galleryItem11.Value = "Office 2016 Black";
-            galleryItem12.Caption = "Office 2013 White";
-            galleryItem12.Hint = "Office 2013 White";
+            galleryItem11.Tag = "Office 2016 Dark";
+            galleryItem11.Value = "Office 2016 Dark";
+            galleryItem12.Caption = "Office 2016 Black";
+            galleryItem12.Hint = "Office 2016 Black";
             galleryItem12.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage11")));
-            galleryItem12.Tag = "Office 2013";
-            galleryItem12.Value = "Office 2013";
-            galleryItem13.Caption = "Office 2013 Dark Gray";
-            galleryItem13.Hint = "Office 2013 Dark Gray";
+            galleryItem12.Tag = "Office 2016 Black";
+            galleryItem12.Value = "Office 2016 Black";
+            galleryItem13.Caption = "Office 2013 White";
+            galleryItem13.Hint = "Office 2013 White";
             galleryItem13.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage12")));
-            galleryItem13.Tag = "Office 2013 Dark Gray";
-            galleryItem13.Value = "Office 2013 Dark Gray";
-            galleryItem14.Caption = "Office 2013 Light Gray";
-            galleryItem14.Hint = "Office 2013 Light Gray";
+            galleryItem13.Tag = "Office 2013";
+            galleryItem13.Value = "Office 2013";
+            galleryItem14.Caption = "Office 2013 Dark Gray";
+            galleryItem14.Hint = "Office 2013 Dark Gray";
             galleryItem14.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage13")));
-            galleryItem14.Tag = "Office 2013 Light Gray";
-            galleryItem14.Value = "Office 2013 Light Gray";
-            galleryItem15.Caption = "Office 2010 Blue";
-            galleryItem15.Hint = "Office 2010 Blue";
+            galleryItem14.Tag = "Office 2013 Dark Gray";
+            galleryItem14.Value = "Office 2013 Dark Gray";
+            galleryItem15.Caption = "Office 2013 Light Gray";
+            galleryItem15.Hint = "Office 2013 Light Gray";
             galleryItem15.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage14")));
-            galleryItem15.Tag = "Office 2010 Blue";
-            galleryItem15.Value = "Office 2010 Blue";
-            galleryItem16.Caption = "Office 2010 Black";
-            galleryItem16.Hint = "Office 2010 Black";
+            galleryItem15.Tag = "Office 2013 Light Gray";
+            galleryItem15.Value = "Office 2013 Light Gray";
+            galleryItem16.Caption = "Office 2010 Blue";
+            galleryItem16.Hint = "Office 2010 Blue";
             galleryItem16.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage15")));
-            galleryItem16.Tag = "Office 2010 Black";
-            galleryItem16.Value = "Office 2010 Black";
-            galleryItem17.Caption = "Office 2010 Silver";
-            galleryItem17.Hint = "Office 2010 Silver";
+            galleryItem16.Tag = "Office 2010 Blue";
+            galleryItem16.Value = "Office 2010 Blue";
+            galleryItem17.Caption = "Office 2010 Black";
+            galleryItem17.Hint = "Office 2010 Black";
             galleryItem17.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage16")));
-            galleryItem17.Tag = "Office 2010 Silver";
-            galleryItem17.Value = "Office 2010 Silver";
-            galleryItem18.Caption = "Visual Studio 2013 Blue";
-            galleryItem18.Hint = "Visual Studio 2013 Blue";
+            galleryItem17.Tag = "Office 2010 Black";
+            galleryItem17.Value = "Office 2010 Black";
+            galleryItem18.Caption = "Office 2010 Silver";
+            galleryItem18.Hint = "Office 2010 Silver";
             galleryItem18.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage17")));
-            galleryItem18.Tag = "Visual Studio 2013 Blue";
-            galleryItem18.Value = "Visual Studio 2013 Blue";
-            galleryItem19.Caption = "Visual Studio 2013 Dark";
-            galleryItem19.Hint = "Visual Studio 2013 Dark";
+            galleryItem18.Tag = "Office 2010 Silver";
+            galleryItem18.Value = "Office 2010 Silver";
+            galleryItem19.Caption = "Visual Studio 2013 Blue";
+            galleryItem19.Hint = "Visual Studio 2013 Blue";
             galleryItem19.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage18")));
-            galleryItem19.Tag = "Visual Studio 2013 Dark";
-            galleryItem19.Value = "Visual Studio 2013 Dark";
-            galleryItem20.Caption = "Visual Studio 2013 Light";
-            galleryItem20.Hint = "Visual Studio 2013 Light";
+            galleryItem19.Tag = "Visual Studio 2013 Blue";
+            galleryItem19.Value = "Visual Studio 2013 Blue";
+            galleryItem20.Caption = "Visual Studio 2013 Dark";
+            galleryItem20.Hint = "Visual Studio 2013 Dark";
             galleryItem20.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage19")));
-            galleryItem20.Tag = "Visual Studio 2013 Light";
-            galleryItem20.Value = "Visual Studio 2013 Light";
-            galleryItem21.Caption = "Seven Classic";
-            galleryItem21.Hint = "Seven Classic";
+            galleryItem20.Tag = "Visual Studio 2013 Dark";
+            galleryItem20.Value = "Visual Studio 2013 Dark";
+            galleryItem21.Caption = "Visual Studio 2013 Light";
+            galleryItem21.Hint = "Visual Studio 2013 Light";
             galleryItem21.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage20")));
-            galleryItem21.Tag = "Seven Classic";
-            galleryItem21.Value = "Seven Classic";
-            galleryItem22.Caption = "Visual Studio 2010";
-            galleryItem22.Hint = "Visual Studio 2010";
+            galleryItem21.Tag = "Visual Studio 2013 Light";
+            galleryItem21.Value = "Visual Studio 2013 Light";
+            galleryItem22.Caption = "Seven Classic";
+            galleryItem22.Hint = "Seven Classic";
             galleryItem22.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage21")));
-            galleryItem22.Tag = "VS2010";
-            galleryItem22.Value = "VS2010";
+            galleryItem22.Tag = "Seven Classic";
+            galleryItem22.Value = "Seven Classic";
+            galleryItem23.Caption = "Visual Studio 2010";
+            galleryItem23.Hint = "Visual Studio 2010";
+            galleryItem23.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage22")));
+            galleryItem23.Tag = "VS2010";
+            galleryItem23.Value = "VS2010";
             galleryItemGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
             galleryItem1,
             galleryItem2,
@@ -2340,7 +2201,8 @@
             galleryItem19,
             galleryItem20,
             galleryItem21,
-            galleryItem22});
+            galleryItem22,
+            galleryItem23});
             galleryItemGroup2.Caption = "Bonus Skins";
             galleryItemGroup2.Visible = false;
             galleryItemGroup3.Caption = "Theme Skins";
@@ -2365,16 +2227,6 @@
             this.dashboardSkinsBarItem1.Name = "dashboardSkinsBarItem1";
             this.dashboardSkinsBarItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
-            // dashboardSkinDropDownButtonItem1
-            // 
-            this.dashboardSkinDropDownButtonItem1.Id = 97;
-            this.dashboardSkinDropDownButtonItem1.Name = "dashboardSkinDropDownButtonItem1";
-            // 
-            // dashboardSkinPaletteRibbonGalleryBarItem1
-            // 
-            this.dashboardSkinPaletteRibbonGalleryBarItem1.Id = 98;
-            this.dashboardSkinPaletteRibbonGalleryBarItem1.Name = "dashboardSkinPaletteRibbonGalleryBarItem1";
-            // 
             // ignoreMasterFiltersBarItem1
             // 
             this.ignoreMasterFiltersBarItem1.Id = 101;
@@ -2398,120 +2250,6 @@
             // 
             this.pivotAutoExpandRowBarItem1.Id = 106;
             this.pivotAutoExpandRowBarItem1.Name = "pivotAutoExpandRowBarItem1";
-            // 
-            // pivotShowTotalsBarItem1
-            // 
-            this.pivotShowTotalsBarItem1.Id = 107;
-            this.pivotShowTotalsBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowColumnTotalsBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowRowTotalsBarItem1)});
-            this.pivotShowTotalsBarItem1.Name = "pivotShowTotalsBarItem1";
-            this.pivotShowTotalsBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // pivotShowColumnTotalsBarItem1
-            // 
-            this.pivotShowColumnTotalsBarItem1.Id = 108;
-            this.pivotShowColumnTotalsBarItem1.Name = "pivotShowColumnTotalsBarItem1";
-            // 
-            // pivotShowRowTotalsBarItem1
-            // 
-            this.pivotShowRowTotalsBarItem1.Id = 109;
-            this.pivotShowRowTotalsBarItem1.Name = "pivotShowRowTotalsBarItem1";
-            // 
-            // pivotShowGrandTotalsBarItem1
-            // 
-            this.pivotShowGrandTotalsBarItem1.Id = 110;
-            this.pivotShowGrandTotalsBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowColumnGrandTotalsBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowRowGrandTotalsBarItem1)});
-            this.pivotShowGrandTotalsBarItem1.Name = "pivotShowGrandTotalsBarItem1";
-            this.pivotShowGrandTotalsBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // pivotShowColumnGrandTotalsBarItem1
-            // 
-            this.pivotShowColumnGrandTotalsBarItem1.Id = 111;
-            this.pivotShowColumnGrandTotalsBarItem1.Name = "pivotShowColumnGrandTotalsBarItem1";
-            // 
-            // pivotShowRowGrandTotalsBarItem1
-            // 
-            this.pivotShowRowGrandTotalsBarItem1.Id = 112;
-            this.pivotShowRowGrandTotalsBarItem1.Name = "pivotShowRowGrandTotalsBarItem1";
-            // 
-            // pivotLayoutTypeBarItem1
-            // 
-            this.pivotLayoutTypeBarItem1.Id = 113;
-            this.pivotLayoutTypeBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotLayoutTypeCompactBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotLayoutTypeTabularBarItem1)});
-            this.pivotLayoutTypeBarItem1.Name = "pivotLayoutTypeBarItem1";
-            this.pivotLayoutTypeBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // pivotLayoutTypeCompactBarItem1
-            // 
-            this.pivotLayoutTypeCompactBarItem1.Id = 114;
-            this.pivotLayoutTypeCompactBarItem1.Name = "pivotLayoutTypeCompactBarItem1";
-            // 
-            // pivotLayoutTypeTabularBarItem1
-            // 
-            this.pivotLayoutTypeTabularBarItem1.Id = 115;
-            this.pivotLayoutTypeTabularBarItem1.Name = "pivotLayoutTypeTabularBarItem1";
-            // 
-            // pivotRowTotalsPositionBarItem1
-            // 
-            this.pivotRowTotalsPositionBarItem1.Id = 116;
-            this.pivotRowTotalsPositionBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotRowTotalsPositionTopBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotRowTotalsPositionBottomBarItem1)});
-            this.pivotRowTotalsPositionBarItem1.Name = "pivotRowTotalsPositionBarItem1";
-            this.pivotRowTotalsPositionBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // pivotRowTotalsPositionTopBarItem1
-            // 
-            this.pivotRowTotalsPositionTopBarItem1.Id = 117;
-            this.pivotRowTotalsPositionTopBarItem1.Name = "pivotRowTotalsPositionTopBarItem1";
-            // 
-            // pivotRowTotalsPositionBottomBarItem1
-            // 
-            this.pivotRowTotalsPositionBottomBarItem1.Id = 118;
-            this.pivotRowTotalsPositionBottomBarItem1.Name = "pivotRowTotalsPositionBottomBarItem1";
-            // 
-            // pivotColumnTotalsPositionBarItem1
-            // 
-            this.pivotColumnTotalsPositionBarItem1.Id = 119;
-            this.pivotColumnTotalsPositionBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotColumnTotalsPositionNearBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotColumnTotalsPositionFarBarItem1)});
-            this.pivotColumnTotalsPositionBarItem1.Name = "pivotColumnTotalsPositionBarItem1";
-            this.pivotColumnTotalsPositionBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // pivotColumnTotalsPositionNearBarItem1
-            // 
-            this.pivotColumnTotalsPositionNearBarItem1.Id = 120;
-            this.pivotColumnTotalsPositionNearBarItem1.Name = "pivotColumnTotalsPositionNearBarItem1";
-            // 
-            // pivotColumnTotalsPositionFarBarItem1
-            // 
-            this.pivotColumnTotalsPositionFarBarItem1.Id = 121;
-            this.pivotColumnTotalsPositionFarBarItem1.Name = "pivotColumnTotalsPositionFarBarItem1";
-            // 
-            // pivotValuesPositionBarItem1
-            // 
-            this.pivotValuesPositionBarItem1.Id = 122;
-            this.pivotValuesPositionBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotValuesPositionColumnsBarItem1),
-            new DevExpress.XtraBars.LinkPersistInfo(this.pivotValuesPositionRowsBarItem1)});
-            this.pivotValuesPositionBarItem1.Name = "pivotValuesPositionBarItem1";
-            this.pivotValuesPositionBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
-            // 
-            // pivotValuesPositionColumnsBarItem1
-            // 
-            this.pivotValuesPositionColumnsBarItem1.Id = 123;
-            this.pivotValuesPositionColumnsBarItem1.Name = "pivotValuesPositionColumnsBarItem1";
-            // 
-            // pivotValuesPositionRowsBarItem1
-            // 
-            this.pivotValuesPositionRowsBarItem1.Id = 124;
-            this.pivotValuesPositionRowsBarItem1.Name = "pivotValuesPositionRowsBarItem1";
             // 
             // masterFilterBarItem1
             // 
@@ -2613,137 +2351,6 @@
             this.chartShowLegendBarItem1.Id = 145;
             this.chartShowLegendBarItem1.Name = "chartShowLegendBarItem1";
             // 
-            // galleryChartLegendPositionItem1
-            // 
-            // 
-            // 
-            // 
-            this.galleryChartLegendPositionItem1.Gallery.ColumnCount = 3;
-            chartLegendInsideTopLeftHorizontalGalleryItem1.Caption = "";
-            chartLegendInsideTopCenterHorizontalGalleryItem1.Caption = "";
-            chartLegendInsideTopRightHorizontalGalleryItem1.Caption = "";
-            chartLegendInsideBottomLeftHorizontalGalleryItem1.Caption = "";
-            chartLegendInsideBottomCenterHorizontalGalleryItem1.Caption = "";
-            chartLegendInsideBottomRightHorizontalGalleryItem1.Caption = "";
-            chartInsideHorizontalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendInsideTopLeftHorizontalGalleryItem1,
-            chartLegendInsideTopCenterHorizontalGalleryItem1,
-            chartLegendInsideTopRightHorizontalGalleryItem1,
-            chartLegendInsideBottomLeftHorizontalGalleryItem1,
-            chartLegendInsideBottomCenterHorizontalGalleryItem1,
-            chartLegendInsideBottomRightHorizontalGalleryItem1});
-            chartLegendInsideTopLeftVerticalGalleryItem1.Caption = "";
-            chartLegendInsideTopCenterVerticalGalleryItem1.Caption = "";
-            chartLegendInsideTopRightVerticalGalleryItem1.Caption = "";
-            chartLegendInsideBottomLeftVerticalGalleryItem1.Caption = "";
-            chartLegendInsideBottomCenterVerticalGalleryItem1.Caption = "";
-            chartLegendInsideBottomRightVerticalGalleryItem1.Caption = "";
-            chartInsideVerticalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendInsideTopLeftVerticalGalleryItem1,
-            chartLegendInsideTopCenterVerticalGalleryItem1,
-            chartLegendInsideTopRightVerticalGalleryItem1,
-            chartLegendInsideBottomLeftVerticalGalleryItem1,
-            chartLegendInsideBottomCenterVerticalGalleryItem1,
-            chartLegendInsideBottomRightVerticalGalleryItem1});
-            chartLegendOutsideTopLeftHorizontalGalleryItem1.Caption = "";
-            chartLegendOutsideTopCenterHorizontalGalleryItem1.Caption = "";
-            chartLegendOutsideTopRightHorizontalGalleryItem1.Caption = "";
-            chartLegendOutsideBottomLeftHorizontalGalleryItem1.Caption = "";
-            chartLegendOutsideBottomCenterHorizontalGalleryItem1.Caption = "";
-            chartLegendOutsideBottomRightHorizontalGalleryItem1.Caption = "";
-            chartOutsideHorizontalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendOutsideTopLeftHorizontalGalleryItem1,
-            chartLegendOutsideTopCenterHorizontalGalleryItem1,
-            chartLegendOutsideTopRightHorizontalGalleryItem1,
-            chartLegendOutsideBottomLeftHorizontalGalleryItem1,
-            chartLegendOutsideBottomCenterHorizontalGalleryItem1,
-            chartLegendOutsideBottomRightHorizontalGalleryItem1});
-            chartLegendOutsideTopLeftVerticalGalleryItem1.Caption = "";
-            chartLegendOutsideTopRightVerticalGalleryItem1.Caption = "";
-            chartLegendOutsideBottomLeftVerticalGalleryItem1.Caption = "";
-            chartLegendOutsideBottomRightVerticalGalleryItem1.Caption = "";
-            chartOutsideVerticalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendOutsideTopLeftVerticalGalleryItem1,
-            chartLegendOutsideTopRightVerticalGalleryItem1,
-            chartLegendOutsideBottomLeftVerticalGalleryItem1,
-            chartLegendOutsideBottomRightVerticalGalleryItem1});
-            this.galleryChartLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            chartInsideHorizontalLegendGalleryGroup1,
-            chartInsideVerticalLegendGalleryGroup1,
-            chartOutsideHorizontalLegendGalleryGroup1,
-            chartOutsideVerticalLegendGalleryGroup1});
-            this.galleryChartLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
-            this.galleryChartLegendPositionItem1.Gallery.RowCount = 8;
-            this.galleryChartLegendPositionItem1.Id = 146;
-            this.galleryChartLegendPositionItem1.Name = "galleryChartLegendPositionItem1";
-            // 
-            // galleryChartSeriesTypeItem1
-            // 
-            // 
-            // 
-            // 
-            chartBarSeriesGalleryItem1.Caption = "";
-            chartStackedBarSeriesGalleryItem1.Caption = "";
-            chartFullStackedBarSeriesGalleryItem1.Caption = "";
-            chartBarSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartBarSeriesGalleryItem1,
-            chartStackedBarSeriesGalleryItem1,
-            chartFullStackedBarSeriesGalleryItem1});
-            chartPointSeriesGalleryItem1.Caption = "";
-            chartLineSeriesGalleryItem1.Caption = "";
-            chartStackedLineSeriesGalleryItem1.Caption = "";
-            chartFullStackedLineSeriesGalleryItem1.Caption = "";
-            chartStepLineSeriesGalleryItem1.Caption = "";
-            chartSplineSeriesGalleryItem1.Caption = "";
-            chartPointLineSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartPointSeriesGalleryItem1,
-            chartLineSeriesGalleryItem1,
-            chartStackedLineSeriesGalleryItem1,
-            chartFullStackedLineSeriesGalleryItem1,
-            chartStepLineSeriesGalleryItem1,
-            chartSplineSeriesGalleryItem1});
-            chartAreaSeriesGalleryItem1.Caption = "";
-            chartStackedAreaSeriesGalleryItem1.Caption = "";
-            chartFullStackedAreaSeriesGalleryItem1.Caption = "";
-            chartStepAreaSeriesGalleryItem1.Caption = "";
-            chartSplineAreaSeriesGalleryItem1.Caption = "";
-            chartStackedSplineAreaSeriesGalleryItem1.Caption = "";
-            chartFullStackedSplineAreaSeriesGalleryItem1.Caption = "";
-            chartAreaSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartAreaSeriesGalleryItem1,
-            chartStackedAreaSeriesGalleryItem1,
-            chartFullStackedAreaSeriesGalleryItem1,
-            chartStepAreaSeriesGalleryItem1,
-            chartSplineAreaSeriesGalleryItem1,
-            chartStackedSplineAreaSeriesGalleryItem1,
-            chartFullStackedSplineAreaSeriesGalleryItem1});
-            chartSideBySideRangeBarSeriesGalleryItem1.Caption = "";
-            chartRangeAreaSeriesGalleryItem1.Caption = "";
-            chartRangeSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartSideBySideRangeBarSeriesGalleryItem1,
-            chartRangeAreaSeriesGalleryItem1});
-            chartWeightedSeriesGalleryItem1.Caption = "";
-            chartBubbleSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartWeightedSeriesGalleryItem1});
-            chartHighLowCloseSeriesGalleryItem1.Caption = "";
-            chartCandleStickSeriesGalleryItem1.Caption = "";
-            chartStockSeriesGalleryItem1.Caption = "";
-            chartFinancialSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartHighLowCloseSeriesGalleryItem1,
-            chartCandleStickSeriesGalleryItem1,
-            chartStockSeriesGalleryItem1});
-            this.galleryChartSeriesTypeItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            chartBarSeriesGalleryGroup1,
-            chartPointLineSeriesGalleryGroup1,
-            chartAreaSeriesGalleryGroup1,
-            chartRangeSeriesGalleryGroup1,
-            chartBubbleSeriesGalleryGroup1,
-            chartFinancialSeriesGalleryGroup1});
-            this.galleryChartSeriesTypeItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
-            this.galleryChartSeriesTypeItem1.Gallery.RowCount = 8;
-            this.galleryChartSeriesTypeItem1.Id = 147;
-            this.galleryChartSeriesTypeItem1.Name = "galleryChartSeriesTypeItem1";
-            // 
             // useGlobalColorsBarItem1
             // 
             this.useGlobalColorsBarItem1.Id = 148;
@@ -2783,70 +2390,6 @@
             // 
             this.scatterChartShowLegendBarItem1.Id = 155;
             this.scatterChartShowLegendBarItem1.Name = "scatterChartShowLegendBarItem1";
-            // 
-            // galleryScatterChartLegendPositionItem1
-            // 
-            // 
-            // 
-            // 
-            this.galleryScatterChartLegendPositionItem1.Gallery.ColumnCount = 3;
-            chartLegendInsideTopLeftHorizontalGalleryItem2.Caption = "";
-            chartLegendInsideTopCenterHorizontalGalleryItem2.Caption = "";
-            chartLegendInsideTopRightHorizontalGalleryItem2.Caption = "";
-            chartLegendInsideBottomLeftHorizontalGalleryItem2.Caption = "";
-            chartLegendInsideBottomCenterHorizontalGalleryItem2.Caption = "";
-            chartLegendInsideBottomRightHorizontalGalleryItem2.Caption = "";
-            chartInsideHorizontalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendInsideTopLeftHorizontalGalleryItem2,
-            chartLegendInsideTopCenterHorizontalGalleryItem2,
-            chartLegendInsideTopRightHorizontalGalleryItem2,
-            chartLegendInsideBottomLeftHorizontalGalleryItem2,
-            chartLegendInsideBottomCenterHorizontalGalleryItem2,
-            chartLegendInsideBottomRightHorizontalGalleryItem2});
-            chartLegendInsideTopLeftVerticalGalleryItem2.Caption = "";
-            chartLegendInsideTopCenterVerticalGalleryItem2.Caption = "";
-            chartLegendInsideTopRightVerticalGalleryItem2.Caption = "";
-            chartLegendInsideBottomLeftVerticalGalleryItem2.Caption = "";
-            chartLegendInsideBottomCenterVerticalGalleryItem2.Caption = "";
-            chartLegendInsideBottomRightVerticalGalleryItem2.Caption = "";
-            chartInsideVerticalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendInsideTopLeftVerticalGalleryItem2,
-            chartLegendInsideTopCenterVerticalGalleryItem2,
-            chartLegendInsideTopRightVerticalGalleryItem2,
-            chartLegendInsideBottomLeftVerticalGalleryItem2,
-            chartLegendInsideBottomCenterVerticalGalleryItem2,
-            chartLegendInsideBottomRightVerticalGalleryItem2});
-            chartLegendOutsideTopLeftHorizontalGalleryItem2.Caption = "";
-            chartLegendOutsideTopCenterHorizontalGalleryItem2.Caption = "";
-            chartLegendOutsideTopRightHorizontalGalleryItem2.Caption = "";
-            chartLegendOutsideBottomLeftHorizontalGalleryItem2.Caption = "";
-            chartLegendOutsideBottomCenterHorizontalGalleryItem2.Caption = "";
-            chartLegendOutsideBottomRightHorizontalGalleryItem2.Caption = "";
-            chartOutsideHorizontalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendOutsideTopLeftHorizontalGalleryItem2,
-            chartLegendOutsideTopCenterHorizontalGalleryItem2,
-            chartLegendOutsideTopRightHorizontalGalleryItem2,
-            chartLegendOutsideBottomLeftHorizontalGalleryItem2,
-            chartLegendOutsideBottomCenterHorizontalGalleryItem2,
-            chartLegendOutsideBottomRightHorizontalGalleryItem2});
-            chartLegendOutsideTopLeftVerticalGalleryItem2.Caption = "";
-            chartLegendOutsideTopRightVerticalGalleryItem2.Caption = "";
-            chartLegendOutsideBottomLeftVerticalGalleryItem2.Caption = "";
-            chartLegendOutsideBottomRightVerticalGalleryItem2.Caption = "";
-            chartOutsideVerticalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            chartLegendOutsideTopLeftVerticalGalleryItem2,
-            chartLegendOutsideTopRightVerticalGalleryItem2,
-            chartLegendOutsideBottomLeftVerticalGalleryItem2,
-            chartLegendOutsideBottomRightVerticalGalleryItem2});
-            this.galleryScatterChartLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            chartInsideHorizontalLegendGalleryGroup2,
-            chartInsideVerticalLegendGalleryGroup2,
-            chartOutsideHorizontalLegendGalleryGroup2,
-            chartOutsideVerticalLegendGalleryGroup2});
-            this.galleryScatterChartLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
-            this.galleryScatterChartLegendPositionItem1.Gallery.RowCount = 8;
-            this.galleryScatterChartLegendPositionItem1.Id = 156;
-            this.galleryScatterChartLegendPositionItem1.Name = "galleryScatterChartLegendPositionItem1";
             // 
             // pieTargetDimensionsArgumentsBarItem1
             // 
@@ -3087,41 +2630,6 @@
             this.gaugeShowCaptionsBarItem1.Id = 195;
             this.gaugeShowCaptionsBarItem1.Name = "gaugeShowCaptionsBarItem1";
             // 
-            // galleryRangeFilterSeriesTypeItem1
-            // 
-            // 
-            // 
-            // 
-            this.galleryRangeFilterSeriesTypeItem1.Gallery.ColumnCount = 3;
-            rangeLineSeriesGalleryItem1.Caption = "";
-            rangeStackedLineSeriesGalleryItem1.Caption = "";
-            rangeFullStackedLineSeriesGalleryItem1.Caption = "";
-            rangePointLineSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            rangeLineSeriesGalleryItem1,
-            rangeStackedLineSeriesGalleryItem1,
-            rangeFullStackedLineSeriesGalleryItem1});
-            rangeAreaSeriesGalleryItem1.Caption = "";
-            rangeStackedAreaSeriesGalleryItem1.Caption = "";
-            rangeFullStackedAreaSeriesGalleryItem1.Caption = "";
-            rangeAreaSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            rangeAreaSeriesGalleryItem1,
-            rangeStackedAreaSeriesGalleryItem1,
-            rangeFullStackedAreaSeriesGalleryItem1});
-            rangeBarSeriesGalleryItem1.Caption = "";
-            rangeStackedBarSeriesGalleryItem1.Caption = "";
-            rangeFullStackedBarSeriesGalleryItem1.Caption = "";
-            rangeBarSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            rangeBarSeriesGalleryItem1,
-            rangeStackedBarSeriesGalleryItem1,
-            rangeFullStackedBarSeriesGalleryItem1});
-            this.galleryRangeFilterSeriesTypeItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            rangePointLineSeriesGalleryGroup1,
-            rangeAreaSeriesGalleryGroup1,
-            rangeBarSeriesGalleryGroup1});
-            this.galleryRangeFilterSeriesTypeItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
-            this.galleryRangeFilterSeriesTypeItem1.Id = 196;
-            this.galleryRangeFilterSeriesTypeItem1.Name = "galleryRangeFilterSeriesTypeItem1";
-            // 
             // mapLockNavigationBarItem1
             // 
             this.mapLockNavigationBarItem1.Id = 209;
@@ -3136,46 +2644,6 @@
             // 
             this.mapShowLegendBarItem1.Id = 212;
             this.mapShowLegendBarItem1.Name = "mapShowLegendBarItem1";
-            // 
-            // galleryMapLegendPositionItem1
-            // 
-            // 
-            // 
-            // 
-            this.galleryMapLegendPositionItem1.Gallery.ColumnCount = 3;
-            mapLegendTopLeftVerticalGalleryItem1.Caption = "";
-            mapLegendTopCenterVerticalGalleryItem1.Caption = "";
-            mapLegendTopRightVerticalGalleryItem1.Caption = "";
-            mapLegendBottomLeftVerticalGalleryItem1.Caption = "";
-            mapLegendBottomCenterVerticalGalleryItem1.Caption = "";
-            mapLegendBottomRightVerticalGalleryItem1.Caption = "";
-            mapVerticalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            mapLegendTopLeftVerticalGalleryItem1,
-            mapLegendTopCenterVerticalGalleryItem1,
-            mapLegendTopRightVerticalGalleryItem1,
-            mapLegendBottomLeftVerticalGalleryItem1,
-            mapLegendBottomCenterVerticalGalleryItem1,
-            mapLegendBottomRightVerticalGalleryItem1});
-            mapLegendTopLeftHorizontalGalleryItem1.Caption = "";
-            mapLegendTopCenterHorizontalGalleryItem1.Caption = "";
-            mapLegendTopRightHorizontalGalleryItem1.Caption = "";
-            mapLegendBottomLeftHorizontalGalleryItem1.Caption = "";
-            mapLegendBottomCenterHorizontalGalleryItem1.Caption = "";
-            mapLegendBottomRightHorizontalGalleryItem1.Caption = "";
-            mapHorizontalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            mapLegendTopLeftHorizontalGalleryItem1,
-            mapLegendTopCenterHorizontalGalleryItem1,
-            mapLegendTopRightHorizontalGalleryItem1,
-            mapLegendBottomLeftHorizontalGalleryItem1,
-            mapLegendBottomCenterHorizontalGalleryItem1,
-            mapLegendBottomRightHorizontalGalleryItem1});
-            this.galleryMapLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            mapVerticalLegendGalleryGroup1,
-            mapHorizontalLegendGalleryGroup1});
-            this.galleryMapLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
-            this.galleryMapLegendPositionItem1.Gallery.RowCount = 4;
-            this.galleryMapLegendPositionItem1.Id = 213;
-            this.galleryMapLegendPositionItem1.Name = "galleryMapLegendPositionItem1";
             // 
             // geoPointMapClusterizationBarItem1
             // 
@@ -3211,32 +2679,6 @@
             // 
             this.weightedLegendNestedBarItem1.Id = 219;
             this.weightedLegendNestedBarItem1.Name = "weightedLegendNestedBarItem1";
-            // 
-            // galleryWeightedLegendPositionItem1
-            // 
-            // 
-            // 
-            // 
-            this.galleryWeightedLegendPositionItem1.Gallery.ColumnCount = 3;
-            mapWeightedLegendTopLeftGalleryItem1.Caption = "";
-            mapWeightedLegendTopCenterGalleryItem1.Caption = "";
-            mapWeightedLegendTopRightGalleryItem1.Caption = "";
-            mapWeightedLegendBottomLeftGalleryItem1.Caption = "";
-            mapWeightedLegendBottomCenterGalleryItem1.Caption = "";
-            mapWeightedLegendBottomRightGalleryItem1.Caption = "";
-            mapWeightedLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
-            mapWeightedLegendTopLeftGalleryItem1,
-            mapWeightedLegendTopCenterGalleryItem1,
-            mapWeightedLegendTopRightGalleryItem1,
-            mapWeightedLegendBottomLeftGalleryItem1,
-            mapWeightedLegendBottomCenterGalleryItem1,
-            mapWeightedLegendBottomRightGalleryItem1});
-            this.galleryWeightedLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
-            mapWeightedLegendGalleryGroup1});
-            this.galleryWeightedLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
-            this.galleryWeightedLegendPositionItem1.Gallery.RowCount = 2;
-            this.galleryWeightedLegendPositionItem1.Id = 220;
-            this.galleryWeightedLegendPositionItem1.Name = "galleryWeightedLegendPositionItem1";
             // 
             // pieMapIsWeightedBarItem1
             // 
@@ -4832,12 +4274,17 @@
             // 
             // filteringRibbonPageGroup1
             // 
+            this.filteringRibbonPageGroup1.AllowTextClipping = false;
+            this.filteringRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup1.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup1.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup1.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup1.Name = "filteringRibbonPageGroup1";
             // 
             // interactivitySettingsRibbonPageGroup1
             // 
+            this.interactivitySettingsRibbonPageGroup1.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup1.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup1.Name = "interactivitySettingsRibbonPageGroup1";
             // 
@@ -4852,25 +4299,18 @@
             // 
             // commonItemDesignRibbonPageGroup1
             // 
+            this.commonItemDesignRibbonPageGroup1.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup1.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup1.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup1.Name = "commonItemDesignRibbonPageGroup1";
             // 
             // pivotInitialStateRibbonPageGroup1
             // 
+            this.pivotInitialStateRibbonPageGroup1.AllowTextClipping = false;
+            this.pivotInitialStateRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pivotInitialStateRibbonPageGroup1.ItemLinks.Add(this.pivotInitialStateBarItem1);
             this.pivotInitialStateRibbonPageGroup1.Name = "pivotInitialStateRibbonPageGroup1";
-            // 
-            // pivotLayoutRibbonPageGroup1
-            // 
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotShowTotalsBarItem1);
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotShowGrandTotalsBarItem1);
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotLayoutTypeBarItem1);
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotRowTotalsPositionBarItem1);
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotColumnTotalsPositionBarItem1);
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotValuesPositionBarItem1);
-            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotResetLayoutOptionsBarItem1);
-            this.pivotLayoutRibbonPageGroup1.Name = "pivotLayoutRibbonPageGroup1";
             // 
             // gridToolsRibbonPageCategory1
             // 
@@ -4892,12 +4332,17 @@
             // 
             // filteringRibbonPageGroup2
             // 
+            this.filteringRibbonPageGroup2.AllowTextClipping = false;
+            this.filteringRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup2.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup2.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup2.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup2.Name = "filteringRibbonPageGroup2";
             // 
             // masterFilterRibbonPageGroup1
             // 
+            this.masterFilterRibbonPageGroup1.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup1.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup1.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup1.ItemLinks.Add(this.drillDownBarItem1);
@@ -4905,6 +4350,8 @@
             // 
             // interactivitySettingsRibbonPageGroup2
             // 
+            this.interactivitySettingsRibbonPageGroup2.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup2.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup2.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup2.Name = "interactivitySettingsRibbonPageGroup2";
@@ -4921,12 +4368,16 @@
             // 
             // commonItemDesignRibbonPageGroup2
             // 
+            this.commonItemDesignRibbonPageGroup2.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup2.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup2.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup2.Name = "commonItemDesignRibbonPageGroup2";
             // 
             // gridStyleRibbonPageGroup1
             // 
+            this.gridStyleRibbonPageGroup1.AllowTextClipping = false;
+            this.gridStyleRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.gridStyleRibbonPageGroup1.ItemLinks.Add(this.gridHorizontalLinesBarItem1);
             this.gridStyleRibbonPageGroup1.ItemLinks.Add(this.gridVerticalLinesBarItem1);
             this.gridStyleRibbonPageGroup1.ItemLinks.Add(this.gridBandedRowsBarItem1);
@@ -4934,6 +4385,8 @@
             // 
             // gridLayoutRibbonPageGroup1
             // 
+            this.gridLayoutRibbonPageGroup1.AllowTextClipping = false;
+            this.gridLayoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.gridLayoutRibbonPageGroup1.ItemLinks.Add(this.gridMergeCellsBarItem1);
             this.gridLayoutRibbonPageGroup1.ItemLinks.Add(this.gridColumnHeadersBarItem1);
             this.gridLayoutRibbonPageGroup1.ItemLinks.Add(this.gridWordWrapBarItem1);
@@ -4941,6 +4394,8 @@
             // 
             // gridColumnWidthModeRibbonPageGroup1
             // 
+            this.gridColumnWidthModeRibbonPageGroup1.AllowTextClipping = false;
+            this.gridColumnWidthModeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.gridColumnWidthModeRibbonPageGroup1.ItemLinks.Add(this.gridAutoFitToContentsColumnWidthModeBarItem1);
             this.gridColumnWidthModeRibbonPageGroup1.ItemLinks.Add(this.gridAutoFitToGridColumnWidthModeBarItem1);
             this.gridColumnWidthModeRibbonPageGroup1.ItemLinks.Add(this.manualGridColumnWidthModeBarItem1);
@@ -4967,12 +4422,17 @@
             // 
             // filteringRibbonPageGroup3
             // 
+            this.filteringRibbonPageGroup3.AllowTextClipping = false;
+            this.filteringRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup3.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup3.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup3.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup3.Name = "filteringRibbonPageGroup3";
             // 
             // masterFilterRibbonPageGroup2
             // 
+            this.masterFilterRibbonPageGroup2.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup2.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup2.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup2.ItemLinks.Add(this.drillDownBarItem1);
@@ -4980,12 +4440,16 @@
             // 
             // interactivitySettingsRibbonPageGroup3
             // 
+            this.interactivitySettingsRibbonPageGroup3.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup3.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup3.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup3.Name = "interactivitySettingsRibbonPageGroup3";
             // 
             // targetDimensionsRibbonPageGroup1
             // 
+            this.targetDimensionsRibbonPageGroup1.AllowTextClipping = false;
+            this.targetDimensionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.targetDimensionsRibbonPageGroup1.ItemLinks.Add(this.chartTargetDimensionsArgumentsBarItem1);
             this.targetDimensionsRibbonPageGroup1.ItemLinks.Add(this.chartTargetDimensionsSeriesBarItem1);
             this.targetDimensionsRibbonPageGroup1.ItemLinks.Add(this.chartTargetDimensionsPointsBarItem1);
@@ -5004,12 +4468,16 @@
             // 
             // commonItemDesignRibbonPageGroup3
             // 
+            this.commonItemDesignRibbonPageGroup3.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup3.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup3.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup3.Name = "commonItemDesignRibbonPageGroup3";
             // 
             // chartLayoutPageGroup1
             // 
+            this.chartLayoutPageGroup1.AllowTextClipping = false;
+            this.chartLayoutPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.chartLayoutPageGroup1.ItemLinks.Add(this.chartRotateBarItem1);
             this.chartLayoutPageGroup1.ItemLinks.Add(this.chartXAxisSettingsBarItem1);
             this.chartLayoutPageGroup1.ItemLinks.Add(this.chartYAxisSettingsBarItem1);
@@ -5017,17 +4485,23 @@
             // 
             // chartLegendPositionPageGroup1
             // 
+            this.chartLegendPositionPageGroup1.AllowTextClipping = false;
+            this.chartLegendPositionPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.chartLegendPositionPageGroup1.ItemLinks.Add(this.chartShowLegendBarItem1);
             this.chartLegendPositionPageGroup1.ItemLinks.Add(this.galleryChartLegendPositionItem1);
             this.chartLegendPositionPageGroup1.Name = "chartLegendPositionPageGroup1";
             // 
             // chartStylePageGroup1
             // 
+            this.chartStylePageGroup1.AllowTextClipping = false;
+            this.chartStylePageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.chartStylePageGroup1.ItemLinks.Add(this.galleryChartSeriesTypeItem1);
             this.chartStylePageGroup1.Name = "chartStylePageGroup1";
             // 
             // coloringOptionsRibbonPageGroup1
             // 
+            this.coloringOptionsRibbonPageGroup1.AllowTextClipping = false;
+            this.coloringOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.coloringOptionsRibbonPageGroup1.ItemLinks.Add(this.useGlobalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup1.ItemLinks.Add(this.useLocalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup1.ItemLinks.Add(this.editActualColorsBarItem1);
@@ -5053,12 +4527,17 @@
             // 
             // filteringRibbonPageGroup4
             // 
+            this.filteringRibbonPageGroup4.AllowTextClipping = false;
+            this.filteringRibbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup4.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup4.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup4.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup4.Name = "filteringRibbonPageGroup4";
             // 
             // masterFilterRibbonPageGroup3
             // 
+            this.masterFilterRibbonPageGroup3.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup3.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup3.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup3.ItemLinks.Add(this.drillDownBarItem1);
@@ -5066,6 +4545,8 @@
             // 
             // interactivitySettingsRibbonPageGroup4
             // 
+            this.interactivitySettingsRibbonPageGroup4.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup4.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup4.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup4.Name = "interactivitySettingsRibbonPageGroup4";
@@ -5083,12 +4564,16 @@
             // 
             // commonItemDesignRibbonPageGroup4
             // 
+            this.commonItemDesignRibbonPageGroup4.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup4.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup4.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup4.Name = "commonItemDesignRibbonPageGroup4";
             // 
             // scatterChartLayoutPageGroup1
             // 
+            this.scatterChartLayoutPageGroup1.AllowTextClipping = false;
+            this.scatterChartLayoutPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.scatterChartLayoutPageGroup1.ItemLinks.Add(this.scatterChartRotateBarItem1);
             this.scatterChartLayoutPageGroup1.ItemLinks.Add(this.scatterChartXAxisSettingsBarItem1);
             this.scatterChartLayoutPageGroup1.ItemLinks.Add(this.scatterChartYAxisSettingsBarItem1);
@@ -5096,17 +4581,23 @@
             // 
             // scatterChartPointLabelPageGroup1
             // 
+            this.scatterChartPointLabelPageGroup1.AllowTextClipping = false;
+            this.scatterChartPointLabelPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.scatterChartPointLabelPageGroup1.ItemLinks.Add(this.scatterChartPointLabelOptionsBarItem1);
             this.scatterChartPointLabelPageGroup1.Name = "scatterChartPointLabelPageGroup1";
             // 
             // scatterChartLegendPositionPageGroup1
             // 
+            this.scatterChartLegendPositionPageGroup1.AllowTextClipping = false;
+            this.scatterChartLegendPositionPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.scatterChartLegendPositionPageGroup1.ItemLinks.Add(this.scatterChartShowLegendBarItem1);
             this.scatterChartLegendPositionPageGroup1.ItemLinks.Add(this.galleryScatterChartLegendPositionItem1);
             this.scatterChartLegendPositionPageGroup1.Name = "scatterChartLegendPositionPageGroup1";
             // 
             // coloringOptionsRibbonPageGroup2
             // 
+            this.coloringOptionsRibbonPageGroup2.AllowTextClipping = false;
+            this.coloringOptionsRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.coloringOptionsRibbonPageGroup2.ItemLinks.Add(this.useGlobalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup2.ItemLinks.Add(this.useLocalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup2.ItemLinks.Add(this.editActualColorsBarItem1);
@@ -5133,12 +4624,17 @@
             // 
             // filteringRibbonPageGroup5
             // 
+            this.filteringRibbonPageGroup5.AllowTextClipping = false;
+            this.filteringRibbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup5.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup5.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup5.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup5.Name = "filteringRibbonPageGroup5";
             // 
             // masterFilterRibbonPageGroup4
             // 
+            this.masterFilterRibbonPageGroup4.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup4.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup4.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup4.ItemLinks.Add(this.drillDownBarItem1);
@@ -5146,12 +4642,16 @@
             // 
             // interactivitySettingsRibbonPageGroup5
             // 
+            this.interactivitySettingsRibbonPageGroup5.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup5.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup5.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup5.Name = "interactivitySettingsRibbonPageGroup5";
             // 
             // targetDimensionsRibbonPageGroup2
             // 
+            this.targetDimensionsRibbonPageGroup2.AllowTextClipping = false;
+            this.targetDimensionsRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.targetDimensionsRibbonPageGroup2.ItemLinks.Add(this.pieTargetDimensionsArgumentsBarItem1);
             this.targetDimensionsRibbonPageGroup2.ItemLinks.Add(this.pieTargetDimensionsSeriesBarItem1);
             this.targetDimensionsRibbonPageGroup2.ItemLinks.Add(this.pieTargetDimensionsPointsBarItem1);
@@ -5170,12 +4670,16 @@
             // 
             // commonItemDesignRibbonPageGroup5
             // 
+            this.commonItemDesignRibbonPageGroup5.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup5.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup5.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup5.Name = "commonItemDesignRibbonPageGroup5";
             // 
             // contentArrangementRibbonPageGroup1
             // 
+            this.contentArrangementRibbonPageGroup1.AllowTextClipping = false;
+            this.contentArrangementRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.contentArrangementRibbonPageGroup1.ItemLinks.Add(this.contentAutoArrangeBarItem1);
             this.contentArrangementRibbonPageGroup1.ItemLinks.Add(this.contentArrangeInColumnsBarItem1);
             this.contentArrangementRibbonPageGroup1.ItemLinks.Add(this.contentArrangeInRowsBarItem1);
@@ -5184,6 +4688,8 @@
             // 
             // pieLabelsRibbonPageGroup1
             // 
+            this.pieLabelsRibbonPageGroup1.AllowTextClipping = false;
+            this.pieLabelsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pieLabelsRibbonPageGroup1.ItemLinks.Add(this.pieLabelsDataLabelsBarItem1);
             this.pieLabelsRibbonPageGroup1.ItemLinks.Add(this.pieLabelPositionBarItem1);
             this.pieLabelsRibbonPageGroup1.ItemLinks.Add(this.pieTooltipsBarItem1);
@@ -5192,12 +4698,16 @@
             // 
             // pieStyleRibbonPageGroup1
             // 
+            this.pieStyleRibbonPageGroup1.AllowTextClipping = false;
+            this.pieStyleRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pieStyleRibbonPageGroup1.ItemLinks.Add(this.pieStylePieBarItem1);
             this.pieStyleRibbonPageGroup1.ItemLinks.Add(this.pieStyleDonutBarItem1);
             this.pieStyleRibbonPageGroup1.Name = "pieStyleRibbonPageGroup1";
             // 
             // coloringOptionsRibbonPageGroup3
             // 
+            this.coloringOptionsRibbonPageGroup3.AllowTextClipping = false;
+            this.coloringOptionsRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.coloringOptionsRibbonPageGroup3.ItemLinks.Add(this.useGlobalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup3.ItemLinks.Add(this.useLocalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup3.ItemLinks.Add(this.editActualColorsBarItem1);
@@ -5223,12 +4733,17 @@
             // 
             // filteringRibbonPageGroup6
             // 
+            this.filteringRibbonPageGroup6.AllowTextClipping = false;
+            this.filteringRibbonPageGroup6.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup6.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup6.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup6.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup6.Name = "filteringRibbonPageGroup6";
             // 
             // masterFilterRibbonPageGroup5
             // 
+            this.masterFilterRibbonPageGroup5.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup5.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup5.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup5.ItemLinks.Add(this.drillDownBarItem1);
@@ -5236,6 +4751,8 @@
             // 
             // interactivitySettingsRibbonPageGroup6
             // 
+            this.interactivitySettingsRibbonPageGroup6.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup6.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup6.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup6.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup6.Name = "interactivitySettingsRibbonPageGroup6";
@@ -5252,12 +4769,16 @@
             // 
             // commonItemDesignRibbonPageGroup6
             // 
+            this.commonItemDesignRibbonPageGroup6.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup6.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup6.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup6.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup6.Name = "commonItemDesignRibbonPageGroup6";
             // 
             // contentArrangementRibbonPageGroup2
             // 
+            this.contentArrangementRibbonPageGroup2.AllowTextClipping = false;
+            this.contentArrangementRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.contentArrangementRibbonPageGroup2.ItemLinks.Add(this.contentAutoArrangeBarItem1);
             this.contentArrangementRibbonPageGroup2.ItemLinks.Add(this.contentArrangeInColumnsBarItem1);
             this.contentArrangementRibbonPageGroup2.ItemLinks.Add(this.contentArrangeInRowsBarItem1);
@@ -5266,6 +4787,8 @@
             // 
             // gaugeStyleRibbonPageGroup1
             // 
+            this.gaugeStyleRibbonPageGroup1.AllowTextClipping = false;
+            this.gaugeStyleRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.gaugeStyleRibbonPageGroup1.ItemLinks.Add(this.gaugeStyleFullCircularBarItem1);
             this.gaugeStyleRibbonPageGroup1.ItemLinks.Add(this.gaugeStyleHalfCircularBarItem1);
             this.gaugeStyleRibbonPageGroup1.ItemLinks.Add(this.gaugeStyleLeftQuarterCircularBarItem1);
@@ -5277,6 +4800,8 @@
             // 
             // gaugesLabelsRibbonPageGroup1
             // 
+            this.gaugesLabelsRibbonPageGroup1.AllowTextClipping = false;
+            this.gaugesLabelsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.gaugesLabelsRibbonPageGroup1.ItemLinks.Add(this.gaugeShowCaptionsBarItem1);
             this.gaugesLabelsRibbonPageGroup1.Name = "gaugesLabelsRibbonPageGroup1";
             // 
@@ -5300,12 +4825,17 @@
             // 
             // filteringRibbonPageGroup7
             // 
+            this.filteringRibbonPageGroup7.AllowTextClipping = false;
+            this.filteringRibbonPageGroup7.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup7.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup7.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup7.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup7.Name = "filteringRibbonPageGroup7";
             // 
             // masterFilterRibbonPageGroup6
             // 
+            this.masterFilterRibbonPageGroup6.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup6.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup6.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup6.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup6.ItemLinks.Add(this.drillDownBarItem1);
@@ -5313,6 +4843,8 @@
             // 
             // interactivitySettingsRibbonPageGroup7
             // 
+            this.interactivitySettingsRibbonPageGroup7.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup7.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup7.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup7.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup7.Name = "interactivitySettingsRibbonPageGroup7";
@@ -5327,12 +4859,16 @@
             // 
             // commonItemDesignRibbonPageGroup7
             // 
+            this.commonItemDesignRibbonPageGroup7.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup7.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup7.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup7.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup7.Name = "commonItemDesignRibbonPageGroup7";
             // 
             // contentArrangementRibbonPageGroup3
             // 
+            this.contentArrangementRibbonPageGroup3.AllowTextClipping = false;
+            this.contentArrangementRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.contentArrangementRibbonPageGroup3.ItemLinks.Add(this.contentAutoArrangeBarItem1);
             this.contentArrangementRibbonPageGroup3.ItemLinks.Add(this.contentArrangeInColumnsBarItem1);
             this.contentArrangementRibbonPageGroup3.ItemLinks.Add(this.contentArrangeInRowsBarItem1);
@@ -5358,12 +4894,17 @@
             // 
             // filteringRibbonPageGroup8
             // 
+            this.filteringRibbonPageGroup8.AllowTextClipping = false;
+            this.filteringRibbonPageGroup8.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup8.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup8.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup8.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup8.Name = "filteringRibbonPageGroup8";
             // 
             // interactivitySettingsRibbonPageGroup8
             // 
+            this.interactivitySettingsRibbonPageGroup8.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup8.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup8.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup8.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup8.Name = "interactivitySettingsRibbonPageGroup8";
@@ -5380,22 +4921,30 @@
             // 
             // commonItemDesignRibbonPageGroup8
             // 
+            this.commonItemDesignRibbonPageGroup8.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup8.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup8.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup8.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup8.Name = "commonItemDesignRibbonPageGroup8";
             // 
             // rangeFilterSeriesTypeRibbonPageGroup1
             // 
+            this.rangeFilterSeriesTypeRibbonPageGroup1.AllowTextClipping = false;
+            this.rangeFilterSeriesTypeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.rangeFilterSeriesTypeRibbonPageGroup1.ItemLinks.Add(this.galleryRangeFilterSeriesTypeItem1);
             this.rangeFilterSeriesTypeRibbonPageGroup1.Name = "rangeFilterSeriesTypeRibbonPageGroup1";
             // 
             // rangeFilterInteractivityRibbonPageGroup1
             // 
+            this.rangeFilterInteractivityRibbonPageGroup1.AllowTextClipping = false;
+            this.rangeFilterInteractivityRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.rangeFilterInteractivityRibbonPageGroup1.ItemLinks.Add(this.rangeFilterEditDateTimePeriodsBarItem1);
             this.rangeFilterInteractivityRibbonPageGroup1.Name = "rangeFilterInteractivityRibbonPageGroup1";
             // 
             // coloringOptionsRibbonPageGroup4
             // 
+            this.coloringOptionsRibbonPageGroup4.AllowTextClipping = false;
+            this.coloringOptionsRibbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.coloringOptionsRibbonPageGroup4.ItemLinks.Add(this.useGlobalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup4.ItemLinks.Add(this.useLocalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup4.ItemLinks.Add(this.editActualColorsBarItem1);
@@ -5421,18 +4970,25 @@
             // 
             // filteringRibbonPageGroup9
             // 
+            this.filteringRibbonPageGroup9.AllowTextClipping = false;
+            this.filteringRibbonPageGroup9.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup9.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup9.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup9.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup9.Name = "filteringRibbonPageGroup9";
             // 
             // masterFilterRibbonPageGroup7
             // 
+            this.masterFilterRibbonPageGroup7.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup7.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup7.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup7.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup7.Name = "masterFilterRibbonPageGroup7";
             // 
             // interactivitySettingsRibbonPageGroup9
             // 
+            this.interactivitySettingsRibbonPageGroup9.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup9.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup9.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup9.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup9.Name = "interactivitySettingsRibbonPageGroup9";
@@ -5450,12 +5006,16 @@
             // 
             // commonItemDesignRibbonPageGroup9
             // 
+            this.commonItemDesignRibbonPageGroup9.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup9.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup9.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup9.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup9.Name = "commonItemDesignRibbonPageGroup9";
             // 
             // mapShapefileRibbonPageGroup1
             // 
+            this.mapShapefileRibbonPageGroup1.AllowTextClipping = false;
+            this.mapShapefileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapefileRibbonPageGroup1.ItemLinks.Add(this.mapLoadBarItem1);
             this.mapShapefileRibbonPageGroup1.ItemLinks.Add(this.mapImportBarItem1);
             this.mapShapefileRibbonPageGroup1.ItemLinks.Add(this.mapDefaultShapefileBarItem1);
@@ -5463,17 +5023,23 @@
             // 
             // mapNavigationPageGroup1
             // 
+            this.mapNavigationPageGroup1.AllowTextClipping = false;
+            this.mapNavigationPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapNavigationPageGroup1.ItemLinks.Add(this.mapLockNavigationBarItem1);
             this.mapNavigationPageGroup1.ItemLinks.Add(this.mapFullExtentBarItem1);
             this.mapNavigationPageGroup1.Name = "mapNavigationPageGroup1";
             // 
             // mapShapeLabelsAttributePageGroup1
             // 
+            this.mapShapeLabelsAttributePageGroup1.AllowTextClipping = false;
+            this.mapShapeLabelsAttributePageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapeLabelsAttributePageGroup1.ItemLinks.Add(this.choroplethMapShapeLabelsAttributeBarItem1);
             this.mapShapeLabelsAttributePageGroup1.Name = "mapShapeLabelsAttributePageGroup1";
             // 
             // mapLegendPositionPageGroup1
             // 
+            this.mapLegendPositionPageGroup1.AllowTextClipping = false;
+            this.mapLegendPositionPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapLegendPositionPageGroup1.ItemLinks.Add(this.mapShowLegendBarItem1);
             this.mapLegendPositionPageGroup1.ItemLinks.Add(this.galleryMapLegendPositionItem1);
             this.mapLegendPositionPageGroup1.Name = "mapLegendPositionPageGroup1";
@@ -5499,24 +5065,33 @@
             // 
             // filteringRibbonPageGroup10
             // 
+            this.filteringRibbonPageGroup10.AllowTextClipping = false;
+            this.filteringRibbonPageGroup10.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup10.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup10.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup10.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup10.Name = "filteringRibbonPageGroup10";
             // 
             // masterFilterRibbonPageGroup8
             // 
+            this.masterFilterRibbonPageGroup8.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup8.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup8.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup8.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup8.Name = "masterFilterRibbonPageGroup8";
             // 
             // interactivitySettingsRibbonPageGroup10
             // 
+            this.interactivitySettingsRibbonPageGroup10.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup10.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup10.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup10.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup10.Name = "interactivitySettingsRibbonPageGroup10";
             // 
             // geoPointMapClusterizationRibbonPageGroup1
             // 
+            this.geoPointMapClusterizationRibbonPageGroup1.AllowTextClipping = false;
+            this.geoPointMapClusterizationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.geoPointMapClusterizationRibbonPageGroup1.ItemLinks.Add(this.geoPointMapClusterizationBarItem1);
             this.geoPointMapClusterizationRibbonPageGroup1.Name = "geoPointMapClusterizationRibbonPageGroup1";
             // 
@@ -5532,12 +5107,16 @@
             // 
             // commonItemDesignRibbonPageGroup10
             // 
+            this.commonItemDesignRibbonPageGroup10.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup10.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup10.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup10.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup10.Name = "commonItemDesignRibbonPageGroup10";
             // 
             // mapShapefileRibbonPageGroup2
             // 
+            this.mapShapefileRibbonPageGroup2.AllowTextClipping = false;
+            this.mapShapefileRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapefileRibbonPageGroup2.ItemLinks.Add(this.mapLoadBarItem1);
             this.mapShapefileRibbonPageGroup2.ItemLinks.Add(this.mapImportBarItem1);
             this.mapShapefileRibbonPageGroup2.ItemLinks.Add(this.mapDefaultShapefileBarItem1);
@@ -5545,12 +5124,16 @@
             // 
             // mapNavigationPageGroup2
             // 
+            this.mapNavigationPageGroup2.AllowTextClipping = false;
+            this.mapNavigationPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapNavigationPageGroup2.ItemLinks.Add(this.mapLockNavigationBarItem1);
             this.mapNavigationPageGroup2.ItemLinks.Add(this.mapFullExtentBarItem1);
             this.mapNavigationPageGroup2.Name = "mapNavigationPageGroup2";
             // 
             // mapShapeLabelsAttributePageGroup2
             // 
+            this.mapShapeLabelsAttributePageGroup2.AllowTextClipping = false;
+            this.mapShapeLabelsAttributePageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapeLabelsAttributePageGroup2.ItemLinks.Add(this.mapShapeTitleAttributeBarItem1);
             this.mapShapeLabelsAttributePageGroup2.Name = "mapShapeLabelsAttributePageGroup2";
             // 
@@ -5575,24 +5158,33 @@
             // 
             // filteringRibbonPageGroup11
             // 
+            this.filteringRibbonPageGroup11.AllowTextClipping = false;
+            this.filteringRibbonPageGroup11.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup11.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup11.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup11.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup11.Name = "filteringRibbonPageGroup11";
             // 
             // masterFilterRibbonPageGroup9
             // 
+            this.masterFilterRibbonPageGroup9.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup9.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup9.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup9.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup9.Name = "masterFilterRibbonPageGroup9";
             // 
             // interactivitySettingsRibbonPageGroup11
             // 
+            this.interactivitySettingsRibbonPageGroup11.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup11.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup11.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup11.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup11.Name = "interactivitySettingsRibbonPageGroup11";
             // 
             // geoPointMapClusterizationRibbonPageGroup2
             // 
+            this.geoPointMapClusterizationRibbonPageGroup2.AllowTextClipping = false;
+            this.geoPointMapClusterizationRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.geoPointMapClusterizationRibbonPageGroup2.ItemLinks.Add(this.geoPointMapClusterizationBarItem1);
             this.geoPointMapClusterizationRibbonPageGroup2.Name = "geoPointMapClusterizationRibbonPageGroup2";
             // 
@@ -5610,12 +5202,16 @@
             // 
             // commonItemDesignRibbonPageGroup11
             // 
+            this.commonItemDesignRibbonPageGroup11.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup11.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup11.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup11.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup11.Name = "commonItemDesignRibbonPageGroup11";
             // 
             // mapShapefileRibbonPageGroup3
             // 
+            this.mapShapefileRibbonPageGroup3.AllowTextClipping = false;
+            this.mapShapefileRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapefileRibbonPageGroup3.ItemLinks.Add(this.mapLoadBarItem1);
             this.mapShapefileRibbonPageGroup3.ItemLinks.Add(this.mapImportBarItem1);
             this.mapShapefileRibbonPageGroup3.ItemLinks.Add(this.mapDefaultShapefileBarItem1);
@@ -5623,23 +5219,31 @@
             // 
             // mapNavigationPageGroup3
             // 
+            this.mapNavigationPageGroup3.AllowTextClipping = false;
+            this.mapNavigationPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapNavigationPageGroup3.ItemLinks.Add(this.mapLockNavigationBarItem1);
             this.mapNavigationPageGroup3.ItemLinks.Add(this.mapFullExtentBarItem1);
             this.mapNavigationPageGroup3.Name = "mapNavigationPageGroup3";
             // 
             // mapShapeLabelsAttributePageGroup3
             // 
+            this.mapShapeLabelsAttributePageGroup3.AllowTextClipping = false;
+            this.mapShapeLabelsAttributePageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapeLabelsAttributePageGroup3.ItemLinks.Add(this.mapShapeTitleAttributeBarItem1);
             this.mapShapeLabelsAttributePageGroup3.Name = "mapShapeLabelsAttributePageGroup3";
             // 
             // mapLegendPositionPageGroup2
             // 
+            this.mapLegendPositionPageGroup2.AllowTextClipping = false;
+            this.mapLegendPositionPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapLegendPositionPageGroup2.ItemLinks.Add(this.mapShowLegendBarItem1);
             this.mapLegendPositionPageGroup2.ItemLinks.Add(this.galleryMapLegendPositionItem1);
             this.mapLegendPositionPageGroup2.Name = "mapLegendPositionPageGroup2";
             // 
             // weightedLegendPageGroup1
             // 
+            this.weightedLegendPageGroup1.AllowTextClipping = false;
+            this.weightedLegendPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.weightedLegendPageGroup1.ItemLinks.Add(this.changeWeightedLegendTypeBarItem1);
             this.weightedLegendPageGroup1.ItemLinks.Add(this.galleryWeightedLegendPositionItem1);
             this.weightedLegendPageGroup1.Name = "weightedLegendPageGroup1";
@@ -5665,24 +5269,33 @@
             // 
             // filteringRibbonPageGroup12
             // 
+            this.filteringRibbonPageGroup12.AllowTextClipping = false;
+            this.filteringRibbonPageGroup12.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup12.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup12.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup12.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup12.Name = "filteringRibbonPageGroup12";
             // 
             // masterFilterRibbonPageGroup10
             // 
+            this.masterFilterRibbonPageGroup10.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup10.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup10.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup10.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup10.Name = "masterFilterRibbonPageGroup10";
             // 
             // interactivitySettingsRibbonPageGroup12
             // 
+            this.interactivitySettingsRibbonPageGroup12.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup12.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup12.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup12.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup12.Name = "interactivitySettingsRibbonPageGroup12";
             // 
             // geoPointMapClusterizationRibbonPageGroup3
             // 
+            this.geoPointMapClusterizationRibbonPageGroup3.AllowTextClipping = false;
+            this.geoPointMapClusterizationRibbonPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.geoPointMapClusterizationRibbonPageGroup3.ItemLinks.Add(this.geoPointMapClusterizationBarItem1);
             this.geoPointMapClusterizationRibbonPageGroup3.Name = "geoPointMapClusterizationRibbonPageGroup3";
             // 
@@ -5702,12 +5315,16 @@
             // 
             // commonItemDesignRibbonPageGroup12
             // 
+            this.commonItemDesignRibbonPageGroup12.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup12.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup12.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup12.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup12.Name = "commonItemDesignRibbonPageGroup12";
             // 
             // mapShapefileRibbonPageGroup4
             // 
+            this.mapShapefileRibbonPageGroup4.AllowTextClipping = false;
+            this.mapShapefileRibbonPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapefileRibbonPageGroup4.ItemLinks.Add(this.mapLoadBarItem1);
             this.mapShapefileRibbonPageGroup4.ItemLinks.Add(this.mapImportBarItem1);
             this.mapShapefileRibbonPageGroup4.ItemLinks.Add(this.mapDefaultShapefileBarItem1);
@@ -5715,34 +5332,46 @@
             // 
             // mapNavigationPageGroup4
             // 
+            this.mapNavigationPageGroup4.AllowTextClipping = false;
+            this.mapNavigationPageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapNavigationPageGroup4.ItemLinks.Add(this.mapLockNavigationBarItem1);
             this.mapNavigationPageGroup4.ItemLinks.Add(this.mapFullExtentBarItem1);
             this.mapNavigationPageGroup4.Name = "mapNavigationPageGroup4";
             // 
             // mapShapeLabelsAttributePageGroup4
             // 
+            this.mapShapeLabelsAttributePageGroup4.AllowTextClipping = false;
+            this.mapShapeLabelsAttributePageGroup4.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapShapeLabelsAttributePageGroup4.ItemLinks.Add(this.mapShapeTitleAttributeBarItem1);
             this.mapShapeLabelsAttributePageGroup4.Name = "mapShapeLabelsAttributePageGroup4";
             // 
             // mapLegendPositionPageGroup3
             // 
+            this.mapLegendPositionPageGroup3.AllowTextClipping = false;
+            this.mapLegendPositionPageGroup3.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.mapLegendPositionPageGroup3.ItemLinks.Add(this.mapShowLegendBarItem1);
             this.mapLegendPositionPageGroup3.ItemLinks.Add(this.galleryMapLegendPositionItem1);
             this.mapLegendPositionPageGroup3.Name = "mapLegendPositionPageGroup3";
             // 
             // weightedLegendPageGroup2
             // 
+            this.weightedLegendPageGroup2.AllowTextClipping = false;
+            this.weightedLegendPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.weightedLegendPageGroup2.ItemLinks.Add(this.changeWeightedLegendTypeBarItem1);
             this.weightedLegendPageGroup2.ItemLinks.Add(this.galleryWeightedLegendPositionItem1);
             this.weightedLegendPageGroup2.Name = "weightedLegendPageGroup2";
             // 
             // pieMapOptionsPageGroup1
             // 
+            this.pieMapOptionsPageGroup1.AllowTextClipping = false;
+            this.pieMapOptionsPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pieMapOptionsPageGroup1.ItemLinks.Add(this.pieMapIsWeightedBarItem1);
             this.pieMapOptionsPageGroup1.Name = "pieMapOptionsPageGroup1";
             // 
             // coloringOptionsRibbonPageGroup5
             // 
+            this.coloringOptionsRibbonPageGroup5.AllowTextClipping = false;
+            this.coloringOptionsRibbonPageGroup5.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.coloringOptionsRibbonPageGroup5.ItemLinks.Add(this.useGlobalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup5.ItemLinks.Add(this.useLocalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup5.ItemLinks.Add(this.editActualColorsBarItem1);
@@ -5767,12 +5396,17 @@
             // 
             // filteringRibbonPageGroup13
             // 
+            this.filteringRibbonPageGroup13.AllowTextClipping = false;
+            this.filteringRibbonPageGroup13.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup13.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup13.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup13.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup13.Name = "filteringRibbonPageGroup13";
             // 
             // interactivitySettingsRibbonPageGroup13
             // 
+            this.interactivitySettingsRibbonPageGroup13.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup13.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup13.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup13.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup13.Name = "interactivitySettingsRibbonPageGroup13";
@@ -5790,12 +5424,16 @@
             // 
             // commonItemDesignRibbonPageGroup13
             // 
+            this.commonItemDesignRibbonPageGroup13.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup13.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup13.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup13.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup13.Name = "commonItemDesignRibbonPageGroup13";
             // 
             // filterElementTypeRibbonPageGroup1
             // 
+            this.filterElementTypeRibbonPageGroup1.AllowTextClipping = false;
+            this.filterElementTypeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filterElementTypeRibbonPageGroup1.ItemLinks.Add(this.comboBoxStandardTypeBarItem1);
             this.filterElementTypeRibbonPageGroup1.ItemLinks.Add(this.comboBoxCheckedTypeBarItem1);
             this.filterElementTypeRibbonPageGroup1.ItemLinks.Add(this.listBoxCheckedTypeBarItem1);
@@ -5805,6 +5443,8 @@
             // 
             // filterElementItemOptionsRibbonPageGroup1
             // 
+            this.filterElementItemOptionsRibbonPageGroup1.AllowTextClipping = false;
+            this.filterElementItemOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filterElementItemOptionsRibbonPageGroup1.ItemLinks.Add(this.filterElementShowAllValueBarItem1);
             this.filterElementItemOptionsRibbonPageGroup1.ItemLinks.Add(this.filterElementEnableSearchBarItem1);
             this.filterElementItemOptionsRibbonPageGroup1.Name = "filterElementItemOptionsRibbonPageGroup1";
@@ -5812,12 +5452,16 @@
             // 
             // treeViewOptionsRibbonPageGroup1
             // 
+            this.treeViewOptionsRibbonPageGroup1.AllowTextClipping = false;
+            this.treeViewOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.treeViewOptionsRibbonPageGroup1.ItemLinks.Add(this.filterElementEnableSearchBarItem1);
             this.treeViewOptionsRibbonPageGroup1.Name = "treeViewOptionsRibbonPageGroup1";
             this.treeViewOptionsRibbonPageGroup1.Visible = false;
             // 
             // treeViewLayoutRibbonPageGroup1
             // 
+            this.treeViewLayoutRibbonPageGroup1.AllowTextClipping = false;
+            this.treeViewLayoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.treeViewLayoutRibbonPageGroup1.ItemLinks.Add(this.treeViewAutoExpandBarItem1);
             this.treeViewLayoutRibbonPageGroup1.Name = "treeViewLayoutRibbonPageGroup1";
             this.treeViewLayoutRibbonPageGroup1.Visible = false;
@@ -5840,6 +5484,8 @@
             // 
             // interactivitySettingsRibbonPageGroup14
             // 
+            this.interactivitySettingsRibbonPageGroup14.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup14.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup14.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup14.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup14.Name = "interactivitySettingsRibbonPageGroup14";
@@ -5854,6 +5500,8 @@
             // 
             // dateFilterLayoutRibbonPageGroup1
             // 
+            this.dateFilterLayoutRibbonPageGroup1.AllowTextClipping = false;
+            this.dateFilterLayoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dateFilterLayoutRibbonPageGroup1.ItemLinks.Add(this.dateFilterTypeBarItem1);
             this.dateFilterLayoutRibbonPageGroup1.ItemLinks.Add(this.dateFilterArrangementModeBarItem1);
             this.dateFilterLayoutRibbonPageGroup1.ItemLinks.Add(this.dateFilterDatePickerLocationBarItem1);
@@ -5861,6 +5509,8 @@
             // 
             // dateFilterInteractivityRibbonPageGroup1
             // 
+            this.dateFilterInteractivityRibbonPageGroup1.AllowTextClipping = false;
+            this.dateFilterInteractivityRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dateFilterInteractivityRibbonPageGroup1.ItemLinks.Add(this.dateFilterEditDateTimePeriodsBarItem1);
             this.dateFilterInteractivityRibbonPageGroup1.Name = "dateFilterInteractivityRibbonPageGroup1";
             // 
@@ -5883,12 +5533,17 @@
             // 
             // filteringRibbonPageGroup14
             // 
+            this.filteringRibbonPageGroup14.AllowTextClipping = false;
+            this.filteringRibbonPageGroup14.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup14.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup14.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup14.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup14.Name = "filteringRibbonPageGroup14";
             // 
             // interactivitySettingsRibbonPageGroup15
             // 
+            this.interactivitySettingsRibbonPageGroup15.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup15.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup15.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup15.Name = "interactivitySettingsRibbonPageGroup15";
             // 
@@ -5903,12 +5558,16 @@
             // 
             // commonItemDesignRibbonPageGroup14
             // 
+            this.commonItemDesignRibbonPageGroup14.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup14.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup14.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup14.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup14.Name = "commonItemDesignRibbonPageGroup14";
             // 
             // imageSizeModeRibbonPageGroup1
             // 
+            this.imageSizeModeRibbonPageGroup1.AllowTextClipping = false;
+            this.imageSizeModeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.imageSizeModeRibbonPageGroup1.ItemLinks.Add(this.imageSizeModeClipBarItem1);
             this.imageSizeModeRibbonPageGroup1.ItemLinks.Add(this.imageSizeModeStretchBarItem1);
             this.imageSizeModeRibbonPageGroup1.ItemLinks.Add(this.imageSizeModeSqueezeBarItem1);
@@ -5917,6 +5576,8 @@
             // 
             // imageAlignmentRibbonPageGroup1
             // 
+            this.imageAlignmentRibbonPageGroup1.AllowTextClipping = false;
+            this.imageAlignmentRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.imageAlignmentRibbonPageGroup1.ItemLinks.Add(this.imageAlignmentTopLeftBarItem1);
             this.imageAlignmentRibbonPageGroup1.ItemLinks.Add(this.imageAlignmentCenterLeftBarItem1);
             this.imageAlignmentRibbonPageGroup1.ItemLinks.Add(this.imageAlignmentBottomLeftBarItem1);
@@ -5947,12 +5608,17 @@
             // 
             // filteringRibbonPageGroup15
             // 
+            this.filteringRibbonPageGroup15.AllowTextClipping = false;
+            this.filteringRibbonPageGroup15.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup15.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup15.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup15.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup15.Name = "filteringRibbonPageGroup15";
             // 
             // interactivitySettingsRibbonPageGroup16
             // 
+            this.interactivitySettingsRibbonPageGroup16.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup16.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup16.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup16.Name = "interactivitySettingsRibbonPageGroup16";
             // 
@@ -5966,12 +5632,16 @@
             // 
             // commonItemDesignRibbonPageGroup15
             // 
+            this.commonItemDesignRibbonPageGroup15.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup15.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup15.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup15.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup15.Name = "commonItemDesignRibbonPageGroup15";
             // 
             // textBoxEditingRibbonPageGroup1
             // 
+            this.textBoxEditingRibbonPageGroup1.AllowTextClipping = false;
+            this.textBoxEditingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.textBoxEditingRibbonPageGroup1.ItemLinks.Add(this.textBoxEditTextBarItem1);
             this.textBoxEditingRibbonPageGroup1.ItemLinks.Add(this.textBoxInsertFieldBarItem1);
             this.textBoxEditingRibbonPageGroup1.Name = "textBoxEditingRibbonPageGroup1";
@@ -5996,12 +5666,17 @@
             // 
             // filteringRibbonPageGroup16
             // 
+            this.filteringRibbonPageGroup16.AllowTextClipping = false;
+            this.filteringRibbonPageGroup16.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.filteringRibbonPageGroup16.ItemLinks.Add(this.editFilterBarItem1);
             this.filteringRibbonPageGroup16.ItemLinks.Add(this.clearFilterBarItem1);
+            this.filteringRibbonPageGroup16.ItemLinks.Add(this.editVisibleDataFilterBarItem1);
             this.filteringRibbonPageGroup16.Name = "filteringRibbonPageGroup16";
             // 
             // masterFilterRibbonPageGroup11
             // 
+            this.masterFilterRibbonPageGroup11.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup11.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup11.ItemLinks.Add(this.masterFilterBarItem1);
             this.masterFilterRibbonPageGroup11.ItemLinks.Add(this.multipleValuesMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup11.ItemLinks.Add(this.drillDownBarItem1);
@@ -6009,6 +5684,8 @@
             // 
             // interactivitySettingsRibbonPageGroup17
             // 
+            this.interactivitySettingsRibbonPageGroup17.AllowTextClipping = false;
+            this.interactivitySettingsRibbonPageGroup17.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.interactivitySettingsRibbonPageGroup17.ItemLinks.Add(this.crossDataSourceFilteringBarItem1);
             this.interactivitySettingsRibbonPageGroup17.ItemLinks.Add(this.ignoreMasterFiltersBarItem1);
             this.interactivitySettingsRibbonPageGroup17.Name = "interactivitySettingsRibbonPageGroup17";
@@ -6026,12 +5703,16 @@
             // 
             // commonItemDesignRibbonPageGroup16
             // 
+            this.commonItemDesignRibbonPageGroup16.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup16.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup16.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup16.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup16.Name = "commonItemDesignRibbonPageGroup16";
             // 
             // treemapLayoutRibbonPageGroup1
             // 
+            this.treemapLayoutRibbonPageGroup1.AllowTextClipping = false;
+            this.treemapLayoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.treemapLayoutRibbonPageGroup1.ItemLinks.Add(this.treemapSliceAndDiceLayoutAlgorithmBarItem1);
             this.treemapLayoutRibbonPageGroup1.ItemLinks.Add(this.treemapSquarifiedLayoutAlgorithmBarItem1);
             this.treemapLayoutRibbonPageGroup1.ItemLinks.Add(this.treemapStripedLayoutAlgorithmBarItem1);
@@ -6040,18 +5721,24 @@
             // 
             // treemapTileLabelsRibbonPageGroup1
             // 
+            this.treemapTileLabelsRibbonPageGroup1.AllowTextClipping = false;
+            this.treemapTileLabelsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.treemapTileLabelsRibbonPageGroup1.ItemLinks.Add(this.treemapTileLabelsBarItem1);
             this.treemapTileLabelsRibbonPageGroup1.ItemLinks.Add(this.treemapTileTooltipsBarItem1);
             this.treemapTileLabelsRibbonPageGroup1.Name = "treemapTileLabelsRibbonPageGroup1";
             // 
             // treemapGroupLabelsRibbonPageGroup1
             // 
+            this.treemapGroupLabelsRibbonPageGroup1.AllowTextClipping = false;
+            this.treemapGroupLabelsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.treemapGroupLabelsRibbonPageGroup1.ItemLinks.Add(this.treemapGroupLabelsBarItem1);
             this.treemapGroupLabelsRibbonPageGroup1.ItemLinks.Add(this.treemapGroupTooltipsBarItem1);
             this.treemapGroupLabelsRibbonPageGroup1.Name = "treemapGroupLabelsRibbonPageGroup1";
             // 
             // coloringOptionsRibbonPageGroup6
             // 
+            this.coloringOptionsRibbonPageGroup6.AllowTextClipping = false;
+            this.coloringOptionsRibbonPageGroup6.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.coloringOptionsRibbonPageGroup6.ItemLinks.Add(this.useGlobalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup6.ItemLinks.Add(this.useLocalColorsBarItem1);
             this.coloringOptionsRibbonPageGroup6.ItemLinks.Add(this.editActualColorsBarItem1);
@@ -6077,18 +5764,24 @@
             // 
             // commonItemDesignRibbonPageGroup17
             // 
+            this.commonItemDesignRibbonPageGroup17.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup17.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup17.ItemLinks.Add(this.showItemCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup17.ItemLinks.Add(this.editItemNamesBarItem1);
             this.commonItemDesignRibbonPageGroup17.Name = "commonItemDesignRibbonPageGroup17";
             // 
             // imageOpenRibbonPageGroup1
             // 
+            this.imageOpenRibbonPageGroup1.AllowTextClipping = false;
+            this.imageOpenRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.imageOpenRibbonPageGroup1.ItemLinks.Add(this.imageLoadBarItem1);
             this.imageOpenRibbonPageGroup1.ItemLinks.Add(this.imageImportBarItem1);
             this.imageOpenRibbonPageGroup1.Name = "imageOpenRibbonPageGroup1";
             // 
             // imageSizeModeRibbonPageGroup2
             // 
+            this.imageSizeModeRibbonPageGroup2.AllowTextClipping = false;
+            this.imageSizeModeRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.imageSizeModeRibbonPageGroup2.ItemLinks.Add(this.imageSizeModeClipBarItem1);
             this.imageSizeModeRibbonPageGroup2.ItemLinks.Add(this.imageSizeModeStretchBarItem1);
             this.imageSizeModeRibbonPageGroup2.ItemLinks.Add(this.imageSizeModeSqueezeBarItem1);
@@ -6097,6 +5790,8 @@
             // 
             // imageAlignmentRibbonPageGroup2
             // 
+            this.imageAlignmentRibbonPageGroup2.AllowTextClipping = false;
+            this.imageAlignmentRibbonPageGroup2.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.imageAlignmentRibbonPageGroup2.ItemLinks.Add(this.imageAlignmentTopLeftBarItem1);
             this.imageAlignmentRibbonPageGroup2.ItemLinks.Add(this.imageAlignmentCenterLeftBarItem1);
             this.imageAlignmentRibbonPageGroup2.ItemLinks.Add(this.imageAlignmentBottomLeftBarItem1);
@@ -6126,6 +5821,8 @@
             // 
             // masterFilterRibbonPageGroup12
             // 
+            this.masterFilterRibbonPageGroup12.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup12.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup12.ItemLinks.Add(this.groupMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup12.ItemLinks.Add(this.groupIgnoreMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup12.Name = "masterFilterRibbonPageGroup12";
@@ -6139,6 +5836,8 @@
             // 
             // commonItemDesignRibbonPageGroup18
             // 
+            this.commonItemDesignRibbonPageGroup18.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup18.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup18.ItemLinks.Add(this.showGroupCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup18.ItemLinks.Add(this.editGroupNamesBarItem1);
             this.commonItemDesignRibbonPageGroup18.Name = "commonItemDesignRibbonPageGroup18";
@@ -6161,6 +5860,8 @@
             // 
             // masterFilterRibbonPageGroup13
             // 
+            this.masterFilterRibbonPageGroup13.AllowTextClipping = false;
+            this.masterFilterRibbonPageGroup13.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.masterFilterRibbonPageGroup13.ItemLinks.Add(this.tabPageMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup13.ItemLinks.Add(this.tabPageIgnoreMasterFilterBarItem1);
             this.masterFilterRibbonPageGroup13.Name = "masterFilterRibbonPageGroup13";
@@ -6175,12 +5876,16 @@
             // 
             // commonItemDesignRibbonPageGroup19
             // 
+            this.commonItemDesignRibbonPageGroup19.AllowTextClipping = false;
+            this.commonItemDesignRibbonPageGroup19.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonItemDesignRibbonPageGroup19.ItemLinks.Add(this.showTabPageCaptionBarItem1);
             this.commonItemDesignRibbonPageGroup19.ItemLinks.Add(this.editTabPageNamesBarItem1);
             this.commonItemDesignRibbonPageGroup19.Name = "commonItemDesignRibbonPageGroup19";
             // 
             // tabPageLayoutRibbonPageGroup1
             // 
+            this.tabPageLayoutRibbonPageGroup1.AllowTextClipping = false;
+            this.tabPageLayoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tabPageLayoutRibbonPageGroup1.ItemLinks.Add(this.displayItemAsTabPageBarItem1);
             this.tabPageLayoutRibbonPageGroup1.Name = "tabPageLayoutRibbonPageGroup1";
             // 
@@ -6201,6 +5906,8 @@
             // 
             // tabContainerReorderTabsRibbonPageGroup1
             // 
+            this.tabContainerReorderTabsRibbonPageGroup1.AllowTextClipping = false;
+            this.tabContainerReorderTabsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tabContainerReorderTabsRibbonPageGroup1.ItemLinks.Add(this.reorderTabsBarItem1);
             this.tabContainerReorderTabsRibbonPageGroup1.Name = "tabContainerReorderTabsRibbonPageGroup1";
             // 
@@ -6226,6 +5933,7 @@
             // 
             // commonRibbonPageGroup1
             // 
+            this.commonRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.commonRibbonPageGroup1.ItemLinks.Add(this.undoItem1);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.redoItem1);
             this.commonRibbonPageGroup1.ItemLinks.Add(this.fileOpenItem1);
@@ -6250,6 +5958,7 @@
             // 
             // clipboardRibbonPageGroup1
             // 
+            this.clipboardRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.pasteItem1);
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.cutItem1);
             this.clipboardRibbonPageGroup1.ItemLinks.Add(this.copyItem1);
@@ -6258,6 +5967,7 @@
             // 
             // fontRibbonPageGroup1
             // 
+            this.fontRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.fontRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup1);
             this.fontRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup2);
             this.fontRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup3);
@@ -6267,6 +5977,7 @@
             // 
             // paragraphRibbonPageGroup1
             // 
+            this.paragraphRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.paragraphRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup4);
             this.paragraphRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup5);
             this.paragraphRibbonPageGroup1.ItemLinks.Add(this.barButtonGroup6);
@@ -6275,12 +5986,14 @@
             // 
             // stylesRibbonPageGroup1
             // 
+            this.stylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.stylesRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("stylesRibbonPageGroup1.ImageOptions.Image")));
             this.stylesRibbonPageGroup1.ItemLinks.Add(this.galleryChangeStyleItem1);
             this.stylesRibbonPageGroup1.Name = "stylesRibbonPageGroup1";
             // 
             // editingRibbonPageGroup1
             // 
+            this.editingRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.editingRibbonPageGroup1.ItemLinks.Add(this.findItem1);
             this.editingRibbonPageGroup1.ItemLinks.Add(this.replaceItem1);
             this.editingRibbonPageGroup1.Name = "editingRibbonPageGroup1";
@@ -6298,16 +6011,19 @@
             // tablesRibbonPageGroup1
             // 
             this.tablesRibbonPageGroup1.AllowTextClipping = false;
+            this.tablesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tablesRibbonPageGroup1.ItemLinks.Add(this.insertTableItem1);
             this.tablesRibbonPageGroup1.Name = "tablesRibbonPageGroup1";
             // 
             // illustrationsRibbonPageGroup1
             // 
+            this.illustrationsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.illustrationsRibbonPageGroup1.ItemLinks.Add(this.insertFloatingPictureItem1);
             this.illustrationsRibbonPageGroup1.Name = "illustrationsRibbonPageGroup1";
             // 
             // linksRibbonPageGroup1
             // 
+            this.linksRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.linksRibbonPageGroup1.ItemLinks.Add(this.insertBookmarkItem1);
             this.linksRibbonPageGroup1.ItemLinks.Add(this.insertHyperlinkItem1);
             this.linksRibbonPageGroup1.Name = "linksRibbonPageGroup1";
@@ -6315,6 +6031,7 @@
             // symbolsRibbonPageGroup1
             // 
             this.symbolsRibbonPageGroup1.AllowTextClipping = false;
+            this.symbolsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.symbolsRibbonPageGroup1.ItemLinks.Add(this.insertSymbolItem1);
             this.symbolsRibbonPageGroup1.Name = "symbolsRibbonPageGroup1";
             // 
@@ -6328,6 +6045,7 @@
             // pageBackgroundRibbonPageGroup1
             // 
             this.pageBackgroundRibbonPageGroup1.AllowTextClipping = false;
+            this.pageBackgroundRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.pageBackgroundRibbonPageGroup1.ItemLinks.Add(this.changePageColorItem1);
             this.pageBackgroundRibbonPageGroup1.Name = "pageBackgroundRibbonPageGroup1";
             // 
@@ -6342,6 +6060,7 @@
             // 
             // tableStyleOptionsRibbonPageGroup1
             // 
+            this.tableStyleOptionsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableStyleOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleFirstRowItem1);
             this.tableStyleOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleLastRowItem1);
             this.tableStyleOptionsRibbonPageGroup1.ItemLinks.Add(this.toggleBandedRowsItem1);
@@ -6352,11 +6071,13 @@
             // 
             // tableStylesRibbonPageGroup1
             // 
+            this.tableStylesRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableStylesRibbonPageGroup1.ItemLinks.Add(this.galleryChangeTableStyleItem1);
             this.tableStylesRibbonPageGroup1.Name = "tableStylesRibbonPageGroup1";
             // 
             // tableDrawBordersRibbonPageGroup1
             // 
+            this.tableDrawBordersRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderLineStyleItem1);
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderLineWeightItem1);
             this.tableDrawBordersRibbonPageGroup1.ItemLinks.Add(this.changeTableBorderColorItem1);
@@ -6377,6 +6098,7 @@
             // 
             // tableTableRibbonPageGroup1
             // 
+            this.tableTableRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableTableRibbonPageGroup1.ItemLinks.Add(this.selectTableElementsItem1);
             this.tableTableRibbonPageGroup1.ItemLinks.Add(this.toggleShowTableGridLinesItem1);
             this.tableTableRibbonPageGroup1.ItemLinks.Add(this.showTablePropertiesFormItem1);
@@ -6384,6 +6106,7 @@
             // 
             // tableRowsAndColumnsRibbonPageGroup1
             // 
+            this.tableRowsAndColumnsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableRowsAndColumnsRibbonPageGroup1.ItemLinks.Add(this.deleteTableElementsItem1);
             this.tableRowsAndColumnsRibbonPageGroup1.ItemLinks.Add(this.insertTableRowAboveItem1);
             this.tableRowsAndColumnsRibbonPageGroup1.ItemLinks.Add(this.insertTableRowBelowItem1);
@@ -6393,6 +6116,7 @@
             // 
             // tableMergeRibbonPageGroup1
             // 
+            this.tableMergeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableMergeRibbonPageGroup1.ItemLinks.Add(this.mergeTableCellsItem1);
             this.tableMergeRibbonPageGroup1.ItemLinks.Add(this.showSplitTableCellsForm1);
             this.tableMergeRibbonPageGroup1.ItemLinks.Add(this.splitTableItem1);
@@ -6401,11 +6125,13 @@
             // tableCellSizeRibbonPageGroup1
             // 
             this.tableCellSizeRibbonPageGroup1.AllowTextClipping = false;
+            this.tableCellSizeRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableCellSizeRibbonPageGroup1.ItemLinks.Add(this.toggleTableAutoFitItem1);
             this.tableCellSizeRibbonPageGroup1.Name = "tableCellSizeRibbonPageGroup1";
             // 
             // tableAlignmentRibbonPageGroup1
             // 
+            this.tableAlignmentRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tableAlignmentRibbonPageGroup1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("tableAlignmentRibbonPageGroup1.ImageOptions.Image")));
             this.tableAlignmentRibbonPageGroup1.ItemLinks.Add(this.toggleTableCellsTopLeftAlignmentItem1);
             this.tableAlignmentRibbonPageGroup1.ItemLinks.Add(this.toggleTableCellsMiddleLeftAlignmentItem1);
@@ -6429,6 +6155,7 @@
             // 
             // floatingPictureToolsShapeStylesPageGroup1
             // 
+            this.floatingPictureToolsShapeStylesPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.floatingPictureToolsShapeStylesPageGroup1.ItemLinks.Add(this.changeFloatingObjectFillColorItem1);
             this.floatingPictureToolsShapeStylesPageGroup1.ItemLinks.Add(this.changeFloatingObjectOutlineColorItem1);
             this.floatingPictureToolsShapeStylesPageGroup1.ItemLinks.Add(this.changeFloatingObjectOutlineWeightItem1);
@@ -6436,6 +6163,7 @@
             // 
             // floatingPictureToolsArrangePageGroup1
             // 
+            this.floatingPictureToolsArrangePageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.floatingPictureToolsArrangePageGroup1.ItemLinks.Add(this.changeFloatingObjectTextWrapTypeItem1);
             this.floatingPictureToolsArrangePageGroup1.ItemLinks.Add(this.changeFloatingObjectAlignmentItem1);
             this.floatingPictureToolsArrangePageGroup1.ItemLinks.Add(this.floatingObjectBringForwardSubItem1);
@@ -6459,6 +6187,8 @@
             // 
             // fileRibbonPageGroup1
             // 
+            this.fileRibbonPageGroup1.AllowTextClipping = false;
+            this.fileRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.fileRibbonPageGroup1.ItemLinks.Add(this.fileNewBarItem1);
             this.fileRibbonPageGroup1.ItemLinks.Add(this.fileOpenBarItem1);
             this.fileRibbonPageGroup1.ItemLinks.Add(this.fileSaveBarItem1);
@@ -6468,6 +6198,8 @@
             // 
             // quickAccessHistoryRibbonPageGroup1
             // 
+            this.quickAccessHistoryRibbonPageGroup1.AllowTextClipping = false;
+            this.quickAccessHistoryRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.quickAccessHistoryRibbonPageGroup1.ItemLinks.Add(this.quickAccessUndoBarItem1);
             this.quickAccessHistoryRibbonPageGroup1.ItemLinks.Add(this.quickAccessRedoBarItem1);
             this.quickAccessHistoryRibbonPageGroup1.Name = "quickAccessHistoryRibbonPageGroup1";
@@ -6475,20 +6207,24 @@
             // 
             // ribbonPageGroupTemplates
             // 
+            this.ribbonPageGroupTemplates.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroupTemplates.ItemLinks.Add(this.barLoadTemplate);
             this.ribbonPageGroupTemplates.ItemLinks.Add(this.barSaveTemplate);
             this.ribbonPageGroupTemplates.Name = "ribbonPageGroupTemplates";
-            this.ribbonPageGroupTemplates.ShowCaptionButton = false;
             this.ribbonPageGroupTemplates.Text = "Templates";
             // 
             // historyRibbonPageGroup1
             // 
+            this.historyRibbonPageGroup1.AllowTextClipping = false;
+            this.historyRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.historyRibbonPageGroup1.ItemLinks.Add(this.undoBarItem1);
             this.historyRibbonPageGroup1.ItemLinks.Add(this.redoBarItem1);
             this.historyRibbonPageGroup1.Name = "historyRibbonPageGroup1";
             // 
             // insertRibbonPageGroup1
             // 
+            this.insertRibbonPageGroup1.AllowTextClipping = false;
+            this.insertRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertPivotBarItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertGridBarItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertChartBarItem1);
@@ -6500,50 +6236,60 @@
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertChoroplethMapBarItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertGeoPointMapBarSubItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertRangeFilterBarItem1);
-            this.insertRibbonPageGroup1.ItemLinks.Add(this.insertFilterElementSubItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertImagesBarSubItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertTextBoxBarItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertGroupBarItem1);
             this.insertRibbonPageGroup1.ItemLinks.Add(this.insertTabContainerBarItem1);
+            this.insertRibbonPageGroup1.ItemLinks.Add(this.insertFilterElementSubItem1);
             this.insertRibbonPageGroup1.Name = "insertRibbonPageGroup1";
             // 
             // itemOperationRibbonPageGroup1
             // 
+            this.itemOperationRibbonPageGroup1.AllowTextClipping = false;
+            this.itemOperationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.duplicateItemBarItem1);
             this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.deleteItemBarItem1);
-            this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.convertDashboardItemTypeBarItem1);
             this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.removeDataItemsBarItem1);
             this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.transposeItemBarItem1);
             this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.editRulesBarItem1);
+            this.itemOperationRibbonPageGroup1.ItemLinks.Add(this.convertDashboardItemTypeBarItem1);
             this.itemOperationRibbonPageGroup1.Name = "itemOperationRibbonPageGroup1";
             this.itemOperationRibbonPageGroup1.Visible = false;
             // 
             // groupOperationRibbonPageGroup1
             // 
+            this.groupOperationRibbonPageGroup1.AllowTextClipping = false;
+            this.groupOperationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.groupOperationRibbonPageGroup1.ItemLinks.Add(this.deleteGroupBarItem1);
             this.groupOperationRibbonPageGroup1.Name = "groupOperationRibbonPageGroup1";
             this.groupOperationRibbonPageGroup1.Visible = false;
             // 
             // tabContainerOperationRibbonPageGroup1
             // 
+            this.tabContainerOperationRibbonPageGroup1.AllowTextClipping = false;
+            this.tabContainerOperationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tabContainerOperationRibbonPageGroup1.ItemLinks.Add(this.deleteTabContainerBarItem1);
             this.tabContainerOperationRibbonPageGroup1.Name = "tabContainerOperationRibbonPageGroup1";
             this.tabContainerOperationRibbonPageGroup1.Visible = false;
             // 
             // tabPageOperationRibbonPageGroup1
             // 
+            this.tabPageOperationRibbonPageGroup1.AllowTextClipping = false;
+            this.tabPageOperationRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.tabPageOperationRibbonPageGroup1.ItemLinks.Add(this.deleteTabPageBarItem1);
             this.tabPageOperationRibbonPageGroup1.Name = "tabPageOperationRibbonPageGroup1";
             this.tabPageOperationRibbonPageGroup1.Visible = false;
             // 
             // dashboardDesignRibbonPageGroup1
             // 
+            this.dashboardDesignRibbonPageGroup1.AllowTextClipping = false;
+            this.dashboardDesignRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.dashboardTitleBarItem1);
             this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.setCurrencyCultureBarItem1);
             this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.dashboardColorSchemeBarItem1);
-            this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.dashboardParametersBarItem1);
             this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.dashboardAutomaticUpdatesBarItem1);
             this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.updateDataBarItem1);
+            this.dashboardDesignRibbonPageGroup1.ItemLinks.Add(this.dashboardParametersBarItem1);
             this.dashboardDesignRibbonPageGroup1.Name = "dashboardDesignRibbonPageGroup1";
             // 
             // dataSourceRibbonPage1
@@ -6553,12 +6299,15 @@
             this.sqlDataSourceQueryRibbonPageGroup1,
             this.extractSourceRibbonPageGroup1,
             this.federationDataSourceQueryRibbonPageGroup1,
-            this.dataSourceFilteringRibbonPageGroup1});
+            this.dataSourceFilteringRibbonPageGroup1,
+            this.mongoDBDataSourceQueryRibbonPageGroup1});
             this.dataSourceRibbonPage1.Name = "dataSourceRibbonPage1";
             this.dataSourceRibbonPage1.Visible = false;
             // 
             // dataSourceRibbonPageGroup1
             // 
+            this.dataSourceRibbonPageGroup1.AllowTextClipping = false;
+            this.dataSourceRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.newDataSourceBarItem1);
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.editSqlConnectionBarItem1);
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.editOlapConnectionBarItem1);
@@ -6570,11 +6319,16 @@
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.deleteDataSourceBarItem1);
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.serverModeBarItem1);
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.upateDataExtractBarItem1);
+            this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.editMongoDBConnectionBarItem1);
+            this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.editXpoConnectionBarItem1);
             this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.addCalculatedFieldBarItem1);
+            this.dataSourceRibbonPageGroup1.ItemLinks.Add(this.editJsonDataSourceBarItem1);
             this.dataSourceRibbonPageGroup1.Name = "dataSourceRibbonPageGroup1";
             // 
             // sqlDataSourceQueryRibbonPageGroup1
             // 
+            this.sqlDataSourceQueryRibbonPageGroup1.AllowTextClipping = false;
+            this.sqlDataSourceQueryRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.sqlDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.addQueryBarItem1);
             this.sqlDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.editQueryBarItem1);
             this.sqlDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.renameQueryBarItem1);
@@ -6585,6 +6339,8 @@
             // 
             // extractSourceRibbonPageGroup1
             // 
+            this.extractSourceRibbonPageGroup1.AllowTextClipping = false;
+            this.extractSourceRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.extractSourceRibbonPageGroup1.ItemLinks.Add(this.editExtractSourceConnectionBarItem1);
             this.extractSourceRibbonPageGroup1.ItemLinks.Add(this.editExtractSourceBarItem1);
             this.extractSourceRibbonPageGroup1.ItemLinks.Add(this.editExtractSourceQueryBarItem1);
@@ -6593,6 +6349,8 @@
             // 
             // federationDataSourceQueryRibbonPageGroup1
             // 
+            this.federationDataSourceQueryRibbonPageGroup1.AllowTextClipping = false;
+            this.federationDataSourceQueryRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.federationDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.addFederationQueryBarItem1);
             this.federationDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.editFederationQueryBarItem1);
             this.federationDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.renameFederationQueryBarItem1);
@@ -6602,6 +6360,8 @@
             // 
             // dataSourceFilteringRibbonPageGroup1
             // 
+            this.dataSourceFilteringRibbonPageGroup1.AllowTextClipping = false;
+            this.dataSourceFilteringRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.dataSourceFilteringRibbonPageGroup1.ItemLinks.Add(this.editDataSourceFilterBarItem1);
             this.dataSourceFilteringRibbonPageGroup1.ItemLinks.Add(this.clearDataSourceFilterBarItem1);
             this.dataSourceFilteringRibbonPageGroup1.Name = "dataSourceFilteringRibbonPageGroup1";
@@ -6617,21 +6377,26 @@
             // 
             // skinsRibbonPageGroup1
             // 
+            this.skinsRibbonPageGroup1.AllowTextClipping = false;
+            this.skinsRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.skinsRibbonPageGroup1.ItemLinks.Add(this.dashboardSkinsBarItem1);
+            this.skinsRibbonPageGroup1.ItemLinks.Add(this.dashboardSkinsBarItem2);
             this.skinsRibbonPageGroup1.ItemLinks.Add(this.dashboardSkinDropDownButtonItem1);
             this.skinsRibbonPageGroup1.Name = "skinsRibbonPageGroup1";
             // 
             // skinPaletteGalleryRibbonPageGroup1
             // 
+            this.skinPaletteGalleryRibbonPageGroup1.AllowTextClipping = false;
+            this.skinPaletteGalleryRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.skinPaletteGalleryRibbonPageGroup1.ItemLinks.Add(this.dashboardSkinPaletteRibbonGalleryBarItem1);
             this.skinPaletteGalleryRibbonPageGroup1.Name = "skinPaletteGalleryRibbonPageGroup1";
             // 
             // RibbonStatusBar
             // 
-            this.RibbonStatusBar.Location = new System.Drawing.Point(0, 769);
+            this.RibbonStatusBar.Location = new System.Drawing.Point(0, 764);
             this.RibbonStatusBar.Name = "RibbonStatusBar";
             this.RibbonStatusBar.Ribbon = this.Ribbon;
-            this.RibbonStatusBar.Size = new System.Drawing.Size(1325, 22);
+            this.RibbonStatusBar.Size = new System.Drawing.Size(1325, 27);
             // 
             // dashboardBarController1
             // 
@@ -6657,11 +6422,6 @@
             this.dashboardBarController1.BarItems.Add(this.insertPieMapBarItem1);
             this.dashboardBarController1.BarItems.Add(this.insertGeoPointMapBarSubItem1);
             this.dashboardBarController1.BarItems.Add(this.insertRangeFilterBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.insertComboBoxBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.insertListBoxBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.insertTreeViewBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.insertDateFilterBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.insertFilterElementSubItem1);
             this.dashboardBarController1.BarItems.Add(this.insertImageBarItem1);
             this.dashboardBarController1.BarItems.Add(this.insertBoundImageBarItem1);
             this.dashboardBarController1.BarItems.Add(this.insertImagesBarSubItem1);
@@ -6670,28 +6430,6 @@
             this.dashboardBarController1.BarItems.Add(this.insertTabContainerBarItem1);
             this.dashboardBarController1.BarItems.Add(this.duplicateItemBarItem1);
             this.dashboardBarController1.BarItems.Add(this.deleteItemBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToPivotBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToGridBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToChartBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToScatterChartBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToPieBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToGaugeBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToCardBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToTreemapBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToChoroplethMapBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToGeoPointMapBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToBubbleMapBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToPieMapBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertGeoPointMapBaseBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToRangeFilterBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToComboBoxBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToListBoxBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToTreeViewBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToDateFilterBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToFilterElementsBaseBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToBoundImageBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertToTextBoxBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.convertDashboardItemTypeBarItem1);
             this.dashboardBarController1.BarItems.Add(this.removeDataItemsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.transposeItemBarItem1);
             this.dashboardBarController1.BarItems.Add(this.editRulesBarItem1);
@@ -6701,7 +6439,6 @@
             this.dashboardBarController1.BarItems.Add(this.dashboardTitleBarItem1);
             this.dashboardBarController1.BarItems.Add(this.setCurrencyCultureBarItem1);
             this.dashboardBarController1.BarItems.Add(this.dashboardColorSchemeBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.dashboardParametersBarItem1);
             this.dashboardBarController1.BarItems.Add(this.dashboardAutomaticUpdatesBarItem1);
             this.dashboardBarController1.BarItems.Add(this.updateDataBarItem1);
             this.dashboardBarController1.BarItems.Add(this.newDataSourceBarItem1);
@@ -6715,7 +6452,6 @@
             this.dashboardBarController1.BarItems.Add(this.deleteDataSourceBarItem1);
             this.dashboardBarController1.BarItems.Add(this.serverModeBarItem1);
             this.dashboardBarController1.BarItems.Add(this.upateDataExtractBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.addCalculatedFieldBarItem1);
             this.dashboardBarController1.BarItems.Add(this.addQueryBarItem1);
             this.dashboardBarController1.BarItems.Add(this.editQueryBarItem1);
             this.dashboardBarController1.BarItems.Add(this.renameQueryBarItem1);
@@ -6731,35 +6467,12 @@
             this.dashboardBarController1.BarItems.Add(this.editDataSourceFilterBarItem1);
             this.dashboardBarController1.BarItems.Add(this.clearDataSourceFilterBarItem1);
             this.dashboardBarController1.BarItems.Add(this.dashboardSkinsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.dashboardSkinDropDownButtonItem1);
-            this.dashboardBarController1.BarItems.Add(this.dashboardSkinPaletteRibbonGalleryBarItem1);
             this.dashboardBarController1.BarItems.Add(this.editFilterBarItem1);
             this.dashboardBarController1.BarItems.Add(this.clearFilterBarItem1);
             this.dashboardBarController1.BarItems.Add(this.ignoreMasterFiltersBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.showItemCaptionBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.editItemNamesBarItem1);
             this.dashboardBarController1.BarItems.Add(this.pivotAutoExpandColumnBarItem1);
             this.dashboardBarController1.BarItems.Add(this.pivotAutoExpandRowBarItem1);
             this.dashboardBarController1.BarItems.Add(this.pivotInitialStateBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotShowColumnTotalsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotShowRowTotalsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotShowTotalsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotShowColumnGrandTotalsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotShowRowGrandTotalsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotShowGrandTotalsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotLayoutTypeCompactBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotLayoutTypeTabularBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotLayoutTypeBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotRowTotalsPositionTopBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotRowTotalsPositionBottomBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotRowTotalsPositionBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotColumnTotalsPositionNearBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotColumnTotalsPositionFarBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotColumnTotalsPositionBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotValuesPositionColumnsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotValuesPositionRowsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotValuesPositionBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.pivotResetLayoutOptionsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.masterFilterBarItem1);
             this.dashboardBarController1.BarItems.Add(this.multipleValuesMasterFilterBarItem1);
             this.dashboardBarController1.BarItems.Add(this.drillDownBarItem1);
@@ -6780,8 +6493,6 @@
             this.dashboardBarController1.BarItems.Add(this.chartXAxisSettingsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.chartYAxisSettingsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.chartShowLegendBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.galleryChartLegendPositionItem1);
-            this.dashboardBarController1.BarItems.Add(this.galleryChartSeriesTypeItem1);
             this.dashboardBarController1.BarItems.Add(this.useGlobalColorsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.useLocalColorsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.editActualColorsBarItem1);
@@ -6790,7 +6501,6 @@
             this.dashboardBarController1.BarItems.Add(this.scatterChartYAxisSettingsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.scatterChartPointLabelOptionsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.scatterChartShowLegendBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.galleryScatterChartLegendPositionItem1);
             this.dashboardBarController1.BarItems.Add(this.pieTargetDimensionsArgumentsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.pieTargetDimensionsSeriesBarItem1);
             this.dashboardBarController1.BarItems.Add(this.pieTargetDimensionsPointsBarItem1);
@@ -6830,7 +6540,6 @@
             this.dashboardBarController1.BarItems.Add(this.gaugeStyleLinearHorizontalBarItem1);
             this.dashboardBarController1.BarItems.Add(this.gaugeStyleLinearVerticalBarItem1);
             this.dashboardBarController1.BarItems.Add(this.gaugeShowCaptionsBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.galleryRangeFilterSeriesTypeItem1);
             this.dashboardBarController1.BarItems.Add(this.rangeFilterEditDateTimePeriodsBarItem1);
             this.dashboardBarController1.BarItems.Add(this.mapLoadBarItem1);
             this.dashboardBarController1.BarItems.Add(this.mapImportBarItem1);
@@ -6847,14 +6556,12 @@
             this.dashboardBarController1.BarItems.Add(this.mapFullExtentBarItem1);
             this.dashboardBarController1.BarItems.Add(this.choroplethMapShapeLabelsAttributeBarItem1);
             this.dashboardBarController1.BarItems.Add(this.mapShowLegendBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.galleryMapLegendPositionItem1);
             this.dashboardBarController1.BarItems.Add(this.geoPointMapClusterizationBarItem1);
             this.dashboardBarController1.BarItems.Add(this.mapShapeTitleAttributeBarItem1);
             this.dashboardBarController1.BarItems.Add(this.weightedLegendNoneBarItem1);
             this.dashboardBarController1.BarItems.Add(this.weightedLegendLinearBarItem1);
             this.dashboardBarController1.BarItems.Add(this.weightedLegendNestedBarItem1);
             this.dashboardBarController1.BarItems.Add(this.changeWeightedLegendTypeBarItem1);
-            this.dashboardBarController1.BarItems.Add(this.galleryWeightedLegendPositionItem1);
             this.dashboardBarController1.BarItems.Add(this.pieMapIsWeightedBarItem1);
             this.dashboardBarController1.BarItems.Add(this.comboBoxStandardTypeBarItem1);
             this.dashboardBarController1.BarItems.Add(this.comboBoxCheckedTypeBarItem1);
@@ -6932,6 +6639,72 @@
             this.dashboardBarController1.BarItems.Add(this.editTabPageNamesBarItem1);
             this.dashboardBarController1.BarItems.Add(this.displayItemAsTabPageBarItem1);
             this.dashboardBarController1.BarItems.Add(this.reorderTabsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.insertComboBoxBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.insertListBoxBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.insertTreeViewBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.insertDateFilterBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.insertFilterElementSubItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToPivotBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToGridBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToChartBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToScatterChartBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToPieBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToGaugeBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToCardBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToTreemapBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToChoroplethMapBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToGeoPointMapBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToBubbleMapBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToPieMapBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertGeoPointMapBaseBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToRangeFilterBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToComboBoxBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToListBoxBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToTreeViewBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToDateFilterBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToFilterElementsBaseBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToBoundImageBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertToTextBoxBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.convertDashboardItemTypeBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.dashboardParametersBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.editMongoDBConnectionBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.editXpoConnectionBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.addCalculatedFieldBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.editJsonDataSourceBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.manageMongoDBQueriesBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.renameMongoDBQueryBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.deleteMongoDBQueryBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.dashboardSkinsBarItem2);
+            this.dashboardBarController1.BarItems.Add(this.dashboardSkinDropDownButtonItem1);
+            this.dashboardBarController1.BarItems.Add(this.dashboardSkinPaletteRibbonGalleryBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.editVisibleDataFilterBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.showItemCaptionBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.editItemNamesBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotShowColumnTotalsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotShowRowTotalsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotShowTotalsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotShowColumnGrandTotalsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotShowRowGrandTotalsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotShowGrandTotalsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotLayoutTypeCompactBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotLayoutTypeTabularBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotLayoutTypeBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotRowTotalsPositionTopBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotRowTotalsPositionBottomBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotRowTotalsPositionBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotColumnTotalsPositionNearBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotColumnTotalsPositionFarBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotColumnTotalsPositionBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotValuesPositionColumnsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotValuesPositionRowsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotValuesPositionBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.pivotResetLayoutOptionsBarItem1);
+            this.dashboardBarController1.BarItems.Add(this.galleryChartLegendPositionItem1);
+            this.dashboardBarController1.BarItems.Add(this.galleryChartSeriesTypeItem1);
+            this.dashboardBarController1.BarItems.Add(this.galleryScatterChartLegendPositionItem1);
+            this.dashboardBarController1.BarItems.Add(this.galleryRangeFilterSeriesTypeItem1);
+            this.dashboardBarController1.BarItems.Add(this.galleryMapLegendPositionItem1);
+            this.dashboardBarController1.BarItems.Add(this.galleryWeightedLegendPositionItem1);
             this.dashboardBarController1.Control = this.DashboardDesigner;
             // 
             // textBoxEditorBarController1
@@ -7110,6 +6883,846 @@
             this.dlgSave.RestoreDirectory = true;
             this.dlgSave.Title = "Spread Commander";
             // 
+            // insertComboBoxBarItem1
+            // 
+            this.insertComboBoxBarItem1.Id = 462;
+            this.insertComboBoxBarItem1.Name = "insertComboBoxBarItem1";
+            // 
+            // insertListBoxBarItem1
+            // 
+            this.insertListBoxBarItem1.Id = 463;
+            this.insertListBoxBarItem1.Name = "insertListBoxBarItem1";
+            // 
+            // insertTreeViewBarItem1
+            // 
+            this.insertTreeViewBarItem1.Id = 464;
+            this.insertTreeViewBarItem1.Name = "insertTreeViewBarItem1";
+            // 
+            // insertDateFilterBarItem1
+            // 
+            this.insertDateFilterBarItem1.Id = 465;
+            this.insertDateFilterBarItem1.Name = "insertDateFilterBarItem1";
+            // 
+            // insertFilterElementSubItem1
+            // 
+            this.insertFilterElementSubItem1.Id = 461;
+            this.insertFilterElementSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.insertComboBoxBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.insertListBoxBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.insertTreeViewBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.insertDateFilterBarItem1)});
+            this.insertFilterElementSubItem1.Name = "insertFilterElementSubItem1";
+            this.insertFilterElementSubItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // convertToPivotBarItem1
+            // 
+            this.convertToPivotBarItem1.Id = 467;
+            this.convertToPivotBarItem1.Name = "convertToPivotBarItem1";
+            // 
+            // convertToGridBarItem1
+            // 
+            this.convertToGridBarItem1.Id = 468;
+            this.convertToGridBarItem1.Name = "convertToGridBarItem1";
+            // 
+            // convertToChartBarItem1
+            // 
+            this.convertToChartBarItem1.Id = 469;
+            this.convertToChartBarItem1.Name = "convertToChartBarItem1";
+            // 
+            // convertToScatterChartBarItem1
+            // 
+            this.convertToScatterChartBarItem1.Id = 470;
+            this.convertToScatterChartBarItem1.Name = "convertToScatterChartBarItem1";
+            // 
+            // convertToPieBarItem1
+            // 
+            this.convertToPieBarItem1.Id = 471;
+            this.convertToPieBarItem1.Name = "convertToPieBarItem1";
+            // 
+            // convertToGaugeBarItem1
+            // 
+            this.convertToGaugeBarItem1.Id = 472;
+            this.convertToGaugeBarItem1.Name = "convertToGaugeBarItem1";
+            // 
+            // convertToCardBarItem1
+            // 
+            this.convertToCardBarItem1.Id = 473;
+            this.convertToCardBarItem1.Name = "convertToCardBarItem1";
+            // 
+            // convertToTreemapBarItem1
+            // 
+            this.convertToTreemapBarItem1.Id = 474;
+            this.convertToTreemapBarItem1.Name = "convertToTreemapBarItem1";
+            // 
+            // convertToChoroplethMapBarItem1
+            // 
+            this.convertToChoroplethMapBarItem1.Id = 475;
+            this.convertToChoroplethMapBarItem1.Name = "convertToChoroplethMapBarItem1";
+            // 
+            // convertToGeoPointMapBarItem1
+            // 
+            this.convertToGeoPointMapBarItem1.Id = 476;
+            this.convertToGeoPointMapBarItem1.Name = "convertToGeoPointMapBarItem1";
+            // 
+            // convertToBubbleMapBarItem1
+            // 
+            this.convertToBubbleMapBarItem1.Id = 477;
+            this.convertToBubbleMapBarItem1.Name = "convertToBubbleMapBarItem1";
+            // 
+            // convertToPieMapBarItem1
+            // 
+            this.convertToPieMapBarItem1.Id = 478;
+            this.convertToPieMapBarItem1.Name = "convertToPieMapBarItem1";
+            // 
+            // convertGeoPointMapBaseBarItem1
+            // 
+            this.convertGeoPointMapBaseBarItem1.Id = 479;
+            this.convertGeoPointMapBaseBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToGeoPointMapBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToBubbleMapBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToPieMapBarItem1)});
+            this.convertGeoPointMapBaseBarItem1.Name = "convertGeoPointMapBaseBarItem1";
+            // 
+            // convertToRangeFilterBarItem1
+            // 
+            this.convertToRangeFilterBarItem1.Id = 480;
+            this.convertToRangeFilterBarItem1.Name = "convertToRangeFilterBarItem1";
+            // 
+            // convertToComboBoxBarItem1
+            // 
+            this.convertToComboBoxBarItem1.Id = 481;
+            this.convertToComboBoxBarItem1.Name = "convertToComboBoxBarItem1";
+            // 
+            // convertToListBoxBarItem1
+            // 
+            this.convertToListBoxBarItem1.Id = 482;
+            this.convertToListBoxBarItem1.Name = "convertToListBoxBarItem1";
+            // 
+            // convertToTreeViewBarItem1
+            // 
+            this.convertToTreeViewBarItem1.Id = 483;
+            this.convertToTreeViewBarItem1.Name = "convertToTreeViewBarItem1";
+            // 
+            // convertToDateFilterBarItem1
+            // 
+            this.convertToDateFilterBarItem1.Id = 484;
+            this.convertToDateFilterBarItem1.Name = "convertToDateFilterBarItem1";
+            // 
+            // convertToFilterElementsBaseBarItem1
+            // 
+            this.convertToFilterElementsBaseBarItem1.Id = 485;
+            this.convertToFilterElementsBaseBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToComboBoxBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToListBoxBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToTreeViewBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToDateFilterBarItem1)});
+            this.convertToFilterElementsBaseBarItem1.Name = "convertToFilterElementsBaseBarItem1";
+            // 
+            // convertToBoundImageBarItem1
+            // 
+            this.convertToBoundImageBarItem1.Id = 486;
+            this.convertToBoundImageBarItem1.Name = "convertToBoundImageBarItem1";
+            // 
+            // convertToTextBoxBarItem1
+            // 
+            this.convertToTextBoxBarItem1.Id = 487;
+            this.convertToTextBoxBarItem1.Name = "convertToTextBoxBarItem1";
+            // 
+            // convertDashboardItemTypeBarItem1
+            // 
+            this.convertDashboardItemTypeBarItem1.Id = 466;
+            this.convertDashboardItemTypeBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToPivotBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToGridBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToChartBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToScatterChartBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToPieBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToGaugeBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToCardBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToTreemapBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToChoroplethMapBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertGeoPointMapBaseBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToRangeFilterBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToFilterElementsBaseBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToBoundImageBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.convertToTextBoxBarItem1)});
+            this.convertDashboardItemTypeBarItem1.Name = "convertDashboardItemTypeBarItem1";
+            // 
+            // dashboardParametersBarItem1
+            // 
+            this.dashboardParametersBarItem1.Id = 488;
+            this.dashboardParametersBarItem1.Name = "dashboardParametersBarItem1";
+            // 
+            // editMongoDBConnectionBarItem1
+            // 
+            this.editMongoDBConnectionBarItem1.Id = 489;
+            this.editMongoDBConnectionBarItem1.Name = "editMongoDBConnectionBarItem1";
+            // 
+            // editXpoConnectionBarItem1
+            // 
+            this.editXpoConnectionBarItem1.Id = 490;
+            this.editXpoConnectionBarItem1.Name = "editXpoConnectionBarItem1";
+            // 
+            // addCalculatedFieldBarItem1
+            // 
+            this.addCalculatedFieldBarItem1.Id = 491;
+            this.addCalculatedFieldBarItem1.Name = "addCalculatedFieldBarItem1";
+            // 
+            // editJsonDataSourceBarItem1
+            // 
+            this.editJsonDataSourceBarItem1.Id = 492;
+            this.editJsonDataSourceBarItem1.Name = "editJsonDataSourceBarItem1";
+            // 
+            // mongoDBDataSourceQueryRibbonPageGroup1
+            // 
+            this.mongoDBDataSourceQueryRibbonPageGroup1.AllowTextClipping = false;
+            this.mongoDBDataSourceQueryRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.mongoDBDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.manageMongoDBQueriesBarItem1);
+            this.mongoDBDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.renameMongoDBQueryBarItem1);
+            this.mongoDBDataSourceQueryRibbonPageGroup1.ItemLinks.Add(this.deleteMongoDBQueryBarItem1);
+            this.mongoDBDataSourceQueryRibbonPageGroup1.Name = "mongoDBDataSourceQueryRibbonPageGroup1";
+            this.mongoDBDataSourceQueryRibbonPageGroup1.Visible = false;
+            // 
+            // manageMongoDBQueriesBarItem1
+            // 
+            this.manageMongoDBQueriesBarItem1.Id = 493;
+            this.manageMongoDBQueriesBarItem1.Name = "manageMongoDBQueriesBarItem1";
+            // 
+            // renameMongoDBQueryBarItem1
+            // 
+            this.renameMongoDBQueryBarItem1.Id = 494;
+            this.renameMongoDBQueryBarItem1.Name = "renameMongoDBQueryBarItem1";
+            // 
+            // deleteMongoDBQueryBarItem1
+            // 
+            this.deleteMongoDBQueryBarItem1.Id = 495;
+            this.deleteMongoDBQueryBarItem1.Name = "deleteMongoDBQueryBarItem1";
+            // 
+            // dashboardSkinsBarItem2
+            // 
+            // 
+            // 
+            // 
+            this.dashboardSkinsBarItem2.Gallery.AllowHoverImages = true;
+            this.dashboardSkinsBarItem2.Gallery.ColumnCount = 4;
+            this.dashboardSkinsBarItem2.Gallery.FixedHoverImageSize = false;
+            galleryItemGroup7.Caption = "Standard Skins";
+            galleryItem24.Caption = "Basic";
+            galleryItem24.Checked = true;
+            galleryItem24.Hint = "Basic";
+            galleryItem24.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage23")));
+            galleryItem24.Tag = "Basic";
+            galleryItem24.Value = "Basic";
+            galleryItem25.Caption = "The Bezier";
+            galleryItem25.Hint = "The Bezier";
+            galleryItem25.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage24")));
+            galleryItem25.Tag = "The Bezier";
+            galleryItem25.Value = "The Bezier";
+            galleryItem26.Caption = "Office 2019 Colorful";
+            galleryItem26.Hint = "Office 2019 Colorful";
+            galleryItem26.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage25")));
+            galleryItem26.Tag = "Office 2019 Colorful";
+            galleryItem26.Value = "Office 2019 Colorful";
+            galleryItem27.Caption = "Office 2019 Black";
+            galleryItem27.Hint = "Office 2019 Black";
+            galleryItem27.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage26")));
+            galleryItem27.Tag = "Office 2019 Black";
+            galleryItem27.Value = "Office 2019 Black";
+            galleryItem28.Caption = "Office 2019 White";
+            galleryItem28.Hint = "Office 2019 White";
+            galleryItem28.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage27")));
+            galleryItem28.Tag = "Office 2019 White";
+            galleryItem28.Value = "Office 2019 White";
+            galleryItem29.Caption = "Office 2019 Dark";
+            galleryItem29.Hint = "Office 2019 Dark";
+            galleryItem29.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage28")));
+            galleryItem29.Tag = "Office 2019 Dark Gray";
+            galleryItem29.Value = "Office 2019 Dark Gray";
+            galleryItem30.Caption = "High Contrast";
+            galleryItem30.Hint = "High Contrast";
+            galleryItem30.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage29")));
+            galleryItem30.Tag = "High Contrast";
+            galleryItem30.Value = "High Contrast";
+            galleryItem31.Caption = "DevExpress Style";
+            galleryItem31.Hint = "DevExpress Style";
+            galleryItem31.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage30")));
+            galleryItem31.Tag = "DevExpress Style";
+            galleryItem31.Value = "DevExpress Style";
+            galleryItem32.Caption = "DevExpress Dark Style";
+            galleryItem32.Hint = "DevExpress Dark Style";
+            galleryItem32.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage31")));
+            galleryItem32.Tag = "DevExpress Dark Style";
+            galleryItem32.Value = "DevExpress Dark Style";
+            galleryItem33.Caption = "Office 2016 Colorful";
+            galleryItem33.Hint = "Office 2016 Colorful";
+            galleryItem33.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage32")));
+            galleryItem33.Tag = "Office 2016 Colorful";
+            galleryItem33.Value = "Office 2016 Colorful";
+            galleryItem34.Caption = "Office 2016 Dark";
+            galleryItem34.Hint = "Office 2016 Dark";
+            galleryItem34.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage33")));
+            galleryItem34.Tag = "Office 2016 Dark";
+            galleryItem34.Value = "Office 2016 Dark";
+            galleryItem35.Caption = "Office 2016 Black";
+            galleryItem35.Hint = "Office 2016 Black";
+            galleryItem35.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage34")));
+            galleryItem35.Tag = "Office 2016 Black";
+            galleryItem35.Value = "Office 2016 Black";
+            galleryItem36.Caption = "Office 2013 White";
+            galleryItem36.Hint = "Office 2013 White";
+            galleryItem36.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage35")));
+            galleryItem36.Tag = "Office 2013";
+            galleryItem36.Value = "Office 2013";
+            galleryItem37.Caption = "Office 2013 Dark Gray";
+            galleryItem37.Hint = "Office 2013 Dark Gray";
+            galleryItem37.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage36")));
+            galleryItem37.Tag = "Office 2013 Dark Gray";
+            galleryItem37.Value = "Office 2013 Dark Gray";
+            galleryItem38.Caption = "Office 2013 Light Gray";
+            galleryItem38.Hint = "Office 2013 Light Gray";
+            galleryItem38.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage37")));
+            galleryItem38.Tag = "Office 2013 Light Gray";
+            galleryItem38.Value = "Office 2013 Light Gray";
+            galleryItem39.Caption = "Office 2010 Blue";
+            galleryItem39.Hint = "Office 2010 Blue";
+            galleryItem39.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage38")));
+            galleryItem39.Tag = "Office 2010 Blue";
+            galleryItem39.Value = "Office 2010 Blue";
+            galleryItem40.Caption = "Office 2010 Black";
+            galleryItem40.Hint = "Office 2010 Black";
+            galleryItem40.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage39")));
+            galleryItem40.Tag = "Office 2010 Black";
+            galleryItem40.Value = "Office 2010 Black";
+            galleryItem41.Caption = "Office 2010 Silver";
+            galleryItem41.Hint = "Office 2010 Silver";
+            galleryItem41.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage40")));
+            galleryItem41.Tag = "Office 2010 Silver";
+            galleryItem41.Value = "Office 2010 Silver";
+            galleryItem42.Caption = "Visual Studio 2013 Blue";
+            galleryItem42.Hint = "Visual Studio 2013 Blue";
+            galleryItem42.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage41")));
+            galleryItem42.Tag = "Visual Studio 2013 Blue";
+            galleryItem42.Value = "Visual Studio 2013 Blue";
+            galleryItem43.Caption = "Visual Studio 2013 Dark";
+            galleryItem43.Hint = "Visual Studio 2013 Dark";
+            galleryItem43.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage42")));
+            galleryItem43.Tag = "Visual Studio 2013 Dark";
+            galleryItem43.Value = "Visual Studio 2013 Dark";
+            galleryItem44.Caption = "Visual Studio 2013 Light";
+            galleryItem44.Hint = "Visual Studio 2013 Light";
+            galleryItem44.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage43")));
+            galleryItem44.Tag = "Visual Studio 2013 Light";
+            galleryItem44.Value = "Visual Studio 2013 Light";
+            galleryItem45.Caption = "Seven Classic";
+            galleryItem45.Hint = "Seven Classic";
+            galleryItem45.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage44")));
+            galleryItem45.Tag = "Seven Classic";
+            galleryItem45.Value = "Seven Classic";
+            galleryItem46.Caption = "Visual Studio 2010";
+            galleryItem46.Hint = "Visual Studio 2010";
+            galleryItem46.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage45")));
+            galleryItem46.Tag = "VS2010";
+            galleryItem46.Value = "VS2010";
+            galleryItemGroup7.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            galleryItem24,
+            galleryItem25,
+            galleryItem26,
+            galleryItem27,
+            galleryItem28,
+            galleryItem29,
+            galleryItem30,
+            galleryItem31,
+            galleryItem32,
+            galleryItem33,
+            galleryItem34,
+            galleryItem35,
+            galleryItem36,
+            galleryItem37,
+            galleryItem38,
+            galleryItem39,
+            galleryItem40,
+            galleryItem41,
+            galleryItem42,
+            galleryItem43,
+            galleryItem44,
+            galleryItem45,
+            galleryItem46});
+            galleryItemGroup8.Caption = "Bonus Skins";
+            galleryItemGroup8.Visible = false;
+            galleryItemGroup9.Caption = "Theme Skins";
+            galleryItemGroup9.Visible = false;
+            galleryItemGroup10.Caption = "Custom Skins";
+            galleryItemGroup10.Visible = false;
+            this.dashboardSkinsBarItem2.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            galleryItemGroup7,
+            galleryItemGroup8,
+            galleryItemGroup9,
+            galleryItemGroup10});
+            this.dashboardSkinsBarItem2.Gallery.ImageSize = new System.Drawing.Size(16, 16);
+            this.dashboardSkinsBarItem2.Gallery.ItemCheckMode = DevExpress.XtraBars.Ribbon.Gallery.ItemCheckMode.SingleRadio;
+            this.dashboardSkinsBarItem2.Gallery.ItemImageLayout = DevExpress.Utils.Drawing.ImageLayoutMode.Squeeze;
+            this.dashboardSkinsBarItem2.Gallery.ItemImageLocation = DevExpress.Utils.Locations.Top;
+            skinPaddingEdges2.Left = 8;
+            skinPaddingEdges2.Right = 8;
+            this.dashboardSkinsBarItem2.Gallery.ItemImagePadding = skinPaddingEdges2;
+            this.dashboardSkinsBarItem2.Id = 496;
+            this.dashboardSkinsBarItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("dashboardSkinsBarItem2.ImageOptions.SvgImage")));
+            this.dashboardSkinsBarItem2.Name = "dashboardSkinsBarItem2";
+            this.dashboardSkinsBarItem2.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            // 
+            // dashboardSkinDropDownButtonItem1
+            // 
+            this.dashboardSkinDropDownButtonItem1.Id = 497;
+            this.dashboardSkinDropDownButtonItem1.Name = "dashboardSkinDropDownButtonItem1";
+            // 
+            // dashboardSkinPaletteRibbonGalleryBarItem1
+            // 
+            this.dashboardSkinPaletteRibbonGalleryBarItem1.Id = 498;
+            this.dashboardSkinPaletteRibbonGalleryBarItem1.Name = "dashboardSkinPaletteRibbonGalleryBarItem1";
+            // 
+            // editVisibleDataFilterBarItem1
+            // 
+            this.editVisibleDataFilterBarItem1.Id = 499;
+            this.editVisibleDataFilterBarItem1.Name = "editVisibleDataFilterBarItem1";
+            // 
+            // showItemCaptionBarItem1
+            // 
+            this.showItemCaptionBarItem1.Id = 500;
+            this.showItemCaptionBarItem1.Name = "showItemCaptionBarItem1";
+            // 
+            // editItemNamesBarItem1
+            // 
+            this.editItemNamesBarItem1.Id = 501;
+            this.editItemNamesBarItem1.Name = "editItemNamesBarItem1";
+            // 
+            // pivotLayoutRibbonPageGroup1
+            // 
+            this.pivotLayoutRibbonPageGroup1.AllowTextClipping = false;
+            this.pivotLayoutRibbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotShowTotalsBarItem1);
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotShowGrandTotalsBarItem1);
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotLayoutTypeBarItem1);
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotRowTotalsPositionBarItem1);
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotColumnTotalsPositionBarItem1);
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotValuesPositionBarItem1);
+            this.pivotLayoutRibbonPageGroup1.ItemLinks.Add(this.pivotResetLayoutOptionsBarItem1);
+            this.pivotLayoutRibbonPageGroup1.Name = "pivotLayoutRibbonPageGroup1";
+            // 
+            // pivotShowColumnTotalsBarItem1
+            // 
+            this.pivotShowColumnTotalsBarItem1.Id = 503;
+            this.pivotShowColumnTotalsBarItem1.Name = "pivotShowColumnTotalsBarItem1";
+            // 
+            // pivotShowRowTotalsBarItem1
+            // 
+            this.pivotShowRowTotalsBarItem1.Id = 504;
+            this.pivotShowRowTotalsBarItem1.Name = "pivotShowRowTotalsBarItem1";
+            // 
+            // pivotShowTotalsBarItem1
+            // 
+            this.pivotShowTotalsBarItem1.Id = 502;
+            this.pivotShowTotalsBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowColumnTotalsBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowRowTotalsBarItem1)});
+            this.pivotShowTotalsBarItem1.Name = "pivotShowTotalsBarItem1";
+            this.pivotShowTotalsBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // pivotShowColumnGrandTotalsBarItem1
+            // 
+            this.pivotShowColumnGrandTotalsBarItem1.Id = 506;
+            this.pivotShowColumnGrandTotalsBarItem1.Name = "pivotShowColumnGrandTotalsBarItem1";
+            // 
+            // pivotShowRowGrandTotalsBarItem1
+            // 
+            this.pivotShowRowGrandTotalsBarItem1.Id = 507;
+            this.pivotShowRowGrandTotalsBarItem1.Name = "pivotShowRowGrandTotalsBarItem1";
+            // 
+            // pivotShowGrandTotalsBarItem1
+            // 
+            this.pivotShowGrandTotalsBarItem1.Id = 505;
+            this.pivotShowGrandTotalsBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowColumnGrandTotalsBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotShowRowGrandTotalsBarItem1)});
+            this.pivotShowGrandTotalsBarItem1.Name = "pivotShowGrandTotalsBarItem1";
+            this.pivotShowGrandTotalsBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // pivotLayoutTypeCompactBarItem1
+            // 
+            this.pivotLayoutTypeCompactBarItem1.Id = 509;
+            this.pivotLayoutTypeCompactBarItem1.Name = "pivotLayoutTypeCompactBarItem1";
+            // 
+            // pivotLayoutTypeTabularBarItem1
+            // 
+            this.pivotLayoutTypeTabularBarItem1.Id = 510;
+            this.pivotLayoutTypeTabularBarItem1.Name = "pivotLayoutTypeTabularBarItem1";
+            // 
+            // pivotLayoutTypeBarItem1
+            // 
+            this.pivotLayoutTypeBarItem1.Id = 508;
+            this.pivotLayoutTypeBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotLayoutTypeCompactBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotLayoutTypeTabularBarItem1)});
+            this.pivotLayoutTypeBarItem1.Name = "pivotLayoutTypeBarItem1";
+            this.pivotLayoutTypeBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // pivotRowTotalsPositionTopBarItem1
+            // 
+            this.pivotRowTotalsPositionTopBarItem1.Id = 512;
+            this.pivotRowTotalsPositionTopBarItem1.Name = "pivotRowTotalsPositionTopBarItem1";
+            // 
+            // pivotRowTotalsPositionBottomBarItem1
+            // 
+            this.pivotRowTotalsPositionBottomBarItem1.Id = 513;
+            this.pivotRowTotalsPositionBottomBarItem1.Name = "pivotRowTotalsPositionBottomBarItem1";
+            // 
+            // pivotRowTotalsPositionBarItem1
+            // 
+            this.pivotRowTotalsPositionBarItem1.Id = 511;
+            this.pivotRowTotalsPositionBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotRowTotalsPositionTopBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotRowTotalsPositionBottomBarItem1)});
+            this.pivotRowTotalsPositionBarItem1.Name = "pivotRowTotalsPositionBarItem1";
+            this.pivotRowTotalsPositionBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // pivotColumnTotalsPositionNearBarItem1
+            // 
+            this.pivotColumnTotalsPositionNearBarItem1.Id = 515;
+            this.pivotColumnTotalsPositionNearBarItem1.Name = "pivotColumnTotalsPositionNearBarItem1";
+            // 
+            // pivotColumnTotalsPositionFarBarItem1
+            // 
+            this.pivotColumnTotalsPositionFarBarItem1.Id = 516;
+            this.pivotColumnTotalsPositionFarBarItem1.Name = "pivotColumnTotalsPositionFarBarItem1";
+            // 
+            // pivotColumnTotalsPositionBarItem1
+            // 
+            this.pivotColumnTotalsPositionBarItem1.Id = 514;
+            this.pivotColumnTotalsPositionBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotColumnTotalsPositionNearBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotColumnTotalsPositionFarBarItem1)});
+            this.pivotColumnTotalsPositionBarItem1.Name = "pivotColumnTotalsPositionBarItem1";
+            this.pivotColumnTotalsPositionBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // pivotValuesPositionColumnsBarItem1
+            // 
+            this.pivotValuesPositionColumnsBarItem1.Id = 518;
+            this.pivotValuesPositionColumnsBarItem1.Name = "pivotValuesPositionColumnsBarItem1";
+            // 
+            // pivotValuesPositionRowsBarItem1
+            // 
+            this.pivotValuesPositionRowsBarItem1.Id = 519;
+            this.pivotValuesPositionRowsBarItem1.Name = "pivotValuesPositionRowsBarItem1";
+            // 
+            // pivotValuesPositionBarItem1
+            // 
+            this.pivotValuesPositionBarItem1.Id = 517;
+            this.pivotValuesPositionBarItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotValuesPositionColumnsBarItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.pivotValuesPositionRowsBarItem1)});
+            this.pivotValuesPositionBarItem1.Name = "pivotValuesPositionBarItem1";
+            this.pivotValuesPositionBarItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionInMenu;
+            // 
+            // pivotResetLayoutOptionsBarItem1
+            // 
+            this.pivotResetLayoutOptionsBarItem1.Id = 520;
+            this.pivotResetLayoutOptionsBarItem1.Name = "pivotResetLayoutOptionsBarItem1";
+            // 
+            // galleryChartLegendPositionItem1
+            // 
+            // 
+            // 
+            // 
+            this.galleryChartLegendPositionItem1.Gallery.ColumnCount = 3;
+            chartLegendInsideTopLeftHorizontalGalleryItem1.Caption = "";
+            chartLegendInsideTopCenterHorizontalGalleryItem1.Caption = "";
+            chartLegendInsideTopRightHorizontalGalleryItem1.Caption = "";
+            chartLegendInsideBottomLeftHorizontalGalleryItem1.Caption = "";
+            chartLegendInsideBottomCenterHorizontalGalleryItem1.Caption = "";
+            chartLegendInsideBottomRightHorizontalGalleryItem1.Caption = "";
+            chartInsideHorizontalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendInsideTopLeftHorizontalGalleryItem1,
+            chartLegendInsideTopCenterHorizontalGalleryItem1,
+            chartLegendInsideTopRightHorizontalGalleryItem1,
+            chartLegendInsideBottomLeftHorizontalGalleryItem1,
+            chartLegendInsideBottomCenterHorizontalGalleryItem1,
+            chartLegendInsideBottomRightHorizontalGalleryItem1});
+            chartLegendInsideTopLeftVerticalGalleryItem1.Caption = "";
+            chartLegendInsideTopCenterVerticalGalleryItem1.Caption = "";
+            chartLegendInsideTopRightVerticalGalleryItem1.Caption = "";
+            chartLegendInsideBottomLeftVerticalGalleryItem1.Caption = "";
+            chartLegendInsideBottomCenterVerticalGalleryItem1.Caption = "";
+            chartLegendInsideBottomRightVerticalGalleryItem1.Caption = "";
+            chartInsideVerticalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendInsideTopLeftVerticalGalleryItem1,
+            chartLegendInsideTopCenterVerticalGalleryItem1,
+            chartLegendInsideTopRightVerticalGalleryItem1,
+            chartLegendInsideBottomLeftVerticalGalleryItem1,
+            chartLegendInsideBottomCenterVerticalGalleryItem1,
+            chartLegendInsideBottomRightVerticalGalleryItem1});
+            chartLegendOutsideTopLeftHorizontalGalleryItem1.Caption = "";
+            chartLegendOutsideTopCenterHorizontalGalleryItem1.Caption = "";
+            chartLegendOutsideTopRightHorizontalGalleryItem1.Caption = "";
+            chartLegendOutsideBottomLeftHorizontalGalleryItem1.Caption = "";
+            chartLegendOutsideBottomCenterHorizontalGalleryItem1.Caption = "";
+            chartLegendOutsideBottomRightHorizontalGalleryItem1.Caption = "";
+            chartOutsideHorizontalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendOutsideTopLeftHorizontalGalleryItem1,
+            chartLegendOutsideTopCenterHorizontalGalleryItem1,
+            chartLegendOutsideTopRightHorizontalGalleryItem1,
+            chartLegendOutsideBottomLeftHorizontalGalleryItem1,
+            chartLegendOutsideBottomCenterHorizontalGalleryItem1,
+            chartLegendOutsideBottomRightHorizontalGalleryItem1});
+            chartLegendOutsideTopLeftVerticalGalleryItem1.Caption = "";
+            chartLegendOutsideTopRightVerticalGalleryItem1.Caption = "";
+            chartLegendOutsideBottomLeftVerticalGalleryItem1.Caption = "";
+            chartLegendOutsideBottomRightVerticalGalleryItem1.Caption = "";
+            chartOutsideVerticalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendOutsideTopLeftVerticalGalleryItem1,
+            chartLegendOutsideTopRightVerticalGalleryItem1,
+            chartLegendOutsideBottomLeftVerticalGalleryItem1,
+            chartLegendOutsideBottomRightVerticalGalleryItem1});
+            this.galleryChartLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            chartInsideHorizontalLegendGalleryGroup1,
+            chartInsideVerticalLegendGalleryGroup1,
+            chartOutsideHorizontalLegendGalleryGroup1,
+            chartOutsideVerticalLegendGalleryGroup1});
+            this.galleryChartLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
+            this.galleryChartLegendPositionItem1.Gallery.RowCount = 8;
+            this.galleryChartLegendPositionItem1.Id = 521;
+            this.galleryChartLegendPositionItem1.Name = "galleryChartLegendPositionItem1";
+            // 
+            // galleryChartSeriesTypeItem1
+            // 
+            // 
+            // 
+            // 
+            chartBarSeriesGalleryItem1.Caption = "";
+            chartStackedBarSeriesGalleryItem1.Caption = "";
+            chartFullStackedBarSeriesGalleryItem1.Caption = "";
+            chartBarSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartBarSeriesGalleryItem1,
+            chartStackedBarSeriesGalleryItem1,
+            chartFullStackedBarSeriesGalleryItem1});
+            chartPointSeriesGalleryItem1.Caption = "";
+            chartLineSeriesGalleryItem1.Caption = "";
+            chartStackedLineSeriesGalleryItem1.Caption = "";
+            chartFullStackedLineSeriesGalleryItem1.Caption = "";
+            chartStepLineSeriesGalleryItem1.Caption = "";
+            chartSplineSeriesGalleryItem1.Caption = "";
+            chartPointLineSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartPointSeriesGalleryItem1,
+            chartLineSeriesGalleryItem1,
+            chartStackedLineSeriesGalleryItem1,
+            chartFullStackedLineSeriesGalleryItem1,
+            chartStepLineSeriesGalleryItem1,
+            chartSplineSeriesGalleryItem1});
+            chartAreaSeriesGalleryItem1.Caption = "";
+            chartStackedAreaSeriesGalleryItem1.Caption = "";
+            chartFullStackedAreaSeriesGalleryItem1.Caption = "";
+            chartStepAreaSeriesGalleryItem1.Caption = "";
+            chartSplineAreaSeriesGalleryItem1.Caption = "";
+            chartStackedSplineAreaSeriesGalleryItem1.Caption = "";
+            chartFullStackedSplineAreaSeriesGalleryItem1.Caption = "";
+            chartAreaSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartAreaSeriesGalleryItem1,
+            chartStackedAreaSeriesGalleryItem1,
+            chartFullStackedAreaSeriesGalleryItem1,
+            chartStepAreaSeriesGalleryItem1,
+            chartSplineAreaSeriesGalleryItem1,
+            chartStackedSplineAreaSeriesGalleryItem1,
+            chartFullStackedSplineAreaSeriesGalleryItem1});
+            chartSideBySideRangeBarSeriesGalleryItem1.Caption = "";
+            chartRangeAreaSeriesGalleryItem1.Caption = "";
+            chartRangeSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartSideBySideRangeBarSeriesGalleryItem1,
+            chartRangeAreaSeriesGalleryItem1});
+            chartWeightedSeriesGalleryItem1.Caption = "";
+            chartBubbleSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartWeightedSeriesGalleryItem1});
+            chartHighLowCloseSeriesGalleryItem1.Caption = "";
+            chartCandleStickSeriesGalleryItem1.Caption = "";
+            chartStockSeriesGalleryItem1.Caption = "";
+            chartFinancialSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartHighLowCloseSeriesGalleryItem1,
+            chartCandleStickSeriesGalleryItem1,
+            chartStockSeriesGalleryItem1});
+            this.galleryChartSeriesTypeItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            chartBarSeriesGalleryGroup1,
+            chartPointLineSeriesGalleryGroup1,
+            chartAreaSeriesGalleryGroup1,
+            chartRangeSeriesGalleryGroup1,
+            chartBubbleSeriesGalleryGroup1,
+            chartFinancialSeriesGalleryGroup1});
+            this.galleryChartSeriesTypeItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
+            this.galleryChartSeriesTypeItem1.Gallery.RowCount = 8;
+            this.galleryChartSeriesTypeItem1.Id = 522;
+            this.galleryChartSeriesTypeItem1.Name = "galleryChartSeriesTypeItem1";
+            // 
+            // galleryScatterChartLegendPositionItem1
+            // 
+            // 
+            // 
+            // 
+            this.galleryScatterChartLegendPositionItem1.Gallery.ColumnCount = 3;
+            chartLegendInsideTopLeftHorizontalGalleryItem2.Caption = "";
+            chartLegendInsideTopCenterHorizontalGalleryItem2.Caption = "";
+            chartLegendInsideTopRightHorizontalGalleryItem2.Caption = "";
+            chartLegendInsideBottomLeftHorizontalGalleryItem2.Caption = "";
+            chartLegendInsideBottomCenterHorizontalGalleryItem2.Caption = "";
+            chartLegendInsideBottomRightHorizontalGalleryItem2.Caption = "";
+            chartInsideHorizontalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendInsideTopLeftHorizontalGalleryItem2,
+            chartLegendInsideTopCenterHorizontalGalleryItem2,
+            chartLegendInsideTopRightHorizontalGalleryItem2,
+            chartLegendInsideBottomLeftHorizontalGalleryItem2,
+            chartLegendInsideBottomCenterHorizontalGalleryItem2,
+            chartLegendInsideBottomRightHorizontalGalleryItem2});
+            chartLegendInsideTopLeftVerticalGalleryItem2.Caption = "";
+            chartLegendInsideTopCenterVerticalGalleryItem2.Caption = "";
+            chartLegendInsideTopRightVerticalGalleryItem2.Caption = "";
+            chartLegendInsideBottomLeftVerticalGalleryItem2.Caption = "";
+            chartLegendInsideBottomCenterVerticalGalleryItem2.Caption = "";
+            chartLegendInsideBottomRightVerticalGalleryItem2.Caption = "";
+            chartInsideVerticalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendInsideTopLeftVerticalGalleryItem2,
+            chartLegendInsideTopCenterVerticalGalleryItem2,
+            chartLegendInsideTopRightVerticalGalleryItem2,
+            chartLegendInsideBottomLeftVerticalGalleryItem2,
+            chartLegendInsideBottomCenterVerticalGalleryItem2,
+            chartLegendInsideBottomRightVerticalGalleryItem2});
+            chartLegendOutsideTopLeftHorizontalGalleryItem2.Caption = "";
+            chartLegendOutsideTopCenterHorizontalGalleryItem2.Caption = "";
+            chartLegendOutsideTopRightHorizontalGalleryItem2.Caption = "";
+            chartLegendOutsideBottomLeftHorizontalGalleryItem2.Caption = "";
+            chartLegendOutsideBottomCenterHorizontalGalleryItem2.Caption = "";
+            chartLegendOutsideBottomRightHorizontalGalleryItem2.Caption = "";
+            chartOutsideHorizontalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendOutsideTopLeftHorizontalGalleryItem2,
+            chartLegendOutsideTopCenterHorizontalGalleryItem2,
+            chartLegendOutsideTopRightHorizontalGalleryItem2,
+            chartLegendOutsideBottomLeftHorizontalGalleryItem2,
+            chartLegendOutsideBottomCenterHorizontalGalleryItem2,
+            chartLegendOutsideBottomRightHorizontalGalleryItem2});
+            chartLegendOutsideTopLeftVerticalGalleryItem2.Caption = "";
+            chartLegendOutsideTopRightVerticalGalleryItem2.Caption = "";
+            chartLegendOutsideBottomLeftVerticalGalleryItem2.Caption = "";
+            chartLegendOutsideBottomRightVerticalGalleryItem2.Caption = "";
+            chartOutsideVerticalLegendGalleryGroup2.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            chartLegendOutsideTopLeftVerticalGalleryItem2,
+            chartLegendOutsideTopRightVerticalGalleryItem2,
+            chartLegendOutsideBottomLeftVerticalGalleryItem2,
+            chartLegendOutsideBottomRightVerticalGalleryItem2});
+            this.galleryScatterChartLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            chartInsideHorizontalLegendGalleryGroup2,
+            chartInsideVerticalLegendGalleryGroup2,
+            chartOutsideHorizontalLegendGalleryGroup2,
+            chartOutsideVerticalLegendGalleryGroup2});
+            this.galleryScatterChartLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
+            this.galleryScatterChartLegendPositionItem1.Gallery.RowCount = 8;
+            this.galleryScatterChartLegendPositionItem1.Id = 523;
+            this.galleryScatterChartLegendPositionItem1.Name = "galleryScatterChartLegendPositionItem1";
+            // 
+            // galleryRangeFilterSeriesTypeItem1
+            // 
+            // 
+            // 
+            // 
+            this.galleryRangeFilterSeriesTypeItem1.Gallery.ColumnCount = 3;
+            rangeLineSeriesGalleryItem1.Caption = "";
+            rangeStackedLineSeriesGalleryItem1.Caption = "";
+            rangeFullStackedLineSeriesGalleryItem1.Caption = "";
+            rangePointLineSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            rangeLineSeriesGalleryItem1,
+            rangeStackedLineSeriesGalleryItem1,
+            rangeFullStackedLineSeriesGalleryItem1});
+            rangeAreaSeriesGalleryItem1.Caption = "";
+            rangeStackedAreaSeriesGalleryItem1.Caption = "";
+            rangeFullStackedAreaSeriesGalleryItem1.Caption = "";
+            rangeAreaSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            rangeAreaSeriesGalleryItem1,
+            rangeStackedAreaSeriesGalleryItem1,
+            rangeFullStackedAreaSeriesGalleryItem1});
+            rangeBarSeriesGalleryItem1.Caption = "";
+            rangeStackedBarSeriesGalleryItem1.Caption = "";
+            rangeFullStackedBarSeriesGalleryItem1.Caption = "";
+            rangeBarSeriesGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            rangeBarSeriesGalleryItem1,
+            rangeStackedBarSeriesGalleryItem1,
+            rangeFullStackedBarSeriesGalleryItem1});
+            this.galleryRangeFilterSeriesTypeItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            rangePointLineSeriesGalleryGroup1,
+            rangeAreaSeriesGalleryGroup1,
+            rangeBarSeriesGalleryGroup1});
+            this.galleryRangeFilterSeriesTypeItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
+            this.galleryRangeFilterSeriesTypeItem1.Id = 524;
+            this.galleryRangeFilterSeriesTypeItem1.Name = "galleryRangeFilterSeriesTypeItem1";
+            // 
+            // galleryMapLegendPositionItem1
+            // 
+            // 
+            // 
+            // 
+            this.galleryMapLegendPositionItem1.Gallery.ColumnCount = 3;
+            mapLegendTopLeftVerticalGalleryItem1.Caption = "";
+            mapLegendTopCenterVerticalGalleryItem1.Caption = "";
+            mapLegendTopRightVerticalGalleryItem1.Caption = "";
+            mapLegendBottomLeftVerticalGalleryItem1.Caption = "";
+            mapLegendBottomCenterVerticalGalleryItem1.Caption = "";
+            mapLegendBottomRightVerticalGalleryItem1.Caption = "";
+            mapVerticalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            mapLegendTopLeftVerticalGalleryItem1,
+            mapLegendTopCenterVerticalGalleryItem1,
+            mapLegendTopRightVerticalGalleryItem1,
+            mapLegendBottomLeftVerticalGalleryItem1,
+            mapLegendBottomCenterVerticalGalleryItem1,
+            mapLegendBottomRightVerticalGalleryItem1});
+            mapLegendTopLeftHorizontalGalleryItem1.Caption = "";
+            mapLegendTopCenterHorizontalGalleryItem1.Caption = "";
+            mapLegendTopRightHorizontalGalleryItem1.Caption = "";
+            mapLegendBottomLeftHorizontalGalleryItem1.Caption = "";
+            mapLegendBottomCenterHorizontalGalleryItem1.Caption = "";
+            mapLegendBottomRightHorizontalGalleryItem1.Caption = "";
+            mapHorizontalLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            mapLegendTopLeftHorizontalGalleryItem1,
+            mapLegendTopCenterHorizontalGalleryItem1,
+            mapLegendTopRightHorizontalGalleryItem1,
+            mapLegendBottomLeftHorizontalGalleryItem1,
+            mapLegendBottomCenterHorizontalGalleryItem1,
+            mapLegendBottomRightHorizontalGalleryItem1});
+            this.galleryMapLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            mapVerticalLegendGalleryGroup1,
+            mapHorizontalLegendGalleryGroup1});
+            this.galleryMapLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
+            this.galleryMapLegendPositionItem1.Gallery.RowCount = 4;
+            this.galleryMapLegendPositionItem1.Id = 525;
+            this.galleryMapLegendPositionItem1.Name = "galleryMapLegendPositionItem1";
+            // 
+            // galleryWeightedLegendPositionItem1
+            // 
+            // 
+            // 
+            // 
+            this.galleryWeightedLegendPositionItem1.Gallery.ColumnCount = 3;
+            mapWeightedLegendTopLeftGalleryItem1.Caption = "";
+            mapWeightedLegendTopCenterGalleryItem1.Caption = "";
+            mapWeightedLegendTopRightGalleryItem1.Caption = "";
+            mapWeightedLegendBottomLeftGalleryItem1.Caption = "";
+            mapWeightedLegendBottomCenterGalleryItem1.Caption = "";
+            mapWeightedLegendBottomRightGalleryItem1.Caption = "";
+            mapWeightedLegendGalleryGroup1.Items.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItem[] {
+            mapWeightedLegendTopLeftGalleryItem1,
+            mapWeightedLegendTopCenterGalleryItem1,
+            mapWeightedLegendTopRightGalleryItem1,
+            mapWeightedLegendBottomLeftGalleryItem1,
+            mapWeightedLegendBottomCenterGalleryItem1,
+            mapWeightedLegendBottomRightGalleryItem1});
+            this.galleryWeightedLegendPositionItem1.Gallery.Groups.AddRange(new DevExpress.XtraBars.Ribbon.GalleryItemGroup[] {
+            mapWeightedLegendGalleryGroup1});
+            this.galleryWeightedLegendPositionItem1.Gallery.ImageSize = new System.Drawing.Size(32, 32);
+            this.galleryWeightedLegendPositionItem1.Gallery.RowCount = 2;
+            this.galleryWeightedLegendPositionItem1.Id = 526;
+            this.galleryWeightedLegendPositionItem1.Name = "galleryWeightedLegendPositionItem1";
+            // 
             // ConsoleDashboardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7151,35 +7764,11 @@
         private DevExpress.DashboardWin.Bars.RecentDashboardsControl recentDashboardsControl1;
         private DevExpress.DashboardWin.Native.DashboardBarAndDockingController dashboardBarAndDockingController;
         private DevExpress.DashboardWin.DashboardPopupMenu dashboardPopupMenu1;
-        private DevExpress.DashboardWin.Bars.ShowItemCaptionBarItem showItemCaptionBarItem1;
         private DevExpress.DashboardWin.Bars.DuplicateItemBarItem duplicateItemBarItem1;
         private DevExpress.DashboardWin.Bars.DeleteItemBarItem deleteItemBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertDashboardItemTypeBarItem convertDashboardItemTypeBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToPivotBarItem convertToPivotBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToGridBarItem convertToGridBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToChartBarItem convertToChartBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToScatterChartBarItem convertToScatterChartBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToPieBarItem convertToPieBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToGaugeBarItem convertToGaugeBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToCardBarItem convertToCardBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToTreemapBarItem convertToTreemapBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToChoroplethMapBarItem convertToChoroplethMapBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertGeoPointMapBaseBarItem convertGeoPointMapBaseBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToGeoPointMapBarItem convertToGeoPointMapBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToBubbleMapBarItem convertToBubbleMapBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToPieMapBarItem convertToPieMapBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToRangeFilterBarItem convertToRangeFilterBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToFilterElementsBaseBarItem convertToFilterElementsBaseBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToComboBoxBarItem convertToComboBoxBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToListBoxBarItem convertToListBoxBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToTreeViewBarItem convertToTreeViewBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToDateFilterBarItem convertToDateFilterBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToBoundImageBarItem convertToBoundImageBarItem1;
-        private DevExpress.DashboardWin.Bars.ConvertToTextBoxBarItem convertToTextBoxBarItem1;
         private DevExpress.DashboardWin.Bars.RemoveDataItemsBarItem removeDataItemsBarItem1;
         private DevExpress.DashboardWin.Bars.TransposeItemBarItem transposeItemBarItem1;
         private DevExpress.DashboardWin.Bars.EditRulesBarItem editRulesBarItem1;
-        private DevExpress.DashboardWin.Bars.EditItemNamesBarItem editItemNamesBarItem1;
         private DevExpress.DashboardWin.Bars.DeleteGroupBarItem deleteGroupBarItem1;
         private DevExpress.DashboardWin.Bars.DeleteTabContainerBarItem deleteTabContainerBarItem1;
         private DevExpress.DashboardWin.Bars.DeleteTabPageBarItem deleteTabPageBarItem1;
@@ -7204,7 +7793,6 @@
         private DevExpress.DashboardWin.Bars.TextBoxInsertFieldBarItem textBoxInsertFieldBarItem1;
         private DevExpress.DashboardWin.Bars.RangeFilterEditDateTimePeriodsBarItem rangeFilterEditDateTimePeriodsBarItem1;
         private DevExpress.DashboardWin.Bars.DateFilterEditDateTimePeriodsBarItem dateFilterEditDateTimePeriodsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotResetLayoutOptionsBarItem pivotResetLayoutOptionsBarItem1;
         private DevExpress.DashboardWin.Bars.DashboardBackstageRecentTab dashboardBackstageRecentTab1;
         private DevExpress.DashboardWin.Bars.DashboardBackstageNewButton dashboardBackstageNewButton1;
         private DevExpress.DashboardWin.Bars.DashboardBackstageOpenButton dashboardBackstageOpenButton1;
@@ -7232,11 +7820,6 @@
         private DevExpress.DashboardWin.Bars.InsertBubbleMapBarItem insertBubbleMapBarItem1;
         private DevExpress.DashboardWin.Bars.InsertPieMapBarItem insertPieMapBarItem1;
         private DevExpress.DashboardWin.Bars.InsertRangeFilterBarItem insertRangeFilterBarItem1;
-        private DevExpress.DashboardWin.Bars.InsertFilterElementSubItem insertFilterElementSubItem1;
-        private DevExpress.DashboardWin.Bars.InsertComboBoxBarItem insertComboBoxBarItem1;
-        private DevExpress.DashboardWin.Bars.InsertListBoxBarItem insertListBoxBarItem1;
-        private DevExpress.DashboardWin.Bars.InsertTreeViewBarItem insertTreeViewBarItem1;
-        private DevExpress.DashboardWin.Bars.InsertDateFilterBarItem insertDateFilterBarItem1;
         private DevExpress.DashboardWin.Bars.InsertImagesBarSubItem insertImagesBarSubItem1;
         private DevExpress.DashboardWin.Bars.InsertImageBarItem insertImageBarItem1;
         private DevExpress.DashboardWin.Bars.InsertBoundImageBarItem insertBoundImageBarItem1;
@@ -7246,7 +7829,6 @@
         private DevExpress.DashboardWin.Bars.DashboardTitleBarItem dashboardTitleBarItem1;
         private DevExpress.DashboardWin.Bars.SetCurrencyCultureBarItem setCurrencyCultureBarItem1;
         private DevExpress.DashboardWin.Bars.DashboardColorSchemeBarItem dashboardColorSchemeBarItem1;
-        private DevExpress.DashboardWin.Bars.DashboardParametersBarItem dashboardParametersBarItem1;
         private DevExpress.DashboardWin.Bars.DashboardAutomaticUpdatesBarItem dashboardAutomaticUpdatesBarItem1;
         private DevExpress.DashboardWin.Bars.NewDataSourceBarItem newDataSourceBarItem1;
         private DevExpress.DashboardWin.Bars.EditSqlConnectionBarItem editSqlConnectionBarItem1;
@@ -7259,7 +7841,6 @@
         private DevExpress.DashboardWin.Bars.DeleteDataSourceBarItem deleteDataSourceBarItem1;
         private DevExpress.DashboardWin.Bars.ServerModeBarItem serverModeBarItem1;
         private DevExpress.DashboardWin.Bars.UpateDataExtractBarItem upateDataExtractBarItem1;
-        private DevExpress.DashboardWin.Bars.AddCalculatedFieldBarItem addCalculatedFieldBarItem1;
         private DevExpress.DashboardWin.Bars.AddQueryBarItem addQueryBarItem1;
         private DevExpress.DashboardWin.Bars.EditQueryBarItem editQueryBarItem1;
         private DevExpress.DashboardWin.Bars.RenameQueryBarItem renameQueryBarItem1;
@@ -7275,30 +7856,10 @@
         private DevExpress.DashboardWin.Bars.EditDataSourceFilterBarItem editDataSourceFilterBarItem1;
         private DevExpress.DashboardWin.Bars.ClearDataSourceFilterBarItem clearDataSourceFilterBarItem1;
         private DevExpress.DashboardWin.Bars.DashboardSkinsBarItem dashboardSkinsBarItem1;
-        private DevExpress.DashboardWin.Bars.DashboardSkinDropDownButtonItem dashboardSkinDropDownButtonItem1;
-        private DevExpress.DashboardWin.Bars.DashboardSkinPaletteRibbonGalleryBarItem dashboardSkinPaletteRibbonGalleryBarItem1;
         private DevExpress.DashboardWin.Bars.IgnoreMasterFiltersBarItem ignoreMasterFiltersBarItem1;
         private DevExpress.DashboardWin.Bars.PivotInitialStateBarItem pivotInitialStateBarItem1;
         private DevExpress.DashboardWin.Bars.PivotAutoExpandColumnBarItem pivotAutoExpandColumnBarItem1;
         private DevExpress.DashboardWin.Bars.PivotAutoExpandRowBarItem pivotAutoExpandRowBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotShowTotalsBarItem pivotShowTotalsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotShowColumnTotalsBarItem pivotShowColumnTotalsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotShowRowTotalsBarItem pivotShowRowTotalsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotShowGrandTotalsBarItem pivotShowGrandTotalsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotShowColumnGrandTotalsBarItem pivotShowColumnGrandTotalsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotShowRowGrandTotalsBarItem pivotShowRowGrandTotalsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotLayoutTypeBarItem pivotLayoutTypeBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotLayoutTypeCompactBarItem pivotLayoutTypeCompactBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotLayoutTypeTabularBarItem pivotLayoutTypeTabularBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBarItem pivotRowTotalsPositionBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotRowTotalsPositionTopBarItem pivotRowTotalsPositionTopBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBottomBarItem pivotRowTotalsPositionBottomBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionBarItem pivotColumnTotalsPositionBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionNearBarItem pivotColumnTotalsPositionNearBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionFarBarItem pivotColumnTotalsPositionFarBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotValuesPositionBarItem pivotValuesPositionBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotValuesPositionColumnsBarItem pivotValuesPositionColumnsBarItem1;
-        private DevExpress.DashboardWin.Bars.PivotValuesPositionRowsBarItem pivotValuesPositionRowsBarItem1;
         private DevExpress.DashboardWin.Bars.MasterFilterBarItem masterFilterBarItem1;
         private DevExpress.DashboardWin.Bars.MultipleValuesMasterFilterBarItem multipleValuesMasterFilterBarItem1;
         private DevExpress.DashboardWin.Bars.DrillDownBarItem drillDownBarItem1;
@@ -7319,8 +7880,6 @@
         private DevExpress.DashboardWin.Bars.ChartXAxisSettingsBarItem chartXAxisSettingsBarItem1;
         private DevExpress.DashboardWin.Bars.ChartYAxisSettingsBarItem chartYAxisSettingsBarItem1;
         private DevExpress.DashboardWin.Bars.ChartShowLegendBarItem chartShowLegendBarItem1;
-        private DevExpress.DashboardWin.Bars.GalleryChartLegendPositionItem galleryChartLegendPositionItem1;
-        private DevExpress.DashboardWin.Bars.GalleryChartSeriesTypeItem galleryChartSeriesTypeItem1;
         private DevExpress.DashboardWin.Bars.UseGlobalColorsBarItem useGlobalColorsBarItem1;
         private DevExpress.DashboardWin.Bars.UseLocalColorsBarItem useLocalColorsBarItem1;
         private DevExpress.DashboardWin.Bars.EditActualColorsBarItem editActualColorsBarItem1;
@@ -7329,7 +7888,6 @@
         private DevExpress.DashboardWin.Bars.ScatterChartYAxisSettingsBarItem scatterChartYAxisSettingsBarItem1;
         private DevExpress.DashboardWin.Bars.ScatterChartPointLabelOptionsBarItem scatterChartPointLabelOptionsBarItem1;
         private DevExpress.DashboardWin.Bars.ScatterChartShowLegendBarItem scatterChartShowLegendBarItem1;
-        private DevExpress.DashboardWin.Bars.GalleryScatterChartLegendPositionItem galleryScatterChartLegendPositionItem1;
         private DevExpress.DashboardWin.Bars.PieTargetDimensionsArgumentsBarItem pieTargetDimensionsArgumentsBarItem1;
         private DevExpress.DashboardWin.Bars.PieTargetDimensionsSeriesBarItem pieTargetDimensionsSeriesBarItem1;
         private DevExpress.DashboardWin.Bars.PieTargetDimensionsPointsBarItem pieTargetDimensionsPointsBarItem1;
@@ -7370,18 +7928,15 @@
         private DevExpress.DashboardWin.Bars.GaugeStyleLinearHorizontalBarItem gaugeStyleLinearHorizontalBarItem1;
         private DevExpress.DashboardWin.Bars.GaugeStyleLinearVerticalBarItem gaugeStyleLinearVerticalBarItem1;
         private DevExpress.DashboardWin.Bars.GaugeShowCaptionsBarItem gaugeShowCaptionsBarItem1;
-        private DevExpress.DashboardWin.Bars.GalleryRangeFilterSeriesTypeItem galleryRangeFilterSeriesTypeItem1;
         private DevExpress.DashboardWin.Bars.MapLockNavigationBarItem mapLockNavigationBarItem1;
         private DevExpress.DashboardWin.Bars.ChoroplethMapShapeLabelsAttributeBarItem choroplethMapShapeLabelsAttributeBarItem1;
         private DevExpress.DashboardWin.Bars.MapShowLegendBarItem mapShowLegendBarItem1;
-        private DevExpress.DashboardWin.Bars.GalleryMapLegendPositionItem galleryMapLegendPositionItem1;
         private DevExpress.DashboardWin.Bars.GeoPointMapClusterizationBarItem geoPointMapClusterizationBarItem1;
         private DevExpress.DashboardWin.Bars.MapShapeTitleAttributeBarItem mapShapeTitleAttributeBarItem1;
         private DevExpress.DashboardWin.Bars.ChangeWeightedLegendTypeBarItem changeWeightedLegendTypeBarItem1;
         private DevExpress.DashboardWin.Bars.WeightedLegendNoneBarItem weightedLegendNoneBarItem1;
         private DevExpress.DashboardWin.Bars.WeightedLegendLinearBarItem weightedLegendLinearBarItem1;
         private DevExpress.DashboardWin.Bars.WeightedLegendNestedBarItem weightedLegendNestedBarItem1;
-        private DevExpress.DashboardWin.Bars.GalleryWeightedLegendPositionItem galleryWeightedLegendPositionItem1;
         private DevExpress.DashboardWin.Bars.PieMapIsWeightedBarItem pieMapIsWeightedBarItem1;
         private DevExpress.DashboardWin.Bars.ComboBoxStandardTypeBarItem comboBoxStandardTypeBarItem1;
         private DevExpress.DashboardWin.Bars.ComboBoxCheckedTypeBarItem comboBoxCheckedTypeBarItem1;
@@ -7627,7 +8182,6 @@
         private DevExpress.DashboardWin.Bars.DashboardItemDesignRibbonPage dashboardItemDesignRibbonPage1;
         private DevExpress.DashboardWin.Bars.CommonItemDesignRibbonPageGroup commonItemDesignRibbonPageGroup1;
         private DevExpress.DashboardWin.Bars.PivotInitialStateRibbonPageGroup pivotInitialStateRibbonPageGroup1;
-        private DevExpress.DashboardWin.Bars.PivotLayoutRibbonPageGroup pivotLayoutRibbonPageGroup1;
         private DevExpress.DashboardWin.Bars.GridToolsRibbonPageCategory gridToolsRibbonPageCategory1;
         private DevExpress.DashboardWin.Bars.DataRibbonPage dataRibbonPage2;
         private DevExpress.DashboardWin.Bars.FilteringRibbonPageGroup filteringRibbonPageGroup2;
@@ -7868,5 +8422,73 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroupTemplates;
         private DevExpress.XtraEditors.XtraOpenFileDialog dlgOpen;
         private DevExpress.XtraEditors.XtraSaveFileDialog dlgSave;
+        private DevExpress.DashboardWin.Bars.ShowItemCaptionBarItem showItemCaptionBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertDashboardItemTypeBarItem convertDashboardItemTypeBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToPivotBarItem convertToPivotBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToGridBarItem convertToGridBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToChartBarItem convertToChartBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToScatterChartBarItem convertToScatterChartBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToPieBarItem convertToPieBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToGaugeBarItem convertToGaugeBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToCardBarItem convertToCardBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToTreemapBarItem convertToTreemapBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToChoroplethMapBarItem convertToChoroplethMapBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertGeoPointMapBaseBarItem convertGeoPointMapBaseBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToGeoPointMapBarItem convertToGeoPointMapBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToBubbleMapBarItem convertToBubbleMapBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToPieMapBarItem convertToPieMapBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToRangeFilterBarItem convertToRangeFilterBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToFilterElementsBaseBarItem convertToFilterElementsBaseBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToComboBoxBarItem convertToComboBoxBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToListBoxBarItem convertToListBoxBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToTreeViewBarItem convertToTreeViewBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToDateFilterBarItem convertToDateFilterBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToBoundImageBarItem convertToBoundImageBarItem1;
+        private DevExpress.DashboardWin.Bars.ConvertToTextBoxBarItem convertToTextBoxBarItem1;
+        private DevExpress.DashboardWin.Bars.EditItemNamesBarItem editItemNamesBarItem1;
+        private DevExpress.DashboardWin.Bars.EditVisibleDataFilterBarItem editVisibleDataFilterBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotResetLayoutOptionsBarItem pivotResetLayoutOptionsBarItem1;
+        private DevExpress.DashboardWin.Bars.InsertFilterElementSubItem insertFilterElementSubItem1;
+        private DevExpress.DashboardWin.Bars.InsertComboBoxBarItem insertComboBoxBarItem1;
+        private DevExpress.DashboardWin.Bars.InsertListBoxBarItem insertListBoxBarItem1;
+        private DevExpress.DashboardWin.Bars.InsertTreeViewBarItem insertTreeViewBarItem1;
+        private DevExpress.DashboardWin.Bars.InsertDateFilterBarItem insertDateFilterBarItem1;
+        private DevExpress.DashboardWin.Bars.DashboardParametersBarItem dashboardParametersBarItem1;
+        private DevExpress.DashboardWin.Bars.EditMongoDBConnectionBarItem editMongoDBConnectionBarItem1;
+        private DevExpress.DashboardWin.Bars.EditXpoConnectionBarItem editXpoConnectionBarItem1;
+        private DevExpress.DashboardWin.Bars.AddCalculatedFieldBarItem addCalculatedFieldBarItem1;
+        private DevExpress.DashboardWin.Bars.EditJsonDataSourceBarItem editJsonDataSourceBarItem1;
+        private DevExpress.DashboardWin.Bars.ManageMongoDBQueriesBarItem manageMongoDBQueriesBarItem1;
+        private DevExpress.DashboardWin.Bars.RenameMongoDBQueryBarItem renameMongoDBQueryBarItem1;
+        private DevExpress.DashboardWin.Bars.DeleteMongoDBQueryBarItem deleteMongoDBQueryBarItem1;
+        private DevExpress.DashboardWin.Bars.DashboardSkinsBarItem dashboardSkinsBarItem2;
+        private DevExpress.DashboardWin.Bars.DashboardSkinDropDownButtonItem dashboardSkinDropDownButtonItem1;
+        private DevExpress.DashboardWin.Bars.DashboardSkinPaletteRibbonGalleryBarItem dashboardSkinPaletteRibbonGalleryBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotShowTotalsBarItem pivotShowTotalsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotShowColumnTotalsBarItem pivotShowColumnTotalsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotShowRowTotalsBarItem pivotShowRowTotalsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotShowGrandTotalsBarItem pivotShowGrandTotalsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotShowColumnGrandTotalsBarItem pivotShowColumnGrandTotalsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotShowRowGrandTotalsBarItem pivotShowRowGrandTotalsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotLayoutTypeBarItem pivotLayoutTypeBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotLayoutTypeCompactBarItem pivotLayoutTypeCompactBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotLayoutTypeTabularBarItem pivotLayoutTypeTabularBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBarItem pivotRowTotalsPositionBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotRowTotalsPositionTopBarItem pivotRowTotalsPositionTopBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotRowTotalsPositionBottomBarItem pivotRowTotalsPositionBottomBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionBarItem pivotColumnTotalsPositionBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionNearBarItem pivotColumnTotalsPositionNearBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotColumnTotalsPositionFarBarItem pivotColumnTotalsPositionFarBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotValuesPositionBarItem pivotValuesPositionBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotValuesPositionColumnsBarItem pivotValuesPositionColumnsBarItem1;
+        private DevExpress.DashboardWin.Bars.PivotValuesPositionRowsBarItem pivotValuesPositionRowsBarItem1;
+        private DevExpress.DashboardWin.Bars.GalleryChartLegendPositionItem galleryChartLegendPositionItem1;
+        private DevExpress.DashboardWin.Bars.GalleryChartSeriesTypeItem galleryChartSeriesTypeItem1;
+        private DevExpress.DashboardWin.Bars.GalleryScatterChartLegendPositionItem galleryScatterChartLegendPositionItem1;
+        private DevExpress.DashboardWin.Bars.GalleryRangeFilterSeriesTypeItem galleryRangeFilterSeriesTypeItem1;
+        private DevExpress.DashboardWin.Bars.GalleryMapLegendPositionItem galleryMapLegendPositionItem1;
+        private DevExpress.DashboardWin.Bars.GalleryWeightedLegendPositionItem galleryWeightedLegendPositionItem1;
+        private DevExpress.DashboardWin.Bars.PivotLayoutRibbonPageGroup pivotLayoutRibbonPageGroup1;
+        private DevExpress.DashboardWin.Bars.MongoDBDataSourceQueryRibbonPageGroup mongoDBDataSourceQueryRibbonPageGroup1;
     }
 }

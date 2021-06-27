@@ -30,7 +30,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
 
         [Parameter(HelpMessage = "Specifies the format of the image")]
         [Alias("f")]
-        public ImageFormat? Format { get; set; }
+        public ImageFileFormat? Format { get; set; }
 
         [Parameter(HelpMessage = "Custom size of the image with chart copied to Book. Must be 2-elements array")]
         public int[] Size { get; set; }
@@ -94,11 +94,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
 
             System.Drawing.Imaging.ImageFormat format = (Format ?? GetImageFormatFromFileName(fileName)) switch
             {
-                ImageFormat.Png  => System.Drawing.Imaging.ImageFormat.Png,
-                ImageFormat.Tiff => System.Drawing.Imaging.ImageFormat.Tiff,
-                ImageFormat.Bmp  => System.Drawing.Imaging.ImageFormat.Bmp,
-                ImageFormat.Gif  => System.Drawing.Imaging.ImageFormat.Gif,
-                ImageFormat.Jpeg => System.Drawing.Imaging.ImageFormat.Jpeg,
+                ImageFileFormat.Png  => System.Drawing.Imaging.ImageFormat.Png,
+                ImageFileFormat.Tiff => System.Drawing.Imaging.ImageFormat.Tiff,
+                ImageFileFormat.Bmp  => System.Drawing.Imaging.ImageFormat.Bmp,
+                ImageFileFormat.Gif  => System.Drawing.Imaging.ImageFormat.Gif,
+                ImageFileFormat.Jpeg => System.Drawing.Imaging.ImageFormat.Jpeg,
                 _                => System.Drawing.Imaging.ImageFormat.Png
             };
             chartImage.Save(FileName, format);

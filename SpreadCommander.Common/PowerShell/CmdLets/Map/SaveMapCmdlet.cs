@@ -61,7 +61,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
 
         [Parameter(HelpMessage = "Specifies the format of the image")]
         [Alias("f")]
-        public ImageFormat? Format { get; set; }
+        public ImageFileFormat? Format { get; set; }
 
         [Parameter(HelpMessage = "If set - sends file to FileViewer")]
         public SwitchParameter Preview { get; set; }
@@ -132,11 +132,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
                 throw new Exception("Filename for image is not specified.");
             System.Drawing.Imaging.ImageFormat format = (Format ?? GetImageFormatFromFileName(fileName)) switch
             {
-                ImageFormat.Png  => System.Drawing.Imaging.ImageFormat.Png,
-                ImageFormat.Tiff => System.Drawing.Imaging.ImageFormat.Tiff,
-                ImageFormat.Bmp  => System.Drawing.Imaging.ImageFormat.Bmp,
-                ImageFormat.Gif  => System.Drawing.Imaging.ImageFormat.Gif,
-                ImageFormat.Jpeg => System.Drawing.Imaging.ImageFormat.Jpeg,
+                ImageFileFormat.Png  => System.Drawing.Imaging.ImageFormat.Png,
+                ImageFileFormat.Tiff => System.Drawing.Imaging.ImageFormat.Tiff,
+                ImageFileFormat.Bmp  => System.Drawing.Imaging.ImageFormat.Bmp,
+                ImageFileFormat.Gif  => System.Drawing.Imaging.ImageFormat.Gif,
+                ImageFileFormat.Jpeg => System.Drawing.Imaging.ImageFormat.Jpeg,
                 _                => System.Drawing.Imaging.ImageFormat.Png
             };
             ExecuteLocked(() => mapBitmap.Save(fileName, format), LockFiles ? LockObject : null);

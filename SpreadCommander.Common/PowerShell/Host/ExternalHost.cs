@@ -44,8 +44,8 @@ namespace SpreadCommander.Common.PowerShell.Host
             set => _Host.HostOwner.Silent = value;
         }
 
-        public readonly object LockUIObject               = new object();
-        public readonly static object LockReadWriteObject = new object();
+        public readonly object LockUIObject               = new ();
+        public readonly static object LockReadWriteObject = new ();
 
         public int DefaultDPI
         {

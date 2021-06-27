@@ -85,7 +85,7 @@ namespace SpreadCommander.Documents.Console
             fileName = Project.Current.MapPath(fileName);
             Heap.PreviewFile(fileName);
 
-            FireModified(false);
+            FireModified(true);
         }
     }
 }

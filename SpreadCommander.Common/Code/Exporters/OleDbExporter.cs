@@ -24,7 +24,9 @@ namespace SpreadCommander.Common.Code.Exporters
                 throw new ArgumentException("Invalid connection string builder");
 
             var connStr = oleDbConnectionStringBuilder.ConnectionString;
-            return new OleDbConnection(connStr);
+            var result  = new OleDbConnection();
+            Connection.SetConnectionString(result, connStr);
+            return result;
         }
 
         public override void FillInsertCommandParameters(DbCommand cmdInsert, DbDataReader table)

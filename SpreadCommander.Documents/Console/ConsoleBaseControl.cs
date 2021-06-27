@@ -42,9 +42,12 @@ namespace SpreadCommander.Documents.Console
 
         protected virtual void FireModified(bool documentModified)
         {
-            Modified?.Invoke(this, new EventArgs());
             if (documentModified)
-                _ViewModel?.DocumentModified();
+            {
+                Modified?.Invoke(this, new EventArgs());
+                if (documentModified)
+                    _ViewModel?.DocumentModified();
+            }
         }
     }
 }
