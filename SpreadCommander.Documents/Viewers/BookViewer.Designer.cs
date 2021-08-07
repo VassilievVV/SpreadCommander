@@ -51,13 +51,14 @@
             this.Editor.Options.DocumentCapabilities.Macros = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.Editor.Options.DocumentCapabilities.OleObjects = DevExpress.XtraRichEdit.DocumentCapability.Disabled;
             this.Editor.ReadOnly = true;
-            this.Editor.Size = new System.Drawing.Size(1012, 746);
+            this.Editor.Size = new System.Drawing.Size(1018, 746);
             this.Editor.SpellChecker = this.spellChecker;
             this.spellChecker.SetSpellCheckerOptions(this.Editor, optionsSpelling1);
             this.Editor.TabIndex = 0;
             this.Editor.Views.DraftView.AdjustColorsToSkins = true;
             this.Editor.Views.PrintLayoutView.AdjustColorsToSkins = true;
             this.Editor.Views.SimpleView.AdjustColorsToSkins = true;
+            this.Editor.EncryptedFilePasswordRequested += new DevExpress.XtraRichEdit.EncryptedFilePasswordRequestedEventHandler(this.Editor_EncryptedFilePasswordRequested);
             // 
             // spellChecker
             // 
@@ -84,12 +85,12 @@
             // 
             // hideContainerRight
             // 
-            this.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(248)))), ((int)(((byte)(248)))), ((int)(((byte)(248)))));
+            this.hideContainerRight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.hideContainerRight.Controls.Add(this.dockPanelComments);
             this.hideContainerRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.hideContainerRight.Location = new System.Drawing.Point(1012, 0);
+            this.hideContainerRight.Location = new System.Drawing.Point(1018, 0);
             this.hideContainerRight.Name = "hideContainerRight";
-            this.hideContainerRight.Size = new System.Drawing.Size(27, 746);
+            this.hideContainerRight.Size = new System.Drawing.Size(21, 746);
             // 
             // dockPanelComments
             // 

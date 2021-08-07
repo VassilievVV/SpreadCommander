@@ -145,6 +145,7 @@ namespace SpreadCommander.Documents.Controls
                 var ext = Path.GetExtension(nodeFile.Text)?.ToLower();
                 e.NodeImageIndex = ext switch
                 {
+#pragma warning disable CRRSP06 // A misspelled word has been found
                     ".xlsx" or ".xls"                                                               => 2,
                     ".csv" or ".txt"                                                                => 3,
                     ".sql"                                                                          => 4,
@@ -154,6 +155,7 @@ namespace SpreadCommander.Documents.Controls
                     ".dash"                                                                         => 8,
                     ".pdf"                                                                          => 9,
                     _                                                                               => 1
+#pragma warning restore CRRSP06 // A misspelled word has been found
                 };
             }
 
@@ -199,8 +201,8 @@ namespace SpreadCommander.Documents.Controls
         {
             if (e.Button == MouseButtons.Left && dragFiles_StartHitInfo != null && dragFiles_StartHitInfo.HitInfoType == HitInfoType.Cell && dragFiles_StartHitInfo.Node != null)
             {
-                Size dragSize = SystemInformation.DragSize;
-                Rectangle dragRect = new Rectangle(new Point(dragFiles_StartHitInfo.MousePoint.X - dragSize.Width / 2,
+                var dragSize = SystemInformation.DragSize;
+                var dragRect = new Rectangle(new Point(dragFiles_StartHitInfo.MousePoint.X - dragSize.Width / 2,
                     dragFiles_StartHitInfo.MousePoint.Y - dragSize.Height / 2), dragSize);
 
                 if (!dragRect.Contains(new Point(e.X, e.Y)))
@@ -319,11 +321,11 @@ namespace SpreadCommander.Documents.Controls
             return (parentItem, childItem);
         }
 
-        private static void InvokeMethod(Action action)
+        private void InvokeMethod(Action action)
         {
-            var mainForm = Parameters.MainForm;
-            if (mainForm?.IsHandleCreated ?? false)
-                mainForm.Invoke((Delegate)action);
+            var control = this;
+            if (control != null && !control.IsDisposed && (control?.IsHandleCreated ?? false))
+                control.Invoke((Delegate)action);
             else
                 action();
         }

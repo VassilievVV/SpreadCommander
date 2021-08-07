@@ -23,17 +23,27 @@ namespace SpreadCommander.Common
             Initialize();
         }
 
+        public static string DefaultProjectPath
+        {
+            get
+            {
+                string dirDefault = ApplicationSettings.Default.DefaultProjectLocation;
+
+                if (string.IsNullOrWhiteSpace(dirDefault) || !Directory.Exists(dirDefault))
+                {
+                    dirDefault = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                        Parameters.ApplicationName, "DefaultProject");
+
+                    Directory.CreateDirectory(dirDefault);
+                }
+
+                return dirDefault;
+            }
+        }
+
         private static void Initialize()
         {
-            var dirDefault = ApplicationSettings.Default.DefaultProjectLocation;
-
-            if (string.IsNullOrWhiteSpace(dirDefault) || !Directory.Exists(dirDefault))
-            {
-                dirDefault = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),
-                    Parameters.ApplicationName, "DefaultProject");
-
-                Directory.CreateDirectory(dirDefault);
-            }
+            var dirDefault = DefaultProjectPath;
 
             var project = new Project();
             project.Load(dirDefault);
@@ -174,8 +184,16 @@ namespace SpreadCommander.Common
         public string CreateMappedPath(string fileName)
         {
             var projectPath = ProjectPath;
-            if (!string.IsNullOrWhiteSpace(fileName) && fileName.StartsWith(projectPath, StringComparison.CurrentCultureIgnoreCase))
-                fileName = Path.Combine("~", fileName[projectPath.Length..]);
+            if (!string.IsNullOrWhiteSpace(fileName) && fileName.StartsWith(projectPath, StringComparison.CurrentCultureIgnoreCase) &&
+                fileName.Length > projectPath.Length)
+            {
+                int startPos = projectPath.Length + 1;
+                while (fileName.Length > startPos && (fileName[startPos] == '\\' || fileName[startPos] == '/'))
+                    startPos++;
+
+                fileName = fileName[startPos..];
+                fileName = Path.Combine("~", fileName);
+            }
             return fileName;
         }
 

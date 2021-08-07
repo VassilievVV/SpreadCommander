@@ -81,6 +81,8 @@
             this.accordionControlOpen = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.dlgFolderBrowser = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.transitionManager = new DevExpress.Utils.Animation.TransitionManager(this.components);
+            this.accordionControlSeparator2 = new DevExpress.XtraBars.Navigation.AccordionControlSeparator();
+            this.accordionControlDefault = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlRoot)).BeginInit();
             this.layoutControlRoot.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridProjects)).BeginInit();
@@ -381,6 +383,8 @@
             this.accordionControlLibraries,
             this.accordionControlExamples,
             this.accordionControlSeparator1,
+            this.accordionControlDefault,
+            this.accordionControlSeparator2,
             this.accordionControlOpen});
             this.accordionControl.Location = new System.Drawing.Point(0, 0);
             this.accordionControl.Name = "accordionControl";
@@ -456,6 +460,18 @@
             transition1.WaitingIndicatorProperties.Description = "";
             this.transitionManager.Transitions.Add(transition1);
             // 
+            // accordionControlSeparator2
+            // 
+            this.accordionControlSeparator2.Name = "accordionControlSeparator2";
+            // 
+            // accordionControlDefault
+            // 
+            this.accordionControlDefault.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("accordionControlDefault.ImageOptions.SvgImage")));
+            this.accordionControlDefault.Name = "accordionControlDefault";
+            this.accordionControlDefault.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.accordionControlDefault.Text = "Default Project";
+            this.accordionControlDefault.Click += new System.EventHandler(this.AccordionControlDefault_Click);
+            // 
             // SelectProjectDialog
             // 
             this.AcceptButton = this.btnOpen;
@@ -530,5 +546,7 @@
         private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlOpen;
         private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator1;
         private DevExpress.Utils.Animation.TransitionManager transitionManager;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement accordionControlDefault;
+        private DevExpress.XtraBars.Navigation.AccordionControlSeparator accordionControlSeparator2;
     }
 }

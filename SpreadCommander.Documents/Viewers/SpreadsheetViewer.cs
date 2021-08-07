@@ -38,7 +38,7 @@ namespace SpreadCommander.Documents.Viewers
 			if (!Editor.Document.CreateNewDocument())
 				return;
 
-				Editor.ActiveWorksheet.DataBindings.BindTableToDataSource(dataSource);
+			Editor.ActiveWorksheet.DataBindings.BindTableToDataSource(dataSource);
 		}
 
 		public override void ZoomIn()
@@ -71,6 +71,12 @@ namespace SpreadCommander.Documents.Viewers
 		public override void Print()
 		{
 			Editor.ShowRibbonPrintPreview();
+		}
+
+		private void Editor_EncryptedFilePasswordRequest(object sender, DevExpress.Spreadsheet.EncryptedFilePasswordRequestEventArgs e)
+		{
+			e.Cancel  = true;
+			e.Handled = true;
 		}
 	}
 }

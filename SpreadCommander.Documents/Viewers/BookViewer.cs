@@ -79,5 +79,11 @@ namespace SpreadCommander.Documents.Viewers
 		{
 			Editor.ShowPrintPreview();
 		}
+
+		private void Editor_EncryptedFilePasswordRequested(object sender, DevExpress.XtraRichEdit.EncryptedFilePasswordRequestedEventArgs e)
+		{
+			e.Cancel  = true;
+			e.Handled = true;
+		}
 	}
 }

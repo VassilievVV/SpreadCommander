@@ -1759,12 +1759,10 @@ namespace Alsing.Windows.Forms.Controls.SyntaxBox
         {
             string text = Document.Text;
 
-            var swr = new StreamWriter(filename);
+            using var swr = new StreamWriter(filename);
 
             swr.Write(text);
-
             swr.Flush();
-
             swr.Close();
         }
 
@@ -1773,10 +1771,9 @@ namespace Alsing.Windows.Forms.Controls.SyntaxBox
             if (Document == null)
                 throw new NullReferenceException("CodeEditorControl.Document");
 
-            var swr = new StreamReader(filename);
+            using var swr = new StreamReader(filename);
 
             Document.Text = swr.ReadToEnd();
-
             swr.Close();
         }
 

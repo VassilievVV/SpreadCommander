@@ -18,10 +18,12 @@ namespace SpreadCommander.Documents.Code
     {
         public static readonly string[] AllowedExtensions = new string[]
         {
+#pragma warning disable CRRSP06 // A misspelled word has been found
             ".xlsx", ".xls", ".csv", ".txt", ".sql", ".ps", ".ps1", ".csx", ".fsx", ".r", ".py",
             ".docx", ".doc", ".rtf", ".htm", ".html", ".mht", ".odt", ".epub",
             ".png", ".tif", ".tiff", ".jpg", ".jpeg", ".gif", ".bmp",
             ".scdash", ".scchart", ".scpivot"
+#pragma warning restore CRRSP06 // A misspelled word has been found
         };
 
         public BaseFileSystemTreeNode(BaseFileSystemTreeNode parentNode)
@@ -29,7 +31,7 @@ namespace SpreadCommander.Documents.Code
             ParentNode = parentNode;
         }
 
-        protected static readonly object LockObject = new object();
+        protected static readonly object LockObject = new();
 
         public BaseFileSystemTreeNode ParentNode	{ get; }
         public virtual string Text					{ get; set; }

@@ -25,7 +25,7 @@ namespace SpreadCommander.Documents.Code
         
         public static bool IsSkinVector(string skinName)
         {
-            if (skinName == SkinStyle.Basic || skinName == SkinStyle.Bezier || skinName == SkinStyle.Office2019Colorful)
+            if (skinName == SkinStyle.Basic || skinName == SkinStyle.Bezier || skinName == SkinStyle.Office2019Colorful || skinName == SkinStyle.HighContrast)
                 return true;
             return false;
         }

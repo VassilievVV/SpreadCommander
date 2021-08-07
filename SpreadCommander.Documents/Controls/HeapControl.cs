@@ -24,20 +24,33 @@ namespace SpreadCommander.Documents.Controls
         #region FileItem
         public class FileItem: INotifyPropertyChanged
         {
-            public FileItem(FileInfo fileInfo)
+            public FileItem(FileSystemInfo fileInfo)
             {
                 _FileInfo = fileInfo;
             }
 
-            private FileInfo _FileInfo;
+            private FileSystemInfo _FileInfo;
 
             public string FileName    => FileInfo.Name;
             public string Extension   => FileInfo.Extension?.ToLower();
-            public string Description => $"{FileInfo.CreationTime.ToShortDateString()}  {GetFileSize(FileInfo.Length)}";
+            public string Description
+            {
+                get
+                {
+                    if (FileInfo.Exists)
+                    {
+                        if (FileInfo is FileInfo fileInfo)
+                            return $"{fileInfo.CreationTime.ToShortDateString()}  {GetFileSize(fileInfo.Length)}";
+                        else if (FileInfo is DirectoryInfo dirInfo)
+                            return dirInfo.CreationTime.ToShortDateString();
+                    }
+                    return null;
+                }
+            }
 
             public event PropertyChangedEventHandler PropertyChanged;
 
-            public FileInfo FileInfo
+            public FileSystemInfo FileInfo
             {
                 get => _FileInfo;
                 set
@@ -77,6 +90,7 @@ namespace SpreadCommander.Documents.Controls
                 {
                     return Extension switch
                     {
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         ".xlsx" or ".xls"                                                               => FileType.Spreadsheet,
                         ".csv" or ".txt"                                                                => FileType.Text,
                         ".sql"                                                                          => FileType.SqlScript,
@@ -86,6 +100,7 @@ namespace SpreadCommander.Documents.Controls
                         ".dash"                                                                         => FileType.Dashboard,
                         ".pdf"                                                                          => FileType.PDF,
                         _                                                                               => FileType.Unknown,
+#pragma warning restore CRRSP06 // A misspelled word has been found
                     };
                 }
             }
@@ -561,13 +576,13 @@ namespace SpreadCommander.Documents.Controls
             return null;
         }
 
-        private static void InvokeMethod(Action action)
+        private void InvokeMethod(Action action)
         {
-            var mainForm = Parameters.MainForm;
-            if (mainForm?.IsHandleCreated ?? false)
-                mainForm.Invoke((Delegate)action);
+            var control = this;
+            if (control != null && !control.IsDisposed && (control?.IsHandleCreated ?? false))
+                control.Invoke((Delegate)action);
             else
-                action();   
+                action();
         }
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)
@@ -578,7 +593,12 @@ namespace SpreadCommander.Documents.Controls
                 {
                     var fileItem = FindFileItem(e.FullPath);
                     if (fileItem != null)
-                        fileItem.FileInfo = new FileInfo(e.FullPath);
+                    {
+                        if (Directory.Exists(e.FullPath))
+                            fileItem.FileInfo = new DirectoryInfo(e.FullPath);
+                        else if (File.Exists(e.FullPath))
+                            fileItem.FileInfo = new FileInfo(e.FullPath);
+                    }
                 }
                 catch (Exception)
                 {
@@ -593,8 +613,12 @@ namespace SpreadCommander.Documents.Controls
             {
                 try
                 {
-                    var fileItem = new FileItem(new FileInfo(e.FullPath));
-                    bindingFiles.Add(fileItem);
+                    FileItem fileItem = null;
+                    if (File.Exists(e.FullPath))
+                        fileItem = new FileItem(new FileInfo(e.FullPath));
+
+                    if (fileItem != null)
+                        bindingFiles.Add(fileItem);
                 }
                 catch (Exception)
                 {
@@ -628,7 +652,10 @@ namespace SpreadCommander.Documents.Controls
                 {
                     var fileItem = FindFileItem(e.OldFullPath);
                     if (fileItem != null)
-                        fileItem.FileInfo = new FileInfo(e.FullPath);
+                    {
+                        if (File.Exists(e.FullPath))
+                            fileItem.FileInfo = new FileInfo(e.FullPath);
+                    }
                 }
                 catch (Exception)
                 {

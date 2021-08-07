@@ -312,6 +312,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
                         var series = new Series($"Series{seriesCounter}", ChartType)
                         {
+                            Name               = Values[seriesCounter],
                             ArgumentDataMember = argumentField
                         };
 

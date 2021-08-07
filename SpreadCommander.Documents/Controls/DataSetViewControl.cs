@@ -165,7 +165,7 @@ namespace SpreadCommander.Documents.Controls
 
             FireModified();
 
-            if (IsHandleCreated)
+            if (!IsDisposed && IsHandleCreated)
                 EnableControls();
 
             if (activeDocument == null && viewTableViews.Documents.Count > 0)

@@ -124,7 +124,7 @@ namespace SpreadCommander.Common.Code
                         Type propType = null;
                         try
                         {
-                            propType = Type.GetType(property.TypeNameOfValue, false, true);
+                            propType = Utils.GetType(property.TypeNameOfValue, true);
                         }
                         catch (Exception)
                         {

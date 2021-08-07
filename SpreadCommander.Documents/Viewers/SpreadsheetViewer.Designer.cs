@@ -28,26 +28,26 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SpreadsheetViewer));
-			this.Editor = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
-			this.SuspendLayout();
-			// 
-			// Editor
-			// 
-			this.Editor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Editor.Location = new System.Drawing.Point(0, 0);
-			this.Editor.Name = "Editor";
-			this.Editor.ReadOnly = true;
-			this.Editor.Size = new System.Drawing.Size(1039, 746);
-			this.Editor.TabIndex = 0;
-			// 
-			// SpreadsheetViewer
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.Editor);
-			this.Name = "SpreadsheetViewer";
-			this.ResumeLayout(false);
+            this.Editor = new DevExpress.XtraSpreadsheet.SpreadsheetControl();
+            this.SuspendLayout();
+            // 
+            // Editor
+            // 
+            this.Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Editor.Location = new System.Drawing.Point(0, 0);
+            this.Editor.Name = "Editor";
+            this.Editor.ReadOnly = true;
+            this.Editor.Size = new System.Drawing.Size(1039, 746);
+            this.Editor.TabIndex = 0;
+            this.Editor.EncryptedFilePasswordRequest += new DevExpress.Spreadsheet.EncryptedFilePasswordRequestEventHandler(this.Editor_EncryptedFilePasswordRequest);
+            // 
+            // SpreadsheetViewer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Editor);
+            this.Name = "SpreadsheetViewer";
+            this.ResumeLayout(false);
 
 		}
 

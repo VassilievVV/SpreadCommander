@@ -89,7 +89,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         public SpreadsheetVerticalAlignment? VerticalAlignment { get; set; }
 
 
-        private readonly List<PSObject> _Output = new List<PSObject>();
+        private readonly List<PSObject> _Output = new();
 
         protected override void BeginProcessing()
         {

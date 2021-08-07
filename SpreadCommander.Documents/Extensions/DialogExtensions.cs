@@ -21,7 +21,7 @@ namespace SpreadCommander.Documents.Extensions
 
         public static void SuspendDrawing(this Control control)
         {
-            if (control.IsHandleCreated)
+            if (!control.IsDisposed && control.IsHandleCreated)
             {
                 var _ = SendMessage(control.Handle, WM_SETREDRAW, false, 0);
             }
@@ -29,7 +29,7 @@ namespace SpreadCommander.Documents.Extensions
 
         public static void ResumeDrawing(this Control control)
         {
-            if (control.IsHandleCreated)
+            if (!control.IsDisposed && control.IsHandleCreated)
             {
                 var _ = SendMessage(control.Handle, WM_SETREDRAW, true, 0);
                 control.Refresh();

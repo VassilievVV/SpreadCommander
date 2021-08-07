@@ -254,5 +254,11 @@ namespace SpreadCommander.Common.Code
         [DisplayName("Default location")]
         [Description("Location of the default project.")]
         public string DefaultProjectLocation { get; set; }
+
+        [DataMember()]
+        [Category("Optimization")]
+        [DisplayName("Optimize Remote Connection Performance")]
+        [Description("Whether the application should disable various visual effects to enhance the performance when accessed over slow remote connections.")]
+        public bool? OptimizeRemoteConnectionPerformance { get; set; }
     }
 }

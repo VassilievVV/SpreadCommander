@@ -221,6 +221,13 @@ namespace SpreadCommander.Documents.Dialogs
             DialogResult = DialogResult.OK;
         }
 
+        private void AccordionControlDefault_Click(object sender, EventArgs e)
+        {
+            SelectedProject = Project.DefaultProjectPath;
+            Directory.CreateDirectory(SelectedProject);
+            DialogResult = DialogResult.OK;
+        }
+
         private void LookupLibraries_EditValueChanged(object sender, EventArgs e)
         {
             var library = lookupLibraries.EditValue as SavedLibrary;
