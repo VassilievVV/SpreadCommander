@@ -326,14 +326,20 @@ namespace SpreadCommander.Common.Spreadsheet
 
         public static void FinishTableFormatting(Table table, bool applyStyle = true)
         {
-            table.Range.AutoFitColumns();
+            const int maxAutoFitRows = 1000;
+
+            var range = table.Range;
+            if (table.Rows.Count > maxAutoFitRows)
+                range = range.Worksheet.Range.FromLTRB(range.LeftColumnIndex, range.TopRowIndex, range.RightColumnIndex, range.LeftColumnIndex + maxAutoFitRows - 1);
+
+            range.AutoFitColumns();
             foreach (TableColumn column in table.Columns)
                 if (column.Range.ColumnWidthInCharacters > 50)
                     column.Range.ColumnWidthInCharacters = 50;
 
             if (applyStyle)
                 table.Style = table.Range.Worksheet.Workbook.TableStyles[BuiltInTableStyleId.TableStyleMedium2];
-                    //table.Range.Worksheet.Workbook.TableStyles.DefaultStyle;
+                              //table.Range.Worksheet.Workbook.TableStyles.DefaultStyle;
         }
     }
 }

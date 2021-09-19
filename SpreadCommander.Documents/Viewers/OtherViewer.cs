@@ -18,7 +18,7 @@ namespace SpreadCommander.Documents.Viewers
 			InitializeComponent();
 		}
 
-		public OtherViewer(string messageText): base()
+		public OtherViewer(string messageText): this()
 		{
 			MessageText = messageText;
 		}

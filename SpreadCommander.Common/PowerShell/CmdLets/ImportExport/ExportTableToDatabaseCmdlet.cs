@@ -42,6 +42,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         [Parameter(HelpMessage = "Skip listed columns from data source.")]
         public string[] SkipColumns { get; set; }
 
+        [Parameter(HelpMessage = "Skip auto-generated ID column.")]
+        public SwitchParameter SkipAutoID { get; set; }
+
         [Parameter(HelpMessage = "Ignore errors thrown when getting property values")]
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
@@ -77,7 +80,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
         public SwitchParameter UseExistingTable { get; set; }
 
 
-        private readonly List<PSObject> _Output = new List<PSObject>();
+        private readonly List<PSObject> _Output = new ();
 
         protected override void BeginProcessing()
         {
@@ -107,7 +110,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 throw new Exception("ConnectionName cannot be empty.");
 
             using var dataReader = GetDataSourceReader(_Output, DataSource, 
-                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns, SkipAutoID = this.SkipAutoID });
 
             Connection conn = null;
             bool closeConnection = false;
@@ -147,6 +150,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 var exporter = DbExporter.GetDbExporter(conn.FactoryInvariantName);
                 if (exporter == null)
                     throw new Exception("Cannot configure DB exporter for selected connection.");
+
+                exporter.SkipAutoID = SkipAutoID;
 
                 if (Replace)
                     exporter.DropTable(conn.DbConnection, TableSchema, TableName);

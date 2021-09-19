@@ -88,6 +88,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         [Parameter(HelpMessage = "Vertical alignment of values in data area.")]
         public SpreadsheetVerticalAlignment? VerticalAlignment { get; set; }
 
+        [Parameter(HelpMessage = "Alignment of a table as a whole within the document.")]
+        public TableRowAlignment? TableAlignment { get; set; }
+
+        [Parameter(HelpMessage = "Whether to auto-fit table width in book's window.")]
+        public SwitchParameter AutoFitTableWidth { get; set; }
+
 
         private readonly List<PSObject> _Output = new();
 
@@ -316,6 +322,29 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         protected virtual void DoWriteHtml(Document book, string htmlTable)
         {
             var documentRange = book.AppendHtmlText(htmlTable, DevExpress.XtraRichEdit.API.Native.InsertOptions.KeepSourceFormatting);
+
+            if (AutoFitTableWidth || TableAlignment.HasValue)
+            {
+                var tables = book.Tables.Get(documentRange);
+                foreach (var table in tables)
+                {
+                    if (AutoFitTableWidth)
+                    {
+                        table.TableLayout = TableLayoutType.Autofit;
+
+                        foreach (var row in table.Rows)
+                            foreach (var cell in row.Cells)
+                                cell.PreferredWidthType = WidthType.FiftiethsOfPercent;
+
+                        table.PreferredWidthType = WidthType.FiftiethsOfPercent;
+                        table.PreferredWidth     = 5000;
+                    }
+
+                    if (TableAlignment.HasValue)
+                        table.TableAlignment = TableAlignment.Value;
+                }
+            }
+
             var paragraph = book.Paragraphs.Append();
             
             book.CaretPosition = paragraph.Range.End;

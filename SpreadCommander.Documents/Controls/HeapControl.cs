@@ -194,6 +194,12 @@ namespace SpreadCommander.Documents.Controls
                 _Watcher?.Dispose();
                 _Watcher = null;
             };
+
+            HandleDestroyed += (s, e) =>
+            {
+                if (_Watcher != null)
+                    _Watcher.EnableRaisingEvents = false;
+            };
         }
 
         public readonly string ProjectDirectory;
@@ -209,6 +215,9 @@ namespace SpreadCommander.Documents.Controls
             get => (string)barFolder.EditValue;
             set
             {
+                if (IsDisposed | Disposing | !IsHandleCreated)
+                    return;
+
                 if (Convert.ToString(barFolder.EditValue) != value)
                     barFolder.EditValue = value;
 
@@ -578,11 +587,18 @@ namespace SpreadCommander.Documents.Controls
 
         private void InvokeMethod(Action action)
         {
-            var control = this;
-            if (control != null && !control.IsDisposed && (control?.IsHandleCreated ?? false))
-                control.Invoke((Delegate)action);
-            else
-                action();
+            try
+            {
+                var control = this;
+                if (control != null && !control.IsDisposed && !control.Disposing && control.IsHandleCreated)
+                    control.Invoke((Delegate)action);
+                else
+                    action();
+            }
+            catch (Exception)
+            {
+                //Do nothing
+            }
         }
 
         private void Watcher_Changed(object sender, FileSystemEventArgs e)

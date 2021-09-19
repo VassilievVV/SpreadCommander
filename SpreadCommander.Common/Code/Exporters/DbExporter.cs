@@ -25,6 +25,8 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public int? BatchSize { get; set; }
 
+        public bool SkipAutoID { get; set; }
+
         public event EventHandler<ExportProgressEventArgs> Progress;
 
         public virtual object CreateConnectionStringBuilder()
@@ -134,11 +136,13 @@ namespace SpreadCommander.Common.Code.Exporters
 
             var tblName = GetQualifiedTableName(tableSchema, tableName);
 
-            var columnID = GetUniqueColumnName(table, "ID");
-
             //Table name should be already quoted, quoting rules are different for different databases, in SQL Server it can be dbo.MyTable and [dbo.MyTable] is not correct
             result.AppendLine($"create table {tblName} (");
-            result.AppendLine($"  {columnID} integer primary key, ");
+            if (!SkipAutoID)
+            {
+                var columnID = GetUniqueColumnName(table, "ID");
+                result.AppendLine($"  {columnID} integer primary key, ");
+            }
 
             for (int i = 0; i < table.FieldCount; i++)
                 result.AppendLine($"  {QuoteString(table.GetName(i))} {GetColumnDataType(table.GetFieldType(i), GetColumnMaxLength(table, i))}, ");
@@ -156,17 +160,22 @@ namespace SpreadCommander.Common.Code.Exporters
 
             var tblName = GetQualifiedTableName(tableSchema, tableName);
 
-            var columnID = GetUniqueColumnName(table, "ID");
-
-            result.AppendLine($"insert into {tblName} ({columnID}, ");
+            result.AppendLine($"insert into {tblName} (");
+            if (!SkipAutoID)
+            {
+                var columnID = GetUniqueColumnName(table, "ID");
+                result.AppendLine($"  {columnID}, ");
+            }
 
             for (int i = 0; i < table.FieldCount; i++)
-                result.Append($"{QuoteString(table.GetName(i))}, ");
+                result.Append($"  {QuoteString(table.GetName(i))}, ");
 
             //Remove last ", "
             result.Length -= 2;
 
-            result.AppendLine(")").Append("values (?, ");   //first column is ID
+            result.AppendLine(")").Append("values (");
+            if (!SkipAutoID)
+                result.Append("?, ");   //first column is ID
 
             for (int i = 0; i < table.FieldCount; i++)
                 result.Append("?, ");
@@ -236,13 +245,17 @@ namespace SpreadCommander.Common.Code.Exporters
                     int rowCounter = 0;
                     while (table.Read())
                     {
-                        cmdInsert.Parameters[0].Value = ++rowCounter;   //Column ID
+                        if (!SkipAutoID)
+                            cmdInsert.Parameters[0].Value = ++rowCounter;   //Column ID
                         for (int i = 0; i < table.FieldCount; i++)
                         {
                             object value = table.GetValue(i);
                             if (value != null && value is Guid)
                                 value = value.ToString();
-                            cmdInsert.Parameters[i + 1].Value = value;
+                            if (!SkipAutoID)
+                                cmdInsert.Parameters[i + 1].Value = value;
+                            else
+                                cmdInsert.Parameters[i].Value = value;
                         }
 
                         cmdInsert.ExecuteNonQuery();
@@ -272,9 +285,12 @@ namespace SpreadCommander.Common.Code.Exporters
 
         public virtual void FillInsertCommandParameters(DbCommand cmdInsert, DbDataReader table)
         {
-            var parameterID    = cmdInsert.CreateParameter();
-            parameterID.DbType = DbType.Int32;
-            cmdInsert.Parameters.Add(parameterID);
+            if (!SkipAutoID)
+            {
+                var parameterID    = cmdInsert.CreateParameter();
+                parameterID.DbType = DbType.Int32;
+                cmdInsert.Parameters.Add(parameterID);
+            }
 
             for (int i = 0; i < table.FieldCount; i++)
             {

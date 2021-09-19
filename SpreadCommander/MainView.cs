@@ -866,7 +866,7 @@ namespace SpreadCommander
             if (bindingPSCmdlets.Current is not PowerShellScriptEngine.PowerShellCommand cmdlet)
                 return;
 
-            var helper = new CmdletIntellisenseHelp(cmdlet.Name);
+            var helper = new CmdletIntellisenseHelp(cmdlet.ModuleName, cmdlet.Name);
             string description = null;
 
             try
@@ -911,7 +911,7 @@ namespace SpreadCommander
                 case "WebHelp":
                     if (bindingPSCmdlets.Current is PowerShellScriptEngine.PowerShellCommand cmdlet)
                     {
-                        var helper = new CmdletIntellisenseHelp(cmdlet.Name);
+                        var helper = new CmdletIntellisenseHelp(cmdlet.ModuleName, cmdlet.Name);
                         helper.ShowOnlineHelp(null);
                     }
                     break;

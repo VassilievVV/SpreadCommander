@@ -26,7 +26,10 @@ namespace SpreadCommander.Common
 #endif
 
             //Load MathNet.Symbolic assembly
-            MathNet.Symbolics.Symbol.NewSymbol("a");
+            var typeSymbol = typeof(MathNet.Symbolics.Symbol);
+
+            //Load MathNet.Numerics.Data.Text assembly
+            var typeDelimitedReader = typeof(MathNet.Numerics.Data.Text.DelimitedReader);
         }
     }
 }

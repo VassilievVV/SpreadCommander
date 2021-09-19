@@ -161,12 +161,13 @@ namespace SpreadCommander.Documents.Dialogs
                 {
                     if (!Utils.ContainsString(result, tableName, StringComparison.CurrentCultureIgnoreCase))
                     {
-                        result.Add(Utils.QuoteStringIfNeeded(tableName, "\"", true));
+                        //result.Add(Utils.QuoteStringIfNeeded(tableName, "\"", true));
+                        result.Add(tableName);
                         continue;
                     }
 
                     var newTableName = Utils.AddUniqueString(result, $"{tableName}_1", StringComparison.CurrentCultureIgnoreCase, false);
-                    newTableName     = Utils.QuoteStringIfNeeded(newTableName, "\"", true);
+                    //newTableName     = Utils.QuoteStringIfNeeded(newTableName, "\"", true);
                     result.Add(newTableName);
                 }
 

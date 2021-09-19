@@ -64,11 +64,13 @@ namespace SpreadCommander.Common.Code.Exporters
 
             var tblName = GetQualifiedTableName(tableSchema, tableName);
 
-            var columnID = GetUniqueColumnName(table, "ID");
-
             //Table name should be already quoted, quoting rules are different for different databases, in SQL Server it can be dbo.MyTable and [dbo.MyTable] is not correct
             result.AppendLine($"create table {tblName} (");
-            result.AppendLine($"  {columnID} integer identity(1, 1) primary key, ");
+            if (!SkipAutoID)
+            {
+                var columnID = GetUniqueColumnName(table, "ID");
+                result.AppendLine($"  {columnID} integer identity(1, 1) primary key, ");
+            }
 
             for (int i = 0; i < table.FieldCount; i++)
             {

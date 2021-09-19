@@ -231,8 +231,8 @@ namespace SpreadCommander.Common.ScriptEngines
                                 isInsideNamedParameter      = true;
                                 isInsideNamedParameterValue = IsCaretInExtent(commandParameterAst.Argument?.Extent);
 
-                                if (isInsideNamedParameterValue && (commandParameterAst.Argument.StaticType?.IsEnum ?? false))
-                                    parameterEnumType = commandParameterAst.Argument.StaticType;
+                                if (isInsideNamedParameterValue && (Utils.GetUnderlyingType(commandParameterAst.Argument.StaticType)?.IsEnum ?? false))
+                                    parameterEnumType = Utils.GetUnderlyingType(commandParameterAst.Argument.StaticType);
 
                                 if (!string.IsNullOrWhiteSpace(commandParameterAst.ParameterName))
                                 {
@@ -254,14 +254,14 @@ namespace SpreadCommander.Common.ScriptEngines
                 }
                 if (currentParameter != null)
                 {
-                    var parameterType = NonNullableType(currentParameter?.ParameterType);
+                    var parameterType = Utils.GetUnderlyingType(currentParameter?.ParameterType);
                     if (parameterEnumType == null && (parameterType?.IsEnum ?? false))
                         parameterEnumType = parameterType;
                 }
                 else if (currentParameter == null && parameterUnderCaret >= 0)
                 {
                     currentParameter = parameters.FirstOrDefault(p => p.Position == parameterUnderCaret);
-                    var parameterType = NonNullableType(currentParameter?.ParameterType);
+                    var parameterType = Utils.GetUnderlyingType(currentParameter?.ParameterType);
                     if (parameterEnumType == null && (parameterType?.IsEnum ?? false))
                         parameterEnumType = parameterType;
                 }
@@ -286,7 +286,7 @@ namespace SpreadCommander.Common.ScriptEngines
                     if (currentUnnamedParameter != null)
                     {
                         //Unnamed parameter can be entered at caret position
-                        var currentUnnamedParameterType = NonNullableType(currentUnnamedParameter.ParameterType);
+                        var currentUnnamedParameterType = Utils.GetUnderlyingType(currentUnnamedParameter.ParameterType);
                         if (currentUnnamedParameterType?.IsEnum ?? false)
                         {
                             AddEnumToIntellisense(currentUnnamedParameterType);
@@ -463,15 +463,6 @@ namespace SpreadCommander.Common.ScriptEngines
                 return false;
             }
 
-            static Type NonNullableType(Type type)
-            {
-                if (type == null)
-                    return null;
-
-                var nonNullType = Nullable.GetUnderlyingType(type);
-                return nonNullType ?? type;
-            }
-
             AstNode FindNodeUnderCaret(AstNode parentNode, Type nodeType)
             {
                 foreach (var childNode in parentNode.ChildNodes)
@@ -601,6 +592,8 @@ namespace SpreadCommander.Common.ScriptEngines
 
             void AddEnumToIntellisense(Type enumType)
             {
+                enumType = Utils.GetUnderlyingType(enumType);
+                
                 if (!(enumType?.IsEnum ?? false))
                     return;
 
@@ -735,7 +728,7 @@ namespace SpreadCommander.Common.ScriptEngines
                 if (type == null)
                     return;
 
-                type = NonNullableType(type);
+                type = Utils.GetUnderlyingType(type);
 
                 if (intellisense.Help == null)
                     intellisense.Help = new TypeIntellisenseHelp(type, staticPropertiesMethods);

@@ -18,10 +18,27 @@ namespace SpreadCommander.Common.Code
             CmdletName = cmdletName;
         }
 
-        private string CmdletName { get; }
+        public CmdletIntellisenseHelp(string cmdletModule, string cmdletName)
+        {
+            CmdletModule = cmdletModule;
+            CmdletName   = cmdletName;
+        }
+
+        private string CmdletName   { get; }
+        private string CmdletModule { get; }
 
         public override bool SupportsHelp       => true;
         public override bool SupportsOnlineHelp => true;
+
+        private static string HtmlEncode(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+                return value;
+
+            var result = value.Replace("<", "&lt;").Replace(">", "&gt;").
+                Replace(Environment.NewLine, $"<br>{Environment.NewLine}");
+            return result;
+        }
 
         public override string GetHelpHtmlContent(ScriptIntellisenseItem item)
         {
@@ -29,50 +46,39 @@ namespace SpreadCommander.Common.Code
             if (string.IsNullOrWhiteSpace(cmdletName))
                 return null;
 
-            using (var runspace = PowerShellScriptEngine.CreateRunspace())
-            {
-                using var ps = Automation.PowerShell.Create();
-                ps.Runspace = runspace;
-                ps.AddCommand("get-help").AddParameter("Name", cmdletName).AddParameter("Full").AddCommand("out-string").AddParameter("Width", 10000);
+            using var runspace = PowerShellScriptEngine.CreateRunspace();
+            using var ps       = Automation.PowerShell.Create();
 
-                var commands = ps.Invoke();
-                var command  = commands?.FirstOrDefault();
-                var result   = Convert.ToString(command?.BaseObject);
+            ps.Runspace = runspace;
+            ps.AddCommand("get-help").AddParameter("Name", cmdletName).AddParameter("Full").AddCommand("out-string").AddParameter("Width", 10000);
 
-                if (string.IsNullOrWhiteSpace(result))
-                    return null;
+            var commands = ps.Invoke();
+            var command  = commands?.FirstOrDefault();
+            var result   = Convert.ToString(command?.BaseObject);
 
-                result = HtmlEncode(result);
+            if (string.IsNullOrWhiteSpace(result))
+                return null;
 
-                var reHeaders = new Regex(@"(?m)(^\w[\w \t]+)");
-                result = reHeaders.Replace(result, "<b><u>$1</u></b>");
+            result = HtmlEncode(result);
 
-                var reParameters = new Regex(@"(?m)^(?:[ \t]*(\-\w+(?:\s*\[?&lt;.*?&gt;\]?)?))\s*<br>\s*$");
-                result = reParameters.Replace(result, "<b>$1</b><br>\r\n");
+            var reHeaders = new Regex(@"(?m)(^\w[\w \t]+)");
+            result        = reHeaders.Replace(result, "<b><u>$1</u></b>");
 
-                var reCommonParameters = new Regex(@"(?m)^[ \t]*(&lt;CommonParameters&gt;)\s*<br>\s*$");
-                result = reCommonParameters.Replace(result, "<b>$1</b><br>\r\n");
+            var reParameters = new Regex(@"(?m)^(?:[ \t]*(\-\w+(?:\s*\[?&lt;.*?&gt;\]?)?))\s*<br>\s*$");
+            result           = reParameters.Replace(result, "<b>$1</b><br>\r\n");
 
-                result = result.Replace(" ", "&nbsp;");
+            var reCommonParameters = new Regex(@"(?m)^[ \t]*(&lt;CommonParameters&gt;)\s*<br>\s*$");
+            result                 = reCommonParameters.Replace(result, "<b>$1</b><br>\r\n");
 
-                return result;
-            }
+            result = result.Replace(" ", "&nbsp;");
 
-
-            static string HtmlEncode(string value)
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    return value;
-
-                var result = value.Replace("<", "&lt;").Replace(">", "&gt;"). 
-                    Replace(Environment.NewLine, $"<br>{Environment.NewLine}");
-                return result;
-            }
+            return result;
         }
 
         public override void ShowOnlineHelp(ScriptIntellisenseItem item)
         {
-            string cmdletName = CmdletName ?? item?.Value;
+            string cmdletModule = HtmlEncode(CmdletModule);
+            string cmdletName   = HtmlEncode(CmdletName ?? item?.Value);
             if (string.IsNullOrWhiteSpace(cmdletName))
             {
                 XtraMessageBox.Show("Cmdlet name is empty.", "Cannot show help for cmdlet", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -90,8 +96,15 @@ namespace SpreadCommander.Common.Code
             }
             catch (Exception ex)
             {
+                if (!string.IsNullOrWhiteSpace(CmdletModule))
+                {
+                    //Try to show on Microsoft site
+                    string url = $"https://docs.microsoft.com/en-us/powershell/module/{cmdletModule}/{CmdletName}";
+                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo() { FileName = url, UseShellExecute = true });
+                    return;
+                }
+
                 XtraMessageBox.Show(ex.Message, "Cannot show online help", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
             }
         }
     }

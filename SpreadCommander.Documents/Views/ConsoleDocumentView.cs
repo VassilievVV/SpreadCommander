@@ -203,11 +203,19 @@ namespace SpreadCommander.Documents.Views
         public void LoadFromFile(string fileName)
         {
             _ScriptEditor?.LoadFromFile(fileName);
+
+            var fluent = mvvmContext.OfType<ConsoleDocumentViewModel>();
+            fluent.ViewModel.FileLoaded(fileName);
+            Messenger.Default.Send(new ControlModifiedMessage() { Control = this, Modified = false });
         }
 
         public void SaveToFile(string fileName)
         {
             _ScriptEditor.SaveToFile(fileName);
+
+            var fluent = mvvmContext.OfType<ConsoleDocumentViewModel>();
+            fluent.ViewModel.FileSaved(fileName);
+            Messenger.Default.Send(new ControlModifiedMessage() { Control = this, Modified = false });
         }
 
         public void ResetModifiedAll()         => _ConsoleOutputControl?.ResetModifiedAll();

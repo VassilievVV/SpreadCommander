@@ -25,7 +25,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(Mandatory = true, ParameterSetName = "Connection", Position = 0, HelpMessage = "Database connection for SQL script")]
         public DbConnection Connection { get; set; }
 
-        [Parameter(HelpMessage = "SQL Script text")]
+        [Parameter(Position = 1, HelpMessage = "SQL Script text")]
         [Alias("ScriptText", "Script", "q")]
         public string Query { get; set; }
 

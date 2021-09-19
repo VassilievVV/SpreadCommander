@@ -108,17 +108,18 @@
     <PackageReference Include="dotnetdbf" Version="6.0.0.3" />
     <PackageReference Include="Fizzler" Version="1.3.0" />
     <PackageReference Include="FlatFiles" Version="4.16.0" />
-    <PackageReference Include="Markdig.Signed" Version="0.25.0" />
+    <PackageReference Include="Markdig.Signed" Version="0.26.0" />
     <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
+    <PackageReference Include="MathNet.Numerics.Data.Text" Version="4.1.0" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.5.0" />
     <PackageReference Include="MathNet.Symbolics" Version="0.24.0" />
     <PackageReference Include="Microsoft.Data.SqlClient" Version="3.0.0" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.3" />
-    <PackageReference Include="MySqlConnector" Version="1.3.11" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.1.4" />
+    <PackageReference Include="MySqlConnector" Version="1.3.12" />
     <PackageReference Include="Svg" Version="3.2.3" />
-    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.114.3" />
-    <PackageReference Include="WpfMath" Version="0.10.0" />
+    <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115" />
+    <PackageReference Include="WpfMath" Version="0.11.0" />
   </ItemGroup>
 
   <ItemGroup>

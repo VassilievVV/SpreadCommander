@@ -36,7 +36,7 @@ namespace SpreadCommander.Common.Code
 				if (attrProduct == null)
 					return false;
 
-				return string.Compare(attrProduct.Product, "Microsoft® .NET Framework") == 0;
+				return string.Compare(attrProduct.Product, "Microsoft® .NET") == 0;
 			}
 		}
 
@@ -168,7 +168,7 @@ namespace SpreadCommander.Common.Code
 				return;
 
 			var url = $"https://docs.microsoft.com/en-us/dotnet/api/{Type.FullName}";
-			Process.Start(url);
+			Process.Start(new System.Diagnostics.ProcessStartInfo() { FileName = url, UseShellExecute = true });
 		}
 	}
 }

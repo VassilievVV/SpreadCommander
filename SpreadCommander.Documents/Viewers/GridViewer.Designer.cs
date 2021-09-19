@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GridViewer));
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.barCopyWithHeaders = new DevExpress.XtraBars.BarButtonItem();
             this.barCopyWithoutHeaders = new DevExpress.XtraBars.BarButtonItem();
@@ -108,13 +108,13 @@
             this.barMenuFormatting.Id = 4;
             this.barMenuFormatting.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barMenuFormatting.ImageOptions.SvgImage")));
             this.barMenuFormatting.Name = "barMenuFormatting";
-            toolTipTitleItem2.Text = "Formatting";
-            toolTipItem2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Manage conditional formatting";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barMenuFormatting.SuperTip = superToolTip2;
+            toolTipTitleItem1.Text = "Formatting";
+            toolTipItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("resource.SvgImage")));
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "Manage conditional formatting";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.barMenuFormatting.SuperTip = superToolTip1;
             this.barMenuFormatting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarMenuFormatting_ItemClick);
             // 
             // barManager
@@ -190,6 +190,7 @@
             // 
             this.viewTable.GridControl = this.gridTable;
             this.viewTable.Name = "viewTable";
+            this.viewTable.OptionsBehavior.AllowFixedGroups = DevExpress.Utils.DefaultBoolean.True;
             this.viewTable.OptionsBehavior.AllowIncrementalSearch = true;
             this.viewTable.OptionsBehavior.AllowSortAnimation = DevExpress.Utils.DefaultBoolean.True;
             this.viewTable.OptionsClipboard.AllowCopy = DevExpress.Utils.DefaultBoolean.True;
@@ -210,6 +211,7 @@
             this.viewTable.OptionsFilter.UseNewCustomFilterDialog = true;
             this.viewTable.OptionsFind.AlwaysVisible = true;
             this.viewTable.OptionsFind.Behavior = DevExpress.XtraEditors.FindPanelBehavior.Search;
+            this.viewTable.OptionsFind.FindPanelLocation = DevExpress.XtraGrid.Views.Grid.GridFindPanelLocation.GroupPanel;
             this.viewTable.OptionsFind.SearchInPreview = true;
             this.viewTable.OptionsMenu.ShowAddNewSummaryItem = DevExpress.Utils.DefaultBoolean.True;
             this.viewTable.OptionsMenu.ShowConditionalFormattingItem = true;

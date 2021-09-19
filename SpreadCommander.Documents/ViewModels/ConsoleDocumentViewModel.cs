@@ -340,6 +340,11 @@ namespace SpreadCommander.Documents.ViewModels
             base.LoadFromFile(fileName);
         }
 
+        public void FileLoaded(string fileName)
+        {
+            base.LoadFromFile(fileName);
+        }
+
         public virtual bool SaveCustomControlsToFile()
         {
             return false;
@@ -361,6 +366,11 @@ namespace SpreadCommander.Documents.ViewModels
             if (string.Compare(scriptFileName, fileName, true) != 0)
                 SaveCustomControlsToFile(fileName);
 
+            base.SaveToFile(fileName);
+        }
+
+        public void FileSaved(string fileName)
+        {
             base.SaveToFile(fileName);
         }
 

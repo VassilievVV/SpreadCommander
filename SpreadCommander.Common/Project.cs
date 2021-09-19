@@ -159,6 +159,7 @@ namespace SpreadCommander.Common
             CheckSubDirectory($".{Parameters.ApplicationName}");
             CheckSubDirectory(".Heap");
             CheckSubDirectory("bin");
+            CheckSubDirectory("Modules");
 
 
             void CheckSubDirectory(string dir)
@@ -227,7 +228,8 @@ Unmanaged (native) library probing
 When probing to locate an unmanaged library, the NATIVE_DLL_SEARCH_DIRECTORIES are searched looking for a matching library.
          */
 
-        private static readonly string[] DependencyPaths = { "APP_PATHS", "APP_NI_PATHS", "PLATFORM_RESOURCE_ROOTS", "NATIVE_DLL_SEARCH_DIRECTORIES" };
+        private static readonly string[] DependencyPaths        = { "APP_PATHS", "APP_NI_PATHS", "PLATFORM_RESOURCE_ROOTS", "NATIVE_DLL_SEARCH_DIRECTORIES" };
+        private static readonly string[] ModulesDependencyPaths = { "PSModulePath" };
 
         private static void CloseProject(Project project)
         {
@@ -265,9 +267,12 @@ When probing to locate an unmanaged library, the NATIVE_DLL_SEARCH_DIRECTORIES a
                 return;
 
             string binPath = Path.Combine(project.ProjectPath, "bin");
-
             foreach (var path in DependencyPaths)
                 AddEnvironmentVariable(path, binPath);
+
+            string modulePath = Path.Combine(project.ProjectPath, "Modules");
+            foreach (var path in ModulesDependencyPaths)
+                AddEnvironmentVariable(path, modulePath);
 
 
             static void AddEnvironmentVariable(string name, string value)

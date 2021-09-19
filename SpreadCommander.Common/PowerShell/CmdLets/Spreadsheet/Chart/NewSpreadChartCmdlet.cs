@@ -281,8 +281,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
 
                     chartSeries.ChangeType(series.Type);
 
-                    chartSeries.AxisGroup = series.AxisGroup;
-
                     if (chartSeries.Marker != null)
                     {
                         chartSeries.Marker.Symbol = series.Markers;
@@ -325,6 +323,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
                         }
                     }
                     */
+
+                    //Do as last operation with chartSeries, after that object chartSeries cannot be used.
+                    chartSeries.AxisGroup = series.AxisGroup;
                 }
 
                 chart.Legend.Position = LegendPosition ?? DevExpress.Spreadsheet.Charts.LegendPosition.Bottom;

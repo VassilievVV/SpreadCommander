@@ -18,6 +18,11 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 1.3
+- Third-party components updated.
+- Enhanced and fixed import/export of text files and output to databases.
+- Minor updates and fixes.
+
 ### Version 1.2
 - Third-party components updated.
 - Minor updates and fixes.

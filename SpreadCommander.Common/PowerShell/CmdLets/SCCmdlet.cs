@@ -32,6 +32,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets
 
             public string[] SkipColumns { get; set; }
 
+            public bool SkipAutoID      { get; set; }
+
             public Action DisposeAction { get; set; }
         }
         #endregion

@@ -208,6 +208,21 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Grid
                 if (relation.ParentTable == tbl || relation.ChildTable == tbl)
                     ds.Relations.RemoveAt(i);
             }
+            for (int i = tbl.Constraints.Count - 1; i >= 0; i--)
+            {
+                if (tbl.Constraints[i] is ForeignKeyConstraint)
+                    tbl.Constraints.RemoveAt(i);
+            }
+            for (int t = 0; t < ds.Tables.Count; t++)
+            {
+                var relTable = ds.Tables[t];
+
+                for (int i = relTable.Constraints.Count - 1; i >= 0; i--)
+                {
+                    if (relTable.Constraints[i] is ForeignKeyConstraint fk && fk.RelatedTable == tbl)
+                        relTable.Constraints.RemoveAt(i);
+                }
+            }
 
             ds.Tables.Remove(tbl);
         }

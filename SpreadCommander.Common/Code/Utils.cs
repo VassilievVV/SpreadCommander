@@ -1944,14 +1944,12 @@ namespace SpreadCommander.Common.Code
             if (sourceType == null)
                 return null;
 
-            var nonNullType = Nullable.GetUnderlyingType(sourceType);
-            var result      = nonNullType ?? sourceType;
+            var result = Nullable.GetUnderlyingType(sourceType) ?? sourceType;
 
             if (result.IsArray)
             {
-                result      = result.GetElementType();
-                nonNullType = Nullable.GetUnderlyingType(result);
-                result      = nonNullType ?? sourceType;
+                result = result.GetElementType();
+                result = Nullable.GetUnderlyingType(result) ?? result;
             }
 
             return result;
@@ -2022,6 +2020,9 @@ namespace SpreadCommander.Common.Code
             };
             if (string.IsNullOrWhiteSpace(res))
                 return null;
+
+            if (sourceType.IsEnum)
+                res = sourceType.Name;
 
             if (!string.IsNullOrWhiteSpace(genericArguments))
                 res = Regex.Replace(res, "`\\d+$", "") + $"[{genericArguments}]";

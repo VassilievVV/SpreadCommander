@@ -3,6 +3,7 @@ using DevExpress.Spreadsheet.Charts;
 using DevExpress.Spreadsheet.Drawings;
 using SpreadCommander.Common.Code;
 using SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet;
+using SpreadCommander.Common.Spreadsheet;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -269,11 +270,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
                         if (SeriesTypes != null && i < SeriesTypes.Length)
                             series.ChangeType( SeriesTypes[i]);
 
-                        if (AxisGroups != null && i < AxisGroups.Length)
-                            series.AxisGroup = AxisGroups[i];
-
                         if (SeriesMarkers != null && i < SeriesMarkers.Length)
                             series.Marker.Symbol = SeriesMarkers[i];
+
+                        //Do as last operation with series, after that object series cannot be used.
+                        if (AxisGroups != null && i < AxisGroups.Length)
+                            series.AxisGroup = AxisGroups[i];
                     }
                 }
 
