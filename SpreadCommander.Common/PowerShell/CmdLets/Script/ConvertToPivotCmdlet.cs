@@ -64,7 +64,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         public SwitchParameter EnumerateCollection { get; set; }
 
 
-        private readonly List<PSObject> _Input = new List<PSObject>();
+        private readonly List<PSObject> _Input = new ();
 
         protected override void BeginProcessing()
         {

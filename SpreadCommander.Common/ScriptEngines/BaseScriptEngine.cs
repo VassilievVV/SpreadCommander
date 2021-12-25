@@ -58,6 +58,10 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public const int DefaultBufferCapacity = 65536;
 
+        public static readonly Color DefaultBackgroundColor      = SystemColors.Window;
+        public static readonly Color DefaultForegroundColor      = SystemColors.WindowText;
+        public static readonly Color DefaultForegroundErrorColor = Color.Red;
+
         public event EventHandler ScriptOutput;
         public event EventHandler TitleChanged;
         public event EventHandler NeedScrollToCaret;
@@ -68,6 +72,8 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public static ScriptApplicationType ApplicationType { get; private set; }
 
+        public static ISynchronizeInvoke StaticSynchronizeInvoke { get; set; }
+
         public virtual ScriptExecutionType ExecutionType	{ get; set; }
 
         public virtual string EngineName					{ get; }
@@ -76,6 +82,8 @@ namespace SpreadCommander.Common.ScriptEngines
         public virtual string SyntaxFile					{ get; }
         public virtual bool LfInSendCommand					{ get; }
         public virtual ISynchronizeInvoke SynchronizeInvoke { get; set; }
+
+        public virtual bool Silent                          { get; set; }
 
         public static void SetApplicationType(ScriptApplicationType value)
         {
@@ -210,13 +218,22 @@ namespace SpreadCommander.Common.ScriptEngines
             ViewFileRequest?.Invoke(this, args);
         }
 
-        public virtual void ListScriptIntellisenseItems(string text, string[] lines, Point caretPosition, ScriptIntellisense intellisense) { }
+        public virtual void ListScriptIntellisenseItems(string fileName, string text, string[] lines, Point caretPosition, ScriptIntellisense intellisense) { }
 
         public virtual void ListScriptParseErrors(string text, List<ScriptParseError> errors) { }
 
         public virtual void FireExecutionFinished()
         {
             ExecutionFinished?.Invoke(this, EventArgs.Empty);
+        }
+
+        public virtual void ExecuteSynchronized(Action action)
+        {
+            var sync = SynchronizeInvoke ?? StaticSynchronizeInvoke;
+            if (sync?.InvokeRequired ?? false)
+                _ = sync.Invoke(action, Array.Empty<object>());
+            else
+                action();
         }
     }
 }

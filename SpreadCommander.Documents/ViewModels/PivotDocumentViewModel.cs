@@ -2,6 +2,7 @@
 using DevExpress.Mvvm.POCO;
 using SpreadCommander.Common;
 using SpreadCommander.Common.Code;
+using SpreadCommander.Common.ScriptEngines;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -32,8 +33,15 @@ namespace SpreadCommander.Documents.ViewModels
         {
         }
 
+        public PivotDocumentViewModel(BaseScriptEngine engine): base(engine)
+        {
+        }
+
         public static PivotDocumentViewModel Create() =>
             ViewModelSource.Create<PivotDocumentViewModel>(() => new PivotDocumentViewModel());
+
+        public new static PivotDocumentViewModel Create(BaseScriptEngine engine) =>
+            ViewModelSource.Create<PivotDocumentViewModel>(() => new PivotDocumentViewModel(engine));
 
         public override string DefaultExt => ".scpivot";
         public override string FileFilter => "Pivot (*.scpivot)|*.scpivot|All files (*.*)|*.*";
@@ -178,7 +186,7 @@ namespace SpreadCommander.Documents.ViewModels
                 MemoryStream streamPivot = null, streamChart = null;
                 try
                 {
-                    using (MemoryStream streamPivotInit = new MemoryStream())
+                    using (var streamPivotInit = new MemoryStream())
                     {
                         callback.SavePivot(streamPivotInit);
                         streamPivotInit.Seek(0, SeekOrigin.Begin);

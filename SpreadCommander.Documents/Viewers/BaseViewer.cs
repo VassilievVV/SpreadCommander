@@ -97,11 +97,13 @@ namespace SpreadCommander.Documents.Viewers
 					result = new SpreadsheetViewer();
 					break;
 				case ".ps1":
+				case ".psm1":
+				case ".psd1":
 				case ".ps":
 				case ".csx":
 				case ".cs":
 				case ".fsx":
-				case ".fx":
+				case ".fs":
 				case ".sql":
 				case ".r":
 				case ".py":

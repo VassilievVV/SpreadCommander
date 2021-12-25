@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -276,13 +275,15 @@ namespace SpreadCommander.Common.SqlScript
         }
         #endregion
 
-        public const string keyServer              = "Server";
-        public const string keyDatabase            = "Database";
-        public const string keyIntegratedSecurity  = "Integrated Security";
-        public const string keyUserID              = "User ID";
-        public const string keyPassword            = "Password";
-        public const string keyPersistSecurityInfo = "Persist security info";
-        public const string keyAttachDBFilename    = "AttachDBFilename";
+        public const string keyServer                 = "Server";
+        public const string keyDatabase               = "Database";
+        public const string keyIntegratedSecurity     = "Integrated Security";
+        public const string keyUserID                 = "User ID";
+        public const string keyPassword               = "Password";
+        public const string keyPersistSecurityInfo    = "Persist security info";
+        public const string keyAttachDBFilename       = "AttachDBFilename";
+        public const string keyEncrypt                = "Encrypt";
+        public const string keyTrustServerCertificate = "Trust Server Certificate";
 
         private string _Server;
         private string _Database;
@@ -291,6 +292,8 @@ namespace SpreadCommander.Common.SqlScript
         private string _Password;
         private bool _PersistSecurityInfo;
         private string _AttachDBFilename;
+        private bool _Encrypt;
+        private bool _TrustServerCertificate;
 
         public SqlConnectionStringBuilderLight(string connectionString)
         {
@@ -345,6 +348,13 @@ namespace SpreadCommander.Common.SqlScript
                 case "EXTENDED PROPERTIES":
                 case "INITIAL FILE NAME":
                     result = keyAttachDBFilename;
+                    break;
+                case "ENCRYPT":
+                    result = keyEncrypt;
+                    break;
+                case "TRUSTSERVERCERTIFICATE":
+                case "TRUST SERVER CERTIFICATE":
+                    result = keyTrustServerCertificate;
                     break;
             }
 
@@ -417,6 +427,12 @@ namespace SpreadCommander.Common.SqlScript
                 case keyAttachDBFilename:
                     AttachDBFilename = ValueToString(value, null);
                     break;
+                case keyEncrypt:
+                    Encrypt = ValueToBool(value, true);
+                    break;
+                case keyTrustServerCertificate:
+                    TrustServerCertificate = ValueToBool(value, false);
+                    break;
             }
         }
 
@@ -449,7 +465,7 @@ namespace SpreadCommander.Common.SqlScript
         {
             get
             {
-                ArrayList result = new ArrayList()
+                var result = new ArrayList()
                 {
                     keyServer,
                     keyDatabase,
@@ -457,7 +473,9 @@ namespace SpreadCommander.Common.SqlScript
                     keyUserID,
                     keyPassword,
                     keyPersistSecurityInfo,
-                    keyAttachDBFilename
+                    keyAttachDBFilename,
+                    keyEncrypt,
+                    keyTrustServerCertificate
                 };
                 return result;
             }
@@ -493,7 +511,8 @@ namespace SpreadCommander.Common.SqlScript
                 "WINDOWSAUTHENTICATION" or "USER ID" or "USERID" or 
                 "PASSWORD" or "PWD" or "DATABASE PASSWORD" or 
                 "PERSIST SECURITY INFO" or "ATTACHDBFILENAME" or 
-                "EXTENDED PROPERTIES" or "INITIAL FILE NAME" => true,
+                "EXTENDED PROPERTIES" or "INITIAL FILE NAME" or 
+                "ENCRYPT" or "TRUSTSERVERCERTIFICATE" or "TRUST SERVER CERTIFICATE" => true,
                 _ => false,
             };
         }
@@ -525,6 +544,12 @@ namespace SpreadCommander.Common.SqlScript
                 case keyAttachDBFilename:
                     value = AttachDBFilename;
                     return true;
+                case keyEncrypt:
+                    value = Encrypt;
+                    return true;
+                case keyTrustServerCertificate:
+                    value = TrustServerCertificate;
+                    return true;
             }
 
             value = null;
@@ -535,13 +560,15 @@ namespace SpreadCommander.Common.SqlScript
         {
             base.Clear();
 
-            Server               = null;
-            Database             = null;
-            IntegratedSecurity   = true;
-            UserID               = null;
-            Password             = null;
-            PersistSecurityInfo  = false;
-            AttachDBFilename     = null;
+            Server                 = null;
+            Database               = null;
+            IntegratedSecurity     = true;
+            UserID                 = null;
+            Password               = null;
+            PersistSecurityInfo    = false;
+            AttachDBFilename       = null;
+            Encrypt                = true;
+            TrustServerCertificate = false;
         }
 
         [Description("Server name of Microsoft SQL Server")]
@@ -596,7 +623,7 @@ namespace SpreadCommander.Common.SqlScript
             "if the connection is open or has ever been in an open state. " +
             "Resetting the connection string resets all connection string values, " +
             "including the password. The default value is false.")]
-        [DisplayName("Persist security info")]
+        [DisplayName("Persist Security Info")]
         [Category("Security")]
         [DefaultValue(false)]
         public virtual bool PersistSecurityInfo
@@ -614,13 +641,31 @@ namespace SpreadCommander.Common.SqlScript
             "The database name must be specified with the keyword 'database' (or one of its aliases) as in the following:\r\n " +
             "\"AttachDbFileName=|DataDirectory|\\data\\YourDB.mdf;integrated security=true;database=YourDatabase\"\r\n " +
             "An error will be generated if a log file exists in the same directory as the data file and the 'database' keyword is used when attaching the primary data file.In this case, remove the log file. Once the database is attached, a new log file will be automatically generated based on the physical path.")]
-        [DisplayName("AttachDBFilename")]
+        [DisplayName("Attach DB Filename")]
         [Category("Source")]
         [EditorAttribute(typeof(AttachDBFilenameEditor), typeof(System.Drawing.Design.UITypeEditor))]
         public virtual string AttachDBFilename
         {
             get { return _AttachDBFilename; }
             set { SetValue(keyAttachDBFilename, value); _AttachDBFilename = value; }
+        }
+
+        [Description("Value that indicates whether SQL Server uses SSL encryption for all data sent between the client and server if the server has a certificate installed.")]
+        [DisplayName("Encrypt")]
+        [Category("Security")]
+        public virtual bool Encrypt
+        {
+            get { return _Encrypt; }
+            set { SetValue(keyEncrypt, value); _Encrypt = value; }
+        }
+
+        [Description("Value that indicates whether the channel will be encrypted while bypassing walking the certificate chain to validate trust.")]
+        [DisplayName("Trust Server Certificate")]
+        [Category("Security")]
+        public virtual bool TrustServerCertificate
+        {
+            get { return _TrustServerCertificate; }
+            set { SetValue(keyTrustServerCertificate, value); _TrustServerCertificate = value; }
         }
     }
     #endregion

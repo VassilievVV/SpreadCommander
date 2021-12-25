@@ -155,15 +155,15 @@ namespace SpreadCommander.Documents.Controls
                 e.NodeImageIndex = ext switch
                 {
 #pragma warning disable CRRSP06 // A misspelled word has been found
-                    ".xlsx" or ".xls"                                                               => 2,
-                    ".csv" or ".txt"                                                                => 3,
-                    ".sql"                                                                          => 4,
-                    ".ps" or ".ps1" or ".csx" or ".fsx" or ".r" or ".py"                            => 5,
-                    ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub" => 6,
-                    ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"            => 7,
-                    ".dash"                                                                         => 8,
-                    ".pdf"                                                                          => 9,
-                    _                                                                               => 1
+                    ".xlsx" or ".xls"                                                                   => 2,
+                    ".csv" or ".txt"                                                                    => 3,
+                    ".sql"                                                                              => 4,
+                    ".ps" or ".ps1" or ".psm1" or ".psd1" or ".csx" or ".fsx" or ".fs" or ".r" or ".py" => 5,
+                    ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub"     => 6,
+                    ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"                => 7,
+                    ".dash"                                                                             => 8,
+                    ".pdf"                                                                              => 9,
+                    _                                                                                   => 1
 #pragma warning restore CRRSP06 // A misspelled word has been found
                 };
             }
@@ -237,7 +237,7 @@ namespace SpreadCommander.Documents.Controls
 
         private void TreeProjectFiles_DragOver(object sender, DragEventArgs e)
         {
-            if (!(e.Data.GetData(typeof(FileTreeNode)) is FileTreeNode))
+            if (e.Data.GetData(typeof(FileTreeNode)) is not FileTreeNode)
                 return;
 
             var hitInfo = treeProjectFiles.CalcHitInfo(treeProjectFiles.PointToClient(new Point(e.X, e.Y)));
@@ -246,7 +246,7 @@ namespace SpreadCommander.Documents.Controls
             if (treeNode == null)
                 return;
 
-            if (!(treeProjectFiles.GetDataRecordByNode(treeNode) is DirectoryTreeNode))
+            if (treeProjectFiles.GetDataRecordByNode(treeNode) is not DirectoryTreeNode)
                 return;
 
             e.Effect = (e.KeyState & 8) == 8 ? DragDropEffects.Copy : DragDropEffects.Move;

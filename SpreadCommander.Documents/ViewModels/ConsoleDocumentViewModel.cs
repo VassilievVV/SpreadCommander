@@ -54,11 +54,21 @@ namespace SpreadCommander.Documents.ViewModels
 
         public ConsoleDocumentViewModel(BaseScriptEngine engine)
         {
-            Engine            = engine;
-            InitializeEngine(Engine, true);
+            Engine = engine;
+            if (engine != null)
+                InitializeEngine(Engine, true);
 
             //Call later from ConsoleDocument, when it is loaded
             //StartEngine();
+        }
+
+        public void SetupEngine(BaseScriptEngine engine)
+        {
+            if (Engine != null)
+                throw new Exception("Engine is already initialized.");
+
+            Engine = engine;
+            InitializeEngine(Engine, true);
         }
 
         public static ConsoleDocumentViewModel Create(BaseScriptEngine engine) =>
@@ -221,8 +231,15 @@ namespace SpreadCommander.Documents.ViewModels
             }
         }
 
+        protected virtual void CheckScriptEngine()
+        {
+            if (Engine == null)
+                throw new InvalidOperationException("Script engine is not initialized.");
+        }
+
         public void Execute(string command)
         {
+            CheckScriptEngine();
             Engine.SendCommand(command);
         }
 
@@ -237,6 +254,8 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void ExecuteScript(string script)
         {
+            CheckScriptEngine();
+
             ClearAllOutput();
 
             //Clone script engine. Execute script in "clear" script engine and do not affect existing script.
@@ -315,6 +334,25 @@ namespace SpreadCommander.Documents.ViewModels
 
         protected virtual void LoadScriptFile(string fileName)
         {
+            var engine = Engine;
+            if (engine == null && !string.IsNullOrWhiteSpace(fileName))
+            {
+                var ext = Path.GetExtension(fileName)?.ToLower();
+                switch (ext)
+                {
+                    case ".ps1":
+                    case ".ps":
+                    case ".psm1":
+                    case ".psd1":
+                        SetupEngine(new PowerShellScriptEngine());
+                        break;
+                    case ".fsx":
+                    case ".fs":
+                        SetupEngine(new FSharpScriptEngine());
+                        break;
+                }
+            }
+
             Callback?.LoadFromFile(fileName);
         }
 
@@ -327,6 +365,22 @@ namespace SpreadCommander.Documents.ViewModels
         public override void LoadFromFile(string fileName)
         {
             fileName = Project.Current.MapPath(fileName);
+
+            if (Engine == null)
+            {
+                string testFileName = $"{fileName}.ps1";
+                if (File.Exists(testFileName))
+                    Engine = new PowerShellScriptEngine();
+                else
+                {
+                    testFileName = $"{fileName}.fsx";
+                    if (File.Exists(testFileName))
+                        Engine = new FSharpScriptEngine();
+                }
+
+                if (Engine != null)
+                    InitializeEngine(Engine, true);
+            }
 
             var scriptFileName = GetScriptFileName(fileName);
             if (scriptFileName != null)
@@ -376,7 +430,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public virtual void ListScriptIntellisenseItems(string text, string[] lines, Point caretPosition, ScriptIntellisense intellisense)
         {
-            Engine?.ListScriptIntellisenseItems(text, lines, caretPosition, intellisense);
+            Engine?.ListScriptIntellisenseItems(FileName, text, lines, caretPosition, intellisense);
         }
 
         public virtual void ParseScriptErrors(string text, List<ScriptParseError> errors)

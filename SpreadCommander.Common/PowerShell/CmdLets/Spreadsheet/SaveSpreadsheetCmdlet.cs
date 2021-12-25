@@ -76,8 +76,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
                     ShowPrintDialogOnOpen = false
                 };
 
-                using var ps = new PrintingSystem();
-                using PrintableComponentLink link = new PrintableComponentLink(ps)
+                using var ps   = new PrintingSystem();
+                using var link = new PrintableComponentLink(ps)
                 {
                     Component = workbook
                 };

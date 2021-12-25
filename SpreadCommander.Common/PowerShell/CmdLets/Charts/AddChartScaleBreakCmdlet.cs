@@ -31,11 +31,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 		{
 			AxisBase axis;
 
-			if (!string.IsNullOrWhiteSpace(Name))
+			if (!string.IsNullOrWhiteSpace(AxisName))
 			{
-				axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, Name);
+				axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, AxisName);
 				if (axis == null)
-					throw new Exception($"Cannot find axis '{Name}'.");
+					throw new Exception($"Cannot find axis '{AxisName}'.");
 			}
 			else
 			{

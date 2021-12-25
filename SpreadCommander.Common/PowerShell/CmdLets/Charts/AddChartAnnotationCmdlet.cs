@@ -55,7 +55,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Parameter(HelpMessage = "Angle by which the annotation's shape is rotated.")]
         public int? Angle { get; set; }
 
-
         [Parameter(HelpMessage = "Annotation's background color.")]
         public string BackColor { get; set; }
 
@@ -144,6 +143,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         protected virtual void SetupXtraChartAnnotation(TextAnnotation annotation)
         {
+            AnchorDockPane = Pane ?? AnchorDockPane;
+
             //Need this to link annotation to series point in BoundDataChanged
             annotation.Tag = this;
 
@@ -253,6 +254,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                 annotation.ShapeFillet = ShapeFillet.Value;
             if (ShapeKind.HasValue)
                 annotation.ShapeKind = ShapeKind.Value;
+
+            annotation.LabelMode = LabelMode;
 
             if (AnchorAngle.HasValue || AnchorConnectorLength.HasValue)
                 annotation.ShapePosition = new RelativePosition(AnchorAngle ?? 0.0, AnchorConnectorLength ?? 0.0);

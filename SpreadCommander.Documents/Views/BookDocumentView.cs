@@ -33,7 +33,7 @@ namespace SpreadCommander.Documents.Views
 {
     public partial class BookDocumentView : DevExpress.XtraBars.Ribbon.RibbonForm, BookDocumentViewModel.ICallback, IImageHolder
     {
-        private SCBook SCBook;
+        private InternalBook SCBook;
 
         public BookDocumentView()
         {
@@ -57,7 +57,7 @@ namespace SpreadCommander.Documents.Views
 
             ribbonControl.SelectedPage = homeRibbonPage1;
 
-            SCBook = new SCBook(Editor);
+            SCBook = new InternalBook(Editor);
             BookFactoryHelper.SetCommandFactory(Editor, this);
 
             Disposed += BookDocumentView_Disposed;
@@ -264,7 +264,7 @@ namespace SpreadCommander.Documents.Views
 
         private void BarLoadTemplate_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var dir = Project.Current.MapPath("~\\Templates");
+            var dir = Project.Current.MapPath("~#\\Templates");
             if (Directory.Exists(dir))
                 dlgOpen.InitialDirectory = dir;
 
@@ -276,7 +276,7 @@ namespace SpreadCommander.Documents.Views
 
         private void BarSaveTemplate_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var dir = Project.Current.MapPath("~\\Templates");
+            var dir = Project.Current.MapPath("~#\\Templates");
             if (Directory.Exists(dir))
                 dlgSave.InitialDirectory = dir;
 

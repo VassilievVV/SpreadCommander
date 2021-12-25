@@ -172,6 +172,20 @@ namespace SpreadCommander.Common.Spreadsheet
                     if (string.Compare(worksheet.Name, tableName, true) == 0)
                         return worksheet.GetDataRange();
                 }
+
+                //Allow to specify sheet position if it is not equal to defined range or table name or other sheet name
+                if (int.TryParse(tableName, out int sheetPosition) && sheetPosition >= 1 && sheetPosition <= workbook.Worksheets.Count)
+                {
+                    var worksheet = workbook.Worksheets[sheetPosition - 1];
+                    return worksheet.GetDataRange();
+                }
+
+                if (string.Compare("ActiveWorksheet", tableName, true) == 0)
+                {
+                    var worksheet = workbook.Worksheets.ActiveWorksheet;
+                    if (worksheet != null)
+                        return worksheet.GetDataRange();
+                }
             }
 
             throw new Exception($"Invalid range: {tableName}");

@@ -21,7 +21,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         public SwitchParameter Stream { get; set; }
 
 
-        private readonly StringBuilder _Output = new StringBuilder();
+        private readonly StringBuilder _Output = new ();
 
         protected override void BeginProcessing()
         {

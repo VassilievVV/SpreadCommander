@@ -8,7 +8,7 @@ using SpreadCommander.Common.SqlScript;
 using System.Data;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.OleDb;
 using System.Data.Odbc;
 using System.Data.OracleClient;

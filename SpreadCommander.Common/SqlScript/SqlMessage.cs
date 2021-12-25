@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,10 +83,10 @@ namespace SpreadCommander.Common.SqlScript
 
                 int eol = description.IndexOfAny(new char[] { '\n', '\r' });
                 if (eol > 0)
-                    description = description.Substring(0, eol);
+                    description = description[..eol];
 
                 if (description.Length > 100)
-                    description = $"{(description.Substring(0, 100))} ...";
+                    description = $"{(description[..100])} ...";
 
                 return description;
             }

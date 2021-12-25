@@ -18,6 +18,12 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 2.0
+- F# is added as scripting language.
+- '~\' as project root is changed to '~#\'.
+- Support for PowerShell is enhanced - modules in folder 'Modules' are referenced automatically. PowerShell is updated to version 7.2.
+- Third-party components are updated.
+
 ### Version 1.3
 - Third-party components updated.
 - Enhanced and fixed import/export of text files and output to databases.

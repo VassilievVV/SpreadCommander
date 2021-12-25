@@ -289,9 +289,10 @@ namespace SpreadCommander.Common.Code
                 rows.Add(row);
             }
 
-            bool hasColumnOrdinal = initSchema.Columns.Contains("ColumnOrdinal");
-
             var result = initSchema.Clone();
+            bool hasColumnOrdinal = result.Columns.Contains("ColumnOrdinal");
+            if (hasColumnOrdinal)
+                result.Columns["ColumnOrdinal"].ReadOnly = false;
             for (int i = 0; i < rows.Count; i++)
             {
                 var row = result.Rows.Add(rows[i].ItemArray);

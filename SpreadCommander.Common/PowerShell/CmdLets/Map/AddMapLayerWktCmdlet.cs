@@ -47,17 +47,17 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
 		}
 
 		/*
-Unknown = 0, 
-Dot = 1, 
-Ellipse = 2, 
-Line = 3, 
-Path = 4, 
-Polygon = 5, 
-Polyline = 6, 
+Unknown   = 0, 
+Dot       = 1, 
+Ellipse   = 2, 
+Line      = 3, 
+Path      = 4, 
+Polygon   = 5, 
+Polyline  = 6, 
 Rectangle = 7, 
-Pushpin = 8, 
-Custom = 9, 
-Callout = 10
+Pushpin   = 8, 
+Custom    = 9, 
+Callout   = 10
 		 */
 	}
 }

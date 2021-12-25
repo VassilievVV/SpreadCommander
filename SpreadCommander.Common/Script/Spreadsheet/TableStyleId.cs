@@ -1,0 +1,72 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SpreadCommander.Common.Script.Spreadsheet
+{
+    public enum TableStyleId
+    {
+        Light1   = 1,
+        Light2   = 2,
+        Light3   = 3,
+        Light4   = 4,
+        Light5   = 5,
+        Light6   = 6,
+        Light7   = 7,
+        Light8   = 8,
+        Light9   = 9,
+        Light10  = 10,
+        Light11  = 11,
+        Light12  = 12,
+        Light13  = 13,
+        Light14  = 14,
+        Light15  = 15,
+        Light16  = 16,
+        Light17  = 17,
+        Light18  = 18,
+        Light19  = 19,
+        Light20  = 20,
+        Light21  = 21,
+        Medium1  = 22,
+        Medium2  = 23,
+        Medium3  = 24,
+        Medium4  = 25,
+        Medium5  = 26,
+        Medium6  = 27,
+        Medium7  = 28,
+        Medium8  = 29,
+        Medium9  = 30,
+        Medium10 = 31,
+        Medium11 = 32,
+        Medium12 = 33,
+        Medium13 = 34,
+        Medium14 = 35,
+        Medium15 = 36,
+        Medium16 = 37,
+        Medium17 = 38,
+        Medium18 = 39,
+        Medium19 = 40,
+        Medium20 = 41,
+        Medium21 = 42,
+        Medium22 = 43,
+        Medium23 = 44,
+        Medium24 = 45,
+        Medium25 = 46,
+        Medium26 = 47,
+        Medium27 = 48,
+        Medium28 = 49,
+        Dark1    = 50,
+        Dark2    = 51,
+        Dark3    = 52,
+        Dark4    = 53,
+        Dark5    = 54,
+        Dark6    = 55,
+        Dark7    = 56,
+        Dark8    = 57,
+        Dark9    = 58,
+        Dark10   = 59,
+        Dark11   = 60
+    }
+}

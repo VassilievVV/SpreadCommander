@@ -25,7 +25,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         public SwitchParameter NoLineBreaks { get; set; }
 
 
-        private readonly List<string> _Output = new List<string>();
+        private readonly List<string> _Output = new ();
 
         protected override void BeginProcessing()
         {
@@ -86,6 +86,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     var ext = Path.GetExtension(fileName)?.ToLower();
                     switch (ext)
                     {
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "markdown":
                         case "mdown":
                         case "md":
@@ -96,6 +97,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                         default:
                             range = book.AppendDocumentContent(fileName);
                             break;
+#pragma warning restore CRRSP06 // A misspelled word has been found
                     }
 
                     if (rangeStart == null)

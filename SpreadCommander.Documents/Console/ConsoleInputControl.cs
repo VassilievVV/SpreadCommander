@@ -106,6 +106,9 @@ namespace SpreadCommander.Documents.Console
 
         public void LoadSyntax(string syntaxName)
         {
+            if (string.IsNullOrWhiteSpace(syntaxName))
+                return;
+
             editCommand.SetParserSyntax(syntaxName);
             editHistory.SetParserSyntax(syntaxName);
         }

@@ -345,24 +345,36 @@ namespace SpreadCommander.Common.Code
             }
             else if (connection is SqlConnection sqlConnection)
             {
+                var sqlServerSettings = ApplicationSettings.Default.MSSQLServer;
+
                 var sqlBuilder = new SqlConnectionStringBuilder(connectionString)
                 {
                     PersistSecurityInfo = true
                 };
 
                 if (string.IsNullOrWhiteSpace(sqlBuilder.DataSource) &&
-                    !string.IsNullOrWhiteSpace(ApplicationSettings.Default.MSSQLServer?.DefaultServer))
+                    !string.IsNullOrWhiteSpace(sqlServerSettings?.DefaultServer))
                 {
-                    sqlBuilder.DataSource = ApplicationSettings.Default.MSSQLServer.DefaultServer;
+                    sqlBuilder.DataSource = sqlServerSettings.DefaultServer;
                     if (string.IsNullOrWhiteSpace(sqlBuilder.UserID))
                     {
-                        if (!string.IsNullOrWhiteSpace(ApplicationSettings.Default.MSSQLServer.DefaultUserID))
+                        if (!string.IsNullOrWhiteSpace(sqlServerSettings.DefaultUserID))
                         {
-                            sqlBuilder.UserID = ApplicationSettings.Default.MSSQLServer.DefaultUserID;
-                            if (!string.IsNullOrWhiteSpace(ApplicationSettings.Default.MSSQLServer.DefaultPassword))
-                                sqlBuilder.Password = ApplicationSettings.Default.MSSQLServer.DefaultPassword;
+                            sqlBuilder.UserID = sqlServerSettings.DefaultUserID;
+                            if (!string.IsNullOrWhiteSpace(sqlServerSettings.DefaultPassword))
+                                sqlBuilder.Password = sqlServerSettings.DefaultPassword;
                         }
                     }
+                    sqlBuilder.Encrypt = sqlServerSettings.Encrypt;
+                    if (sqlServerSettings.TrustServerCertificate.HasValue)
+                        sqlBuilder.TrustServerCertificate = sqlServerSettings.TrustServerCertificate.Value;
+                }
+                else
+                {
+                    if (sqlServerSettings.EncryptAllServers.HasValue)
+                        sqlBuilder.Encrypt = sqlServerSettings.EncryptAllServers.Value;
+                    if (sqlServerSettings.TrustAllServerCertificates.HasValue)
+                        sqlBuilder.TrustServerCertificate = sqlServerSettings.TrustAllServerCertificates.Value;
                 }
 
                 if (!string.IsNullOrWhiteSpace(sqlBuilder.AttachDBFilename))
@@ -376,30 +388,32 @@ namespace SpreadCommander.Common.Code
             }
             else if (connection is MySqlConnection mySqlConnection)
             {
+                var mySqlSettings = ApplicationSettings.Default.MySQLServer;
+
                 var mySqlBuilder = new MySqlConnectionStringBuilder(connectionString)
                 {
                     PersistSecurityInfo = true
                 };
 
                 if (string.IsNullOrWhiteSpace(mySqlBuilder.Server) &&
-                    !string.IsNullOrWhiteSpace(ApplicationSettings.Default.MySQLServer?.DefaultServer))
+                    !string.IsNullOrWhiteSpace(mySqlSettings?.DefaultServer))
                 {
-                    mySqlBuilder.Server = ApplicationSettings.Default.MySQLServer.DefaultServer;
-                    if ((ApplicationSettings.Default.MySQLServer.DefaultPort ?? 0) > 0)
-                        mySqlBuilder.Port = ApplicationSettings.Default.MySQLServer.DefaultPort.Value;
+                    mySqlBuilder.Server = mySqlSettings.DefaultServer;
+                    if ((mySqlSettings.DefaultPort ?? 0) > 0)
+                        mySqlBuilder.Port = mySqlSettings.DefaultPort.Value;
 
                     if (string.IsNullOrWhiteSpace(mySqlBuilder.UserID))
                     {
-                        if (!string.IsNullOrWhiteSpace(ApplicationSettings.Default.MySQLServer.DefaultUserID))
+                        if (!string.IsNullOrWhiteSpace(mySqlSettings.DefaultUserID))
                         {
-                            mySqlBuilder.UserID = ApplicationSettings.Default.MySQLServer.DefaultUserID;
-                            if (!string.IsNullOrWhiteSpace(ApplicationSettings.Default.MySQLServer.DefaultPassword))
-                                mySqlBuilder.Password = ApplicationSettings.Default.MySQLServer.DefaultPassword;
+                            mySqlBuilder.UserID = mySqlSettings.DefaultUserID;
+                            if (!string.IsNullOrWhiteSpace(mySqlSettings.DefaultPassword))
+                                mySqlBuilder.Password = mySqlSettings.DefaultPassword;
                         }
                     }
 
-                    if (ApplicationSettings.Default.MySQLServer.DefaultSslMode.HasValue)
-                        mySqlBuilder.SslMode = ApplicationSettings.Default.MySQLServer.DefaultSslMode.Value;
+                    if (mySqlSettings.DefaultSslMode.HasValue)
+                        mySqlBuilder.SslMode = mySqlSettings.DefaultSslMode.Value;
                 }
 
                 mySqlBuilder.ApplicationName = Parameters.ApplicationName;

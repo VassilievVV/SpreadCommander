@@ -34,7 +34,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.IndicatorContext
 					financialIndicator.Point1.ValueLevel = Point1ValueLevel.Value;
 				financialIndicator.Point2.Argument = Point2Argument;
 				if (Point2ValueLevel.HasValue)
-				financialIndicator.Point2.ValueLevel = Point2ValueLevel.Value;
+					financialIndicator.Point2.ValueLevel = Point2ValueLevel.Value;
 			}
 		}
 	}

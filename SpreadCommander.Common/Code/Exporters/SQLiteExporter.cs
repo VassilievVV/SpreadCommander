@@ -34,11 +34,38 @@ namespace SpreadCommander.Common.Code.Exporters
             return Utils.QuoteString(value, "[");
         }
 
+        public override string GetColumnDataType(Type dataType, int maxLength)
+        {
+            if (dataType == typeof(Guid))
+                return "text";
+
+            return Type.GetTypeCode(dataType) switch
+            {
+                TypeCode.Boolean    => "tinyint",
+                TypeCode.Byte       => "smallint",
+                TypeCode.Char       => "text",
+                TypeCode.DateTime   => "datetime",
+                TypeCode.Decimal    => "float",
+                TypeCode.Double     => "float",
+                TypeCode.Int16      => "integer",
+                TypeCode.Int32      => "integer",
+                TypeCode.Int64      => "bigint",
+                TypeCode.Object     => "blob",
+                TypeCode.SByte      => "integer",
+                TypeCode.Single     => "float",
+                TypeCode.String     => "text",
+                TypeCode.UInt16     => "integer",
+                TypeCode.UInt32     => "bigint",
+                TypeCode.UInt64     => "bigint",
+                _                   => "blob"
+            };
+        }
+
         public override void DropTable(DbConnection connection, string tableSchema, string tableName)
         {
             var tblName = GetQualifiedTableName(tableSchema, tableName);
 
-            using var cmd = connection.CreateCommand();
+            using var cmd   = connection.CreateCommand();
             cmd.CommandText = $"drop table if exists {tblName}";
             cmd.ExecuteNonQuery();
         }

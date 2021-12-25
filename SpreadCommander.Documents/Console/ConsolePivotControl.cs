@@ -86,7 +86,7 @@ namespace SpreadCommander.Documents.Console
             int len          = (int)(stream.Length - stream.Position);
 
             _PivotLayout = new byte[len];
-            stream.Read(_PivotLayout, 0, len);
+            Utils.ReadStreamToBuffer(stream, _PivotLayout);
 
             stream.Position = initPosition;
             PivotGrid.RestoreLayoutFromStream(stream);

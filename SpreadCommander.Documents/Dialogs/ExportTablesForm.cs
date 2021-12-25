@@ -403,7 +403,7 @@ namespace SpreadCommander.Documents.Dialogs
                 var p = search.IndexOf(':');
                 if (p < 0)
                 {
-                    XtraMessageBox.Show(this, "String to parse shall contain color (':') character, such as 'sqlite:~\\Data\\myDb.sqlite'.",
+                    XtraMessageBox.Show(this, "String to parse shall contain color (':') character, such as 'sqlite:~#\\Data\\myDb.sqlite'.",
                         "Invalid parse string", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

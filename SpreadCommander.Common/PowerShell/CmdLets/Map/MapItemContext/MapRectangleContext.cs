@@ -34,7 +34,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map.MapItemContext
 			mapItem.Location = MapContext.CreateCoordPoint(Location[0], Location[1]);
 
 			mapItem.Height = Height;
-			mapItem.Width = Width;
+			mapItem.Width  = Width;
 		}
 	}
 }

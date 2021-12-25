@@ -138,7 +138,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                 }
 
                 if (ExpandFields)
-                    ExpandFieldsInBookRange(range);
+                    ExpandFieldsInBookRange(range, HostSpreadsheet);
             }
             finally
             { 

@@ -471,10 +471,10 @@ namespace SpreadCommander.Common.Code
         public const int PM_REMOVE						= 0x0001;
         public const int PM_NOYIELD						= 0x0002;
         
-        public static readonly IntPtr HWND_TOP					= new IntPtr(0);
-        public static readonly IntPtr HWND_BOTTOM				= new IntPtr(1);
-        public static readonly IntPtr HWND_TOPMOST				= new IntPtr(-1);
-        public static readonly IntPtr HWND_NOTOPMOST				= new IntPtr(-2);
+        public static readonly IntPtr HWND_TOP					= new (0);
+        public static readonly IntPtr HWND_BOTTOM				= new (1);
+        public static readonly IntPtr HWND_TOPMOST				= new (-1);
+        public static readonly IntPtr HWND_NOTOPMOST		    = new (-2);
 
         /*
          * SetWindowPos Flags
@@ -1219,7 +1219,7 @@ namespace SpreadCommander.Common.Code
 
         public static string GetLongFileName(string sFileName)
         {
-            string s = new string('\0', MAX_PATH);
+            var s = new string('\0', MAX_PATH);
             int i = GetLongPathName(sFileName, s, s.Length);
             if (i > MAX_PATH)
             {
@@ -1229,7 +1229,7 @@ namespace SpreadCommander.Common.Code
             if (i == 0)
                 return null;
             else
-                return s.Substring(0, i);
+                return s[..i];
         }
 
         [DllImport("kernel32.dll", EntryPoint = "GetDriveType", SetLastError = false, CharSet = CharSet.Unicode)]
@@ -1250,8 +1250,8 @@ namespace SpreadCommander.Common.Code
             maximumLength  = 0;
             features       = 0;
 
-            StringBuilder volname = new StringBuilder(1024);
-            StringBuilder fsname  = new StringBuilder(1024);
+            var volname = new StringBuilder(1024);
+            var fsname  = new StringBuilder(1024);
 
             bool result = GetVolumeInformation(volume, volname, volname.Capacity,
                 out uint sernum, out uint maxlen, out FileSystemFeature flags, fsname, fsname.Capacity);
@@ -1400,9 +1400,9 @@ namespace SpreadCommander.Common.Code
             if (!File.Exists(filename))
                 throw new FileNotFoundException($"{filename} not found");
 
-            using FileStream fs = new FileStream(filename, FileMode.Open);
+            using var fs = new FileStream(filename, FileMode.Open);
             byte[] buffer = new byte[Math.Min(fs.Length, 256)];
-            fs.Read(buffer, 0, buffer.Length);
+            Utils.ReadStreamToBuffer(fs, buffer);
             fs.Close();
             return FindMimeFromData(buffer);
         }

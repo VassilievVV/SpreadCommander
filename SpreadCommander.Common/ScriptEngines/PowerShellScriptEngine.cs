@@ -28,7 +28,7 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public override string EngineName => ScriptEngineName;
         public override string DefaultExt => ".ps1";
-        public override string FileFilter => "PowerShell files (*.ps1)|*.ps1";
+        public override string FileFilter => "PowerShell files (*.ps1;*.psm1;*.psd1)|*.ps1;*.psm1;*.psd1";
         public override string SyntaxFile => "PowerShell";
 
         public readonly static ConsoleColor EchoColor = ConsoleColor.Gray;
@@ -44,19 +44,19 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public int DefaultChartDPI                                  { get; set; } = 300;
 
-        public bool Silent                                          { get; set; }
+        public override bool Silent                                 { get; set; }
 
         private SpreadCommanderHost _Host;
         private Runspace _Runspace;
         private Pipeline _Pipe;
 
         /// Used to serialize access to instance data.
-        private readonly object instanceLock = new object();
+        private readonly object instanceLock = new ();
 
 
         public static string StartupCommand =>
-$@"$global:ErrorActionPreference = 'Break';
-$ErrorActionPreference = 'Break';
+$@"$global:ErrorActionPreference = 'Stop';
+$ErrorActionPreference = 'Stop';
 
 Set-ExecutionPolicy Bypass -Scope:Process;
 
@@ -79,6 +79,12 @@ cd {Utils.QuoteString(Project.Current.ProjectPath, "\'")};";
 
         private void Debugger_DebuggerStop(object sender, DebuggerStopEventArgs e)
         {
+            e.ResumeAction = DebuggerResumeAction.Continue;
+        }
+
+        /*
+        private void Debugger_DebuggerStop(object sender, DebuggerStopEventArgs e)
+        {
             //if (!(sender is System.Management.Automation.Debugger debugger))
             //    throw new Exception("Cannot determine script debugger.");
 
@@ -90,7 +96,7 @@ cd {Utils.QuoteString(Project.Current.ProjectPath, "\'")};";
             if (_Runspace.RunspaceAvailability != RunspaceAvailability.Available &&
                 _Runspace.RunspaceAvailability != RunspaceAvailability.AvailableForNestedCommand)
             {
-                WriteDefaulterrorMessage();
+                WriteDefaultErrorMessage();
                 return;
             }
 
@@ -101,7 +107,7 @@ cd {Utils.QuoteString(Project.Current.ProjectPath, "\'")};";
                 {
                     //Write error
                     var cmdlet          = error.InvocationInfo?.InvocationName;
-                    var message         = GetExceptionMesage(error.Exception);
+                    var message         = GetExceptionMessage(error.Exception);
                     var positionMessage = error.InvocationInfo?.PositionMessage;
                     var categoryInfo    = error.CategoryInfo?.ToString();
                     var errorId         = error.FullyQualifiedErrorId?.ToString();
@@ -116,14 +122,14 @@ $@"{cmdlet} : {message}
                 }
                 catch (Exception)
                 {
-                    WriteDefaulterrorMessage();
+                    WriteDefaultErrorMessage();
                 }
             }
             else
-                WriteDefaulterrorMessage();
+                WriteDefaultErrorMessage();
 
 
-            void WriteDefaulterrorMessage()
+            void WriteDefaultErrorMessage()
             {
                 var errorMessage =
 $@"Unknown error : {e.InvocationInfo?.InvocationName}
@@ -132,7 +138,7 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                 _Host.UI.WriteErrorLine(errorMessage);
             }
 
-            static string GetExceptionMesage(Exception ex)
+            static string GetExceptionMessage(Exception ex)
             {
                 var output = new StringBuilder();
 
@@ -148,6 +154,7 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                 return output.ToString();
             }
         }
+        */
 
         public override void Stop()
         {
@@ -171,7 +178,7 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
         public override void SendCommand(string command)  => SendCommand(command, ExecutionType == ScriptExecutionType.Script);
         public void SendCommand(string command, bool silent)
         {
-            if (string.IsNullOrEmpty(command))
+            if (string.IsNullOrWhiteSpace(command))
             {
                 FireExecutionFinished();
                 return;
@@ -219,7 +226,30 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                             ProgressType = ProgressKind.None;
 
                             if (e.PipelineStateInfo.State == PipelineState.Failed)
-                                _Host.UI.WriteErrorLine($"Failed: {e.PipelineStateInfo.Reason?.Message}");
+                            {
+                                if (e.PipelineStateInfo.Reason is RuntimeException runtimeException)
+                                {
+                                    var error           = runtimeException.ErrorRecord;
+                                    var cmdlet          = error.InvocationInfo?.InvocationName;
+                                    var message         = GetExceptionMessage(runtimeException);
+                                    var positionMessage = error.InvocationInfo?.PositionMessage;
+                                    var categoryInfo    = error.CategoryInfo?.ToString();
+                                    var errorId         = error.FullyQualifiedErrorId?.ToString();
+
+                                    if (string.IsNullOrWhiteSpace(cmdlet))
+                                        cmdlet = "[Code]";
+
+                                    var errorMessage =
+$@"{cmdlet} : {message}
+{positionMessage}
++ CategoryInfo          : {categoryInfo}
++ FullyQualifiedErrorId : {errorId}";
+
+                                    _Host.UI.WriteErrorLine(errorMessage);
+                                }
+                                else
+                                    _Host.UI.WriteErrorLine($"Exception: {e.PipelineStateInfo.Reason?.Message ?? "Unknown error"}");
+                            }
 
                             if (!(silent || Silent))
                                 _Host.UI.Write($"{Environment.NewLine}SpreadCommander>{Environment.NewLine}");
@@ -253,14 +283,14 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                 bool addDots = false;
                 if (p >= 0)
                 {
-                    value = value.Substring(0, p + 1);
+                    value = value[..(p + 1)];
                     addDots = true;
                 }
                 value = value.Trim();
 
                 if (value.Length > maxLength)
                 {
-                    value = value.Substring(0, maxLength);
+                    value = value[..maxLength];
                     addDots = true;
                 }
 
@@ -268,6 +298,33 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
                     value += " ...";
 
                 return value;
+            }
+
+            static string GetExceptionMessage(Exception ex)
+            {
+                var output        = new StringBuilder();
+                var errorMessages = new List<string>();
+                var counter       = 0;
+
+                while (ex != null)
+                {
+                    if (counter > 5)
+                        break;
+
+                    if (!errorMessages.Contains(ex.Message))
+                    {
+                        if (output.Length > 0)
+                            output.AppendLine();
+                        output.Append(ex.Message);
+                    }
+
+                    errorMessages.Add(ex.Message);
+
+                    ex = ex.InnerException;
+                    counter++;
+                }
+
+                return output.ToString();
             }
         }
 

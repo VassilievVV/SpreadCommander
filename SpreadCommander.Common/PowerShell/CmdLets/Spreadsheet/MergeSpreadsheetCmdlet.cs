@@ -22,7 +22,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet
         protected override bool NeedSynchronization() => base.NeedSynchronization() || (Content == null || Content.Workbook == HostSpreadsheet);
         
 
-        private readonly List<SCSpreadsheetContext> _Output = new List<SCSpreadsheetContext>();
+        private readonly List<SCSpreadsheetContext> _Output = new ();
 
         protected override void BeginProcessing()
         {

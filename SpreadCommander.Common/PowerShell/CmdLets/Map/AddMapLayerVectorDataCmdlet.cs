@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
         public string Name { get; set; }
 
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Data source containing map's vector items.")]
-        public PSObject DataSource { get; set; }
+        public object DataSource { get; set; }
 
         [Parameter(HelpMessage = "When set - layer is added to mini map.")]
         public SwitchParameter MiniMap { get; set; }
@@ -75,10 +75,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
         public string YCoordinateField { get; set; }
 
         [Parameter(HelpMessage = "Data field to which Bubble group is bound.")]
-        public string BubbleGroupField { get; set; }
+        public string BubbleField { get; set; }
 
         [Parameter(HelpMessage = "Data field to which pie segment is bound.")]
-        public string PieSegmentField { get; set; }
+        public string PieField { get; set; }
 
         [Parameter(HelpMessage = "Data field to which pie value is bound.")]
         public string ValueField { get; set; }
@@ -131,22 +131,67 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
         [Parameter(HelpMessage = "Rectangle width's field.")]
         public string RectangleWidthField { get; set; }
 
+        [Parameter(HelpMessage = "Collection of attribute mappings")]
+        public string[] Attributes { get; set; }
+
 
         protected override void UpdateMap()
         {
-            var adapter = new ListSourceDataAdapter()
+            DataSourceAdapterBase adapter;
+
+            if (!string.IsNullOrWhiteSpace(BubbleField))
             {
-                DefaultMapItemType = (DevExpress.XtraMap.MapItemType)DefaultMapItemType,
-            };
-            
-            //Mappings
-            adapter.Mappings.ImageIndex  = ImageIndexField;
-            adapter.Mappings.Latitude    = LatitudeField;
-            adapter.Mappings.Longitude   = LongitudeField;
-            adapter.Mappings.Text        = TextField;
-            adapter.Mappings.Type        = MapItemTypeField;
-            adapter.Mappings.XCoordinate = XCoordinateField;
-            adapter.Mappings.YCoordinate = YCoordinateField;
+                var bubbleAdapter = new BubbleChartDataAdapter()
+                {
+                    BubbleItemDataMember = BubbleField
+                };
+                adapter = bubbleAdapter;
+
+                //Mappings
+                bubbleAdapter.Mappings.ImageIndex  = ImageIndexField;
+                bubbleAdapter.Mappings.Latitude    = LatitudeField;
+                bubbleAdapter.Mappings.Longitude   = LongitudeField;
+                bubbleAdapter.Mappings.Text        = TextField;
+                bubbleAdapter.Mappings.Type        = MapItemTypeField;
+                bubbleAdapter.Mappings.XCoordinate = XCoordinateField;
+                bubbleAdapter.Mappings.YCoordinate = YCoordinateField;
+                bubbleAdapter.Mappings.Value       = ValueField;
+            }
+            else if (!string.IsNullOrWhiteSpace(PieField))
+            {
+                var pieAdapter = new PieChartDataAdapter()
+                {
+                    PieItemDataMember = PieField
+                };
+                adapter= pieAdapter;
+
+                //Mappings
+                pieAdapter.Mappings.ImageIndex  = ImageIndexField;
+                pieAdapter.Mappings.Latitude    = LatitudeField;
+                pieAdapter.Mappings.Longitude   = LongitudeField;
+                pieAdapter.Mappings.Text        = TextField;
+                pieAdapter.Mappings.Type        = MapItemTypeField;
+                pieAdapter.Mappings.XCoordinate = XCoordinateField;
+                pieAdapter.Mappings.YCoordinate = YCoordinateField;
+                pieAdapter.Mappings.Value       = ValueField;
+            }
+            else
+            {
+                var listAdapter = new ListSourceDataAdapter()
+                {
+                    DefaultMapItemType = (DevExpress.XtraMap.MapItemType)DefaultMapItemType
+                };
+                adapter = listAdapter;
+
+                //Mappings
+                listAdapter.Mappings.ImageIndex  = ImageIndexField;
+                listAdapter.Mappings.Latitude    = LatitudeField;
+                listAdapter.Mappings.Longitude   = LongitudeField;
+                listAdapter.Mappings.Text        = TextField;
+                listAdapter.Mappings.Type        = MapItemTypeField;
+                listAdapter.Mappings.XCoordinate = XCoordinateField;
+                listAdapter.Mappings.YCoordinate = YCoordinateField;
+            }
 
             //Property mappings
             var defaultItemColor = Utils.ColorFromString(DefaultItemColor);
@@ -239,41 +284,15 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
                 adapter.PropertyMappings.Add(mapItem);
             }
 
-            //Data Source
-            if (DataSource?.BaseObject == null)
-                throw new Exception("Please provide data source with vector items.");
-
-            if (DataSource.BaseObject is DataTable dataTable)
-                adapter.DataSource = dataTable;
-            else if (DataSource.BaseObject is DataView dataView)
-                adapter.DataSource = dataView;
-            else
+            //Attribute mappings
+            if (Attributes != null)
             {
-                ITypedList list = null;
-                if (DataSource.BaseObject is ITypedList typedList)
-                    list = typedList;
-                else if (DataSource.BaseObject is IListSource listSource)
-                    list = listSource.GetList() as ITypedList;
-
-                if (list != null)
-                {
-                    var ds = new TypedListDataReader(DataSource.BaseObject);
-                    adapter.DataSource = ds;
-                }
-                else if (DataSource.BaseObject is IList objectList && IsPSList(objectList))
-                {
-                    var psList = new List<PSObject>();
-                    foreach (var psObj in objectList)
-                        psList.Add((PSObject)psObj);
-
-                    var ds = new PSObjectDataReader(psList);
-                    var dt = new DataTable("GeoItems");
-                    dt.Load(ds);
-                    adapter.DataSource = dt;
-                }
-                else
-                    throw new Exception("Cannot use specified data source.");
+                foreach (string attribute in Attributes)
+                    adapter.AttributeMappings.Add(new MapItemAttributeMapping() { Member = attribute, Name = attribute });
             }
+
+            if (DataSource != null)
+                adapter.DataSource = GetDataSource(null, DataSource, new DataSourceParameters());
 
             var map = MapContext.Map;
             MapItemStyle itemStyle;
@@ -344,16 +363,6 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
                 var textGlowColor = Utils.ColorFromString(TextGlowColor);
                 if (textGlowColor != Color.Empty)
                     itemStyle.TextGlowColor = textGlowColor;
-            }
-
-
-            static bool IsPSList(IList objects)
-            {
-                foreach (var obj in objects)
-                    if (!(obj is PSObject))
-                        return false;
-
-                return true;
             }
         }
     }

@@ -18,6 +18,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Title's text. Supports basic HTML formatting.")]
         public string Text { get; set; }
 
+        [Parameter(HelpMessage = "Name of series to which title is adding.")]
+        public string SeriesName { get; set; }
+
         [Parameter(HelpMessage = "Title's alignment.")]
         [PSDefaultValue(Value = StringAlignment.Center)]
         [DefaultValue(StringAlignment.Center)]
@@ -38,8 +41,13 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 
         protected override void UpdateChart()
         {
-            if (ChartContext.CurrentSeries == null)
-                throw new Exception("Cannot determine series to add title.");
+            Series series;
+            if (string.IsNullOrWhiteSpace(SeriesName))
+                series = ChartContext.CurrentSeries;
+            else
+                series = ChartContext.Chart.Series[SeriesName];
+            if (series == null)
+                throw new Exception($"Cannot find series '{SeriesName}'.");
 
             if (ChartContext.CurrentSeries.View is not SimpleDiagramSeriesViewBase seriesView)
                 throw new Exception("Series title is supported only on 2D Pie, Doughnut and Funnel series.");

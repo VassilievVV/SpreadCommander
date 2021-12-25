@@ -16,7 +16,7 @@ using System.Windows.Forms;
 
 namespace SpreadCommander.Common.Book
 {
-    public partial class SCBook
+    public partial class InternalBook
     {
         //Do not allow execute scripts from Book for security reasons
         /*
@@ -76,6 +76,8 @@ namespace SpreadCommander.Common.Book
                 switch (ext)
                 {
                     case ".ps1":
+                    case ".psm1":
+                    case ".psd1":
                     case ".ps":
                         engineType = ScriptEngine.PowerShell;
                         break;

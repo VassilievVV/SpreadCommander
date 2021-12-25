@@ -13,7 +13,7 @@ using SpreadCommander.Common.PowerShell.CmdLets.Book;
 
 namespace SpreadCommander.Common.Book
 {
-    public partial class SCBook
+    public partial class InternalBook
     {
         protected IRichEditDocumentServer AddDocument(ArgumentCollection arguments)
         {
@@ -29,7 +29,7 @@ namespace SpreadCommander.Common.Book
             if (Snippets?.ContainsKey(fileName) ?? false)
             {
                 snippet = Snippets[fileName];
-                if (snippet is SCBook)
+                if (snippet is InternalBook)
                 {
                 }
                 else if (snippet is SCBookContext)
@@ -78,8 +78,8 @@ namespace SpreadCommander.Common.Book
 
                 if (snippet != null)
                 {
-                    SCBook book = null;
-                    if (snippet is SCBook scBook)
+                    InternalBook book = null;
+                    if (snippet is InternalBook scBook)
                         book = scBook;
                     else if (snippet is SCBookContext bookContext)
                         book = bookContext.SCBook;
@@ -97,7 +97,9 @@ namespace SpreadCommander.Common.Book
                     switch (ext)
                     {
                         case "markdown":
+#pragma warning disable CRRSP06 // A misspelled word has been found
                         case "mdown":
+#pragma warning restore CRRSP06 // A misspelled word has been found
                         case "md":
                             var content     = File.ReadAllText(fileName);
                             var htmlContent = Markdown.ToHtml(content);

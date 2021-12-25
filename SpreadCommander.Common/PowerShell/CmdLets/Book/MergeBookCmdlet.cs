@@ -26,7 +26,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         protected override bool NeedSynchronization() => base.NeedSynchronization() || (Content == null || Content.BookServer.Document == HostBook);
 
 
-        private readonly List<SCBookContext> _Output = new List<SCBookContext>();
+        private readonly List<SCBookContext> _Output = new ();
 
         protected override void BeginProcessing()
         {

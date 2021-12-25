@@ -290,7 +290,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                 series.Name = Argument;
 
             if (DataSource != null)
-                series.DataSource = Utils.ConvertListToDataTable(DataSource, true);
+                series.DataSource = GetDataSource(null, DataSource, new DataSourceParameters());
 
             series.ArgumentDataMember = Argument;
             if (Values != null)

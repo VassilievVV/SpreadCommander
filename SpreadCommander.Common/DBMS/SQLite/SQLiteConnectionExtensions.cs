@@ -14,6 +14,7 @@ using SpreadCommander.Common.DBMS.SQLite.Functions.String;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Hash;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Guid;
+using SpreadCommander.Common.DBMS.SQLite.Functions.Archive;
 
 namespace SpreadCommander.Common.DBMS.SQLite
 {
@@ -77,6 +78,11 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new TruncateFunction());
             //Guid
             connection.BindFunction(new NewIdFunction());
+            //Archive
+            connection.BindFunction(new CompressBytesFunction());
+            connection.BindFunction(new DecompressBytesFunction());
+            connection.BindFunction(new CompressTextFunction());
+            connection.BindFunction(new DecompressTextFunction());
 
             //Collations
             connection.BindFunction(new LogicalCollationFunction());

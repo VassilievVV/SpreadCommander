@@ -30,8 +30,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map.MapImageLayerContext
         {
             var provider = new WmsDataProvider()
             {
-                ServerUri               = ServerUrl,
-                ActiveLayerName         = this.ActiveLayer,
+                ServerUri       = ServerUrl,
+                ActiveLayerName = this.ActiveLayer,
             };
 
             if (MaxRequestedImageWidth.HasValue)

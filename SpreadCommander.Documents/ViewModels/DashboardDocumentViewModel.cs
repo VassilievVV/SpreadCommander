@@ -2,6 +2,7 @@
 using DevExpress.DashboardCommon;
 using DevExpress.Mvvm.POCO;
 using SpreadCommander.Common;
+using SpreadCommander.Common.ScriptEngines;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -31,8 +32,15 @@ namespace SpreadCommander.Documents.ViewModels
         {
         }
 
+        public DashboardDocumentViewModel(BaseScriptEngine engine): base(engine)
+        {
+        }
+
         public static DashboardDocumentViewModel Create() =>
             ViewModelSource.Create<DashboardDocumentViewModel>(() => new DashboardDocumentViewModel());
+
+        public new static DashboardDocumentViewModel Create(BaseScriptEngine engine) =>
+            ViewModelSource.Create<DashboardDocumentViewModel>(() => new DashboardDocumentViewModel(engine));
 
         public override string DefaultExt => ".scdash";
         public override string FileFilter => "Dashboard (*.scdash)|*.scdash|All files (*.*)|*.*";
@@ -92,7 +100,7 @@ namespace SpreadCommander.Documents.ViewModels
             var doc = dashboard.SaveToXDocument();
 
             using var zip = new ZipArchive();
-            using MemoryStream streamDashboard = new MemoryStream();
+            using var streamDashboard = new MemoryStream();
             doc.Save(streamDashboard);
             streamDashboard.Seek(0, SeekOrigin.Begin);
             zip.AddStream("Dashboard.xml", streamDashboard);

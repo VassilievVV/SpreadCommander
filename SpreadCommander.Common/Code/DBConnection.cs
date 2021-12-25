@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data.Common;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
@@ -33,7 +33,7 @@ namespace SpreadCommander.Common.Code
         {
             int posColon         = scConnectionString.IndexOf(':');
 
-            var prefix           = scConnectionString.Substring(0, posColon).Trim().ToLowerInvariant();
+            var prefix           = scConnectionString[..posColon].Trim().ToLowerInvariant();
             var connectionString = scConnectionString[(posColon + 1)..].Trim();
 
 #pragma warning disable CRRSP06 // A misspelled word has been found
@@ -76,7 +76,7 @@ namespace SpreadCommander.Common.Code
                 if (posSemicolon < 0)
                     posSemicolon = value.Length;
 
-                var firstPart = value.Substring(0, posSemicolon);
+                var firstPart = value[..posSemicolon];
                 int posEqual = firstPart.IndexOf('=');
                 if (posEqual < 0)
                 {

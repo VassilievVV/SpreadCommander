@@ -37,7 +37,7 @@ namespace SpreadCommander.Common.PowerShell.Host
         /// <summary>
         /// The identifier of this PSHost implementation.
         /// </summary>
-        private Guid instanceId = Guid.NewGuid();
+        private readonly Guid instanceId = Guid.NewGuid();
 
         /// <summary>
         /// Initializes a new instance of the MyHost class. Keep
@@ -93,7 +93,7 @@ namespace SpreadCommander.Common.PowerShell.Host
         public ISpreadCommanderHostOwner HostOwner => program;
         public ExternalHost ExternalHost           => _ExternalHost;
 
-        public override PSObject PrivateData       => new PSObject(_ExternalHost);
+        public override PSObject PrivateData       => new (_ExternalHost);
 
         /// <summary>
         /// Return the culture information to use. This implementation

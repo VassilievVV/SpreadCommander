@@ -90,7 +90,7 @@ namespace SpreadCommander
             InitializeAppMenuItems();
             InitializeSkinGallery();
 
-            var skinName = UserLookAndFeel.Default.ActiveSkinName;
+            var skinName     = UserLookAndFeel.Default.ActiveSkinName;
             var isSkinVector = UIUtils.IsSkinVector(skinName);
             skinPaletteRibbonGalleryBarItem.Visibility = isSkinVector ? BarItemVisibility.Always : BarItemVisibility.Never;
 
@@ -109,7 +109,7 @@ namespace SpreadCommander
         {
             using var op = new FluentSplashScreenOptions
             {
-                Title                = "Spread Commander",
+                Title                = "Spread Commander 2022",
                 Subtitle             = "Office Tools & Data Analysis",
                 RightFooter          = "Starting ...",
                 LeftFooter           = "Viatcheslav V. Vassiliev\r\nCopyright © Since 2019\r\nAll Rights reserved.",
@@ -117,7 +117,7 @@ namespace SpreadCommander
                 OpacityColor         = Color.DarkBlue,
                 Opacity              = 150
             };
-            op.AppearanceTitle.Font            = new Font("Times New Roman", 48, FontStyle.Bold | FontStyle.Underline);
+            op.AppearanceTitle.Font            = new Font("Times New Roman", 40, FontStyle.Bold | FontStyle.Italic | FontStyle.Underline);
             op.AppearanceTitle.ForeColor       = Color.LightGoldenrodYellow;
             op.AppearanceSubtitle.Font         = new Font("Times New Roman", 24, FontStyle.Italic);
             op.AppearanceSubtitle.ForeColor    = Color.AntiqueWhite;
@@ -206,16 +206,22 @@ namespace SpreadCommander
             fluent.BindCommand(barOpenProject, m => m.OpenProject());
             fluent.BindCommand(barSelectProject, m => m.SelectProject());
             fluent.BindCommand(barNewSpreadsheetDocument, m => m.AddNewSpreadsheet());
-            fluent.BindCommand(barNewDashboardDocument, m => m.AddNewDashboard());
             fluent.BindCommand(barNewBookDocument, m => m.AddNewBook());
             fluent.BindCommand(barNewSqlScriptDocument, m => m.AddNewSqlScript());
             fluent.BindCommand(barNewRScriptDocument, m => m.AddNewRScript());
             fluent.BindCommand(barNewPyScriptDocument, m => m.AddNewPyScript());
             fluent.BindCommand(barNewPSScriptDocument, m => m.AddNewPSScript());
             //fluent.BindCommand(barNewCSharpScriptDocument, m => m.AddNewCSharpScript());
-            //fluent.BindCommand(barNewFSharpScriptDocument, m => m.AddNewFSharpScript());
-            fluent.BindCommand(barNewChartDocument, m => m.AddNewChart());
-            fluent.BindCommand(barNewPivotDocument, m => m.AddNewPivot());
+            fluent.BindCommand(barNewFSharpScriptDocument, m => m.AddNewFSharpScript());
+            
+            fluent.BindCommand(barNewChartPowerShellDocument, m => m.AddNewChartPowerShell());
+            fluent.BindCommand(barNewPivotPowerShellDocument, m => m.AddNewPivotPowerShell());
+            fluent.BindCommand(barNewDashboardPowerShellDocument, m => m.AddNewDashboardPowerShell());
+
+            fluent.BindCommand(barNewChartFSharpDocument, m => m.AddNewChartFSharp());
+            fluent.BindCommand(barNewPivotFSharpDocument, m => m.AddNewPivotFSharp());
+            fluent.BindCommand(barNewDashboardFSharpDocument, m => m.AddNewDashboardFSharp());
+
             fluent.BindCommand(barOpenFile, m => m.OpenFile());
             fluent.BindCommand(barOptions, m => m.EditApplicationSettings());
             fluent.BindCommand(barSaveAll, m => m.SaveAllFiles());
@@ -227,14 +233,19 @@ namespace SpreadCommander
         private void InitializeAppMenuItems()
         {
             bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Book", ImageIndex = 0, DocumentType = BookDocumentViewModel.ViewName });
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Spread\r\nsheet", ImageIndex = 1, DocumentType =  SpreadsheetDocumentViewModel.ViewName});
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Spreadsheet", ImageIndex = 1, DocumentType =  SpreadsheetDocumentViewModel.ViewName});
             bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "SQL", ImageIndex = 2, DocumentType = SqlScriptDocumentViewModel.ViewName });
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Power\r\nShell", ImageIndex = 3, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = PowerShellScriptEngine.ScriptEngineName });
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "R", ImageIndex = 4, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = RScriptEngine.ScriptEngineName });
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Python", ImageIndex = 5, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = PythonScriptEngine.ScriptEngineName });
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Chart", ImageIndex = 6, DocumentType =  ChartDocumentViewModel.ViewName});
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Pivot", ImageIndex = 7, DocumentType =  PivotDocumentViewModel.ViewName});
-            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Dash\r\nboard", ImageIndex = 8, DocumentType = DashboardDocumentViewModel.ViewName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "PowerShell", ImageIndex = 3, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = PowerShellScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "F#", ImageIndex = 9, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = FSharpScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "", ImageIndex = -1, DocumentType = null, DocumentSubType = null });
+            //bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "R", ImageIndex = 4, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = RScriptEngine.ScriptEngineName });
+            //bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Python", ImageIndex = 5, DocumentType = ConsoleDocumentViewModel.ViewName, DocumentSubType = PythonScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Chart (PS)", ImageIndex = 6, DocumentType =  ChartDocumentViewModel.ViewName, DocumentSubType = PowerShellScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Pivot (PS)", ImageIndex = 7, DocumentType =  PivotDocumentViewModel.ViewName, DocumentSubType = PowerShellScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Dashboard (PS)", ImageIndex = 8, DocumentType = DashboardDocumentViewModel.ViewName, DocumentSubType = PowerShellScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Chart (F#)", ImageIndex = 6, DocumentType = ChartDocumentViewModel.ViewName, DocumentSubType = FSharpScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Pivot (F#)", ImageIndex = 7, DocumentType = PivotDocumentViewModel.ViewName, DocumentSubType = FSharpScriptEngine.ScriptEngineName });
+            bindingAppMenuProjectItems.Add(new AppMenuProjectItem() { ItemName = "Dashboard (F#)", ImageIndex = 8, DocumentType = DashboardDocumentViewModel.ViewName, DocumentSubType = FSharpScriptEngine.ScriptEngineName });
         }
 
         //Unlike other forms, initialize model in _Load even handler
@@ -242,6 +253,8 @@ namespace SpreadCommander
         {
             if (!mvvmContext.IsDesignMode)
                 InitializeBindings();
+
+            BaseScriptEngine.StaticSynchronizeInvoke = this;
 
             ProjectChanged();
             LoadConnections();
@@ -387,7 +400,7 @@ namespace SpreadCommander
             //For example project - automatically open ReadMe.ps1
             if (Project.Current?.IsExample ?? false)
             {
-                string readMe = Project.Current.MapPath(@"~\ReadMe.ps1");
+                string readMe = Project.Current.MapPath(@"~#\ReadMe.ps1");
                 if (File.Exists(readMe))
                 {
                     var fluent = mvvmContext.OfType<MainViewModel>();

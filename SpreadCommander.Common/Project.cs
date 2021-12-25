@@ -172,13 +172,17 @@ namespace SpreadCommander.Common
 
         public string MapPath(string fileName)
         {
-            if (fileName == "~")
+            if (string.IsNullOrWhiteSpace(fileName))
+                return null;
+
+            if (fileName == "~#" || fileName == "%~#%")
                 return ProjectPath;
 
-            if (!string.IsNullOrWhiteSpace(fileName) && fileName.StartsWith("~\\"))
-            {
-                fileName = Path.Combine(ProjectPath, fileName[2..]);
-            }
+            if (!string.IsNullOrWhiteSpace(fileName) && fileName.StartsWith("~#\\"))
+                fileName = Path.Combine(ProjectPath, fileName[3..]);
+            
+            fileName = Environment.ExpandEnvironmentVariables(fileName);
+            
             return fileName;
         }
 
@@ -193,7 +197,7 @@ namespace SpreadCommander.Common
                     startPos++;
 
                 fileName = fileName[startPos..];
-                fileName = Path.Combine("~", fileName);
+                fileName = Path.Combine("~#", fileName);
             }
             return fileName;
         }
@@ -237,9 +241,12 @@ When probing to locate an unmanaged library, the NATIVE_DLL_SEARCH_DIRECTORIES a
                 return;
 
             string binPath = Path.Combine(project.ProjectPath, "bin");
-
             foreach (var path in DependencyPaths)
                 RemoveEnvironmentVariable(path, binPath);
+
+            string modulePath = Path.Combine(project.ProjectPath, "Modules");
+            foreach (var path in ModulesDependencyPaths)
+                RemoveEnvironmentVariable(path, modulePath);
 
 
             static void RemoveEnvironmentVariable(string name, string value)
@@ -265,6 +272,9 @@ When probing to locate an unmanaged library, the NATIVE_DLL_SEARCH_DIRECTORIES a
         {
             if (project == null)
                 return;
+
+            Environment.SetEnvironmentVariable("SCProjectPath", project.ProjectPath, EnvironmentVariableTarget.Process);
+            Environment.SetEnvironmentVariable("~#", project.ProjectPath, EnvironmentVariableTarget.Process);
 
             string binPath = Path.Combine(project.ProjectPath, "bin");
             foreach (var path in DependencyPaths)

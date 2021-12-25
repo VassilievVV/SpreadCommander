@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.Code
         private IEnumerator _Enumerator;
         private int _RowCounter;
         private readonly CancellationToken? _CancelToken;
-        private readonly List<PropertyDescriptor> _Properties = new List<PropertyDescriptor>();
+        private readonly List<PropertyDescriptor> _Properties = new();
 
         public TypedListDataReader(ITypedList dataSource, CancellationToken? cancelToken = null)
         {

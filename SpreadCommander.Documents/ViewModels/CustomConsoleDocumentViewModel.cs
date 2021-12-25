@@ -14,6 +14,10 @@ namespace SpreadCommander.Documents.ViewModels
         {
         }
 
+        public CustomConsoleDocumentViewModel(BaseScriptEngine engine): base(engine)
+        {
+        }
+
         public virtual string SaveScriptAndControlCaption => "Save script and control";
 
         public override string GetScriptFileName(string fileName)
@@ -21,7 +25,12 @@ namespace SpreadCommander.Documents.ViewModels
             if (string.IsNullOrWhiteSpace(fileName))
                 return null;
 
-            return $"{fileName}.ps1";
+            if (Engine is PowerShellScriptEngine)
+                return $"{fileName}.ps1";
+            else if (Engine is FSharpScriptEngine)
+                return $"{fileName}.fsx";
+
+            throw new Exception("Script engine is not initialized or is not supported.");
         }
 
         public override bool SaveCustomControlsToFile()

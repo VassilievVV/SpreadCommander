@@ -109,6 +109,9 @@
             this.layoutControlItemAppMenuRestart = new DevExpress.XtraLayout.LayoutControlItem();
             this.barNewSpreadsheetDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barNewDashboardDocument = new DevExpress.XtraBars.BarButtonItem();
+            this.popupDashboard = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barNewDashboardPowerShellDocument = new DevExpress.XtraBars.BarButtonItem();
+            this.barNewDashboardFSharpDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barNewBookDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barNewPSScriptDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barNewCSharpScriptDocument = new DevExpress.XtraBars.BarButtonItem();
@@ -121,6 +124,9 @@
             this.barOpenProject = new DevExpress.XtraBars.BarButtonItem();
             this.skinDropDownButtonItem = new DevExpress.XtraBars.SkinDropDownButtonItem();
             this.barNewChartDocument = new DevExpress.XtraBars.BarButtonItem();
+            this.popupChart = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barNewChartPowerShellDocument = new DevExpress.XtraBars.BarButtonItem();
+            this.barNewChartFSharpDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barHeaderProjects = new DevExpress.XtraBars.BarHeaderItem();
             this.barHeaderFiles = new DevExpress.XtraBars.BarHeaderItem();
             this.barOpenFile = new DevExpress.XtraBars.BarButtonItem();
@@ -130,6 +136,9 @@
             this.barClose = new DevExpress.XtraBars.BarButtonItem();
             this.barDockingMenuItem = new DevExpress.XtraBars.BarDockingMenuItem();
             this.barNewPivotDocument = new DevExpress.XtraBars.BarButtonItem();
+            this.popupPivot = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barNewPivotPowerShellDocument = new DevExpress.XtraBars.BarButtonItem();
+            this.barNewPivotFSharpDocument = new DevExpress.XtraBars.BarButtonItem();
             this.barHeaderExit = new DevExpress.XtraBars.BarHeaderItem();
             this.barSelectProject = new DevExpress.XtraBars.BarButtonItem();
             this.barAbout = new DevExpress.XtraBars.BarButtonItem();
@@ -206,6 +215,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.sepAppMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAppMenuExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemAppMenuRestart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupDashboard)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupPivot)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
@@ -336,9 +348,15 @@
             this.barNewPivotDocument,
             this.barHeaderExit,
             this.barSelectProject,
-            this.barAbout});
+            this.barAbout,
+            this.barNewChartPowerShellDocument,
+            this.barNewChartFSharpDocument,
+            this.barNewPivotPowerShellDocument,
+            this.barNewPivotFSharpDocument,
+            this.barNewDashboardPowerShellDocument,
+            this.barNewDashboardFSharpDocument});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 4;
+            this.ribbonControl.MaxItemId = 10;
             this.ribbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.barDockingMenuItem);
@@ -490,6 +508,7 @@
             this.imagesApplicationItems.Add("Chart", "image://svgimages/dashboards/chartarea.svg");
             this.imagesApplicationItems.Add("Pivot", "image://svgimages/spreadsheet/pivottable.svg");
             this.imagesApplicationItems.Add("Dashboard", "image://svgimages/dashboards/dashboarddesigner.svg");
+            this.imagesApplicationItems.Add("F#", "Script_Document_Yellow", typeof(SpreadCommander.Properties.Resources));
             // 
             // mnuAppHamburger
             // 
@@ -647,10 +666,34 @@
             // 
             // barNewDashboardDocument
             // 
+            this.barNewDashboardDocument.ActAsDropDown = true;
+            this.barNewDashboardDocument.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.barNewDashboardDocument.Caption = "Dashboard";
+            this.barNewDashboardDocument.DropDownControl = this.popupDashboard;
             this.barNewDashboardDocument.Id = 14;
             this.barNewDashboardDocument.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barNewDashboardDocument.ImageOptions.SvgImage")));
             this.barNewDashboardDocument.Name = "barNewDashboardDocument";
+            // 
+            // popupDashboard
+            // 
+            this.popupDashboard.ItemLinks.Add(this.barNewDashboardPowerShellDocument);
+            this.popupDashboard.ItemLinks.Add(this.barNewDashboardFSharpDocument);
+            this.popupDashboard.Name = "popupDashboard";
+            this.popupDashboard.Ribbon = this.ribbonControl;
+            // 
+            // barNewDashboardPowerShellDocument
+            // 
+            this.barNewDashboardPowerShellDocument.Caption = "PowerShell";
+            this.barNewDashboardPowerShellDocument.Id = 8;
+            this.barNewDashboardPowerShellDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Blue;
+            this.barNewDashboardPowerShellDocument.Name = "barNewDashboardPowerShellDocument";
+            // 
+            // barNewDashboardFSharpDocument
+            // 
+            this.barNewDashboardFSharpDocument.Caption = "F#";
+            this.barNewDashboardFSharpDocument.Id = 9;
+            this.barNewDashboardFSharpDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Document_Green;
+            this.barNewDashboardFSharpDocument.Name = "barNewDashboardFSharpDocument";
             // 
             // barNewBookDocument
             // 
@@ -706,9 +749,8 @@
             // 
             this.barNewFSharpScriptDocument.Caption = "F#";
             this.barNewFSharpScriptDocument.Id = 10;
-            this.barNewFSharpScriptDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Document_Gray;
+            this.barNewFSharpScriptDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Document_Yellow;
             this.barNewFSharpScriptDocument.Name = "barNewFSharpScriptDocument";
-            this.barNewFSharpScriptDocument.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             // 
             // barNewProject
             // 
@@ -731,10 +773,34 @@
             // 
             // barNewChartDocument
             // 
+            this.barNewChartDocument.ActAsDropDown = true;
+            this.barNewChartDocument.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.barNewChartDocument.Caption = "Chart";
+            this.barNewChartDocument.DropDownControl = this.popupChart;
             this.barNewChartDocument.Id = 18;
             this.barNewChartDocument.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barNewChartDocument.ImageOptions.SvgImage")));
             this.barNewChartDocument.Name = "barNewChartDocument";
+            // 
+            // popupChart
+            // 
+            this.popupChart.ItemLinks.Add(this.barNewChartPowerShellDocument);
+            this.popupChart.ItemLinks.Add(this.barNewChartFSharpDocument);
+            this.popupChart.Name = "popupChart";
+            this.popupChart.Ribbon = this.ribbonControl;
+            // 
+            // barNewChartPowerShellDocument
+            // 
+            this.barNewChartPowerShellDocument.Caption = "PowerShell";
+            this.barNewChartPowerShellDocument.Id = 4;
+            this.barNewChartPowerShellDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Blue;
+            this.barNewChartPowerShellDocument.Name = "barNewChartPowerShellDocument";
+            // 
+            // barNewChartFSharpDocument
+            // 
+            this.barNewChartFSharpDocument.Caption = "F#";
+            this.barNewChartFSharpDocument.Id = 5;
+            this.barNewChartFSharpDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Document_Green;
+            this.barNewChartFSharpDocument.Name = "barNewChartFSharpDocument";
             // 
             // barHeaderProjects
             // 
@@ -792,10 +858,34 @@
             // 
             // barNewPivotDocument
             // 
+            this.barNewPivotDocument.ActAsDropDown = true;
+            this.barNewPivotDocument.ButtonStyle = DevExpress.XtraBars.BarButtonStyle.DropDown;
             this.barNewPivotDocument.Caption = "Pivot";
+            this.barNewPivotDocument.DropDownControl = this.popupPivot;
             this.barNewPivotDocument.Id = 30;
             this.barNewPivotDocument.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barNewPivotDocument.ImageOptions.SvgImage")));
             this.barNewPivotDocument.Name = "barNewPivotDocument";
+            // 
+            // popupPivot
+            // 
+            this.popupPivot.ItemLinks.Add(this.barNewPivotPowerShellDocument);
+            this.popupPivot.ItemLinks.Add(this.barNewPivotFSharpDocument);
+            this.popupPivot.Name = "popupPivot";
+            this.popupPivot.Ribbon = this.ribbonControl;
+            // 
+            // barNewPivotPowerShellDocument
+            // 
+            this.barNewPivotPowerShellDocument.Caption = "PowerShell";
+            this.barNewPivotPowerShellDocument.Id = 6;
+            this.barNewPivotPowerShellDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Blue;
+            this.barNewPivotPowerShellDocument.Name = "barNewPivotPowerShellDocument";
+            // 
+            // barNewPivotFSharpDocument
+            // 
+            this.barNewPivotFSharpDocument.Caption = "F#";
+            this.barNewPivotFSharpDocument.Id = 7;
+            this.barNewPivotFSharpDocument.ImageOptions.SvgImage = global::SpreadCommander.Properties.Resources.Script_Document_Green;
+            this.barNewPivotFSharpDocument.Name = "barNewPivotFSharpDocument";
             // 
             // barHeaderExit
             // 
@@ -850,7 +940,7 @@
             this.ribbonPageGroupNewDocuments.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroupNewDocuments.ItemLinks.Add(this.barNewBookDocument);
             this.ribbonPageGroupNewDocuments.ItemLinks.Add(this.barNewSpreadsheetDocument);
-            this.ribbonPageGroupNewDocuments.ItemLinks.Add(this.barNewChartDocument);
+            this.ribbonPageGroupNewDocuments.ItemLinks.Add(this.barNewChartDocument, true);
             this.ribbonPageGroupNewDocuments.ItemLinks.Add(this.barNewPivotDocument);
             this.ribbonPageGroupNewDocuments.ItemLinks.Add(this.barNewDashboardDocument);
             this.ribbonPageGroupNewDocuments.Name = "ribbonPageGroupNewDocuments";
@@ -860,10 +950,10 @@
             // 
             this.ribbonPageGroupNewScripts.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewPSScriptDocument);
+            this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewFSharpScriptDocument);
             this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewCSharpScriptDocument);
             this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewSqlScriptDocument);
-            this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewFSharpScriptDocument, true);
-            this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewRScriptDocument);
+            this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewRScriptDocument, true);
             this.ribbonPageGroupNewScripts.ItemLinks.Add(this.barNewPyScriptDocument);
             this.ribbonPageGroupNewScripts.Name = "ribbonPageGroupNewScripts";
             this.ribbonPageGroupNewScripts.Text = "New scripts";
@@ -1430,6 +1520,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.sepAppMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutAppMenuExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItemAppMenuRestart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupDashboard)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.popupPivot)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.applicationMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mvvmContext)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
@@ -1572,6 +1665,15 @@
         private DevExpress.XtraEditors.SimpleButton btnAppMenuRestart;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItemAppMenuRestart;
         private Documents.Controls.ProjectBrowser projectBrowser;
+        private DevExpress.XtraBars.PopupMenu popupDashboard;
+        private DevExpress.XtraBars.PopupMenu popupChart;
+        private DevExpress.XtraBars.PopupMenu popupPivot;
+        private DevExpress.XtraBars.BarButtonItem barNewDashboardPowerShellDocument;
+        private DevExpress.XtraBars.BarButtonItem barNewDashboardFSharpDocument;
+        private DevExpress.XtraBars.BarButtonItem barNewChartPowerShellDocument;
+        private DevExpress.XtraBars.BarButtonItem barNewChartFSharpDocument;
+        private DevExpress.XtraBars.BarButtonItem barNewPivotPowerShellDocument;
+        private DevExpress.XtraBars.BarButtonItem barNewPivotFSharpDocument;
     }
 }
 

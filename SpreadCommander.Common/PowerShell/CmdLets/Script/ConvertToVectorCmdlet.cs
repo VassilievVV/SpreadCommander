@@ -33,13 +33,13 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
 
         [Parameter(HelpMessage = "Item type of objects in result array.")]
         [Alias("Type")]
-        public Type ItemType { get; set; }
+        public Type ItemType { get; set; } = typeof(double);
 
         [Parameter(HelpMessage = "If set - objects will be sending individually into pipeline.")]
         public SwitchParameter EnumerateCollection { get; set; }
 
 
-        private readonly List<PSObject> _Input = new List<PSObject>();
+        private readonly List<PSObject> _Input = new ();
 
         protected override void BeginProcessing()
         {

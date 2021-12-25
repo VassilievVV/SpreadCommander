@@ -35,6 +35,7 @@ namespace SpreadCommander.Common.Code
             [Description("Default User ID. This value will be used when server is not specified in SpreadCommander cmdlets and when DefaultServer is used.")]
             public string DefaultUserID { get; set; }
 
+            [DataMember()]
             [Category("SQL Server")]
             [DisplayName("Default Password")]
             [Description("Default Password. This value will be used when server is not specified in SpreadCommander cmdlets and when DefaultServer is used.")]
@@ -63,6 +64,31 @@ namespace SpreadCommander.Common.Code
             [Browsable(false)]
             [PasswordPropertyText(true)]
             public string EncPassword { get; set; }
+
+            [DataMember()]
+            [Category("SQL Server")]
+            [DisplayName("Encrypt")]
+            [Description("Whether SQL Server uses SSL encryption for all data sent between the client and server if the server has a certificate installed. This value is used for default server.")]
+            public bool Encrypt { get; set; } = true;
+
+            [DataMember()]
+            [Category("SQL Server")]
+            [DisplayName("Encrypt All Servers")]
+            [Description("Whether SQL Server uses SSL encryption for all data sent between the client and server if the server has a certificate installed. This value is used as default value for all connection strings with prefix 'mssql:'.")]
+            public bool? EncryptAllServers { get; set; } = true;
+
+            [DataMember()]
+            [Category("SQL Server")]
+            [DisplayName("Trust Server Certificate")]
+            [Description("Whether the channel will be encrypted while bypassing walking the certificate chain to validate trust. This value is used for default server.")]
+            public bool? TrustServerCertificate { get; set; }
+
+            [DataMember()]
+            [Category("SQL Server")]
+            [DisplayName("Trust All Server Certificates")]
+            [Description("Whether the channel will be encrypted while bypassing walking the certificate chain to validate trust. This value is used as default value for all connection strings with prefix 'mssql:'.")]
+            public bool? TrustAllServerCertificates { get; set; }
+
 
 #pragma warning disable CA1822 // Mark members as static
             public bool ShouldSerializePassword() => false;

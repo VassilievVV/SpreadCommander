@@ -20,7 +20,7 @@ using WpfMath.Converters;
 
 namespace SpreadCommander.Common.Book
 {
-    public partial class SCBook: IDisposable
+    public partial class InternalBook: IDisposable
     {
         private readonly bool _OwnRichEdit = true;
 
@@ -31,15 +31,15 @@ namespace SpreadCommander.Common.Book
 
         public bool NeedSynchronizeDefaultSpreadsheet { get; set; }
 
-        private readonly StringNoCaseDictionary<int> _NestedFiles = new StringNoCaseDictionary<int>();
+        private readonly StringNoCaseDictionary<int> _NestedFiles = new ();
 
-        public SCBook()
+        public InternalBook()
         {
             BookServer = new RichEditDocumentServer();
             InitializeRichEdit();
         }
 
-        public SCBook(IRichEditDocumentServer server)
+        public InternalBook(IRichEditDocumentServer server)
         {
             _OwnRichEdit = false;
             BookServer   = server;
@@ -47,17 +47,17 @@ namespace SpreadCommander.Common.Book
         }
 
         /*
-        public static SCBook NewSnapSCBook()
+        public static InternalBook NewSnapSCBook()
         {
             var server = new SnapDocumentServer();
-            var result = new SCBook(server);
+            var result = new InternalBook(server);
             return result;
         }
         */
 
-        public static SCBook CreateHelperBook()
+        public static InternalBook CreateHelperBook()
         {
-            var result = new SCBook();
+            var result = new InternalBook();
             return result;
         }
 
@@ -124,6 +124,7 @@ namespace SpreadCommander.Common.Book
         {
             IRichEditDocumentServer result = (Utils.NonNullString(variableName).ToLower()) switch
             {
+#pragma warning disable CRRSP06 // A misspelled word has been found
                 "file" or "document" => AddDocument(arguments),
                 "image" or "picture" => AddImage(arguments),
                 "svg"                => AddSvg(arguments),
@@ -136,6 +137,7 @@ namespace SpreadCommander.Common.Book
                 //Do not allow yet to execute scripts from Book for security reasons
                 //"script"           => AddScript(arguments),
                 _ => throw new Exception($"Invalid variable name for DOCVARIABLE: {variableName}")
+#pragma warning restore CRRSP06 // A misspelled word has been found
             };
             return result;
         }

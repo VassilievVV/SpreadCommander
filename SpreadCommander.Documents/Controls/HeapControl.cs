@@ -91,15 +91,15 @@ namespace SpreadCommander.Documents.Controls
                     return Extension switch
                     {
 #pragma warning disable CRRSP06 // A misspelled word has been found
-                        ".xlsx" or ".xls"                                                               => FileType.Spreadsheet,
-                        ".csv" or ".txt"                                                                => FileType.Text,
-                        ".sql"                                                                          => FileType.SqlScript,
-                        ".ps" or ".ps1" or ".csx" or ".fsx" or ".r" or ".py"                            => FileType.Script,
-                        ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub" => FileType.Book,
-                        ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"            => FileType.Image,
-                        ".dash"                                                                         => FileType.Dashboard,
-                        ".pdf"                                                                          => FileType.PDF,
-                        _                                                                               => FileType.Unknown,
+                        ".xlsx" or ".xls"                                                                   => FileType.Spreadsheet,
+                        ".csv" or ".txt"                                                                    => FileType.Text,
+                        ".sql"                                                                              => FileType.SqlScript,
+                        ".ps" or ".ps1" or ".psm1" or ".psd1" or ".csx" or ".fsx" or ".fs" or ".r" or ".py" => FileType.Script,
+                        ".docx" or ".doc" or ".rtf" or ".htm" or ".html" or ".mht" or ".odt" or ".epub"     => FileType.Book,
+                        ".png" or ".tif" or ".tiff" or ".jpg" or ".jpeg" or ".gif" or ".bmp"                => FileType.Image,
+                        ".dash"                                                                             => FileType.Dashboard,
+                        ".pdf"                                                                              => FileType.PDF,
+                        _                                                                                   => FileType.Unknown
 #pragma warning restore CRRSP06 // A misspelled word has been found
                     };
                 }

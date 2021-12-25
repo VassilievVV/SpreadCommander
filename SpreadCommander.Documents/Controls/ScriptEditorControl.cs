@@ -32,6 +32,8 @@ namespace SpreadCommander.Documents.Controls
         #region ListIntellisenseItemsEventArgs
         public class ListIntellisenseItemsEventArgs: EventArgs
         {
+            public string FileName                  { get; set; }
+
             public string Text						{ get; set; }
 
             public string[] Lines					{ get; set; }
@@ -426,6 +428,8 @@ namespace SpreadCommander.Documents.Controls
                 switch (ext)
                 {
                     case ".ps1":
+                    case ".psm1":
+                    case ".psd1":
                     case ".psx":
                         syntax = "PowerShell";
                         break;
@@ -511,7 +515,7 @@ namespace SpreadCommander.Documents.Controls
             }
         }
 
-        private readonly Dictionary<int, List<ScriptParseError>> _ParseErrors = new Dictionary<int, List<ScriptParseError>>();
+        private readonly Dictionary<int, List<ScriptParseError>> _ParseErrors = new ();
 
         public void UpdateParseErrors(List<ScriptParseError> errors)
         {

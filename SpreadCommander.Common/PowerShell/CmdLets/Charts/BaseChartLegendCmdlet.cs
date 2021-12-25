@@ -121,17 +121,19 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         public void SetupXtraChartLegend(Legend legend)
         {
             legend.EnableAntialiasing = DefaultBoolean.True;
-            legend.EquallySpacedItems = true;
 
-            legend.AlignmentHorizontal = AlignmentHorizontal;
-            legend.AlignmentVertical = AlignmentVertical;
-            legend.MarkerMode = HideMarkers ? LegendMarkerMode.None : LegendMarkerMode.Marker;
-            legend.MarkerOffset = MarkerOffset;
+            legend.AlignmentHorizontal     = AlignmentHorizontal;
+            legend.AlignmentVertical       = AlignmentVertical;
+            legend.MarkerMode              = HideMarkers ? LegendMarkerMode.None : LegendMarkerMode.Marker;
+            legend.MarkerOffset            = MarkerOffset;
             legend.MaxHorizontalPercentage = MaxHorizontalPercentage;
-            legend.MaxVerticalPercentage = MaxVerticalPercentage;
+            legend.MaxVerticalPercentage   = MaxVerticalPercentage;
 
             if (Direction.HasValue)
                 legend.Direction = Direction.Value;
+            if (legend.Direction == LegendDirection.RightToLeft || legend.Direction == LegendDirection.LeftToRight)
+                legend.EquallySpacedItems = true;
+
             if (HorizontalIndent.HasValue)
                 legend.HorizontalIndent = HorizontalIndent.Value;
             if (MarkerSize.HasValue)
@@ -150,12 +152,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
             var borderColor = Utils.ColorFromString(BorderColor);
             if (borderColor != Color.Empty)
             {
-                legend.Border.Color = borderColor;
+                legend.Border.Color      = borderColor;
                 legend.Border.Visibility = DefaultBoolean.True;
             }
             if (BorderThickness.HasValue)
             {
-                legend.Border.Thickness = BorderThickness.Value;
+                legend.Border.Thickness  = BorderThickness.Value;
                 legend.Border.Visibility = DefaultBoolean.True;
             }
             var font = Utils.StringToFont(Font, out Color fontColor);

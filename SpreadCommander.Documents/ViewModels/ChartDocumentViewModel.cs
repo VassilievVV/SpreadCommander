@@ -42,8 +42,15 @@ namespace SpreadCommander.Documents.ViewModels
         {
         }
 
+        public ChartDocumentViewModel(BaseScriptEngine engine) : base(engine)
+        {
+        }
+
         public static ChartDocumentViewModel Create() =>
             ViewModelSource.Create<ChartDocumentViewModel>(() => new ChartDocumentViewModel());
+
+        public new static ChartDocumentViewModel Create(BaseScriptEngine engine) =>
+            ViewModelSource.Create<ChartDocumentViewModel>(() => new ChartDocumentViewModel(engine));
 
         public override string DefaultExt      => ".scchart";
         public override string FileFilter      => "Chart (*.scchart)|*.scchart|All files (*.*)|*.*";
@@ -143,7 +150,7 @@ namespace SpreadCommander.Documents.ViewModels
 
             using (var zip = new ZipArchive())
             {
-                using MemoryStream streamChart = new MemoryStream();
+                using var streamChart = new MemoryStream();
                 chart.SaveLayout(streamChart);
                 streamChart.Seek(0, SeekOrigin.Begin);
 

@@ -106,7 +106,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesContext
 
                 if (RelativeValues)
                 {
-                    var valueOptions = new WaterfallRelativeValueOptions() { ShowTotal = ShowTotal };
+                    var valueOptions = new WaterfallRelativeValueOptions() { ShowTotal = this.ShowTotal };
                     
                     if (!string.IsNullOrWhiteSpace(StartBarLabel))
                         valueOptions.StartBarLabel = StartBarLabel;
@@ -127,7 +127,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesContext
                 }
                 else
                 {
-                    var valueOptions = new WaterfallAbsoluteValueOptions() { ShowTotal = ShowTotal };
+                    var valueOptions = new WaterfallAbsoluteValueOptions() { ShowTotal = this.ShowTotal };
                     
                     if (!string.IsNullOrWhiteSpace(TotalLabel))
                         valueOptions.TotalLabel = TotalLabel;

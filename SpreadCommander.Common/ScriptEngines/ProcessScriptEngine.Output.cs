@@ -105,7 +105,7 @@ namespace SpreadCommander.Common.ScriptEngines
                                     //Remove last line
                                     var nindex = part.LastIndexOf('\n');
                                     if (nindex >= 0)
-                                        part = part.Substring(0, nindex + 1);
+                                        part = part[..(nindex + 1)];
                                     else
                                         part = string.Empty;
                                 }

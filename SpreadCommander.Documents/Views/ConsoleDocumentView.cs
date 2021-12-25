@@ -271,7 +271,7 @@ namespace SpreadCommander.Documents.Views
 
                         var model = mvvmContext.GetViewModel<ConsoleDocumentViewModel>();
 
-                        _ConsoleInputControl.LoadSyntax(model.Engine.SyntaxFile);
+                        _ConsoleInputControl.LoadSyntax(model.Engine?.SyntaxFile);
                         _ConsoleInputControl.ExecuteCommand        += ExecuteCommandHandler;
                         _ConsoleInputControl.ListIntellisenseItems += ScriptEditor_ListIntellisenseItems;
                         _ConsoleInputControl.ShowParseError        += ScriptEditor_ShowParseError;

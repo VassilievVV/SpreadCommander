@@ -54,7 +54,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         public string ParagraphStyle { get; set; }
 
 
-        private readonly List<string> _Output = new List<string>();
+        private readonly List<string> _Output = new ();
 
         protected override void BeginProcessing()
         {
@@ -98,7 +98,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             if (buffer.Count <= 0 && !lastBlock)
                 return;
 
-            using (new UsingProcessor(() => book.BeginUpdate(), () => { ResetBookFormatting(book); book.EndUpdate(); }))
+            using (new UsingProcessor(() => book.BeginUpdate(), () => book.EndUpdate()))
             {
                 DocumentPosition rangeStart = null, rangeEnd = null;
 

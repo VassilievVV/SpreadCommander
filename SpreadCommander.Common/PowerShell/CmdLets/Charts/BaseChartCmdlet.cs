@@ -159,7 +159,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                 ViewType.StackedSplineArea3D        => 1,
                 ViewType.FullStackedSplineArea3D    => 1,
                 ViewType.RangeArea3D                => 2,
-                _                                   => 1,
+                _                                   => 1
             };
         }
     }

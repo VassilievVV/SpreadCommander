@@ -245,8 +245,7 @@ namespace SpreadCommander.Documents.Dialogs
             Connection conn = SelectedConnection;
             if (conn == null)
             {
-                XtraMessageBox.Show(this, "Connection is not configured.",
-                    "Please configure connection.",
+                XtraMessageBox.Show(this, "Please configure connection.", "Connection is not configured.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 e.Cancel = true;
                 return;
@@ -262,8 +261,8 @@ namespace SpreadCommander.Documents.Dialogs
             }
             catch (Exception ex)
             {
-                if (XtraMessageBox.Show(this, "Cannot connect. Do you want to select another connection?",
-                    ex.Message, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.No)
+                if (XtraMessageBox.Show(this, ex.Message, "Cannot connect.", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) != DialogResult.No)
                 {
                     e.Cancel = true;
                     return;
@@ -317,7 +316,7 @@ namespace SpreadCommander.Documents.Dialogs
                 }
             }
 
-            XtraMessageBox.Show(this, "Cannot connect", "Cannot open selected connection",
+            XtraMessageBox.Show(this, "Cannot open selected connection", "Cannot connect",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
@@ -354,7 +353,7 @@ namespace SpreadCommander.Documents.Dialogs
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(this, "Can not connect to specified provider.", ex.Message,
+                XtraMessageBox.Show(this, ex.Message, "Can not connect to specified provider.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -364,9 +363,8 @@ namespace SpreadCommander.Documents.Dialogs
             Connection connection = SelectedConnection;
             if (connection == null)
             {
-                XtraMessageBox.Show(this, "Connection is not configured.",
-                    "Please select and configure connection to database.",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                XtraMessageBox.Show(this, "Please select and configure connection to database.",
+                    "Connection is not configured.", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             
@@ -378,13 +376,12 @@ namespace SpreadCommander.Documents.Dialogs
                     connection.Close();
                 }
 
-                XtraMessageBox.Show(this, "Connection successful.", 
-                    "Connection to selected provider and database is successful.",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                XtraMessageBox.Show(this, "Connection to selected provider and database is successful.",
+                    "Connection successful.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(this, "Connection failed.", ex.Message,
+                XtraMessageBox.Show(this, ex.Message, "Connection failed.",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -589,7 +586,7 @@ namespace SpreadCommander.Documents.Dialogs
                 var p = search.IndexOf(':');
                 if (p < 0)
                 {
-                    XtraMessageBox.Show(this, "String to parse shall contain color (':') character, such as 'sqlite:~\\Data\\myDb.sqlite'.",
+                    XtraMessageBox.Show(this, "String to parse shall contain color (':') character, such as 'sqlite:~#\\Data\\myDb.sqlite'.",
                         "Invalid parse string", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

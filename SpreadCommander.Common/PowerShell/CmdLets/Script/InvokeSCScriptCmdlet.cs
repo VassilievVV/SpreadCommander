@@ -58,6 +58,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                 switch (ext)
                 {
                     case ".ps1":
+                    case ".psm1":
+                    case ".psd1":
                     case ".ps":
                         Engine = ScriptEngine.PowerShell;
                         break;

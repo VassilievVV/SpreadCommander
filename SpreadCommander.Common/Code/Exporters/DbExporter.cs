@@ -209,7 +209,7 @@ namespace SpreadCommander.Common.Code.Exporters
             if (cancellationToken.IsCancellationRequested)
                 return;
 
-            int progressInterval = BatchSize ?? 100;
+            int progressInterval = BatchSize ?? 10000;
 
             if (needCreateTable)
                 CreateTable(connection, table, tableSchema, tableName);

@@ -150,10 +150,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
 
         protected override void EndProcessing()
         {
-            WritePivotTable();
+            WriteChartTable();
         }
 
-        protected void WritePivotTable()
+        protected void WriteChartTable()
         {
             WriteTable(GetCmdletSpreadsheet());
         }
@@ -187,7 +187,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Spreadsheet.Chart
                                 spreadsheet.ChartSheets.Remove(sheet);
                             }
                             else
-                                throw new Exception($"Cannot create pivot sheet table: sheet '{ChartSheetName}' already exists.");
+                                throw new Exception($"Cannot create chart sheet table: sheet '{ChartSheetName}' already exists.");
 
                             break;
                         }

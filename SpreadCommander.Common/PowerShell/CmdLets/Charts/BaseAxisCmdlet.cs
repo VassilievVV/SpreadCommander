@@ -115,8 +115,8 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         public object MinValue { get; set; }
 
         [Parameter(HelpMessage = "Maximum value to display on an Axis. This may not be the same as the maximum value of the series associated with this axis.")]
-        public object MaxValue { get; set; }
         [Alias("Max")]
+        public object MaxValue { get; set; }
 
         [Parameter(HelpMessage = "Space between the outermost series point and the diagram's edge.")]
         public double? SideMarginsValue { get; set; }

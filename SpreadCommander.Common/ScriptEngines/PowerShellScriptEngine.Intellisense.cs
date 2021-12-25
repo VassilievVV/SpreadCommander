@@ -25,7 +25,7 @@ namespace SpreadCommander.Common.ScriptEngines
         {
             public Ast Node { get; }
 
-            public List<AstNode> ChildNodes { get; } = new List<AstNode>();
+            public List<AstNode> ChildNodes { get; } = new ();
 
             public AstNode(Ast ast)
             {
@@ -63,7 +63,7 @@ namespace SpreadCommander.Common.ScriptEngines
         }
         #endregion
 
-        public static readonly List<PowerShellCommand> PSCommands = new List<PowerShellCommand>();
+        public static readonly List<PowerShellCommand> PSCommands = new ();
 
         public static void RefreshAvailableCommandLets()
         {
@@ -120,10 +120,10 @@ namespace SpreadCommander.Common.ScriptEngines
             Messenger.Default.Send(new PSCmdletListChangedMessage());
         }
 
-        protected static AstNode ParseScript(string script)
+        protected static AstNode ParseScript(string fileName, string script)
         {
-            var parser = Parser.ParseInput(script, out Token[] _, out ParseError[] _);
-            AstNode result = new AstNode(parser);
+            var parser = Parser.ParseInput(script, fileName, out Token[] _, out ParseError[] _);
+            var result = new AstNode(parser);
 
             AddChildCommands(parser.FindAll(ast => true, true));
 
@@ -152,7 +152,7 @@ namespace SpreadCommander.Common.ScriptEngines
             }
         }
 
-        public override void ListScriptIntellisenseItems(string text, string[] lines, Point caretPosition, ScriptIntellisense intellisense)
+        public override void ListScriptIntellisenseItems(string fileName, string text, string[] lines, Point caretPosition, ScriptIntellisense intellisense)
         {
             Point caretPos = caretPosition;
 
@@ -160,7 +160,7 @@ namespace SpreadCommander.Common.ScriptEngines
             caretPos.X++;
             caretPos.Y++;
 
-            var rootNode = ParseScript(text);
+            var rootNode = ParseScript(fileName, text);
             if (rootNode == null)
             {
                 ListCommandlets();
@@ -469,11 +469,13 @@ namespace SpreadCommander.Common.ScriptEngines
                 {
                     if (IsCaretInAstNode(childNode))
                     {
+                        AstNode topResultNode = null;
                         if (childNode.Node.GetType() == nodeType)
-                            return childNode;
+                            topResultNode = childNode;
 
-                        var result = FindNodeUnderCaret(childNode, nodeType);
-                        return result;
+                        //Try to find lowest result node.
+                        var resultNode = FindNodeUnderCaret(childNode, nodeType);
+                        return resultNode ?? topResultNode;
                     }
                 }
 

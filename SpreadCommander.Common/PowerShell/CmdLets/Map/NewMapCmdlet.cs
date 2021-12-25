@@ -107,7 +107,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
                 ExecuteLocked(() =>
                 {
                     var images = new ImageCollection();
-                    if (ImageSize != null)
+                    if (ImageSize.HasValue)
                         images.ImageSize = ImageSize.Value;
                     foreach (var imageFile in ImageList)
                     {

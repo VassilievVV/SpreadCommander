@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Linq;
 
 namespace SpreadCommander.Common.Code
 {
@@ -63,7 +64,7 @@ namespace SpreadCommander.Common.Code
 
             string strNum = value[(counter + 1)..];
             int num = int.Parse(strNum);
-            string result = $"{(value.Substring(0, counter + 1))}{++num}";
+            string result = $"{value[..(counter + 1)]}{++num}";
             return result;
         }
 
@@ -99,7 +100,7 @@ namespace SpreadCommander.Common.Code
                 baseValue = value;
             else
             {
-                baseValue     = value.Substring(0, counter + 1);
+                baseValue     = value[..(counter + 1)];
                 string strNum = value[counter + 1] == '_' ? value[(counter + 2)..] : value[(counter + 1)..];
                 num           = int.Parse(strNum, CultureInfo.InvariantCulture);
             }
@@ -149,7 +150,7 @@ namespace SpreadCommander.Common.Code
                 baseValue = value;
             else
             {
-                baseValue = value.Substring(0, counter);
+                baseValue = value[..counter];
                 string strNum = value[(counter + 1)..];
                 num = int.Parse(strNum);
             }
@@ -188,7 +189,7 @@ namespace SpreadCommander.Common.Code
                 baseValue = value;
             else
             {
-                baseValue = value.Substring(0, counter);
+                baseValue = value[..counter];
                 string strNum = value[(counter + 1)..];
                 num = int.Parse(strNum);
             }
@@ -335,7 +336,7 @@ namespace SpreadCommander.Common.Code
                 sheetName = "Sheet ";
             sheetName = Utils.GetValidName(sheetName, "Sheet ", new char[] { '[', ']', '*', '?', '/', '\\' });
             if (sheetName.Length > 24)
-                sheetName = sheetName.Substring(0, 24);
+                sheetName = sheetName[..24];
 
             string result = Utils.AddUniqueString(sheetNames, sheetName, StringComparison.CurrentCultureIgnoreCase, true);
             return result;
@@ -489,7 +490,7 @@ namespace SpreadCommander.Common.Code
                 int p = part.IndexOf('=');
                 if (p > 0)
                 {
-                    string name  = Utils.TrimString(part.Substring(0, p));
+                    string name  = Utils.TrimString(part[..p]);
                     string value = Utils.TrimString(part[(p + 1)..]);
 
                     name  = ProcessSplitStringOptions(name, options);
@@ -544,6 +545,24 @@ namespace SpreadCommander.Common.Code
             return Image.FromStream(stream);
         }
 
+        public static int ReadStreamToBuffer(Stream stream, byte[] buffer) =>
+            ReadStreamToBuffer(stream, buffer, 0, buffer.Length);
+
+        public static int ReadStreamToBuffer(Stream stream, byte[] buffer, int start, int len) =>
+            ReadStreamToBuffer(stream, new Span<byte>(buffer, start, len));
+
+        public static int ReadStreamToBuffer(Stream stream, Span<byte> buffer)
+        {
+            int totalRead = 0;
+            while (totalRead < buffer.Length)
+            {
+                int bytesRead = stream.Read(buffer[totalRead..]);
+                if (bytesRead == 0) break;
+                totalRead += bytesRead;
+            }
+            return totalRead;
+        }
+
         public static void PlayEmbeddedSound(Assembly Assembly, string SoundName)
         {
             Stream s = GetEmbeddedResource(Assembly, SoundName);
@@ -551,7 +570,7 @@ namespace SpreadCommander.Common.Code
                 return;
 
             byte[] data = new byte[s.Length];
-            s.Read(data, 0, data.Length);
+            ReadStreamToBuffer(s, data);
 
             WinAPI.PlaySound(data);
         }
@@ -563,7 +582,7 @@ namespace SpreadCommander.Common.Code
                 return;
 
             byte[] data = new byte[s.Length];
-            s.Read(data, 0, data.Length);
+            ReadStreamToBuffer(s, data);
 
             WinAPI.PlaySoundSync(data);
         }
@@ -585,6 +604,8 @@ namespace SpreadCommander.Common.Code
             CreateDirectory(dir);
         }
 
+        public static string QuoteString(string str, char QuoteChar) =>
+            QuoteString(str, QuoteChar.ToString());
         public static string QuoteString(string str, string QuoteChar)
         {
             string closeQuoteChar = QuoteChar != "[" ? QuoteChar : "]";
@@ -1253,7 +1274,7 @@ namespace SpreadCommander.Common.Code
             {
                 if (!char.IsNumber(str[i]))
                 {
-                    baseName = str.Substring(0, i + 1);
+                    baseName = str[..(i + 1)];
                     if (i < str.Length - 1)
                         numSuffix = int.Parse(str[(i + 1)..]);
                     return i + 1;
@@ -1388,7 +1409,7 @@ namespace SpreadCommander.Common.Code
         public static byte[] Encrypt(byte[] clearData, string password)
         {
             using var ms = new MemoryStream();
-            using (Aes aes = new AesManaged())
+            using (Aes aes = Aes.Create())
             {
                 using (var deriveBytes = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(PasswordSalt)))
                 {
@@ -1421,19 +1442,6 @@ namespace SpreadCommander.Common.Code
             return Convert.ToBase64String(encryptedData);
         }
 
-        private static byte[] ReadByteArray(Stream stream)
-        {
-            byte[] rawLength = new byte[sizeof(int)];
-            if (stream.Read(rawLength, 0, rawLength.Length) != rawLength.Length)
-                throw new Exception("Stream did not contain properly formatted byte array");
-
-            byte[] buffer = new byte[BitConverter.ToInt32(rawLength, 0)];
-            if (stream.Read(buffer, 0, buffer.Length) != buffer.Length)
-                throw new Exception("Did not read byte array properly");
-
-            return buffer;
-        }
-
         public static byte[] Decrypt(byte[] cipherData)
         {
             return Decrypt(cipherData, DefaultPassword);
@@ -1445,12 +1453,12 @@ namespace SpreadCommander.Common.Code
             ms.Write(cipherData, 0, cipherData.Length);
             ms.Seek(0, SeekOrigin.Begin);
 
-            using Aes aes = new AesManaged();
+            using Aes aes = Aes.Create();
             using (var deriveBytes = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(PasswordSalt)))
             {
                 aes.Key = deriveBytes.GetBytes(128 / 8);
                 // Get the initialization vector from the encrypted stream
-                aes.IV = ReadByteArray(ms);
+                aes.IV = ReadDecryptByteArray(ms);
             }
 
             using var cs     = new CryptoStream(ms, aes.CreateDecryptor(), CryptoStreamMode.Read);
@@ -1458,7 +1466,7 @@ namespace SpreadCommander.Common.Code
             using var result = new MemoryStream();
             while (true)
             {
-                int bytesRead = cs.Read(buffer, 0, buffer.Length);
+                int bytesRead = ReadStreamToBuffer(cs, buffer);
                 result.Write(buffer, 0, bytesRead);
                 if (bytesRead < buffer.Length)
                     break;
@@ -1466,6 +1474,25 @@ namespace SpreadCommander.Common.Code
 
             result.Seek(0, SeekOrigin.Begin);
             return result.ToArray();
+
+
+            static byte[] ReadDecryptByteArray(Stream stream)
+            {
+                byte[] rawLength = new byte[sizeof(int)];
+                if (ReadStreamToBuffer(stream, rawLength) != rawLength.Length)
+                    throw new Exception("Stream did not contain properly formatted byte array");
+
+                int bufferLength = BitConverter.ToInt32(rawLength, 0);
+                if (bufferLength > 1024)
+                    throw new SystemException("Did not read byte array properly");
+
+                byte[] buffer = new byte[bufferLength];
+
+                if (ReadStreamToBuffer(stream, buffer) != buffer.Length)
+                    throw new Exception("Did not read byte array properly");
+
+                return buffer;
+            }
         }
 
         public static string Decrypt(string cipherText)
@@ -1541,7 +1568,7 @@ namespace SpreadCommander.Common.Code
             int bytesRead;
             do
             {
-                bytesRead = source.Read(buffer, 0, buffer.Length);
+                bytesRead = ReadStreamToBuffer(source, buffer);
                 if (bytesRead > 0)
                     dest.Write(buffer, 0, bytesRead);
             } while (bytesRead > 0);
@@ -1755,7 +1782,7 @@ namespace SpreadCommander.Common.Code
                 if (value is string && valueType == typeof(Color))
                     return (T)(object)ColorExtensions.FromHtmlColor(value as string);
 
-                if (!(value is IConvertible))
+                if (value is not IConvertible)
                     return (T)value;
 
                 return (T)Convert.ChangeType(value, valueType, CultureInfo.InvariantCulture);
@@ -1800,7 +1827,7 @@ namespace SpreadCommander.Common.Code
             if (value is string && type == typeof(Version))
                 return (object)new Version(value as string);
 
-            if (!(value is IConvertible))
+            if (value is not IConvertible)
                 return value;
 
             if (value is string str && type == typeof(Color))
@@ -2080,7 +2107,7 @@ namespace SpreadCommander.Common.Code
             static bool IsPSList(IList objects)
             {
                 foreach (var obj in objects)
-                    if (!(obj is PSObject))
+                    if (obj is not PSObject)
                         return false;
 
                 return true;

@@ -1,4 +1,5 @@
-﻿using DevExpress.XtraRichEdit;
+﻿using DevExpress.Spreadsheet;
+using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 using DevExpress.XtraRichEdit.API.Native.Implementation;
 using SpreadCommander.Common.Book;
@@ -58,7 +59,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             }
         }
 
-        protected virtual void ExpandFieldsInBookRange(DocumentRange range, Hashtable snippets = null)
+        protected internal static void ExpandFieldsInBookRange(DocumentRange range, IWorkbook defaultSpreadsheet, Hashtable snippets = null)
         {
             var doc = range.BeginUpdateDocument();
             try
@@ -82,9 +83,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     {
                         var codeName = Regex.Match(code, @"(?<=^#)[\w_\-]+").Value;
 
-                        using var book        = new SCBook() 
+                        using var book        = new InternalBook() 
                         { 
-                            DefaultSpreadsheet                = this.HostSpreadsheet, 
+                            DefaultSpreadsheet                = defaultSpreadsheet, 
                             NeedSynchronizeDefaultSpreadsheet = true, 
                             Snippets                          = ConvertSnippets() 
                         } ;
@@ -101,7 +102,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                         if (helperRangeBytes != null && helperRangeBytes.Length > 0)
                         {
                             using var stream = new MemoryStream(helperRangeBytes);
-                            var insRange = doc.InsertDocumentContent(fieldRange.Start, stream, DocumentFormat.OpenXml);
+                            var insRange = doc.InsertDocumentContent(fieldRange.Start, stream, DevExpress.XtraRichEdit.DocumentFormat.OpenXml);
                             
                             //For FOOTNOTE and ENDNOTE - delete final line-break
                             if (string.Compare(codeName, "footnote", true) == 0 || string.Compare(codeName, "endnote", true) == 0)

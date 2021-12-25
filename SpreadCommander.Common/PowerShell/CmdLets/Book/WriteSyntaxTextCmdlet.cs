@@ -59,7 +59,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         public string ParagraphStyle { get; set; }
 
 
-        private readonly StringBuilder _Output = new StringBuilder();
+        private readonly StringBuilder _Output = new ();
 
         protected override void BeginProcessing()
         {
@@ -236,10 +236,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                 if (string.IsNullOrWhiteSpace(syntaxFileName))
                     return null;
 
-                using Stream streamSyntax = Utils.GetEmbeddedResource(System.Reflection.Assembly.GetAssembly(this.GetType()), $"SyntaxFiles.{syntaxFileName}.syn");
+                using var streamSyntax = Utils.GetEmbeddedResource(System.Reflection.Assembly.GetAssembly(this.GetType()), $"SyntaxFiles.{syntaxFileName}.syn");
                 streamSyntax.Seek(0, SeekOrigin.Begin);
 
-                using StreamReader reader = new StreamReader(streamSyntax);
+                using var reader = new StreamReader(streamSyntax);
                 var syntax = SyntaxDefinition.FromSyntaxXml(reader.ReadToEnd());
                 return syntax;
             }

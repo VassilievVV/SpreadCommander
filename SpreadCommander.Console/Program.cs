@@ -17,13 +17,13 @@ namespace SpreadCommander.Console
 {
     class Program
     {
-        private static PowerShellScriptEngine Engine    { get; } = new PowerShellScriptEngine();
+        private static BaseScriptEngine Engine          { get; set; }
         private static RichEditDocumentServer Book      { get; } = new RichEditDocumentServer();
         private static IWorkbook Workbook               { get; } = SpreadsheetUtils.CreateWorkbook();
         private static DataSet DataSet                  { get; } = new DataSet("Script");
 
         private static string _ScriptFileName;
-        private readonly static List<string> _OutputFiles = new List<string>();
+        private readonly static List<string> _OutputFiles = new ();
 
         static void Main(string[] args)
         {
@@ -48,6 +48,20 @@ namespace SpreadCommander.Console
             DevExpress.XtraPrinting.Native.PrintingSettings.UseGdiPlusLineBreakAlgorithm = true;
 
             string script = LoadScript();
+            if (string.IsNullOrWhiteSpace(script))
+                return;
+
+            if (Engine == null)
+            {
+                Engine = (Path.GetExtension(_ScriptFileName)?.ToLower()) switch
+                {
+                    ".ps1"          => new PowerShellScriptEngine(),
+                    ".fsx" or ".fs" => new FSharpScriptEngine(),
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
+                    _      => throw new ArgumentException("Script engine is not specified and cannot be determined from filename.", "engine")
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
+                };
+            }
 
             Engine.RequestLine += Engine_RequestLine;
 
@@ -122,11 +136,29 @@ namespace SpreadCommander.Console
 
                     switch (argName)
                     {
-                        case "h":
                         case "help":
+                        case "h":
                             DisplayHelp();
-                            System.Console.ReadKey();
+                            //System.Console.ReadKey();
                             return false;
+                        case "engine":
+                        case "e":
+                            if (Engine != null)
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
+                                throw new ArgumentException("Engine is specified multiple times.", "engine");
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
+
+#pragma warning disable CRRSP06 // A misspelled word has been found
+                            Engine = (argValue?.ToLower() ?? string.Empty) switch
+                            {
+                                "powershell" => new PowerShellScriptEngine(),
+                                "f#"         => new FSharpScriptEngine(),
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
+                                _            => throw new ArgumentException("Engine shall be one of: PowerShell, F#.", "engine"),
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
+                            };
+#pragma warning restore CRRSP06 // A misspelled word has been found
+                            break;
                         case "project":
                         case "pr":
                         case "p":   //Project directory
@@ -137,6 +169,7 @@ namespace SpreadCommander.Console
                             _ScriptFileName = argValue;
                             break;
                         case "out": //Output file
+                        case "o":
                             _OutputFiles.Add(argValue);
                             break;
                     }
@@ -171,19 +204,20 @@ Execute SpreadCommander PowerShell script. Not interactive. Designed to run scri
 Syntax: SpreadComCon.exe <arguments>. Arguments have format -<Name>=<Value> or -<Name>:<Value> (for example -project=C:\MyProject).
 
 Unnamed arguments:
-    (1) Script file name. Can be in form '~\script.ps1' 
-            where ~ is project directory.
+    (1) Script file name. Can be in form '~#\script.ps1' 
+            where ~# is project directory.
     (2) Project directory.
 
 Named arguments:
+    -engine, -e:       Engine type. Can be one of: PowerShell, F#
     -project, -pr, -p: Project directory.
     -script, -s:       Script file.
-    -out:              Output file. Book can be saved into 
+    -out, -o:          Output file. Book can be saved into 
                            MS Word, text, RTF, ODT, PDF format 
                            (depending on file extension), 
                            Spreadsheet - into MS Excel, CSV format. 
                            Multiple output files are allowed.
-                           '~\<filename>' is supported to save 
+                           '~#\<filename>' is supported to save 
                            into project directory.
     -help, -h:         Output help (current text).
 

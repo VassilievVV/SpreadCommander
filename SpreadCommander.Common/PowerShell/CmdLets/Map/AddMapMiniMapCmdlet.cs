@@ -58,14 +58,17 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
 
 			if (ZoomLevel != 1.0 || CenterPoint != null)
 			{
-				if (CenterPoint.Length != 2)
-					throw new Exception("CenterPoint shall be a double array with 2 elements.");
+				var behavior = new FixedMiniMapBehavior();
 
-				var behavior = new FixedMiniMapBehavior()
+				if (CenterPoint != null)
 				{
-					CenterPoint = MapContext.CreateCoordPoint(this.CenterPoint[0], this.CenterPoint[1]),
-					ZoomLevel   = this.ZoomLevel
-				};
+					if (CenterPoint.Length != 2)
+						throw new Exception("CenterPoint shall be a double array with 2 elements.");
+					behavior.CenterPoint = MapContext.CreateCoordPoint(CenterPoint[0], CenterPoint[1]);
+				}
+
+				if (ZoomLevel != 1.0)
+					behavior.ZoomLevel = ZoomLevel;
 
 				miniMap.Behavior = behavior;
 			}

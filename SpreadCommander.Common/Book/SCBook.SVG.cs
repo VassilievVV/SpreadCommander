@@ -18,7 +18,7 @@ using WpfMath.Converters;
 
 namespace SpreadCommander.Common.Book
 {
-    public partial class SCBook
+    public partial class InternalBook
     {
         protected IRichEditDocumentServer AddSvg(ArgumentCollection arguments)
         {

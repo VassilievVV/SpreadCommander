@@ -11,7 +11,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 {
     public class SCBookContext: IDisposable
     {
-        protected internal SCBook SCBook { get; } = new SCBook();
+        protected internal InternalBook SCBook { get; } = new InternalBook();
 
         protected internal Document Document                  => SCBook.Document;
         protected internal IRichEditDocumentServer BookServer => SCBook.BookServer;

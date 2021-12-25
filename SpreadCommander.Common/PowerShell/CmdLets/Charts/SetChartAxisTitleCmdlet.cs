@@ -17,7 +17,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 		public ChartAxisType AxisType { get; set; }
 
 		[Parameter(Position = 1, HelpMessage = "Name of the axis.")]
-		public string Name { get; set; }
+		public string AxisName { get; set; }
 
 		[Parameter(HelpMessage = "Alignment of the axis title.")]
 		public StringAlignment? Alignment { get; set; }
@@ -42,11 +42,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 		{
 			AxisBase axis;
 
-			if (!string.IsNullOrWhiteSpace(Name))
+			if (!string.IsNullOrWhiteSpace(AxisName))
 			{
-				axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, Name);
+				axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, AxisName);
 				if (axis == null)
-					throw new Exception($"Cannot find axis '{Name}'.");
+					throw new Exception($"Cannot find axis '{AxisName}'.");
 			}
 			else
 			{
@@ -83,8 +83,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
 			if (Visible.HasValue)
 				title.Visibility = Visible.Value ? DevExpress.Utils.DefaultBoolean.True : DevExpress.Utils.DefaultBoolean.False;
 
-			if (WordWrap)
-				title.WordWrap = true;
+			title.WordWrap = WordWrap;
 		}
 	}
 }

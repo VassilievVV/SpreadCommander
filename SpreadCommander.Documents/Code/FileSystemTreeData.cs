@@ -19,7 +19,9 @@ namespace SpreadCommander.Documents.Code
         public static readonly string[] AllowedExtensions = new string[]
         {
 #pragma warning disable CRRSP06 // A misspelled word has been found
-            ".xlsx", ".xls", ".csv", ".txt", ".sql", ".ps", ".ps1", ".csx", ".fsx", ".r", ".py",
+            ".xlsx", ".xls", ".csv", ".txt", ".sql", 
+            ".ps", ".ps1", ".psm1", ".psd1", 
+            ".csx", ".fsx", ".fs", ".r", ".py",
             ".docx", ".doc", ".rtf", ".htm", ".html", ".mht", ".odt", ".epub",
             ".png", ".tif", ".tiff", ".jpg", ".jpeg", ".gif", ".bmp",
             ".scdash", ".scchart", ".scpivot"

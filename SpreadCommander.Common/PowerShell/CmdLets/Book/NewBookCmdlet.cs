@@ -21,14 +21,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 
         protected override void EndProcessing()
         {
-            var fileName = Project.Current.MapPath(FileName);
-            if (!string.IsNullOrWhiteSpace(fileName) && !File.Exists(fileName))
-                throw new Exception($"Cannot find file '{FileName}'.");
-            
             var book = new SCBookContext();
 
-            if (!string.IsNullOrWhiteSpace(fileName))
+            if (!string.IsNullOrWhiteSpace(FileName))
             {
+                var fileName = Project.Current.MapPath(FileName);
+
                 var ext = Path.GetExtension(fileName)?.ToLower();
                 if (string.Compare(ext, ".pdf", true) == 0) //When loading PDF - extract text.
                 {

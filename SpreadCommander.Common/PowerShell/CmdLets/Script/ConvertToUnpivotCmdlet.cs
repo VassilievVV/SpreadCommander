@@ -22,17 +22,17 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         public string[] PrimaryColumns { get; set; }
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = "Column name for headers of un-pivoting columns.")]
-        public string UnPivotColumnName { get; set; }
+        public string UnpivotColumnName { get; set; }
 
         [Parameter(HelpMessage = "Type of values in Unpivot column. Default is string.")]
         [PSDefaultValue(Value = typeof(string))]
         public Type UnpivotColumnType { get; set; } = typeof(string);
 
         [Parameter(Mandatory = true, Position = 2, HelpMessage = "Column name for values of un-pivoting columns.")]
-        public string UnPivotValueColumnName { get; set; }
+        public string UnpivotValueColumnName { get; set; }
 
         [Parameter(Mandatory = true, Position = 3, HelpMessage = "Type of values in un-pivot column.")]
-        public Type UnPivotValueType { get; set; }
+        public Type UnpivotValueType { get; set; }
 
         [Parameter(HelpMessage = "Columns that are neither primary columns nor un-pivot columns.")]
         [Alias("Ignore")]
@@ -58,7 +58,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         public SwitchParameter AsDataReader { get; set; }
 
 
-        private readonly List<PSObject> _Input = new List<PSObject>();
+        private readonly List<PSObject> _Input = new ();
 
         protected override void BeginProcessing()
         {
@@ -81,12 +81,12 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         {
             if (PrimaryColumns == null || PrimaryColumns.Length <= 0)
                 throw new ArgumentNullException(nameof(PrimaryColumns));
-            if (string.IsNullOrWhiteSpace(UnPivotColumnName))
-                throw new ArgumentNullException(nameof(UnPivotColumnName));
-            if (string.IsNullOrWhiteSpace(UnPivotValueColumnName))
-                throw new ArgumentException(nameof(UnPivotValueColumnName));
-            if (UnPivotValueType == null)
-                throw new ArgumentNullException(nameof(UnPivotValueType));
+            if (string.IsNullOrWhiteSpace(UnpivotColumnName))
+                throw new ArgumentNullException(nameof(UnpivotColumnName));
+            if (string.IsNullOrWhiteSpace(UnpivotValueColumnName))
+                throw new ArgumentException(nameof(UnpivotValueColumnName));
+            if (UnpivotValueType == null)
+                throw new ArgumentNullException(nameof(UnpivotValueType));
 
             var reader = GetDataSourceReader(_Input, DataSource, 
                 new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
@@ -101,10 +101,10 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                     PrimaryColumns         = this.PrimaryColumns,
                     IgnoreColumns          = this.IgnoreColumns,
                     IgnoreErrors           = this.IgnoreErrors,
-                    UnPivotColumnName      = this.UnPivotColumnName,
+                    UnPivotColumnName      = this.UnpivotColumnName,
                     UnpivotColumnType      = this.UnpivotColumnType,
-                    UnPivotValueColumnName = this.UnPivotValueColumnName,
-                    UnPivotValueType       = this.UnPivotValueType,
+                    UnPivotValueColumnName = this.UnpivotValueColumnName,
+                    UnPivotValueType       = this.UnpivotValueType,
                     SkipValues             = this.SkipValues
                 };
 

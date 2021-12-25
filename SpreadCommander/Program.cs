@@ -54,6 +54,7 @@ namespace SpreadCommander
             SetupDefaultValues();
 
             BonusSkins.Register();
+            SkinManager.Default.RegisterAssembly(typeof(DevExpress.UserSkins.WinterJoy).Assembly);
             SkinManager.EnableFormSkins();
 
             MainView = new MainView();

@@ -24,7 +24,7 @@ namespace SpreadCommander.Documents.ViewModels
     [POCOViewModel]
     public partial class BaseDocumentViewModel : ViewModelBase, IDocument, IDocumentContent, ISupportParentViewModel, IExportSource
     {
-        public enum ParametersScriptType { Sql, PowerShell }
+        public enum ParametersScriptType { Sql, PowerShell, FSharp }
 
 #pragma warning disable CA2211 // Non-constant fields should not be visible
         public static int DocumentCounter = 1;

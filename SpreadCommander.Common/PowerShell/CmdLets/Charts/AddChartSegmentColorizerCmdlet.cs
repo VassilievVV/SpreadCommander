@@ -15,7 +15,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Type of segment colorizer - Range, Trend or Point.")]
         public SegmentColorizerType ColorizerType { get; set; }
 
-        [Parameter(HelpMessage = "Name of series to which indicator is adding.")]
+        [Parameter(HelpMessage = "Name of series to which colorizer is adding.")]
         public string SeriesName { get; set; }
 
 

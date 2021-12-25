@@ -320,7 +320,6 @@ namespace SpreadCommander
         public void OpenFile()
         {
             var filter = new StringBuilder();
-#pragma warning disable CRRSP06 // A misspelled word has been found
             filter
                 .Append("SpreadCommander files|*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub;*.xlsx;*.xls;*.csv;*.scchart;*.scpivot;*.scdash;*.ps1;*.sql|")
                 .Append("Book files (*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub)|*.docx;*.doc;*.rtf;*.htm;*.html;*.mht;*.odt;*.epub|")
@@ -328,14 +327,13 @@ namespace SpreadCommander
                 .Append("Chart files (*.scchart)|*.scchart|")
                 .Append("Pivot files (*.scpivot)|*.scpivot|")
                 .Append("Dashboard files (*.scdash)|*.scdash|")
-                .Append("PowerShell script files (*.ps1)|*.ps1|")
+                .Append("PowerShell script files (*.ps1;*.psm1;*.psd1)|*.ps1;*.psm1;*.psd1|")
                 .Append("SQL script files (*.sql)|*.sql|")
                 .Append("R script files (*.r)|*.r|")
                 .Append("Python script files (*.py)|*.py|")
                 //.Append("C# script files (*.csx)|*.csx|")
-                //.Append("F# script files (*.fsx)|*.fsx|")
+                .Append("F# script files (*.fsx;*.fs)|*.fsx;*.fs|")
                 .Append("Picture (*.png;*.jpg;*.gif;*.tif;*.bmp)|*.png;*.jpg;*.gif;*.tif;*.bmp");
-#pragma warning restore CRRSP06 // A misspelled word has been found
 
             OpenMultiFilesService.Filter = filter.ToString();
             
@@ -362,7 +360,6 @@ namespace SpreadCommander
             }
 
             var ext = Path.GetExtension(fileName)?.ToLower();
-#pragma warning disable CRRSP06 // A misspelled word has been found
             switch (ext)
             {
                 case ".xlsx":
@@ -375,14 +372,17 @@ namespace SpreadCommander
                     break;
                 case ".ps":
                 case ".ps1":
+                case ".psm1":
+                case ".psd1":
                     viewModel = AddNewPSScriptDocument();
                     break;
                 //case ".csx":
                 //	viewModel = AddNewCSharpScriptDocument();
                 //	break;
-                //case ".fsx":
-                //	viewModel = AddNewFSharpScriptDocument();
-                //	break;
+                case ".fsx":
+                case ".fs":
+                	viewModel = AddNewFSharpScriptDocument();
+                	break;
                 case ".r":
                     viewModel = AddNewRScriptDocument();
                     break;
@@ -410,19 +410,18 @@ namespace SpreadCommander
                     viewModel = AddNewPictureDocument();
                     break;
                 case ".scdash":
-                    viewModel = AddNewDashboardDocument();
+                    viewModel = AddNewDashboardDocument(null);
                     break;
                 case ".pdf":
                     viewModel = AddNewPdfDocument();
                     break;
                 case ".scchart":
-                    viewModel = AddNewChartDocument();
+                    viewModel = AddNewChartDocument(null);
                     break;
                 case ".scpivot":
-                    viewModel = AddNewPivotDocument();
+                    viewModel = AddNewPivotDocument(null);
                     break;
             }
-#pragma warning restore CRRSP06 // A misspelled word has been found
 
             if (viewModel == null)
                 return null;
@@ -497,22 +496,38 @@ namespace SpreadCommander
             return documentType switch
             {
                 SpreadsheetDocumentViewModel.ViewName => AddNewSpreadsheetDocument(),
-                DashboardDocumentViewModel.ViewName   => AddNewDashboardDocument(),
                 BookDocumentViewModel.ViewName        => AddNewBookDocument(),
                 SqlScriptDocumentViewModel.ViewName   => AddNewSqlScriptDocument(),
                 ConsoleDocumentViewModel.ViewName     => documentSubType switch
                 {
-                    RScriptEngine.ScriptEngineName => AddNewRScriptDocument(),
-                    PythonScriptEngine.ScriptEngineName => AddNewPyScriptDocument(),
-                    PowerShellScriptEngine.ScriptEngineName => AddNewPSScriptDocument(),
+                    RScriptEngine.ScriptEngineName            => AddNewRScriptDocument(),
+                    PythonScriptEngine.ScriptEngineName       => AddNewPyScriptDocument(),
+                    PowerShellScriptEngine.ScriptEngineName   => AddNewPSScriptDocument(),
                     //CSharpScriptEngine.ScriptEngineName     => AddNewCSharpScriptDocument(),
-                    //FSharpScriptEngine.ScriptEngineName     => AddNewFSharpScriptDocument(),
-                    _ => null,
+                    FSharpScriptEngine.ScriptEngineName       => AddNewFSharpScriptDocument(),
+                    _ => null
                 },
-                ChartDocumentViewModel.ViewName   => AddNewChartDocument(),
-                PictureDocumentViewModel.ViewName => AddNewPictureDocument(),
-                PdfDocumentViewModel.ViewName     => AddNewPdfDocument(),
-                _                                 => null
+                ChartDocumentViewModel.ViewName     => documentSubType switch 
+                {
+                    PowerShellScriptEngine.ScriptEngineName => AddNewChartDocument(new PowerShellScriptEngine()),
+                    FSharpScriptEngine.ScriptEngineName     => AddNewChartDocument(new FSharpScriptEngine()),
+                    _ => null
+                },
+                PivotDocumentViewModel.ViewName     => documentSubType switch
+                {
+                    PowerShellScriptEngine.ScriptEngineName => AddNewPivotDocument(new PowerShellScriptEngine()),
+                    FSharpScriptEngine.ScriptEngineName     => AddNewPivotDocument(new FSharpScriptEngine()),
+                    _ => null
+                },
+                DashboardDocumentViewModel.ViewName => documentSubType switch
+                {
+                    PowerShellScriptEngine.ScriptEngineName => AddNewDashboardDocument(new PowerShellScriptEngine()),
+                    FSharpScriptEngine.ScriptEngineName     => AddNewDashboardDocument(new FSharpScriptEngine()),
+                    _ => null
+                },
+                PictureDocumentViewModel.ViewName   => AddNewPictureDocument(),
+                PdfDocumentViewModel.ViewName       => AddNewPdfDocument(),
+                _                                   => null
             };
         }
 
@@ -525,20 +540,6 @@ namespace SpreadCommander
 
                 var viewModel = SpreadsheetDocumentViewModel.Create();
                 AddNewDocument(viewModel, SpreadsheetDocumentViewModel.ViewName);
-
-                return viewModel;
-            }
-        }
-
-        public void AddNewDashboard() => AddNewDashboardDocument();
-        public DashboardDocumentViewModel AddNewDashboardDocument()
-        {
-            using (new UsingProcessor(() => StartAddingDocument(), () => EndAddingDocument()))
-            {
-                Utils.StartProfile("Dashboard");
-
-                var viewModel = DashboardDocumentViewModel.Create();
-                AddNewDocument(viewModel, DashboardDocumentViewModel.ViewName);
 
                 return viewModel;
             }
@@ -628,6 +629,7 @@ namespace SpreadCommander
                 return viewModel;
             }
         }
+        */
 
         public void AddNewFSharpScript() => AddNewFSharpScriptDocument();
         public ConsoleDocumentViewModel AddNewFSharpScriptDocument()
@@ -642,31 +644,47 @@ namespace SpreadCommander
                 return viewModel;
             }
         }
-        */
 
-        public void AddNewChart() => AddNewChartDocument();
-        public ChartDocumentViewModel AddNewChartDocument()
+        public void AddNewChartPowerShell() => AddNewChartDocument(new PowerShellScriptEngine());
+        public void AddNewChartFSharp() => AddNewChartDocument(new FSharpScriptEngine());
+        public ChartDocumentViewModel AddNewChartDocument(BaseScriptEngine engine)
         {
             using (new UsingProcessor(() => StartAddingDocument(), () => EndAddingDocument()))
             {
                 Utils.StartProfile("Chart");
 
-                var viewModel = ChartDocumentViewModel.Create();
+                var viewModel = ChartDocumentViewModel.Create(engine);
                 AddNewDocument(viewModel, ChartDocumentViewModel.ViewName);
 
                 return viewModel;
             }
         }
 
-        public void AddNewPivot() => AddNewPivotDocument();
-        public PivotDocumentViewModel AddNewPivotDocument()
+        public void AddNewPivotPowerShell() => AddNewPivotDocument(new PowerShellScriptEngine());
+        public void AddNewPivotFSharp() => AddNewPivotDocument(new FSharpScriptEngine());
+        public PivotDocumentViewModel AddNewPivotDocument(BaseScriptEngine engine)
         {
             using (new UsingProcessor(() => StartAddingDocument(), () => EndAddingDocument()))
             {
                 Utils.StartProfile("Pivot");
 
-                var viewModel = PivotDocumentViewModel.Create();
+                var viewModel = PivotDocumentViewModel.Create(engine);
                 AddNewDocument(viewModel, PivotDocumentViewModel.ViewName);
+
+                return viewModel;
+            }
+        }
+
+        public void AddNewDashboardPowerShell() => AddNewDashboardDocument(new PowerShellScriptEngine());
+        public void AddNewDashboardFSharp() => AddNewDashboardDocument(new FSharpScriptEngine());
+        public DashboardDocumentViewModel AddNewDashboardDocument(BaseScriptEngine engine)
+        {
+            using (new UsingProcessor(() => StartAddingDocument(), () => EndAddingDocument()))
+            {
+                Utils.StartProfile("Dashboard");
+
+                var viewModel = DashboardDocumentViewModel.Create(engine);
+                AddNewDocument(viewModel, DashboardDocumentViewModel.ViewName);
 
                 return viewModel;
             }

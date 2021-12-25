@@ -34,7 +34,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         public Hashtable Snippets { get; set; }
 
 
-        private readonly List<string> _Output = new List<string>();
+        private readonly List<string> _Output = new ();
 
         protected override void BeginProcessing()
         {
@@ -123,7 +123,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                     AddComments(book, range);
 
                     if (ExpandFields)
-                        ExpandFieldsInBookRange(range, Snippets);
+                        ExpandFieldsInBookRange(range, HostSpreadsheet, Snippets);
 
                     WriteRangeToConsole(book, range);
                 }

@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         public ChartAxisType AxisType { get; set; }
 
         [Parameter(Position = 1, HelpMessage = "Axis name. $null for primary axis.")]
-        public string Axis { get; set; }
+        public string AxisName { get; set; }
 
         [Parameter(HelpMessage = "Text for an axis label that identifies the strip within its axis.")]
         public string AxisLabelText { get; set; }
@@ -60,11 +60,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         {
             AxisBase axis;
 
-            if (!string.IsNullOrWhiteSpace(Name))
+            if (!string.IsNullOrWhiteSpace(AxisName))
             {
-                axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, Name);
+                axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, AxisName);
                 if (axis == null)
-                    throw new Exception($"Cannot find axis '{Name}'.");
+                    throw new Exception($"Cannot find axis '{AxisName}'.");
             }
             else
             {

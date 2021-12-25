@@ -58,7 +58,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
         public float? RightIndent { get; set; }
 
 
-        private readonly List<object> _Output = new List<object>();
+        private readonly List<object> _Output = new ();
 
         protected override void BeginProcessing()
         {

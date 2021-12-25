@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 
 namespace SpreadCommander.Common.Book
 {
-    public partial class SCBook
+    public partial class InternalBook
     {
         protected IRichEditDocumentServer AddSpreadTable(ArgumentCollection arguments)
         {

@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SpreadCommander.Common.Script.Spreadsheet
+{
+    public enum ChartStyle
+    {
+        //Custom        = -1,
+        Gray            = 1,
+        Color           = 2,
+        Accent1         = 3,
+        Accent2         = 4,
+        Accent3         = 5,
+        Accent4         = 6,
+        Accent5         = 7,
+        Accent6         = 8,
+        GrayOutline     = 9,
+        ColorOutline    = 10,
+        Accent1Outline  = 11,
+        Accent2Outline  = 12,
+        Accent3Outline  = 13,
+        Accent4Outline  = 14,
+        Accent5Outline  = 15,
+        Accent6Outline  = 16,
+        GrayGradient    = 17,
+        ColorGradient   = 18,
+        Accent1Gradient = 19,
+        Accent2Gradient = 20,
+        Accent3Gradient = 21,
+        Accent4Gradient = 22,
+        Accent5Gradient = 23,
+        Accent6Gradient = 24,
+        GrayBevel       = 25,
+        ColorBevel      = 26,
+        Accent1Bevel    = 27,
+        Accent2Bevel    = 28,
+        Accent3Bevel    = 29,
+        Accent4Bevel    = 30,
+        Accent5Bevel    = 31,
+        Accent6Bevel    = 32,
+        GrayArea        = 33,
+        ColorArea       = 34,
+        Accent1Area     = 35,
+        Accent2Area     = 36,
+        Accent3Area     = 37,
+        Accent4Area     = 38,
+        Accent5Area     = 39,
+        Accent6Area     = 40,
+        GrayDark        = 41,
+        ColorDark       = 42,
+        Accent1Dark     = 43,
+        Accent2Dark     = 44,
+        Accent3Dark     = 45,
+        Accent4Dark     = 46,
+        Accent5Dark     = 47,
+        Accent6Dark     = 48,
+        Style1          = 101,
+        Style2          = 102,
+        Style3          = 103,
+        Style4          = 104,
+        Style5          = 105,
+        Style6          = 106,
+        Style7          = 107,
+        Style8          = 108,
+        Style9          = 109
+    }
+}

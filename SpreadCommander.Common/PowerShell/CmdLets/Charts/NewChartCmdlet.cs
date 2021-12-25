@@ -54,7 +54,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         [Alias("NoErrors")]
         public SwitchParameter IgnoreErrors { get; set; }
 
+#pragma warning disable CRRSP06 // A misspelled word has been found
         [Parameter(HelpMessage = "Template file - .scchart file created in Chart document")]
+#pragma warning restore CRRSP06 // A misspelled word has been found
         public string TemplateFile { get; set; }
 
         [Parameter(HelpMessage = "Palette used to draw the chart's series.")]
@@ -236,7 +238,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         }
 
 
-        private readonly List<PSObject> _Output = new List<PSObject>();
+        private readonly List<PSObject> _Output = new ();
 
         protected override void BeginProcessing()
         {

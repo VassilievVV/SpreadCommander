@@ -26,7 +26,7 @@ namespace SpreadCommander.Documents.Console
 {
     public partial class ConsoleBookControl : ConsoleBaseControl, IRibbonHolder
     {
-        private SCBook SCBook;
+        private InternalBook SCBook;
 
         private int _SilentUpdateCounter;
 
@@ -36,7 +36,7 @@ namespace SpreadCommander.Documents.Console
 
             SetupEditor();
 
-            SCBook = new SCBook(Editor);
+            SCBook = new InternalBook(Editor);
             Disposed += ConsoleBookControl_Disposed;
 
             //Fix skin colors in comment control
@@ -213,7 +213,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarLoadTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dir = Project.Current.MapPath("~\\Templates");
+            var dir = Project.Current.MapPath("~#\\Templates");
             if (Directory.Exists(dir))
                 dlgOpen.InitialDirectory = dir;
 
@@ -225,7 +225,7 @@ namespace SpreadCommander.Documents.Console
 
         private void BarSaveTemplate_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            var dir = Project.Current.MapPath("~\\Templates");
+            var dir = Project.Current.MapPath("~#\\Templates");
             if (Directory.Exists(dir))
                 dlgSave.InitialDirectory = dir;
 

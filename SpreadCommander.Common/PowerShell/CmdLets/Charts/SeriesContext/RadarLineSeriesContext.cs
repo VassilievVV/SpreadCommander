@@ -38,7 +38,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesContext
 
             if (series.View is RadarLineSeriesView view)
             {
-                if (Open && !(view is RadarAreaSeriesView))
+                if (Open && view is not RadarAreaSeriesView)
                     view.Closed = false;
 
                 var markerColor = Utils.ColorFromString(MarkerColor);

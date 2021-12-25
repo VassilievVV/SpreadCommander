@@ -99,12 +99,13 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
             return htmlTable;
         }
 
-    protected virtual void DoWriteSpreadTable(Document book, string htmlTable)
+        protected virtual void DoWriteSpreadTable(Document book, string htmlTable)
         { 
             var range = book.AppendHtmlText(htmlTable, DevExpress.XtraRichEdit.API.Native.InsertOptions.KeepSourceFormatting);
             var paragraph = book.Paragraphs.Append();
 
             book.CaretPosition = paragraph.Range.End;
+            ResetBookFormatting(book);
             ScrollToCaret();
 
             AddComments(book, range);

@@ -9,7 +9,7 @@ using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
 using System.Data.OleDb;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 using System.Data.SQLite;
 using System.Diagnostics;
 using System.IO;
@@ -326,7 +326,7 @@ namespace SpreadCommander.Common.SqlScript
                     {
                         MessageType = SqlMessage.SqlMessageType.Message,
                         Message     = error.Message,
-                        HResult     = error.Code,
+                        HResult     = (int)error.ErrorCode,
                         State       = error.Level,
                         Line        = ErrorLineOffset + 1
                     });

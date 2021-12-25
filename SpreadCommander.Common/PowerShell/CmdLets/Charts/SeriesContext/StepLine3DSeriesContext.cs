@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts.SeriesContext
 
             if (series.View is StepLine3DSeriesView view)
             {
-                view.InvertedStep = !InvertedStep;
+                view.InvertedStep = InvertedStep;
             }
         }
     }

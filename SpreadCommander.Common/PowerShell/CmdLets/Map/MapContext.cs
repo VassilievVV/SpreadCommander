@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace SpreadCommander.Common.PowerShell.CmdLets.Map
 {
     //Class using to move Map through PowerShell pipe.
-    public class MapContext
+    public class MapContext: IDisposable
     {
         [Browsable(false)]
         public InnerMap Map { get; set; }
@@ -19,6 +19,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
         [Browsable(false)]
         public object CurrentLayer { get; set; }
 
+
+        public void Dispose()
+        {
+            Clear();
+        }
 
         public void Clear()
         {

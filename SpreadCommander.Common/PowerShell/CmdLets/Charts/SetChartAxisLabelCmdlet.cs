@@ -18,7 +18,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         public ChartAxisType AxisType { get; set; }
 
         [Parameter(Position = 1, HelpMessage = "Name of the axis.")]
-        public string Name { get; set; }
+        public string AxisName { get; set; }
 
         [Parameter(HelpMessage = "Rotation angle of axis labels in degrees.")]
         public int? Angle { get; set; }
@@ -85,11 +85,11 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
         {
             AxisBase axis;
 
-            if (!string.IsNullOrWhiteSpace(Name))
+            if (!string.IsNullOrWhiteSpace(AxisName))
             {
-                axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, Name);
+                axis = BaseAxisCmdlet.GetSecondaryAxis(ChartContext.Chart.Diagram, AxisType, AxisName);
                 if (axis == null)
-                    throw new Exception($"Cannot find axis '{Name}'.");
+                    throw new Exception($"Cannot find axis '{AxisName}'.");
             }
             else 
             {
@@ -173,12 +173,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Charts
                 label.TextPattern = TextPattern;
             if (Visible.HasValue)
                 label.Visible = Visible.Value;
-            if (DoNotAutoHide)
-                label.ResolveOverlappingOptions.AllowHide = false;
-            if (DoNotAutoRotate)
-                label.ResolveOverlappingOptions.AllowRotate = false;
-            if (DoNotAutoStagger)
-                label.ResolveOverlappingOptions.AllowStagger = false;
+            label.ResolveOverlappingOptions.AllowHide    = !DoNotAutoHide;
+            label.ResolveOverlappingOptions.AllowRotate  = !DoNotAutoRotate;
+            label.ResolveOverlappingOptions.AllowStagger = !DoNotAutoStagger;
             if (MinIndent.HasValue)
                 label.ResolveOverlappingOptions.MinIndent = MinIndent.Value;
         }

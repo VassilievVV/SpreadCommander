@@ -9,7 +9,7 @@ using DevExpress.Charts.Native;
 
 namespace SpreadCommander.Common.Book
 {
-    public partial class SCBook
+    public partial class InternalBook
     {
         protected enum FootEndNoteType { FootNote, EndNote }
         private enum FootEndNoteFormat { Text, Html }

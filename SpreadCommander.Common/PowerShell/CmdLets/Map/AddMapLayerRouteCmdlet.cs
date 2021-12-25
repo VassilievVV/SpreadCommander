@@ -87,7 +87,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Map
 			var layer = new InformationLayer()
 			{
 				EnableHighlighting = false,
-				EnableSelection = false
+				EnableSelection    = false
 			};
 
 			if (!string.IsNullOrWhiteSpace(Name))
