@@ -177,7 +177,7 @@ namespace Alsing.Windows.Forms.Controls.SyntaxBox.Dialogs
                 System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "GotoLineForm";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Go To Line";
             this.Closing += new System.ComponentModel.CancelEventHandler
                 (this.GotoLine_Closing);

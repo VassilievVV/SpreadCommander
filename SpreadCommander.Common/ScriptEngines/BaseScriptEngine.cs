@@ -180,9 +180,16 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public virtual void Start() { }
 
-        public virtual void Stop() { }
+        public virtual void Stop() 
+        {
+            GC.Collect();
+        }
 
-        public virtual void Dispose() => Stop();
+        public virtual void Dispose()
+        {
+            Stop(); 
+            GC.SuppressFinalize(this);
+        }
 
         public virtual void SendCommand(string command) { }
 

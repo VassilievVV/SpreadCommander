@@ -127,8 +127,25 @@ open Deedle;
 
         public override void Stop() 
         {
-            _Session?.Interrupt();
+            var session = _Session;
+            if (session != null)
+            {
+                session.Interrupt();
+
+                var values = session.GetBoundValues();
+                foreach (var value in values)
+                {
+                    if (value?.Value is IDisposable disposable)
+                        disposable.Dispose();
+                    else if (value is Shell.FsiBoundValue fsiValue &&
+                        fsiValue.Value?.ReflectionValue is IDisposable fsiDisposable)
+                        fsiDisposable.Dispose();
+                }
+            }
+
             _Session = null;
+
+            base.Stop();
         }
 
         public override void SendCommand(string command) => SendCommand(command, ExecutionType == ScriptExecutionType.Script);
@@ -138,6 +155,7 @@ open Deedle;
             if (string.IsNullOrWhiteSpace(command))
             {
                 FireExecutionFinished();
+                GC.Collect();
                 return;
             }
 
@@ -165,6 +183,7 @@ open Deedle;
             {
                 ProgressType = ProgressKind.None;
                 FireExecutionFinished();
+                GC.Collect();
             }
 
 

@@ -31,8 +31,8 @@ namespace SpreadCommander.Common.ScriptEngines
                     ErrorID           = diagnostic.ErrorNumberText,
                     Message           = diagnostic.Message,
                     StartLineNumber   = diagnostic.StartLine,
-                    StartColumnNumber = diagnostic.StartColumn,
-                    EndLineNumber     = diagnostic.EndLine,
+                    StartColumnNumber = diagnostic.StartColumn + 1,
+                    EndLineNumber     = diagnostic.EndLine + 1,
                     EndColumnNumber   = diagnostic.EndColumn
                 };
                 errors.Add(error);

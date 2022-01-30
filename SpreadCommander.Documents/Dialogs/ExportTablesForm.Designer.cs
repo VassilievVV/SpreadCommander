@@ -433,7 +433,7 @@ namespace SpreadCommander.Documents.Dialogs
             this.IconOptions.ShowIcon = false;
             this.Name = "ExportTablesForm";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Export";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl)).EndInit();
             this.layoutControl.ResumeLayout(false);

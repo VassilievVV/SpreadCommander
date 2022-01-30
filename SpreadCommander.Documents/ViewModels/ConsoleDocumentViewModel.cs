@@ -62,6 +62,16 @@ namespace SpreadCommander.Documents.ViewModels
             //StartEngine();
         }
 
+#pragma warning disable CA1816 // Dispose methods should call SuppressFinalize
+        public override void Dispose()
+#pragma warning restore CA1816 // Dispose methods should call SuppressFinalize
+        {
+            Engine?.Dispose();
+            Engine = null;
+
+            base.Dispose();
+        }
+
         public void SetupEngine(BaseScriptEngine engine)
         {
             if (Engine != null)
@@ -237,10 +247,14 @@ namespace SpreadCommander.Documents.ViewModels
                 throw new InvalidOperationException("Script engine is not initialized.");
         }
 
-        public void Execute(string command)
+        public async void Execute(string command)
         {
             CheckScriptEngine();
-            Engine.SendCommand(command);
+
+            await Task.Run(() =>
+            {
+                Engine.SendCommand(command);
+            });
         }
 
         public async void Cancel()
@@ -252,7 +266,7 @@ namespace SpreadCommander.Documents.ViewModels
             StartEngine();
         }
 
-        public void ExecuteScript(string script)
+        public async void ExecuteScript(string script)
         {
             CheckScriptEngine();
 
@@ -270,8 +284,12 @@ namespace SpreadCommander.Documents.ViewModels
             scriptEngine.ExecutionType = BaseScriptEngine.ScriptExecutionType.Script;
 
             scriptEngine.ExecutionFinished += callbackFinished;
-            scriptEngine.Start();
-            scriptEngine.SendCommand(script);
+
+            await Task.Run(() =>
+            {
+                scriptEngine.Start();
+                scriptEngine.SendCommand(script);
+            });
 
 
             void callbackFinished(object s, EventArgs e)

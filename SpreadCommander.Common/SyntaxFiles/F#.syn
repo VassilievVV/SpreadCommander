@@ -74,6 +74,7 @@
           upcast
           use
           use!
+          using
           val
           void
           when
@@ -133,9 +134,19 @@
           char
           string
           bool
+          unit
           
           Seq
           seq
+          List
+          list
+          Array
+          array
+          
+          this
+          box
+          unbox
+          defaultArg
           
           Host
           Book
@@ -158,11 +169,10 @@
     </Operators>
     <!-- Blocks that can exist inside this block -->
     <ChildBlocks>
-      <!-- Child Name="Multiline Comment" /-->
+      <Child Name="Multiline Comment" />
       <Child Name="Singleline Comment" />
       <Child Name="FS String" />
       <Child Name="FS Literal String" />
-      <Child Name="FS Literal String 2" />
       <Child Name="FS Chart" />
       <Child Name="FS Literal Char" />
       <Child Name="Code" />
@@ -170,7 +180,7 @@
     </ChildBlocks>
   </Block>	
   <Block Name="Multiline Comment" Style="Comment"  IsMultiline="true">
-    <Scope Start="" End="" Style="Comment" Text="..."/>
+    <Scope Start="(*" End="*)" Style="Comment" Text="..."/>
   </Block>
   <Block Name="Singleline Comment" Style="Comment"  IsMultiline="false">
     <Scope Start="//" End="" Style="Comment" />
@@ -183,20 +193,12 @@
     <Scope Start="&quot;" End="&quot;" EscapeChar="\" Style="String" />
   </Block>
   
-  <Block Name="FS Literal String 2" Style="String" IsMultiline="true">
+  <Block Name="FS Literal String" Style="String" IsMultiline="true">
     <Scope Start="&quot;&quot;&quot;" End="&quot;&quot;&quot;" EscapeChar="\" Style="String" />
   </Block>"
 
   <Block Name="FS Char" Style="String" EscapeChar="" IsMultiline="false">
     <Scope Start="'" End="'"  EscapeChar="\" Style="String" />
-  </Block>
-
-  <Block Name="FS Literal String" Style="String" EscapeChar="" IsMultiline="true" >
-    <Scope Start="@&quot;" End="&quot;" Style="String" Text="@'...'" />
-  </Block>
-
-  <Block Name="FS Literal Char" Style="String" EscapeChar="" IsMultiline="false">
-    <Scope Start="@'" End="'" Style="String" />
   </Block>
   
 <Style Name="Code" ForeColor="" BackColor="" Bold="false" Italic="false" Underline="false" />

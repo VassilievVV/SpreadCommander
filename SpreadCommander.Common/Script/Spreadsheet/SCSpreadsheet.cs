@@ -10,7 +10,7 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 {
     public partial class SCSpreadsheet : ScriptHostObject, IDisposable
     {
-        protected internal IWorkbook Workbook { get; }
+        protected internal IWorkbook Workbook { get; private set; }
 
         public SCSpreadsheet() : base()
         {
@@ -25,6 +25,7 @@ namespace SpreadCommander.Common.Script.Spreadsheet
         public void Dispose()
         {
             Workbook?.Dispose();
+            Workbook = null;
         }
 
         protected static void AddComments(CellRange range, string comment)

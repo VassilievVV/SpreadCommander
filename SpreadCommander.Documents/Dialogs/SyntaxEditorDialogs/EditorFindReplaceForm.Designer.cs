@@ -161,6 +161,7 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
             // 
             this.comboReplaceWith.Location = new System.Drawing.Point(89, 36);
             this.comboReplaceWith.Name = "comboReplaceWith";
+            this.comboReplaceWith.Properties.AutoComplete = false;
             this.comboReplaceWith.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboReplaceWith.Size = new System.Drawing.Size(299, 20);
@@ -172,6 +173,7 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
             this.comboFindWhat.Location = new System.Drawing.Point(89, 12);
             this.comboFindWhat.Name = "comboFindWhat";
             this.comboFindWhat.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.True;
+            this.comboFindWhat.Properties.AutoComplete = false;
             this.comboFindWhat.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.comboFindWhat.Size = new System.Drawing.Size(299, 20);
@@ -300,7 +302,7 @@ namespace SpreadCommander.Documents.Dialogs.SyntaxEditorDialogs
             this.Name = "EditorFindReplaceForm";
             this.Opacity = 0.9D;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Find/Replace";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.EditorFindReplaceForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.layoutRoot)).EndInit();

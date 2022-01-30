@@ -18,6 +18,11 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 2.1
+- F# is enhanced.
+- Third-party components updated.
+- Minor updates and fixes.
+
 ### Version 2.0
 - F# is added as scripting language.
 - '\~\\' as project root is changed to '\~#\\'.

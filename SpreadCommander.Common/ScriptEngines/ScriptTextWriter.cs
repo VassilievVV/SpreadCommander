@@ -13,6 +13,7 @@ namespace SpreadCommander.Common.ScriptEngines
     {
         private readonly BaseScriptEngine _Engine;
         protected readonly bool _IsError;
+        private readonly StringBuilder _Output = new();
 
         protected Document Document => _Engine.Document;
 
@@ -47,21 +48,36 @@ namespace SpreadCommander.Common.ScriptEngines
             if (Silent)
                 return;
 
-            _Engine.ExecuteSynchronized(() => DoWrite(value));
+            lock (_Output)
+            {
+                _Output.Append(value);
+            }
+
+            if (_Output.Length > 0)
+                _Engine.ExecuteSynchronized(() => DoWrite());
         }
 
-        protected void DoWrite(string value)
+        protected void DoWrite()
         {
-            var doc   = Document;
+            var doc = Document;
             doc.BeginUpdate();
             try
             {
-                var range = doc.AppendText(value);
+                do
+                {
+                    DocumentRange range;
+                    lock (_Output)
+                    {
+                        range = doc.AppendText(_Output.ToString());
+                        _Output.Clear();
+                    }
 
-                FormatText(doc, range.Start.ToInt(), range.End.ToInt() - range.Start.ToInt());
+                    FormatText(doc, range.Start.ToInt(), range.End.ToInt() - range.Start.ToInt());
 
-                doc.CaretPosition = range.End;
-                DoResetBookFormatting(doc, range.End, false);
+                    doc.CaretPosition = range.End;
+                    DoResetBookFormatting(doc, range.End, false);
+                }
+                while (_Output.Length > 0);
             }
             finally
             {

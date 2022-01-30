@@ -86,6 +86,18 @@ namespace SpreadCommander.Documents.Controls
             set => syntaxDocument.Text = value;
         }
 
+        public bool ShowGutterMargin
+        {
+            get => syntaxEditor.ShowGutterMargin;
+            set => syntaxEditor.ShowGutterMargin = value;
+        }
+
+        public bool ShowLineNumbers
+        {
+            get => syntaxEditor.ShowLineNumbers;
+            set => syntaxEditor.ShowLineNumbers = value;
+        }
+
         [System.Diagnostics.DebuggerStepThrough()]
         protected override void WndProc(ref Message msg)
         {

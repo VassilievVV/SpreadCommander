@@ -5,9 +5,9 @@
     <IsPackable>false</IsPackable>
     <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
     <ApplicationIcon>SpreadCommander.ico</ApplicationIcon>
-    <Version>2.0</Version>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <Version>2.1</Version>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
     <Authors>Viatcheslav V. Vassiliev</Authors>
     <Product>Spread Commander</Product>
     <Description>SpreadCommander - application for data analysis. Console version.</Description>
@@ -15,6 +15,7 @@
     <Platforms>x64</Platforms>
     <AssemblyName>SpreadComCon</AssemblyName>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
+    <BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

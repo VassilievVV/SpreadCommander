@@ -276,5 +276,47 @@ namespace SpreadCommander.Documents.Console
         {
             transitionManager.EndTransition();
         }
+
+        private static void CustomColumnSort(DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            if (e.Handled)
+                return;
+
+            if (e.Value1 is string && e.Value2 is string)
+            {
+                e.Result  = StringLogicalComparer.Compare(Convert.ToString(e.Value1), Convert.ToString(e.Value2));
+                e.Handled = true;
+            }
+        }
+
+        private void ViewMessages_CustomColumnGroup(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            CustomColumnSort(e);
+        }
+
+        private void ViewMessages_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            CustomColumnSort(e);
+        }
+
+        private void ViewErrors_CustomColumnGroup(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            CustomColumnSort(e);
+        }
+
+        private void ViewErrors_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            CustomColumnSort(e);
+        }
+
+        private void ViewHistory_CustomColumnGroup(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            CustomColumnSort(e);
+        }
+
+        private void ViewHistory_CustomColumnSort(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnSortEventArgs e)
+        {
+            CustomColumnSort(e);
+        }
     }
 }

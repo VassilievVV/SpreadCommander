@@ -28,25 +28,33 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.Editor = new SpreadCommander.Documents.Controls.ScriptEditorControl();
-			this.SuspendLayout();
-			// 
-			// Editor
-			// 
-			this.Editor.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.Editor.Location = new System.Drawing.Point(0, 0);
-			this.Editor.Name = "Editor";
-			this.Editor.Size = new System.Drawing.Size(889, 643);
-			this.Editor.TabIndex = 0;
-			// 
-			// SyntaxViewer
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.Controls.Add(this.Editor);
-			this.Name = "SyntaxViewer";
-			this.Size = new System.Drawing.Size(889, 643);
-			this.ResumeLayout(false);
+            this.Editor = new SpreadCommander.Documents.Controls.ScriptEditorControl();
+            this.SuspendLayout();
+            // 
+            // Editor
+            // 
+            this.Editor.DefaultExt = "";
+            this.Editor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Editor.FileFilter = "All files|*.*";
+            this.Editor.FileName = null;
+            this.Editor.IsModified = false;
+            this.Editor.Location = new System.Drawing.Point(0, 0);
+            this.Editor.Name = "Editor";
+            this.Editor.ReadOnly = false;
+            this.Editor.ScriptText = "";
+            this.Editor.ShowGutterMargin = false;
+            this.Editor.ShowLineNumbers = false;
+            this.Editor.Size = new System.Drawing.Size(889, 643);
+            this.Editor.TabIndex = 0;
+            // 
+            // SyntaxViewer
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.Editor);
+            this.Name = "SyntaxViewer";
+            this.Size = new System.Drawing.Size(889, 643);
+            this.ResumeLayout(false);
 
 		}
 

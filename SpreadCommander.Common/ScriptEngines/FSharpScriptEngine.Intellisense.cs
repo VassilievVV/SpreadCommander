@@ -17,7 +17,7 @@ namespace SpreadCommander.Common.ScriptEngines
             if (session == null)
                 return;
 
-            var ident = GetIdent();
+            var ident = GetIdent() ?? string.Empty;
  
             var completions = session.GetCompletions(ident);
             if (completions == null)

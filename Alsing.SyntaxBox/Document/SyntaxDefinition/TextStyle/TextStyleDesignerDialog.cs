@@ -268,7 +268,7 @@ namespace Alsing.Windows.Forms.Document.SyntaxDefinition.TextStyle
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "TextStyleDesignerDialog";
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Style Designer";
             this.Load += new System.EventHandler(this.TextStyleDesignerDialog_Load);
             this.panel2.ResumeLayout(false);

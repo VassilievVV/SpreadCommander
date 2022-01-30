@@ -167,6 +167,8 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
             }
 
             _Host = null;
+
+            base.Stop();
         }
 
         public void AddVariable(string name, object value)
@@ -181,6 +183,7 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
             if (string.IsNullOrWhiteSpace(command))
             {
                 FireExecutionFinished();
+                GC.Collect();
                 return;
             }
 
@@ -255,6 +258,7 @@ $@"{cmdlet} : {message}
                                 _Host.UI.Write($"{Environment.NewLine}SpreadCommander>{Environment.NewLine}");
 
                             FireExecutionFinished();
+                            GC.Collect();
                             break;
                     }
                 });

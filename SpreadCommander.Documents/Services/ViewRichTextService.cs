@@ -20,7 +20,7 @@ namespace SpreadCommander.Documents.Services
 
         public void ViewDocument(Stream stream)
         {
-            var viewer = new RichTextViewer() { StartPosition = FormStartPosition.CenterParent };
+            var viewer = new RichTextViewer();
             viewer.FormClosed += (s, _) => (s as IDisposable)?.Dispose();
             viewer.LoadDocument(stream);
             viewer.Show(_Owner);
@@ -28,7 +28,7 @@ namespace SpreadCommander.Documents.Services
 
         public void ViewHtmlText(string htmlText)
         {
-            var viewer = new RichTextViewer() { StartPosition = FormStartPosition.CenterParent };
+            var viewer = new RichTextViewer();
             viewer.FormClosed += (s, _) => (s as IDisposable)?.Dispose();
             viewer.LoadHtmlText(htmlText);
             viewer.Show(_Owner);

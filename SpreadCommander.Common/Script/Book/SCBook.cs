@@ -17,7 +17,7 @@ namespace SpreadCommander.Common.Script.Book
 {
     public partial class SCBook : ScriptHostObject, IDisposable
     {
-        protected InternalBook CommonBook { get; }
+        protected InternalBook CommonBook { get; private set; }
 
         protected internal Document Document => CommonBook.Document;
 
@@ -34,6 +34,7 @@ namespace SpreadCommander.Common.Script.Book
         public void Dispose()
         {
             CommonBook?.Dispose();
+            CommonBook = null;
         }
 
         protected override bool NeedSynchronization(BookOptions options)

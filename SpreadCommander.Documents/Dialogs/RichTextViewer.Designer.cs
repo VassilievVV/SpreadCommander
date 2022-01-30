@@ -3343,7 +3343,7 @@
             this.Name = "RichTextViewer";
             this.Ribbon = this.ribbon;
             this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Comments";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.IntellisenseCommentForm_FormClosing);

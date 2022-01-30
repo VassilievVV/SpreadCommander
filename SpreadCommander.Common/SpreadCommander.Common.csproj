@@ -12,8 +12,9 @@
     <Authors>Viatcheslav V. Vassiliev</Authors>
     <PlatformTarget>x64</PlatformTarget>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <FileVersion>2.0.0.0</FileVersion>
+    <AssemblyVersion>2.1.0.0</AssemblyVersion>
+    <FileVersion>2.1.0.0</FileVersion>
+    <BaseOutputPath>..\bin</BaseOutputPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -57,68 +58,68 @@
   <ItemGroup>
     <PackageReference Include="AvalonStudio.winpty.NET" Version="0.4.6" />
     <PackageReference Include="Deedle" Version="2.5.0" />
-    <PackageReference Include="DevExpress.Gauges.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Scheduler.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Scheduler.CoreDesktop" Version="21.2.4" />
-    <PackageReference Include="DevExpress.DataAccess" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Diagram.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Map.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Charts" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Charts.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Sparkline.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.SpellChecker.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Data" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Pdf.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Pdf.Drawing" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Printing.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Office.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.RichEdit.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.RichEdit.Export" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Images" Version="21.2.4" />
-    <PackageReference Include="DevExpress.CodeParser" Version="21.2.4" />
-    <PackageReference Include="DevExpress.PivotGrid.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.TreeMap.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Dialogs.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Mvvm" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.1" />
-    <PackageReference Include="DevExpress.Xpo" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Document.Processor" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.BonusSkins" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Charts" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Diagram" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Dialogs" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Gantt" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Gauges" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Map" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.PdfViewer" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.RichEdit" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Scheduler" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.SpellChecker" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.Spreadsheet" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win.TreeMap" Version="21.2.4" />
-    <PackageReference Include="DevExpress.DataAccess.UI" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Utils" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Utils.UI" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Scaffolding.Core" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Scaffolding.EFCore" Version="21.2.4" />
-    <PackageReference Include="DevExpress.Win" Version="21.2.4" />
+    <PackageReference Include="DevExpress.Gauges.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Scheduler.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Scheduler.CoreDesktop" Version="21.2.5" />
+    <PackageReference Include="DevExpress.DataAccess" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Diagram.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Map.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Charts" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Charts.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Sparkline.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.SpellChecker.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Spreadsheet.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Data" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Pdf.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Pdf.Drawing" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Printing.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Office.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.RichEdit.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.RichEdit.Export" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Images" Version="21.2.5" />
+    <PackageReference Include="DevExpress.CodeParser" Version="21.2.5" />
+    <PackageReference Include="DevExpress.PivotGrid.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.TreeMap.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Dialogs.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Mvvm" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.WinterJoySkin" Version="1.0.2" />
+    <PackageReference Include="DevExpress.Xpo" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Document.Processor" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.BonusSkins" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Charts" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Diagram" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Dialogs" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Gantt" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Gauges" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Map" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.PdfViewer" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.RichEdit" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Scheduler" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.SpellChecker" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.Spreadsheet" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win.TreeMap" Version="21.2.5" />
+    <PackageReference Include="DevExpress.DataAccess.UI" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Utils" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Utils.UI" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Scaffolding.Core" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Scaffolding.EFCore" Version="21.2.5" />
+    <PackageReference Include="DevExpress.Win" Version="21.2.5" />
     
     <PackageReference Include="dotnetdbf" Version="6.0.0.3" />
     <PackageReference Include="Fizzler" Version="1.3.0" />
     <PackageReference Include="FlatFiles" Version="4.16.0" />
     <PackageReference Include="FSharp.Compiler.Service" Version="41.0.1" />
-    <PackageReference Include="Markdig.Signed" Version="0.26.0" />
+    <PackageReference Include="Markdig.Signed" Version="0.27.0" />
     <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
     <PackageReference Include="MathNet.Numerics.Data.Text" Version="4.1.0" />
     <PackageReference Include="MathNet.Numerics.FSharp" Version="4.15.0" />
     <PackageReference Include="MathNet.Numerics.MKL.Win-x64" Version="2.5.0" />
     <PackageReference Include="MathNet.Symbolics" Version="0.24.0" />
-    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.0" />
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="4.0.1" />
     <PackageReference Include="Microsoft.Management.Infrastructure" Version="2.0.0" />
     <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.1" />
-    <PackageReference Include="MySqlConnector" Version="2.1.2" />
-    <PackageReference Include="Svg" Version="3.3.0" />
+    <PackageReference Include="MySqlConnector" Version="2.1.4" />
+    <PackageReference Include="Svg" Version="3.4.0" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.115.5" />
     <PackageReference Include="WpfMath" Version="0.11.0" />
   </ItemGroup>

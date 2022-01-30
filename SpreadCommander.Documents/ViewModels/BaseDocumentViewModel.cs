@@ -22,7 +22,7 @@ using Common = SpreadCommander.Common;
 namespace SpreadCommander.Documents.ViewModels
 {
     [POCOViewModel]
-    public partial class BaseDocumentViewModel : ViewModelBase, IDocument, IDocumentContent, ISupportParentViewModel, IExportSource
+    public partial class BaseDocumentViewModel : ViewModelBase, IDisposable, IDocument, IDocumentContent, ISupportParentViewModel, IExportSource
     {
         public enum ParametersScriptType { Sql, PowerShell, FSharp }
 
@@ -69,6 +69,11 @@ namespace SpreadCommander.Documents.ViewModels
         {
             _ID    = DocumentCounter++;
             _Title = $"Document {_ID}";
+        }
+
+        public virtual void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
 
         protected IDialogService DialogService                                     => this.GetService<IDialogService>();

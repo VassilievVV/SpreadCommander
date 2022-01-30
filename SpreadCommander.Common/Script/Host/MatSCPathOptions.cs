@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SpreadCommander.Common.Script.Host
+namespace SpreadCommander.Common.Script
 {
     public partial class ScriptHost
     {

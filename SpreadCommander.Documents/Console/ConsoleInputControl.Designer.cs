@@ -405,6 +405,8 @@
             this.viewMessages.OptionsView.ShowPreview = true;
             this.viewMessages.PreviewFieldName = "ShortDescription";
             this.viewMessages.PreviewLineCount = 1;
+            this.viewMessages.CustomColumnGroup += new DevExpress.XtraGrid.Views.Base.CustomColumnSortEventHandler(this.ViewMessages_CustomColumnGroup);
+            this.viewMessages.CustomColumnSort += new DevExpress.XtraGrid.Views.Base.CustomColumnSortEventHandler(this.ViewMessages_CustomColumnSort);
             // 
             // colLine
             // 
@@ -500,6 +502,9 @@
             this.viewErrors.OptionsBehavior.ReadOnly = true;
             this.viewErrors.OptionsView.ShowGroupPanel = false;
             this.viewErrors.DoubleClick += new System.EventHandler(this.ViewErrors_DoubleClick);
+            this.viewErrors.CustomColumnGroup += new DevExpress.XtraGrid.Views.Base.CustomColumnSortEventHandler(this.ViewErrors_CustomColumnGroup);
+            this.viewErrors.CustomColumnSort += new DevExpress.XtraGrid.Views.Base.CustomColumnSortEventHandler(this.ViewErrors_CustomColumnSort);
+
             // 
             // colMessage
             // 
@@ -647,6 +652,8 @@
             this.viewHistory.RowHeight = 80;
             this.viewHistory.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.ViewHistory_RowClick);
             this.viewHistory.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ViewHistory_KeyDown);
+            this.viewHistory.CustomColumnGroup += new DevExpress.XtraGrid.Views.Base.CustomColumnSortEventHandler(this.ViewHistory_CustomColumnGroup);
+            this.viewHistory.CustomColumnSort += new DevExpress.XtraGrid.Views.Base.CustomColumnSortEventHandler(this.ViewHistory_CustomColumnSort);
             // 
             // colText
             // 
