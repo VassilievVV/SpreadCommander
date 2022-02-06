@@ -1688,7 +1688,7 @@ namespace SpreadCommander.Common.Code
         public static T DeserializeObjectFromFile<T>(string fileName)
             where T : class
         {
-            using var fileStream = new FileStream(fileName, FileMode.Open);
+            using var fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             return DeserializeObject<T>(fileStream);
         }
 

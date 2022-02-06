@@ -136,16 +136,27 @@ open Deedle;
                 foreach (var value in values)
                 {
                     if (value?.Value is IDisposable disposable)
-                        disposable.Dispose();
+                        DisposeObject(disposable);
                     else if (value is Shell.FsiBoundValue fsiValue &&
                         fsiValue.Value?.ReflectionValue is IDisposable fsiDisposable)
-                        fsiDisposable.Dispose();
+                        DisposeObject(fsiDisposable);
                 }
             }
 
             _Session = null;
 
             base.Stop();
+
+
+            void DisposeObject(IDisposable disposable)
+            {
+                if (disposable == _Host ||
+                    disposable == _Host.Book || disposable == _Host.Spreadsheet ||
+                    disposable == _Host.Grid || disposable == _Host.Heap) 
+                    return;
+
+                disposable.Dispose();
+            }
         }
 
         public override void SendCommand(string command) => SendCommand(command, ExecutionType == ScriptExecutionType.Script);

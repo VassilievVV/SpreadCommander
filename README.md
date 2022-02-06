@@ -1,4 +1,4 @@
-# SpreadCommander.Git
+# SpreadCommander
 
 **Spread Commander** is an application for office-style data analysis that uses *PowerShell* script for data manipulation.
 
@@ -17,6 +17,10 @@ SpreadCommander does not collect private data. However MicrosoftTM does collect 
 Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web services.
 
 ## UPDATES
+
+### Version 2.1.1
+- Fix error when disposing F# engine.
+- Third-party components updated.
 
 ### Version 2.1
 - F# is enhanced.

@@ -47,31 +47,34 @@ namespace SpreadCommander.Documents.Views
 
         private void ConsoleDocumentView_Disposed(object sender, EventArgs e)
         {
-            if (_ScriptEditor != null)
+            var scriptEditor = _ScriptEditor;
+            if (scriptEditor != null)
             {
-                _ScriptEditor.ListIntellisenseItems -= ScriptEditor_ListIntellisenseItems;
-                _ScriptEditor.ScriptChanged         -= ScriptEditor_ScriptChanged;
+                scriptEditor.ListIntellisenseItems -= ScriptEditor_ListIntellisenseItems;
+                scriptEditor.ScriptChanged         -= ScriptEditor_ScriptChanged;
 
-                _ScriptEditor.Dispose();
+                scriptEditor.Dispose();
                 _ScriptEditor = null;
             }
 
-            if (_ConsoleInputControl != null)
+            var consoleInputControl = _ConsoleInputControl;
+            if (consoleInputControl != null)
             {
-                _ConsoleInputControl.ExecuteCommand        -= ExecuteCommandHandler;
-                _ConsoleInputControl.ListIntellisenseItems -= ScriptEditor_ListIntellisenseItems;
-                _ConsoleInputControl.ShowParseError        -= ScriptEditor_ShowParseError;
+                consoleInputControl.ExecuteCommand        -= ExecuteCommandHandler;
+                consoleInputControl.ListIntellisenseItems -= ScriptEditor_ListIntellisenseItems;
+                consoleInputControl.ShowParseError        -= ScriptEditor_ShowParseError;
 
-                _ConsoleInputControl.Dispose();
+                consoleInputControl.Dispose();
                 _ConsoleInputControl = null;
             }
 
-            if (_ConsoleOutputControl != null)
+            var consoleOutputControl = _ConsoleOutputControl;
+            if (consoleOutputControl != null)
             {
-                _ConsoleOutputControl.RibbonUpdateRequest -= ConsoleOutputControl_RibbonUpdateRequest;
-                _ConsoleOutputControl.ConsoleLoaded       -= ConsoleOutputControl_ConsoleLoaded;
+                consoleOutputControl.RibbonUpdateRequest -= ConsoleOutputControl_RibbonUpdateRequest;
+                consoleOutputControl.ConsoleLoaded       -= ConsoleOutputControl_ConsoleLoaded;
 
-                _ConsoleOutputControl.Dispose();
+                consoleOutputControl.Dispose();
                 _ConsoleOutputControl = null;
             }
         }

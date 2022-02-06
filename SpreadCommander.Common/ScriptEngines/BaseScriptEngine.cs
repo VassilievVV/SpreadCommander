@@ -132,16 +132,16 @@ namespace SpreadCommander.Common.ScriptEngines
             }
         }
 
-        private int _ProgrssMax;
+        private int _ProgressMax;
         public virtual int ProgressMax
         {
-            get => _ProgrssMax;
+            get => _ProgressMax;
             set
             {
-                if (_ProgrssMax == value)
+                if (_ProgressMax == value)
                     return;
 
-                _ProgrssMax = value;
+                _ProgressMax = value;
                 OnProgressChanged();
             }
         }
@@ -149,7 +149,7 @@ namespace SpreadCommander.Common.ScriptEngines
         public virtual void UpdateProgress(ProgressKind progressType, int value, int max, string status)
         {
             _ProgressType   = progressType;
-            _ProgrssMax     = max;
+            _ProgressMax    = max;
             _ProgressValue  = value;
             _ProgressStatus = status;
 
