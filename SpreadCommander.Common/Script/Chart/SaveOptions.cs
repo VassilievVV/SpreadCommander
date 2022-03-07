@@ -64,7 +64,7 @@ namespace SpreadCommander.Common.Script.Chart
 
     public partial class SCChart
     {
-        public SCChart Save(string fileName, SaveOptions options = null)
+        public void Save(string fileName, SaveOptions options = null)
         {
             options ??= new SaveOptions();
 
@@ -103,8 +103,6 @@ namespace SpreadCommander.Common.Script.Chart
 
             if (options.Preview)
                 PreviewFile(fileName);
-
-            return this;
         }
 
         protected virtual void DoCopyImageToBook(Image image, Document book, float? scaleX, float? scaleY, SaveOptions options)

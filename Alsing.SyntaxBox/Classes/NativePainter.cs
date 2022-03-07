@@ -32,7 +32,7 @@ namespace Alsing.Windows.Forms.Classes
     /// <summary>
     /// Painter class that uses GDI32 to render the content of a SyntaxBoxControl
     /// </summary>
-    public class NativePainter : IPainter
+    public class NativePainter : IPainter, IDisposable
     {
         private readonly EditViewControl Control;
         private Word BracketEnd;
@@ -42,7 +42,7 @@ namespace Alsing.Windows.Forms.Classes
         private int LastRow;
         private int LastSpanRow;
         private bool RenderCaretRowOnly;
-        private int ResizeCount;
+        //private int ResizeCount;
         private bool SpanFound;
         private int yOffset;
 
@@ -63,7 +63,7 @@ namespace Alsing.Windows.Forms.Classes
         /// </summary>
         public void Resize()
         {
-            ResizeCount++;
+            //ResizeCount++;
             InitGraphics();
             //	Console.WriteLine ("painterresize {0} {1}",ResizeCount,Control.Name);
         }
@@ -779,6 +779,10 @@ namespace Alsing.Windows.Forms.Classes
                 else
                     bbuff.Clear(bg);
 
+                //VVV
+                if (found)
+                    bg.Dispose();
+
 
                 //only render normal text if any part of the row is visible
                 if (RowIndex <= Control.Selection.LogicalBounds.FirstRow || RowIndex >= Control.Selection.LogicalBounds.LastRow)
@@ -828,9 +832,9 @@ namespace Alsing.Windows.Forms.Classes
 
                 //GFX.SelectionBuffer.RenderToControl (0,RowPos*Control.View.RowHeight+this.yOffset);
 
-
-                if (found)
-                    bg.Dispose();
+                //VVV
+                //if (found)
+                //    bg.Dispose();
             }
             catch
             {

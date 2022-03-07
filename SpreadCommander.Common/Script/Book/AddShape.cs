@@ -85,11 +85,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook AddShape(ShapeOptions options)
-        {
+        public void AddShape(ShapeOptions options) =>
             ExecuteSynchronized(options, () => DoAddShape(options));
-            return this;
-        }
 
         protected void DoAddShape(ShapeOptions options)
         {

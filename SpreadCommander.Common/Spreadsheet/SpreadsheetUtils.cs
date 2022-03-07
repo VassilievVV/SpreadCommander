@@ -123,7 +123,7 @@ namespace SpreadCommander.Common.Spreadsheet
             int p = tableName.IndexOf('!');
             if (p >= 0)
             {
-                worksheetName = tableName.Substring(0, p);
+                worksheetName = tableName[..p];
                 worksheetTableName = tableName[(p + 1)..];
 
                 var worksheet = workbook.Worksheets[worksheetName];
@@ -460,7 +460,7 @@ namespace SpreadCommander.Common.Spreadsheet
                             //If there are multiple summaries - use first one only
                             var commaIndex = columnSummary.IndexOf(',');
                             if (commaIndex >= 0)
-                                columnSummary = columnSummary.Substring(0, commaIndex);
+                                columnSummary = columnSummary[..commaIndex];
 
                             if (tableColumn != null && (Enum.TryParse<SummaryItemType>(columnSummary, out SummaryItemType summaryType)))
                             {

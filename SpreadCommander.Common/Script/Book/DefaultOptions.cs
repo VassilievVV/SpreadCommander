@@ -34,11 +34,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook SetDefaultOptions(DefaultOptions options)
-        {
+        public void SetDefaultOptions(DefaultOptions options) =>
             ExecuteSynchronized(options, () => DoSetDefaultOptions(options));
-            return this;
-        }
 
         protected virtual void DoSetDefaultOptions(DefaultOptions options)
         {

@@ -392,10 +392,18 @@ namespace Alsing.Windows.Forms.Document
             }
             set
             {
+                //VVV
+                /*
                 string s = "";
                 foreach (string sl in value)
                     s += sl + "\n";
                 Text = s.Substring(0, s.Length - 1);
+                */
+                var s = new StringBuilder();
+                foreach (string sl in value)
+                    s.Append(sl).Append('\n');
+                s.Remove(s.Length - 1, 1);
+                Text = s.ToString();
             }
         }
 
@@ -407,7 +415,8 @@ namespace Alsing.Windows.Forms.Document
         /// </summary>
         private void InitializeComponent()
         {
-            new System.ComponentModel.Container();
+            //VVV
+            //new System.ComponentModel.Container();
         }
 
         #endregion
@@ -446,7 +455,7 @@ namespace Alsing.Windows.Forms.Document
         }
 
         /// <summary>
-        /// Ends an Undo capture and pushes the collected actions onto the undostack
+        /// Ends an Undo capture and pushes the collected actions onto the undo stack
         /// <seealso cref="StartUndoCapture"/>
         /// </summary>
         /// <returns></returns>

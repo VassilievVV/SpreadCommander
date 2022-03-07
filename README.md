@@ -18,9 +18,14 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 2.2
+- Update F# engine and built-in components.
+- Fix some GDI leaks in syntax editor.
+- Third-party components are updated.
+
 ### Version 2.1.1
 - Fix error when disposing F# engine.
-- Third-party components updated.
+- Third-party components are updated.
 
 ### Version 2.1
 - F# is enhanced.

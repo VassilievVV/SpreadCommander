@@ -12,11 +12,8 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet Clear(SpreadsheetOptions options = null)
-        {
+        public void Clear(SpreadsheetOptions options = null) =>
             ExecuteSynchronized(options, () => DoClear(options));
-            return this;
-        }
 
         protected virtual void DoClear(SpreadsheetOptions options)
         {

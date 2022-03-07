@@ -32,11 +32,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteHtml(string text, HtmlOptions options = null)
-        {
+        public void WriteHtml(string text, HtmlOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteHtml(text, options));
-            return this;
-        }
 
         protected void DoWriteHtml(string text, HtmlOptions options)
         {

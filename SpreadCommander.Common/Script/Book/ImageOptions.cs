@@ -49,11 +49,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteImage(string fileName, ImageOptions options = null)
-        {
+        public void WriteImage(string fileName, ImageOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteImage(fileName, options));
-            return this;
-        }
 
         protected void DoWriteImage(string fileName, ImageOptions options)
         {

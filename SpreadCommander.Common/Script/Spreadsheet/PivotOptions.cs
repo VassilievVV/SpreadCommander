@@ -186,11 +186,8 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet NewPivot(object dataSource, PivotOptions options = null)
-        {
+        public void NewPivot(object dataSource, PivotOptions options = null) =>
             ExecuteSynchronized(options, () => DoNewPivot(dataSource, options));
-            return this;
-        }
 
         protected virtual void DoNewPivot(object dataSource, PivotOptions options)
         {

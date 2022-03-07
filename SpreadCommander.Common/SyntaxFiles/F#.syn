@@ -6,7 +6,14 @@
 </FileTypes>
 
   <Block Name="Code" Style="Code" IsMultiline="true">
+    <!--
     <Scope Start="" End="" Style="Scope" Text="..." />
+    -->
+    <Bracket Start="(" End=")" Style="Code" />
+	<Bracket Start="[|" End="|]" Style="Code" />
+    <Bracket Start="[" End="]" Style="Code" />
+    <Bracket Start="{" End="}" Style="Code" />
+    <Bracket Start="&lt;" End="&gt;" Style="Code" />
     
     <!-- Keywords that can exist inside this block -->
     <Keywords>
@@ -147,6 +154,9 @@
           box
           unbox
           defaultArg
+          
+          async
+          lock
           
           Host
           Book

@@ -10,11 +10,8 @@ namespace SpreadCommander.Common.Script.Grid
 {
     public partial class SCGrid
     {
-        public SCGrid SelectDataTable(string tableName)
-        {
+        public void SelectDataTable(string tableName) =>
             ExecuteSynchronized(() => DoSelectDataTable(tableName));
-            return this;
-        }
 
         protected virtual void DoSelectDataTable(string tableName)
         {

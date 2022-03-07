@@ -40,7 +40,7 @@
             this.Editor.IsModified = false;
             this.Editor.Location = new System.Drawing.Point(0, 0);
             this.Editor.Name = "Editor";
-            this.Editor.ReadOnly = false;
+            this.Editor.ReadOnly = true;
             this.Editor.ScriptText = "";
             this.Editor.ShowGutterMargin = false;
             this.Editor.ShowLineNumbers = false;

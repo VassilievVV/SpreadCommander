@@ -71,7 +71,9 @@ namespace SpreadCommander.Documents.Console
                 layoutControlGroupMessages.Visibility = value ? LayoutVisibility.Always : LayoutVisibility.Never;
                 if (value)
                     layoutControlGroupMessages.Selected = true;
-                else
+                else if (ParseErrorsVisible)
+                    layoutControlGroupErrors.Selected = true;
+                else 
                     layoutControlGroupCommand.Selected = true;
             }
         }

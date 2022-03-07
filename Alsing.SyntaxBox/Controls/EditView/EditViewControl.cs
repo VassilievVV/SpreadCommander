@@ -420,6 +420,9 @@ namespace Alsing.Windows.Forms.Controls.EditView
                         Painter.Dispose();
                 }
                 catch {}
+
+                _InfoTip?.Dispose();
+                _AutoList?.Dispose();
             }
             base.Dispose(disposing);
         }

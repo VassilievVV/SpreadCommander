@@ -60,7 +60,7 @@ namespace Alsing.Windows.Forms.Win32
             ReleaseHandle();
         }
 
-        public void Detatch()
+        public void Detach()
         {
             //	this.ReleaseHandle ();
         }

@@ -60,6 +60,18 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
             Create();
         }
 
+        ~GDISurface()
+        {
+            Destroy();
+        }
+
+        //VVV
+        public override void Dispose()
+        {
+            base.Dispose();
+            Destroy();
+        }
+
         private Control Control
         {
             get
@@ -248,9 +260,10 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
 
         public void FillRect(Color color, int x, int y, int width, int height)
         {
-            var b = new GDIBrush(color);
+            //VVV - add using
+            using var b = new GDIBrush(color);
             FillRect(b, x, y, width, height);
-            b.Dispose();
+            //b.Dispose();
         }
 
         public void InvertRect(int x, int y, int width, int height)
@@ -277,16 +290,18 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
 
         public void DrawLine(Color color, Point p1, Point p2)
         {
-            var p = new GDIPen(color, 1);
+            //VVV - add using
+            using var p = new GDIPen(color, 1);
             DrawLine(p, p1, p2);
-            p.Dispose();
+            //p.Dispose();
         }
 
         public void DrawRect(Color color, int left, int top, int width, int height)
         {
-            var p = new GDIPen(color, 1);
+            //VVV - add using
+            using var p = new GDIPen(color, 1);
             DrawRect(p, left, top, width, height);
-            p.Dispose();
+            //p.Dispose();
         }
 
         public void DrawRect(GDIPen pen, int left, int top, int width, int height)
@@ -332,6 +347,12 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
                 NativeMethods.DeleteObject(mhBMP);
 
             if (mhDC != (IntPtr) 0)
+                NativeMethods.DeleteDC(mhDC);
+
+            //VVV
+            if (mhBMP != IntPtr.Zero)
+                NativeMethods.DeleteObject(mhBMP);
+            if (mhDC != IntPtr.Zero)
                 NativeMethods.DeleteDC(mhDC);
 
             mhBMP = (IntPtr) 0;

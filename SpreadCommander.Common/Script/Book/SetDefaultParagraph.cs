@@ -9,11 +9,8 @@ namespace SpreadCommander.Common.Script.Book
 {
     public partial class SCBook
     {
-        public SCBook SetDefaultParagraph(ParagraphStyleOptions options)
-        {
+        public void SetDefaultParagraph(ParagraphStyleOptions options) =>
             ExecuteSynchronized(options, () => DoSetDefaultParagraph(options));
-            return this;
-        }
 
         protected virtual void DoSetDefaultParagraph(ParagraphStyleOptions options)
         {

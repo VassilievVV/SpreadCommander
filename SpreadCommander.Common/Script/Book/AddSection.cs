@@ -12,11 +12,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook AddSection(SectionOptions options = null)
-        {
+        public void AddSection(SectionOptions options = null) =>
             ExecuteSynchronized(options, () => DoAddSection(options));
-            return this;
-        }
 
         protected void DoAddSection(SectionOptions options)
         {

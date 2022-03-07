@@ -136,18 +136,32 @@ namespace Alsing.Windows.Forms.Drawing
                     {
                         r.Width --;
                         r.Height --;
-                        g.DrawRectangle(new Pen(SystemColors.Control), r);
-                        var p = new Pen(BorderColor) {DashStyle = DashStyle.Dot};
-                        g.DrawRectangle(p, r);
+
+                        //VVV
+                        //g.DrawRectangle(new Pen(SystemColors.Control), r);
+                        //var p = new Pen(BorderColor) {DashStyle = DashStyle.Dot};
+                        //g.DrawRectangle(p, r);
+
+                        using var p1 = new Pen(SystemColors.Control);
+                        g.DrawRectangle(p1, r);
+                        using var p2 = new Pen(BorderColor) {DashStyle = DashStyle.Dot};
+                        g.DrawRectangle(p2, r);
                         break;
                     }
                 case BorderStyle2.Dashed:
                     {
                         r.Width --;
                         r.Height --;
-                        g.DrawRectangle(new Pen(SystemColors.Control), r);
-                        var p = new Pen(BorderColor) {DashStyle = DashStyle.Dash};
-                        g.DrawRectangle(p, r);
+
+                        //VVV
+                        //g.DrawRectangle(new Pen(SystemColors.Control), r);
+                        //var p = new Pen(BorderColor) {DashStyle = DashStyle.Dash};
+                        //g.DrawRectangle(p, r);
+
+                        using var p1 = new Pen(SystemColors.Control);
+                        g.DrawRectangle(p1, r);
+                        using var p2 = new Pen(BorderColor) { DashStyle = DashStyle.Dot };
+                        g.DrawRectangle(p2, r);
 
                         break;
                     }
@@ -168,8 +182,13 @@ namespace Alsing.Windows.Forms.Drawing
                     }
                 case BorderStyle2.FixedDouble:
                     {
-                        g.DrawRectangle(new Pen(BorderColor), r.Left, r.Top, r.Width - 1, r.Height - 1);
-                        g.DrawRectangle(new Pen(BorderColor), r.Left + 1, r.Top + 1, r.Width - 3, r.Height - 3);
+                        //VVV
+                        //g.DrawRectangle(new Pen(BorderColor), r.Left, r.Top, r.Width - 1, r.Height - 1);
+                        //g.DrawRectangle(new Pen(BorderColor), r.Left + 1, r.Top + 1, r.Width - 3, r.Height - 3);
+
+                        using var p = new Pen(BorderColor);
+                        g.DrawRectangle(p, r.Left, r.Top, r.Width - 1, r.Height - 1);
+                        g.DrawRectangle(p, r.Left + 1, r.Top + 1, r.Width - 3, r.Height - 3);
                         break;
                     }
                 case BorderStyle2.Raised:
@@ -212,13 +231,14 @@ namespace Alsing.Windows.Forms.Drawing
                         if (BorderColor == Color.Black)
                             BorderColor = SystemColors.Control;
 
-                        var b = new SolidBrush(BorderColor);
+                        //VVV - add using
+                        using var b = new SolidBrush(BorderColor);
                         g.FillRectangle(b, r.Left, r.Top, r.Width, 4);
                         g.FillRectangle(b, r.Left, r.Bottom - 4, r.Width, 4);
 
                         g.FillRectangle(b, r.Left, r.Top, 4, r.Height);
                         g.FillRectangle(b, r.Right - 4, r.Top, 4, r.Height);
-                        b.Dispose();
+                        //b.Dispose();
 
                         DrawBorder(Border3DStyle.Raised, BorderColor, g, r);
                         DrawBorder(Border3DStyle.Sunken, BorderColor, g,
@@ -227,8 +247,9 @@ namespace Alsing.Windows.Forms.Drawing
                     }
                 case BorderStyle2.Column:
                     {
-                        var light = new SolidBrush(MixColors(BorderColor, Color.White, 1));
-                        var dark = new SolidBrush(MixColors(BorderColor, Color.Black, 0.4));
+                        //VVV - add using
+                        using var light = new SolidBrush(MixColors(BorderColor, Color.White, 1));
+                        using var dark = new SolidBrush(MixColors(BorderColor, Color.Black, 0.4));
 
                         g.FillRectangle(light, r.Left, r.Top, r.Width, 1);
                         g.FillRectangle(light, r.Left, r.Top + 3, 1, r.Height - 1 - 6);
@@ -238,8 +259,9 @@ namespace Alsing.Windows.Forms.Drawing
                     }
                 case BorderStyle2.Row:
                     {
-                        var light = new SolidBrush(MixColors(BorderColor, Color.White, 1));
-                        var dark = new SolidBrush(MixColors(BorderColor, Color.Black, 0.4));
+                        //VVV - add using
+                        using var light = new SolidBrush(MixColors(BorderColor, Color.White, 1));
+                        using var dark = new SolidBrush(MixColors(BorderColor, Color.Black, 0.4));
 
                         g.FillRectangle(light, r.Left + 3, r.Top, r.Width - 6, 1);
                         g.FillRectangle(light, r.Left, r.Top, 1, r.Height - 1);
@@ -260,7 +282,8 @@ namespace Alsing.Windows.Forms.Drawing
         public static void DrawGrayImage(Graphics g, Image Image, int X, int Y, float TransparencyFactor)
         {
             var cm = new ColorMatrix();
-            var ia = new ImageAttributes();
+            //VVV - add using
+            using var ia = new ImageAttributes();
 
             cm.Matrix33 = TransparencyFactor;
 
@@ -281,7 +304,8 @@ namespace Alsing.Windows.Forms.Drawing
 
         public static void DrawTransparentImage(Graphics g, Image Image, int X, int Y, float TransparencyFactor)
         {
-            var ia = new ImageAttributes();
+            //VVV - add using
+            using var ia = new ImageAttributes();
             var cm = new ColorMatrix {Matrix33 = TransparencyFactor, Matrix00 = 1.0F, Matrix11 = 1.0F, Matrix22 = 1.0F};
 
             ia.SetColorMatrix(cm);
@@ -293,9 +317,10 @@ namespace Alsing.Windows.Forms.Drawing
         {
             rect.Width --;
             rect.Height --;
-            var p = new Pen(SystemColors.ControlDarkDark) {DashStyle = DashStyle.Dash};
+            //VVV - add using
+            using var p = new Pen(SystemColors.ControlDarkDark) {DashStyle = DashStyle.Dash};
             g.DrawRectangle(p, rect);
-            p.Dispose();
+            //p.Dispose();
         }
 
         public static void DrawInsertIndicatorH(int x, int y, int width, Graphics g, Color c)
@@ -322,24 +347,26 @@ namespace Alsing.Windows.Forms.Drawing
         public static Bitmap DrawControl(Control control)
         {
             var b = new Bitmap(control.Width, control.Height);
-            Graphics g = Graphics.FromImage(b);
+            //VVV - add using
+            using Graphics g = Graphics.FromImage(b);
             IntPtr hdc = g.GetHdc();
             NativeMethods.SendMessage(control.Handle, (int)WindowMessage.WM_PRINT, (int) hdc,
                                               (int) (WMPrintFlags.PRF_CLIENT | WMPrintFlags.PRF_ERASEBKGND));
             g.ReleaseHdc(hdc);
-            g.Dispose();
+            //g.Dispose();
 
             return b;
         }
 
         public static bool DrawControl(Control control, Bitmap b)
         {
-            Graphics g = Graphics.FromImage(b);
+            //VVV - add using
+            using Graphics g = Graphics.FromImage(b);
             IntPtr hdc = g.GetHdc();
             int i = NativeMethods.SendMessage(control.Handle, (int)WindowMessage.WM_PRINT, (int) hdc,
                                               (int) (WMPrintFlags.PRF_CLIENT | WMPrintFlags.PRF_ERASEBKGND));
             g.ReleaseHdc(hdc);
-            g.Dispose();
+            //g.Dispose();
             return i != 0;
         }
 
@@ -349,8 +376,9 @@ namespace Alsing.Windows.Forms.Drawing
             Color c1 = Color.FromArgb(220, 255, 255, 255);
             Color c2 = Color.FromArgb(140, 0, 0, 0);
 
-            var p1 = new Pen(c1);
-            var p2 = new Pen(c2);
+            //VVV - add using
+            using var p1 = new Pen(c1);
+            using var p2 = new Pen(c2);
 
             if (Ascending)
             {

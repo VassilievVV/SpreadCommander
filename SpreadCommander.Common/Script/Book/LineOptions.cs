@@ -12,10 +12,10 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteLine(object obj, TextOptions options = null) =>
+        public void WriteLine(object obj, TextOptions options = null) =>
             WriteLine(Convert.ToString(obj), options);
 
-        public SCBook WriteLine(string text, TextOptions options = null) =>
+        public void WriteLine(string text, TextOptions options = null) =>
             WriteText(text + Environment.NewLine, options);
     }
 }

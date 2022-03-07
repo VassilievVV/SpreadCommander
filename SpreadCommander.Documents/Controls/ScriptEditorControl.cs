@@ -160,7 +160,7 @@ namespace SpreadCommander.Documents.Controls
         public bool ReadOnly
         {
             get => syntaxEditor.ReadOnly;
-            set => syntaxEditor.ReadOnly = value;
+            set { syntaxEditor.ReadOnly = value; barStatus.Visible = !value; }
         }
 
         public string DefaultExt
@@ -613,6 +613,18 @@ namespace SpreadCommander.Documents.Controls
         {
             if (syntaxEditor.CanRedo)
                 syntaxEditor.Redo();
+        }
+
+        private void SyntaxEditor_CaretChange(object sender, EventArgs e)
+        {
+            var cursor = syntaxEditor.Caret.Position;
+            barCursor.Caption = $"{cursor.Y+1}:{cursor.X+1}";
+        }
+
+        private void SyntaxEditor_SelectionChange(object sender, EventArgs e)
+        {
+            var selection = syntaxEditor.Selection.Bounds;
+            barSelection.Caption = $"{selection.FirstRow+1}:{selection.FirstColumn+1} - {selection.LastRow+1}:{selection.LastColumn+1}";
         }
     }
 }

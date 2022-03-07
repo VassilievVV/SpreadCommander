@@ -29,16 +29,16 @@ namespace SpreadCommander.Common.Script.Grid
         [Description("When set - tables are removed from DataSource. This is more efficient but DataSource cannot be used later.")]
         public bool NoCopyTables { get; set; }
 
-        public SCGrid OutDataSet(DataSet dataSource, OutDataSetOptions options = null)
+        public void OutDataSet(DataSet dataSource, OutDataSetOptions options = null)
         {
             options ??= new OutDataSetOptions();
 
             if (dataSource == null || dataSource.Tables.Count <= 0)
-                return this;
+                return;
 
             var dataSet = DataSet;
             if (dataSet == null)	//Some hosts may have no grids, in this case - do not output anywhere
-                return this;
+                return;
 
             List<BaseCommand> commands = null;
 
@@ -144,7 +144,6 @@ namespace SpreadCommander.Common.Script.Grid
             }
 
             ExecuteSynchronized(() => DoWriteDataSet(dataSet, listTables, listRelations, dataSource, commands, dictTableNames));
-            return this;
         }
 
         protected virtual void DoWriteDataSet(DataSet dataSet, List<DataTable> listTables, List<Relation> listRelations,

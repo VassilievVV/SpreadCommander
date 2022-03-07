@@ -16,11 +16,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteErrorMessage(string text, ErrorMessageOptions options = null)
-        {
+        public void WriteErrorMessage(string text, ErrorMessageOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteErrorMessage(text, options));
-            return this;
-        }
 
         protected void DoWriteErrorMessage(string text, ErrorMessageOptions options)
         {

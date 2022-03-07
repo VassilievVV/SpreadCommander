@@ -69,7 +69,7 @@ namespace SpreadCommander.Common.Script.Chart
 
     public partial class SCChart
     {
-        public SCChart Write(WriteOptions options = null)
+        public void Write(WriteOptions options = null)
         {
             options ??= new WriteOptions();
 
@@ -77,8 +77,6 @@ namespace SpreadCommander.Common.Script.Chart
 
             var chartBitmap = PaintChart(Chart, options.Width, options.Height, options.DPI);
             ExecuteSynchronized(() => DoWriteImage(book, chartBitmap, options));
-
-            return this;
         }
 
         protected internal virtual void DoWriteImage(Document book, Image chartBitmap, WriteOptions options)

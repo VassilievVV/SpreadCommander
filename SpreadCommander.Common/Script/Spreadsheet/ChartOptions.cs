@@ -90,11 +90,8 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet NewChart(string dataTableName, SpreadChartSeries[] series, ChartOptions options = null)
-        {
+        public void NewChart(string dataTableName, SpreadChartSeries[] series, ChartOptions options = null) =>
             ExecuteSynchronized(options, () => DoNewChart(dataTableName, series, options));
-            return this;
-        }
 
         protected virtual void DoNewChart(string dataTableName, SpreadChartSeries[] series, ChartOptions options)
         {

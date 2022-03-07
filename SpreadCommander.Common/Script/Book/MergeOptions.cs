@@ -17,11 +17,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook Merge(SCBook anotherBook, MergeOptions options = null)
-        {
+        public void Merge(SCBook anotherBook, MergeOptions options = null) =>
             ExecuteSynchronized(options, () => DoMerge(anotherBook, options));
-            return this;
-        }
 
         protected virtual void DoMerge(SCBook anotherBook, MergeOptions options)
         {

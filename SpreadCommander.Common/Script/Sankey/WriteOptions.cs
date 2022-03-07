@@ -58,7 +58,7 @@ namespace SpreadCommander.Common.Script.Sankey
 
     public partial class SCSankey
     {
-        public SCSankey Write(WriteOptions options = null)
+        public void Write(WriteOptions options = null)
         {
             options ??= new WriteOptions();
 
@@ -66,8 +66,6 @@ namespace SpreadCommander.Common.Script.Sankey
 
             var sankeyBitmap = PaintSankey(_HostControl, _Options.DPI);
             ExecuteSynchronized(() => DoWriteSankey(book, sankeyBitmap, options));
-
-            return this;
         }
 
         protected void DoWriteSankey(Document book, Image sankeyBitmap, WriteOptions options)

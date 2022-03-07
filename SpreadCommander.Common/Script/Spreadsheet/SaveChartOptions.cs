@@ -36,11 +36,8 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet SaveChart(string sheetName, string fileName, SaveChartOptions options = null)
-        {
+        public void SaveChart(string sheetName, string fileName, SaveChartOptions options = null) =>
             ExecuteSynchronized(options, () => DoSaveChart(sheetName, fileName, options));
-            return this;
-        }
 
         protected virtual void DoSaveChart(string sheetName, string fileName, SaveChartOptions options)
         {

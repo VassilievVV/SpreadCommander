@@ -67,14 +67,11 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteText(object obj, TextOptions options = null) =>
+        public void WriteText(object obj, TextOptions options = null) =>
             WriteText(Convert.ToString(obj), options);
 
-        public SCBook WriteText(string text, TextOptions options = null)
-        {
+        public void WriteText(string text, TextOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteText(text, options));
-            return this;
-        }
 
         protected void DoWriteText(string text, TextOptions options)
         {

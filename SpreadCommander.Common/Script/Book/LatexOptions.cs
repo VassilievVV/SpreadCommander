@@ -41,11 +41,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteLatex(string text, LatexOptions options = null)
-        {
+        public void WriteLatex(string text, LatexOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteLatex(text, options));
-            return this;
-        }
 
         protected void DoWriteLatex(string text, LatexOptions options)
         {

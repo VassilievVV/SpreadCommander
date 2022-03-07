@@ -25,11 +25,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook Save(string fileName, SaveOptions options = null)
-        {
+        public void Save(string fileName, SaveOptions options = null) =>
             ExecuteSynchronized(options, () => DoSave(fileName, options));
-            return this;
-        }
 
         protected virtual void DoSave(string fileName, SaveOptions options)
         {

@@ -14,11 +14,8 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet Merge(SCSpreadsheet spreadsheet, SpreadsheetOptions options = null)
-        {
+        public void Merge(SCSpreadsheet spreadsheet, SpreadsheetOptions options = null) =>
             ExecuteSynchronized(options, () => DoMerge(spreadsheet, options));
-            return this;
-        }
 
         protected virtual void DoMerge(SCSpreadsheet spreadsheet, SpreadsheetOptions options)
         {

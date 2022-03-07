@@ -9,11 +9,8 @@ namespace SpreadCommander.Common.Script.Book
 {
     public partial class SCBook
     {
-        public SCBook SetSectionHeader(string text, HeaderFooterOptions options = null)
-        {
+        public void SetSectionHeader(string text, HeaderFooterOptions options = null) =>
             ExecuteSynchronized(options, () => DoSetSectionHeader(text, options));
-            return this;
-        }
 
         protected virtual void DoSetSectionHeader(string text, HeaderFooterOptions options)
         {

@@ -362,6 +362,9 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                                 }
 
                                 gf = GetFont(f);
+
+                                //VVV
+                                f.Dispose();
                             }
                             else
                             {
@@ -734,6 +737,10 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                 if (Underline) fs |= FontStyle.Underline;
 
                 var font = new Font(FontName, FontSize, fs);
+                
+                //VVV
+                Element.Font?.Dispose();
+
                 Element.Font = font;
                 Element.BackColor = BackColor;
                 Element.ForeColor = ForeColor1;

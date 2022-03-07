@@ -49,11 +49,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook AddTOC(TocOptions options = null)
-        {
+        public void AddTOC(TocOptions options = null) =>
             ExecuteSynchronized(options, () => DoAddTOC(options));
-            return this;
-        }
 
         protected virtual void DoAddTOC(TocOptions options)
         {

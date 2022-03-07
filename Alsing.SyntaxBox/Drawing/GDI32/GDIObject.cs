@@ -19,6 +19,11 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
     {
         protected bool IsCreated;
 
+        ~GDIObject()
+        {
+            Destroy();
+        }
+
         protected virtual void Destroy()
         {
             IsCreated = false;
@@ -31,7 +36,7 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
 
         #region Implementation of IDisposable
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Destroy();
         }

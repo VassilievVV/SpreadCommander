@@ -128,11 +128,8 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet NewSimpleChart(string dataTableName, string[] arguments, string[] values, SimpleChartOptions options = null)
-        {
+        public void NewSimpleChart(string dataTableName, string[] arguments, string[] values, SimpleChartOptions options = null) =>
             ExecuteSynchronized(options, () => DoNewSimpleChart(dataTableName, arguments, values, options));
-            return this;
-        }
 
         protected virtual void DoNewSimpleChart(string dataTableName, string[] arguments, string[] values, SimpleChartOptions options)
         {

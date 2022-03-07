@@ -21,7 +21,7 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet Save(string fileName, SaveOptions options = null) 
+        public void Save(string fileName, SaveOptions options = null) 
         {
             if (string.IsNullOrWhiteSpace(fileName))
                 throw new Exception("FileName cannot be empty.");
@@ -40,7 +40,6 @@ namespace SpreadCommander.Common.Script.Spreadsheet
             var spread = options?.Spreadsheet?.Workbook ?? Workbook;
 
             ExecuteSynchronized(() => SaveSpreadsheetToFile(spread, fileName, options));
-            return this;
         }
 
         protected virtual void SaveSpreadsheetToFile(IWorkbook workbook, string fileName, SaveOptions options)

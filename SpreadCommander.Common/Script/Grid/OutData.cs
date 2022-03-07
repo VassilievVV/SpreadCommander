@@ -49,7 +49,7 @@ namespace SpreadCommander.Common.Script.Grid
 
     public partial class SCGrid
     {
-        public SCGrid OutData(object dataSource, OutDataOptions options = null)
+        public void OutData(object dataSource, OutDataOptions options = null)
         {
             options ??= new OutDataOptions();
 
@@ -102,7 +102,6 @@ namespace SpreadCommander.Common.Script.Grid
                 }
 
                 ExecuteSynchronized(() => DoWriteTable(DataSet, dataTable, commands, options));
-                return this;
             }
             finally
             {

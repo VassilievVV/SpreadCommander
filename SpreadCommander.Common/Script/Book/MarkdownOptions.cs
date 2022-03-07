@@ -27,11 +27,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteMarkdown(string text, MarkdownOptions options = null)
-        {
+        public void WriteMarkdown(string text, MarkdownOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteMarkdown(text, options));
-            return this;
-        }
 
         protected void DoWriteMarkdown(string text, MarkdownOptions options)
         {

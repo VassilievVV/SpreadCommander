@@ -73,7 +73,7 @@ namespace SpreadCommander.Common.Script.Map
 
     public partial class SCMap
     {
-        public SCMap Write(WriteOptions options = null)
+        public void Write(WriteOptions options = null)
         {
             options ??= new WriteOptions();
 
@@ -82,8 +82,6 @@ namespace SpreadCommander.Common.Script.Map
             var mapBitmap = PaintMap(Map);
 
             ExecuteSynchronized(() => DoWriteImage(book, mapBitmap, options));
-
-            return this;
         }
 
         protected internal virtual void DoWriteImage(Document book, Image chartBitmap, WriteOptions options)

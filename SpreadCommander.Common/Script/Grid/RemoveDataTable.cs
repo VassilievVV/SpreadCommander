@@ -8,11 +8,8 @@ namespace SpreadCommander.Common.Script.Grid
 {
     public partial class SCGrid
     {
-        public SCGrid RemoveDataTable(string tableName)
-        {
+        public void RemoveDataTable(string tableName) =>
             ExecuteSynchronized(() => DoRemoveDataTable(tableName));
-            return this;
-        }
 
         protected virtual void DoRemoveDataTable(string tableName)
         {

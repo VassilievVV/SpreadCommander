@@ -82,11 +82,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteDataTable(object dataSource, DataTableOptions options = null)
-        {
+        public void WriteDataTable(object dataSource, DataTableOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteDataTable(dataSource, options));
-            return this;
-        }
 
         protected void DoWriteDataTable(object dataSource, DataTableOptions options)
         {

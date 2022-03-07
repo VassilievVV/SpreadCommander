@@ -28,8 +28,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteSpreadTable(string fileName, string tableName, SpreadTableOptions options = null)                       { DoWriteSpreadTable(null, fileName, tableName, options); return this; }
-        public SCBook WriteSpreadTable(Spreadsheet.SCSpreadsheet spreadsheet, string tableName, SpreadTableOptions options = null) { DoWriteSpreadTable(spreadsheet, null, tableName, options); return this; }
+        public void WriteSpreadTable(string fileName, string tableName, SpreadTableOptions options = null)                       => DoWriteSpreadTable(null, fileName, tableName, options); 
+        public void WriteSpreadTable(Spreadsheet.SCSpreadsheet spreadsheet, string tableName, SpreadTableOptions options = null) => DoWriteSpreadTable(spreadsheet, null, tableName, options); 
 
         protected virtual void DoWriteSpreadTable(Spreadsheet.SCSpreadsheet spreadsheet, string fileName, string tableName, SpreadTableOptions options)
         {

@@ -81,6 +81,16 @@ namespace Alsing.Windows.Forms.Controls.SplitView
             _ActiveView = LowerRight;
         }
 
+        //VVV
+        protected void DisposeViews()
+        {
+            if (_Views != null)
+            {
+                foreach (var view in _Views)
+                    view.Dispose();
+            }
+        }
+
         /// <summary>
         /// Gets or Sets the active view
         /// </summary>
@@ -125,11 +135,11 @@ namespace Alsing.Windows.Forms.Controls.SplitView
             }
         }
 
-		//VVV
-		public SplitViewChildControl ActiveViewControl
-		{
-			get {return _ActiveView;}
-		}
+        //VVV
+        public SplitViewChildControl ActiveViewControl
+        {
+            get {return _ActiveView;}
+        }
 
         private void InitializeComponent() {}
 
@@ -227,10 +237,10 @@ namespace Alsing.Windows.Forms.Controls.SplitView
                 Views.Add(UpperLeft);
                 Views.Add(LowerLeft);
 
-				//VVV
-				UpperRight.FillerBackColor = LowerRight.FillerBackColor;
-				UpperLeft.FillerBackColor  = LowerRight.FillerBackColor;
-				LowerLeft.FillerBackColor  = LowerRight.FillerBackColor;
+                //VVV
+                UpperRight.FillerBackColor = LowerRight.FillerBackColor;
+                UpperLeft.FillerBackColor  = LowerRight.FillerBackColor;
+                LowerLeft.FillerBackColor  = LowerRight.FillerBackColor;
             }
         }
 
@@ -357,12 +367,12 @@ namespace Alsing.Windows.Forms.Controls.SplitView
             }
         }
 
-		//VVV
-		public Color SplitViewBackColor
-		{
-			get { return splitView.SplitBackColor; }
-			set { splitView.SplitBackColor = value; }
-		}
+        //VVV
+        public Color SplitViewBackColor
+        {
+            get { return splitView.SplitBackColor; }
+            set { splitView.SplitBackColor = value; }
+        }
 
         #endregion //END PROPERTY SplitView
 

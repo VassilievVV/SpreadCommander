@@ -8,11 +8,8 @@ namespace SpreadCommander.Common.Script.Grid
 {
     public partial class SCGrid
     {
-        public SCGrid Clear()
-        {
+        public void Clear() =>
             ExecuteSynchronized(() => DoClear());
-            return this;
-        }
 
         protected virtual void DoClear()
         {

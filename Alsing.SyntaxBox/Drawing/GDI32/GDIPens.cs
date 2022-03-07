@@ -24,6 +24,18 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
             Create();
         }
 
+        ~GDIPen()
+        {
+            Destroy();
+        }
+
+        //VVV
+        public override void Dispose()
+        {
+            base.Dispose();
+            Destroy();
+        }
+
         protected override void Destroy()
         {
             if (hPen != (IntPtr) 0)

@@ -10,7 +10,7 @@ namespace SpreadCommander.Common.Script.Sankey
 
     public partial class SCSankey
     {
-        public SCSankey Save(string fileName, ImageFileFormat? format = null)
+        public void Save(string fileName, ImageFileFormat? format = null)
         {
             if (string.IsNullOrWhiteSpace(fileName))
                 throw new ArgumentException("Filename is not specified.", nameof(fileName));
@@ -33,8 +33,6 @@ namespace SpreadCommander.Common.Script.Sankey
             }
             else
                 bmp.Save(fileName);
-
-            return this;
         }
     }
 }

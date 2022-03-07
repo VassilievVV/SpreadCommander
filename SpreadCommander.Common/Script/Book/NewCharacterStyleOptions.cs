@@ -32,11 +32,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook AddCharacterStyle(NewCharacterStyleOptions options)
-        {
+        public void AddCharacterStyle(NewCharacterStyleOptions options) =>
             ExecuteSynchronized(options, () => DoAddCharacterStyle(options));
-            return this;
-        }
 
         protected void DoAddCharacterStyle(NewCharacterStyleOptions options)
         {

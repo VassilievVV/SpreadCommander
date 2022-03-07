@@ -44,7 +44,7 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet OutTemplate(object dataSource, string templateFileName, TemplateOptions options = null)
+        public void OutTemplate(object dataSource, string templateFileName, TemplateOptions options = null)
         {
             var tableDataSource = GetDataSource(dataSource,
                 new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
@@ -79,7 +79,6 @@ namespace SpreadCommander.Common.Script.Spreadsheet
             }
 
             ExecuteSynchronized(() => DoWriteWorkbooks(spread, workbooks, options));
-            return this;
 
 
             static void LoadTemplate(Workbook template, string templateFile, string templateSheet)

@@ -19,11 +19,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteContent(string fileName, ContentOptions options = null)
-        {
+         public void WriteContent(string fileName, ContentOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteContent(fileName, options));
-            return this;
-        }
 
         protected void DoWriteContent(string fileName, ContentOptions options)
         {

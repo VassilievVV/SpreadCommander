@@ -10,6 +10,7 @@
 
 using Alsing.Windows.Forms.Document.DocumentStructure.Row;
 using Alsing.Windows.Forms.Document.DocumentStructure.Word;
+using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -39,7 +40,7 @@ namespace Alsing.Windows.Forms.Document.Print
     /// </code>
     /// </example>
     [ToolboxItem(true)]
-    public class SourceCodePrintDocument : PrintDocument
+    public class SourceCodePrintDocument : PrintDocument, IDisposable //VVV - add IDisposable
     {
         private Font fontBreak;
         private Font fontNormal;
@@ -55,12 +56,29 @@ namespace Alsing.Windows.Forms.Document.Print
             Document = document;
         }
 
+        //VVV
+        public new void Dispose()
+        {
+            base.Dispose();
+
+            fontBreak?.Dispose();
+            fontNormal?.Dispose();
+
+            fontBreak  = null;
+            fontNormal = null;
+        }
+
         public SyntaxDocument Document { get; set; }
 
         //Override OnBeginPrint to set up the font we are going to use
         protected override void OnBeginPrint(PrintEventArgs ev)
         {
             base.OnBeginPrint(ev);
+
+            //VVV
+            fontBreak?.Dispose();
+            fontNormal?.Dispose();
+
             fontNormal = new Font("Courier new", 8, FontStyle.Regular);
             fontBreak = new Font("Symbol", 8, FontStyle.Bold);
             //			fontBold						= new Font("Arial", 10,FontStyle.Bold);
@@ -116,6 +134,11 @@ namespace Alsing.Windows.Forms.Document.Print
                             f = new Font("Courier new", 8, fs);
                         }
                         SizeF sf = ev.Graphics.MeasureString(w.Text, f);
+
+                        //VVV
+                        if (f != fontNormal)
+                            f.Dispose();
+
                         if (x + sf.Width > rightMargin)
                         {
                             var chr = (char) 0xbf;
@@ -203,8 +226,12 @@ namespace Alsing.Windows.Forms.Document.Print
                         c = Color.FromArgb(c.R, c.G, c.B);
 
 
-                        ev.Graphics.DrawString(w.Text, f, new SolidBrush(c), x, yPos, new
-                                                                                          StringFormat());
+                        ev.Graphics.DrawString(w.Text, f, new SolidBrush(c), x, yPos, new StringFormat());
+
+                        //VVV
+                        if (f != fontNormal)
+                            f.Dispose();
+
                         x += sf.Width;
                     }
                 }

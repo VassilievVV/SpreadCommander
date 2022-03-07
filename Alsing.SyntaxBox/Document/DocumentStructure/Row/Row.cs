@@ -19,6 +19,7 @@ using Alsing.Windows.Forms.Document.SyntaxDefinition.SpanDefinition;
 using Alsing.Windows.Forms.Document.SyntaxDefinition.TextStyle;
 using System.Collections;
 using System.Drawing;
+using System.Text;
 
 //namespace Alsing.SourceCode
 namespace Alsing.Windows.Forms.Document.DocumentStructure.Row
@@ -483,7 +484,7 @@ namespace Alsing.Windows.Forms.Document.DocumentStructure.Row
         }
 
         /// <summary>
-        /// Returns true if this row is the last part of a collepsed span
+        /// Returns true if this row is the last part of a collapsed span
         /// </summary>
         public bool IsCollapsedEndPart
         {
@@ -752,12 +753,19 @@ namespace Alsing.Windows.Forms.Document.DocumentStructure.Row
         /// </summary>
         public void MatchCase()
         {
+            //VVV
+            /*
             string s = "";
             foreach (Word.Word w in words)
             {
                 s = s + w.Text;
             }
             mText = s;
+            */
+            var s = new StringBuilder();
+            foreach (Word.Word w in words)
+                s.Append(w.Text);
+            mText = s.ToString();
         }
 
         /// <summary>
@@ -804,9 +812,9 @@ namespace Alsing.Windows.Forms.Document.DocumentStructure.Row
         }
 
         /// <summary>
-        /// Returns the whitespace string at the begining of this row.
+        /// Returns the whitespace string at the beginning of this row.
         /// </summary>
-        /// <returns>a string containing the whitespace at the begining of this row</returns>
+        /// <returns>a string containing the whitespace at the beginning of this row</returns>
         public string GetLeadingWhitespace()
         {
             string s = mText;
@@ -825,6 +833,8 @@ namespace Alsing.Windows.Forms.Document.DocumentStructure.Row
 
         public string GetVirtualLeadingWhitespace()
         {
+            ///VVV
+            /*
             int i = StartWordIndex;
             string ws = "";
             foreach (char c in Text)
@@ -839,6 +849,21 @@ namespace Alsing.Windows.Forms.Document.DocumentStructure.Row
                     break;
             }
             return ws;
+            */
+            int i = StartWordIndex;
+            var ws = new StringBuilder();
+            foreach (char c in Text)
+            {
+                if (c == '\t')
+                    ws.Append(c);
+                else
+                    ws.Append(' ');
+
+                i--;
+                if (i <= 0)
+                    break;
+            }
+            return ws.ToString();
         }
 
         /// <summary>

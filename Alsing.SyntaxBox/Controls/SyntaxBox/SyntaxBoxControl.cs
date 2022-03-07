@@ -2271,6 +2271,10 @@ namespace Alsing.Windows.Forms.Controls.SyntaxBox
                 if (components != null)
                     components.Dispose();
             }
+
+            //VVV
+            DisposeViews();
+
             base.Dispose(disposing);
         }
 

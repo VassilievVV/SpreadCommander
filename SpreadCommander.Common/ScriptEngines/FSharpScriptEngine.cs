@@ -69,13 +69,14 @@ a + b         // .. but evaluating this line shows the message box!
 $@"#r ""SpreadCommander.Common.dll"";
 #r ""MathNet.Numerics.dll"";
 #r ""MathNet.Symbolics.dll"";
+#r ""MathNet.Numerics.Data.Text.dll""
 #r ""Deedle.dll"";
 
-#I {QuotePath(Project.Current.ProjectPath)};
-#I {QuotePath(Path.Combine(Project.Current.ProjectPath, "bin"))};
-#I {QuotePath(Path.Combine(Project.Current.ProjectPath, "Modules"))};
+# I {QuotePath(Project.Current.ProjectPath)};
+# I {QuotePath(Path.Combine(Project.Current.ProjectPath, "bin"))};
+# I {QuotePath(Path.Combine(Project.Current.ProjectPath, "Modules"))};
 
-open System;
+            open System;
 
 open SpreadCommander.Common.Script;
 open SpreadCommander.Common.Script.Book;
@@ -85,10 +86,6 @@ open SpreadCommander.Common.Script.Heap;
 open SpreadCommander.Common.Script.Chart;
 open SpreadCommander.Common.Script.Sankey;
 open SpreadCommander.Common.Script.Map;
-
-open MathNet.Numerics;
-open MathNet.Symbolics;
-open Deedle;
 
 ";
 

@@ -13,17 +13,11 @@ namespace SpreadCommander.Common.Script.Spreadsheet
 
     public partial class SCSpreadsheet
     {
-        public SCSpreadsheet SelectSheet(string sheetName, SpreadsheetOptions options = null)
-        {
+        public void SelectSheet(string sheetName, SpreadsheetOptions options = null) =>
             ExecuteSynchronized(options, () => DoSelectSheet(sheetName, null, options));
-            return this;
-        }
 
-        public SCSpreadsheet SelectSheet(int sheetIndex, SpreadsheetOptions options = null)
-        {
+        public void SelectSheet(int sheetIndex, SpreadsheetOptions options = null) =>
             ExecuteSynchronized(options, () => DoSelectSheet(null, sheetIndex, options));
-            return this;
-        }
 
         protected virtual void DoSelectSheet(string sheetName, int? sheetIndex, SpreadsheetOptions options)
         {

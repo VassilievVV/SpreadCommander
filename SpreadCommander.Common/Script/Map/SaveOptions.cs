@@ -72,7 +72,7 @@ namespace SpreadCommander.Common.Script.Map
 
     public partial class SCMap
     {
-        public SCMap Save(string fileName, SaveOptions options = null)
+        public void Save(string fileName, SaveOptions options = null)
         {
             options ??= new SaveOptions();
 
@@ -118,8 +118,6 @@ namespace SpreadCommander.Common.Script.Map
 
             if (options.Preview)
                 PreviewFile(fileName);
-
-            return this;
         }
 
         protected virtual void DoWriteImage(Image mapBitmap, string fileName, SaveOptions options)

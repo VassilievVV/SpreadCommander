@@ -12,11 +12,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook Clear(ClearOptions options = null)
-        {
+        public void Clear(ClearOptions options = null) =>
             ExecuteSynchronized(options, () => DoClear(options));
-            return this;
-        }
 
         protected virtual void DoClear(ClearOptions options)
         {

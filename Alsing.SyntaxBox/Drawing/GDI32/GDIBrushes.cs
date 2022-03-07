@@ -55,6 +55,17 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
             Create();
         }
 
+        ~GDIBrush()
+        {
+            Destroy();
+        }
+
+        public override void Dispose()
+        {
+            base.Dispose();
+            Destroy();
+        }
+
         protected override void Destroy()
         {
             //only destroy if brush is created by us

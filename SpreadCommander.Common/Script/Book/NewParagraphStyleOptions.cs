@@ -36,11 +36,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook AddParagraphStyle(NewParagraphStyleOptions options)
-        {
+        public void AddParagraphStyle(NewParagraphStyleOptions options) =>
             ExecuteSynchronized(options, () => DoAddParagraphStyle(options));
-            return this;
-        }
 
         protected void DoAddParagraphStyle(NewParagraphStyleOptions options)
         {

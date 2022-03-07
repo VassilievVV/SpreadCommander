@@ -8,10 +8,7 @@ namespace SpreadCommander.Common.Script.Heap
 {
     public partial class SCHeap
     {
-        public SCHeap OutFileViewer(string fileName)
-        {
+        public void OutFileViewer(string fileName) =>
             PreviewFile(fileName);
-            return this;
-        }
     }
 }

@@ -9,11 +9,8 @@ namespace SpreadCommander.Common.Script.Book
 {
     public partial class SCBook
     {
-        public SCBook SetSection(int sectionNum, SectionOptions options)
-        {
+        public void SetSection(int sectionNum, SectionOptions options) =>
             ExecuteSynchronized(options, () => DoSetSection(sectionNum, options));
-            return this;
-        }
 
         protected virtual void DoSetSection(int sectionNum, SectionOptions options)
         {

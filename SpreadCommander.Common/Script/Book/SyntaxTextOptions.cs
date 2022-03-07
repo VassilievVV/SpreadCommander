@@ -52,11 +52,8 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public SCBook WriteSyntaxText(string text, SyntaxName syntaxName, SyntaxTextOptions options = null)
-        {
+        public void WriteSyntaxText(string text, SyntaxName syntaxName, SyntaxTextOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteSyntaxText(text, syntaxName, options));
-            return this;
-        }
 
         protected void DoWriteSyntaxText(string text, SyntaxName syntaxName, SyntaxTextOptions options)
         {

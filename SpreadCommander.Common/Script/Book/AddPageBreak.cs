@@ -8,11 +8,8 @@ namespace SpreadCommander.Common.Script.Book
 {
     public partial class SCBook
     {
-        public SCBook AddPageBreak(BookOptions options = null)
-        {
+        public void AddPageBreak(BookOptions options = null) =>
             ExecuteSynchronized(options, () => DoAddPageBreak(options));
-            return this;
-        }
 
         protected void DoAddPageBreak(BookOptions options)
         {

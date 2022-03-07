@@ -73,7 +73,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
             if (Columns == null && NoHeaderRow)
                 throw new Exception($"{nameof(NoHeaderRow)} requires providing {nameof(Columns)} schema.");
 
-            var schema = new SeparatedValueSchema();
+            var schema = new DelimitedSchema();
 
             if (Columns != null)
             {
@@ -84,7 +84,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 }
             }
 
-            var options = new SeparatedValueOptions();
+            var options = new DelimitedOptions();
 
             if (Separator != null)
                 options.Separator = Separator;
@@ -103,7 +103,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
             };
 
             var reader     = new StreamReader(File.OpenRead(fileName));
-            var csvReader  = Columns != null ? new SeparatedValueReader(reader, schema, options) : new SeparatedValueReader(reader, options);
+            var csvReader  = Columns != null ? new DelimitedReader(reader, schema, options) : new DelimitedReader(reader, options);
             var dataReader = new FlatFileDataReader(csvReader, readerOptions);
 
             var resultReader = new DataReaderWrapper(dataReader, new DataReaderWrapper.DataReaderWrapperParameters()

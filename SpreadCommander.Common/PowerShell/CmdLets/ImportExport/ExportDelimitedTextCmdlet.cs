@@ -103,7 +103,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
             using var dataReader = GetDataSourceReader(_Output, DataSource, 
                 new DataSourceParameters() { IgnoreErrors = this.IgnoreErrors, Columns = this.SelectColumns, SkipColumns = this.SkipColumns });
 
-            var schema = new SeparatedValueSchema();
+            var schema = new DelimitedSchema();
 
             int colCount = Columns != null ? Columns.Length : dataReader.FieldCount;
             int[] columnIndexes = new int[colCount];
@@ -140,7 +140,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
                 }
             }
 
-            var options = new SeparatedValueOptions();
+            var options = new DelimitedOptions();
 
             if (Separator != null)
                 options.Separator = Separator;
@@ -154,7 +154,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.ImportExport
             options.QuoteBehavior = QuoteBehavior;
 
             using var writer = new StreamWriter(File.OpenWrite(fileName));
-            var csvWriter    = new SeparatedValueWriter(writer, schema, options);
+            var csvWriter    = new DelimitedWriter(writer, schema, options);
 
             int columnCount = schema.ColumnDefinitions.Count;
             object[] values = new object[columnCount];

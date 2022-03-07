@@ -9,11 +9,8 @@ namespace SpreadCommander.Common.Script.Book
 {
     public partial class SCBook
     {
-        public SCBook SetDefaultCharacter(CharacterStyleOptions options)
-        {
+        public void SetDefaultCharacter(CharacterStyleOptions options) =>
             ExecuteSynchronized(options, () => DoSetDefaultCharacter(options));
-            return this;
-        }
 
         protected virtual void DoSetDefaultCharacter(CharacterStyleOptions options)
         {
