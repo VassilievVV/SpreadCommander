@@ -18,6 +18,11 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 2.3
+- Update F# engine. ILGPU package is included.
+- Fix more GDI leaks in syntax editor.
+- Third-party components are updated.
+
 ### Version 2.2
 - Update F# engine and built-in components.
 - Fix some GDI leaks in syntax editor.

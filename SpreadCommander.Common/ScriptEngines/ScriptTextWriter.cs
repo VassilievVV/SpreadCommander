@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using DevExpress.XtraRichEdit.API.Native;
 
@@ -15,7 +16,16 @@ namespace SpreadCommander.Common.ScriptEngines
         protected readonly bool _IsError;
         private readonly StringBuilder _Output = new();
 
+        protected readonly static TimeSpan _IntervalCache       = TimeSpan.FromMilliseconds(1);
+        protected readonly static TimeSpan _IntervalForceOutput = TimeSpan.FromMilliseconds(100);
+
         protected Document Document => _Engine.Document;
+
+        public object LockObject => _Output;
+
+        protected Task _TaskWrite;
+        protected DateTime _LastWrite;
+        protected DateTime _LastOutput;
 
         public ScriptTextWriter(BaseScriptEngine engine, bool isError = false)
         {
@@ -33,6 +43,18 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public bool Silent { get; set; } = true;
 
+        public bool IsEmpty
+        {
+            get
+            {
+                lock (LockObject)
+                {
+                    Flush();
+                    return _Output.Length <= 0;
+                }
+            }
+        }
+
         public override void Write(char value)
         {
             throw new NotImplementedException();
@@ -48,36 +70,53 @@ namespace SpreadCommander.Common.ScriptEngines
             if (Silent)
                 return;
 
-            lock (_Output)
+            lock (LockObject)
             {
                 _Output.Append(value);
             }
 
-            if (_Output.Length > 0)
+            _LastOutput = DateTime.Now;
+
+            if (_TaskWrite != null)
+                return;
+
+            _TaskWrite = Task.Run(() =>
+            {
+                var now = DateTime.Now;
+
+                //Wait next output
+                while ((now - _LastOutput < _IntervalCache) && (now - _LastWrite < _IntervalForceOutput))
+                    Thread.Sleep(_IntervalCache);
+
+                lock (LockObject)
+                    _TaskWrite = null;
+
                 _Engine.ExecuteSynchronized(() => DoWrite());
+            });
         }
 
-        protected void DoWrite()
+        protected internal void DoWrite()
         {
+            _LastWrite = DateTime.Now;
+
+            if (IsEmpty)
+                return;
+
             var doc = Document;
             doc.BeginUpdate();
             try
             {
                 do
                 {
-                    DocumentRange range;
-                    lock (_Output)
+                    lock (LockObject)
                     {
-                        range = doc.AppendText(_Output.ToString());
+                        var backColor = BaseScriptEngine.DefaultBackgroundColor;
+                        var foreColor = _IsError ? BaseScriptEngine.DefaultForegroundErrorColor : BaseScriptEngine.DefaultForegroundColor;
+                        _Engine.FlushTextBuffer(doc, foreColor, backColor, _Output);
                         _Output.Clear();
                     }
-
-                    FormatText(doc, range.Start.ToInt(), range.End.ToInt() - range.Start.ToInt());
-
-                    doc.CaretPosition = range.End;
-                    DoResetBookFormatting(doc, range.End, false);
                 }
-                while (_Output.Length > 0);
+                while (!IsEmpty);
             }
             finally
             {
@@ -85,77 +124,31 @@ namespace SpreadCommander.Common.ScriptEngines
             }
 
             ScrollToCaret();
+
+            if (!IsEmpty)
+                DoWrite();
         }
 
-        public override void WriteLine()
-        {
-            if (Silent)
-                return;
+        public override void WriteLine() =>
+            Write("\n");
 
-            _Engine.ExecuteSynchronized(() => DoWriteLine());
-        }
-
-        protected void DoWriteLine()
-        {
-            var doc   = Document;
-            doc.BeginUpdate();
-            try
-            {
-                var range = doc.AppendText(NewLine);
-
-                FormatText(doc, range.Start.ToInt(), range.End.ToInt() - range.Start.ToInt());
-
-                doc.CaretPosition = range.End;
-                DoResetBookFormatting(doc, range.End, false);
-            }
-            finally
-            {
-                doc.EndUpdate();
-            }
-
-            ScrollToCaret();
-        }
-
-        public override void WriteLine(string value)
-        {
-            if (Silent)
-                return;
-
-            _Engine.ExecuteSynchronized(() => DoWriteLine(value));
-        }
-
-        protected void DoWriteLine(string value)
-        {
-            var doc = Document;
-            doc.BeginUpdate();
-            try
-            {
-                var range        = doc.AppendText(value);
-                var rangeNewLine = doc.AppendText(NewLine);
-                
-                FormatText(doc, range.Start.ToInt(), rangeNewLine.End.ToInt() - range.Start.ToInt());
-                
-                doc.CaretPosition = rangeNewLine.End;
-                DoResetBookFormatting(doc, range.End, false);
-            }
-            finally
-            {
-                doc.EndUpdate();
-            }
-
-            ScrollToCaret();
-        }
+        public override void WriteLine(string value) =>
+            Write(value + "\n");
 
         public void WriteInvitation(string value = null)
         {
             if (Silent)
                 return;
 
+            Write(string.Empty);
+
             _Engine.ExecuteSynchronized(() => DoWriteInvitation(value));
         }
 
         protected void DoWriteInvitation(string value = null)
         {
+            DoWrite();
+
             var doc = Document;
             doc.BeginUpdate();
             try

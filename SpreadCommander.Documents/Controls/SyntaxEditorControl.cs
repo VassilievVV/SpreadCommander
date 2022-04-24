@@ -162,75 +162,83 @@ namespace SpreadCommander.Documents.Controls
             var backColor = skin.TranslateColor(SystemColors.Window);
             var foreColor = skin.TranslateColor(SystemColors.WindowText);
 
-            BackColor = backColor;
-            ForeColor = foreColor;
-
-            bool isSkinDark = FrameHelper.IsDarkSkin(UserLookAndFeel.Default);
-
-            if (syntaxDefinition != null)
-            {
-                foreach (var textStyle in syntaxDefinition.Styles)
-                {
-                    if (textStyle.BackColor == Color.Transparent || textStyle.BackColor.ToArgb() == Color.Empty.ToArgb())
-                        textStyle.BackColor = SystemColors.Window;
-                    textStyle.BackColor = skin.TranslateColor(textStyle.BackColor);
-                    //textStyle.BackColor = textStyle.BackColor != SystemColors.Window ? isSkinDark ? textStyle.BackColor.Invert() : textStyle.BackColor : backColor;
-
-                    if (textStyle.ForeColor == Color.Transparent || textStyle.ForeColor.ToArgb() == Color.Empty.ToArgb())
-                        textStyle.ForeColor = SystemColors.WindowText;
-                    textStyle.ForeColor = skin.TranslateColor(textStyle.ForeColor);
-                    //textStyle.ForeColor = textStyle.ForeColor != SystemColors.WindowText ? isSkinDark ? textStyle.ForeColor.Invert() : textStyle.ForeColor : foreColor;
-                }
-            }
-
-            BorderColor                = skin.TranslateColor(_BorderColor);
-            BracketBackColor           = skin.TranslateColor(_BracketBackColor);
-            BracketBorderColor         = skin.TranslateColor(_BracketBorderColor);
-            BracketForeColor           = skin.TranslateColor(_BracketForeColor);
-            BreakPointBackColor        = skin.TranslateColor(_BreakPointBackColor);
-            BreakPointForeColor        = skin.TranslateColor(_BreakPointForeColor);
-            ChildBorderColor           = skin.TranslateColor(_ChildBorderColor);
-            EOLMarkerColor             = skin.TranslateColor(_EOLMarkerColor);
-            GutterMarginBorderColor    = skin.TranslateColor(_GutterMarginBorderColor);
-            GutterMarginColor          = skin.TranslateColor(_GutterMarginColor);
-            HighLightedLineColor       = skin.TranslateColor(_HighLightedLineColor);
-            InactiveSelectionBackColor = skin.TranslateColor(_InactiveSelectionBackColor);
-            InactiveSelectionForeColor = //skin.TranslateColor(Color.FromArgb(_InactiveSelectionForeColor.ToArgb()));
-                                            isSkinDark ? Color.White : Color.Black;
-            LineNumberBackColor        = skin.TranslateColor(_LineNumberBackColor);
-            LineNumberBorderColor      = skin.TranslateColor(_LineNumberBorderColor);
-            LineNumberForeColor        = skin.TranslateColor(_LineNumberForeColor);
-            OutlineColor               = skin.TranslateColor(_OutlineColor);
-            ScopeBackColor             = skin.TranslateColor(_ScopeBackColor);
-            ScopeIndicatorColor        = skin.TranslateColor(_ScopeIndicatorColor);
-            SelectionBackColor         = skin.TranslateColor(_SelectionBackColor);
-            SelectionForeColor         = skin.TranslateColor(_SelectionForeColor);
-            SeparatorColor             = skin.TranslateColor(_SeparatorColor);
-            TabGuideColor              = skin.TranslateColor(_TabGuideColor);
-            WhitespaceColor            = skin.TranslateColor(_WhitespaceColor);
-
-            Word.DefaultErrorColor     = skin.TranslateColor(Color.Red);
-
-            foreach (var view in Views)
-            {
-                view.TopThumb.BackColor  = BorderColor;
-                view.LeftThumb.BackColor = BorderColor;
-                view.FillerBackColor     = backColor;
-            }
-            SplitViewBackColor = skin.TranslateColor(Color.FromArgb((isSkinDark ? SystemColors.ControlDarkDark : SystemColors.ControlLightLight).ToArgb()));
-
-            bool modified = Document.Modified;
+            BeginUpdateGraphics();
             try
-            {
+            { 
+                BackColor = backColor;
+                ForeColor = foreColor;
+
+                bool isSkinDark = FrameHelper.IsDarkSkin(UserLookAndFeel.Default);
+
                 if (syntaxDefinition != null)
-                    Document.Parser.Init(syntaxDefinition);
-                else
-                    Document.Parser.SyntaxDefinition = null;
-                Document.ReParse();
+                {
+                    foreach (var textStyle in syntaxDefinition.Styles)
+                    {
+                        if (textStyle.BackColor == Color.Transparent || textStyle.BackColor.ToArgb() == Color.Empty.ToArgb())
+                            textStyle.BackColor = SystemColors.Window;
+                        textStyle.BackColor = skin.TranslateColor(textStyle.BackColor);
+                        //textStyle.BackColor = textStyle.BackColor != SystemColors.Window ? isSkinDark ? textStyle.BackColor.Invert() : textStyle.BackColor : backColor;
+
+                        if (textStyle.ForeColor == Color.Transparent || textStyle.ForeColor.ToArgb() == Color.Empty.ToArgb())
+                            textStyle.ForeColor = SystemColors.WindowText;
+                        textStyle.ForeColor = skin.TranslateColor(textStyle.ForeColor);
+                        //textStyle.ForeColor = textStyle.ForeColor != SystemColors.WindowText ? isSkinDark ? textStyle.ForeColor.Invert() : textStyle.ForeColor : foreColor;
+                    }
+                }
+
+                BorderColor                = skin.TranslateColor(_BorderColor);
+                BracketBackColor           = skin.TranslateColor(_BracketBackColor);
+                BracketBorderColor         = skin.TranslateColor(_BracketBorderColor);
+                BracketForeColor           = skin.TranslateColor(_BracketForeColor);
+                BreakPointBackColor        = skin.TranslateColor(_BreakPointBackColor);
+                BreakPointForeColor        = skin.TranslateColor(_BreakPointForeColor);
+                ChildBorderColor           = skin.TranslateColor(_ChildBorderColor);
+                EOLMarkerColor             = skin.TranslateColor(_EOLMarkerColor);
+                GutterMarginBorderColor    = skin.TranslateColor(_GutterMarginBorderColor);
+                GutterMarginColor          = skin.TranslateColor(_GutterMarginColor);
+                HighLightedLineColor       = skin.TranslateColor(_HighLightedLineColor);
+                InactiveSelectionBackColor = skin.TranslateColor(_InactiveSelectionBackColor);
+                InactiveSelectionForeColor = //skin.TranslateColor(Color.FromArgb(_InactiveSelectionForeColor.ToArgb()));
+                                                isSkinDark ? Color.White : Color.Black;
+                LineNumberBackColor        = skin.TranslateColor(_LineNumberBackColor);
+                LineNumberBorderColor      = skin.TranslateColor(_LineNumberBorderColor);
+                LineNumberForeColor        = skin.TranslateColor(_LineNumberForeColor);
+                OutlineColor               = skin.TranslateColor(_OutlineColor);
+                ScopeBackColor             = skin.TranslateColor(_ScopeBackColor);
+                ScopeIndicatorColor        = skin.TranslateColor(_ScopeIndicatorColor);
+                SelectionBackColor         = skin.TranslateColor(_SelectionBackColor);
+                SelectionForeColor         = skin.TranslateColor(_SelectionForeColor);
+                SeparatorColor             = skin.TranslateColor(_SeparatorColor);
+                TabGuideColor              = skin.TranslateColor(_TabGuideColor);
+                WhitespaceColor            = skin.TranslateColor(_WhitespaceColor);
+
+                Word.DefaultErrorColor     = skin.TranslateColor(Color.Red);
+
+                foreach (var view in Views)
+                {
+                    view.TopThumb.BackColor  = BorderColor;
+                    view.LeftThumb.BackColor = BorderColor;
+                    view.FillerBackColor     = backColor;
+                }
+                SplitViewBackColor = skin.TranslateColor(Color.FromArgb((isSkinDark ? SystemColors.ControlDarkDark : SystemColors.ControlLightLight).ToArgb()));
+
+                bool modified = Document.Modified;
+                try
+                {
+                    if (syntaxDefinition != null)
+                        Document.Parser.Init(syntaxDefinition);
+                    else
+                        Document.Parser.SyntaxDefinition = null;
+                    Document.ReParse();
+                }
+                finally
+                {
+                    Document.Modified = modified;
+                }
             }
             finally
             {
-                Document.Modified = modified;
+                EndUpdateGraphics();
             }
         }
 

@@ -21,7 +21,7 @@ namespace SpreadCommander.Common.Script
             options ??= new ConvertToDataReaderOptions();
 
             var table = ScriptHostObject.GetDataSource(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
 
             return table;
         }

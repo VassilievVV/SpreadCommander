@@ -70,26 +70,26 @@ namespace SpreadCommander.Documents.Console
             {
                 layoutControlGroupMessages.Visibility = value ? LayoutVisibility.Always : LayoutVisibility.Never;
                 if (value)
-                    layoutControlGroupMessages.Selected = true;
+                    tabbedControlGroupControls.SelectedTabPage = layoutControlGroupMessages;
                 else if (ParseErrorsVisible)
-                    layoutControlGroupErrors.Selected = true;
-                else 
-                    layoutControlGroupCommand.Selected = true;
+                    tabbedControlGroupControls.SelectedTabPage = layoutControlGroupErrors;
+                else
+                    tabbedControlGroupControls.SelectedTabPage = layoutControlGroupCommand;
             }
         }
 
         public bool ParseErrorsVisible
         {
-            get => layoutControlGroupErrors.Visible;
+            get => layoutControlGroupErrors.Visibility == LayoutVisibility.Always;
             set
             {
                 layoutControlGroupErrors.Visibility = value ? LayoutVisibility.Always : LayoutVisibility.Never;
                 if (!value)
                 {
                     if (MessagesVisible)
-                        layoutControlGroupMessages.Selected = true;
+                        tabbedControlGroupControls.SelectedTabPage = layoutControlGroupMessages;
                     else
-                        layoutControlGroupCommand.Selected = true;
+                        tabbedControlGroupControls.SelectedTabPage = layoutControlGroupCommand;
                 }
             }
         }

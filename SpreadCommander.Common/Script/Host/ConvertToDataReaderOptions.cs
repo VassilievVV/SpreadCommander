@@ -19,6 +19,9 @@ namespace SpreadCommander.Common.Script
 
         [Description("Ignore errors thrown when getting property values.")]
         public bool IgnoreErrors { get; set; }
+
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
     }
 
     public partial class ScriptHost
@@ -30,7 +33,7 @@ namespace SpreadCommander.Common.Script
             options ??= new ConvertToDataReaderOptions();
 
             var reader = ScriptHostObject.GetDataSourceReader(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
 
             return reader;
         }

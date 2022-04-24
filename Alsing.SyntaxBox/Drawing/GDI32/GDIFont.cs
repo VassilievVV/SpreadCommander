@@ -73,12 +73,6 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
         }
 
         //VVV
-        public override void Dispose()
-        {
-            base.Dispose();
-            Destroy();
-        }
-
         protected override void Destroy()
         {
             if (hFont != (IntPtr) 0)

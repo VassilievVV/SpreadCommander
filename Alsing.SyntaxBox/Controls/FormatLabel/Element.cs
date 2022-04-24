@@ -24,6 +24,18 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
         ShadowLT,
     }
 
+    public struct FontData
+    {
+        public string FontName  { get; set; }
+        public int Size         { get; set; }
+        public FontStyle Style  { get; set; }
+
+        public FontData Clone()
+        {
+            return new FontData() { FontName = this.FontName, Size = this.Size, Style = this.Style };
+        }
+    }
+
     public class Element
     {
         protected string _Tag = "";
@@ -31,7 +43,9 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
         public Color BackColor = Color.Black;
         public TextEffect Effect = 0;
         public Color EffectColor = Color.Black;
-        public Font Font;
+        //VVV
+        //public Font Font;
+        public FontData FontData { get; set; }
         public Color ForeColor = Color.Black;
 
         public Element Link;

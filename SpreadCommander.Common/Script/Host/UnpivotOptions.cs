@@ -27,6 +27,9 @@ namespace SpreadCommander.Common.Script
 
         [Description("Ignore errors thrown when getting property values.")]
         public bool IgnoreErrors { get; set; }
+
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
     }
 
     public partial class ScriptHost
@@ -61,7 +64,7 @@ namespace SpreadCommander.Common.Script
                 throw new ArgumentNullException(nameof(unpivotValueType));
 
             var reader = ScriptHostObject.GetDataSourceReader(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
             if (reader == null)
                 throw new Exception("Input data are not provided.");
 

@@ -164,7 +164,9 @@ namespace Alsing.Windows.Forms.Classes
 
                 InitIMEWindow();
             }
-            catch (Exception) {}
+            catch (Exception) 
+            {
+            }
 
             if (Control != null)
             {
@@ -337,8 +339,17 @@ namespace Alsing.Windows.Forms.Classes
             }
             catch
             {
-                Control.SyntaxBox.FontName = "Courier New";
-                Control.SyntaxBox.FontSize = 10;
+                //VVV
+                Control.SyntaxBox.BeginUpdateGraphics();
+                try
+                {
+                    Control.SyntaxBox.FontName = "Courier New";
+                    Control.SyntaxBox.FontSize = 10;
+                }
+                finally
+                {
+                    Control.SyntaxBox.EndUpdateGraphics();
+                }
                 return new TextPoint(0, 0);
             }
         }
@@ -826,15 +837,14 @@ namespace Alsing.Windows.Forms.Classes
 
                 Control.SyntaxBox.OnRenderRow(e);
 
+                //VVV
+                e.Graphics?.Dispose();
+
 
                 bbuff.Flush();
                 bbuff.RenderToControl(0, RowPos * Control.View.RowHeight + yOffset);
 
                 //GFX.SelectionBuffer.RenderToControl (0,RowPos*Control.View.RowHeight+this.yOffset);
-
-                //VVV
-                //if (found)
-                //    bg.Dispose();
             }
             catch
             {
@@ -1373,17 +1383,37 @@ namespace Alsing.Windows.Forms.Classes
                     if (Control.View.RowHeight >= Control.SyntaxBox.GutterIcons.ImageSize.Height)
                     {
                         if (r.Bookmarked)
-                            Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, 1);
+                        {
+                            //VVV
+                            //Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, 1);
+                            using var g = Graphics.FromHdc(bbuff.hDC);
+                            Control.SyntaxBox.GutterIcons.Draw(g, 0, 0, 1);
+                        }
                         if (r.Breakpoint)
-                            Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, 0);
+                        {
+                            //VVV
+                            //Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, 0);
+                            using var g = Graphics.FromHdc(bbuff.hDC);
+                            Control.SyntaxBox.GutterIcons.Draw(g, 0, 0, 0);
+                        }
                     }
                     else
                     {
                         int w = Control.View.RowHeight;
                         if (r.Bookmarked)
-                            Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, w, w, 1);
+                        {
+                            //VVV
+                            //Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, w, w, 1);
+                            using var g = Graphics.FromHdc(bbuff.hDC);
+                            Control.SyntaxBox.GutterIcons.Draw(g, 0, 0, w, w, 1);
+                        }
                         if (r.Breakpoint)
-                            Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, w, w, 0);
+                        {
+                            //VVV
+                            //Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, w, w, 0);
+                            using var g = Graphics.FromHdc(bbuff.hDC);
+                            Control.SyntaxBox.GutterIcons.Draw(g, 0, 0, w, w, 0);
+                        }
                     }
 
                     if (r.Images != null)
@@ -1392,12 +1422,18 @@ namespace Alsing.Windows.Forms.Classes
                         {
                             if (Control.View.RowHeight >= Control.SyntaxBox.GutterIcons.ImageSize.Height)
                             {
-                                Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, i);
+                                //VVV
+                                //Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, i);
+                                using var g = Graphics.FromHdc(bbuff.hDC);
+                                Control.SyntaxBox.GutterIcons.Draw(g, 0, 0, i);
                             }
                             else
                             {
                                 int w = Control.View.RowHeight;
-                                Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, w, w, i);
+                                //VVV
+                                //Control.SyntaxBox.GutterIcons.Draw(Graphics.FromHdc(bbuff.hDC), 0, 0, w, w, i);
+                                using var g = Graphics.FromHdc(bbuff.hDC);
+                                Control.SyntaxBox.GutterIcons.Draw(g, 0, 0, w, w, i);
                             }
                         }
                     }
@@ -1416,7 +1452,6 @@ namespace Alsing.Windows.Forms.Classes
                     bbuff.FillRect(GFX.LineNumberMarginBorderBrush, Control.View.GutterMarginWidth + Control.View.LineNumberMarginWidth, j, 1, 1);
                 }
             }
-
 
             if (!Control.ShowLineNumbers || !Control.ShowGutterMargin)
                 bbuff.FillRect(GFX.BackgroundBrush, Control.View.TotalMarginWidth, 0, Control.View.TextMargin - Control.View.TotalMarginWidth - 3, Control.View.RowHeight);
@@ -1706,13 +1741,13 @@ namespace Alsing.Windows.Forms.Classes
             return new TextPoint(CharNo, RowIndex);
         }
 
-		//VVV - make public
-		public Point GetCaretPixelPos()
-		{
-			return GetTextPointPixelPos(this.Control.Caret.Position);
-		}
+        //VVV - make public
+        public Point GetCaretPixelPos()
+        {
+            return GetTextPointPixelPos(this.Control.Caret.Position);
+        }
 
-		//VVV - make public
+        //VVV - make public
         public Point GetTextPointPixelPos(TextPoint tp)
         {
             Row xtr = Control.Document[tp.Y];

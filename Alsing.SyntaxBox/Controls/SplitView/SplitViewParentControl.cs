@@ -44,7 +44,7 @@ namespace Alsing.Windows.Forms.Controls.SplitView
 
         #endregion
 
-        public SplitViewParentControl()
+        public SplitViewParentControl(): base()
         {
             OnCreate();
 

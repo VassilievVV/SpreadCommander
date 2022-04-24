@@ -30,6 +30,9 @@ namespace SpreadCommander.Common.Script
         [Description("Ignore errors thrown when getting property values")]
         public bool IgnoreErrors { get; set; }
 
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
+
         [Description("Batch size for exporting data. Also used as interval for progress report")]
         public int? BatchSize { get; set; }
 
@@ -86,7 +89,7 @@ namespace SpreadCommander.Common.Script
             const string progressDescription = "Exporting table into database";
 
             var dataReader = ScriptHostObject.GetDataSourceReader(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
 
             if ((connection.DbConnection?.State ?? ConnectionState.Closed) != ConnectionState.Open)
                 connection.Open();

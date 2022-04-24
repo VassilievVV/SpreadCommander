@@ -43,7 +43,7 @@ namespace SpreadCommander.Common.Script.Sankey
         protected virtual void InitializeSankey()
         {
             var dataSource = GetDataSource(_DataSource,
-                new DataSourceParameters() { IgnoreErrors = _Options.IgnoreErrors, Columns = _Options.SelectColumns, SkipColumns = _Options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = _Options.IgnoreErrors, Columns = _Options.SelectColumns, SkipColumns = _Options.SkipColumns, DeedleFrameKeys = _Options.DeedleFrameKeys });
 
             var sankey = new SankeyDiagramHostControl()
             {

@@ -27,7 +27,9 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
     /// </summary>
     public class FormatLabelControl : BaseControl
     {
-        private readonly Dictionary<string, GDIFont> _Fonts = new Dictionary<string, GDIFont>();
+        //VVV
+        //private readonly Dictionary<string, GDIFont> _Fonts = new Dictionary<string, GDIFont>();
+        private readonly Dictionary<FontData, GDIFont> _Fonts = new Dictionary<FontData, GDIFont>();
         private Element _ActiveElement;
         private Element[] _Elements;
         private bool _HasImageError;
@@ -113,7 +115,7 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
         }
 
 #pragma warning disable CS0809 // Obsolete member overrides non-obsolete member
-		[Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Obsolete("", false)]
+        [Browsable(true), EditorBrowsable(EditorBrowsableState.Always), Obsolete("", false)]
         public override Image BackgroundImage
         {
             get { return base.BackgroundImage; }
@@ -121,7 +123,7 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
         }
 #pragma warning restore CS0809 // Obsolete member overrides non-obsolete member
 
-		public ScrollBars ScrollBars
+        public ScrollBars ScrollBars
         {
             get { return _ScrollBars; }
             set
@@ -135,7 +137,7 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
 
         //private Container components;
 
-        public FormatLabelControl()
+        public FormatLabelControl(): base()
         {
             SetStyle(ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.Opaque, true);
@@ -150,10 +152,10 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                 foreach (GDIObject o in _Fonts.Values)
                     o.Dispose();
 
-				/*
+                /*
                 if (components != null)
                     components.Dispose();
-				*/
+                */
             }
             base.Dispose(disposing);
         }
@@ -177,7 +179,7 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                 }
                 catch (Exception /*x*/)
                 {
-					//VVV - comment output
+                    //VVV - comment output
                     //Console.WriteLine(x.Message);
                     //System.Diagnostics.Debugger.Break();
                 }
@@ -268,8 +270,8 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
 
         protected void OnClickLink(string Link)
         {
-			ClickLink?.Invoke(this, new ClickLinkEventArgs(Link));
-		}
+            ClickLink?.Invoke(this, new ClickLinkEventArgs(Link));
+        }
 
         private void SetAutoSize()
         {
@@ -288,8 +290,9 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
             if (_HasImageError)
                 CreateAll();
 
-            var bbuff = new GDISurface(Width, Height, this, true);
-            Graphics g = Graphics.FromHdc(bbuff.hDC);
+            //VVV - add using
+            using var bbuff = new GDISurface(Width, Height, this, true);
+            using Graphics g = Graphics.FromHdc(bbuff.hDC);
             try
             {
                 bbuff.FontTransparent = true;
@@ -335,14 +338,16 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                         {
                             g.DrawImage(w.Image, x, y);
 #pragma warning disable CRRSP01 // A misspelled word has been found
-							//bbuff.FillRect (Color.Red ,x,ypos,w.Width ,w.Height);
+                            //bbuff.FillRect (Color.Red ,x,ypos,w.Width ,w.Height);
 #pragma warning restore CRRSP01 // A misspelled word has been found
-						}
-						else
+                        }
+                        else
                         {
                             GDIFont gf;
                             if (w.Element.Link != null)
                             {
+                                //VVV
+                                /*
                                 Font f = null;
 
                                 FontStyle fs = w.Element.Font.Style;
@@ -365,10 +370,27 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
 
                                 //VVV
                                 f.Dispose();
+                                */
+
+                                FontData f = w.Element.FontData.Clone();
+                                FontStyle fs = w.Element.FontData.Style;
+                                if (w.Element.Link == _ActiveElement)
+                                {
+                                    if (_Link_UnderLine_Hover)
+                                        fs |= FontStyle.Underline;
+                                }
+                                else
+                                {
+                                    if (_Link_UnderLine)
+                                        fs |= FontStyle.Underline;
+                                }
+                                f.Style = fs;
+
+                                gf = GetFont(f);
                             }
                             else
                             {
-                                gf = GetFont(w.Element.Font);
+                                gf = GetFont(w.Element.FontData);
                             }
 
                             bbuff.Font = gf;
@@ -419,12 +441,14 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
             }
             catch (Exception /*x*/)
             {
-				//VVV - comment output
+                //VVV - comment output
                 //Console.WriteLine(x.Message);
             }
             bbuff.RenderToControl(0, 0);
-            bbuff.Dispose();
-            g.Dispose();
+
+            //VVV - disposing with "using"
+            //bbuff.Dispose();
+            //g.Dispose();
         }
 
         private Element[] CreateElements()
@@ -609,9 +633,9 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                             string _size = GetAttrib("size", Element.Tag);
                             string _color = GetAttrib("color", Element.Tag);
 #pragma warning disable CRRSP01 // A misspelled word has been found
-							string _effectcolor = GetAttrib("effectcolor", Element.Tag);
+                            string _effectcolor = GetAttrib("effectcolor", Element.Tag);
 #pragma warning restore CRRSP01 // A misspelled word has been found
-							string _effect = GetAttrib("effect", Element.Tag);
+                            string _effect = GetAttrib("effect", Element.Tag);
 
 
                             if (_size == "")
@@ -736,12 +760,14 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                 if (Italic) fs |= FontStyle.Italic;
                 if (Underline) fs |= FontStyle.Underline;
 
-                var font = new Font(FontName, FontSize, fs);
-                
                 //VVV
-                Element.Font?.Dispose();
+                //var font = new Font(FontName, FontSize, fs);
+                //VVV
+                //Element.Font?.Dispose();
+                //Element.Font = font;
 
-                Element.Font = font;
+                Element.FontData = new FontData() { FontName = FontName, Size = FontSize, Style = fs };
+
                 Element.BackColor = BackColor;
                 Element.ForeColor = ForeColor1;
                 Element.Link = Link;
@@ -752,12 +778,13 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
 
         private bool IsIndex(string src)
         {
-			return int.TryParse(src, out int i);
-		}
+            return int.TryParse(src, out int i);
+        }
 
         private void CreateWords(Element[] Elements)
         {
-            var bbuff = new GDISurface(1, 1, this, false);
+            //VVV - add using
+            using var bbuff = new GDISurface(1, 1, this, false);
 
             _HasImageError = false;
             foreach (Element Element in Elements)
@@ -830,7 +857,9 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                             tmp = word + " "; //last space cant be measured , lets measure an "," instead
                         }
                         //SizeF size=g.MeasureString (tmp,Element.Font);
-                        bbuff.Font = GetFont(Element.Font);
+                        //VVV
+                        //bbuff.Font = GetFont(Element.Font);
+                        bbuff.Font = GetFont(Element.FontData);
                         Size s = bbuff.MeasureTabbedString(tmp, 0);
                         Element.words[i].Height = s.Height;
                         Element.words[i].Width = s.Width - 0;
@@ -843,24 +872,31 @@ namespace Alsing.Windows.Forms.Controls.FormatLabel
                 }
             }
 
-            bbuff.Dispose();
+            //VVV - dispose with "using"
+            //bbuff.Dispose();
         }
 
-        private GDIFont GetFont(Font font)
+        //VVV - use FontData instead of Font
+        private GDIFont GetFont(FontData font)
         {
-			if (!_Fonts.TryGetValue(GetFontKey(font), out GDIFont gf))
-			{
-				gf = new GDIFont(font.Name, font.Size, font.Bold, font.Italic, font.Underline, false);
-				_Fonts[GetFontKey(font)] = gf;
-			}
+            if (!_Fonts.TryGetValue(font, out GDIFont gf))
+            {
+                //gf = new GDIFont(font.Name, font.Size, font.Bold, font.Italic, font.Underline, false);
+                gf = new GDIFont(font.FontName, font.Size, (font.Style & FontStyle.Bold) == FontStyle.Bold, 
+                    (font.Style & FontStyle.Italic) == FontStyle.Italic, (font.Style & FontStyle.Underline) == FontStyle.Underline, false);
+                _Fonts[font] = gf;
+            }
 
-			return gf;
+            return gf;
         }
 
+        //VVV - use FontData instead of Font
+        /*
         private string GetFontKey(Font font)
         {
             return font.Name + font.Bold + font.Italic + font.Underline + font.Size;
         }
+        */
 
 
         private void CreateRows()

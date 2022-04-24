@@ -44,7 +44,7 @@ namespace Alsing.Windows.Forms.Controls.SplitView
 			get {return (IScrollBar)vScroll;}
 		}
 
-        public SplitViewChildControl()
+        public SplitViewChildControl(): base()
         {
             InitializeComponent();
 

@@ -33,6 +33,9 @@ namespace SpreadCommander.Common.Script.Spreadsheet
         [Description("Ignore errors thrown when getting property values")]
         public bool IgnoreErrors { get; set; }
 
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
+
         [Description("Format conditions for spreadsheet table")]
         public string Formatting { get; set; }
 
@@ -100,7 +103,7 @@ namespace SpreadCommander.Common.Script.Spreadsheet
             options ??= new TableOptions();
 
             var tableDataSource = GetDataSource(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
 
             var spread          = options?.Spreadsheet?.Workbook ?? Workbook;
             Worksheet worksheet = null;

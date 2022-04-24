@@ -98,7 +98,7 @@ namespace SpreadCommander
             WindowsFormsSettings.UseDXDialogs                        = DefaultBoolean.True;
             WindowsFormsSettings.CompactUIMode                       = DefaultBoolean.True;
             WindowsFormsSettings.DefaultRibbonStyle                  = DefaultRibbonControlStyle.Office2019;
-            WindowsFormsSettings.UseAdvancedTextEdit                 = DefaultBoolean.False;
+            WindowsFormsSettings.UseAdvancedTextEdit                 = DefaultBoolean.True;
             WindowsFormsSettings.OptimizeRemoteConnectionPerformance = ApplicationSettings.Default.OptimizeRemoteConnectionPerformance ?? SystemInformation.TerminalServerSession ? DefaultBoolean.True : DefaultBoolean.False;
 
             ScriptPermissionManager.GlobalInstance = new ScriptPermissionManager(ExecutionMode.Deny);

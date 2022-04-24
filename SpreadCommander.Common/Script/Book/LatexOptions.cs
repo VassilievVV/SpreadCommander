@@ -19,7 +19,7 @@ using WpfMath.Converters;
 
 namespace SpreadCommander.Common.Script.Book
 {
-    public class LatexOptions : CommentOptions
+    public class LaTeXOptions : CommentOptions
     {
         [Description("DPI of the image. Default value is 300.")]
         public int? DPI { get; set; }
@@ -41,12 +41,12 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public void WriteLatex(string text, LatexOptions options = null) =>
+        public void WriteLaTeX(string text, LaTeXOptions options = null) =>
             ExecuteSynchronized(options, () => DoWriteLatex(text, options));
 
-        protected void DoWriteLatex(string text, LatexOptions options)
+        protected void DoWriteLatex(string text, LaTeXOptions options)
         {
-            options ??= new LatexOptions();
+            options ??= new LaTeXOptions();
 
             var book = options.Book?.Document ?? Document;
 
@@ -59,10 +59,10 @@ namespace SpreadCommander.Common.Script.Book
 
                 var renderer = formula.GetRenderer(TexStyle.Text, options.FontSize, "Tahoma");
 
-                var geometry = renderer.RenderToGeometry(0, 0);
-                var converter = new SVGConverter();
+                var geometry    = renderer.RenderToGeometry(0, 0);
+                var converter   = new SVGConverter();
                 var svgPathText = converter.ConvertGeometry(geometry);
-                var svgText = AddSVGHeader(svgPathText);
+                var svgText     = AddSVGHeader(svgPathText);
 
                 var imageLatex = PaintSVG(svgText, options.DPI);
                 AddUserCommentsToImage(imageLatex, text);

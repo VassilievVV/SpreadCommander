@@ -32,6 +32,9 @@ namespace SpreadCommander.Common.Script.Sankey
         [Description("Ignore errors thrown when getting property values")]
         public bool IgnoreErrors { get; set; }
 
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
+
         [Description("Width of the image in document units (1/300 of inch). Default value is 2000.")]
         [DefaultValue(2000)]
         public int Width { get; set; } = 2000;

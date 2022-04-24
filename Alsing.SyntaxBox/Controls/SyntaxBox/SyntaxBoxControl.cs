@@ -2313,7 +2313,9 @@ namespace Alsing.Windows.Forms.Controls.SyntaxBox
             // ParseTimer
             // 
             ParseTimer.Enabled = true;
-            ParseTimer.Interval = 1;
+            //VVV
+            //ParseTimer.Interval = 1;
+            ParseTimer.Interval = 10;
             ParseTimer.Tick += ParseTimer_Tick;
         }
 
@@ -2337,9 +2339,23 @@ namespace Alsing.Windows.Forms.Controls.SyntaxBox
             }
         }
 
+        //VVV
+        private int _GraphicsUpdateCounter = 0;
+        public void BeginUpdateGraphics()
+        {
+            _GraphicsUpdateCounter++;
+        }
+
+        public void EndUpdateGraphics()
+        {
+            _GraphicsUpdateCounter--;
+            if (_GraphicsUpdateCounter <= 0)
+                InitGraphics();
+        }
+
         private void InitGraphics()
         {
-            if (Views == null || Parent == null)
+            if (Views == null || Parent == null || _GraphicsUpdateCounter > 0)
                 return;
 
             foreach (EditViewControl ev in Views)

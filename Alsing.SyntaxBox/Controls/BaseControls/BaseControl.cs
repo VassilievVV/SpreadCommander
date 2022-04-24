@@ -33,7 +33,7 @@ namespace Alsing.Windows.Forms.Controls.BaseControls
         private bool RunOnce = true;
 
 
-        public BaseControl()
+        public BaseControl(): base()
         {
             SetStyle(ControlStyles.EnableNotifyMessage, true);
             BorderStyle = Drawing.BorderStyle.FixedSingle;

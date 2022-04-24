@@ -269,7 +269,7 @@ namespace SpreadCommander.Documents.Views
                     {
                         _ConsoleInputControl = new ConsoleInputControl()
                         {
-                            MessagesVisible = false
+                            MessagesVisible    = false
                         };
 
                         var model = mvvmContext.GetViewModel<ConsoleDocumentViewModel>();

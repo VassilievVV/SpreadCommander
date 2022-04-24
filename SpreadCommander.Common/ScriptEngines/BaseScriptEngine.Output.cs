@@ -62,14 +62,14 @@ namespace SpreadCommander.Common.ScriptEngines
             }
         }
 
-        protected void ReportErrorSynchronized(Document doc, ISynchronizeInvoke sync, string errorMessage) =>
+        protected internal void ReportErrorSynchronized(Document doc, ISynchronizeInvoke sync, string errorMessage) =>
             ExecuteMethodSync(sync, () => DoReportError(doc, errorMessage));
 
         //Has to be called from synchronized code
         protected virtual void ReportError(Document doc, Exception ex) =>
             DoReportError(doc, ex.Message);
 
-        protected virtual void DoReportError(Document doc, string errorMessage)
+        protected internal virtual void DoReportError(Document doc, string errorMessage)
         {
             var range = doc.AppendText($"ERROR: {errorMessage}{Environment.NewLine}");
             var cp    = doc.BeginUpdateCharacters(range);
@@ -86,7 +86,7 @@ namespace SpreadCommander.Common.ScriptEngines
             SCCmdlet.WriteErrorToConsole(errorMessage);
         }
 
-        protected void FlushTextBufferSynchronized(Document doc, ISynchronizeInvoke sync, ScriptOutputMessage output, StringBuilder buffer)
+        protected internal void FlushTextBufferSynchronized(Document doc, ISynchronizeInvoke sync, ScriptOutputMessage output, StringBuilder buffer)
         {
             if (buffer.Length <= 0)
                 return;
@@ -94,7 +94,7 @@ namespace SpreadCommander.Common.ScriptEngines
             ExecuteMethodSync(sync, () => FlushTextBuffer(doc, output, buffer));
         }
 
-        protected void FlushTextBufferSynchronized(Document doc, ISynchronizeInvoke sync, Color foregroundColor, Color backgroundColor, StringBuilder buffer)
+        protected internal void FlushTextBufferSynchronized(Document doc, ISynchronizeInvoke sync, Color foregroundColor, Color backgroundColor, StringBuilder buffer)
         {
             if (buffer.Length <= 0)
                 return;
@@ -102,12 +102,12 @@ namespace SpreadCommander.Common.ScriptEngines
             ExecuteMethodSync(sync, () => FlushTextBuffer(doc, foregroundColor, backgroundColor, buffer));
         }
 
-        protected virtual void FlushTextBuffer(Document doc, ScriptOutputMessage output, StringBuilder buffer)
+        protected internal virtual void FlushTextBuffer(Document doc, ScriptOutputMessage output, StringBuilder buffer)
         {
             FlushTextBuffer(doc, output.ForegroundColor, output.BackgroundColor, buffer);
         }
 
-        protected virtual void FlushTextBuffer(Document doc, Color foregroundColor, Color backgroundColor, StringBuilder buffer)
+        protected internal virtual void FlushTextBuffer(Document doc, Color foregroundColor, Color backgroundColor, StringBuilder buffer)
         {
             if (buffer.Length <= 0)
                 return;
@@ -469,7 +469,7 @@ namespace SpreadCommander.Common.ScriptEngines
                                     if (strBuffer2 == string.Empty)
                                         strBuffer2 = "0";
 
-                                    int sgrCode = 0;
+                                    int sgrCode;
                                     string sgrValue = null;
 
                                     var sgrP = strBuffer2.IndexOfAny(new char[] { ';', ':' });

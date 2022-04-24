@@ -151,6 +151,8 @@ namespace SpreadCommander.Documents.Dialogs
                         else
                             newNames.Add(newName);
                     }
+                    else if (p >= 0)
+                        newNames.Add(tableName[0..p]);
                     else
                         newNames.Add(tableName);
                 }

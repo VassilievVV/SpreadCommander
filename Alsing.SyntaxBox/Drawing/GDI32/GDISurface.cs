@@ -117,10 +117,16 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
             set { NativeMethods.SetBkMode(mhDC, value ? 1 : 2); }
         }
 
+        //VVV
+        private GDIFont _Font;
         public GDIFont Font
         {
             get
             {
+                //VVV
+                if (_Font != null)
+                    return _Font;
+
                 var tm = new GDITextMetric();
                 var fontname = new string(' ', 48);
 
@@ -137,10 +143,16 @@ namespace Alsing.Windows.Forms.Drawing.GDI32
                              Size = ((int) (((tm.tmMemoryHeight)/(double) tm.tmDigitizedAspectY)*72))
                          };
 
+                //VVV
+                _Font = gf;
                 return gf;
             }
             set
             {
+                //VVV
+                //Do not dispose old font
+                _Font = value;
+
                 IntPtr res = NativeMethods.SelectObject(mhDC, value.hFont);
                 if (_OldFont == IntPtr.Zero)
                     _OldFont = res;

@@ -74,7 +74,7 @@ namespace SpreadCommander.Common.Script.Chart
         protected virtual void InitializeChart()
         {
             var dataSource = GetDataSource(_DataSource,
-                new DataSourceParameters() { IgnoreErrors = _ChartOptions.IgnoreErrors, Columns = _ChartOptions.SelectColumns, SkipColumns = _ChartOptions.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = _ChartOptions.IgnoreErrors, Columns = _ChartOptions.SelectColumns, SkipColumns = _ChartOptions.SkipColumns, DeedleFrameKeys = _ChartOptions.DeedleFrameKeys });
 
             var chart = CreateChart(_ChartOptions);
             chart.Tag = this;

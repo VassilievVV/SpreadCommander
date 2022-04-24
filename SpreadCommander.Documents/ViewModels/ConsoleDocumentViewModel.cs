@@ -338,7 +338,7 @@ namespace SpreadCommander.Documents.ViewModels
                 var file = new ModifiedFileItem()
                 {
                     FileName = this.FileName,
-                    Title    = Path.GetFileNameWithoutExtension(this.FileName),
+                    Title    = Path.GetFileName(this.FileName),
                     Tag      = CustomControlID
                 };
                 files.Insert(0, file);

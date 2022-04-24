@@ -24,15 +24,17 @@ namespace SpreadCommander.Common.Script
         #region DataSourceParameters
         public class DataSourceParameters
         {
-            public bool IgnoreErrors    { get; set; }
+            public bool IgnoreErrors        { get; set; }
 
-            public string[] Columns     { get; set; }
+            public string[] Columns         { get; set; }
 
-            public string[] SkipColumns { get; set; }
+            public string[] SkipColumns     { get; set; }
 
-            public bool SkipAutoID      { get; set; }
+            public bool SkipAutoID          { get; set; }
 
-            public Action DisposeAction { get; set; }
+            public Action DisposeAction     { get; set; }
+
+            public string[] DeedleFrameKeys { get; set; }
         }
         #endregion
 
@@ -75,9 +77,9 @@ namespace SpreadCommander.Common.Script
 
         protected virtual void ExecuteSynchronized(Action action)
         {
-            var sync = Host?.Engine?.SynchronizeInvoke ?? BaseScriptEngine.StaticSynchronizeInvoke;
-            if (sync?.InvokeRequired ?? false)
-                _ = sync.Invoke(action, Array.Empty<object>());
+            var engine = Host?.Engine;
+            if (engine != null)
+                engine.ExecuteSynchronized(action);
             else
                 action();
         }
@@ -106,6 +108,15 @@ namespace SpreadCommander.Common.Script
                 result = dataTable.CreateDataReader();
             else if (dataSource is DataView dataView)
                 result = new DataViewReader(dataView);
+            else if (Utils.IsSubClassOfGeneric(dataSource.GetType(), typeof(Deedle.Frame<,>)))
+            {
+                var keys = parameters.DeedleFrameKeys ?? new string[] { "_OID" };
+
+                var frameTypes = dataSource.GetType().GetGenericArguments();
+                var tableFrame = typeof(Deedle.FrameExtensions).GetMethod("ToDataTable").MakeGenericMethod(frameTypes[0], frameTypes[1]).Invoke(null, new object[] { dataSource, keys }) as DataTable;
+
+                result = tableFrame.CreateDataReader();
+            }
             else
             {
                 if (dataSource is IListSource listSource)
@@ -127,7 +138,8 @@ namespace SpreadCommander.Common.Script
             {
                 return obj is IList || obj is IListSource ||
                     obj is DbDataReader ||
-                    obj is DataTable || obj is DataView;
+                    obj is DataTable || obj is DataView ||
+                    Utils.IsSubClassOfGeneric(obj.GetType(), typeof(Deedle.Frame<,>));
             }
         }
 

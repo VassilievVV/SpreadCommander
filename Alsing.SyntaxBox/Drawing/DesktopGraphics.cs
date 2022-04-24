@@ -20,6 +20,8 @@ namespace Alsing.Windows.Forms.Drawing
         public void Dispose()
         {
             NativeMethods.ReleaseDC(handle, hdc);
+            //VVV
+            Graphics.Dispose();
         }
     }
 }

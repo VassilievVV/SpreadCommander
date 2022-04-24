@@ -42,7 +42,7 @@ namespace SpreadCommander.Common.ScriptEngines
                 typeof(WriteHtmlCmdlet),
                 typeof(WriteImageCmdlet),
                 typeof(WriteContentCmdlet),
-                typeof(WriteLatexCmdlet),
+                typeof(WriteLaTeXCmdlet),
                 typeof(AddBookCharacterStyleCmdlet),
                 typeof(AddBookParagraphStyleCmdlet),
                 typeof(SetBookDefaultCharacterPropertiesCmdlet),

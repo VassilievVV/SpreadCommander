@@ -54,6 +54,26 @@ a + b         // .. but evaluating this line shows the message box!
              */
         }
 
+        public override void ExecuteSynchronized(Action action)
+        {
+            var action2 = () =>
+            {
+                _Output.DoWrite();
+                _Error.DoWrite();
+                try
+                {
+                    action();
+                }
+                finally
+                {
+                    _Output.DoWrite();
+                    _Error.DoWrite();
+                }
+            };
+
+            base.ExecuteSynchronized(action2);
+        }
+
         public override void Start() 
         {
             var inStream  = new StringReader(string.Empty);
@@ -62,21 +82,30 @@ a + b         // .. but evaluating this line shows the message box!
 
             var config  = Shell.FsiEvaluationSession.GetDefaultConfiguration();
 #pragma warning disable CRRSP06 // A misspelled word has been found
-            _Session = Shell.FsiEvaluationSession.Create(config, new string[] { "fsi.exe", "--noninteractive" }, inStream, _Output, _Error, null, null);
+#pragma warning disable CRRSP05 // A misspelled word has been found
+            _Session = Shell.FsiEvaluationSession.Create(config, new string[] { "fsi.exe", "--noninteractive", "--multiemit-", "--optimize+", /*"--shadowcopyreferences+",*/
+                "--consolecolors", "--define:SPREADCOMMANDER"}, inStream, _Output, _Error, true, null);
+#pragma warning restore CRRSP05 // A misspelled word has been found
 #pragma warning restore CRRSP06 // A misspelled word has been found
 
             string prolog =
-$@"#r ""SpreadCommander.Common.dll"";
+$@"#I {QuotePath(Path.GetDirectoryName(typeof(System.Drawing.Bitmap).Assembly.Location))};
+#r ""System.Drawing.dll"";
+#r ""System.Drawing.Common.dll"";
+
+#r ""SpreadCommander.Common.dll"";
 #r ""MathNet.Numerics.dll"";
 #r ""MathNet.Symbolics.dll"";
-#r ""MathNet.Numerics.Data.Text.dll""
+#r ""MathNet.Numerics.Data.Text.dll"";
 #r ""Deedle.dll"";
+#r ""ILGPU.dll"";
+#r ""ILGPU.Algorithms.dll"";
 
-# I {QuotePath(Project.Current.ProjectPath)};
-# I {QuotePath(Path.Combine(Project.Current.ProjectPath, "bin"))};
-# I {QuotePath(Path.Combine(Project.Current.ProjectPath, "Modules"))};
+#I {QuotePath(Project.Current.ProjectPath)};
+#I {QuotePath(Path.Combine(Project.Current.ProjectPath, "bin"))};
+#I {QuotePath(Path.Combine(Project.Current.ProjectPath, "Modules"))};
 
-            open System;
+open System;
 
 open SpreadCommander.Common.Script;
 open SpreadCommander.Common.Script.Book;
@@ -179,13 +208,10 @@ open SpreadCommander.Common.Script.Map;
                 }
 
                 session.EvalInteraction(command, CancellationToken.None);
-
-                if (!(silent || Silent))
-                    _Output.WriteInvitation();
             }
             catch (Exception)
             {
-                //Do nothing. Error was reported in _Error writer.
+                //Do nothing Error was reported in _Error writer.
             }
             finally
             {
@@ -193,6 +219,9 @@ open SpreadCommander.Common.Script.Map;
                 FireExecutionFinished();
                 GC.Collect();
             }
+
+            if (!(silent || Silent))
+                _Output.WriteInvitation();
 
 
             static string GetFirstLine(string value, int maxLength)

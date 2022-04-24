@@ -122,15 +122,11 @@ namespace SpreadCommander.Common.Code
 				}
 				else if (sp1)
 				{
-					if (char.IsWhiteSpace(c2))	//VVV
-						return 1;
-					return -1;
+					return 1;	//VVV
 				}
 				else if (sp2)
 				{
-					if (char.IsWhiteSpace(c1))	//VVV
-						return -1;
-					return 1;
+					return -1;	//VVV
 				}
 				
 				i1++;

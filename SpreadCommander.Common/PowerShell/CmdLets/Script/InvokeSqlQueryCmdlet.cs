@@ -48,6 +48,9 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
         [Parameter(HelpMessage = "Return DbDataReader instead of DataTable. Can be used to export data into database.")]
         public SwitchParameter AsDataReader { get; set; }
 
+        [Parameter(HelpMessage = "Return Deedle Frame instead of DataTable.")]
+        public SwitchParameter AsDeedleFrame { get; set; }
+
 
         private readonly StringBuilder _Messages = new ();
 
@@ -67,7 +70,7 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
             if (string.IsNullOrWhiteSpace(Query))
                 throw new Exception("Cannot load script text.");
 
-            Connection conn = null;
+            Connection conn      = null;
             bool closeConnection = false;
             if (Connection != null)
                 conn = ConnectionFactory.CreateFromDbConnection(Connection);
@@ -122,11 +125,27 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Script
                     }
                 };
                 reader = new DataReaderWrapper(cmd.ExecuteReader(), readerParameters);
+
+                if (AsDeedleFrame)
+                {
+                    var frame = Deedle.Frame.ReadReader(reader);
+
+                    reader.Dispose();
+                    cmd.Dispose();
+                    if (closeConnection)
+                        conn?.Close();
+
+                    return frame;
+                }
+
                 if (AsDataReader)
                     return reader;
 
                 var table = new DataTable("Query");
                 table.Load(reader);
+
+                reader.Dispose();
+                cmd.Dispose();
 
                 if (closeConnection)
                     conn?.Close();

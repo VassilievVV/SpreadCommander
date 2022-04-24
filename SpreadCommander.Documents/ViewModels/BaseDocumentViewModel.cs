@@ -134,7 +134,7 @@ namespace SpreadCommander.Documents.ViewModels
 
         public void UpdateTitle()
         {
-            SetTitle(!string.IsNullOrWhiteSpace(_FileName) ? Path.GetFileNameWithoutExtension(_FileName) : $"Document {Id}");
+            SetTitle(!string.IsNullOrWhiteSpace(_FileName) ? Path.GetFileName(_FileName) : $"Document {Id}");
         }
 
         private static IDocumentParent _MainDocumentParent;
@@ -270,7 +270,7 @@ namespace SpreadCommander.Documents.ViewModels
             fileName = Project.Current.MapPath(fileName);
             FileName = fileName;
 
-            SetTitle(Path.GetFileNameWithoutExtension(fileName));
+            SetTitle(Path.GetFileName(fileName));
 
             Modified = false;
         }

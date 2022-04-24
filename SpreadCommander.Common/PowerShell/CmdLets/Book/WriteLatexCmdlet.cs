@@ -20,8 +20,8 @@ using SpreadCommander.Common.Code;
 
 namespace SpreadCommander.Common.PowerShell.CmdLets.Book
 {
-    [Cmdlet(VerbsCommunications.Write, "Latex")]
-    public class WriteLatexCmdlet: BaseBookWithCommentsCmdlet
+    [Cmdlet(VerbsCommunications.Write, "LaTeX")]
+    public class WriteLaTeXCmdlet: BaseBookWithCommentsCmdlet
     {
         [Parameter(Position = 0, ValueFromPipeline = true, HelpMessage = "LaTeX strings to write into book.")]
         public string[] Latex { get; set; }

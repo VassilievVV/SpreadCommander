@@ -22,6 +22,9 @@ namespace SpreadCommander.Common.Script.Chart.Diagrams
         [Description("Ignore errors thrown when getting property values")]
         public bool IgnoreErrors { get; set; }
 
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
+
 #pragma warning disable CRRSP06 // A misspelled word has been found
         [Description("Template file - .scchart file created in Chart document")]
 #pragma warning restore CRRSP06 // A misspelled word has been found

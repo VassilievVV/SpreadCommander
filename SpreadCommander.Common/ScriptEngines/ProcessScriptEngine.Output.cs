@@ -140,7 +140,7 @@ namespace SpreadCommander.Common.ScriptEngines
             FlushTextBufferSynchronized(doc, sync, output, buffer);
         }
 
-        protected override void FlushTextBuffer(Document doc, ScriptOutputMessage output, StringBuilder buffer)
+        protected internal override void FlushTextBuffer(Document doc, ScriptOutputMessage output, StringBuilder buffer)
         {
             base.FlushTextBuffer(doc, output, buffer);
         }

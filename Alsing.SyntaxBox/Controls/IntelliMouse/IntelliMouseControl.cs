@@ -102,6 +102,29 @@ namespace Alsing.Windows.Forms.Controls.IntelliMouse
 
         #region CONSTRUCTOR
 
+        protected readonly static Cursor MoveDownCursor;
+        protected readonly static Cursor MoveUpCursor;
+        protected readonly static Cursor MoveUpDownCursor;
+
+        //VVV
+        static IntelliMouseControl()
+        {
+            using (var msMoveDown = new MemoryStream(Properties.Resources.MoveDown))
+            {
+                MoveDownCursor = new Cursor(msMoveDown);
+            }
+
+            using (var msMoveUp = new MemoryStream(Properties.Resources.MoveUp))
+            {
+                MoveDownCursor = new Cursor(msMoveUp);
+            }
+
+            using (var msMoveUpDown = new MemoryStream(Properties.Resources.MoveUpDown))
+            {
+                MoveUpDownCursor = new Cursor(msMoveUpDown);
+            }
+        }
+
         public IntelliMouseControl()
         {
             InitializeComponent();
@@ -121,6 +144,8 @@ namespace Alsing.Windows.Forms.Controls.IntelliMouse
             {
                 //VVV - comment output
                 //Console.WriteLine("disposing intellimouse");
+
+                picImage?.Dispose();
             }
             catch {}
 #endif
@@ -162,7 +187,9 @@ namespace Alsing.Windows.Forms.Controls.IntelliMouse
         {
             this.components = new System.ComponentModel.Container();
             var resources = new System.Resources.ResourceManager(typeof (IntelliMouseControl));
-            this.tmrFeedback = new Timer();
+            //VVV
+            //this.tmrFeedback = new Timer();
+            this.tmrFeedback = new Timer(this.components);
             this.picImage = new System.Windows.Forms.PictureBox();
             this.regionHandler1 = new Alsing.Windows.Forms.Controls.RegionHandler.RegionHandler(this.components);
             // 
@@ -232,20 +259,26 @@ namespace Alsing.Windows.Forms.Controls.IntelliMouse
 
             if (dY > 16)
             {
-                var ms = new MemoryStream(Properties.Resources.MoveDown);
-                Cursor = new Cursor(ms);
+                //VVV
+                //var ms = new MemoryStream(Properties.Resources.MoveDown);
+                //Cursor = new Cursor(ms);
+                Cursor = MoveDownCursor;
                 CurrentDelta.Y -= 16;
             }
             else if (dY < -16)
             {
-                var ms = new MemoryStream(Properties.Resources.MoveUp);
-                Cursor = new Cursor(ms);
+                //VVV
+                //var ms = new MemoryStream(Properties.Resources.MoveUp);
+                //Cursor = new Cursor(ms);
+                Cursor = MoveUpCursor;
                 CurrentDelta.Y += 16;
             }
             else
             {
-                var ms = new MemoryStream(Properties.Resources.MoveUpDown);
-                Cursor = new Cursor(ms);
+                //VVV
+                //var ms = new MemoryStream(Properties.Resources.MoveUpDown);
+                //Cursor = new Cursor(ms);
+                Cursor = MoveUpDownCursor;
                 CurrentDelta = new Point(0, 0);
             }
         }

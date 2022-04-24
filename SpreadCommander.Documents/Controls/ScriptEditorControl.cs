@@ -300,13 +300,20 @@ namespace SpreadCommander.Documents.Controls
             if (syntaxEditor.ActiveViewControl is not EditViewControl ctrlEdit)
                 return;
 
-            using var dlg = new EditorGotoLineForm(ctrlEdit);
+            Form topForm = FindForm();
+            if (topForm == null)
+                return;
+
+            var EditorTopLeft = syntaxEditor.PointToScreen(new Point(0, 0));
+            using var dlg     = new EditorGotoLineForm(ctrlEdit) { StartPosition = FormStartPosition.Manual };
+            dlg.Left          = topForm.Left + EditorTopLeft.X + Math.Max((syntaxEditor.ClientWidth - dlg.Width) / 2, 0);
+            dlg.Top           = topForm.Top + EditorTopLeft.Y + Math.Max((syntaxEditor.ClientHeight - dlg.Height) / 2, 0);
             dlg.ShowDialog(this);
         }
 
         public void ShowFindDialog(bool replace)
         {
-            if (syntaxEditor.ActiveViewControl == null)
+            if (syntaxEditor.ActiveViewControl is not EditViewControl edit)
                 return;
 
             Form topForm = FindForm();
@@ -314,7 +321,6 @@ namespace SpreadCommander.Documents.Controls
                 return;
 
             string strFind = null;
-            EditViewControl edit = syntaxEditor.ActiveViewControl as EditViewControl;
             if (edit != null)
             {
                 if (edit.Selection != null)
@@ -323,8 +329,8 @@ namespace SpreadCommander.Documents.Controls
                     strFind = edit.Caret.CurrentWord.Text;
             }
 
-            var EditorTopLeft = syntaxEditor.PointToScreen(new Point(0, 0));
-            var dlg           = new EditorFindReplaceForm(edit, strFind, replace);
+            var EditorTopLeft = syntaxEditor.PointToScreen(new Point(0, 0)); 
+            var dlg           = new EditorFindReplaceForm(edit, strFind, replace) { StartPosition = FormStartPosition.Manual };
             dlg.Left          = topForm.Left + EditorTopLeft.X + Math.Max((syntaxEditor.ClientWidth - dlg.Width) / 2, 0);
             dlg.Top           = topForm.Top + EditorTopLeft.Y + Math.Max((syntaxEditor.ClientHeight - dlg.Height) / 2, 0);
 

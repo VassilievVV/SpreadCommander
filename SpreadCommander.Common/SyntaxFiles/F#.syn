@@ -9,10 +9,10 @@
     <!--
     <Scope Start="" End="" Style="Scope" Text="..." />
     -->
-    <Bracket Start="(" End=")" Style="Code" />
-	<Bracket Start="[|" End="|]" Style="Code" />
-    <Bracket Start="[" End="]" Style="Code" />
-    <Bracket Start="{" End="}" Style="Code" />
+    <Scope Start="(" End=")" Style="Code" Text="(...)" />
+    <Scope Start="[|" End="|]" Style="Code" Text="[|...|]" />
+    <Scope Start="[" End="]" Style="Code" Text="[...]" />
+    <Scope Start="{" End="}" Style="Code" Text="{...}" />
     <Bracket Start="&lt;" End="&gt;" Style="Code" />
     
     <!-- Keywords that can exist inside this block -->

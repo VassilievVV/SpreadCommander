@@ -29,6 +29,9 @@ namespace SpreadCommander.Common.Script.Book
         [Description("Ignore errors thrown when getting property values")]
         public bool IgnoreErrors { get; set; }
 
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
+
         [Description("Format conditions for spreadsheet table")]
         public string Formatting { get; set; }
 
@@ -93,7 +96,7 @@ namespace SpreadCommander.Common.Script.Book
             options ??= new DataTableOptions();
 
             var tableDataSource = GetDataSource(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
 
             string htmlTable;
 

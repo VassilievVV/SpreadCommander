@@ -283,7 +283,6 @@ namespace Alsing.Windows.Forms.Controls.EditView
         private void IntelliMouse_EndScroll(object sender, EventArgs e)
         {
             View.YOffset = 0;
-            Redraw();
         }
 
         private void IntelliMouse_Scroll(object sender,
@@ -364,11 +363,18 @@ namespace Alsing.Windows.Forms.Controls.EditView
         }
 
         #region Constructor
+        protected readonly static Cursor FlippedCursor;
+        //VVV
+        static EditViewControl()
+        {
+            using var ms = new MemoryStream(Properties.Resources.FlippedCursor);
+            FlippedCursor = new Cursor(ms);
+        }
 
         /// <summary>
         /// Default constructor for the SyntaxBoxControl
         /// </summary>
-        public EditViewControl(SyntaxBoxControl Parent)
+        public EditViewControl(SyntaxBoxControl Parent): base()
         {
             SyntaxBox = Parent;
 
@@ -942,7 +948,6 @@ namespace Alsing.Windows.Forms.Controls.EditView
             if (View.Action == EditAction.DragText)
             {
                 Cursor = Cursors.Hand;
-                //Cursor.Current = Cursors.Hand;
             }
             else
             {
@@ -954,8 +959,10 @@ namespace Alsing.Windows.Forms.Controls.EditView
                     }
                     else
                     {
-                        var ms = new MemoryStream(Properties.Resources.FlippedCursor);
-                        Cursor = new Cursor(ms);
+                        //VVV - loading cursor without disposing it later produces GDI leaks
+                        //var ms = new MemoryStream(Properties.Resources.FlippedCursor);
+                        //Cursor = new Cursor(ms);
+                        Cursor = FlippedCursor ?? Cursors.Arrow;
                     }
                 }
                 else

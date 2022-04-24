@@ -177,7 +177,10 @@ namespace Alsing.Windows.Forms.Drawing
                     {
                         r.Width --;
                         r.Height --;
-                        g.DrawRectangle(new Pen(BorderColor), r);
+                        //VVV
+                        //g.DrawRectangle(new Pen(BorderColor), r);
+                        using var p = new Pen(BorderColor);
+                        g.DrawRectangle(p, r);
                         break;
                     }
                 case BorderStyle2.FixedDouble:
@@ -274,9 +277,10 @@ namespace Alsing.Windows.Forms.Drawing
 
         public static void DrawDesignTimeLine(Graphics g, int x1, int y1, int x2, int y2)
         {
-            var p = new Pen(SystemColors.ControlDarkDark) {DashOffset = 10, DashStyle = DashStyle.Dash};
+            //VVV - add using
+            using var p = new Pen(SystemColors.ControlDarkDark) {DashOffset = 10, DashStyle = DashStyle.Dash};
             g.DrawLine(p, x1, y1, x2, y2);
-            p.Dispose();
+            //p.Dispose();
         }
 
         public static void DrawGrayImage(Graphics g, Image Image, int X, int Y, float TransparencyFactor)

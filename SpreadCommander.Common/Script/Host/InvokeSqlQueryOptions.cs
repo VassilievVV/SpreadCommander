@@ -57,9 +57,23 @@ namespace SpreadCommander.Common.Script
             }
         }
 
+        public Deedle.Frame<int, string> InvokeSqlQueryAsDeedleFrame(string connectionName, string query, InvokeSqlQueryOptions options = null)
+        {
+            var conn = ConnectionFactory.CreateFromString(connectionName);
+            try
+            {
+                var result = InvokeSqlQueryAsDeedleFrame(GetDbConnection(connectionName), query, options);
+                return result;
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
         public DataTable InvokeSqlQuery(DbConnection connection, string query, InvokeSqlQueryOptions options = null)
         {
-            var reader = InvokeSqlQueryAsDataReader(connection, query, options);
+            using var reader = InvokeSqlQueryAsDataReader(connection, query, options);
             if (reader == null)
                 return null;
 
@@ -129,6 +143,16 @@ namespace SpreadCommander.Common.Script
 
                 throw;
             }
+        }
+
+        public Deedle.Frame<int, string> InvokeSqlQueryAsDeedleFrame(DbConnection connection, string query, InvokeSqlQueryOptions options = null)
+        {
+            using var reader = InvokeSqlQueryAsDataReader(connection, query, options);
+            if (reader == null)
+                return null;
+
+            var frame = Deedle.Frame.ReadReader(reader);
+            return frame;
         }
     }
 }

@@ -32,6 +32,9 @@ namespace SpreadCommander.Common.Script.Spreadsheet
         [Description("Ignore errors thrown when getting property values")]
         public bool IgnoreErrors { get; set; }
 
+        [Description("Deedle frame keys.")]
+        public string[] DeedleFrameKeys { get; set; }
+
         [Description("Merge parameters")]
         public Hashtable Parameters { get; set; }
 
@@ -47,7 +50,7 @@ namespace SpreadCommander.Common.Script.Spreadsheet
         public void OutTemplate(object dataSource, string templateFileName, TemplateOptions options = null)
         {
             var tableDataSource = GetDataSource(dataSource,
-                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns });
+                new DataSourceParameters() { IgnoreErrors = options.IgnoreErrors, Columns = options.SelectColumns, SkipColumns = options.SkipColumns, DeedleFrameKeys = options.DeedleFrameKeys });
 
             options ??= new TemplateOptions();
             var spread = options.Spreadsheet?.Workbook ?? Workbook;
