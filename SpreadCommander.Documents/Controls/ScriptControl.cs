@@ -178,7 +178,9 @@ namespace SpreadCommander.Documents.Controls
             editor.LoadFromFile(dlgOpen.FileName, true);
         }
 
-        public void SaveDocument() => ActiveEditor?.SaveDocument();
+        public void SaveDocument()                => ActiveEditor?.SaveDocument();
+        public void SaveDocumentAs()              => ActiveEditor?.SaveDocumentAs();
+        public void SaveDocument(string fileName) => ActiveEditor?.SaveDocument(fileName);
 
         public void SaveAllDocuments()
         {

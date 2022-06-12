@@ -70,22 +70,23 @@ namespace SpreadCommander.Common.ScriptEngines
             if (Silent)
                 return;
 
+            if (_TaskWrite?.IsCompleted ?? false)
+                _TaskWrite = null;
+
             lock (LockObject)
             {
                 _Output.Append(value);
+
+                _LastOutput = DateTime.Now;
+
+                if (_TaskWrite != null)
+                    return;
             }
-
-            _LastOutput = DateTime.Now;
-
-            if (_TaskWrite != null)
-                return;
 
             _TaskWrite = Task.Run(() =>
             {
-                var now = DateTime.Now;
-
                 //Wait next output
-                while ((now - _LastOutput < _IntervalCache) && (now - _LastWrite < _IntervalForceOutput))
+                while ((DateTime.Now - _LastOutput < _IntervalCache) && (DateTime.Now - _LastWrite < _IntervalForceOutput))
                     Thread.Sleep(_IntervalCache);
 
                 lock (LockObject)

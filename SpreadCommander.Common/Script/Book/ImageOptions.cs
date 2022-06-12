@@ -14,9 +14,6 @@ namespace SpreadCommander.Common.Script.Book
 {
     public class ImageOptions : CommentOptions
     {
-        [Description("Write System.Bitmap.Image object.")]
-        public Image Image { get; set; }
-
         [Description("Add line breaks after each line or no.")]
         public bool NoLineBreaks { get; set; }
 
@@ -49,11 +46,24 @@ namespace SpreadCommander.Common.Script.Book
 
     public partial class SCBook
     {
-        public void WriteImage(string fileName, ImageOptions options = null) =>
-            ExecuteSynchronized(options, () => DoWriteImage(fileName, options));
-
-        protected void DoWriteImage(string fileName, ImageOptions options)
+        public void WriteImage(string fileName, ImageOptions options = null)
         {
+            fileName  = Project.Current.MapPath(fileName);
+            var image = Image.FromFile(fileName);
+
+            ExecuteSynchronized(options, () => DoWriteImage(image, options));
+        }
+
+        public void WriteImage(Image image, ImageOptions options = null) =>
+            ExecuteSynchronized(options, () => DoWriteImage(image, options));
+
+        protected void DoWriteImage(Image bmp, ImageOptions options)
+        {
+            if (bmp == null)
+                throw new ArgumentNullException(nameof(bmp));
+
+            bmp = bmp.Clone() as Image;
+
             options ??= new ImageOptions();
 
             var book = options.Book?.Document ?? Document;
@@ -62,18 +72,7 @@ namespace SpreadCommander.Common.Script.Book
             {
                 DocumentPosition rangeStart = null, rangeEnd = null;
 
-                DocumentImage image;
-                if (options.Image != null)
-                    image = book.Images.Append(options.Image);
-                else if (!string.IsNullOrWhiteSpace(fileName))
-                {
-                    fileName   = Project.Current.MapPath(fileName);
-
-                    var source = DocumentImageSource.FromFile(fileName);
-                    image      = book.Images.Append(source);
-                }
-                else
-                    throw new Exception("WriteImage - unknown input object.");
+                DocumentImage image = book.Images.Append(bmp);
 
                 image.ScaleX = options.ScaleX;
                 image.ScaleY = options.ScaleY;

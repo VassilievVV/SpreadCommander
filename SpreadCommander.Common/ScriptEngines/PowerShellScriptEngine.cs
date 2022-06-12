@@ -171,6 +171,11 @@ $@"Unknown error : {e.InvocationInfo?.InvocationName}
             base.Stop();
         }
 
+        public override void Cancel()
+        {
+            _Pipe.Stop();
+        }
+
         public void AddVariable(string name, object value)
         {
             var runspace = _Runspace ?? throw new Exception("Runspace is not initialized.");

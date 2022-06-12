@@ -471,6 +471,11 @@ namespace SpreadCommander.Documents.Views
             model.Save();
         }
 
+        private void BarSaveAs_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _ScriptEditor.SaveDocumentAs();
+        }
+
         public string CommandText => _ScriptEditor?.CommandText;
 
         private void ExecuteCommand(string command)

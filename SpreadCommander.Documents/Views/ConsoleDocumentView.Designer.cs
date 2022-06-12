@@ -30,17 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConsoleDocumentView));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer1 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer2 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer3 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer4 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
-            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer5 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer6 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer7 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer8 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer9 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
+            DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer widgetDockingContainer10 = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetDockingContainer();
             this.docScript = new DevExpress.XtraBars.Docking2010.Views.Widget.Document(this.components);
             this.docCommandLine = new DevExpress.XtraBars.Docking2010.Views.Widget.Document(this.components);
             this.docConsole = new DevExpress.XtraBars.Docking2010.Views.Widget.Document(this.components);
@@ -90,6 +90,7 @@
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.viewEditors = new DevExpress.XtraBars.Docking2010.Views.Widget.WidgetView(this.components);
             this.svgFormIcon = new DevExpress.Utils.SvgImageCollection(this.components);
+            this.barSaveAs = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.docScript)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.docCommandLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.docConsole)).BeginInit();
@@ -110,7 +111,7 @@
             this.docScript.Caption = "Script";
             this.docScript.ControlName = "docScript";
             this.docScript.Footer = "";
-            this.docScript.FreeLayoutHeight.UnitValue = 1.4543171339287846D;
+            this.docScript.FreeLayoutHeight.UnitValue = 1.6D;
             this.docScript.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("docScript.ImageOptions.SvgImage")));
             this.docScript.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.docScript.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
@@ -120,7 +121,7 @@
             // 
             this.docCommandLine.Caption = "Command line";
             this.docCommandLine.ControlName = "docCommandLine";
-            this.docCommandLine.FreeLayoutHeight.UnitValue = 0.54568286607121563D;
+            this.docCommandLine.FreeLayoutHeight.UnitValue = 0.4D;
             this.docCommandLine.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("docCommandLine.ImageOptions.SvgImage")));
             this.docCommandLine.ImageOptions.SvgImageSize = new System.Drawing.Size(16, 16);
             this.docCommandLine.Properties.AllowClose = DevExpress.Utils.DefaultBoolean.False;
@@ -175,9 +176,10 @@
             this.barClearSpreadsheet,
             this.barClearGrid,
             this.barExecuteScript,
-            this.barRecreateEngine});
+            this.barRecreateEngine,
+            this.barSaveAs});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 273;
+            this.ribbonControl.MaxItemId = 274;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPageEdit,
@@ -346,13 +348,13 @@
             this.barExecute.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.Execute;
             this.barExecute.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F5);
             this.barExecute.Name = "barExecute";
-            toolTipTitleItem1.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.Execute;
-            toolTipTitleItem1.Text = "Execute";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Execute whole script or selection.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barExecute.SuperTip = superToolTip1;
+            toolTipTitleItem3.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.Execute;
+            toolTipTitleItem3.Text = "Execute";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "Execute whole script or selection.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.barExecute.SuperTip = superToolTip3;
             this.barExecute.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarExecute_ItemClick);
             // 
             // barCancel
@@ -399,13 +401,13 @@
             this.barExecuteScript.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ExecuteScript;
             this.barExecuteScript.ItemShortcut = new DevExpress.XtraBars.BarShortcut(System.Windows.Forms.Keys.F8);
             this.barExecuteScript.Name = "barExecuteScript";
-            toolTipTitleItem2.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ExecuteScript;
-            toolTipTitleItem2.Text = "Execute script";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = resources.GetString("toolTipItem2.Text");
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barExecuteScript.SuperTip = superToolTip2;
+            toolTipTitleItem4.ImageOptions.SvgImage = global::SpreadCommander.Documents.Properties.Resources.ExecuteScript;
+            toolTipTitleItem4.Text = "Execute script";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = resources.GetString("toolTipItem4.Text");
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.barExecuteScript.SuperTip = superToolTip4;
             this.barExecuteScript.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarExecuteScript_ItemClick);
             // 
             // barRecreateEngine
@@ -433,6 +435,7 @@
             this.ribbonPageGroupFile.ItemLinks.Add(this.barNew);
             this.ribbonPageGroupFile.ItemLinks.Add(this.barOpen);
             this.ribbonPageGroupFile.ItemLinks.Add(this.barSave);
+            this.ribbonPageGroupFile.ItemLinks.Add(this.barSaveAs);
             this.ribbonPageGroupFile.Name = "ribbonPageGroupFile";
             this.ribbonPageGroupFile.Text = "File";
             // 
@@ -549,10 +552,10 @@
             // 
             // ribbonStatusBar
             // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 885);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 883);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(1305, 22);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(1305, 24);
             // 
             // documentManager
             // 
@@ -581,19 +584,21 @@
             this.viewEditors.LayoutMode = DevExpress.XtraBars.Docking2010.Views.Widget.LayoutMode.FreeLayout;
             this.viewEditors.LoadingIndicatorProperties.ShowCaption = false;
             this.viewEditors.LoadingIndicatorProperties.ShowDescription = false;
-            widgetDockingContainer3.Element = this.docScript;
-            widgetDockingContainer4.Element = this.docCommandLine;
-            widgetDockingContainer2.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            widgetDockingContainer3,
-            widgetDockingContainer4});
-            widgetDockingContainer2.Orientation = System.Windows.Forms.Orientation.Vertical;
-            widgetDockingContainer2.Size.Width.UnitValue = 0.8D;
-            widgetDockingContainer5.Element = this.docConsole;
-            widgetDockingContainer1.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            widgetDockingContainer2,
-            widgetDockingContainer5});
+            widgetDockingContainer8.Element = this.docScript;
+            widgetDockingContainer9.Element = this.docCommandLine;
+            widgetDockingContainer9.Size.Height.UnitValue = 0.4D;
+            widgetDockingContainer7.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
+            widgetDockingContainer8,
+            widgetDockingContainer9});
+            widgetDockingContainer7.Orientation = System.Windows.Forms.Orientation.Vertical;
+            widgetDockingContainer7.Size.Width.UnitValue = 0.8D;
+            widgetDockingContainer10.Element = this.docConsole;
+            widgetDockingContainer10.Size.Width.UnitValue = 1.2D;
+            widgetDockingContainer6.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
+            widgetDockingContainer7,
+            widgetDockingContainer10});
             this.viewEditors.RootContainer.Nodes.AddRange(new DevExpress.XtraBars.Docking2010.Views.Tabbed.DockingContainer[] {
-            widgetDockingContainer1});
+            widgetDockingContainer6});
             this.viewEditors.RootContainer.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.viewEditors.Style = DevExpress.XtraBars.Docking2010.Views.DockingViewStyle.Light;
             this.viewEditors.UseDocumentSelector = DevExpress.Utils.DefaultBoolean.True;
@@ -621,6 +626,14 @@
             this.svgFormIcon.Add("Script_SQL", ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgFormIcon.Script_SQL"))));
             this.svgFormIcon.Add("Script_White", ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgFormIcon.Script_White"))));
             this.svgFormIcon.Add("Script_Yellow", ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("svgFormIcon.Script_Yellow"))));
+            // 
+            // barSaveAs
+            // 
+            this.barSaveAs.Caption = "Save As";
+            this.barSaveAs.Id = 273;
+            this.barSaveAs.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barSaveAs.ImageOptions.SvgImage")));
+            this.barSaveAs.Name = "barSaveAs";
+            this.barSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BarSaveAs_ItemClick);
             // 
             // ConsoleDocumentView
             // 
@@ -701,5 +714,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageClear;
         private DevExpress.XtraBars.BarButtonItem barExecuteScript;
         private DevExpress.XtraBars.BarButtonItem barRecreateEngine;
+        private DevExpress.XtraBars.BarButtonItem barSaveAs;
     }
 }

@@ -18,10 +18,14 @@ namespace SpreadCommander.Common.ScriptEngines
                 return;
 
             (var fileResults, var _, var _) = session.ParseAndCheckInteraction(text);
+
+            var scriptErrors = new List<ScriptParseError>();
             
             if (fileResults.Diagnostics != null)
                 foreach (var scriptError in fileResults.Diagnostics)
                     AddDiagnostic(scriptError);
+
+            errors.AddRange(scriptErrors.Distinct().OrderBy(err => err.StartLineNumber).ThenBy(err => err.StartColumnNumber));
 
 
             void AddDiagnostic(FSharpDiagnostic diagnostic)
@@ -35,7 +39,7 @@ namespace SpreadCommander.Common.ScriptEngines
                     EndLineNumber     = diagnostic.EndLine + 1,
                     EndColumnNumber   = diagnostic.EndColumn
                 };
-                errors.Add(error);
+                scriptErrors.Add(error);
             }
         }
     }

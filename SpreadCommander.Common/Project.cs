@@ -192,7 +192,7 @@ namespace SpreadCommander.Common
             if (!string.IsNullOrWhiteSpace(fileName) && fileName.StartsWith(projectPath, StringComparison.CurrentCultureIgnoreCase) &&
                 fileName.Length > projectPath.Length)
             {
-                int startPos = projectPath.Length + 1;
+                int startPos = projectPath.Length;
                 while (fileName.Length > startPos && (fileName[startPos] == '\\' || fileName[startPos] == '/'))
                     startPos++;
 

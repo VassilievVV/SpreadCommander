@@ -25,8 +25,11 @@ namespace SpreadCommander.Common.ScriptEngines
 
         protected Shell.FsiEvaluationSession _Session;
 
+        protected StringReader     _InStream;
         protected ScriptTextWriter _Output;
         protected ScriptTextWriter _Error;
+
+        protected CancellationTokenSource _CancellationTokenSource;
 
         protected ScriptHost _Host;
 
@@ -76,15 +79,15 @@ a + b         // .. but evaluating this line shows the message box!
 
         public override void Start() 
         {
-            var inStream  = new StringReader(string.Empty);
-            _Output       = new ScriptTextWriter(this, false);
-            _Error        = new ScriptTextWriter(this, true);
+            _InStream  = new StringReader(string.Empty);
+            _Output    = new ScriptTextWriter(this, false);
+            _Error     = new ScriptTextWriter(this, true);
 
             var config  = Shell.FsiEvaluationSession.GetDefaultConfiguration();
 #pragma warning disable CRRSP06 // A misspelled word has been found
 #pragma warning disable CRRSP05 // A misspelled word has been found
             _Session = Shell.FsiEvaluationSession.Create(config, new string[] { "fsi.exe", "--noninteractive", "--multiemit-", "--optimize+", /*"--shadowcopyreferences+",*/
-                "--consolecolors", "--define:SPREADCOMMANDER"}, inStream, _Output, _Error, true, null);
+                "--consolecolors", "--define:SPREADCOMMANDER" }, _InStream, _Output, _Error, true, null);
 #pragma warning restore CRRSP05 // A misspelled word has been found
 #pragma warning restore CRRSP06 // A misspelled word has been found
 
@@ -170,6 +173,12 @@ open SpreadCommander.Common.Script.Map;
             }
 
             _Session = null;
+            _CancellationTokenSource?.Dispose();
+            _CancellationTokenSource = null;
+
+            _Output?.Dispose();
+            _Error?.Dispose();
+            _InStream?.Dispose();
 
             base.Stop();
 
@@ -183,6 +192,17 @@ open SpreadCommander.Common.Script.Map;
 
                 disposable.Dispose();
             }
+        }
+
+        public override void Cancel()
+        {
+            //_Session?.Interrupt();
+
+            _CancellationTokenSource?.Cancel();
+            _CancellationTokenSource?.Dispose();
+            _CancellationTokenSource = null;
+
+            GC.Collect();
         }
 
         public override void SendCommand(string command) => SendCommand(command, ExecutionType == ScriptExecutionType.Script);
@@ -207,7 +227,10 @@ open SpreadCommander.Common.Script.Map;
                     _Output.WriteInvitation(firstLine);
                 }
 
-                session.EvalInteraction(command, CancellationToken.None);
+                _CancellationTokenSource?.Dispose();
+                _CancellationTokenSource = new CancellationTokenSource();
+
+                session.EvalInteraction(command, _CancellationTokenSource.Token);
             }
             catch (Exception)
             {

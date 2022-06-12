@@ -181,6 +181,11 @@ namespace SpreadCommander.Common.ScriptEngines
             }
         }
 
+        public override void Cancel()
+        {
+            SendCommand("\u0003");	//Ctr+C
+        }
+
         public override void SendCommand(string command)
         {
             lock (_SyncObject)
@@ -277,7 +282,15 @@ namespace SpreadCommander.Common.ScriptEngines
                 if (reader.Peek() < 0)
                     FlushBuffer();
 
-                iChar = reader.Read();
+                try
+                {
+                    iChar = reader.Read();
+                }
+                catch (Exception)
+                {
+                    //Problems with pipe
+                    iChar = -1;
+                }
                 if (iChar < 0)
                     break;
                 c = (char)iChar;

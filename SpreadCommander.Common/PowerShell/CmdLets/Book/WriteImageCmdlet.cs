@@ -116,13 +116,13 @@ namespace SpreadCommander.Common.PowerShell.CmdLets.Book
                 {
                     DocumentImage image;
                     if (line is Image img)
-                        image = book.Images.Append(img);
+                        image = book.Images.Append(img.Clone() as Image);
                     else if (line is string strLine)
                     {
                         var fileName = Project.Current.MapPath(strLine);
 
                         var source = DocumentImageSource.FromFile(fileName);
-                        image = book.Images.Append(source);
+                        image      = book.Images.Append(source);
                     }
                     else
                         throw new Exception("WriteImage - unknown input object.");

@@ -18,6 +18,12 @@ Map cmdlets use Bing and OpenStreetMap and send requests to corresponding web se
 
 ## UPDATES
 
+### Version 2.4
+- Book's WriteImage in both F# and PowerShell now adds cloned image to the Book. If System.Drawing.Image (not filename) was passed to this method, it needs to be disposed.
+- Updated Cancelling scripts.
+- Third-party components are updated.
+- Minor updates and fixes.
+
 ### Version 2.3
 - Update F# engine. ILGPU package is included.
 - Fix more GDI leaks in syntax editor.

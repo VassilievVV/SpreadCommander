@@ -356,7 +356,7 @@
             this.barNewDashboardPowerShellDocument,
             this.barNewDashboardFSharpDocument});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 10;
+            this.ribbonControl.MaxItemId = 11;
             this.ribbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.PageHeaderItemLinks.Add(this.barDockingMenuItem);
@@ -372,6 +372,7 @@
             this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewPivotDocument);
             this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewDashboardDocument);
             this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewPSScriptDocument, true);
+            this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewFSharpScriptDocument);
             this.ribbonControl.QuickToolbarItemLinks.Add(this.barNewSqlScriptDocument);
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
             this.ribbonControl.ShowSearchItem = true;

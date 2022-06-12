@@ -414,26 +414,36 @@ namespace SpreadCommander.Documents.Controls
         }
 
         private void SaveDocument(object sender, KeyboardActionEventArgs args) => SaveDocument();
-        public void SaveDocument()
+        public bool SaveDocument()
         {
             var fileName = FileName;
 
             if (string.IsNullOrWhiteSpace(fileName))
             {
                 if (dlgSave.ShowDialog(ParentForm) != DialogResult.OK)
-                    return;
+                    return false;
 
                 fileName = dlgSave.FileName;
             }
 
             SaveDocument(fileName);
+            return true;
+        }
+
+        public bool SaveDocumentAs()
+        {
+            if (dlgSave.ShowDialog(ParentForm) != DialogResult.OK)
+                return false;
+
+            SaveDocument(dlgSave.FileName);
+            return true;
         }
 
         public void SaveDocument(string fileName)
         {
             syntaxEditor.Save(fileName);
             syntaxDocument.Modified = false;
-            FileName = fileName;
+            FileName                = fileName;
         }
 
         public void LoadFromFile(string fileName, bool chooseSyntax = true)

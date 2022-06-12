@@ -182,7 +182,14 @@ namespace SpreadCommander.Common.ScriptEngines
 
         public virtual void Stop() 
         {
+            //Override in descendants
             GC.Collect();
+        }
+
+        public virtual void Cancel()
+        {
+            Stop();
+            Start();
         }
 
         public virtual void Dispose()

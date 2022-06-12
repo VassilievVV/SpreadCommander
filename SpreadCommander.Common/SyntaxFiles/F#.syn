@@ -158,6 +158,12 @@
           async
           lock
           
+          failwith
+          invalidArg
+          nameof
+          raise
+          reraise
+          
           Host
           Book
           Spreadsheet
@@ -173,7 +179,7 @@
     <Operators>
       <PatternGroup name="Operators" Style="Operator">
         <Patterns>
-            [ ] { } ( ) | = + - * / % ** &lt;&gt; &lt; &gt; &lt;= &gt;= &amp;&amp; || not &amp;&amp;&amp; ||| ^ ^^ ^^^ ~ ~~ ~~~ &lt;&lt;&lt; &gt;&gt;&gt; |&gt; ||&gt; |||&gt; &lt;| &lt;|| &lt;|||
+            [ ] { } ( ) | = + - * / % ** &lt;&gt; &lt; &gt; &lt;= &gt;= &amp;&amp; || not &amp;&amp;&amp; ||| ^ ^^ ^^^ ~ ~~ ~~~ &lt;&lt;&lt; &gt;&gt;&gt; |&gt; ||&gt; |||&gt; &lt;| &lt;|| &lt;||| :? :?&gt;
         </Patterns>
       </PatternGroup>
     </Operators>

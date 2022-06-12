@@ -261,9 +261,8 @@ namespace SpreadCommander.Documents.ViewModels
         {
             await Task.Run(() =>
             {
-                Engine.Stop();
+                Engine.Cancel();
             });
-            StartEngine();
         }
 
         public async void ExecuteScript(string script)

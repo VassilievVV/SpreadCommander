@@ -357,7 +357,18 @@ namespace SpreadCommander.Documents.Views
 
         private void BarSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _SqlEditor?.SaveDocument();
+            if (_SqlEditor?.SaveDocument() != true)
+                return;
+
+            var fluent = mvvmContext.OfType<SqlScriptDocumentViewModel>();
+            fluent.ViewModel.FileName = _SqlEditor.FileName;
+            fluent.ViewModel.Modified = false;
+        }
+
+        private void BarSaveAs_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (_SqlEditor?.SaveDocumentAs() != true)
+                return;
 
             var fluent = mvvmContext.OfType<SqlScriptDocumentViewModel>();
             fluent.ViewModel.FileName = _SqlEditor.FileName;
