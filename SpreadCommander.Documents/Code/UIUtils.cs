@@ -1,4 +1,5 @@
 ﻿using DevExpress.LookAndFeel;
+using DevExpress.Skins;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using SpreadCommander.Common;
@@ -25,10 +26,11 @@ namespace SpreadCommander.Documents.Code
         
         public static bool IsSkinVector(string skinName)
         {
-            if (skinName == SkinStyle.Basic || skinName == SkinStyle.Bezier || skinName == SkinStyle.Office2019Colorful || 
-                skinName == SkinStyle.HighContrast || skinName == "Winter Joy")
-                return true;
-            return false;
+            //if (skinName == SkinStyle.Basic || skinName == SkinStyle.Bezier || skinName == SkinStyle.Office2019Colorful || 
+            //    skinName == SkinStyle.HighContrast || skinName == "Winter Joy")
+            //    return true;
+            var category = SkinCollectionHelper.GetSkinCategory(skinName);
+            return (category == SkinCategory.SVG) || (skinName == "Winter Joy");
         }
     }
 }

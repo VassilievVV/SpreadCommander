@@ -102,8 +102,8 @@ namespace SpreadCommander.Common.Code
         }
         #region ISankeyContainer
 
-        private SizeF dpiScaleFactor = new (1f, 1f);
-        SizeF ISankeyContainer.DpiScaleFactor                 => dpiScaleFactor; 
+        //private SizeF dpiScaleFactor = new (1f, 1f);
+        //SizeF ISankeyContainer.DpiScaleFactor                 => dpiScaleFactor; 
         bool ISankeyContainer.DesignMode                      => false;
         ISankeyRenderProvider ISankeyContainer.RenderProvider => this;
         IServiceProvider ISankeyContainer.ServiceProvider     => null;

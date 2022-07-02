@@ -379,11 +379,11 @@ namespace SpreadCommander
                         UserLookAndFeel.Default.SetSkinStyle(parts[0], parts[1]);
                 }
                 else
-                    UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.DefaultSkin.Default);
+                    UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.WXI.Default);
             }
             catch (Exception)
             {
-                UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.DefaultSkin.Default);
+                UserLookAndFeel.Default.SetSkinStyle(SkinSvgPalette.WXI.Default);
             }
         }
 
