@@ -44,7 +44,7 @@ namespace SpreadCommander.Common.Grid.Functions.Regex
             {
                 var input    = operands[0]?.ToString();
                 var pattern  = operands[1]?.ToString();
-                var matchNum = Convert.ToInt32(operands.Length > 2 ? Convert.ToInt32(operands[2]) : 0);
+                var matchNum = System.Convert.ToInt32(operands.Length > 2 ? System.Convert.ToInt32(operands[2]) : 0);
 
                 if (input == null || pattern == null)
                     return null;

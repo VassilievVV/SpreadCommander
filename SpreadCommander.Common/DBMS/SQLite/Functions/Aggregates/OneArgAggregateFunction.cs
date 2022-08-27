@@ -26,7 +26,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
                     _Parameters[i - 1] = args[i];
             }
 
-            var value = Convert.ToDouble(args[0]);
+            var value = System.Convert.ToDouble(args[0]);
             if (double.IsNaN(value))
                 return;
 

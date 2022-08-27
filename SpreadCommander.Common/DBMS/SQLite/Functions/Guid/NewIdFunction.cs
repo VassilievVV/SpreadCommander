@@ -19,7 +19,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Guid
 
             try
             {
-                var format = args.Length > 0 ? Convert.ToString(args[0]) : "D";
+                var format = args.Length > 0 ? System.Convert.ToString(args[0]) : "D";
                 if (string.IsNullOrEmpty(format) || !FormatInRange(format, "N", "D", "B", "P", "X"))
                     format = "D";
 

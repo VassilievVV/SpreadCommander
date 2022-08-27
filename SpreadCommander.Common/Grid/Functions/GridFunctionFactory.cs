@@ -2,6 +2,7 @@
 using SpreadCommander.Common.Grid.Functions.Path;
 using SpreadCommander.Common.Grid.Functions.Regex;
 using SpreadCommander.Common.Grid.Functions.String;
+using SpreadCommander.Common.Grid.Functions.Convert;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace SpreadCommander.Common.Grid.Functions
             RegexReplaceFunction.Register();
             
             StringFormatFunction.Register();
+            QuoteStringFunction.Register();
             
             PathChangeExtensionFunction.Register();
             PathCombineFunction.Register();
@@ -33,6 +35,9 @@ namespace SpreadCommander.Common.Grid.Functions
             HashSHA256Function.Register();
             HashSHA384Function.Register();
             HashSHA512Function.Register();
+
+            Base64DecodeFunction.Register();
+            Base64EncodeFunction.Register();
         }
         
         public static void UnregisterFunctions()
@@ -43,6 +48,7 @@ namespace SpreadCommander.Common.Grid.Functions
             RegexReplaceFunction.Unregister();
             
             StringFormatFunction.Unregister();
+            QuoteStringFunction.Unregister();
             
             PathChangeExtensionFunction.Unregister();
             PathCombineFunction.Unregister();
@@ -56,6 +62,9 @@ namespace SpreadCommander.Common.Grid.Functions
             HashSHA256Function.Unregister();
             HashSHA384Function.Unregister();
             HashSHA512Function.Unregister();
+
+            Base64DecodeFunction.Unregister();
+            Base64EncodeFunction.Unregister();
         }
     }
 }

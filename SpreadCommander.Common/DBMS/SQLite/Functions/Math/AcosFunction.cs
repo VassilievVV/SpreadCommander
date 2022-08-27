@@ -22,7 +22,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Math
 
             try
             {
-                double value = Convert.ToDouble(args[0]);
+                double value = System.Convert.ToDouble(args[0]);
                 if (double.IsNaN(value))
                     return null;
                 

@@ -27,7 +27,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Archive
             var text = args[0] as byte[];
             string encoding = null;
             if (args.Length > 1)
-                encoding = Convert.ToString(args[1]);
+                encoding = System.Convert.ToString(args[1]);
 
             var result = ArchiveHelper.DecompressText(text, encoding);
             return result;

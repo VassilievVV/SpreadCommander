@@ -22,8 +22,8 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Math
 
             try
             {
-                double value1 = Convert.ToDouble(args[0]);
-                double value2 = args.Length > 1 ? Convert.ToDouble(args[1]) : System.Math.E;
+                double value1 = System.Convert.ToDouble(args[0]);
+                double value2 = args.Length > 1 ? System.Convert.ToDouble(args[1]) : System.Math.E;
                 if (double.IsNaN(value1) || double.IsNaN(value2))
                     return null;
 

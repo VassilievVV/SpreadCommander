@@ -6,6 +6,7 @@ using SpreadCommander.Common.Spreadsheet.Functions.Hash;
 using SpreadCommander.Common.Spreadsheet.Functions.Path;
 using SpreadCommander.Common.Spreadsheet.Functions.Regex;
 using SpreadCommander.Common.Spreadsheet.Functions.String;
+using SpreadCommander.Common.Spreadsheet.Functions.Convert;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,6 +24,7 @@ namespace SpreadCommander.Common.Spreadsheet
                 RegisterFunctions(workbook, new List<ICustomFunction>()
                 {
                     new StringFormatFunction(),
+                    new QuoteStringFunction(),
 
                     new RegexMatchFunction(),
                     new RegexIsMatchFunction(),
@@ -43,6 +45,9 @@ namespace SpreadCommander.Common.Spreadsheet
                     new HashSHA256Function(),
                     new HashSHA384Function(),
                     new HashSHA512Function(),
+
+                    new Base64DecodeFunction(),
+                    new Base64EncodeFunction(),
 
                     new NewIdFunction()
                 });

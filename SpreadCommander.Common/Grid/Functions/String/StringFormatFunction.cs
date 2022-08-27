@@ -12,7 +12,7 @@ namespace SpreadCommander.Common.Grid.Functions.String
     public class StringFormatFunction : ICustomFunctionOperatorBrowsable
     {
         public const string FunctionName = "StringFormat";
-        static readonly StringFormatFunction instance = new StringFormatFunction();
+        static readonly StringFormatFunction instance = new ();
 
         public static void Register()
         {

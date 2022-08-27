@@ -14,8 +14,8 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
         #region Context
         private class Context
         {
-            public List<double> Values1 = new List<double>();
-            public List<double> Values2 = new List<double>();
+            public List<double> Values1 = new ();
+            public List<double> Values2 = new ();
         }
         #endregion
 
@@ -34,8 +34,8 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
                     _Parameters[i - 2] = args[i];
             }
 
-            var value1 = Convert.ToDouble(args[0]);
-            var value2 = Convert.ToDouble(args[1]);
+            var value1 = System.Convert.ToDouble(args[0]);
+            var value2 = System.Convert.ToDouble(args[1]);
             if (double.IsNaN(value1) || double.IsNaN(value2))
                 return;
 

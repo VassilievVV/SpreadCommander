@@ -54,7 +54,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Regex
             { 
                 var input    = parameters[0].ToString();
                 var pattern  = parameters[1].ToString();
-                var matchNum = Convert.ToInt32(parameters.Count > 2 ? parameters[2].NumericValue : 0);
+                var matchNum = System.Convert.ToInt32(parameters.Count > 2 ? parameters[2].NumericValue : 0);
 
                 if (input == null || pattern == null)
                     return string.Empty;

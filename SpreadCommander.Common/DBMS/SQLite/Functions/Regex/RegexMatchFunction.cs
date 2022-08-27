@@ -20,7 +20,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Regex
             {
                 var input    = args[0]?.ToString();
                 var pattern  = args[1]?.ToString();
-                var matchNum = Convert.ToInt32(args.Length > 2 ? Convert.ToInt32(args[2]) : 0);
+                var matchNum = System.Convert.ToInt32(args.Length > 2 ? System.Convert.ToInt32(args[2]) : 0);
 
                 if (input == null || pattern == null)
                     return null;

@@ -18,10 +18,10 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Archive
             if (args == null || args.Length < 1)
                 return null;
 
-            var text        = Convert.ToString(args[0]);
+            var text        = System.Convert.ToString(args[0]);
             string encoding = null;
             if (args.Length > 1)
-                encoding = Convert.ToString(args[1]);
+                encoding = System.Convert.ToString(args[1]);
             
             var result = ArchiveHelper.CompressText(text, encoding);
             return result;

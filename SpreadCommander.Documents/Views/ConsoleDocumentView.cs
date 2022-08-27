@@ -206,6 +206,7 @@ namespace SpreadCommander.Documents.Views
         public void LoadFromFile(string fileName)
         {
             _ScriptEditor?.LoadFromFile(fileName);
+            ParseScrtiptErrors();
 
             var fluent = mvvmContext.OfType<ConsoleDocumentViewModel>();
             fluent.ViewModel.FileLoaded(fileName);

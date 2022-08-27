@@ -105,7 +105,7 @@ namespace SpreadCommander.Common.Spreadsheet.Functions.Hash
                     return string.Empty;
 
                 var hash   = ComputeHash(data);
-                var result = Convert.ToHexString(hash);
+                var result = System.Convert.ToHexString(hash);
                 return result;
             }
             catch (Exception)

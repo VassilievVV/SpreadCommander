@@ -17,7 +17,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates
             if (_Parameters == null || _Parameters.Length < 1)
                 return null;
 
-            double tau = Convert.ToDouble(_Parameters[0]);
+            double tau = System.Convert.ToDouble(_Parameters[0]);
             if (double.IsNaN(tau))
                 return null;
 

@@ -21,7 +21,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Regex
                 var input     = args[0]?.ToString();
                 var pattern   = args[1]?.ToString();
                 var groupName = args[2]?.ToString();
-                var matchNum  = Convert.ToInt32(args.Length > 3 ? Convert.ToInt32(args[3]) : 0);
+                var matchNum  = System.Convert.ToInt32(args.Length > 3 ? System.Convert.ToInt32(args[3]) : 0);
 
                 if (input == null || pattern == null || string.IsNullOrWhiteSpace(groupName))
                     return null;

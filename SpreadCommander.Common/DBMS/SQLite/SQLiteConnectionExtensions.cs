@@ -15,6 +15,7 @@ using SpreadCommander.Common.DBMS.SQLite.Functions.Aggregates;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Hash;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Guid;
 using SpreadCommander.Common.DBMS.SQLite.Functions.Archive;
+using SpreadCommander.Common.DBMS.SQLite.Functions.Convert;
 
 namespace SpreadCommander.Common.DBMS.SQLite
 {
@@ -38,6 +39,7 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new RegexReplaceFunction());
             //String
             connection.BindFunction(new StringFormatFunction());
+            connection.BindFunction(new QuoteStringFunction());
             //Hash
             connection.BindFunction(new MD5Function());
             connection.BindFunction(new SHA1Function());
@@ -83,6 +85,9 @@ namespace SpreadCommander.Common.DBMS.SQLite
             connection.BindFunction(new DecompressBytesFunction());
             connection.BindFunction(new CompressTextFunction());
             connection.BindFunction(new DecompressTextFunction());
+            //Convert
+            connection.BindFunction(new Base64EncodeFunction());
+            connection.BindFunction(new Base64DecodeFunction());
 
             //Collations
             connection.BindFunction(new LogicalCollationFunction());

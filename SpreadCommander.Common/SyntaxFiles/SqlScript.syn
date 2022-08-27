@@ -5,6 +5,7 @@
   </FileTypes>
 
   <Block Name="Code" Style="Code" IsMultiline="true">
+    <Scope Start="(" End=")" Style="Code" Text="(...)" />
     <Scope Start="(?&lt;=^\s*)\-\-\#region" End="(?&lt;=^\s*)\-\-\#endregion" StartIsComplex="true" EndIsComplex="true" Style="Preprocessor" Text="" DefaultExpanded="false" />
     <Keywords>
       <PatternGroup Name="C1" Style="C1" CaseSensitive="false" NormalizeCase="false">

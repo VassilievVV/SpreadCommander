@@ -11,7 +11,7 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Random
     [SQLiteFunction(Name = "RandUniform", Arguments = 2, FuncType = FunctionType.Scalar)]
     public class RandUniformFunction : SQLiteFunction
     {
-        private static readonly System.Random _Random = new System.Random();
+        private static readonly System.Random _Random = new ();
         
         public override object Invoke(object[] args)
         {
@@ -23,8 +23,8 @@ namespace SpreadCommander.Common.DBMS.SQLite.Functions.Random
             
             try
             {
-                double min = Convert.ToDouble(args[0]);
-                double max = Convert.ToDouble(args[1]);
+                double min = System.Convert.ToDouble(args[0]);
+                double max = System.Convert.ToDouble(args[1]);
 
                 if (double.IsNaN(min) || double.IsNaN(max))
                     return null;
